@@ -207,12 +207,46 @@ def load_film_products():
     return picked
 
 
+def resolve_markup(markup):
+    """Множитель цены из манифеста магазина → (число>1, ошибка_или_None).
+
+    None (поле в манифесте не задано) → модульная MARKUP (8.0) — обратносовместимо, поведение
+    как до проводки #13. Задано → ОБЯЗАНО быть числом > 1: JSON true/0/пустая строка/не-число/
+    ≤1 — это БИТЫЙ манифест, а не воля оператора. Раньше `float(markup) if markup else MARKUP`
+    тихо превращало true в 1.0, а 0/""/отсутствие — в 8.0 (маскировка коррупции), и цена уходила
+    ≤ закупки (гарантированный убыток после издержек, P1) или молча «по дефолту». Ошибку НЕ
+    глотаем — возвращаем причину, вызывающий (движок/билдер) решает: FAIL, а не тихая цена.
+    """
+    if markup is None:
+        return MARKUP, None
+    if isinstance(markup, bool):                  # bool→float: True==1.0 → цена == закупка
+        return None, f"markup манифеста — boolean {markup!r}, не число (цена была бы ≤ закупки)"
+    if isinstance(markup, str):
+        s = markup.strip()
+        if not s:
+            return None, "markup манифеста — пустая строка (битый манифест)"
+        try:
+            markup = float(s)
+        except ValueError:
+            return None, f"markup манифеста «{markup}» — не число (битый манифест)"
+    try:
+        mult = float(markup)
+    except (TypeError, ValueError):
+        return None, f"markup манифеста «{markup!r}» — не число (битый манифест)"
+    if mult <= 1.0:
+        return None, (f"markup {mult:g} ≤ 1 — цена продажи {mult:g}× закупки ≤ закупки, "
+                      "гарантированный убыток после издержек (P1); поставь > 1 (для плёнки ×8)")
+    return mult, None
+
+
 def build_product(p, pub_urls, index, *, markup=None):
     """Донор-строка → product-словарь ARBITER (схема ymarket_card.to_offer).
 
     markup=None → модульная константа MARKUP (8.0, подтверждена оператором 2026-09-02);
     markup=число → множитель МАНИФЕСТА магазина (профиль.markup — проводка: цена по манифесту,
     владелец ЦЕНОВИК, L9). Ровно тот же результат при markup==MARKUP (обратносовместимо).
+    Битый markup (boolean/не-число/≤1) — НЕ тихая цена: ValueError с причиной (движок гейтит
+    манифест до сборки своим FAIL-ом, тут — страховка для прямых вызовов билдера).
     """
     pid = str(p.get("pid") or p.get("sku"))
     article = str(p.get("article") or "")
@@ -221,7 +255,9 @@ def build_product(p, pub_urls, index, *, markup=None):
     if not article or not name or cost <= 0:
         return None
     ean = gen_ean13(article)
-    mult = float(markup) if markup else MARKUP
+    mult, merr = resolve_markup(markup)
+    if merr:
+        raise ValueError(merr)                # битый markup манифеста → громко, не тихая цена
     lo, _hi = C.propose_prices(cost, mult, mult)
     facts = FILM_FACTS.get(pid)
     prod = {

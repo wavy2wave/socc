@@ -177,10 +177,11 @@ def pr15_below_floor_refused():
 
 
 def pr16_range_gate():
-    """PR3: скидка вне 5–99% по правилу Маркета → DISCOUNT_RANGE."""
+    """PR3: скидка вне 5–99% по правилу Маркета → DISCOUNT_RANGE. discount_pct в 2 знаках
+    (решение по ТОМУ ЖЕ округлению, что и наружу): отказная 2.13% никогда не выглядит «в зоне»."""
     card = {"offer_id": "ARB-87309612", "cost": 700.0, "price": 5600}
-    r = P.promo_card(card, sell=4600, regular=4700)   # (4700−4600)/4700 ≈ 2.1% < 5%
-    ok = (not r["ok"] and r["verdict"] == "DISCOUNT_RANGE" and r["discount_pct"] == 2.1)
+    r = P.promo_card(card, sell=4600, regular=4700)   # (4700−4600)/4700 ≈ 2.13% < 5%
+    ok = (not r["ok"] and r["verdict"] == "DISCOUNT_RANGE" and r["discount_pct"] == 2.13)
     return ok, f"verdict={r['verdict']} скидка {r['discount_pct']}% (вне 5–99%)"
 
 
@@ -192,6 +193,66 @@ def pr17_provisional_honest():
     ok = (r_prov["ok"] and r_prov["provisional"] and "PROVISIONAL" in r_prov["note"]
           and r_cnf["ok"] and not r_cnf["provisional"])
     return ok, f"provisional без явных={r_prov['provisional']} · с явными={r_cnf['provisional']}"
+
+
+# ── #14-фиксы ревью (баги проводки #13, подтверждены адверсариалом): крэш/происхождение/граница ──
+
+def pr18_cost_zero_no_invent():
+    """#14: cost=0 (и строка-не-число) раньше проскакивал NO_COST-гейт → crash `f'{None:g}'`
+    на отказной строке floor_hit(NA). Теперь → честный NO_COST, без исключения."""
+    bad_costs = [0, 0.0, "abc", "0"]
+    ok_all, detail = True, []
+    for cost in bad_costs:
+        r = P.promo_card({"offer_id": "ARB-X", "cost": cost, "price": 500}, sell=400)
+        good = not r["ok"] and r["verdict"] == "NO_COST" and r["payload"] is None
+        ok_all &= bool(good)
+        detail.append(f"cost={cost!r}→{r['verdict']}")
+    return ok_all, " · ".join(detail) + " (без крэша, PR5: закупки нет → акция нечестна)"
+
+
+def pr19_bad_params_no_blowup():
+    """#14: битые параметры (fee=1.0/доставка<0) при валидной закупке → floor_hit BAD_PARAMS
+    БЕЗ net → раньше TypeError `f'{None:g}'`. Теперь — BAD_PARAMS с честной причиной, не крэш."""
+    card = {"offer_id": "ARB-87931769", "cost": 65.0, "price": 520}
+    r_fee = P.promo_card(card, sell=470, regular=520, fee=1.0)
+    r_del = P.promo_card(card, sell=470, regular=520, delivery=-5)
+    ok = (not r_fee["ok"] and r_fee["verdict"] == "BAD_PARAMS"
+          and "пол не посчитан" in r_fee["note"]
+          and not r_del["ok"] and r_del["verdict"] == "BAD_PARAMS")
+    return ok, (f"fee=1.0→{r_fee['verdict']} ({r_fee['note'][:40]}…) "
+                f"delivery<0→{r_del['verdict']} (без крэша партии)")
+
+
+def pr20_basis_provenance():
+    """#14: basis честно отражает ПРОИСХОЖДЕНИЕ якоря: явный regular=held (выдержанная),
+    regular по умолчанию с витрины=current_vitrine; OK-строка не перетирает held."""
+    card = next(c for c in _FILM if c["offer_id"] == "ARB-29846713")   # price 4800 (витрина)
+    r_default = P.promo_card(card, sell=4200)                    # regular по умолч. = 4800
+    r_explicit = P.promo_card(card, sell=4200, regular=6000)     # явно выдержанная 6000
+    r_same = P.promo_card(card, sell=4600, regular=4800)         # явно == витринной
+    r_refused = P.promo_card(card, sell=1200, regular=520)       # отказ NOT_SALE, явный held
+    ok = (r_default["basis"] == "current_vitrine"
+          and r_explicit["basis"] == "held" and r_explicit["ok"]
+          and r_explicit["payload"]["discount_base"] == 6000.0
+          and r_same["basis"] == "held"          # явно задан даже == витрине — held, не витрина
+          and r_refused["basis"] == "held" and not r_refused["ok"])
+    return ok, (f"default={r_default['basis']} explicit={r_explicit['basis']} "
+                f"explicit==cur={r_same['basis']} refused={r_refused['basis']}")
+
+
+def pr21_boundary_consistent():
+    """#14: вердикт и discount_pct решаются на ОДНОМ округлении (2 знака) — отказная строка
+    никогда не печатает число, похожее на «в диапазоне». DISCOUNT_RANGE ⇒ pct вне [5,99]."""
+    card = next(c for c in _FILM if c["offer_id"] == "ARB-87309612")
+    sells = [4600, 2000, 4560.6]      # 2.13%, ~58%, ~4.99% (граница снизу)
+    ok_all, detail = True, []
+    for sell in sells:
+        r = P.promo_card(card, sell=sell, regular=4700)
+        pct = r["discount_pct"]
+        consistent = (r["verdict"] != "DISCOUNT_RANGE") or not (5.00 <= pct <= 99.00)
+        ok_all &= bool(consistent and r["discount_pct"] is not None)
+        detail.append(f"{sell}→{r['verdict']} {pct}%")
+    return ok_all, " · ".join(detail) + " (pct и вердикт не спорят)"
 
 
 
@@ -213,6 +274,10 @@ TESTS = [
     ("PR15 below_floor_refused", pr15_below_floor_refused),
     ("PR16 range_gate", pr16_range_gate),
     ("PR17 provisional_honest", pr17_provisional_honest),
+    ("PR18 cost_zero_no_invent", pr18_cost_zero_no_invent),
+    ("PR19 bad_params_no_blowup", pr19_bad_params_no_blowup),
+    ("PR20 basis_provenance", pr20_basis_provenance),
+    ("PR21 boundary_consistent", pr21_boundary_consistent),
 ]
 
 

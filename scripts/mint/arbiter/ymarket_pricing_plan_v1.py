@@ -192,25 +192,32 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
         sell = float(sell)
     except (TypeError, ValueError):
         sell = None
-    if regular is None:
-        try:
-            regular = float(cur) if cur is not None else None
-        except (TypeError, ValueError):
-            regular = None
-    else:
+    explicit_regular = regular is not None            # якорь задан ЯВНО (выдержанная цена)
+    if explicit_regular:
         try:
             regular = float(regular)
         except (TypeError, ValueError):
             regular = None
+    elif cur is not None:
+        try:
+            regular = float(cur)                      # по умолчанию = действующая витринная (PR2)
+        except (TypeError, ValueError):
+            regular = None
+    else:
+        regular = None
 
     d, f, prov = R._resolve_io(delivery, fee)
+    # Происхождение якоря (basis) — НЕ врём: held = выдержанная (задали явно); current_vitrine =
+    # подтянута с витрины по умолчанию. Раньше non-explicit regular помечался held, а OK-строка
+    # перетирала в current_vitrine даже явный held — происхождение терялось.
+    basis = None if regular is None else ("held" if explicit_regular else "current_vitrine")
     base = {"sku": sku, "cost": cost, "sell": sell, "regular": regular, "provisional": prov,
             "discount_pct": None, "floor": None, "net_at_sell": None, "payload": None,
-            "basis": "held" if regular is not None else None, "note": ""}
+            "basis": basis, "note": ""}
 
-    if cost is None:
+    if cost is None or cost <= 0:                     # cost=0 раньше проскакивал → crash на net
         return {**base, "ok": False, "verdict": "NO_COST",
-                "note": "закупка неизвестна → пол не посчитать, акция невозможна честно (P2/PR5)"}
+                "note": "закупка неизвестна/≤0 → пол не посчитать, акция невозможна честно (P2/PR5)"}
     if sell is None or sell <= 0:
         return {**base, "ok": False, "verdict": "NO_SELL",
                 "note": "цена распродажи не задана/≤0 — не выдумываем (PR4)"}
@@ -221,24 +228,31 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
         return {**base, "ok": False, "verdict": "NOT_SALE",
                 "note": f"якорь {regular:g}₽ ≤ продажи {sell:g}₽ — это не скидка, а подъём под видом акции (PR2)"}
     disc = (regular - sell) / regular
-    pct = round(disc * 100, 1)
+    # Решение по СКИДКЕ на том ЖЕ округлении, что и discount_pct наружу: вердикт и число
+    # никогда не спорят. (Пограничная 4.995% раньше писала 5.0% в отказной строке — враньё.)
+    pct = round(disc * 100, 2)
     base["discount_pct"] = pct
-    if not (0.05 <= disc <= 0.99):
+    if not (5.00 <= pct <= 99.00):
         return {**base, "ok": False, "verdict": "DISCOUNT_RANGE",
-                "note": f"скидка {pct}% вне 5–99% по правилу Маркета (P4/PR3)"}
+                "note": f"скидка {pct:g}% вне 5–99% по правилу Маркета (P4/PR3)"}
     h = R.floor_hit(sell, cost, delivery=d, fee=f,
                     **({} if target_profit is None else {"target_profit": target_profit}))
     base["floor"] = h.get("floor")
     base["net_at_sell"] = h.get("net")
     if not h.get("ok"):
-        hv = h.get("verdict")
-        base["note"] = (f"продажа {sell:g}₽ ниже пола {h.get('floor')}₽ (net {h.get('net'):g}₽) — "
-                        f"убыток запрещён (P1/PR4)" + ("" if not prov else " · provisional"))
+        if h.get("verdict") == "BELOW_FLOOR":
+            # Пол и net посчитаны честно (provisional на TUNABLE) — обычная отказная строка.
+            base["note"] = (f"продажа {sell:g}₽ ниже пола {h['floor']}₽ (net {h['net']:g}₽) — "
+                            f"убыток запрещён (P1/PR4)" + ("" if not prov else " · provisional"))
+            return {**base, "ok": False, "verdict": "BELOW_FLOOR"}
+        # Пол НЕ посчитан (BAD_PARAMS: комиссия вне (0,1)/доставка <0) — раньше тут был
+        # f"{h.get('net'):g}" на None → TypeError (крэш партии). Не «ниже пола», а причина.
+        base["note"] = (f"продажа {sell:g}₽: пол не посчитан — {h.get('note') or 'параметры биты'}"
+                        + ("" if not prov else " · provisional"))
         return {**base, "ok": False,
-                "verdict": hv if hv in PROMO_VERDICTS else "BELOW_FLOOR"}
+                "verdict": h.get("verdict") if h.get("verdict") in PROMO_VERDICTS else "BAD_PARAMS"}
     base["payload"] = {"sku": sku, "value": sell, "discount_base": regular}
-    base["basis"] = "current_vitrine" if regular is not None and cur is not None else "held"
-    base["note"] = (f"скидка {pct}% ({regular:g}₽ → {sell:g}₽), net {h.get('net'):g}₽ ≥ пола"
+    base["note"] = (f"скидка {pct:g}% ({regular:g}₽ → {sell:g}₽), net {h['net']:g}₽ ≥ пола"
                     + ("" if not prov else " · PROVISIONAL (TUNABLE не подтверждены, PR6)"))
     return {**base, "ok": True, "verdict": "OK"}
 

@@ -284,6 +284,16 @@ def node_build(ctx, dry, commit):
     штрихкода/характеристик/цены) останавливает СБОРКУ. audit_plan = задумка; факт витрины
     подтвердит живая audit_live в СВЕРКЕ (CC3)."""
     import ymarket_film_cards_v1 as FC
+    # #14-гейт манифеста ДО сборки: битый markup (boolean/не-число/≤1/пустая строка) раньше
+    # тихо давал цену ≤ закупки (true→1.0) или падал сырым ValueError («abc») на середине
+    # партии. Теперь — понятный FAIL с именем ПОЛЯ и магазина, до каких-либо действий.
+    # markup=None → модульная MARKUP (8.0): обратносовместимо с профилями до проводки #13.
+    _mk, _merr = FC.resolve_markup(ctx["profile"].get("markup"))
+    if _merr:
+        return {"verdict": "FAIL",
+                "note": f"манифест «{ctx['profile'].get('slug')}»: {_merr}",
+                "evidence": {"field": "markup", "profile_markup": ctx["profile"].get("markup"),
+                             "error": _merr}}
     import ymarket_card_audit_v1 as caudit
     pub = FC._pub_urls_by_pid()
     prods, missing = [], []
