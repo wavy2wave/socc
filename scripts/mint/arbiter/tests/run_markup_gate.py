@@ -78,6 +78,30 @@ def mg4_falsy_rejected():
     return ok_all, " · ".join(detail) + " (0/1/0.5/пусто/не-число → ошибка, НЕ тихий дефолт 8.0)"
 
 
+def mg9_nonfinite_rejected():
+    # #14-residual: nan/inf ПРОСКАКИВАЛИ `mult <= 1.0` (сравнение с nan ложно) и падали сырым
+    # ValueError/OverflowError в round() глубоко в билдере. Реальный манифест это даёт:
+    # json.loads("1e400")→inf, строка "nan"→float("nan"). Теперь → чистая markup-ошибка.
+    ok_all, detail = True, []
+    for v in (float("nan"), float("inf"), float("-inf"), "nan", "1e400", 1e400):
+        m, err = FC.resolve_markup(v)
+        ok = m is None and err is not None and "markup" in err and "конечн" in err
+        ok_all &= bool(ok)
+        detail.append(f"{v!r}→err")
+    # и build_product не даёт сырого исключения round-а — ValueError с причиной markup
+    for v in (float("nan"), float("inf"), 1e400):
+        try:
+            FC.build_product(_DONOR, {}, 0, markup=v)
+            clean = False
+        except ValueError as e:
+            clean = "markup" in str(e) and "конечн" in str(e)
+        except OverflowError:
+            clean = False
+        ok_all &= bool(clean)
+        detail.append(f"build({v!r})→ValueError(markup)" if clean else f"build({v!r})→НЕ чисто!")
+    return ok_all, " · ".join(detail) + " (nan/inf → чистый markup-FAIL, не сырой round-крэш)"
+
+
 def mg5_build_bad_raises():
     ok_all, detail = True, []
     for v in (0.5, True, 0, ""):
@@ -127,6 +151,7 @@ TESTS = [
     ("MG6 build_ok_backcompat", mg6_build_ok_backcompat),
     ("MG7 cycle1_fail_bad_markup", mg7_cycle1_fail_bad_markup),
     ("MG8 cycle1_pass_valid", mg8_cycle1_pass_valid),
+    ("MG9 nonfinite_rejected", mg9_nonfinite_rejected),
 ]
 
 

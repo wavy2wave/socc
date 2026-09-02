@@ -12,7 +12,7 @@ RUBICON: скрипт сам НИЧЕГО не пишет. `--commit` подни
 
 Фото: published_urls.json (runtime/photo_branded/) — 4 публичных URL выкованных кадров.
 """
-import json, pathlib, sys
+import json, math, pathlib, sys
 
 ARB = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(ARB))
@@ -212,10 +212,13 @@ def resolve_markup(markup):
 
     None (поле в манифесте не задано) → модульная MARKUP (8.0) — обратносовместимо, поведение
     как до проводки #13. Задано → ОБЯЗАНО быть числом > 1: JSON true/0/пустая строка/не-число/
-    ≤1 — это БИТЫЙ манифест, а не воля оператора. Раньше `float(markup) if markup else MARKUP`
+    ≤1/nan/inf — это БИТЫЙ манифест, а не воля оператора. Раньше `float(markup) if markup else MARKUP`
     тихо превращало true в 1.0, а 0/""/отсутствие — в 8.0 (маскировка коррупции), и цена уходила
     ≤ закупки (гарантированный убыток после издержек, P1) или молча «по дефолту». Ошибку НЕ
     глотаем — возвращаем причину, вызывающий (движок/билдер) решает: FAIL, а не тихая цена.
+    nan/inf тоже ловим (json.loads("1e400")→inf, строка "nan"→float("nan")): сравнение `nan <= 1.0`
+    ЛОЖНО, поэтому без явной проверки конечности они проскакивали и падали сырым ValueError/
+    OverflowError в round() глубоко в билдере (не чистый markup-FAIL).
     """
     if markup is None:
         return MARKUP, None
@@ -233,6 +236,9 @@ def resolve_markup(markup):
         mult = float(markup)
     except (TypeError, ValueError):
         return None, f"markup манифеста «{markup!r}» — не число (битый манифест)"
+    if not math.isfinite(mult):                   # nan/inf: `mult <= 1.0` ложно → отдельный гейт
+        return None, (f"markup манифеста «{markup!r}» — не конечное число (nan/inf); "
+                      "поставь > 1 (для плёнки ×8)")
     if mult <= 1.0:
         return None, (f"markup {mult:g} ≤ 1 — цена продажи {mult:g}× закупки ≤ закупки, "
                       "гарантированный убыток после издержек (P1); поставь > 1 (для плёнки ×8)")
