@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  WAVE SHOP — движок автопродления/автопополнения по расписанию (launchd, 24/7).
+
+  ═══ ЗАРЯЖЕН, НО НА ПРЕДОХРАНИТЕЛЕ (DISARMED) ═══
+  ProgramArguments НАРОЧНО содержит «--dry-run»: в этом виде задача — только ОТЧЁТ.
+  Она считает, сколько подписок пора продлить и сколько кошельков автопополнить,
+  печатает это в лог и НИЧЕГО не делает: 0 списаний, 0 сообщений, 0 записей.
+  Так её можно установить и держать заряженной, ничем не рискуя, даже при живых
+  ключах ЮKassa. Доказано тестом tests/renewals_dry_v1.py (14/14).
+
+  ВООРУЖИТЬ (боевое автосписание) — РУЧНОЕ решение оператора, НИКОГДА не само:
+    1) убрать строку <string>--dry-run</string> ниже;
+    2) launchctl unload/load этого plist (см. GO_LIVE.md, раздел «АВТОСПИСАНИЕ»).
+  Даже вооружённый БЕЗ ключей ЮKassa движок физически не двинет денег
+  (provider.configured=False → ранний выход перед любым charge; тот же тест, рубеж B).
+
+  СЕКРЕТЫ: здесь их НЕТ. renewals.py сам грузит токен/ключи из gitignored .env
+  (config.load_settings читает BASE_DIR/.env). В plist — только пути.
+
+  УСТАНОВКА (сухой режим, безопасно):
+    cp ops/com.socc.waveshop.renewals.v1.plist ~/Library/LaunchAgents/
+    launchctl load ~/Library/LaunchAgents/com.socc.waveshop.renewals.v1.plist
+  Разовая проверка вручную:  launchctl kickstart -k gui/$(id -u)/com.socc.waveshop.renewals.v1
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.socc.waveshop.renewals.v1</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/bin/python3</string>
+        <string>/Users/wavysexy/SOCC/scripts/mint/wave_shop/renewals.py</string>
+        <!-- ПРЕДОХРАНИТЕЛЬ: убрать эту строку, чтобы вооружить боевое автосписание. -->
+        <string>--dry-run</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/wavysexy/SOCC/scripts/mint/wave_shop</string>
+
+    <!-- Раз в час на :23 (не круглая минута — не забивать :00). Продление
+         терпит; для потокенных кошельков час — приемлемая задержка на MVP. -->
+    <key>StartCalendarInterval</key>
+    <dict><key>Minute</key><integer>23</integer></dict>
+
+    <!-- Не палить при загрузке — строго по расписанию (проверка = kickstart вручную). -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/wavysexy/SOCC/MEMORY_WAVE/reports/mint/wave_shop/renewals.launchd.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/wavysexy/SOCC/MEMORY_WAVE/reports/mint/wave_shop/renewals.launchd.err</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>
