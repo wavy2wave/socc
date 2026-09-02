@@ -1,0 +1,147 @@
+{
+  "id": "OZON_MANAGER_LINE_V1",
+  "schema": "socc.line.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-08-06T00:00:00+00:00",
+  "purpose": "МЕНЕДЖЕР ПО ОЗОНУ + команда как ПАУТИНА узлов (не конвейер): узлы связаны с процессами, ускоряют их и пре-питают соседа с опережением смыслов. Ведёт магазин Ozon к успеху 'как швейцарские часы', контроль на каждом шве (как в SOCC). РАБОТА ТОЛЬКО ПО ОЗОНУ. Зеркалит доказанный образец ymarket_* (231 тест) → ozon_*, меняя транспорт (urllib), payload-шейпы Ozon Seller API и бизнес-константы (0.298/₽325). Дизайн паутины: OZON_TEAM_MESH_V1.md. План: OZON_MANAGER_PLAN_V1.md.",
+  "principle": "паутина, а не конвейер — поток через узлы × сила петель обратной связи = прибыль; менеджер целится в узкое место (лестница решений)",
+  "reuses": {
+    "econ": "scripts/mint/socc_mint_prospect_v1.py (NET_COEFF=0.298, DELIVERY_NET=₽325) — единый источник",
+    "hunter": "scripts/mint/arbiter/wb_scout_v1.py — ЖИВОЙ (T11: 5 реальных WB-кандидатов)",
+    "validator": "scripts/mint/arbiter/gap_v1.py + socc_mint_prospect_v1.py + pricing_v1.py — ЖИВОЙ",
+    "supplier_scout": "scripts/mint/arbiter/suppliers/ (SCOUT) — ЖИВОЙ M1",
+    "content_jeweler": "scripts/mint/arbiter/uniqueizer_v1.py — ЖИВОЙ (заголовок/EAN/фото-план)",
+    "orders_read": "scripts/mint/socc_mint_ozon_v1.py::fetch_new_orders (/v3/posting/fbs/list) — READ",
+    "purchaser": "scripts/mint/arbiter/bridge_v1.py + buy_adapter_v1.py::ManualTicket — ЖИВОЙ ручной",
+    "transport": "scripts/mint/ozon_truth_v1.py::_post_stdlib (urllib) — шаблон write-транспорта",
+    "ledger": "scripts/mint/socc_revenue_ledger_v1.py::record_claim/verify"
+  },
+  "discipline": "evolution_does_not_jump",
+  "org_mesh": {
+    "manager": {"id": "OZON_MANAGER", "impl": "ozon_manager_v1.py", "role": "tick-оркестратор; держит дневные нормы (кто залил/отгрузил/доставил); лестница решений; пруф каждого тика", "is_not": ["демон", "автопубликатор без отмашки", "бот-однокнопка"]},
+    "leads": [
+      {
+        "zveno": "A", "name": "РАЗВЕДКА & АССОРТИМЕНТ", "lead": "КОНТЕНТ-СТРАТЕГ",
+        "mandate": "что в магазине из ~500 SKU и ПОЧЕМУ — циклы (Школа/НГ) + тренды",
+        "nodes": [
+          {"id": "A1", "role": "АНАЛИТИК СПРОСА", "reactive": "данные спроса по категории (что ищут, оборачиваемость)", "ahead": "греет след. сезон за 6 недель до пика", "module": "gap:/v1/analytics/data", "status": "gap", "sla_min": null, "feeds": ["A4", "C2"], "reads_cabinet": ["Что продавать", "поисковые запросы", "оборачиваемость"]},
+          {"id": "A2", "role": "ТРЕНД-СКАУТ", "reactive": "календарь циклов + растущие тренды", "ahead": "ставит пики в план до входа сезона", "module": "gap:external", "status": "gap", "sla_min": null, "feeds": ["A4", "F2"], "reads_cabinet": ["сезонность категорий"]},
+          {"id": "A3", "role": "КОНКУРЕНТ-РАЗВЕДЧИК", "reactive": "насыщенность ниши, ценовое дно", "ahead": "метит перегретые ниши до захода", "module": "gap_v1.py", "status": "partial", "sla_min": null, "feeds": ["A4"], "reads_cabinet": ["конкуренты", "мин. цена рынка"]},
+          {"id": "A4", "role": "АРХИТЕКТОР АССОРТИМЕНТА", "reactive": "матрица SKU: что вводим/режем/почему", "ahead": "бриф для ТОВАРОВЕДа под пик", "module": "gap:decision", "status": "gap", "sla_min": null, "feeds": ["B1"], "reads_cabinet": ["портфель магазина"]}
+        ]
+      },
+      {
+        "zveno": "B", "name": "ОТБОР ТОВАРА", "lead": "ТОВАРОВЕД",
+        "mandate": "аналитик дал данные — подхватить, найти реальный товар, доказать связку",
+        "nodes": [
+          {"id": "B1", "role": "ОХОТНИК ЗА ТОВАРОМ", "reactive": "по брифу A4 находит конкретные WB-товары", "ahead": "держит тёплый список кандидатов на будущий бриф", "module": "wb_scout_v1.py", "status": "live", "sla_min": 30, "feeds": ["B2"], "reads_cabinet": ["WB выдача"]},
+          {"id": "B2", "role": "ВАЛИДАТОР СВЯЗКИ", "reactive": "доказывает спрос+маржа+честная цена (falsifiable)", "ahead": "бракует дешёвку до заливки (₽325 доставки съест)", "module": "gap_v1.py+socc_mint_prospect_v1.py+pricing_v1.py", "status": "live", "sla_min": null, "feeds": ["B3", "C1"], "reads_cabinet": ["комиссии категории"]},
+          {"id": "B3", "role": "ПОСТАВЩИК-РАЗВЕДЧИК", "reactive": "какой магазин-поставщик потянет", "ahead": "пре-подбирает 2-й источник (резерв)", "module": "suppliers/ (SCOUT)", "status": "live", "sla_min": null, "feeds": ["E1"], "reads_cabinet": ["наличие у поставщика"]}
+        ]
+      },
+      {
+        "zveno": "C", "name": "КОНТЕНТ / ЗАЛИВ", "lead": "ЗАЛИВЩИК-КАРТОЧНИК",
+        "mandate": "карточка DONE только когда полностью заполнена И на витрине",
+        "nodes": [
+          {"id": "C1", "role": "КАРТОЧНИК", "reactive": "создать + проставить ВСЕ обязательные атрибуты категории", "ahead": "кэширует дерево атрибутов категории заранее", "module": "gap:/v3/product/import+/v1/description-category/attribute", "status": "gap", "sla_min": null, "feeds": ["C3"], "reads_cabinet": ["обязательные атрибуты", "ENUM-ловушки", "единицы"]},
+          {"id": "C2", "role": "КОНТЕНТ-ЮВЕЛИР", "reactive": "заголовок-якорь + rich-content + фото-план + SEO под запросы A1", "ahead": "готовит контент, пока C1 создаёт карточку", "module": "uniqueizer_v1.py + gap:rich-content", "status": "partial", "sla_min": null, "feeds": ["C1"], "reads_cabinet": ["поисковые запросы"]},
+          {"id": "C3", "role": "МОДЕРАЦИЯ-ЛОЦМАН", "reactive": "ведёт import/info + статус модерации, чинит errors", "ahead": "предугадывает частые отказы до подачи", "module": "gap:/v1/product/import/info+/v1/product/info/list", "status": "gap", "sla_min": null, "feeds": ["D1"], "reads_cabinet": ["статус модерации", "errors[]"]}
+        ]
+      },
+      {
+        "zveno": "D", "name": "ЦЕНА / ИНДЕКС", "lead": "ЦЕНОВИК-ИНДЕКС",
+        "mandate": "красный/жёлтый индекс = карточку прячут — держать зелёный",
+        "nodes": [
+          {"id": "D1", "role": "ИНДЕКС-СТОРОЖ", "reactive": "читает price_index (цвет), держит зелёный", "ahead": "метит дрейф к жёлтому ДО красного", "module": "gap:/v1/product/info/prices", "status": "gap", "sla_min": null, "feeds": ["D2"], "reads_cabinet": ["price_index", "цвет индекса"]},
+          {"id": "D2", "role": "РЕПРАЙСЕР", "reactive": "правит цену в рамках пола маржи", "ahead": "пре-считает мин. цену при живой марже", "module": "pricing_v1.py + gap:/v1/product/import/prices", "status": "partial", "sla_min": null, "feeds": ["D1"], "reads_cabinet": ["цена конкурентов"]}
+        ]
+      },
+      {
+        "zveno": "E", "name": "СНАБЖЕНИЕ / ДОСТАВКА", "lead": "СНАБЖЕНЕЦ-ДИСПЕТЧЕР",
+        "mandate": "заказ → быстро нашли поставщика → фоново заказали → ждём курьера",
+        "nodes": [
+          {"id": "E1", "role": "ЗАКУПЩИК", "reactive": "заказ у поставщика (ручной тикет)", "ahead": "держит поставщика прогретым из B3", "module": "bridge_v1.py+buy_adapter_v1.py::ManualTicket", "status": "live", "sla_min": null, "feeds": ["E3"], "reads_cabinet": ["новые заказы"]},
+          {"id": "E2", "role": "ДИСПЕТЧЕР SLA", "reactive": "таймер отгрузки 60 мин", "ahead": "поднимает заказ до дедлайна, не после", "module": "mirror:ymarket_role_dispatcher_v1.py", "status": "gap", "sla_min": 60, "feeds": ["E3"], "reads_cabinet": ["дедлайны отгрузки"]},
+          {"id": "E3", "role": "ОТГРУЗЧИК", "reactive": "этикетка FBS + ship", "ahead": "пакует, пока E1 подтверждает закупку", "module": "gap:/v2/posting/fbs/package-label+/v2/posting/fbs/ship", "status": "gap", "sla_min": null, "feeds": ["E4"], "reads_cabinet": ["статус posting"]},
+          {"id": "E4", "role": "ТРЕКЕР КУРЬЕРА", "reactive": "трек до 'доставлено'", "ahead": "ранний флаг задержки в петлю L1", "module": "gap:track", "status": "gap", "sla_min": null, "feeds": ["F1"], "reads_cabinet": ["трек доставки"]}
+        ]
+      },
+      {
+        "zveno": "F", "name": "РЕПУТАЦИЯ / РОСТ", "lead": "ПРОДВИЖЕНЕЦ",
+        "mandate": "растёт позже, по слову оператора",
+        "nodes": [
+          {"id": "F1", "role": "ОТЗЫВИСТ", "reactive": "работа с отзывами/рейтингом", "ahead": "просит отзыв сразу после 'доставлено' (E4)", "module": "gap:reviews", "status": "gap", "sla_min": null, "feeds": ["A1"], "reads_cabinet": ["отзывы", "рейтинг"]},
+          {"id": "F2", "role": "ПРОДВИЖЕНЕЦ", "reactive": "реклама VCG / Premium / акции", "ahead": "готовит ставки под пик A2", "module": "gap:ads", "status": "gap", "sla_min": null, "feeds": [], "reads_cabinet": ["ставки", "акции"]}
+        ]
+      }
+    ],
+    "spine": [
+      {"id": "CONTROLLER", "role": "КОНТРОЛЁР", "on": "каждое ребро", "law": "недозаполненное дальше не идёт; красный индекс → снять/снизить; лучше ноль, чем ложь; 200≠успех", "module": "mirror:ymarket_role_controller_v1.py"},
+      {"id": "PROOF", "role": "ПРУФ-ЛЕТОПИСЕЦ", "on": "каждый тик", "law": "hash-chain тик-леджер + proof-gate публикации (claim→verify независимым READ)", "module": "ozon_proof_v1.py"},
+      {"id": "MEMORY", "role": "ПАМЯТЬ", "on": "между тиками", "law": "дневные нормы (кто залил/отгрузил/доставил) + тренд смен", "module": "ozon_state_v1.py + ozon_shift_memory_v1.py"},
+      {"id": "BRIGADE", "role": "БРИГАДИР", "on": "смена", "law": "последовательный порядок + раздаёт опережающие задачи (feeds)", "module": "mirror:ymarket_brigade_v1.py"}
+    ]
+  },
+  "edges": {
+    "flow": ["A1->A2", "A2->A3", "A3->A4", "A4->B1", "B1->B2", "B2->B3", "B2->C1", "C2->C1", "C1->C3", "C3->D1", "D1->D2", "D2->VITRINA", "VITRINA->ORDER", "ORDER->E2", "ORDER->E1", "E1->E3", "E2->E3", "E3->E4", "E4->DELIVERED"],
+    "loops": [
+      {"id": "L1", "name": "РОСТ РАНГА", "path": ["E4", "F1", "рейтинг", "ранг", "заказы"], "why": "доставлено → отзыв → рейтинг → ранг ↑ → больше заказов"},
+      {"id": "L2", "name": "УМНЕЕТ АССОРТИМЕНТ", "path": ["MEMORY", "A1", "A4"], "why": "продажи/возвраты → аналитик → архитектор правит матрицу 500 SKU"},
+      {"id": "L3", "name": "ИНДЕКС-ГОМЕОСТАЗ", "path": ["D1", "D2", "индекс", "видимость"], "why": "индекс-сторож → репрайсер → зелёный индекс → видимость → продажи"}
+    ]
+  },
+  "productivity_doctrine": {
+    "operator_words": "прокачать каждого до самого продуктивного уровня — быстро, с опережением смыслов, понимает новости Озона / что в кабинете",
+    "principles": [
+      {"code": "P1", "name": "скорость", "enforced_by": "у узла свой sla_min; просрочка узла = эскалация, не тишина"},
+      {"code": "P2", "name": "опережение", "enforced_by": "поле feeds — узел обязан пре-питать соседа (контракт, не пожелание)"},
+      {"code": "P3", "name": "знание кабинета", "enforced_by": "поле reads_cabinet — узел мониторит изменения Озона в своей зоне (единицы, ENUM, новые атрибуты)"}
+    ]
+  },
+  "card_lifecycle_law": {
+    "states": ["СКАЧАНА", "ЗАЛИТА", "ПОЛНОСТЬЮ ЗАПОЛНЕНА", "НА ВИТРИНЕ"],
+    "done": "НА ВИТРИНЕ",
+    "done_criteria": "модерация OK И visible=true И stock>0",
+    "truth_sources": {"полнота": "/v1/description-category/attribute", "витрина": "/v1/product/info/list"},
+    "law_200_ne_uspeh": "Ozon отдаёт 200 OK с errors[] — КОНТРОЛЁР читает errors, а не HTTP-код"
+  },
+  "write_plane": {
+    "transport": "urllib (ozon_truth_v1._post_stdlib)",
+    "default": "live=False",
+    "gate": "реальная сеть только при not dry AND commit",
+    "endpoints": [
+      "POST /v3/product/import", "GET /v1/description-category/tree", "GET /v1/description-category/attribute",
+      "POST /v1/product/import/info", "POST /v1/product/info/list", "POST /v1/product/import/prices",
+      "POST /v1/product/info/prices", "POST /v2/products/stocks", "POST /v2/posting/fbs/package-label",
+      "POST /v2/posting/fbs/ship"
+    ]
+  },
+  "gate_legend": {
+    "SCI": "фальсифицируемый тест: маржа честная (0.298/₽325), спрос реальный",
+    "HER": "оно реально работает (узел вернул живой результат / карточка на витрине verified)",
+    "COD": "конформна канону (зеркало ymarket_*, stdlib-first, truth_boundary, без демона)",
+    "GRD": "КОНТРОЛЁР + adversarial: красные линии режут до исполнения"
+  },
+  "milestones": [
+    {"m": "M0", "produces": "манифест паутины (этот файл) + каркас менеджера (tick dry) + state/shift/self/proof/econ + приёмка", "gate": ["COD"], "status": "IN_PROGRESS", "rubicon": false},
+    {"m": "M1", "produces": "ozon_hands_write_v1 — 9 эндпоинтов urllib, live=False, приёмка на фейковых ответах (200-с-errors, модерация, единицы)", "gate": ["COD"], "status": "LOCKED", "rubicon": false},
+    {"m": "M2", "produces": "карточка end-to-end DRY: A4-бриф→B-отбор→C-заливка→полнота→симуляция витрины→D-цена/индекс; закон §4 закодирован", "gate": ["SCI", "GRD"], "status": "LOCKED", "rubicon": false},
+    {"m": "M3", "produces": "🔴 РУБИКОН: первая РЕАЛЬНАЯ карточка на витрине", "gate": ["HER", "COD"], "status": "LOCKED", "rubicon": true},
+    {"m": "M4", "produces": "поток заказа DRY → 🔴 РУБИКОН: первая реальная отгрузка FBS (закупка = ручной тикет)", "gate": ["SCI", "GRD"], "status": "LOCKED", "rubicon": true},
+    {"m": "M5", "produces": "контур роста: индекс-контроль (L3) + дневные нормы + кокпит + cron-петля", "gate": ["HER"], "status": "LOCKED", "rubicon": false},
+    {"m": "M6", "produces": "опц.: аналитика A1 (/v1/analytics/data) + ПРОДВИЖЕНЕЦ (реклама/Premium/акции)", "gate": ["HER"], "status": "LOCKED", "rubicon": true}
+  ],
+  "current": "M0",
+  "seam": {
+    "name": "buy_on_wb",
+    "why": "у WB нет чистого buy-API для покупателя — единственный шов машины",
+    "v1": "ManualTicket (оператор жмёт 1 кнопку)",
+    "later": "BrowserBot (Playwright) за флагом, изолирован — хрупкость не течёт в ядро"
+  },
+  "safety": {
+    "key_status": "OZON api-key СКОМПРОМЕТИРОВАН (прошёл через чат) — ротация в кабинете (Настройки→API) ДО любого write; ключ никогда не в коде/гите/эхо; новый ключ не вставлять в чат",
+    "rubicon": "ни одной реальной карточки и ₽ без явного слова оператора",
+    "build_discipline": "правки общих файлов только обратносовместимо + перепрогон ARBITER M1 (12/12) после"
+  },
+  "truth_boundary": "Декларация оси ОЗОН-МЕНЕДЖЕРА как паутины узлов. Ни одна веха за M2 не исполняется реально, пока предыдущая не прошла гейт и не принята оператором. Производство этой LINE не публикует карточек, не двигает денег и не делает внешних заявлений. live=False по умолчанию; реальная сеть — только not dry AND commit по слову оператора."
+}

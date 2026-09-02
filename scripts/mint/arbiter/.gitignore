@@ -1,0 +1,8 @@
+# ARBITER: защита от случайного git-push приватного/тяжёлого.
+# Правило органа: ничего из runtime/ и данных кабинета не попадает в git (см. ловушку git-push).
+runtime/
+*.log
+__pycache__/
+*.pyc
+.env
+.DS_Store

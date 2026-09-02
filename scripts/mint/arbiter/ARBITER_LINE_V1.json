@@ -1,0 +1,40 @@
+{
+  "id": "ARBITER_LINE_V1",
+  "schema": "socc.line.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-08-01T00:00:00+00:00",
+  "purpose": "Вечная арбитражная ось MINT-кластера: WB (источник спроса) → Озон/Яндекс.Маркет (витрина, где есть место залететь). Достраивает нос СПРОСА, которого каталогу MINT не хватало ('товарные связки становятся кандидатами лишь с реальной закупочной ценой и сигналом спроса — их даёт скан поставщика, не этот файл'). Ядро t0..t6 переиспользуется из socc_mint_cycle_v1.",
+  "reuses": {
+    "cycle": "scripts/mint/socc_mint_cycle_v1.py::run_connection (t2..t6)",
+    "prospector": "scripts/mint/socc_mint_prospect_v1.py::prospect/falsifiable_test/compute_margin",
+    "warden": "scripts/mint/socc_mint_warden_v1.py::gate (RL1 уже пропускает дропшиппинг)",
+    "ledger": "scripts/mint/socc_revenue_ledger_v1.py::record_claim/verify",
+    "ozon_hands": "scripts/mint/socc_mint_ozon_v1.py::fetch_new_orders/fetch_posting_payout",
+    "brain": "wavecore-bot/vesta/engine/brain.py (OpenAI-совместимый, точечно на суждении)",
+    "renderer": "SYSTEM/INTERFACE/dashboard/socc_canon_html (операторская матрица)"
+  },
+  "discipline": "evolution_does_not_jump",
+  "gate_legend": {
+    "SCI": "фальсифицируемый тест достижимости (PROSPECTOR §3): маржа честная, спрос реальный",
+    "HER": "оно реально работает (SCOUT вернул живого кандидата / карточка импортнулась)",
+    "COD": "конформна канону MINT (re-skin, stdlib-first, truth_boundary, без демона)",
+    "GRD": "WARDEN + adversarial: красные линии режут незаконную связку до исполнения"
+  },
+  "milestones": [
+    {"m": "M0", "produces": "семя оси (эта LINE + каталог arbiter/ + скелет tests)", "gate": ["COD"], "status": "IN_PROGRESS"},
+    {"m": "M1", "produces": "wb_scout_v1 — живой скан 1 категории (МСК), кандидаты с cost/url/sku/demand_signal", "gate": ["HER","SCI"], "status": "IN_PROGRESS"},
+    {"m": "M2", "produces": "gap_v1 — сравнение WB↔Озон, доказанные связки в каталог (dry, ₽=0)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+    {"m": "M3", "produces": "card_dub_v1 + ozon_write_v1 — реальная карточка на твой Озон", "gate": ["HER","COD"], "status": "LOCKED"},
+    {"m": "M4", "produces": "buy_adapter (ManualTicket) + первый verified ₽ (RUBICON)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+    {"m": "M5", "produces": "arbiter_cockpit_v1 (control-room HTML) + вечный scout-loop на cron", "gate": ["HER"], "status": "LOCKED"},
+    {"m": "M6", "produces": "BrowserBot buy-адаптер за флагом + Яндекс.Маркет-витрина (клон ozon_write)", "gate": ["HER","GRD"], "status": "LOCKED"}
+  ],
+  "current": "M1",
+  "seam": {
+    "name": "buy_on_wb",
+    "why": "у WB нет чистого buy-API для покупателя — единственный шов машины",
+    "v1": "ManualTicket (оператор жмёт 1 кнопку, 30 сек)",
+    "later": "BrowserBot (Playwright) за флагом --buy=browser, изолирован, хрупкость не течёт в ядро"
+  },
+  "truth_boundary": "Декларация оси. Перечисляет гейт-последовательность вех. Ни одна веха за пределами M1 не исполняется, пока текущая не прошла гейт и не принята создателем. Производство этой LINE не публикует карточек, не двигает денег и не делает внешних заявлений."
+}

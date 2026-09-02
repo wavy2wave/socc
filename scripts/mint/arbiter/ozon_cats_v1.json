@@ -1,0 +1,18 @@
+{
+  "schema": "ozon.cats.v1",
+  "_doc": "Справочник маппинга категорий Ozon для сборщика карточки (ozon_card_v1). Ключ = slug ниши.",
+  "_method": "description_category_id + type_id тянем ЖИВЬЁМ из POST /v1/description-category/tree и НИКОГДА не выдумываем (OZ2). Обязательные атрибуты категории — из POST /v1/description-category/attribute (это ИСТИНА полноты карточки), их словарные значения — из /v1/description-category/attribute/values. profile наполняется ТОЧНЫМИ id атрибутов + dictionary_value_id только из этого живого пула.",
+  "_ozon_vs_yandex": "КЛЮЧЕВОЕ ОТЛИЧИЕ ОТ ЯНДЕКСА: у Ozon НЕТ авто-категории. /v3/product/import ТРЕБУЕТ description_category_id И type_id. Значит need_mapping=true у Ozon = карточку физически НЕЛЬЗЯ создать (честный жёсткий блок, а не 'Маркет решит сам'). До живого пула дерева все категории здесь need_mapping=true.",
+  "_niche_fork": "Первая ниша/категория — решение оператора (§11.2 плана). Пока не выбрана — categories пуст; сборщик честно вернёт need_mapping и в /v3/product/import не пойдёт.",
+  "_example": {
+    "organayzer-dlya-kabeley": {
+      "keywords": ["органайзер", "кабель", "провод", "холдер"],
+      "title_ru": "Органайзеры для кабелей",
+      "description_category_id": null,
+      "type_id": null,
+      "need_mapping": true,
+      "profile": null
+    }
+  },
+  "categories": {}
+}

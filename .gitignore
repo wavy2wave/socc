@@ -27,6 +27,12 @@ ledger.json
 # волновая касса: ЖИВЫЕ каталог/выданные ключи/заказы/пользователи (M3)
 scripts/mint/wave_shop/data/
 
+# ARBITER: живые артефакты/фото/дерево/логи (M3)
+scripts/mint/arbiter/state/
+scripts/mint/arbiter/_photo_out/
+scripts/mint/arbiter/ymarket_tree_v1.json
+*.stdout
+
 # ── Python / сборка ─────────────────────────────────────────────────────
 __pycache__/
 *.pyc
