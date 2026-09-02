@@ -258,7 +258,13 @@ def build_product(p, pub_urls, index, *, markup=None):
     """
     pid = str(p.get("pid") or p.get("sku"))
     article = str(p.get("article") or "")
-    name = str(p.get("name") or "").strip()
+    # #23: имя донора — только ТЕКСТ. str()-коэрсия лепила в ЗАГОЛОВОК карточки bool True → 'True',
+    # nan → 'nan', [1,2] → '[1, 2]', 10**400 → 401-значное число: тип-мусор (как bool-cost #19), но
+    # уезжал в ПУБЛИЧНОЕ имя 1-в-1 витрины. Не-str (bool/nan/число/list/None) → НЕ имя → честный
+    # пропуск строки, как строка без article/name (не собранная, а не сломанная партия). Строка
+    # (даже числоподобная «123») — текст, идёт 1-в-1 как раньше.
+    _raw_name = p.get("name")
+    name = _raw_name.strip() if isinstance(_raw_name, str) else ""
     # #16: битый markup манифеста проверяем ПЕРВЫМ — конфиг-ошибка громкая и не тонет в пропуске
     # битой строки донора (движок гейтит манифест до сборки; тут страховка прямых вызовов).
     mult, merr = resolve_markup(markup)

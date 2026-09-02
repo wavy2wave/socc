@@ -360,6 +360,90 @@ def pp26_promo_bool_honest():
     return True, "bool cost/sell/regular → NO_COST/NO_SELL/NO_PRICE (payload нет), план жив"
 
 
+def pp27_plan_container_honest():
+    # #23: битый КОНТЕЙНЕР cards ронял ВСЮ партию сырым AttributeError ("'str' object has no attribute
+    # 'get'"): plan_cards({"a":1}) → enumerate-по-ключам dict-а → 'a'.get; plan_cards("hello") →
+    # символы строки; обещание «битые строки не роняют партию» держалось только для строк СПИСКА.
+    # Теперь: dict-карта {offer_id: card} → её values (законный вход-карта); список с не-dict
+    # элементом → элемент → {} → честный NO_COST (закупки нет, PP4); не-контейнер (None/строка/
+    # скаляр) → [] — плана для не-карточек честно нет. Ни крэша, ни выдумки.
+    ok_all, detail = True, []
+    try:
+        rows = P.plan_cards({"ARB-1": {"offer_id": "ARB-1", "cost": 300.0, "price": 1000},
+                             "ARB-2": {"offer_id": "ARB-2", "cost": 300.0, "price": 2900}})
+        ok = len(rows) == 2 and {x["offer_id"] for x in rows} == {"ARB-1", "ARB-2"}
+        ok_all &= bool(ok)
+        detail.append(f"dict-карта → {len(rows)} строк" if ok else f"dict-карта → {rows!r}")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"dict-карта → {type(e).__name__}: {e}")
+    for lst, want in ((["hello"], 1), ([None, "x", 123], 3)):
+        try:
+            rows = P.plan_cards(lst)
+            ok = len(rows) == want and all(r["verdict"] == "NO_COST" for r in rows)
+            ok_all &= bool(ok)
+            detail.append(f"{lst!r} → {want}×NO_COST" if ok
+                          else f"{lst!r} → {[r['verdict'] for r in rows]}")
+        except Exception as e:
+            ok_all = False
+            detail.append(f"{lst!r} → {type(e).__name__}: {e}")
+    try:  # смесь валидной карточки и мусора → обе строки живы, вердикт по-честному
+        rows = P.plan_cards([{"offer_id": "GOOD", "cost": 100.0, "price": 800}, "junk"])
+        ok = len(rows) == 2 and rows[0]["verdict"] != "NO_COST" and rows[1]["verdict"] == "NO_COST"
+        ok_all &= bool(ok)
+        detail.append(f"[карта,'junk'] → {[r['verdict'] for r in rows]}" if ok
+                      else f"[карта,'junk'] → {[r['verdict'] for r in rows]} НЕ так!")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"[карта,'junk'] → {type(e).__name__}: {e}")
+    for bad in (None, "abc", 5):                        # не-контейнер → пустой план, не крэш
+        try:
+            rows = P.plan_cards(bad)
+            ok = rows == []
+            ok_all &= bool(ok)
+            detail.append(f"plan_cards({bad!r}) → []" if ok else f"plan_cards({bad!r}) → {rows!r}")
+        except Exception as e:
+            ok_all = False
+            detail.append(f"plan_cards({bad!r}) → {type(e).__name__}: {e}")
+    return ok_all, " · ".join(detail) + " (битый контейнер плана → честно, партия жива)"
+
+
+def pp28_promo_container_honest():
+    # #23: как pp27, в батче АКЦИЙ promo_cards — тот же сырой крэш на dict-контейнере/скаляре.
+    # dict-карта {sku: card} → values; не-dict элемент → {} → promo_card честно NO_COST (PR5);
+    # не-контейнер → [] (акций для не-карточек нет). Ни крэша, ни payload от мусора.
+    ok_all, detail = True, []
+    try:
+        rows = P.promo_cards({"ARB-1": {"offer_id": "ARB-1", "cost": 700.0, "price": 5600}},
+                             sells={"ARB-1": 4200})
+        ok = len(rows) == 1 and rows[0]["verdict"] in P.PROMO_VERDICTS
+        ok_all &= bool(ok)
+        detail.append(f"dict-карта → {len(rows)} · {rows[0]['verdict']}" if ok else f"dict-карта → {rows!r}")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"dict-карта → {type(e).__name__}: {e}")
+    for lst, want in ((["junk"], 1), ([None, "x"], 2)):
+        try:
+            rows = P.promo_cards(lst, sells=[100] * len(lst))
+            ok = len(rows) == want and all(r["verdict"] == "NO_COST" for r in rows)
+            ok_all &= bool(ok)
+            detail.append(f"{lst!r} → {want}×NO_COST" if ok
+                          else f"{lst!r} → {[r['verdict'] for r in rows]}")
+        except Exception as e:
+            ok_all = False
+            detail.append(f"{lst!r} → {type(e).__name__}: {e}")
+    for bad in (None, "abc"):
+        try:
+            rows = P.promo_cards(bad, sells={})
+            ok = rows == []
+            ok_all &= bool(ok)
+            detail.append(f"promo_cards({bad!r}) → []" if ok else f"promo_cards({bad!r}) → {rows!r}")
+        except Exception as e:
+            ok_all = False
+            detail.append(f"promo_cards({bad!r}) → {type(e).__name__}: {e}")
+    return ok_all, " · ".join(detail) + " (битый контейнер акций → честно, батч жив)"
+
+
 TESTS = [
     ("PP1  empty_plan", pp1_empty_plan),
     ("PP2  ok_card_in_zone", pp2_ok_card_in_zone),
@@ -387,6 +471,8 @@ TESTS = [
     ("PP24 nan_inf_sell_regular_honest", pp24_nan_inf_sell_regular_honest),
     ("PP25 promo_huge_cost_scale_honest", pp25_promo_huge_cost_scale_honest),
     ("PP26 promo_bool_honest", pp26_promo_bool_honest),
+    ("PP27 plan_container_honest", pp27_plan_container_honest),
+    ("PP28 promo_container_honest", pp28_promo_container_honest),
 ]
 
 

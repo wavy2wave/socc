@@ -39,6 +39,17 @@
                                    (пол по «дефолту» не выдумываем); строка-'500' и None работают
   PR38 floor_hit_scale_honest    — #21(F10): 1e300 → BELOW_FLOOR с конечным net/полом; 1.6e308 →
                                    пол переполняет float → NA (НЕ BAD_PARAMS про конфиг оператора)
+  PR39 crossed_sibling_gate      — #22: sibling min_gap/mult/step в crossed_price НЕ чистились
+                                   ('abc'/None → сырой TypeError, step 0/nan → ZeroDivision/ValueError,
+                                   nan/True/1.0 тихо глотались, mult≤1 мог дать якорь ≤ продажи).
+                                   Битый sibling → честно None; якорь ВСЕГДА строго выше продажи.
+  PR40 kpi_target_net_gate       — #22: цель/net КПИ НЕ чистились ('abc' → сырой TypeError, nan-цель
+                                   врала ok=False «не достигнут»). Битое → None (КПИ не знаем);
+                                   число-строка и None-цель (дефолт NET_FLOOR) работают.
+  PR41 sweet_band_sibling_gate  — #23: sibling lo/hi/floor/ceil_mult зоны — последние сырые float()-слоты:
+                                   ceil_mult 'abc'/10**400 → крэш, True/−5/nan → зона-точка/тихо без
+                                   потолка; lo=True → «зона от закупки 1:1» (враньё P6). Битый
+                                   параметр политики → честно None (P8); дефолт и потолок целы.
 """
 from __future__ import annotations
 
@@ -495,6 +506,132 @@ def pr38_floor_hit_scale_honest():
                 "1.6e308 → NA (пол переполняет float), НЕ BAD_PARAMS про конфиг")
 
 
+def pr39_crossed_sibling_gate():
+    # #22: crossed_price(min_gap/mult/step) — последние НЕгейтнутые sibling-параметры канала цены.
+    # Раньше: min_gap/mult 'abc'/None → сырой TypeError, step 0 → ZeroDivisionError, step nan →
+    # ValueError (крэш партии), а min_gap nan/True, mult True/1.0 ТИХО глотались («якорь как без
+    # разрыва») и mult≤1 при gap≤0 давал якорь ≤ продажи (фальшивая «скидка» на витрине, P5).
+    # Теперь: битый параметр политики → честно None (якоря не знаем), крэша нет.
+    ok_all, detail = True, []
+    for kw, bads in (
+        ("min_gap", ("abc", None, float("nan"), float("inf"), -1, True, False)),
+        ("mult", ("abc", None, float("nan"), float("-inf"), 0, -5, True)),
+        ("step", ("abc", None, float("nan"), 0, True, False)),
+    ):
+        for v in bads:
+            try:
+                c = pr.crossed_price(700, **{kw: v})
+                good = c is None
+                detail.append(f"{kw}={v!r}→None" if good else f"{kw}={v!r}→{c!r} НЕ None!")
+            except Exception as e:
+                good = False
+                detail.append(f"{kw}={v!r}→{type(e).__name__}: {e}")
+            ok_all &= bool(good)
+    # якорь обязан быть СТРОГО выше продажи (P5): mult=1.0 + gap=0 → якорь == продажа → не якорь
+    try:
+        c = pr.crossed_price(700, min_gap=0, mult=1.0)
+        ok_all &= c is None
+        detail.append("mult=1.0+gap=0→None" if c is None else f"mult=1.0+gap=0→{c!r} НЕ None!")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"mult=1.0+gap=0 → {type(e).__name__}: {e}")
+    # контроль: дефолты и число-строка работают, якорь выше продажи
+    base = pr.crossed_price(700)                                   # 1300 (разрыв 600 связывает)
+    s10 = pr.crossed_price(700, min_gap=0, mult="1.25", step="100")   # строки-числа как числа
+    if not (base == 1300 and s10 == 900):
+        ok_all = False
+        detail.append(f"контроль: crossed(700)={base!r}, mult/step-строка={s10!r} (ждём 1300 и 900)")
+    else:
+        detail.append("контроль 1300/900 ок")
+    # recommend(min_gap=бито) не роняет решение: якорь честно None, вердикт жив (passthrough)
+    try:
+        r = pr.recommend(300, current_price=1300, delivery=_D, fee=_F, min_gap="abc")
+        ok_all &= r["crossed"] is None and r["verdict"] in ("SWEET", "OK", "RAISE")
+        detail.append(f"recommend(min_gap='abc')→{r['verdict']}, crossed=None")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"recommend(min_gap='abc') → {type(e).__name__}: {e}")
+    return ok_all, " · ".join(detail) + " (битый sibling → None, крэшей/масок нет; контроль цел)"
+
+
+def pr40_kpi_target_net_gate():
+    # #22: kpi — единственная функция канала, где цель КПИ/net НЕ чистились (все прочие — PR37/#21
+    # F5). net 'abc' → сырой TypeError (net >= target), target 'abc' → TypeError, target nan врал
+    # ok=False «не достигнут» при битой цели. Теперь битое → None (КПИ не знаем, как net is None).
+    ok_all, detail = True, []
+    for tg in ("abc", float("nan"), float("inf"), 0, -5, True, False, None):
+        try:
+            k = pr.kpi(605.0, target=tg)
+            # None-цель = дефолт NET_FLOOR (500) — работает; прочее битое → None (КПИ не знаем)
+            good = (k is None) if tg is not None else (k is not None and k["ok"] is True)
+            detail.append(f"target={tg!r}→{'None' if k is None else 'ok'}" if good
+                          else f"target={tg!r}→{k} НЕ честно!")
+        except Exception as e:
+            good = False
+            detail.append(f"target={tg!r}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+    for net_bad in ("abc", float("nan"), float("inf"), True):
+        try:
+            k = pr.kpi(net_bad)
+            good = k is None
+            detail.append(f"net={net_bad!r}→None" if good else f"net={net_bad!r}→{k} НЕ None!")
+        except Exception as e:
+            good = False
+            detail.append(f"net={net_bad!r}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+    # контроль: честная математика цела — строка-число, попадание/недобор, None-net, убыток
+    good_ok = pr.kpi("605")["ok"] is True                     # строка-число net
+    ok2 = pr.kpi(605.0, target="500")
+    miss = pr.kpi(400.0, target=500)
+    none = pr.kpi(None) is None
+    neg = pr.kpi(-50.0, target=500)
+    if not (good_ok and ok2["ok"] and not miss["ok"] and miss["shortfall"] == 100.0
+            and none and not neg["ok"] and neg["shortfall"] == 550.0):
+        ok_all = False
+        detail.append(f"контроль: kpi('605')={good_ok}, kpi(605,'500')={ok2}, kpi(400)={miss}, "
+                      f"kpi(None)={none}, kpi(-50)={neg}")
+    else:
+        detail.append("контроль попадание/недобор/None/убыток ок")
+    return ok_all, " · ".join(detail) + " (битая цель/net → None, без крэша и лжи «не достигнут»)"
+
+
+def pr41_sweet_band_sibling_gate():
+    # #23: последние сырые float()-слоты зоны. ceil_mult ВООБЩЕ не чистился: 'abc'/10**400 → сырой
+    # TypeError/OverflowError (крэш recommend), True/−5 → зона схлопывалась в точку (низ==верх),
+    # nan тихо снимал потолок. lo=True (JSON true) читался «×1.0» → «зона от закупки 1:1» (враньё P6),
+    # floor=True → «пол 1₽». Битый sibling-параметр политики → честно None (P8); дефолт и законный
+    # конечный потолок целы; ceiling-«выкл» (0/None) — прежняя семантика «без потолка».
+    ok_all, detail = True, []
+    for kw in ({"ceil_mult": "abc"}, {"ceil_mult": 10 ** 400}, {"ceil_mult": True},
+               {"ceil_mult": -5}, {"ceil_mult": float("nan")}, {"ceil_mult": -1.0},
+               {"lo": True}, {"lo": "abc"}, {"lo": 0}, {"lo": float("nan")},
+               {"hi": True}, {"floor": True}, {"floor": "abc"},
+               {"floor": float("nan")}, {"floor": 10 ** 400}):
+        key = next(iter(kw))
+        try:
+            z = pr.sweet_band(300, **kw)
+            good = z is None
+            detail.append(f"{key}={kw[key]!r}→{'None' if good else z}")
+        except Exception as e:
+            good = False
+            detail.append(f"{key}={kw[key]!r}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+    base = pr.sweet_band(300)
+    cap9 = pr.sweet_band(300, ceil_mult=9.0)
+    if not (base["low"] == 2400 and base["high"] == 3000):
+        ok_all = False
+        detail.append(f"дефолт(300)= {base['low']}–{base['high']} (ждём 2400–3000)")
+    elif not (cap9["low"] == 2400 and cap9["high"] == 2700):
+        ok_all = False
+        detail.append(f"ceil_mult=9 → {cap9['low']}–{cap9['high']} (ждём 2400–2700)")
+    else:
+        detail.append("дефолт 2400–3000 · потолок ×9 → 2400–2700")
+    z0, zn = pr.sweet_band(300, ceil_mult=0), pr.sweet_band(300, ceil_mult=None)
+    ok_all &= bool(z0 and zn and z0["high"] == 3000 and zn["high"] == 3000)
+    detail.append(f"ceil_mult=0/None → {z0['high']}/{zn['high']} (без потолка)")
+    return ok_all, " · ".join(detail) + " (битый sibling зоны → None, крэша/вранья нет)"
+
+
 TESTS = [
     ("PR1  net_profit_formula", pr1_net_profit_formula),
     ("PR2  net_none_on_bad_input", pr2_net_none_on_bad_input),
@@ -534,6 +671,9 @@ TESTS = [
     ("PR36 floor_never_inf", pr36_floor_never_inf),
     ("PR37 target_garbage_bad_params", pr37_target_garbage_bad_params),
     ("PR38 floor_hit_scale_honest", pr38_floor_hit_scale_honest),
+    ("PR39 crossed_sibling_gate", pr39_crossed_sibling_gate),
+    ("PR40 kpi_target_net_gate", pr40_kpi_target_net_gate),
+    ("PR41 sweet_band_sibling_gate", pr41_sweet_band_sibling_gate),
 ]
 
 

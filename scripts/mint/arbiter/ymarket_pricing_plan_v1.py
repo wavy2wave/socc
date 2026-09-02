@@ -58,9 +58,18 @@ def plan_cards(cards, *, delivery=None, fee=None, branded=True):
     Пусто → []. Битые строки не роняют партию: честный разбор вместо исключения.
     """
     d, f, prov = R._resolve_io(delivery, fee)
+    # #23: контейнер cards — только СПИСОК карточек или dict-карта {offer_id: card}. Битый контейнер
+    # (dict-строка без .get, строка "abc" итерируется ПОСИМВОЛЬНО, int) ронял ВЕСЬ план сырым
+    # AttributeError — обещание «битые строки не роняют партию» не держалось для битого КОНТЕЙНЕРА.
+    # dict → его values (карта {sku: card} — законный вход); не список/кортеж/dict → [] — плана для
+    # не-карточек честно нет; элемент-не-dict → {} → честный NO_COST-разбор, как None-строка (PP4).
+    if isinstance(cards, dict):
+        cards = list(cards.values())
+    elif not isinstance(cards, (list, tuple)):
+        cards = []
     rows = []
-    for i, c in enumerate(cards or []):
-        c = c or {}
+    for i, c in enumerate(cards):
+        c = c if isinstance(c, dict) else {}
         oid = c.get("offer_id") or c.get("sku")
         cost, price = c.get("cost"), c.get("price")
         # СЫРЫЕ delivery/fee (None-sentinel), НЕ резолвленные дефолты: recommend сам взводит
@@ -294,8 +303,16 @@ def promo_cards(cards, *, sells=None, regulars=None, delivery=None, fee=None):
     Возвращает список вердиктов promo_card (сорт: готовые → отказы). Пусто → [].
     """
     rows = []
-    for i, c in enumerate(cards or []):
-        sku = (c or {}).get("offer_id") or (c or {}).get("sku")
+    # #23: как в plan_cards — битый КОНТЕЙНЕР cards (dict-строка/scalar/строка) не роняет батч:
+    # dict → values (карта sku→card); не список/кортеж/dict → [] (акций для не-карточек нет);
+    # элемент-не-dict → {} → promo_card честно скажет NO_COST/NO_PRICE (PR5/PR2), не крэш.
+    if isinstance(cards, dict):
+        cards = list(cards.values())
+    elif not isinstance(cards, (list, tuple)):
+        cards = []
+    for i, c in enumerate(cards):
+        c = c if isinstance(c, dict) else {}
+        sku = c.get("offer_id") or c.get("sku")
         sell = None
         if isinstance(sells, dict):
             sell = sells.get(sku)

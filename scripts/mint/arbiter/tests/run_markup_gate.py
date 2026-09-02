@@ -265,6 +265,35 @@ def mg14_dims_garbage_no_weight_dimensions():
     return True, "валидные 4 → точные габариты; любое битое поле / их отсутствие → продукт жив БЕЗ ложных размеров"
 
 
+def mg15_build_nonstr_name_skipped():
+    # #23: имя донора — только ТЕКСТ. str()-коэрсия лепила в ЗАГОЛОВОК карточки bool True → 'True',
+    # nan → 'nan', 10**400 → 401-значное число, [1,2] → '[1, 2]': тип-мусор (как bool-cost #19) уезжал
+    # в ПУБЛИЧНОЕ имя 1-в-1 витрины. Не-str имя → НЕ имя → честный пропуск строки, как строка без
+    # article/name (не собранная, а НЕ сломанная партия). Строка (вкл. числоподобную «123») — текст,
+    # собирается 1-в-1 как раньше.
+    ok_all, detail = True, []
+    for bad in (True, False, float("nan"), float("inf"), 10 ** 400, [1, 2], 123, -7, 0.0):
+        don = {"pid": "X", "article": "STRETCH-MG-92", "name": bad, "cost": 100.0}
+        try:
+            p = FC.build_product(don, {}, 0)
+            good = p is None
+            detail.append(f"name={bad!r}→skip" if good else f"name={bad!r}→СТРОИТ (name={p and p['name']!r})")
+        except Exception as e:
+            good = False
+            detail.append(f"name={bad!r}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+    # контроль: настоящее строковое имя (вкл. числоподобное «123») собирается 1-в-1, цена прежняя
+    p = FC.build_product(_DONOR, {}, 0)
+    q = FC.build_product(dict(_DONOR, name="123"), {}, 0)
+    if not (p is not None and p["price"] == 800 and q is not None and q["name"] == "123"):
+        ok_all = False
+        detail.append(f"контроль: str-name → {p is not None} price={p and p.get('price')}, "
+                      f"'123' → {q and q.get('name')!r}")
+    else:
+        detail.append("контроль: текст-имя собирается 1-в-1")
+    return ok_all, " · ".join(detail) + " (не-str имя → честный пропуск, мусор в заголовок не идёт)"
+
+
 TESTS = [
     ("MG1 none_default", mg1_none_default),
     ("MG2 numeric_ok", mg2_numeric_ok),
@@ -280,6 +309,7 @@ TESTS = [
     ("MG12 build_subruble_margin_skipped", mg12_build_subruble_margin_skipped),
     ("MG13 build_bool_cost_skipped", mg13_build_bool_cost_skipped),
     ("MG14 dims_garbage_no_weight_dimensions", mg14_dims_garbage_no_weight_dimensions),
+    ("MG15 build_nonstr_name_skipped", mg15_build_nonstr_name_skipped),
 ]
 
 

@@ -209,21 +209,24 @@ def sweet_band(cost, *, lo=SWEET_LO, hi=SWEET_HI, floor=None, ceil_mult=CEIL_MUL
     # «зону ×8 от закупки 1₽» — враньё). Битый/неконечный/неположительный cost → None (P8).
     if not math.isfinite(cost) or cost <= 0:
         return None
-    try:
-        lo, hi = float(lo), float(hi)
-        if lo <= 0 or hi < lo:
-            return None
-    except (TypeError, ValueError, OverflowError):
+    # #23: sibling-параметры lo/hi/floor/ceil_mult — последние сырые float()-слоты канала цены.
+    # Раньше lo/hi чистились float()+сравнением, но bool lo=True (JSON true) читался как «×1.0»
+    # и давал «сладкую зону» от закупки 1:1 (враньё P6), floor=True → «пол 1₽»; ceil_mult НЕ
+    # чистился ВООБЩЕ: 'abc'/10**400 → сырой TypeError/OverflowError (крэш партии), True/−5 → зона
+    # схлопывалась в точку (низ==верх), nan тихо снимал потолок. _f (bool→nan, не-число→nan) +
+    # конечность: битый параметр политики → честно None (P8), не крэш и не враньё.
+    lo, hi = _f(lo), _f(hi)
+    if not (math.isfinite(lo) and math.isfinite(hi) and lo > 0 and hi >= lo):
         return None
-    try:
-        fl = float(floor) if floor else 0.0
-    except (TypeError, ValueError, OverflowError):
-        return None
+    fl = 0.0 if floor is None else _f(floor)
     if not math.isfinite(fl):
+        return None
+    cm = 0.0 if ceil_mult is None else _f(ceil_mult)   # None = «без потолка» (как 0/0.0, прежний falsy)
+    if not (math.isfinite(cm) and cm >= 0):
         return None
     low_raw = max(cost * lo, fl)
     high_raw = max(cost * hi, low_raw)            # не инвертируем: high ≥ low всегда
-    cap = cost * ceil_mult if ceil_mult else float("inf")
+    cap = cost * cm if cm else float("inf")
     # #16-residual: cost КОНЕЧНА, но так велика, что cost×lo/hi переполняет float (→ inf):
     # _round_up(int(math.ceil(inf))) падал сырым OverflowError и валил ВЕСЬ recommend (F9 — партия
     # донора с одной такой закупкой не собиралась). Сладкой зоны при таком масштабе честно нет →
@@ -245,10 +248,23 @@ def crossed_price(sell_price, *, min_gap=600, mult=1.25, step=100):
     # #21: bool-цена — не число (float(True)=1.0 строил якорь от «цены 1₽»). Честно None (P8).
     if not math.isfinite(sell_price) or sell_price <= 0:
         return None
+    # #22: sibling-параметры (min_gap/mult/step) НЕ чистились — тот же канал, что step/delivery/fee
+    # в floor_price (PR33) и цель в recommend/floor_hit (#21 F5). min_gap/mult 'abc'/None роняли
+    # СЫРЫМ TypeError, step 0 → ZeroDivisionError, step nan → ValueError, а min_gap nan/True/0 и
+    # mult True/1.0 ТИХО глотались (якорь «как без разрыва»). _f(bool)→nan закрывает bool-слоты.
+    # Параметр политики бит → якоря честно НЕТ (None), не враньё и не крэш.
+    min_gap = _f(min_gap)
+    mult = _f(mult)
+    step = _f(step)
+    if not (math.isfinite(min_gap) and math.isfinite(mult) and math.isfinite(step)
+            and min_gap >= 0 and mult > 0 and step > 0):
+        return None
     anchor = max(sell_price * mult, sell_price + min_gap)
     # #16-residual: sell конечна, но sell×1.25 переполняет float (→ inf) для sell ≳ 1.4e308 →
     # _round_up(ceil(inf)) падал сырым OverflowError. Якоря при таком масштабе честно нет → None.
-    if not math.isfinite(anchor):
+    # #22: якорь ОБЯЗАН быть СТРОГО выше продажи (P5): mult≤1 и/или разрыв ≤0 съедают наценку →
+    # anchor ≤ sell → discount_base ≤ value на витрине (фальшивая «скидка»). Такой не-якорь — None.
+    if not math.isfinite(anchor) or not anchor > sell_price:
         return None
     return _round_up(anchor, step)
 
@@ -390,8 +406,17 @@ def recommend(cost, *, current_price=None, target_profit=NET_FLOOR, delivery=Non
 
 
 def kpi(net, *, target=NET_FLOOR):
-    """КПИ заказа: по факту net (после доставки) — попал ли в цель. Пусто → None."""
+    """КПИ заказа: по факту net (после доставки) — попал ли в цель. Пусто/бито → None.
+
+    #22: цель КПИ и сам net — тот же канал, что цель floor_price/floor_hit/recommend (#21 F5):
+    net 'abc' ронял СЫРЫМ TypeError (net >= target), target 'abc' → TypeError, target nan давал
+    ok=False «не достигнут» при битой цели (враньё про результат). Битый вход → честно None
+    (КПИ не знаем), как net is None. Число-строка работает (net '605' / target '500')."""
     if net is None:
+        return None
+    net = _f(net)
+    target = _f(NET_FLOOR if target is None else target)
+    if not (math.isfinite(net) and math.isfinite(target) and target > 0):
         return None
     return {"ok": net >= target, "net": round(net, 2), "target": target,
             "shortfall": max(0.0, round(target - net, 2))}
