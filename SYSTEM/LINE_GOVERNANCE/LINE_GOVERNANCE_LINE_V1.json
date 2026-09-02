@@ -1,0 +1,111 @@
+{
+  "id": "LINE_GOVERNANCE_LINE_V1",
+  "schema": "socc.line.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-30T13:34:58+00:00",
+  "created_at_msk": "2026-06-30T16:34:58+03:00",
+  "purpose": "The atomic, gated development LINE the Line Governance cell walks. Mirrors SOCC entity lifecycle. Each frontier = one accepted artifact. The next frontier is unlawful until the current one passes its gate and is accepted by the creator. This LINE is also the multi-year roadmap: from observe-only awareness to a self-aware swarm-OS.",
+  "discipline": "evolution_does_not_jump",
+  "professional_mapping": "Phases mirror how you would build observability + orchestration for any distributed system: observe -> identify -> deduplicate -> reconcile -> guard -> surface -> orchestrate. SOCC gates wrap each step so nothing acts on a line without evidence and consent.",
+  "gate_legend": {
+    "SCI": "Scientific Quality Gate — the detection/classification/dedup decision is evidence-based, falsifiable, with an explicit pass/fail and a shown score (e.g. similarity %, threshold justified)",
+    "HER": "Hermes Gate — it actually runs/renders (scanner enumerates real PIDs, heartbeat writes, `socc lines` prints, control room renders)",
+    "COD": "Codex Gate — conforms to canon law (file structure, naming, registry schema, truth_boundary present, a proof is emitted)",
+    "GRD": "Guardian — N adversarial skeptics try to refute before ACCEPT: no false-positive duplicate, no silent drift, no auto-kill, every handoff reversible, confidence stated honestly"
+  },
+  "horizons": {
+    "P1": "days", "P2": "weeks", "P3": "weeks", "P4": "weeks", "P5": "weeks", "P6": "months", "P7": "year+"
+  },
+  "phases": [
+    {
+      "phase": "P0",
+      "title": "GENESIS — build the organ itself (no enforcement)",
+      "goal": "Declare the cell, the LINE, the gates, the live snapshot. Govern nothing yet.",
+      "frontiers": [
+        {"f": "F0.1", "produces": "LINE_GOVERNANCE_CELL_V1 (team constitution, 7 roles)", "gate": ["COD"], "status": "DONE"},
+        {"f": "F0.2", "produces": "LINE_GOVERNANCE_LINE_V1 (this LINE / roadmap)", "gate": ["COD"], "status": "DONE"},
+        {"f": "F0.3", "produces": "LINE_GOVERNANCE_GATES_V1 (gate defs)", "gate": ["COD"], "status": "DONE"},
+        {"f": "F0.4", "produces": "ACTIVE_LINES_REGISTRY_V1 seed + STATE_V1 + GENESIS proof", "gate": ["COD"], "status": "DONE"}
+      ]
+    },
+    {
+      "phase": "P1",
+      "title": "OBSERVE — read-only line awareness",
+      "goal": "Know, honestly, how many lines are live, where, since when. No action on any line.",
+      "frontiers": [
+        {"f": "F1.1", "produces": "LINE_SCANNER (pgrep+lsof+ps -> live PIDs, entrypoint, start, cwd into registry)", "gate": ["HER","COD"], "status": "NEXT_AFTER_GENESIS"},
+        {"f": "F1.2", "produces": "SESSION_MAP (map PID -> candidate session transcript: sid, branch, last-prompt, honest confidence)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F1.3", "produces": "PID_DISAMBIGUATION (resolve shared-cwd ambiguity via start-time vs session mtime, tty, VS Code window id; residual uncertainty disclosed)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.4", "produces": "HEARTBEAT (per-line heartbeat file + TTL; stale -> marked dead; reuse wavecore pids/status precedent)", "gate": ["HER","COD"], "status": "LOCKED"},
+        {"f": "F1.5", "produces": "LINES_CLI (`socc lines` read-only view: every live line, branch, last-seen, freshness)", "gate": ["HER","GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P2",
+      "title": "CLASSIFY — topic = goal",
+      "goal": "Bind each line to a goal node. One line, one declared goal.",
+      "frontiers": [
+        {"f": "F2.1", "produces": "GOAL_CLASSIFIER (map a line's recent prompts -> goal node via knowledge_substrate)", "gate": ["SCI","HER","GRD"], "status": "LOCKED"},
+        {"f": "F2.2", "produces": "DECLARED_GOAL (each line declares/confirms its one goal; stored in registry)", "gate": ["COD","GRD"], "status": "LOCKED"},
+        {"f": "F2.3", "produces": "GOAL_TREE (bind line goals to SOCC goal chain SOCC->Entity Substrate->ANNA; each goal has a parent)", "gate": ["SCI","COD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P3",
+      "title": "DEDUP — honest duplicate detection",
+      "goal": "When two live lines carry the same meaning, say so — with a shown score, never silently.",
+      "frontiers": [
+        {"f": "F3.1", "produces": "SIMILARITY (goal-vs-goal similarity across live lines; justified threshold; explainable score)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F3.2", "produces": "DUP_REPORT (honest duplicate report surfaced into the colliding lines; advisory)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F3.3", "produces": "MAIN_ARBITER (decide MAIN vs duplicate by rule: oldest / most-progress / explicit owner; never silent)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F3.4", "produces": "FALSE_POSITIVE_GUARD (don't flag legitimately-parallel sub-goals; require human confirm)", "gate": ["GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P4",
+      "title": "HANDOFF — the main line absorbs the duplicate",
+      "goal": "Move the duplicate's meaning into the main line with zero loss, reversibly.",
+      "frontiers": [
+        {"f": "F4.1", "produces": "HANDOFF_PACKET (schema: duplicate line's context/state, artifacts, open threads, integrity hash)", "gate": ["HER","COD","GRD"], "status": "LOCKED"},
+        {"f": "F4.2", "produces": "ABSORB (main line ingests packet, acknowledges, records in registry + LEDGER)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F4.3", "produces": "RETIRE (gracefully advise human to close the duplicate; NEVER auto-kill in advisory mode)", "gate": ["GRD"], "status": "LOCKED"},
+        {"f": "F4.4", "produces": "HANDOFF_PROOF (each handoff emits a proof: source, target, goal, what absorbed, status)", "gate": ["COD","GRD"], "status": "LOCKED"},
+        {"f": "F4.5", "produces": "AUTO_MODE (optional automatic handoff; opt-in, reversible, OFF by default)", "gate": ["SCI","GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P5",
+      "title": "DRIFT-GUARD — the line does not go wide",
+      "goal": "Keep each line in its channel; spawn a new lawful line for a genuinely new goal.",
+      "frontiers": [
+        {"f": "F5.1", "produces": "DRIFT_DETECT (semantic distance of a new prompt vs the line's declared goal)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F5.2", "produces": "DRIFT_WARN (warn when work strays; offer 'new line or refocus')", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F5.3", "produces": "SPAWN (lawful way to open a NEW governed line for a new goal instead of drifting)", "gate": ["COD","GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P6",
+      "title": "SURFACE — visibility: where it is, how much is left",
+      "goal": "Human and Claude see the whole swarm at a glance, in SOCC canon.",
+      "frontiers": [
+        {"f": "F6.1", "produces": "CONTROL_ROOM (HTML pult mirroring forge_console.py: all lines, goal, current proof, %progress, heartbeat freshness)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F6.2", "produces": "DASHBOARD_INTEGRATION (fold into the unified SOCC dashboard)", "gate": ["HER","COD"], "status": "LOCKED"},
+        {"f": "F6.3", "produces": "PROGRESS_METER (per-line '% of goal done / how much left' derived from its proof chain)", "gate": ["SCI","HER"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P7",
+      "title": "SWARM-OS — self-aware parallel cognition (long horizon)",
+      "goal": "Every entity/task runs as a governed line; the system reasons about its own swarm.",
+      "frontiers": [
+        {"f": "F7.1", "produces": "CAPACITY (reason about how many lines a goal-tree needs; no over/under-staffing)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F7.2", "produces": "ORCHESTRATION (every new entity/task spun as a governed line, never a stray tab)", "gate": ["COD","GRD"], "status": "LOCKED"},
+        {"f": "F7.3", "produces": "SELF_REFLECTION (system narrates its own parallel cognition: what's worked across all lines, where the gaps are)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F7.4", "produces": "SEAL (verify full chain; canonize LINE GOVERNANCE as a permanent reusable organ)", "gate": ["SCI","HER","COD","GRD"], "status": "LOCKED"}
+      ]
+    }
+  ],
+  "current": "F0.4",
+  "next_after_genesis": "F1.1",
+  "truth_boundary": "LINE declaration + roadmap only. Lists the gated frontier sequence P0..P7. P0 is DONE (declarations exist). No frontier past P0 is executed or unlocked until the creator accepts genesis. Producing this LINE governs no line, kills no process, installs no hook, and makes no external claim."
+}

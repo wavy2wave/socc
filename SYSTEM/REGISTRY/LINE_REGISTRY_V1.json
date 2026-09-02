@@ -1,0 +1,7 @@
+{
+  "id": "LINE_REGISTRY_V1",
+  "status": "RETIRED_SUPERSEDED",
+  "superseded_by": "SYSTEM/LINE_GOVERNANCE/runtime/ACTIVE_LINES_REGISTRY_V1.json",
+  "reason": "Duplicate of the LINE_GOVERNANCE organ's registry. Merged 2026-06-30 per operator handoff. Use socc_lines_v1.py (now points at the canonical registry).",
+  "lines": []
+}

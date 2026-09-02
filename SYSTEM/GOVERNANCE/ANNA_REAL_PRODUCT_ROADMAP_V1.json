@@ -1,0 +1,148 @@
+{
+  "artifact": "ANNA_REAL_PRODUCT_ROADMAP_V1",
+  "status": "DIRECTION_CANDIDATE",
+  "_honesty": "Candidate, not accepted. Lawful next = review_anna_real_product_roadmap_v1 (creator review). Document-only: births no entity, runs nothing, no network/daemon/scheduler. This is the machine-readable 'you-are-here' map for ANNA the product and for every working line.",
+  "created_at_utc": "2026-06-30",
+  "source_line": "Downloads/НАПРАВЛЕНИЯ/1_11.txt (the ANNA line that drifted — the lived example of the line-discipline pain)",
+  "north_star": {
+    "one_sentence": "ANNA — живой, человеко-неотличимый и НЕУБИВАЕМЫЙ администратор клиники, который реально возвращает клинике потерянные обращения и выручку, рождён и управляем сувереном SOCC по закону (proof, гейты, no-fake-pass), и масштабируется как продукт-сущность до 1000+ клиник.",
+    "supersedes": "SOCC_GOAL.json: 'build ANNA Dental MVP first-contact runtime' (too small — was the MVP, not the product).",
+    "meta_goal": "ПОРЯДОК: одна основная линия на одну цель; никакого дрейфа, никаких дублей. Работа над продуктом дисциплинирована так же, как знание дисциплинировано spine.",
+    "non_negotiable": [
+      "Никогда не ломается у платящей клиники (неубиваемость доказана, не заявлена).",
+      "Никогда не выдаёт себя ботом (stealth-канон D3).",
+      "Никогда не ставит диагноз / не назначает лечение (граница администратора, safety-законы).",
+      "Цифра выгоды берётся ТОЛЬКО из реальных данных клиники / LEDGER, не из воздуха."
+    ]
+  },
+  "current_position": {
+    "honest": "L0 (порядок) — рабочий прототип, слит в канон LINE_GOVERNANCE, доказал себя поймав реальный дубль. L1 (надёжность) — код-уровень закрыт (ранги 1-6), статус RESILIENT. Дальше — операторские действия и L2.",
+    "code_done": [
+      "L0: socc_lines + единый реестр (merge)",
+      "L1: degraded/recovery/breaker/яд/Telegram-офсет/супервизор+launchd/автономия-honest-liveness/floor-warning — всё проверено"
+    ],
+    "operator_actions_pending": [
+      "независимый не-freemodel floor-ключ → .secrets/anna_llm.env",
+      "always-on хост (VPS/Pi) для настоящей неубиваемости",
+      "запустить супервизор: bash ops/install_supervisor.sh"
+    ],
+    "next_layer": "L2 — реальная запись (календарь/CRM): без неё продукт не продаётся",
+    "at_layer": "L0 ✅(прототип) · L1 ✅(код) → следующий честный фронтир L2"
+  },
+  "law": "Каждый слой проходит ту же законную под-цепочку, что и ANNA MVP (18 шагов): direction -> review -> accept -> construction_plan -> review -> scientific_gate -> hermes_gate -> codex_gate -> review -> accept -> bounded_execution_surface -> review -> accept -> bounded_execution_session -> validate -> review -> accept -> seal -> ship. Между слоями — честный гейт; прыжки через слой запрещены. No-fake-pass: статус каждого слоя вычисляется из реального состояния файлов, не из желаний.",
+  "layers": [
+    {
+      "id": "L0",
+      "name": "ПОРЯДОК — Дисциплина линий (governance над сессиями)",
+      "why": "Без порядка над сессиями любая линия дрейфует и дублируется — 1_11.txt это прожил. Это мета-фундамент: он делает многолетнюю карту ВИДИМОЙ для оператора и для Claude Code ('где я, сколько ещё').",
+      "missing": "Формальные гейты органа P1-P7 ещё ждут ACCEPT (observe→classify→dedup→handoff→drift→surface→swarm-os).",
+      "status": "WORKING_PROTOTYPE_IN_LINE_GOVERNANCE",
+      "canonical_home": "SYSTEM/LINE_GOVERNANCE/ (орган) · реализация scripts/socc/socc_lines_v1.py · единый реестр SYSTEM/LINE_GOVERNANCE/runtime/ACTIVE_LINES_REGISTRY_V1.json",
+      "proof_in_practice": "2026-06-30: L0 поймал РЕАЛЬНЫЙ дубль — две линии параллельно построили этот же орган; проведён handoff, слито в LINE_GOVERNANCE. Орган доказал себя в деле.",
+      "gate_to_next": "На реальном многотабовом дне: система честно показывает N активных линий, ловит дубль, проводит handoff, ловит дрейф в момент его появления.",
+      "direction_doc": "SYSTEM/LINE_GOVERNANCE/LINE_GOVERNANCE_ROADMAP.md (канон) · SYSTEM/GOVERNANCE/LINE_DISCIPLINE_DIRECTION_V1.md (retired, merged)"
+    },
+    {
+      "id": "L1",
+      "name": "НЕУБИВАЕМЫЙ МОЗГ / RUNTIME (надёжность)",
+      "why": "ANNA не имеет права падать у платящей клиники. 1_11: автономия легла на 401, мозг на одном gateway = единая точка отказа.",
+      "missing": "ОСТАЛОСЬ только операторские действия: (1) независимый не-freemodel floor-ключ в .secrets/anna_llm.env; (2) always-on хост (VPS/Pi) для настоящей неубиваемости. Весь код-уровень закрыт.",
+      "status": "RESILIENT_CODE_COMPLETE_pending_host_and_floor",
+      "done_verified": [
+        "rank1: degraded-сигнал + durable recovery-queue + алерт оператору (лид не теряется, тех-ошибка не утекает) — тест зелёный",
+        "rank2: circuit-breaker (мёртвый бэкенд отсекается за мс) + отбраковка transport-яда + CLI timeout 150->60 — тест зелёный",
+        "rank5: Telegram — офсет/seen на диск (рестарт без дублей/двойной записи), degraded ловится, recovery дренируется в чат, луп не падает на плохом апдейте — тест зелёный",
+        "--health self-test мозга (фундамент watchdog), anna_supervisor_v1.py (рестарт/backoff/crashloop/STOP)",
+        "rank3: супервизор включён (supervisor.json) + launchd plist + caffeinate-wrapper + install_supervisor.sh (plist валиден, --status работает) — готов к запуску одной командой",
+        "rank4: --health честно флагует отсутствие независимого floor-ключа (freemodel=SPOF)",
+        "rank6: автономия закалена — атомарный STATE, честный last_beat + running:false на любом выходе, crash-proof цикл, мульти-бэкенд judge, детект мёртвого мозга через last_degraded (STATE больше не лжёт green) — проверено"
+      ],
+      "honest_verdict": "RESILIENT, НЕ unkillable. Код-уровень закрыт честно. Но скептик доказал: 'неубиваемо' — свойство ХОСТА, а не кода. Ноут на батарее умрёт/уснёт — launchd не воскресит мёртвую машину. И вся 'цепочка из 5 бэкендов' = один freemodel-аккаунт (иллюзия резерва).",
+      "gate_to_next": "ANNA живёт ДНИ без падений на always-on хосте; смерть провайдера -> авто-failover на НЕЗАВИСИМЫЙ floor доказан proof'ом, не словом.",
+      "blocker_is_operator_decision": "always-on хост (VPS/Pi+UPS) + независимый платный floor-ключ — это твои решения, не код."
+    },
+    {
+      "id": "L2",
+      "name": "РЕАЛЬНАЯ ЗАПИСЬ (ядро ценности продукта)",
+      "why": "Без реальной записи в календарь/CRM продукт не продаётся (его же readiness-ledger: gap HIGH).",
+      "missing": "Реальная API-интеграция (Google Calendar / YClients / Dikidi) — UNVERIFIED, за партнёрством/кредами клиники. Точное окно напоминания (парсинг времени).",
+      "status": "PARTIAL",
+      "done_verified": [
+        "direction принят оператором ('accept L2')",
+        "booking-spine (pluggable backend по конфигу клиники) + backend 'manual' — anna_booking_v1.py",
+        "lifecycle записи: requested -> reception confirm -> реальное подтверждение пациенту -> напоминание; идемпотентно",
+        "patient_outbox + дренаж в Telegram (тот же durable-паттерн, что recovery-queue); тест e2e офлайн зелёный",
+        "backend 'gcal' (anna_gcal_v1.py): реальное событие в Google Calendar при кредах, заперт за ANNA_GCAL_* + ISO-слот, payload офлайн-проверен. ЖИВАЯ проверка против Google — UNVERIFIED до реальных кредов клиники."
+      ],
+      "honest_note": "Работает у ЛЮБОЙ клиники без чужих API (manual loop), stealth-safe. Реальный календарь/CRM — следующий фронтир; полное доказательство ценности — L3 (реальная клиника).",
+      "gate_to_next": "Реальная запись приземляется в рабочий процесс клиники с подтверждением и напоминанием (manual loop это уже даёт); API-бэкенд — следующий шаг."
+    },
+    {
+      "id": "L3",
+      "name": "ПЕРВАЯ КЛИНИКА — ДОКАЗАТЕЛЬСТВО ВЫГОДЫ (правда)",
+      "why": "Это шаг, превращающий 'игрушку' в 'продукт': реальные деньги, измеренные. Даёт защищаемую цифру ROI (из реальных данных, не из веба).",
+      "missing": "ОДИН реальный пилот (клиника — это твой шаг). Кода-механизм измерения уже есть.",
+      "status": "PARTIAL",
+      "done_verified": [
+        "B3 measured LEDGER построен — scripts/socc/anna_roi_ledger_v1.py (переиспользует B1-модель, не дубль)",
+        "ест РЕАЛЬНЫЕ события ANNA (appointments/confirmed, recovery answered, reminders) → выгода из ЗАЛОГИРОВАННЫХ событий (закон W1), идемпотентно",
+        "тест офлайн зелёный: 2 подтв.записи → 10000₽ трассируется в события; честно помечено demo→real"
+      ],
+      "honest_note": "Механизм proof-of-value доказан. Реальная защищаемая цифра ₽ появится в день, когда реальная клиника поработает с ANNA — тот же код, реальные события. Это разблок за тобой (клиника/контакт).",
+      "gate_to_next": "Одна реальная клиника: B3 LEDGER даёт честную цифру ₽ из её собственных залогированных событий (real_clinic=true)."
+    },
+    {
+      "id": "L4",
+      "name": "КАБИНЕТ ВЛАДЕЛЬЦА (доверие + удержание)",
+      "why": "Владелец платит за контроль и доверие: видеть диалоги, записи, ROI, учить ANNA.",
+      "missing": "Кабинет: диалоги, записи, ROI-метрики, разметка ошибок, обучение ANNA владельцем.",
+      "status": "ABSENT",
+      "gate_to_next": "Владелец видит диалоги/записи/ROI и может поправить и обучить ANNA."
+    },
+    {
+      "id": "L5",
+      "name": "МУЛЬТИКАНАЛ (охват)",
+      "why": "Пациенты там, где им удобно: MAX (СНГ), WhatsApp, Avito, голос (STT+TTS).",
+      "missing": "MAX (адаптер-заглушка -> токен), WhatsApp, Avito, голосовой канал — одна личность+память во всех.",
+      "status": "ABSENT",
+      "gate_to_next": "Второй канал живой с той же личностью и памятью."
+    },
+    {
+      "id": "L6",
+      "name": "ЖИВОЕ ОБУЧЕНИЕ ИЗ РЕАЛЬНЫХ ДИАЛОГОВ (ров)",
+      "why": "Не песочница: каждый реальный диалог -> обучающий ledger -> разбор слабых мест -> улучшение под safety-гейтами. Это компаундящееся преимущество.",
+      "missing": "РЕАЛЬНЫЕ диалоги (клиника) вместо песочницы для 'real' части. Механизм применения — готов.",
+      "status": "PARTIAL_LOOP_CLOSED",
+      "done_verified": [
+        "ГЛАВНОЕ: петля обучения ЗАМКНУТА — раньше уроки только логировались, теперь: lessons -> дистилляция -> playbook(гейт оператора) -> ИНЪЕКЦИЯ в промпт ANNA. Она реально растёт из опыта.",
+        "anna_playbook_v1.py: distill/approve/show/self; _playbook_block() в build_system_prompt; тест офлайн зелёный (инъекция + no-drift без одобрения)",
+        "playbook курирован и ОДОБРЕН вживую: 7 принципов в промпте (SYSTEM/ANNA_MVP/runtime/anna_playbook.json)",
+        "self-model ANNA (её 'смыслы'): кто я, чему научилась, где расту — из реальных чисел (anna_self_model.md)"
+      ],
+      "honest_note": "Механизм 'учусь и применяю' доказан на песочных уроках. 'Настоящее' обучение — на реальных диалогах реальной клиники (L3). Оператор контролирует, что становится характером (playbook-гейт, без тихого дрейфа).",
+      "gate_to_next": "Реальные диалоги измеримо улучшают ANNA, безопасность не падает."
+    },
+    {
+      "id": "L7",
+      "name": "ФЛОТ / МАСШТАБ ДО 1000 (видение-сущность)",
+      "why": "Реализация Entity Substrate: много ANNA из одного субстрата, одна личность, конфиг на клинику.",
+      "missing": "Engine рождения в масштабе, изоляция арендаторов, self-serve онбординг, биллинг/подписки, модуль самопродажи.",
+      "status": "ABSENT",
+      "gate_to_next": "N клиник из одного субстрата, изолированы, биллятся."
+    },
+    {
+      "id": "L8",
+      "name": "ФАБРИКА ВЕРТИКАЛЕЙ (за пределы стоматологии)",
+      "why": "Тот же субстрат -> другие вертикали ('Невидимый дом, человеческие лица').",
+      "missing": "Шаблон вертикального агента; вторая вертикаль из того же субстрата.",
+      "status": "VISION",
+      "gate_to_next": "Вторая вертикаль рождена из того же субстрата."
+    }
+  ],
+  "boundaries": [
+    "Этот артефакт — кандидат-direction, не принят. Ничего не исполняет, не рождает сущность, не делает сеть/демон/планировщик.",
+    "Статус слоёв честный (HAVE/PARTIAL/ABSENT/VISION), вычислен из реального состояния, не из желаний.",
+    "Sealed-флаги прошлых уровней могли уйти вперёд реального продуктового гейта — это зафиксировано честно в SELF_MODEL и не замазывается.",
+    "Никаких заявок про AGI/L3-автономию; настоящая 24/7-автономия — отдельная законная линия, не включается втихую."
+  ]
+}

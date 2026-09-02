@@ -1,0 +1,25 @@
+{
+  "id": "SOCC_OPERATOR_SURFACE_LAW_V1",
+  "schema": "socc.operator_surface_law.v1",
+  "status": "ACTIVE",
+  "binds_canon": "SYSTEM/KERNEL/SOCC_DESIGN_CANON_V1.json",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "law": "EVERY operator surface — any dashboard, any line/frontier view, any console or chat meant for the creator — MUST render through the shared SOCC canon renderer. No line invents its own operator style. The creator sees ONE style, everywhere.",
+  "mechanism": {
+    "cli": "socc_cli/style.py (already the single CLI style source)",
+    "html": "SYSTEM/INTERFACE/dashboard/socc_canon_html.py (the web analogue — import it; never hand-roll palette/badges/headers)",
+    "unified_pult": "SYSTEM/INTERFACE/dashboard/socc_console.py -> SYSTEM/DASHBOARD/SOCC_CONSOLE.html (renders ALL panels + Brand Forge as sections)"
+  },
+  "how_any_line_complies": [
+    "emit STATE as a JSON panel in SYSTEM/DASHBOARD/ (id/status/stage/current/next/truth_boundary) — it auto-appears in the console",
+    "OR for a custom view: import socc_canon_html and use palette()/page()/divider()/badge()/dot()/row()",
+    "NEVER write bespoke colors/fonts for an operator screen"
+  ],
+  "two_tiers": {
+    "operator": "this law — SOCC canon (matrix), one style for the creator",
+    "product": "the entity's own brand (ANNA D3, Марк, …) — the customer NEVER sees the matrix style"
+  },
+  "shared_invariants_both_tiers": ["voice-law (calm, precise, honest, no hype, no fake PASS)", "proof discipline (truth_boundary, REVIEW vs SEALED)", "design-token structure"],
+  "enforcement": "Any new operator HTML that does NOT import socc_canon_html (or render via the console) is a canon violation — re-skin it through the renderer.",
+  "truth_boundary": "Operator surface law. Declares the single-style rule for all creator-facing surfaces and the shared renderer that enforces it. Renders nothing itself; socc_console.py is the live render."
+}

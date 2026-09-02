@@ -1,0 +1,109 @@
+{
+  "id": "SOCC_DESIGN_CANON_V1",
+  "schema": "socc.design_canon.v1",
+  "status": "ACTIVE",
+  "purpose": "Single source of brand/style truth. Every SOCC surface (CLI, future HTML dashboard, ANNA, any born entity) MUST render through this canon. External code/ideas adopted from GitHub etc. are re-skinned into this canon, never shipped raw.",
+  "principle": "one_style_for_everything_owned_by_creator",
+  "terminal_palette_ansi": {
+    "reset": "[0m",
+    "bold": "[1m",
+    "dim": "[2m",
+    "accent_cyan": "[36m",
+    "ok_green": "[32m",
+    "warn_yellow": "[33m",
+    "fail_red": "[31m",
+    "magenta_event": "[35m",
+    "blue": "[34m",
+    "white": "[37m",
+    "note": "Extracted from the real working SOCC CLI (socc_cli/tui.py, brain.py). This IS the brand terminal palette."
+  },
+  "semantic_colors": {
+    "primary": "accent_cyan",
+    "success": "ok_green",
+    "warning": "warn_yellow",
+    "danger": "fail_red",
+    "event": "magenta_event",
+    "muted": "dim"
+  },
+  "web_palette_hex": {
+    "bg": "#0B0F14",
+    "surface": "#121821",
+    "primary": "#22D3EE",
+    "success": "#22C55E",
+    "warning": "#EAB308",
+    "danger": "#EF4444",
+    "event": "#A855F7",
+    "text": "#E6EDF3",
+    "muted": "#7D8893",
+    "note": "Web mirror of the terminal palette for the future HTML dashboard. Dark-first, high-contrast, calm."
+  },
+  "typography": {
+    "mono": "ui-monospace, 'SF Mono', Menlo, monospace",
+    "ui": "Inter, system-ui, sans-serif",
+    "note": "Terminal-native feel even on web. Monospace for state/proof; sans for prose."
+  },
+  "components": {
+    "header_box": "double-line box ╔══╗ ║ ╚══╝ with bold cyan title",
+    "divider": "── LABEL ──────────── (dim)",
+    "status_badge": "[PASS]=green [FAIL]=red [PENDING/REVIEW]=yellow [?]=dim",
+    "state_dot": "● running/loaded (green) · ○ idle/missing (yellow/dim)",
+    "list_marker": "✓ ok · ✗ fail · ⛔ do-not · ❓ open · ↳ source/anchor",
+    "safety_flag": "name … OFF(green)/ON!(red)"
+  },
+  "technologicalness": {
+    "thesis": "neo-technical cyberpunk × Apple restraint × Lebedev rigor. Depth communicates HIERARCHY, not decoration. Nothing colored without meaning. Dark-first, high-signal, 'не вырви глаз'.",
+    "elevation_ladder": {
+      "principle": "refined dark: depth by LAYERING + luminous hairline edge, never bright drop-shadow (shadows read poorly on dark).",
+      "s0_base": "#0B0F14", "s1_recessed": "#0e141d", "s2_surface": "#121821", "s3_raised": "#18212e",
+      "line": "#1d2733", "line_luminous": "color-mix(primary 24%)", "hairline_highlight": "rgba(255,255,255,.045)"
+    },
+    "glass": {
+      "what": "matrix translation of Apple Liquid Glass — translucency + backdrop-blur + luminous edge.",
+      "discipline": "functional layer only (headers/overlays), used sparingly; degrades to solid surface under prefers-reduced-transparency.",
+      "spec": "bg=color-mix(surface 70%,transparent); backdrop-filter: blur(14px) saturate(1.2)"
+    },
+    "grid_backdrop": "restrained cyberpunk motif: fixed low-opacity 42px technical grid + single cyan top-glow. Never loud.",
+    "motion": {
+      "principle": "functional motion — communicate state (interactive/lift), not delight; always prefers-reduced-motion-safe.",
+      "ease": "cubic-bezier(.2,.6,.2,1)", "dur": ".18s"
+    },
+    "a11y": ["focus-visible cyan ring on all interactives", "reduced-motion honored", "reduced-transparency degrades glass to solid", "tabular-nums for state/proof numbers"],
+    "binds": "SYSTEM/INTERFACE/dashboard/socc_canon_html.py css() (renderer) + SYSTEM/KERNEL/socc-tokens.css (token mirror). Both upgraded together; every operator surface inherits via page()."
+  },
+  "proofs": {
+    "why": "creator asked for evidence-backed direction ('ты должен пруфы давать'). These ground the elevation in the current wave, not taste alone.",
+    "apple_liquid_glass": [
+      "https://www.apple.com/newsroom/2025/06/apple-introduces-a-delightful-and-elegant-new-software-design/",
+      "https://developer.apple.com/documentation/technologyoverviews/liquid-glass",
+      "https://en.wikipedia.org/wiki/Liquid_Glass"
+    ],
+    "operator_dark_density_trends_2026": [
+      "https://muz.li/blog/best-dashboard-design-examples-inspirations-for-2026/",
+      "https://hashbyt.com/blog/enterprise-ui-design",
+      "https://midrocket.com/en/guides/ui-design-trends-2026/"
+    ],
+    "adapted_not_copied": "We do NOT import frosted-white Apple glass; we translate its idea (depth=hierarchy, selective translucency, accessibility fallbacks) into the dark matrix palette. Cyberpunk restraint + Lebedev's function-first ководство keep it from being decorative."
+  },
+  "voice": {
+    "tone": "calm, precise, honest, no hype, no fake PASS",
+    "rules": [
+      "show truth even when unflattering (e.g. coverage low)",
+      "every claim links to a source",
+      "never invent; ask the operator when knowledge is missing",
+      "russian operator-facing, english for canon keys"
+    ]
+  },
+  "adoption_rule": {
+    "external_solutions": "GitHub / готовые продукты можно брать смело",
+    "but": "проходят через адаптер → переодеваются в этот канон (палитра/типографика/тон/proof-дисциплина) → только потом в продукт",
+    "never": "ship external UI/voice raw, unstyled"
+  },
+  "binds": {
+    "cli": "socc_cli/tui.py, socc_cli/brain.py (via socc_cli/style.py)",
+    "html_renderer": "SYSTEM/INTERFACE/dashboard/socc_canon_html.py — the shared web renderer; EVERY operator HTML imports it",
+    "unified_console": "SYSTEM/INTERFACE/dashboard/socc_console.py -> SYSTEM/DASHBOARD/SOCC_CONSOLE.html (all panels, one style)",
+    "operator_surface_law": "SYSTEM/KERNEL/SOCC_OPERATOR_SURFACE_LAW_V1.json (every operator surface must render through the canon)",
+    "entities": "ANNA and every born entity inherit voice + semantic_colors + token structure by default, but get their OWN product palette/skin (see SOCC_SURFACE_LAW)"
+  },
+  "truth_boundary": "Design canon definition only. Declares the single brand/style law for all SOCC surfaces. Does not restyle existing files yet; new surfaces and adopted external code must conform."
+}

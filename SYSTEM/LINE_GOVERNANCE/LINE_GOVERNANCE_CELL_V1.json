@@ -1,0 +1,60 @@
+{
+  "id": "LINE_GOVERNANCE_CELL_V1",
+  "schema": "socc.cell.v1",
+  "kind": "internal_governance_cell",
+  "status": "GENESIS",
+  "created_at_utc": "2026-06-30T13:34:58+00:00",
+  "created_at_msk": "2026-06-30T16:34:58+03:00",
+  "purpose": "Second internal SOCC cell: an organ that makes SOCC self-aware of its own parallel cognition. The creator runs many concurrent Claude-Code lines (CLI tabs + VS Code sessions). They are blind to each other, so two lines can carry the SAME meaning/goal at once -> conflicts, duplicated work, the chat drifting wide. This cell governs lines the way SOCC governs entities: every line is a proof-bound lane with ONE goal; the system sees all live lines, detects when two carry the same meaning, and performs an honest handoff so the main line absorbs the duplicate. No meaning is duplicated; no line drifts off its goal.",
+  "principle": "one_goal_one_line_no_duplicate_meaning",
+  "the_unique_strategy": {
+    "name": "GOVERN_LINES_NOT_TABS",
+    "thesis": "A normal user opens terminal tabs and they silently conflict. SOCC instead treats each CLI line as a governed execution lane with a declared goal, a live heartbeat, and a place in the proof chain. The organ enumerates live PIDs, infers each line's topic = its goal, and when two live lines collide on the same goal it says so HONESTLY, then hands the duplicate's context to the main line which absorbs it. The line, the human, and Claude all see at every moment: how many lines are live, what each is for, where each is, and how much of its goal is left.",
+    "agi_leverage": "The system becomes aware of its own swarm. Chaotic multi-tab work becomes a coherent, observable, deduplicated set of lanes. This is the substrate every other organ (Brand Forge, Entity Substrate, ANNA runtime) runs ON: each future entity or task is spun as a governed line, never a stray tab. Evolution does not jump: detection -> classification -> dedup -> guard, each frontier gated and accepted before the next opens."
+  },
+  "lineage": {
+    "parent": "SOCC (Sovereign Ontological Core)",
+    "born_from": "the real, live pain confirmed on 2026-06-30: ~9 Claude PIDs and 5+ sessions all on branch brand-forge-anna circling the same ANNA / Brand-Forge / Control-Room / AGI cluster",
+    "sibling": "SYSTEM/BRAND_FORGE (first internal cell; this cell mirrors its gated-lifecycle pattern)",
+    "inherits_lifecycle_from": "SYSTEM/ENTITY_SUBSTRATE (DIRECTION->PLAN->GATES->SURFACE->SESSION->RUNTIME->SEALED)",
+    "classification_substrate": "knowledge_substrate/ (parser.py, scanner.py, wiki.py, governance.py) — reused in P2 to map a line's recent prompts to a goal node"
+  },
+  "roles": [
+    {"key": "DISPATCHER",  "ru": "Диспетчер",      "owns": "the active-lines registry: assigns line_id, is the single source of truth of which lines are live"},
+    {"key": "SCANNER",     "ru": "Сканер",         "owns": "detection: enumerates live PIDs (pgrep), their cwd (lsof), start time, entrypoint, and maps each to its session transcript + recent prompts"},
+    {"key": "CLASSIFIER",  "ru": "Смыслонос",      "owns": "topic = goal: maps a line's recent prompts to a goal node via the knowledge_substrate meaning engine"},
+    {"key": "ARBITER",     "ru": "Арбитр",         "owns": "duplicate detection: compares goals across live lines, decides which is the MAIN line and which is the duplicate, never silently"},
+    {"key": "HANDOFF",     "ru": "Передатчик",     "owns": "the handoff protocol: packages the duplicate line's context into a handoff packet, delivers it to the main line, retires the duplicate gracefully"},
+    {"key": "DRIFT_GUARD", "ru": "Хранитель русла","owns": "anti-drift: watches each line's new prompts against its declared goal and warns when work strays wide / off-topic"},
+    {"key": "SCRIBE",      "ru": "Канонолог",      "owns": "writes every artifact in SOCC canon (truth_boundary, proof, status), keeps the registry + LEDGER, surfaces the control room"}
+  ],
+  "surfaces": {
+    "note": "Same nine-surface model an entity has, applied to a governance cell.",
+    "identity": "SYSTEM/LINE_GOVERNANCE/LINE_GOVERNANCE_CELL_V1.json",
+    "state": "SYSTEM/LINE_GOVERNANCE/runtime/LINE_GOVERNANCE_STATE_V1.json",
+    "registry": "SYSTEM/LINE_GOVERNANCE/runtime/ACTIVE_LINES_REGISTRY_V1.json",
+    "lawful_action": "SYSTEM/LINE_GOVERNANCE/LINE_GOVERNANCE_LINE_V1.json (only the current frontier is lawful)",
+    "gates": "SYSTEM/LINE_GOVERNANCE/LINE_GOVERNANCE_GATES_V1.json",
+    "roadmap_human": "SYSTEM/LINE_GOVERNANCE/LINE_GOVERNANCE_ROADMAP.md",
+    "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_LINE_GOVERNANCE_GENESIS_V1_PROOF.json",
+    "memory": "frontier artifacts accumulate under SYSTEM/LINE_GOVERNANCE/",
+    "freeze_stop": "creator may halt at any ACCEPT gate; no frontier auto-advances; the organ never kills a process or hands off a line without explicit confirmation in P0-P3"
+  },
+  "lawful_actions": [
+    "produce the artifact of the CURRENT frontier only",
+    "READ live process + session state (pgrep, lsof, ps, read-only transcript reads)",
+    "report duplicates and drift HONESTLY and advisorily; ask before acting on any line",
+    "write accepted output as SOCC canon with honest truth_boundary"
+  ],
+  "forbidden": [
+    "no jumping frontiers (next opens only after current is accepted)",
+    "no daemon, no background loop, no scheduler — the organ is event-driven (hooks) and on-demand (CLI) only",
+    "no network call, no publish",
+    "no killing / signalling / auto-closing any process or line without explicit creator confirmation",
+    "no automatic handoff before the HANDOFF frontier (P3) is accepted, and even then auto-mode is opt-in",
+    "no fake PASS, no hidden duplicate, no silent drift",
+    "no AGI/L3 claim, no revenue claim"
+  ],
+  "voice": "calm, precise, honest, no hype; russian operator-facing, english for canon keys",
+  "truth_boundary": "Cell genesis definition only. Declares the Line Governance team, its seven roles, inherited surfaces, lawful and forbidden actions. It governs NO line yet, kills no process, installs no hook, makes no network call, hands off nothing, claims no AGI and no revenue. The first real frontier (OBSERVE) stays gated behind creator acceptance of this genesis."
+}

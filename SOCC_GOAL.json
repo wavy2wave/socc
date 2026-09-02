@@ -1,0 +1,21 @@
+{
+  "goal": "MINT first verified ₽ (Telegram bot 1500) then ANNA pilot",
+  "decision": "2026-07-13 operator: agent chose Mint-first cash path",
+  "priority": [
+    "mint_d2_bot_sale_1500",
+    "anna_llm_health_green",
+    "anna_external_pilot_after_m1"
+  ],
+  "active_line": "ln-cee92000",
+  "roadmap_node": "M1",
+  "formal_lawful_next_anna": "ship_anna_mvp_to_first_clinic_v1",
+  "honest_cash_next": "demo_bot_live + marketplace_replies + NPD_receipt + mint_record_commit",
+  "do_not": [
+    "cold_clinic_outreach_before_demo_and_m1",
+    "new_top_level_folders",
+    "mint_universe_expansion",
+    "self_building_ceremony",
+    "restart_migration"
+  ],
+  "updated": "2026-07-13"
+}

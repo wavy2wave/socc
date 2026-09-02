@@ -1,0 +1,18 @@
+{
+  "entities": [
+    {
+      "born_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ANNA_MVP_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+      "deployed": false,
+      "id": "ANNA-8b47cd36",
+      "kind": "vertical_agent",
+      "live": false,
+      "name": "Anna",
+      "skills": [
+        "booking"
+      ],
+      "state": "INSTANTIATED_BOUNDED_CANDIDATE",
+      "vertical": "dental_clinic_administrator"
+    }
+  ],
+  "id": "ENTITY_REGISTRY_V1"
+}

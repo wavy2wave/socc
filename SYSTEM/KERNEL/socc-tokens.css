@@ -1,0 +1,113 @@
+/* SOCC House Design Tokens — single source of truth for INTERNAL web surfaces.
+ * Generated from SOCC_DESIGN_CANON_V1.json (status: ACTIVE) — the house/BRAINS brand.
+ * "matrix-minimalism": dark-first, terminal-native, high-contrast, calm. Cyan primary.
+ *
+ * Use this for operator/штаб surfaces (dashboards, campaign maps, proof boards).
+ * NOT for patient/owner ANNA surfaces — those use anna-tokens.css (D3 "Calm Care").
+ * Canon adoption_rule: external/invented UI is re-skinned into these tokens before product.
+ * Components must consume tokens, never hardcode hex.
+ */
+:root {
+  /* color — web mirror of the terminal palette (canon web_palette_hex) */
+  --socc-bg:        #0B0F14;
+  --socc-surface:   #121821;
+  --socc-primary:   #22D3EE;   /* accent cyan */
+  --socc-success:   #22C55E;   /* PASS / proven */
+  --socc-warning:   #EAB308;   /* REVIEW / pending */
+  --socc-danger:    #EF4444;   /* FAIL / fire-gated */
+  --socc-event:     #A855F7;   /* magenta — events/transitions */
+  --socc-text:      #E6EDF3;
+  --socc-muted:     #7D8893;
+  /* derived (not in canon core; subtle borders/fills from the palette) */
+  --socc-line:      #1d2733;
+  --socc-surface-2: #0e141d;
+
+  /* elevation ladder — refined dark: depth by LAYERING + luminous hairline, not heavy shadow.
+   * (2026 dark-first: subtle grey elevation over airy whitespace; matrix-appropriate.) */
+  --socc-s0: #0B0F14;   /* base / page */
+  --socc-s1: #0e141d;   /* recessed */
+  --socc-s2: #121821;   /* surface / card */
+  --socc-s3: #18212e;   /* raised / keycap */
+  --socc-line-lum: color-mix(in srgb, var(--socc-primary) 24%, transparent);
+  --socc-hair: rgba(255,255,255,.045);
+  /* depth on dark = luminous edge + soft occlusion, NOT bright drop-shadow */
+  --socc-glow: 0 0 0 1px color-mix(in srgb, var(--socc-primary) 15%, transparent),
+               0 10px 34px -14px rgba(0,0,0,.72);
+  /* Apple Liquid Glass, matrix translation: translucency + blur + luminous edge, used sparingly */
+  --socc-glass-bg: color-mix(in srgb, var(--socc-s2) 70%, transparent);
+  --socc-glass-blur: blur(14px) saturate(1.2);
+  /* functional motion — communicate state, not delight; always reduced-motion-safe */
+  --socc-ease: cubic-bezier(.2,.6,.2,1);
+  --socc-dur: .18s;
+
+  /* type — terminal-native: mono for state/proof, sans for prose (canon typography) */
+  --socc-font-mono: ui-monospace, "SF Mono", Menlo, Monaco, monospace;
+  --socc-font-ui:   Inter, system-ui, -apple-system, sans-serif;
+  --socc-fs-xs: 11px; --socc-fs-sm: 13px; --socc-fs-base: 15px;
+  --socc-fs-lg: 19px; --socc-fs-xl: 25px; --socc-fs-2xl: 31px;
+
+  /* shape */
+  --socc-radius: 10px; --socc-radius-sm: 6px; --socc-space: 8px;
+}
+
+/* technical grid backdrop — cyberpunk motif, restrained (low-opacity, fixed). "не вырви глаз". */
+body.socc::before { content:""; position:fixed; inset:0; z-index:-2; pointer-events:none;
+  background:
+   radial-gradient(120% 68% at 50% -12%, color-mix(in srgb, var(--socc-primary) 8%, transparent) 0%, transparent 56%),
+   linear-gradient(transparent 95%, var(--socc-hair) 0),
+   linear-gradient(90deg, transparent 95%, var(--socc-hair) 0);
+  background-size: 100% 100%, 42px 42px, 42px 42px; }
+
+/* elevated panel — the operator card. depth via layering + inset hairline highlight */
+.socc .panel { background: var(--socc-s2); border:1px solid var(--socc-line);
+  border-radius: var(--socc-radius); padding:16px 18px;
+  box-shadow: 0 1px 0 var(--socc-hair) inset, 0 12px 32px -20px rgba(0,0,0,.85); }
+
+/* glass — matrix Liquid Glass; degrades to solid under Reduced Transparency */
+.socc .glass { background: var(--socc-glass-bg); backdrop-filter: var(--socc-glass-blur);
+  -webkit-backdrop-filter: var(--socc-glass-blur);
+  border:1px solid var(--socc-line-lum); border-radius: var(--socc-radius); box-shadow: var(--socc-glow); }
+@media (prefers-reduced-transparency: reduce) {
+  .socc .glass { background: var(--socc-s2); backdrop-filter:none; -webkit-backdrop-filter:none; } }
+
+/* functional motion — hover lift communicates "interactive", disabled when the user opts out */
+@media (prefers-reduced-motion: no-preference) {
+  .socc .panel { transition: border-color var(--socc-dur) var(--socc-ease),
+    box-shadow var(--socc-dur) var(--socc-ease), transform var(--socc-dur) var(--socc-ease); }
+  .socc .panel:hover { border-color: var(--socc-line-lum); transform: translateY(-1px); } }
+
+.socc :where(a,button,[tabindex]):focus-visible { outline:2px solid var(--socc-primary);
+  outline-offset:2px; border-radius:3px; }
+
+/* base */
+body.socc { background: var(--socc-bg); color: var(--socc-text);
+  font-family: var(--socc-font-ui); font-size: var(--socc-fs-base); line-height: 1.5; }
+
+/* components (token-bound, mirror canon.components) */
+.socc .mono { font-family: var(--socc-font-mono); }
+.socc .card { background: var(--socc-surface); border:1px solid var(--socc-line);
+  border-radius: var(--socc-radius); padding:14px 15px; }
+
+/* status_badge: [PASS]=green [REVIEW]=yellow [FAIL]=red [?]=dim — bracketed, mono */
+.socc .badge { font-family: var(--socc-font-mono); font-size: var(--socc-fs-xs); font-weight:700;
+  padding:2px 7px; border-radius:4px; letter-spacing:.3px; }
+.socc .badge--pass   { background:#0f2e1c; color:var(--socc-success); }
+.socc .badge--review { background:#2e2710; color:var(--socc-warning); }
+.socc .badge--fail   { background:#2e1416; color:var(--socc-danger); }
+.socc .badge--primary{ background:#0c2a31; color:var(--socc-primary); }
+.socc .badge--event  { background:#241433; color:var(--socc-event); }
+
+/* state_dot: ● running/loaded (green) · ○ idle/missing (dim) */
+.socc .dot { font-family: var(--socc-font-mono); }
+.socc .dot--on  { color: var(--socc-success); }
+.socc .dot--off { color: var(--socc-muted); }
+
+/* divider: ── LABEL ──────────── (dim) */
+.socc .divider { font-family: var(--socc-font-mono); color: var(--socc-muted);
+  font-size: var(--socc-fs-sm); letter-spacing:1px; margin:26px 0 12px; }
+
+/* header_box: double-line box feel ╔══╗ with bold cyan title */
+.socc .headbox { border:2px solid var(--socc-primary); border-radius: var(--socc-radius);
+  padding:16px 20px; background:linear-gradient(180deg,#0c1620,#0b0f14); }
+.socc .headbox h1 { font-family: var(--socc-font-mono); color: var(--socc-primary);
+  margin:0; font-size: var(--socc-fs-2xl); letter-spacing:.5px; }

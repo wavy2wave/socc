@@ -1,0 +1,19 @@
+{
+  "id": "CELL_REGISTRY_V1",
+  "schema": "socc.cell_registry.v1",
+  "note": "Registry of internal SOCC cells (multi-role construction teams). Distinct from ENTITY_REGISTRY_V1 (customer-facing born entities like ANNA).",
+  "cells": [
+    {
+      "id": "BRAND_FORGE_CELL_V1",
+      "kind": "internal_studio_cell",
+      "name": "Brand Forge",
+      "state": "GENESIS",
+      "born": true,
+      "purpose": "forge canonical brand identity for SOCC and every entity it births",
+      "first_target": "ANNA brand (proposed, gated behind F1.0 target decision)",
+      "constitution": "SYSTEM/BRAND_FORGE/BRAND_FORGE_CELL_V1.json",
+      "line": "SYSTEM/BRAND_FORGE/BRAND_FORGE_LINE_V1.json",
+      "born_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BRAND_FORGE_GENESIS_V1_PROOF.json"
+    }
+  ]
+}

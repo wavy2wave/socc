@@ -1,0 +1,43 @@
+{
+  "id": "LINE_GOVERNANCE_GATES_V1",
+  "schema": "socc.gates.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-30T13:34:58+00:00",
+  "created_at_msk": "2026-06-30T16:34:58+03:00",
+  "purpose": "The gate definitions every Line Governance frontier must pass before it is accepted and the next opens. Inherited from SOCC's four-gate model, specialized for line governance.",
+  "gates": [
+    {
+      "key": "SCI",
+      "name": "Scientific Quality Gate",
+      "definition": "The decision is evidence-based and falsifiable with an explicit pass/fail. For detection: the PID/session facts are reproducible (pgrep/lsof/ps). For classification & dedup: a numeric, explainable score is shown (similarity %, drift distance) and the threshold is justified, not taste.",
+      "fails_if": ["a decision rests on taste not evidence", "a similarity/drift score is hidden or unjustified", "PID/session facts are not reproducible"]
+    },
+    {
+      "key": "HER",
+      "name": "Hermes Gate (it actually works)",
+      "definition": "The artifact runs/renders for real: the scanner enumerates real live PIDs, the heartbeat file is written and read back, `socc lines` prints, the control room renders from real JSON.",
+      "fails_if": ["a script is described but does not run", "the control room shows mock data", "heartbeat is claimed but not written"]
+    },
+    {
+      "key": "COD",
+      "name": "Codex Gate (canon law)",
+      "definition": "Conforms to SOCC canon: correct file structure & naming under SYSTEM/LINE_GOVERNANCE/, registry/state schemas honored, truth_boundary present on every artifact, and a proof is emitted into SOVEREIGN/PROOF/proof_chain/.",
+      "fails_if": ["truth_boundary missing", "no proof emitted", "schema violated", "live LAWFUL_NEXT route mutated without explicit creator step"]
+    },
+    {
+      "key": "GRD",
+      "name": "Guardian (adversarial)",
+      "definition": "N skeptics try to refute before ACCEPT. They check: no false-positive duplicate, no false-negative (real dup missed), no silent drift, no auto-kill / auto-handoff without consent, every handoff reversible, and that confidence is stated honestly (heuristic is labeled heuristic).",
+      "fails_if": ["a duplicate is asserted without confirmable evidence", "a process could be closed without consent", "a handoff is irreversible", "heuristic certainty is dressed up as fact"]
+    }
+  ],
+  "global_invariants": [
+    "no daemon, no background loop, no scheduler — event-driven hooks + on-demand CLI only",
+    "no network, no publish",
+    "no kill/signal/auto-close of any process without explicit creator confirmation",
+    "no automatic handoff before P4 is accepted; auto-mode opt-in and reversible",
+    "no fake PASS, no hidden duplicate, no silent drift, no AGI/revenue claim",
+    "the live LAWFUL_NEXT / route_authority is never silently mutated by this organ"
+  ],
+  "truth_boundary": "Gate definitions only. Declares how frontiers are judged. Enforces nothing by itself; it is the rubric the Guardian and creator apply at each ACCEPT."
+}
