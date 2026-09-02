@@ -184,12 +184,13 @@ def forge_card(product, urls=None, dry=True, prefer_clean=True, require_verified
                           "по отмашке (нужен ключ провайдера в mint/.env)." % len(urls)))
 
     # ── ЖИВОЙ РЕЖИМ (отмашка): искатель → лучший донор → кузница. ──
-    donor_url, donor_kind, hunt_summary = None, "none", None
+    donor_url, donor_kind, hunt_res, hunt_summary = None, "none", None, None
     if prefer_clean and urls:
         h = _hunter()
         if h is not None:
             try:
                 hr = h.hunt(urls, facts=facts, need=1)
+                hunt_res = hr
                 hunt_summary = {"got": hr.get("got"), "good": len(hr.get("good") or []),
                                 "unknown": len(hr.get("unknown") or []),
                                 "bad": len(hr.get("bad") or [])}
@@ -226,26 +227,74 @@ def forge_card(product, urls=None, dry=True, prefer_clean=True, require_verified
         if inf is None or not inf._HAVE_PIL:
             info["why"] = "нет PIL в фото-venv — инфографику не рисуем (честно)"
         else:
-            ibase = fr.get("path") if (fr.get("ok") and fr.get("path")) else None
-            base_why = "поверх выкованного кадра (свои пиксели → бренд)"
-            if not ibase and donor_url:
-                ibase = _donor_bytes(donor_url)
-                base_why = "поверх найденного донора (кузница недоступна → брендируем кадр напрямую)"
-            if not ibase:
-                info["why"] = "нет базового кадра для инфографики"
-            else:
+            # ── ЛЕСТНИЦА ЧИСТОЙ БАЗЫ (ЗАКОН ЧИСТОГО КАДРА, оператор 2026-09-02) ──
+            # Фирменный макет кладём ТОЛЬКО на чистую базу (свои пиксели ИЛИ белый фон без чужих
+            # текстов/водяных знаков). compose_infographic сам проводит чистый-гейт (require_clean=True)
+            # и ОТКАЗЫВАЕТ грязный донор (чужой инфографикой поверх чужой инфографики НЕ рисуем).
+            # При отказе ЭСКАЛИРУЕМСЯ вниз по лестнице до первой чистой базы; все грязные — честно в why.
+            # Порядок: наш выкованный кадр → чистые кандидаты искателя (фон-белые, слов мало) →
+            # провенанс-чистые 'good' → непроверенные 'unknown' → исходные ссылки товара.
+            ladder, seen = [], set()
+
+            def _push(kind, url, what):
+                k = "%s|%s" % (kind, str(url)[:160])
+                if k in seen:
+                    return
+                seen.add(k)
+                ladder.append((kind, url, what))
+
+            forged_path = fr.get("path") if (fr.get("ok") and fr.get("path")) else None
+            if forged_path:
+                _push("forged", forged_path,
+                      "поверх выкованного кадра (свои пиксели → чистый бренд)")
+            if not forged_path:
+                if hunt_res is not None:
+                    for r in (hunt_res.get("clean_candidates") or []):
+                        if r.get("url"):
+                            _push("clean_candidate", r["url"],
+                                  "поверх чистого кандидата искателя (фон белый, чужого текста мало)")
+                    for r in (hunt_res.get("good") or []):
+                        if r.get("url"):
+                            _push("good", r["url"],
+                                  "поверх провенанс-чистого кадра искателя")
+                    for r in (hunt_res.get("unknown") or []):
+                        if r.get("url"):
+                            _push("unknown", r["url"],
+                                  "поверх непроверенного кадра искателя")
+                for u in urls:
+                    if u:
+                        _push("explicit", u, "поверх исходной ссылки товара")
+
+            composed, tried = None, []
+            for kind, thing, what in ladder:
+                if kind == "forged":
+                    ibase, base_why = thing, what          # наш кадр уже на диске
+                else:
+                    rawb = _donor_bytes(thing)
+                    if not rawb:
+                        tried.append("%s: кадр не скачался" % kind)
+                        continue
+                    ibase, base_why = rawb, what
                 try:
                     comp = inf.compose_infographic(ibase, facts=facts, brand=brand,
                                                    out_dir=out_dir, tag=tag, dry=False)
-                    if comp and comp.get("ok"):
-                        info = dict(info, ok=True, path=comp.get("path"), thumb=comp.get("thumb"),
-                                    delivered=comp.get("delivered"),
-                                    content=comp.get("content"),
-                                    why="%s · %s" % (base_why, comp.get("why", "")))
-                    else:
-                        info["why"] = (comp or {}).get("why", "инфографика не вышла")
                 except Exception as e:
-                    info["why"] = "инфографика упала: %s: %s" % (type(e).__name__, e)
+                    tried.append("%s: упало (%s: %s)" % (kind, type(e).__name__, e))
+                    continue
+                if comp and comp.get("ok"):
+                    composed, composed["base_kind"] = comp, kind
+                    break
+                tried.append("%s: чистый-гейт не прошёл (%s)"
+                             % (kind, ((comp or {}).get("why") or "без причины")[:80]))
+            if composed is not None:
+                info = dict(info, ok=True, path=composed.get("path"), thumb=composed.get("thumb"),
+                            delivered=composed.get("delivered"), content=composed.get("content"),
+                            base_kind=composed.get("base_kind"),
+                            why="%s · %s" % (base_why, composed.get("why", "")))
+            else:
+                info["why"] = ("нет ЧИСТОЙ базы под фирменный макет (двойную инфографику не рисуем): "
+                               "испробовано %d кандидата — %s"
+                               % (len(tried), "; ".join(tried[-3:])))
 
     return dict(base, ok=bool(fr.get("ok")), dry=False, mode=mode,
                 donor={"kind": donor_kind, "url": donor_url, "hunt": hunt_summary},

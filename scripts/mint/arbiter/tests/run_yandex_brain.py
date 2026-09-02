@@ -14,6 +14,19 @@
                                остаётся недостающим (add_store честно FAIL)
   BR7  repl_сухо_и_живьё       — стаб мозга `[ДЕЙСТВИЕ] cycle_dry` → run_cycle(dry=True) сразу;
                                `[ДЕЙСТВИЕ] cycle_live` → ждёт «да», «нет» → RUBICON (не выполнен)
+  BR8  пустой_ответ_LLM        — relay вернул только thinking: brain_call делает 2-й заход и отвечает;
+                               повторная пустота → {ok:False, empty:True} (НЕ тупик-строка)
+  BR9  тело_SOCC_в_контексте   — build_context() несёт донор-модель/доктрину/законы/глоссарий:
+                               «донор=магазин-поставщик», cargo-avto, RUBICON, пульс-1, мама
+  BR10 пульс-1_запускаем       — `[ДЕЙСТВИЕ] пульс-1 <store>` → cycle_dry (alias); оффлайн сам
+                               инициирует сухой прогон; на «что такое пульс-1» отвечает определением
+  BR11 оффлайн_фолбэк          — _ask вернул пустоту → REPL отвечает из тела SOCC (не «мозг недоступен»),
+                               не пусто, сухо-авто живо
+  BR12 меню_навигатор          — «меню» → корень = список циклов MINT (звезда=живой) → внутрь
+                               цикла → карточка → назад → в чат
+  BR13 короткий_ответ          — показ-версия режет длинный ответ, но [ДЕЙСТВИЕ]-строку сохраняет
+  BR14 спиннер_молчит_в_тесте  — _with_spinner на не-tty выходе не пишет мусор, значение возвращает
+  BR15 лог_не_на_диске_в_тесте — repl с заданным stdin не пишет сессия-лог на диск (runtime чист)
 """
 import io
 import json
@@ -22,6 +35,7 @@ import sys
 import tempfile
 import contextlib
 import inspect
+import datetime
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -246,6 +260,390 @@ def br7_repl_suho_i_zhivyo():
         brain._run_cycle = old_cycle
 
 
+def br8_pustoi_otvet_llm():
+    """Relay вернул только thinking → 2-й заход отвечает; повторная пустота → empty:True; оффлайн не пуст."""
+    saved = os.environ.get("AGENTROUTER_API_KEY")
+    os.environ["AGENTROUTER_API_KEY"] = "test-key-br8"
+    old = brain._http_post
+
+    def _restore():
+        brain._http_post = old
+        if saved is None:
+            os.environ.pop("AGENTROUTER_API_KEY", None)
+        else:
+            os.environ["AGENTROUTER_API_KEY"] = saved
+
+    calls = []
+
+    def thinking_then_text(url, body):
+        calls.append(url)
+        if len(calls) == 1:
+            return 200, json.dumps({"content": [{"type": "thinking", "thinking": "думаю…"}]})
+        return 200, json.dumps({"content": [{"type": "text", "text": "привет, ответил после пинка"}]})
+
+    brain._http_post = thinking_then_text
+    try:
+        r = brain.brain_call("система", "привет")
+        retry_ok = (r["ok"] is True and r["text"] == "привет, ответил после пинка"
+                    and len(calls) == 2)
+    finally:
+        _restore()
+
+    # повторная пустота → честный empty:True (REPL ответит телом, не тупиком)
+    os.environ["AGENTROUTER_API_KEY"] = "test-key-br8"
+
+    def always_thinking(url, body):
+        return 200, json.dumps({"content": [{"type": "thinking", "thinking": "…"}]})
+
+    brain._http_post = always_thinking
+    try:
+        r2 = brain.brain_call("система", "привет")
+        empty_flagged = (r2.get("ok") is False) and (r2.get("empty") is True)
+    finally:
+        _restore()
+    # оффлайн-ответ: не пуст и сам инициирует сухой прогон
+    off = brain._offline_answer("запусти сухой цикл плёнки")
+    offline_ok = bool(off.strip()) and "[ДЕЙСТВИЕ] cycle_dry" in off
+    ok = retry_ok and empty_flagged and offline_ok
+    return ok, (f"2-й_заход={retry_ok} повторно_пусто→empty={empty_flagged} "
+                f"оффлайн_не_пуст+сухо={offline_ok}")
+
+
+def br9_telo_socc_v_kontekste():
+    """Контекст мозга несёт тело SOCC: донор=магазин, доктрина, законы, глоссарий терминов."""
+    brain._ensure_env()
+    ctx = brain.build_context().lower()
+    need = ("магазин-поставщик", "cargo-avto", "rubicon", "пульс-1", "мама",
+            "без бренда", "в работе", "закупок заранее")
+    missing = [k for k in need if k not in ctx]
+    ok = not missing
+    return ok, f"в контексте есть всё из {need}: недостаёт {missing or '—'}"
+
+
+def br10_puls1_zapuskaem():
+    """«пульс-1 <магазин>» = ПРОГОН цикла: alias→cycle_dry; оффлайн сам его инициирует; термин знает."""
+    p = brain.plan_action("[ДЕЙСТВИЕ] пульс-1 --store atlas-express-film")
+    alias_ok = (p.get("ok") and p["name"] == "cycle_dry" and p["role"] == "dry" and p["execute"])
+    off = brain._offline_answer("запусти пульс-1 по box-msk сухо")
+    auto_ok = "[ДЕЙСТВИЕ] cycle_dry" in off
+    term = brain._offline_answer("что такое пульс-1?")
+    term_ok = bool(term.strip()) and "ДОНОР→СБОРКА" in term
+    # донор ≠ категория: оффлайн различает магазин-поставщика и URL-путь категории
+    donor = brain._offline_answer("донор это cargo shop?")
+    donor_ok = "cargo-avto" in donor and "vozdushno-puzyrkovaya-plenka" in donor
+    ok = alias_ok and auto_ok and term_ok and donor_ok
+    return ok, (f"alias_cycle_dry={alias_ok} оффлайн_авто={auto_ok} "
+                f"термин_пульс-1={term_ok} донор_≠_категория={donor_ok}")
+
+
+def br11_offlain_folbek():
+    """_ask вернул пустоту → REPL отвечает из тела SOCC, без тупика «мозг недоступен», не пусто."""
+    old_ask = brain._ask
+    brain._ask = lambda text, history=None: {"ok": False, "empty": True,
+                                              "error": "мозг вернул пустой ответ (2 попытки)"}
+    try:
+        inp = io.StringIO("привет\n")
+        out = io.StringIO()
+        brain.repl(stdin=inp, stdout=out)
+        txt = out.getvalue()
+    finally:
+        brain._ask = old_ask
+    body_ok = "из тела SOCC" in txt and "УПРАВЛЯЮЩИЙ-МОЗГ" in txt
+    not_deadend = "мозг недоступен" not in txt
+    nonempty = len(txt.strip()) > 0
+    ok = body_ok and not_deadend and nonempty
+    return ok, f"ответил_телом={body_ok} без_тупика={not_deadend} не_пусто={nonempty}"
+
+
+def br12_menu_navigator():
+    """«меню» → корень = СПИСОК ЦИКЛОВ MINT: цикл с деталью/звёздой → внутрь → карточка → назад → чат."""
+    fake = {
+        "atlas-express-film": {"builder": "film", "donor_category": "vozdushno-puzyrkovaya-plenka",
+                               "markup": 8.0, "stock_count": 100, "business_id": 216949599,
+                               "campaign_id": 149215943, "warehouse_id": 2390811, "mother": None},
+        "box-msk": {"builder": "box", "donor_category": "korobki", "markup": 6.0,
+                    "stock_count": 50, "mother": "atlas-express-film"},
+    }
+    today = datetime.date.today().isoformat()
+    old_list, old_plan = brain.cycle1.list_cycles, brain.cycle1.plannerka_read
+    brain.cycle1.list_cycles = lambda: dict(fake)
+    brain.cycle1.plannerka_read = lambda s: {"date": today, "run_verdicts": "PASS",
+                                             "artifacts": "1", "yesterday_verdicts": "DRY_OK"}
+    old_ask = brain._ask
+    brain._ask = lambda text, history=None: {"ok": True, "text": "ок"}
+    try:
+        # корень-список циклов → 1-й цикл → карточка → назад к циклам → 0 в чат
+        inp = io.StringIO("меню\n1\n4\n0\n0\n")
+        out = io.StringIO()
+        brain.repl(stdin=inp, stdout=out)
+        txt = out.getvalue()
+    finally:
+        brain.cycle1.list_cycles, brain.cycle1.plannerka_read = old_list, old_plan
+        brain._ask = old_ask
+    root = "SOCC-ЯМ · циклы MINT" in txt
+    both_stores = "atlas-express-film" in txt and "box-msk" in txt
+    live_star = "★1" in txt
+    card = "ДОНОР→СБОРКА" in txt and "atlas-express-film · builder=film" in txt
+    back_chat = "в чат" in txt and "управляющий> " in txt
+    ok = root and both_stores and live_star and card and back_chat and "Traceback" not in txt
+    return ok, (f"корень-циклы={root} оба={both_stores} звезда-живой={live_star} "
+                f"карточка={card} назад_в_чат={back_chat}")
+
+
+def br13_short_reply_keeps_action():
+    """Длинный ответ режется для показа, но [ДЕЙСТВИЕ]-строка из хвоста не теряется."""
+    reply = "\n".join(f"строка {i}" for i in range(1, 16)) + "\n[ДЕЙСТВИЕ] cycle_dry --store box-msk"
+    short = brain._short_reply(reply)
+    lines = [ln for ln in short.splitlines() if ln.strip()]
+    has_action = "[ДЕЙСТВИЕ]" in short
+    head_kept = any(ln == "строка 1" for ln in lines)
+    cut_mark = "…" in short
+    shortened = len(lines) < 15
+    # длинный ответ без действия тоже режется
+    cut = len([ln for ln in brain._short_reply("\n".join(f"x{i}" for i in range(1, 20))).splitlines()
+               if ln.strip()]) <= 10
+    ok = has_action and head_kept and cut_mark and shortened and cut
+    return ok, (f"действие_в_коротком={has_action} голова={head_kept} "
+                f"маркер={cut_mark} укорочен={shortened} режется={cut}")
+
+
+def br14_spinner_silent_off_tty():
+    """Спиннер на не-tty выходе (StringIO) не пишет мусор и возвращает результат функции."""
+    buf = io.StringIO()
+    val = brain._with_spinner(buf, "думаю…", lambda: 42)
+    ok = val == 42 and buf.getvalue() == ""
+    return ok, f"значение={val} мусор_в_выходе={buf.getvalue()!r}"
+
+
+def br15_log_off_when_stdin():
+    """repl с заданным stdin (тесты) не пишет сессия-лог на диск — runtime/ brain чист."""
+    rt = brain._RUNTIME
+
+    def _files():
+        if not rt.exists():
+            return set()
+        return {p.name for p in rt.iterdir()}
+
+    old_ask = brain._ask
+    brain._ask = lambda text, history=None: {"ok": True, "text": "привет"}
+    before = _files()
+    try:
+        brain.repl(stdin=io.StringIO("привет\n"), stdout=io.StringIO())
+    finally:
+        brain._ask = old_ask
+    after = _files()
+    ok = before == after
+    return ok, f"новых-файлов-сессии={after - before or '—'}"
+
+
+# ───────────────────────── КОНСОЛЬ-ЯМ в навигаторе (BR16–BR18) ─────────────────────────
+
+class _StubConsole:
+    """Стаб КОНСОЛЬ-ЯМ для навигации: методы возвращают фикс-текст, диск/сеть не читаем."""
+    def roles_index(self):
+        return [{"key": f"R{i}", "name_ru": f"Имя{i}", "emoji": "•", "cluster": "core"}
+                for i in range(1, 14)]
+
+    def staff_summary(self, **kw):
+        return "ШТАБ-СТАБ · 13 ролей"
+
+    def role_card(self, key, **kw):
+        return f"КАРТОЧКА-{key}"
+
+    def kpi_text(self, **kw):
+        return "KPI-СТАБ · день/неделя/месяц"
+
+    def day_card(self, **kw):
+        return "ДЕНЬ-СТАБ · снимок дня"
+
+    def tabel_today_text(self, **kw):
+        return "ТАБЕЛЬ-СТАБ · сегодня"
+
+    def artifacts_text(self, **kw):
+        return "АРТЕФАКТЫ-СТАБ · матрица/библиотека/точки"
+
+    def autopilot_tail(self, **kw):
+        return "АВТО-СТАБ · хвост"
+
+    def deal_text(self, **kw):
+        return "ДЕЛО-СТАБ · всё одним листом"
+
+
+def _one_fake_store():
+    return {"atlas-express-film": {"builder": "film",
+                                   "donor_category": "vozdushno-puzyrkovaya-plenka",
+                                   "markup": 8.0, "stock_count": 100, "mother": None}}
+
+
+def _nav_env():
+    """Патчим стаб-консоль + один фейк-цикл + не-пишущий мозг. Возвращает restore()."""
+    old_console = brain.console
+    old_list = brain.cycle1.list_cycles
+    old_plan = brain.cycle1.plannerka_read
+    old_ask = brain._ask
+    old_run = brain._run_cycle
+    old_add = brain._add_cycle
+    rec = {"cycle": [], "add": []}
+    brain.console = _StubConsole()
+    brain.cycle1.list_cycles = lambda: _one_fake_store()
+    brain.cycle1.plannerka_read = lambda s: {"date": datetime.date.today().isoformat(),
+                                             "run_verdicts": "PASS", "artifacts": "1"}
+    brain._ask = lambda text, history=None: {"ok": True, "text": "ок"}
+
+    def _c(*a, **k):
+        rec["cycle"].append(a)
+
+    def _a(*aa, **k):
+        rec["add"].append(aa)
+
+    brain._run_cycle = _c
+    brain._add_cycle = _a
+
+    def _restore():
+        brain.console = old_console
+        brain.cycle1.list_cycles = old_list
+        brain.cycle1.plannerka_read = old_plan
+        brain._ask = old_ask
+        brain._run_cycle = old_run
+        brain._add_cycle = old_add
+
+    return rec, _restore
+
+
+def br16_koren_odin_spisok():
+    """Корень = ОДИН список: 1 цикл → 2 создать · 3 ШТАБ · 4 ДЕЛО · 0 в чат; цифры 3/4 ведут внутрь."""
+    rec, restore = _nav_env()
+    try:
+        inp = io.StringIO("меню\n3\n0\n4\n0\n0\n")
+        out = io.StringIO()
+        brain.repl(stdin=inp, stdout=out)
+        txt = out.getvalue()
+    finally:
+        restore()
+    root = ("SOCC-ЯМ · циклы MINT" in txt and "★1" in txt and
+            "2 · создать цикл (мастер)" in txt and "3 · ШТАБ — 13 ролей · занятость · совесть" in txt
+            and "4 · ДЕЛО — KPI · день · табель · артефакты" in txt and "0 · в чат" in txt)
+    # 3 → штаб-ветка (стаб тело), 4 → дело-меню
+    shtab = "ШТАБ-СТАБ" in txt and "ШТАБ · роль — цифра 1–13" in txt
+    delo = "SOCC-ЯМ · ДЕЛО" in txt and "1 · KPI — день / неделя / месяц" in txt
+    write_untouched = not rec["cycle"] and not rec["add"]
+    ok = root and shtab and delo and write_untouched and "Traceback" not in txt
+    return ok, (f"корень-один-список={root} цифра3→штаб={shtab} цифра4→дело={delo} "
+                f"write-не_тронут={write_untouched}")
+
+
+def br17_shtab_daiv():
+    """ШТАБ-дайв: меню 3 → лист ролей; цифра → карточка роли (стаб); 0 → назад к штабу → к циклам."""
+    rec, restore = _nav_env()
+    try:
+        inp = io.StringIO("меню\n3\n4\n0\n0\n0\n")
+        out = io.StringIO()
+        brain.repl(stdin=inp, stdout=out)
+        txt = out.getvalue()
+    finally:
+        restore()
+    staff_list = "ШТАБ-СТАБ · 13 ролей" in txt
+    card = "КАРТОЧКА-R4" in txt and "роль · R4" in txt     # 4-я роль → роли index[3]
+    prompts = "штаб> " in txt and "роль:R4> " in txt
+    back_cycles = "SOCC-ЯМ · циклы MINT" in txt
+    write_untouched = not rec["cycle"] and not rec["add"]
+    ok = staff_list and card and prompts and back_cycles and write_untouched and "Traceback" not in txt
+    return ok, (f"лист-ролей={staff_list} карточка-R4={card} приглашения={prompts} "
+                f"назад-к-циклам={back_cycles} write-не_тронут={write_untouched}")
+
+
+def br18_delo_chtenie():
+    """ДЕЛО-ветка: меню 4 → KPI/ДЕНЬ рендерится (стаб, read), write не вызывается; 0 назад."""
+    rec, restore = _nav_env()
+    try:
+        inp = io.StringIO("меню\n4\n1\n2\n0\n0\n")
+        out = io.StringIO()
+        brain.repl(stdin=inp, stdout=out)
+        txt = out.getvalue()
+    finally:
+        restore()
+    delo_menu = "SOCC-ЯМ · ДЕЛО" in txt and "1 · KPI — день / неделя / месяц" in txt
+    kpi_rendered = "KPI-СТАБ · день/неделя/месяц" in txt
+    day_rendered = "ДЕНЬ-СТАБ · снимок дня" in txt
+    prompt = "дело> " in txt
+    write_untouched = not rec["cycle"] and not rec["add"]
+    back_cycles = "SOCC-ЯМ · циклы MINT" in txt
+    ok = (delo_menu and kpi_rendered and day_rendered and prompt
+          and write_untouched and back_cycles and "Traceback" not in txt)
+    return ok, (f"дело-меню={delo_menu} kpi-рендер={kpi_rendered} день-рендер={day_rendered} "
+                f"приглашение={prompt} write-не_тронут={write_untouched} назад={back_cycles}")
+
+
+def br19_zadaniya_seam():
+    """ЦИКЛ-ДНЯ в мозге (шов tasks): /задания — планёрка с владельцами (read); --dispatch — разбор
+    без прогона; --form --commit пишет реестр ТОЛЬКО после слова оператора («нет» → не пишет)."""
+    import ymarket_tasks_v1 as T_
+    import ymarket_cycle_day_v1 as real_cd
+    calls = {"form": [], "cycle": []}
+
+    class _FakeCD:
+        def plannerka_text(self, store=None, tasks=None, date_str=None):
+            return real_cd.plannerka_text(store=store, tasks=tasks, date_str=date_str)
+
+        def dispatch(self, tasks=None, *, cycle_dry=False, store=None, date_str=None):
+            if cycle_dry:
+                calls["cycle"].append(store)
+            return real_cd.dispatch(tasks=tasks, cycle_dry=False, store=store, date_str=date_str)
+
+        def form(self, *, commit=False, store=None, date_str=None, save_path=None, verbose=False):
+            calls["form"].append({"commit": commit, "store": store})
+            return real_cd.form(commit=commit, store=store, date_str=date_str,
+                                save_path=save_path, verbose=verbose)
+
+    old_cd, old_ask = brain.cyc_day, brain._ask
+    brain.cyc_day = _FakeCD()
+    tmp = tempfile.mkdtemp()
+    reg = Path(tmp) / "tasks.json"
+    os.environ["YM_TASKS_PATH"] = str(reg)
+    txt_all = ""
+    try:
+        t1, _ = T_.new_task(what="Переценка ARB-87931769 (тест)", owner="PRICER",
+                            category="pricing", store="atlas-express-film")
+        t2, _ = T_.new_task(what="Категории донора (тест)", owner="CATEGORIST",
+                            category="categories", store="atlas-express-film")
+        T_.save([t1, t2], path=reg)
+        brain._ask = lambda text, history=None: {"ok": True, "text": ""}
+        # 1) планёрка: задания + владельцы (read)
+        out = io.StringIO()
+        brain.repl(stdin=io.StringIO("/задания\n"), stdout=out)
+        txt = out.getvalue()
+        txt_all += txt
+        plannerka = ("ЗАДАНИЯ" in txt and "PRICER" in txt and "CATEGORIST" in txt
+                     and "открыто 2" in txt)
+        # 2) диспетчер: read-разбор, цикл НЕ гоняем (без --cycle-dry)
+        out2 = io.StringIO()
+        brain.repl(stdin=io.StringIO("/задания --dispatch\n"), stdout=out2)
+        txt2 = out2.getvalue()
+        txt_all += txt2
+        dispatch_ok = ("ДИСПЕТЧЕР" in txt2 and "ЦЕНОВИК·ПЛАН готовит план" in txt2
+                       and calls["cycle"] == [])
+        # 3) form --commit + «нет» → отменено, форма не звалась
+        out3 = io.StringIO()
+        brain.repl(stdin=io.StringIO("/задания --form --commit\nнет\n"), stdout=out3)
+        txt3 = out3.getvalue()
+        txt_all += txt3
+        no_write = not calls["form"]
+        # 4) form --commit + «да» → пишет локальный реестр (tmp)
+        out4 = io.StringIO()
+        brain.repl(stdin=io.StringIO("/задания --form --commit\nда\n"), stdout=out4)
+        txt4 = out4.getvalue()
+        txt_all += txt4
+        yes_write = any(c.get("commit") for c in calls["form"]) and reg.exists()
+    finally:
+        brain.cyc_day = old_cd
+        brain._ask = old_ask
+        os.environ.pop("YM_TASKS_PATH", None)
+    ok = (plannerka and dispatch_ok and no_write and yes_write
+          and "Traceback" not in txt_all)
+    return ok, (f"планёрка-владельцы={plannerka} диспетчер-read={dispatch_ok} "
+                f"«нет»-не-пишет={no_write} «да»-пишет={yes_write}")
+
+
 TESTS = [
     ("BR1  write_по_слову", br1_write_po_slovu),
     ("BR2  allowlist_строг", br2_allowlist_strog),
@@ -254,6 +652,18 @@ TESTS = [
     ("BR5  тишина_движка", br5_tishina_dvizhka),
     ("BR6  мама_наследование", br6_mama_nasledovanie),
     ("BR7  repl_сухо_и_живьё", br7_repl_suho_i_zhivyo),
+    ("BR8  пустой_ответ_LLM", br8_pustoi_otvet_llm),
+    ("BR9  тело_SOCC_в_контексте", br9_telo_socc_v_kontekste),
+    ("BR10 пульс-1_запускаем", br10_puls1_zapuskaem),
+    ("BR11 оффлайн_фолбэк", br11_offlain_folbek),
+    ("BR12 меню_навигатор", br12_menu_navigator),
+    ("BR13 короткий_ответ", br13_short_reply_keeps_action),
+    ("BR14 спиннер_молчит", br14_spinner_silent_off_tty),
+    ("BR15 лог_не_на_диске", br15_log_off_when_stdin),
+    ("BR16 корень_один_список", br16_koren_odin_spisok),
+    ("BR17 штаб_дайв", br17_shtab_daiv),
+    ("BR18 дело_чтение", br18_delo_chtenie),
+    ("BR19 задания_шов", br19_zadaniya_seam),
 ]
 
 

@@ -264,6 +264,11 @@ def build_product(p, pub_urls, index, *, markup=None):
     mult, merr = resolve_markup(markup)
     if merr:
         raise ValueError(merr)                # битый markup манифеста → громко, не тихая цена
+    # #16-residual: bool-закупка (JSON-поле cost=True/False) — тип-коррупция, как bool-markup (#16):
+    # float(True)=1.0 проходил `isfinite>0` и СТРОИЛ карточку cost=1.0 price=8 (ложная закупка
+    # вместо честного пропуска). False/0/'' и так уходят в skip ниже — True теперь тоже битая закупка.
+    if isinstance(p.get("cost"), bool):
+        return None
     try:
         cost = float(p.get("cost") or 0)
     except (TypeError, ValueError, OverflowError):

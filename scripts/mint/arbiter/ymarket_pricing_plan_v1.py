@@ -232,12 +232,12 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
     if cost is None or not math.isfinite(cost) or cost <= 0:
         return {**base, "ok": False, "verdict": "NO_COST",
                 "note": "закупка неизвестна/≤0 → пол не посчитать, акция невозможна честно (P2/PR5)"}
-    if sell is None or sell <= 0:
+    if sell is None or not math.isfinite(sell) or sell <= 0:
         return {**base, "ok": False, "verdict": "NO_SELL",
-                "note": "цена распродажи не задана/≤0 — не выдумываем (PR4)"}
-    if regular is None or regular <= 0:
+                "note": "цена распродажи не задана/не конечна/≤0 — не выдумываем (PR4)"}
+    if regular is None or not math.isfinite(regular) or regular <= 0:
         return {**base, "ok": False, "verdict": "NO_PRICE",
-                "note": "нет реальной обычной цены-якоря (ни витринной, ни выдержанной) — акция нечестна (PR2)"}
+                "note": "нет реальной обычной цены-якоря (не конечна/≤0/нет витринной или выдержанной) — акция нечестна (PR2)"}
     if regular <= sell:
         return {**base, "ok": False, "verdict": "NOT_SALE",
                 "note": f"якорь {regular:g}₽ ≤ продажи {sell:g}₽ — это не скидка, а подъём под видом акции (PR2)"}

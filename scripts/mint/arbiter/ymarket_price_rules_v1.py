@@ -97,45 +97,70 @@ def floor_price(cost, *, target_profit=NET_FLOOR, delivery=None, fee=None,
     if (not (0 < f < 1) or d < 0
             or not math.isfinite(d) or not math.isfinite(f)):
         return None                            # fee вне (0,1) → деление на ноль/отрицательное
-    raw = (cost + d + target_profit) / (1 - f)
+    # #16-residual: sibling-параметры (target_profit/step) НЕ валидировались и падали каждый
+    # по-своему: цель '500' → TypeError (cost + '500'), цель None → float+NoneType, step=0 →
+    # ZeroDivision, step=inf → 0·inf = НАН утекал наружу (враньё), step=nan → ceil(nan). Цель КПИ
+    # и шаг полки обязаны быть конечными >0 — иначе пол честно не посчитан (None, P8).
+    # None-цель = модульный дефолт (как `or`-идиома у recommend).
+    try:
+        tp = float(NET_FLOOR if target_profit is None else target_profit)
+        st = float(step)
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if not math.isfinite(tp) or tp <= 0 or not math.isfinite(st) or st <= 0:
+        return None
+    raw = (cost + d + tp) / (1 - f)
     if not math.isfinite(raw):
         return None                            # пол переполнил float (cost ~1e308) → честно нет пола
+    q = raw / st                               # #16-residual: крошечный step (1e-300) → q = inf
+    if not math.isfinite(q):
+        return None                            # → int(ceil(inf)) падал сырым OverflowError; честно None
     # вверх к «круглому» шагу (50₽) — торговая полка, не дробный копеечный минимум
-    return int(math.ceil(raw / step)) * step
+    return int(math.ceil(q)) * st
 
 
 def floor_hit(price, cost, *, target_profit=NET_FLOOR, delivery=None, fee=None):
     """P4: честный вердикт по действующей цене. Возвращает dict с net, полом и вердиктом.
     provisional=True, если delivery/fee не заданы явно (счёт на неподтверждённых дефолтах)."""
     d, f, prov = _resolve_io(delivery, fee)
+    # #16-residual: floor_hit был ЕДИНСТВЕННОЙ функцией канала без нормализации входов —
+    # float(10**400) (JSON-int) падал СЫРЫМ OverflowError (в except только (TypeError, ValueError)),
+    # строка-цена '1300' доходила до gap `fl - price` → TypeError (1200 - '1300'), а строка-цель
+    # '500' чинилась ТОЛЬКО внутри floor_price, но сравнение net шло с СЫРОЙ целью. Всё парсим
+    # КАК net_profit (float + isfinite + >0): строка-число работает, битое/огромное → честный вердикт.
+    try:
+        price_f, cost_f = float(price), float(cost)
+        tp = float(NET_FLOOR if target_profit is None else target_profit)
+    except (TypeError, ValueError, OverflowError):
+        price_f = cost_f = tp = float("nan")
+    if not (math.isfinite(price_f) and price_f > 0
+            and math.isfinite(cost_f) and cost_f > 0):
+        return {"ok": False, "verdict": "NA", "provisional": prov,
+                "note": "цена/закупка не даны честно (P8)"}
     # Параметры биты (fee вне (0,1) / доставка <0) при ВАЛИДНОЙ закупке → BAD_PARAMS с честной
     # причиной, а НЕ NA. net_profit на fee=1.0 вернул бы None по ПРИЧИНЕ параметров, и нижний
     # `if net is None` соврал бы «цена/закупка не даны» (P8-причина, которой нет). Тот же вердикт,
     # что у recommend(): пол не считаем, но закупка есть — это BAD_PARAMS, не незнание цены.
-    try:
-        cost_bad = float(price) <= 0 or float(cost) <= 0
-    except (TypeError, ValueError):
-        cost_bad = True
-    if not cost_bad and (not (0 < f < 1) or d < 0
-                         or not math.isfinite(d) or not math.isfinite(f)):
+    if (not (0 < f < 1) or d < 0
+            or not math.isfinite(d) or not math.isfinite(f)):
         return {"ok": False, "verdict": "BAD_PARAMS", "provisional": prov,
                 "note": "комиссия вне (0,1) или доставка <0 — не считаем пол (P7/P8)"}
-    net = net_profit(price, cost, delivery=d, fee=f)
+    net = net_profit(price_f, cost_f, delivery=d, fee=f)
     if net is None:
         return {"ok": False, "verdict": "NA", "provisional": prov,
                 "note": "цена/закупка не даны честно (P8)"}
-    fl = floor_price(cost, target_profit=target_profit, delivery=d, fee=f)
+    fl = floor_price(cost_f, target_profit=tp, delivery=d, fee=f)
     if fl is None:
         return {"ok": False, "verdict": "BAD_PARAMS", "provisional": prov,
-                "note": "комиссия вне (0,1) или доставка <0 — не считаем пол (P7/P8)",
+                "note": "цель КПИ/параметры биты — пол не считаем (P7/P8)",
                 "net": net}
-    gap = max(0.0, round(fl - price, 2))
-    if net >= target_profit:
+    gap = max(0.0, round(fl - price_f, 2))
+    if net >= tp:
         return {"ok": True, "verdict": "OK", "provisional": prov,
-                "note": f"net {net:g}₽ ≥ пола {target_profit:g}₽", "net": net,
+                "note": f"net {net:g}₽ ≥ пола {tp:g}₽", "net": net,
                 "floor": fl, "gap": 0.0}
     return {"ok": False, "verdict": "BELOW_FLOOR", "provisional": prov,
-            "note": f"net {net:g}₽ < пола {target_profit:g}₽ — цена {price:g}₽ ниже {fl:g}₽",
+            "note": f"net {net:g}₽ < пола {tp:g}₽ — цена {price_f:g}₽ ниже {fl:g}₽",
             "net": net, "floor": fl, "gap": gap}
 
 
@@ -166,6 +191,12 @@ def sweet_band(cost, *, lo=SWEET_LO, hi=SWEET_HI, floor=None, ceil_mult=CEIL_MUL
     low_raw = max(cost * lo, fl)
     high_raw = max(cost * hi, low_raw)            # не инвертируем: high ≥ low всегда
     cap = cost * ceil_mult if ceil_mult else float("inf")
+    # #16-residual: cost КОНЕЧНА, но так велика, что cost×lo/hi переполняет float (→ inf):
+    # _round_up(int(math.ceil(inf))) падал сырым OverflowError и валил ВЕСЬ recommend (F9 — партия
+    # донора с одной такой закупкой не собиралась). Сладкой зоны при таком масштабе честно нет →
+    # None (P8), не крэш партии.
+    if not math.isfinite(low_raw) or not math.isfinite(high_raw):
+        return None
     if high_raw > cap:
         high_raw = max(cap, low_raw)              # потолок не рвёт пол
     return {"low": _round_up(low_raw, 50), "high": _round_up(high_raw, 100),
@@ -183,12 +214,26 @@ def crossed_price(sell_price, *, min_gap=600, mult=1.25, step=100):
             return None
     except (TypeError, ValueError, OverflowError):
         return None
-    return _round_up(max(sell_price * mult, sell_price + min_gap), step)
+    anchor = max(sell_price * mult, sell_price + min_gap)
+    # #16-residual: sell конечна, но sell×1.25 переполняет float (→ inf) для sell ≳ 1.4e308 →
+    # _round_up(ceil(inf)) падал сырым OverflowError. Якоря при таком масштабе честно нет → None.
+    if not math.isfinite(anchor):
+        return None
+    return _round_up(anchor, step)
 
 
 def _mid(a, b):
     """Середина зоны до 100₽ — «одно число» рекомендации без псевдо-точности."""
-    return int(round((a + b) / 2.0 / 100.0)) * 100
+    # #16-residual: зона настолько велика, что (a+b)/2.0 переполняет float (сумма int-ов > floatmax
+    # → int/float-деление кидает OverflowError, не inf). Середины честно нет → None (рекомендую
+    # не выдумываем). Recommend выше отказывает таким зонам до _mid — тут страховка прямых вызовов.
+    try:
+        mid = (float(a) + float(b)) / 200.0
+    except (TypeError, ValueError, OverflowError):
+        return None
+    if not math.isfinite(mid):
+        return None
+    return int(round(mid)) * 100
 
 
 def recommend(cost, *, current_price=None, target_profit=NET_FLOOR, delivery=None,
@@ -218,13 +263,33 @@ def recommend(cost, *, current_price=None, target_profit=NET_FLOOR, delivery=Non
     if not math.isfinite(cost_f) or cost_f <= 0:
         return {"ok": False, "verdict": "NO_COST", "cost": cost_f, "provisional": prov,
                 "note": "нет честной закупки (пусто/не-число/не конечна) — цену не выдумываем (P8)"}
-    fl = floor_price(cost_f, target_profit=target_profit, delivery=d, fee=f)
-    if fl is None:
+    # #19-residual: fl=None у floor_price бывает по ДВУМ причинам — битые параметры (fee вне (0,1)/
+    # delivery<0) ИЛИ пол переполнил float (закупка ≳1.5e308, raw → inf). Раньше обе сливались в
+    # BAD_PARAMS «комиссия вне (0,1)» — оператору врало про ЕГО конфиг, когда виновата мусорная
+    # закупка. Битые параметры → BAD_PARAMS (P7); переполнение пола → честный NO_COST (P8).
+    if (not (0 < f < 1) or d < 0
+            or not math.isfinite(d) or not math.isfinite(f)):
         return {"ok": False, "verdict": "BAD_PARAMS", "cost": cost_f, "provisional": prov,
                 "note": "закупка есть, но комиссия вне (0,1) или доставка <0 — пол не считаем (P7)"}
+    fl = floor_price(cost_f, target_profit=target_profit, delivery=d, fee=f)
+    if fl is None:
+        return {"ok": False, "verdict": "NO_COST", "cost": cost_f, "provisional": prov,
+                "note": f"закупка {cost_f:g}₽ за пределами честной ценовой зоны — пол переполняет "
+                        "float, цену не выдумываем (P8)"}
     zone = sweet_band(cost_f, lo=SWEET_LO if branded else NORM_LO,
                       hi=SWEET_HI if branded else NORM_HI, floor=fl)
+    # #16-residual: закупка конечна, но за пределами честной ценовой зоны — cost×hi переполняет
+    # float (зона → None) ИЛИ сумма границ зоны > floatmax (соврал бы/крэшил _mid ниже). Такая
+    # закупка — коррупция/опечатка масштаба (реальные ≤ ~1e5), НЕ товар: честный NO_COST-отказ,
+    # а не сырой OverflowError посреди партии донора (F9). Границы зоны уже int-ы (после полки):
+    # сравниваем их float-сумму, где переполнение даёт inf, а не исключение.
+    if zone is None:
+        return {"ok": False, "verdict": "NO_COST", "cost": cost_f, "provisional": prov,
+                "note": f"закупка {cost_f:g}₽ за пределами честной ценовой зоны (×{SWEET_HI if branded else NORM_HI:g} переполняет float) — цену не выдумываем (P8)"}
     zlow, zhigh = zone["low"], zone["high"]
+    if not math.isfinite(float(zlow) + float(zhigh)):
+        return {"ok": False, "verdict": "NO_COST", "cost": cost_f, "provisional": prov,
+                "note": f"закупка {cost_f:g}₽ за пределами честной ценовой зоны — цену не выдумываем (P8)"}
     out = {
         "ok": True, "cost": cost_f, "floor": fl, "provisional": prov,
         "params": {"delivery": d, "fee": f, "confirmed": not prov},
