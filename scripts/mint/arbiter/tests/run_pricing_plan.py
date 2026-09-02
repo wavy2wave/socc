@@ -278,6 +278,29 @@ def pp22_batch_nan_cost_no_crash():
     return ok, f"вердикты {detail} (нан-закупки NO_COST, батч жив)"
 
 
+def pp23_bad_price_no_crash():
+    # #16-residual: цена карточки НЕ числом ('abc') / nan / inf / '1e400' роняла ВЕСЬ plan_cards
+    # сырым float(price) в gap-строке (или давала gap=-inf → '+−inf₽'). Грязная цена → вердикт от
+    # recommend (SET/OK по норме), gap честно 0, партия жива.
+    cards = [
+        {"offer_id": "ARB-PP-E", "cost": 300.0, "price": "abc"},        # строка-не-число
+        {"offer_id": "ARB-PP-F", "cost": 300.0, "price": float("nan")}, # nan витрина
+        {"offer_id": "ARB-PP-G", "cost": 300.0, "price": "1e400"},      # inf-строка
+        {"offer_id": "ARB-PP-H", "cost": 300.0, "price": 2900},         # контроль в зоне
+        {"offer_id": "ARB-PP-I", "cost": int("1" + "0" * 400), "price": 500},  # огромная закупка (JSON-int)
+    ]
+    rows = P.plan_cards(cards)
+    got = {x["offer_id"]: x for x in rows}
+    ok = (len(rows) == 5
+          and got["ARB-PP-H"]["verdict"] == "OK" and got["ARB-PP-H"]["gap"] == 0.0
+          and all(x["gap"] == 0.0 for x in (got["ARB-PP-E"], got["ARB-PP-F"], got["ARB-PP-G"]))
+          and got["ARB-PP-E"]["verdict"] in ("OK", "SET")   # цена не распознана → честный SET-путь
+          and got["ARB-PP-I"]["verdict"] == "NO_COST"        # огромная закупка → честный отказ
+          and P.render_plan(rows) is not None)               # рендер переживает 10**400 в cost
+    detail = ", ".join(f"{k}→{x['verdict']} gap={x['gap']}" for k, x in got.items())
+    return ok, f"грязные цены/кости живы: {detail} (нет +−inf₽, нет OverflowError рендера)"
+
+
 TESTS = [
     ("PP1  empty_plan", pp1_empty_plan),
     ("PP2  ok_card_in_zone", pp2_ok_card_in_zone),
@@ -301,6 +324,7 @@ TESTS = [
     ("PR20 basis_provenance", pr20_basis_provenance),
     ("PR21 boundary_consistent", pr21_boundary_consistent),
     ("PP22 batch_nan_cost_no_crash", pp22_batch_nan_cost_no_crash),
+    ("PP23 bad_price_no_crash", pp23_bad_price_no_crash),
 ]
 
 

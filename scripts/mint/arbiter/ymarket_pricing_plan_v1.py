@@ -70,7 +70,17 @@ def plan_cards(cards, *, delivery=None, fee=None, branded=True):
         cur = r.get("current") or {}
         net = _net_at(price, cost, d, f)
         rec = r.get("recommended")
-        gap = round(rec - float(price), 2) if rec is not None and price else 0.0
+        # #16: цена карточки из чтения может прийти НЕ числом ('abc') или nan/inf (json '1e400').
+        # float('abc') → ValueError ронял ВЕСЬ план; rec − inf давал gap=-inf → '+−inf₽' в рендере.
+        # Грязная цена → честный gap 0 (раз план не знает, сколько поднимать), партия жива.
+        gap = 0.0
+        if rec is not None and price:
+            try:
+                price_f = float(price)
+                if math.isfinite(price_f):
+                    gap = round(rec - price_f, 2)
+            except (TypeError, ValueError, OverflowError):
+                pass
         rows.append({
             "offer_id": oid,
             "cost": cost,
@@ -109,7 +119,7 @@ def _num(v, unit="₽"):
         return "—"
     try:
         return f"{float(v):g}{unit}"
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):   # #16: float(10**400) → OverflowError, не только ValueError
         return "—"
 
 
