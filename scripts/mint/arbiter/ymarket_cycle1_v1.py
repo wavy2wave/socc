@@ -300,7 +300,9 @@ def node_build(ctx, dry, commit):
     # Проводка ЦЕНОВИК·правил в движок (L9): множитель цены = манифест магазина (markup),
     # а не хардкод. Профиль.markup == модульной MARKUP (8.0) → поведение прежнее (обратносовместимо);
     # изменил профиль — изменилась цена партии без правки кода. Владелец поля — ЦЕНОВИК.
-    prof_markup = ctx["profile"].get("markup")
+    # _mk уже резолвлен гейтом выше (один источник правды): валидный markup или модульная MARKUP,
+    # вторая resolve_markup в build_product идемпотентна — баг-пассаж не перепроверяем.
+    prof_markup = _mk
     for p in ctx["raw_donor"]:
         pr = FC.build_product(p, pub, 0, markup=prof_markup)
         if not pr:
