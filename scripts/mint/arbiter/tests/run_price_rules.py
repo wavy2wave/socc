@@ -226,6 +226,82 @@ def pr22_net_3decimal_exact():
         f"net(800.015, 50)= {got} — десятичная истина 430.01 (3-й знак цены цел, ±1 коп. исключён)")
 
 
+def pr23_nan_inf_net_none():
+    # #16-фикс: нан/inf в цене/закупке/доставке — честный None, НЕ nan (раньше nan утекал в
+    # Decimal-арифметику и floor_hit врал «net nan < пола» / BELOW_FLOOR на нан-цене).
+    for bad in (float("nan"), float("inf"), float("-inf"), "nan", "1e400"):
+        vals = [pr.net_profit(bad, 300, delivery=_D, fee=_F),
+                pr.net_profit(1300, bad, delivery=_D, fee=_F),
+                pr.net_profit(1300, 300, delivery=bad, fee=_F)]
+        if any(v is not None for v in vals):
+            return False, f"net с {bad!r} не всё None: {vals}"
+    return True, "nan/inf цена/закупка/доставка → None (не nan, не врём floor_hit'у)"
+
+
+def pr24_floor_nan_none():
+    # #16-фикс: нан/inf/огромная cost крэшили int(math.ceil()) сырым OverflowError — теперь честно
+    # None, без исключения. 10**400 (json-integer) → OverflowError float(); 1.7e308 → raw = inf.
+    for v in (float("nan"), float("inf"), float("-inf"), "nan", "1e400",
+              int("1" + "0" * 400), 1.7e308):
+        try:
+            got = pr.floor_price(v, delivery=_D, fee=_F)
+            if got is not None:
+                return False, f"floor_price({str(v)[:20]}…)= {got} (ждём None)"
+        except Exception as e:
+            return False, f"floor_price({str(v)[:20]}…) → {type(e).__name__}: {e} (ждём None)"
+    return True, "nan/inf/огромная cost → пол None (без сырого крэша)"
+
+
+def pr25_recommend_string_and_nan_cost():
+    # #16-фикс: cost строкой из JSON донора ломала ноту над-зоны (cost*CEIL → TypeError);
+    # нан-закупка (nan<=0 ложно) давала BAD_PARAMS вместо честного NO_COST.
+    r_str = pr.recommend("300", current_price=5000, delivery=_D, fee=_F)
+    ok_str = (r_str["verdict"] == "OK" and r_str["cost"] == 300.0
+              and r_str.get("over_ceiling") is True)
+    r_nan = pr.recommend(float("nan"), delivery=_D, fee=_F)
+    ok_nan = r_nan["verdict"] == "NO_COST" and not r_nan["ok"]
+    return ok_str and ok_nan, (f"строка '300' над потолком → {r_str['verdict']} "
+                               f"over={r_str.get('over_ceiling')} · нан-закупка → {r_nan['verdict']}")
+
+
+def pr26_sweet_band_nan_none():
+    # #16-фикс: нан/inf-закупка крэшила _round_up(int(math.ceil(nan))) — теперь честно None.
+    try:
+        z = pr.sweet_band(float("nan"))
+        if z is not None:
+            return False, f"sweet_band(nan)= {z} (ждём None)"
+    except Exception as e:
+        return False, f"sweet_band(nan) → {type(e).__name__}: {e}"
+    return True, "нан-закупка → зоны нет (None), не сырой крэш"
+
+
+def pr27_floor_hit_nan_honest():
+    # #16-фикс: floor_hit(нан-цена) раньше врал BELOW_FLOOR «net nan < пола» — теперь честный NA
+    # (net_profit вернул None); нан-закупка тоже честно NA, а НЕ числовое враньё.
+    v = pr.floor_hit(float("nan"), 300, delivery=_D, fee=_F)
+    v2 = pr.floor_hit(1300, float("nan"), delivery=_D, fee=_F)
+    ok = (v["verdict"] == "NA" and v.get("net") is None
+          and v2["verdict"] == "NA" and v2.get("net") is None
+          and v["ok"] is False and v2["ok"] is False)
+    return ok, (f"floor_hit(нан цена)={v.get('verdict')} · floor_hit(нан закупка)="
+                f"{v2.get('verdict')} — честно NA, не BELOW_FLOOR")
+
+
+def pr28_ceiling_masked_by_shelf():
+    # #16-фикс (остаток V4): sweet_band округляет верх зоны к «полке» (5333→5400), и цена 5390
+    # (>×10 потолка 5333) пряталась «в зоне». Потолок теперь проверяется НЕЗАВИСИМО от зоны.
+    r = pr.recommend(533.33, current_price=5390, delivery=_D, fee=_F)
+    ok = (r["verdict"] == "OK" and r["recommended"] == 5390
+          and r.get("over_ceiling") is True
+          and "в зоне" not in r["note"] and "ПРОБИТ" in r["note"] and "держим" in r["note"])
+    # контроль: ниже потолка (5300 < 5333) — чистое OK в зоне без флагов
+    r2 = pr.recommend(533.33, current_price=5300, delivery=_D, fee=_F)
+    ok &= (r2["verdict"] == "OK" and r2.get("over_ceiling") in (None, False)
+           and "в зоне" in r2["note"])
+    return ok, (f"5390 (в полке 5400, но >×10 потолок 5333) → over_ceiling="
+                f"{r.get('over_ceiling')} above_zone={r.get('above_zone')} · 5300 → в зоне без флагов")
+
+
 TESTS = [
     ("PR1  net_profit_formula", pr1_net_profit_formula),
     ("PR2  net_none_on_bad_input", pr2_net_none_on_bad_input),
@@ -249,6 +325,12 @@ TESTS = [
     ("PR20 sweet_band_real_mult", pr20_sweet_band_real_mult),
     ("PR21 above_zone_honest", pr21_above_zone_honest),
     ("PR22 net_3decimal_exact", pr22_net_3decimal_exact),
+    ("PR23 nan_inf_net_none", pr23_nan_inf_net_none),
+    ("PR24 floor_nan_none", pr24_floor_nan_none),
+    ("PR25 recommend_string_and_nan_cost", pr25_recommend_string_and_nan_cost),
+    ("PR26 sweet_band_nan_none", pr26_sweet_band_nan_none),
+    ("PR27 floor_hit_nan_honest", pr27_floor_hit_nan_honest),
+    ("PR28 ceiling_masked_by_shelf", pr28_ceiling_masked_by_shelf),
 ]
 
 

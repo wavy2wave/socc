@@ -142,6 +142,76 @@ def mg8_cycle1_pass_valid():
     return ok, f"verdict={r.get('verdict')} · {r.get('note')} (валидный markup → гейт молчит, партия идёт)"
 
 
+def mg10_huge_jsonint_overflow():
+    # #16-residual: json.loads('1'+'0'*400) даёт ОГРОМНЫЙ Python-int (валидный JSON-integer);
+    # float() такого int кидает OverflowError (НЕ ValueError) → раньше сырой крэш resolve_markup
+    # и build_product. Теперь → чистая markup-ошибка (битый манифест, а не авария).
+    ok_all, detail = True, []
+    for v in (int("1" + "0" * 400), int("9" * 400), 10**400):
+        m, err = FC.resolve_markup(v)
+        good = m is None and err is not None and "markup" in err
+        ok_all &= bool(good)
+        detail.append(f"{str(v)[:9]}…→err")
+    for v in (int("1" + "0" * 400),):
+        try:
+            FC.build_product(_DONOR, {}, 0, markup=v)
+            clean = False
+        except ValueError as e:
+            clean = "markup" in str(e)
+        except OverflowError:
+            clean = False
+        ok_all &= bool(clean)
+        detail.append(f"build({str(v)[:9]}…)→ValueError(markup)" if clean else "build→НЕ чисто!")
+    return ok_all, " · ".join(detail) + " (огромный int-markup → чистый FAIL, не OverflowError)"
+
+
+def mg11_build_cost_nonfinite_skipped():
+    # #16: #14 закрыл канал markup, но та же коррупция (nan/inf) бьёт по ЗАКУПКЕ донора: nan<=0
+    # ложно → сырой round-крэш в билдере. Теперь строка с не-конечной/нечестной закупкой честно
+    # ПРОПУСКАЕТСЯ (None), как строка без article/name, — партия «не собрана», не сломана.
+    ok_all, detail = True, []
+    for c in (float("nan"), float("inf"), "nan", "1e400", 1e400, "abc"):
+        don = {"pid": "MG-X", "article": "STRETCH-MG-88", "name": "Тестовая плёнка",
+               "cost": c}
+        try:
+            p = FC.build_product(don, {}, 0)
+            good = p is None
+        except Exception as e:
+            good = False
+            detail.append(f"cost={c!r}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+        if good:
+            detail.append(f"cost={c!r}→skip")
+    # контроль: валидная закупка по-прежнему собирается
+    try:
+        p = FC.build_product(_DONOR, {}, 0)
+        ok_all &= p is not None and p["price"] == 800
+        detail.append("cost=100→OK ×8")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"cost=100 → {type(e).__name__}: {e}")
+    return ok_all, " · ".join(detail) + " (битая закупка → честный пропуск строки, не крэш)"
+
+
+def mg12_build_subruble_margin_skipped():
+    # #16-residual: markup чуть >1 (1.0000001) ВАЛИДЕН по гейту `>1`, но копеечная маржа теряется
+    # в round() → цена продажи == закупке (заведомый убыток после издержек, P1). Раньше такой
+    # продукт СТРОИЛСЯ с ценой == закупке. Теперь строка честно пропускается, как для битой закупки.
+    don = {"pid": "X", "article": "STRETCH-MG-90", "name": "Тестовая плёнка", "cost": 100.0}
+    ok_all, detail = True, []
+    for mk in (1.0000001, 1.0000005, 1.0005):          # маржа < 0.5₽ → round съедает
+        p = FC.build_product(don, {}, 0, markup=mk)
+        good = p is None
+        ok_all &= bool(good)
+        detail.append(f"markup={mk}→skip" if good else f"markup={mk}→price={p['price']}==cost!")
+    # контроль: маржа с запасом (×8) по-прежнему строится, и цена СТРОГО выше закупки
+    p = FC.build_product(don, {}, 0, markup=8.0)
+    ok_all &= p is not None and p["price"] == 800 and p["price"] > p["cost"]
+    detail.append("markup=8→price=800>100")
+    return ok_all, " · ".join(detail) + " (цена ≤ закупки не выпускается, P1)"
+
+
+
 TESTS = [
     ("MG1 none_default", mg1_none_default),
     ("MG2 numeric_ok", mg2_numeric_ok),
@@ -152,6 +222,9 @@ TESTS = [
     ("MG7 cycle1_fail_bad_markup", mg7_cycle1_fail_bad_markup),
     ("MG8 cycle1_pass_valid", mg8_cycle1_pass_valid),
     ("MG9 nonfinite_rejected", mg9_nonfinite_rejected),
+    ("MG10 huge_jsonint_overflow", mg10_huge_jsonint_overflow),
+    ("MG11 build_cost_nonfinite_skipped", mg11_build_cost_nonfinite_skipped),
+    ("MG12 build_subruble_margin_skipped", mg12_build_subruble_margin_skipped),
 ]
 
 

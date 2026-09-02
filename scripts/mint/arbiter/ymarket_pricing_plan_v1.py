@@ -33,6 +33,8 @@
 """
 from __future__ import annotations
 
+import math
+
 import ymarket_price_rules_v1 as R
 
 # Порядок главности для оператора (PP5): что чинить сначала.
@@ -186,22 +188,22 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
     cur = (card or {}).get("price")
     try:
         cost = float(cost) if cost is not None else None
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):    # #16: float(10**400) → OverflowError
         cost = None
     try:
         sell = float(sell)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
         sell = None
     explicit_regular = regular is not None            # якорь задан ЯВНО (выдержанная цена)
     if explicit_regular:
         try:
             regular = float(regular)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
             regular = None
     elif cur is not None:
         try:
             regular = float(cur)                      # по умолчанию = действующая витринная (PR2)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
             regular = None
     else:
         regular = None
@@ -215,7 +217,9 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
             "discount_pct": None, "floor": None, "net_at_sell": None, "payload": None,
             "basis": basis, "note": ""}
 
-    if cost is None or cost <= 0:                     # cost=0 раньше проскакивал → crash на net
+    # #16: нан/inf-закупка (json 'NaN'→nan) ЛОЖНО проходила `cost <= 0` (nan<=0 == False) и роняла
+    # потом floor_hit/net враньём «ниже пола»; одна nan-карточка валила ВЕСЬ батч promo_cards.
+    if cost is None or not math.isfinite(cost) or cost <= 0:
         return {**base, "ok": False, "verdict": "NO_COST",
                 "note": "закупка неизвестна/≤0 → пол не посчитать, акция невозможна честно (P2/PR5)"}
     if sell is None or sell <= 0:

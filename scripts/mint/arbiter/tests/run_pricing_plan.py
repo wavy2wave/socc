@@ -256,6 +256,28 @@ def pr21_boundary_consistent():
 
 
 
+def pp22_batch_nan_cost_no_crash():
+    # #16: ОДНА карточка с cost=nan (json 'NaN'/1e400 из донора) раньше роняла ВЕСЬ батч
+    # promo_cards сырым ValueError (int(math.ceil(nan)) внутри пола). Теперь нан-закупка —
+    # честный NO_COST, соседние карточки живы.
+    cards = [
+        {"offer_id": "ARB-PP-A", "cost": 65.0, "price": 520},
+        {"offer_id": "ARB-PP-B", "cost": float("nan"), "price": 500},
+        {"offer_id": "ARB-PP-C", "cost": "NaN", "price": 500},
+        {"offer_id": "ARB-PP-D", "cost": 700.0, "price": 5600},
+    ]
+    sells = {"ARB-PP-A": 470, "ARB-PP-B": 400, "ARB-PP-C": 400, "ARB-PP-D": 4400}
+    rows = P.promo_cards(cards, sells=sells)
+    got = {r["sku"]: (r["verdict"], r["ok"]) for r in rows}
+    ok = (len(rows) == 4
+          and got["ARB-PP-A"] == ("BELOW_FLOOR", False)
+          and got["ARB-PP-B"] == ("NO_COST", False)
+          and got["ARB-PP-C"] == ("NO_COST", False)
+          and got["ARB-PP-D"] == ("OK", True))
+    detail = ", ".join(f"{k}={v[0]}" for k, v in got.items())
+    return ok, f"вердикты {detail} (нан-закупки NO_COST, батч жив)"
+
+
 TESTS = [
     ("PP1  empty_plan", pp1_empty_plan),
     ("PP2  ok_card_in_zone", pp2_ok_card_in_zone),
@@ -278,6 +300,7 @@ TESTS = [
     ("PR19 bad_params_no_blowup", pr19_bad_params_no_blowup),
     ("PR20 basis_provenance", pr20_basis_provenance),
     ("PR21 boundary_consistent", pr21_boundary_consistent),
+    ("PP22 batch_nan_cost_no_crash", pp22_batch_nan_cost_no_crash),
 ]
 
 

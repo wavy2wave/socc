@@ -234,7 +234,9 @@ def resolve_markup(markup):
             return None, f"markup манифеста «{markup}» — не число (битый манифест)"
     try:
         mult = float(markup)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, OverflowError):
+        # #16: float(10**400) (валидный JSON-integer, но астрономический) кидает OverflowError,
+        # не ValueError → раньше сырой крэш глубоко в билдере. Битый манифест → чистая markup-ошибка.
         return None, f"markup манифеста «{markup!r}» — не число (битый манифест)"
     if not math.isfinite(mult):                   # nan/inf: `mult <= 1.0` ложно → отдельный гейт
         return None, (f"markup манифеста «{markup!r}» — не конечное число (nan/inf); "
@@ -256,22 +258,40 @@ def build_product(p, pub_urls, index, *, markup=None):
     """
     pid = str(p.get("pid") or p.get("sku"))
     article = str(p.get("article") or "")
-    cost = float(p.get("cost") or 0)
     name = str(p.get("name") or "").strip()
-    if not article or not name or cost <= 0:
-        return None
-    ean = gen_ean13(article)
+    # #16: битый markup манифеста проверяем ПЕРВЫМ — конфиг-ошибка громкая и не тонет в пропуске
+    # битой строки донора (движок гейтит манифест до сборки; тут страховка прямых вызовов).
     mult, merr = resolve_markup(markup)
     if merr:
         raise ValueError(merr)                # битый markup манифеста → громко, не тихая цена
+    try:
+        cost = float(p.get("cost") or 0)
+    except (TypeError, ValueError, OverflowError):
+        cost = float("nan")                   # не-число/огромное → нечестная закупка (ниже)
+    # #16: нан/inf закупка (json 'NaN'→nan, 1e400→inf) ЛОЖНО проходит `cost <= 0` (nan<=0 == False)
+    # и крэшила round(propose_prices) глубоко в чужой роли. Строка без ЧЕСТНОЙ закупки пропускается,
+    # как строка без article/name: не собранная, а НЕ сломанная партия.
+    if not article or not name or not math.isfinite(cost) or cost <= 0:
+        return None
+    ean = gen_ean13(article)
+    # #16: даже конечная, но огромная cost даст cost*mult=inf → round(inf) внутри propose_prices
+    # (крэш роли ЦЕНОВИК-категориста, параллельная линия). Цена продажи обязана быть конечной.
+    if not math.isfinite(cost * mult):
+        return None
     lo, _hi = C.propose_prices(cost, mult, mult)
+    price = round(lo)
+    # #16: markup чуть >1 (напр. 1.0000001) проходит гейт resolve_markup, но копеечная маржа
+    # теряется в round() → цена продажи == закупке (заведомый убыток после издержек, P1).
+    # Такую строку не выпускаем — честный пропуск, как для битой закупки.
+    if price <= cost:
+        return None
     facts = FILM_FACTS.get(pid)
     prod = {
         "sku": f"ARB-{ean[-8:]}",        # СВОЙ артикул продавца (уникален в кабинете)
         "name": name,                     # имя донора 1-в-1 (без потерь размера)
         "barcode": ean,                   # СВОЙ EAN-13 — главный рычаг анти-склейки
         "cost": cost,                     # закупка у донора (₽)
-        "price": round(lo),               # цена продажи: закупка ×markup (манифест/константа, L9)
+        "price": price,               # цена продажи: закупка ×markup (манифест/константа, L9)
         "article": article,               # артикул донора (только след, НЕ уходит в offer)
         "house_brand": HOUSE_BRAND,       # суффикс уникальности имени
         # ОБЯЗАТЕЛЬНОЕ «Бренд» категории (решение оператора 2026-09-02): ставим НАШ бренд ATLAS EDGE,
