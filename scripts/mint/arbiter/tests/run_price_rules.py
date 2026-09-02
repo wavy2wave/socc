@@ -302,6 +302,103 @@ def pr28_ceiling_masked_by_shelf():
                 f"{r.get('over_ceiling')} above_zone={r.get('above_zone')} · 5300 → в зоне без флагов")
 
 
+def pr29_floor_hit_string_huge():
+    # #19-residual: floor_hit был ЕДИНСТВЕННЫМ звеном канала cost/price без нормализации входов —
+    # строка-цена '1300' (JSON чтения) доходила до gap `fl - price` → TypeError (1200 - '1300'),
+    # float(10**400) (JSON-int) падал СЫРЫМ OverflowError (except ловил только TypeError/ValueError),
+    # строка-цель '500' сравнивалась с net СЫРОЙ (net 605 ≥ '500' → TypeError). Теперь всё парсится
+    # как net_profit: строка-число работает, битое/огромное/не-число с любой стороны → честный NA.
+    v = pr.floor_hit('1300', 300, delivery=_D, fee=_F)
+    if not (v['ok'] and v['verdict'] == 'OK' and v['net'] == 605.0 and v['floor'] == 1200):
+        return False, f"floor_hit('1300',300)= {v} (ждём OK, net 605, пол 1200)"
+    v2 = pr.floor_hit('1300', '300', target_profit='500', delivery=_D, fee=_F)  # цель строкой-числом
+    if v2['verdict'] != 'OK':
+        return False, f"floor_hit строками и целью-'500' = {v2} (ждём OK)"
+    huge = int('1' + '0' * 400)
+    bad_pairs = [(huge, 300), ('1300', huge), ('abc', 300), ('1300', 'abc'),
+                 ('1e400', 300), ('1300', '1e400'), (huge, huge)]
+    for price, cost in bad_pairs:
+        try:
+            w = pr.floor_hit(price, cost, delivery=_D, fee=_F)
+            good = (not w['ok'] and w['verdict'] == 'NA' and w.get('net') is None)
+            if not good:
+                return False, f"floor_hit({str(price)[:12]}…,{str(cost)[:12]}…)= {w} (ждём NA, net None)"
+        except Exception as e:
+            return False, f"floor_hit({str(price)[:12]}…) → {type(e).__name__}: {e} (ждём NA)"
+    return True, "'1300'/'300'/цель-'500' → OK·605; 10**400/'abc'/'1e400' с любой стороны → честный NA (net None)"
+
+
+def pr30_sweet_band_huge_finite_none():
+    # #19-residual: cost КОНЕЧНА, но cost×hi переполняет float (→ inf) → _round_up(int(math.ceil(inf)))
+    # падал сырым OverflowError и валил ВЕСЬ recommend (F9 — партия с одной такой закупкой не
+    # собиралась). Зоны при таком масштабе честно НЕТ → None (P8), не крэш. Контроль 300 цел.
+    zc = pr.sweet_band(300)
+    if not (zc and zc['low'] == 2400 and zc['high'] == 3000):
+        return False, f"sweet_band(300)= {zc} (ждём 2400–3000)"
+    for v in (1.7e308, 1e308, 2e307, 1.8e307):     # cost×8 или ×10 → inf (переполнение float)
+        try:
+            z = pr.sweet_band(v)
+            if z is not None:
+                return False, f"sweet_band({v:g})= {z} (ждём None — зона переполняет float)"
+        except Exception as e:
+            return False, f"sweet_band({v:g}) → {type(e).__name__}: {e} (ждём None)"
+    return True, "огромные конечные cost (1.7e308/1e308/2e307/1.8e307) → зоны НЕТ (None), контроль 300→2400–3000"
+
+
+def pr31_crossed_price_huge_none():
+    # #19-residual: sell конечна, но sell×1.25 переполняет float (→ inf) → _round_up(ceil(inf)) падал
+    # сырым OverflowError. Якоря при таком масштабе честно нет → None (P8). Контроль 700→1300 цел.
+    c = pr.crossed_price(700, min_gap=600)
+    if c is None or c < 1300:
+        return False, f"crossed_price(700)= {c} (ждём ≥1300)"
+    for v in (1.7e308, 1.6e308, '1.7e308', 10**400, '1e400'):
+        try:
+            g = pr.crossed_price(v)
+            if g is not None:
+                return False, f"crossed_price({str(v)[:14]}…)= {g} (ждём None)"
+        except Exception as e:
+            return False, f"crossed_price({str(v)[:14]}…) → {type(e).__name__}: {e} (ждём None)"
+    return True, "огромный sell (1.7e308/1.6e308/10**400/'1e400') → якоря НЕТ (None), контроль 700→1300"
+
+
+def pr32_recommend_huge_finite_no_crash():
+    # #19-residual: закупка КОНЕЧНА, но за пределами честной ценовой зоны (cost×hi переполняет ИЛИ
+    # сумма границ зоны > floatmax) раньше падала сырым OverflowError посреди партии донора (F9).
+    # Одна такая строка роняла ВЕСЬ recommend-прогон. Теперь → честный NO_COST-отказ (P8), партия жива.
+    for v in (2e307, 1e307, 1.8e307, '2e307', '1e307', 1e308, 1.7e308):
+        try:
+            r = pr.recommend(v, delivery=_D, fee=_F)
+            if r['verdict'] != 'NO_COST' or r['ok']:
+                return False, f"recommend({str(v)[:12]}…) → verdict={r.get('verdict')} ok={r.get('ok')} (ждём NO_COST)"
+        except Exception as e:
+            return False, f"recommend({str(v)[:12]}…) → {type(e).__name__}: {e} (ждём NO_COST)"
+    rc = pr.recommend(300, current_price=2900, delivery=_D, fee=_F)
+    if rc['verdict'] != 'OK':
+        return False, f"контроль recommend(300)= {rc.get('verdict')} (ждём OK)"
+    return True, "огромные конечные закупки (1e307…1.7e308, и строкой) → честный NO_COST, не крэш; контроль 300→OK"
+
+
+def pr33_floor_price_bad_siblings():
+    # #19-residual: sibling-параметры floor_price (target_profit/step) НЕ валидировались — цель '500'
+    # → TypeError (cost + '500'), None → float+NoneType, step=0 → ZeroDivision, step=inf → НАН утекал
+    # наружу (враньё), step=nan → ceil(nan). Цель и шаг обязаны быть конечными >0 — иначе пол честно
+    # None (P8). None-цель = модульный дефолт, строка-число работает.
+    base = dict(delivery=_D, fee=_F)
+    if pr.floor_price(300, **base) != 1200:
+        return False, f"контроль floor_price(300)= {pr.floor_price(300, **base)} (ждём 1200)"
+    if pr.floor_price(300, target_profit='500', **base) != 1200:
+        return False, f"цель-'500' → {pr.floor_price(300, target_profit='500', **base)} (ждём 1200)"
+    for tp in ('abc', float('nan'), float('inf'), -1, 0):
+        got = pr.floor_price(300, target_profit=tp, **base)
+        if got is not None:
+            return False, f"target_profit={tp!r} → {got} (ждём None)"
+    for st in (0, -5, float('nan'), float('inf')):
+        got = pr.floor_price(300, step=st, **base)
+        if got is not None:
+            return False, f"step={st!r} → {got} (ждём None)"
+    return True, "битые цель/шаг ('abc'/0/-1/nan/inf) → пол None, None-цель и '500' → 1200 (контроль)"
+
+
 TESTS = [
     ("PR1  net_profit_formula", pr1_net_profit_formula),
     ("PR2  net_none_on_bad_input", pr2_net_none_on_bad_input),
@@ -331,6 +428,11 @@ TESTS = [
     ("PR26 sweet_band_nan_none", pr26_sweet_band_nan_none),
     ("PR27 floor_hit_nan_honest", pr27_floor_hit_nan_honest),
     ("PR28 ceiling_masked_by_shelf", pr28_ceiling_masked_by_shelf),
+    ("PR29 floor_hit_string_huge", pr29_floor_hit_string_huge),
+    ("PR30 sweet_band_huge_finite_none", pr30_sweet_band_huge_finite_none),
+    ("PR31 crossed_price_huge_none", pr31_crossed_price_huge_none),
+    ("PR32 recommend_huge_finite_no_crash", pr32_recommend_huge_finite_no_crash),
+    ("PR33 floor_price_bad_siblings", pr33_floor_price_bad_siblings),
 ]
 
 

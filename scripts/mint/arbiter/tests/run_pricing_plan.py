@@ -301,6 +301,29 @@ def pp23_bad_price_no_crash():
     return ok, f"грязные цены/кости живы: {detail} (нет +−inf₽, нет OverflowError рендера)"
 
 
+def pp24_nan_inf_sell_regular_honest():
+    # #19-residual: sell/regular = nan/inf (json '1e400'→inf, строка 'nan') ЛОЖНО проходили
+    # `regular <= sell` (сравнение с nan ложно) → promo_card СТРОИЛ payload, где discount_pct = nan,
+    # и печатал «−nan%» — враньё оператору. Теперь не-конечная/≤0 продажа → NO_SELL, не-конечный
+    # якорь → NO_PRICE (не выдумываем, PR4/PR2): payload нет, discount_pct None.
+    card = next(c for c in _FILM if c["offer_id"] == "ARB-29846713")   # cost 600, витрина 4800
+    for sell in (float('nan'), float('inf'), 'nan', '1e400'):
+        r = P.promo_card(card, sell=sell, regular=4800)
+        if not (not r['ok'] and r['verdict'] == 'NO_SELL' and r['payload'] is None
+                and r['discount_pct'] is None):
+            return False, f"sell={sell!r} → verdict={r['verdict']} pct={r['discount_pct']} (ждём NO_SELL, без nan%)"
+    for reg in (float('nan'), float('inf'), 'nan', '1e400'):
+        r = P.promo_card(card, sell=4000, regular=reg)
+        if not (not r['ok'] and r['verdict'] == 'NO_PRICE' and r['payload'] is None
+                and r['discount_pct'] is None):
+            return False, f"regular={reg!r} → verdict={r['verdict']} pct={r['discount_pct']} (ждём NO_PRICE)"
+    rc = P.promo_card(card, sell=4000, regular=4800)   # контроль: скидка 4800→4000 = 16.67%
+    if not (rc['ok'] and rc['verdict'] == 'OK' and rc['discount_pct'] == 16.67
+            and rc['payload'] == {'sku': 'ARB-29846713', 'value': 4000.0, 'discount_base': 4800.0}):
+        return False, f"контроль = verdict={rc['verdict']} pct={rc['discount_pct']} (ждём OK 16.67%)"
+    return True, "nan/inf sell → NO_SELL, nan/inf regular → NO_PRICE (нет −nan%), контроль OK 16.67% цел"
+
+
 TESTS = [
     ("PP1  empty_plan", pp1_empty_plan),
     ("PP2  ok_card_in_zone", pp2_ok_card_in_zone),
@@ -325,6 +348,7 @@ TESTS = [
     ("PR21 boundary_consistent", pr21_boundary_consistent),
     ("PP22 batch_nan_cost_no_crash", pp22_batch_nan_cost_no_crash),
     ("PP23 bad_price_no_crash", pp23_bad_price_no_crash),
+    ("PP24 nan_inf_sell_regular_honest", pp24_nan_inf_sell_regular_honest),
 ]
 
 

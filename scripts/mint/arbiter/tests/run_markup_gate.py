@@ -211,6 +211,32 @@ def mg12_build_subruble_margin_skipped():
     return ok_all, " · ".join(detail) + " (цена ≤ закупки не выпускается, P1)"
 
 
+def mg13_build_bool_cost_skipped():
+    # #19-residual: bool-закупка (JSON-поле cost=true/false) — тип-коррупция как bool-markup (#16):
+    # float(True)=1.0 проходил `isfinite>0` и СТРОИЛ карточку cost=1.0 price=8 (ложная закупка:
+    # true — НЕ число, а карточка «есть за 1₽» уезжала в партию). False/0/'' и так уходили в skip;
+    # True теперь тоже битая закупка → честный ПРОПУСК строки (None), как для nan/inf (mg11).
+    ok_all, detail = True, []
+    for c in (True, False):
+        don = {"pid": "X", "article": "STRETCH-MG-91", "name": "Тест", "cost": c}
+        try:
+            p = FC.build_product(don, {}, 0)
+            good = p is None
+            detail.append(f"cost={c!r}→skip" if good else f"cost={c!r}→СТРОИТ (cost={p and p.get('cost')})")
+        except Exception as e:
+            good = False
+            detail.append(f"cost={c!r}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+    try:
+        p = FC.build_product(_DONOR, {}, 0)
+        ok_all &= p is not None and p["price"] == 800
+        detail.append("cost=100→OK ×8")
+    except Exception as e:
+        ok_all = False
+        detail.append(f"cost=100 → {type(e).__name__}: {e}")
+    return ok_all, " · ".join(detail) + " (bool-закупка → честный пропуск, не карточка cost=1)"
+
+
 
 TESTS = [
     ("MG1 none_default", mg1_none_default),
@@ -225,6 +251,7 @@ TESTS = [
     ("MG10 huge_jsonint_overflow", mg10_huge_jsonint_overflow),
     ("MG11 build_cost_nonfinite_skipped", mg11_build_cost_nonfinite_skipped),
     ("MG12 build_subruble_margin_skipped", mg12_build_subruble_margin_skipped),
+    ("MG13 build_bool_cost_skipped", mg13_build_bool_cost_skipped),
 ]
 
 
