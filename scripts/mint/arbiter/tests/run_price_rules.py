@@ -657,6 +657,32 @@ def pr42_floor_net_vs_shelf():
                   "полки; 880 → BELOW_FLOOR · 882.35 → OK")
 
 
+def pr43_crossed_tiny_step_no_crash():
+    # #24 (аудит-линза): крошечный КОНЕЧНЫЙ step (1e-320) проходил гейт `step > 0` (PR39), но
+    # anchor/step переполнял float (→ inf) и int(math.ceil(inf)) в _round_up падал сырым
+    # OverflowError — крэш на ТОМ ЖЕ канале, что floor_price (PR38), ровно на законном subnormal-шаге.
+    # После фикса: шаг, не дающий конечного числа полок → якоря честно НЕТ (None, #22 «крэша нет»).
+    ok_all, detail = True, []
+    for step in (1e-320, 5e-320, 1e-310, 1e-308, 5e-308, 1e-307, 1e-306):   # anchor 1300 / step → inf
+        try:
+            c = pr.crossed_price(700, step=step)
+            good = c is None
+            detail.append(f"step={step:g}→{'None' if good else c!r}")
+        except Exception as e:
+            good = False
+            detail.append(f"step={step:g}→{type(e).__name__}: {e}")
+        ok_all &= bool(good)
+    # контроль: дефолт и легальный конечный шаг целы — якорь 1300 (разрыв 600 связывает)
+    base = pr.crossed_price(700)
+    fine = pr.crossed_price(700, step=10)                  # 1300/10=130 полок, конечное → 1300
+    if not (base == 1300 and fine == 1300):
+        ok_all = False
+        detail.append(f"контроль: crossed(700)={base!r}, step=10→{fine!r} (ждём 1300 и 1300)")
+    else:
+        detail.append("контроль: дефолт 1300 · step=10 → 1300")
+    return ok_all, " · ".join(detail) + " (крошечный finite step → None без крэша, контроль цел)"
+
+
 TESTS = [
     ("PR1  net_profit_formula", pr1_net_profit_formula),
     ("PR2  net_none_on_bad_input", pr2_net_none_on_bad_input),
@@ -700,6 +726,7 @@ TESTS = [
     ("PR40 kpi_target_net_gate", pr40_kpi_target_net_gate),
     ("PR41 sweet_band_sibling_gate", pr41_sweet_band_sibling_gate),
     ("PR42 floor_net_vs_shelf", pr42_floor_net_vs_shelf),
+    ("PR43 crossed_tiny_step_no_crash", pr43_crossed_tiny_step_no_crash),
 ]
 
 

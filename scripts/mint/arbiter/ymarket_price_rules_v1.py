@@ -266,6 +266,12 @@ def crossed_price(sell_price, *, min_gap=600, mult=1.25, step=100):
     # anchor ≤ sell → discount_base ≤ value на витрине (фальшивая «скидка»). Такой не-якорь — None.
     if not math.isfinite(anchor) or not anchor > sell_price:
         return None
+    # #24 (аудит-линза): КРОШЕЧНЫЙ конечный step (1e-320) проходил гейт `>0`, но anchor/step
+    # переполнял float (→ inf) и int(math.ceil(inf)) падал сырым OverflowError — крэш на том же
+    # канале, что floor_price (там гейт q = raw/st, строки 133-135). Шаг обязан давать КОНЕЧНОЕ
+    # число полок — иначе якоря честно нет (None, #22 «крэша нет»), не крэш.
+    if not math.isfinite(anchor / step):
+        return None
     return _round_up(anchor, step)
 
 

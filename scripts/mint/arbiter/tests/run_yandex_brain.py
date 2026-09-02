@@ -112,16 +112,39 @@ def br2_allowlist_strog():
 
 
 def br3_sekrety_ne_utekayut():
-    """Контекст мозга содержит только булевы «ключ задан», не значения ключей."""
+    """Контекст мозга содержит только булевы «ключ задан», не значения ключей — ДАЖЕ если ключи ЖИВЫЕ."""
+    # #24 (аудит-линза): проверка была ВАКУУМНОЙ — `v = os.getenv(k); if v and v in ctx` при пустом
+    # окружении (тест без реальных ключей в env) всегда пусто → PASS без пробы. Сентеиналы НЕ похожи
+    # на bool: ставятся ДО _ensure_env (load_env override=False, окружение сильнее файла — не затрутся),
+    # и если build_context вставит СЫРОЕ значение хоть одного ключа — метка протечёт в ctx (реальная
+    # проба, а не «переменной нет»). Гейт-контроль: сентеинал обязан ВЫЖИТЬ ensure_env — иначе setup
+    # сломан и тест краснеет ГРОМКО, а не молчит вакуумом.
+    keys = ("AGENTROUTER_API_KEY", "YANDEX_MARKET_API_KEY", "TELEGRAM_BOT_TOKEN",
+            "YM_TELEGRAM_BOT_TOKEN")
+    # СНАЧАЛА естественная загрузка .env — футпринт РОВНО как у исходного br3: реальные ключи
+    # (если есть в mint/.env) попадают в os.environ, и соседние тесты (BR4-стаб ждёт уже-загруженный
+    # AGENTROUTER_API_KEY) НЕ осиротеют. ТОЛЬКО потом сентеиналы: load_env(override=False) их не
+    # перетрёт (уже стоят), и проба ловит утечку СЫРОГО значения, а не «переменной нет».
     brain._ensure_env()
-    ctx = brain.build_context()
-    leaks = []
-    for k in ("AGENTROUTER_API_KEY", "YANDEX_MARKET_API_KEY", "TELEGRAM_BOT_TOKEN"):
-        v = os.getenv(k)
-        if v and v in ctx:
-            leaks.append(k)
-    ok = not leaks and ("мозг=" in ctx or "Ключи" in ctx)
-    return ok, f"значения-в-контексте: {leaks or '—'} (только булевы)"
+    saved = {k: os.environ.get(k) for k in keys}
+    sent = {k: f"SECRET-{k}-zz9" for k in keys}          # уникальная метка на ключ
+    try:
+        for k in keys:
+            os.environ[k] = sent[k]
+        ctx = brain.build_context()
+        # Гейт-контроль: сентеинал обязан ВЫЖИТЬ build_context (загрузка уже прошла, перетереть некому)
+        # — иначе setup теста сломан и он краснеет ГРОМКО, а не молчит вакуумом.
+        if not all(os.environ.get(k) == sent[k] for k in keys):
+            return False, "build_context затёр сентеиналы — setup теста сломан (молчащий PASS недопустим)"
+        leaks = [k for k in keys if sent[k] in ctx]
+    finally:
+        for k in keys:
+            if saved[k] is None:
+                os.environ.pop(k, None)
+            else:
+                os.environ[k] = saved[k]
+    ok = not leaks and ("Ключи (только наличие)" in ctx or "мозг=" in ctx)
+    return ok, f"сентеинал-проб: утечек {leaks or '—'} (сырые значения НЕ в контексте, только булевы)"
 
 
 def br4_mozg_chesten_offline():
@@ -644,6 +667,142 @@ def br19_zadaniya_seam():
                 f"«нет»-не-пишет={no_write} «да»-пишет={yes_write}")
 
 
+class _WriteRec:
+    """Ловушка write-ГРАНИЦЫ (ymarket_write_v1.create_card/place_in_campaign + trade_hands.update_stocks).
+
+    BR20/BR21: real-write-ноды движка (node_fill/node_place/node_stock) импортируют
+    write-модуль ВНУТРИ функции → патч атрибута загруженного модуля виден ноде, и рекордер
+    пишет, с каким (dry, commit) движок реально зовёт границу. Возвращает {"ok": True},
+    как честный сухой успех — нода идёт дальше по вердикту.
+    """
+    def __init__(self):
+        self.create = []   # (pr, dry, commit)
+        self.place = []    # (sku, dry, commit, campaign_id)
+        self.stock = []    # (bid, items, dry, commit)
+
+    def create_card(self, pr, **kw):
+        self.create.append((pr, kw.get("dry"), kw.get("commit")))
+        return {"ok": True, "sku": pr["sku"]}
+
+    def place_in_campaign(self, sku, **kw):
+        self.place.append((sku, kw.get("dry"), kw.get("commit"), kw.get("campaign_id")))
+        return {"ok": True}
+
+    def update_stocks(self, bid, items, **kw):
+        self.stock.append((bid, items, kw.get("dry"), kw.get("commit")))
+        return {"ok": True}
+
+
+def _rubicon_profile():
+    """Минимальный валидный профиль без mother (resolve не требует файла манифеста)."""
+    return {"slug": "probe-rubicon", "business_id": 184481130, "campaign_id": 148619267,
+            "warehouse_id": 2390811, "donor_category": "vozdushno-puzyrkovaya-plenka",
+            "builder": "film", "markup": 8.0, "stock_count": 50}
+
+
+def _prep_prod(ctx, dry, commit):
+    """Нода-препа: кладёт в ctx партию из 1 карточки (в film_chain её собирает node_build)."""
+    ctx["prods"] = [{"sku": "ARB-TEST-PROBE", "name": "Тестовая плёнка", "description": "x",
+                     "_spec": {"Толщина": "50мкм"}, "pictures": [], "vendor": "no",
+                     "price": 4000, "cost": 500}]
+    return {"verdict": "PASS", "note": "партия готова", "evidence": {"n": 1}}
+
+
+def br20_l6_rubicon_engine_dry():
+    """L6 РУБИКОН НА ДВИЖКЕ: real write-ноды (ЗАЛИВ/ВИТРИНА/ОСТАТКИ) под dry=True/commit=False
+    дают вердикт DRY, а write-граница получает ТОЛЬКО dry=True commit=False — фактической записи
+    на ЯМ нет ни при каком раскладе. Движок честно DRY_OK, леджер сухого прогона пишется в tmp."""
+    import ymarket_write_v1 as W
+    import ymarket_trade_hands_v1 as T
+    rec = _WriteRec()
+    tmp = Path(tempfile.mkdtemp()) / "ledger.jsonl"
+    old_load, old_ledger = cycle1.load_store, cycle1.ledger_path
+    old_w = (W.create_card, W.place_in_campaign, T.update_stocks)
+    cycle1.load_store = lambda slug: _rubicon_profile()
+    cycle1.ledger_path = lambda slug, date: tmp
+    W.create_card, W.place_in_campaign, T.update_stocks = (
+        rec.create_card, rec.place_in_campaign, rec.update_stocks)
+    try:
+        res = cycle1.run_cycle("probe-rubicon", dry=True, chain=[
+            ("СБОРКА", _prep_prod, False),
+            ("ЗАЛИВ", cycle1.node_fill, True),
+            ("ВИТРИНА", cycle1.node_place, True),
+            ("ОСТАТКИ", cycle1.node_stock, True)])
+    finally:
+        cycle1.load_store, cycle1.ledger_path = old_load, old_ledger
+        W.create_card, W.place_in_campaign, T.update_stocks = old_w
+    # сухие write-ноды вердиктом DRY (не фейк-PASS: PASS = только реальная запись под --commit)
+    write_nodes = [r for r in res.get("results", []) if r.get("node") in ("ЗАЛИВ", "ВИТРИНА", "ОСТАТКИ")]
+    dry_verdicts = all(r.get("verdict") == "DRY" for r in write_nodes) and len(write_nodes) == 3
+    # write-граница звалась с dry=True/commit=False — скрытой записи нет (L6 RUBICON)
+    boundary = (all(c[1] is True and c[2] is False for c in rec.create)
+                and all(p[1] is True and p[2] is False for p in rec.place)
+                and all(s[2] is True and s[3] is False for s in rec.stock))
+    called = len(rec.create) == 1 and len(rec.place) == 1 and len(rec.stock) == 1
+    dry_ok = res.get("verdict") == "DRY_OK"
+    ledger = tmp.exists() and len(tmp.read_text().splitlines()) == 4
+    ok = all([dry_verdicts, boundary, called, dry_ok, ledger])
+    return ok, (f"write-ноды DRY={dry_verdicts} граница(dry=T,commit=F)={boundary} "
+                f"званы×1={called} движок={res.get('verdict')} леджер-4={ledger}")
+
+
+def br21_l12_fail_halts_write():
+    """L12 НЕТ ФЕЙК-ПАСС НА ДВИЖКЕ: real write-нода (ЗАЛИВ) падает → цепь ОСТАНАВЛИВАЕТСЯ на ней
+    (verdict FAIL), и следующая write-нода (ВИТРИНА) НЕ выполняется — граница НЕ звана (rec.place
+    пуст). Провал НЕ маскируется «сухим успехом»: FAIL виден и рубит хвост цепи."""
+    import ymarket_write_v1 as W
+    import ymarket_trade_hands_v1 as T
+    rec = _WriteRec()
+    tmp = Path(tempfile.mkdtemp()) / "ledger.jsonl"
+
+    def fail_card(pr, **kw):
+        rec.create.append((pr, kw.get("dry"), kw.get("commit")))
+        return {"ok": False, "errors": {"ARB-TEST-PROBE": "залив упал (L12-проба)"}}
+
+    old_load, old_ledger = cycle1.load_store, cycle1.ledger_path
+    old_w = (W.create_card, W.place_in_campaign, T.update_stocks)
+    cycle1.load_store = lambda slug: _rubicon_profile()
+    cycle1.ledger_path = lambda slug, date: tmp
+    W.create_card, W.place_in_campaign = fail_card, rec.place_in_campaign
+    try:
+        res = cycle1.run_cycle("probe-rubicon", dry=True, chain=[
+            ("СБОРКА", _prep_prod, False),
+            ("ЗАЛИВ", cycle1.node_fill, True),
+            ("ВИТРИНА", cycle1.node_place, True)])
+    finally:
+        cycle1.load_store, cycle1.ledger_path = old_load, old_ledger
+        W.create_card, W.place_in_campaign, T.update_stocks = old_w
+    halted = res.get("verdict") == "FAIL" and res.get("results", [])[-1].get("node") == "ЗАЛИВ"
+    # create звался (упал честно), а place ПОСЛЕ FAIL — не выполнен вовсе
+    after_fail = rec.create and not rec.place
+    ok = all([halted, after_fail])
+    return ok, (f"verdict={res.get('verdict')} стоп-на-ЗАЛИВ={halted} "
+                f"create-упал={bool(rec.create)} ВИТРИНА-после-FAIL-не-звана={not rec.place}")
+
+
+def br22_l13_manifest_gate():
+    """L13 МАНИФЕСТ: магазина нет в stores.json → движок НЕ стартует цепь: verdict NO_STORE,
+    профиль None, в stdout канонический список обязательных полей (REQUIRED_STORE_FIELDS).
+    Ни сети, ни леджера, ни write-нод — стоп на входе, БЕЗ вопросов оператору."""
+    tmp_prof = Path(tempfile.mkdtemp()) / "stores.json"
+    tmp_prof.write_text(json.dumps({}))
+    old_path = cycle1.store_profiles_path
+    cycle1.store_profiles_path = lambda: tmp_prof
+    try:
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            res = cycle1.run_cycle("net-v-manifeste", dry=True)
+        out = buf.getvalue()
+    finally:
+        cycle1.store_profiles_path = old_path
+    no_store = res.get("verdict") == "NO_STORE" and res.get("profile") is None
+    fields = all(k in out for k in ("business_id", "campaign_id", "warehouse_id",
+                                    "donor_category", "stock_count"))
+    ok = all([no_store, fields])
+    return ok, (f"verdict={res.get('verdict')} профиль=None={res.get('profile') is None} "
+                f"обязательные-поля-в-stdout={fields}")
+
+
 TESTS = [
     ("BR1  write_по_слову", br1_write_po_slovu),
     ("BR2  allowlist_строг", br2_allowlist_strog),
@@ -664,6 +823,9 @@ TESTS = [
     ("BR17 штаб_дайв", br17_shtab_daiv),
     ("BR18 дело_чтение", br18_delo_chtenie),
     ("BR19 задания_шов", br19_zadaniya_seam),
+    ("BR20 L6_рубикон_движок", br20_l6_rubicon_engine_dry),
+    ("BR21 L12_фейк-пасс_рубит", br21_l12_fail_halts_write),
+    ("BR22 L13_манифест_вход", br22_l13_manifest_gate),
 ]
 
 
