@@ -278,12 +278,21 @@ def node_donor(ctx, dry, commit):
 
 
 def node_build(ctx, dry, commit):
-    """N2 СБОРКА · полная карточка по рецепту (факты донора → _spec + своё описание + ОВХ)."""
+    """N2 СБОРКА · полная карточка по рецепту (факты донора → _spec + своё описание + ОВХ)
+    + ПЛАН-АУДИТ полноты ДО залива (дыра №4 ревью): раньше неполная задумка уходила на витрину
+    и ловилась только СВЕРКОЙ ПОСЛЕ трат — теперь известная дыра payload (нет ОВХ/описания/
+    штрихкода/характеристик/цены) останавливает СБОРКУ. audit_plan = задумка; факт витрины
+    подтвердит живая audit_live в СВЕРКЕ (CC3)."""
     import ymarket_film_cards_v1 as FC
+    import ymarket_card_audit_v1 as caudit
     pub = FC._pub_urls_by_pid()
     prods, missing = [], []
+    # Проводка ЦЕНОВИК·правил в движок (L9): множитель цены = манифест магазина (markup),
+    # а не хардкод. Профиль.markup == модульной MARKUP (8.0) → поведение прежнее (обратносовместимо);
+    # изменил профиль — изменилась цена партии без правки кода. Владелец поля — ЦЕНОВИК.
+    prof_markup = ctx["profile"].get("markup")
     for p in ctx["raw_donor"]:
-        pr = FC.build_product(p, pub, 0)
+        pr = FC.build_product(p, pub, 0, markup=prof_markup)
         if not pr:
             missing.append(str(p.get("pid")))
             continue
@@ -294,11 +303,69 @@ def node_build(ctx, dry, commit):
         return {"verdict": "FAIL", "note": f"не собраны: {missing}",
                 "evidence": {"missing": missing, "n_ok": len(prods)}}
     no_photo = [pr["sku"] for pr in prods if not pr.get("pictures")]
-    note = f"собрано {len(prods)} полных карточек (описание/спеки/ОВХ/EAN)"
-    ev = {"n": len(prods), "no_photo": no_photo}
     if no_photo:
         # L11: карточка без фото = низкий index — честно не проходим (фото-слой обязателен).
-        return {"verdict": "FAIL", "note": f"{note}, но фото нет: {no_photo}", "evidence": ev}
+        return {"verdict": "FAIL",
+                "note": f"собрано {len(prods)} карточек, но фото нет: {no_photo}",
+                "evidence": {"n": len(prods), "no_photo": no_photo}}
+    no_ovx = [pr["sku"] for pr in prods if not pr.get("weightDimensions")]
+    if no_ovx:
+        # Закон оператора «габариты ВСЕГДА (не только вес)»: build_product отдаёт
+        # weightDimensions ТОЛЬКО полным набором всех 4 — его отсутствие = payload СЕЙЧАС
+        # уйдёт БЕЗ габаритов, и СВЕРКА его отвергнет. Не тратим залив вслепую (L10).
+        return {"verdict": "FAIL",
+                "note": f"карточки БЕЗ ОВХ-габаритов (залив пошёл бы слепым): {no_ovx}",
+                "evidence": {"n": len(prods), "no_ovx": no_ovx}}
+    # План-аудит задумки (audit_plan, 0₽): INCOMPLETE = известная дыра payload → FAIL до залива.
+    # UNVERIFIED = поле не собрано адаптером → НЕ гейт, честно в заметке (CC2: не знаем ≠ нет).
+    incomplete, unverified = {}, []
+    n_complete = 0
+    for pr in prods:
+        v = caudit.audit_plan({
+            "offer_id": pr.get("sku"), "name": pr.get("name"),
+            "description_len": len(pr.get("description") or ""),
+            "spec_n": len(pr.get("_spec") or {}), "dims": pr.get("weightDimensions"),
+            "barcode": pr.get("barcode"), "n_photos": len(pr.get("pictures") or []),
+            "price": pr.get("price")})
+        if v["verdict"] == "INCOMPLETE":
+            incomplete[pr.get("sku")] = {"missing": v["missing"], "note": v["note"]}
+        elif v["verdict"] == "UNVERIFIED":
+            unverified.append(pr.get("sku"))
+        else:
+            n_complete += 1
+    if incomplete:
+        return {"verdict": "FAIL",
+                "note": "задумки НЕ полны (до залива): "
+                        f"{ {s: d['missing'] for s, d in incomplete.items()} }",
+                "evidence": {"incomplete": incomplete, "n_ok": len(prods)}}
+    # ЦЕНОВИК·совет (advisory, 0₽): действующая цена против закупки и зоны. verdict
+    # provisional — delivery=200/fee=0.15 TUNABLE НЕ подтверждены оператором → СОВЕТ,
+    # НЕ PASS/FAIL-гейт (цикл не останавливает). Подсветит «закупка 300 → продаём 1300,
+    # а не 2600-3000» — решение за оператором.
+    import ymarket_price_rules_v1 as prules
+    adv, adv_full = {}, {}
+    for pr in prods:
+        r = prules.recommend(pr.get("cost"), current_price=pr.get("price"), branded=True)
+        v = r.get("verdict", "NA") if isinstance(r, dict) else "NA"
+        adv[pr.get("sku")] = v
+        if isinstance(r, dict):
+            adv_full[pr.get("sku")] = {
+                "verdict": v,
+                "current": pr.get("price"),
+                "floor": r.get("floor"),
+                "recommended": r.get("recommended"),
+                "provisional": r.get("provisional", False),
+            }
+    off = {s: v for s, v in adv.items() if v in ("RAISE", "SWEET", "ZONE_RAISE")}
+    note = f"собрано {len(prods)} полных карточек (описание/спеки/ОВХ/EAN)"
+    ev = {"n": len(prods), "plan_complete": n_complete, "pricing": adv,
+          "pricing_full": adv_full}   # ЦЕНОВИК·полный разбор по карточке (пол/рекомендую/провиз.)
+    if unverified:
+        note += f" · {len(unverified)} задумок UNVERIFIED: {unverified}"
+        ev["plan_unverified"] = unverified
+    note += f" · полнота задумки: {n_complete}/{len(prods)} COMPLETE"
+    note += (f" · ценовик(совет): {len(prods) - len(off)}/{len(prods)} в зоне"
+             + (f", вне зоны {off}" if off else ""))
     return {"verdict": "PASS", "note": note, "evidence": ev}
 
 
@@ -421,8 +488,41 @@ def node_verify(ctx, dry, commit):
             bad[sku] = "остаток FIT не читается"
     if bad:
         return {"verdict": "FAIL", "note": f"НЕ на витрине: {bad}", "evidence": {"bad": bad, "rows": rows}}
+
+    # Полнота карточек (аудит-орган): карточка НА витрине, но БЕЗ живых блоков, которые
+    # СВЕРКА ПРОЧИТАЛА (весогабариты/фото/описание/штрихкод), НЕ проходит как «полная».
+    # Раньше гейтились только размещение/остатки/vendor: карточка БЕЗ weightDimensions
+    # получала PASS (дыра адверсари-ревью). MISSING = прочитано-и-нет (жёсткий FAIL);
+    # UNKNOWN = срез СВЕРКИ не собрал (name/спеки/цена) → UNVERIFIED, PASS, но честно
+    # в заметке. Холевых живых карточек у нас нет (4 ARB-* полны), гейт ничего не ломает.
+    import ymarket_card_audit_v1 as caudit
+    incomplete = {}
+    n_complete = n_unverified = 0
+    for sku in ids:
+        r = rows.get(sku) or {}
+        if "content" not in r:
+            continue                          # контент не читался — карточку судит placement
+        v = caudit.audit_live(r["content"])
+        if v["verdict"] == "INCOMPLETE":
+            incomplete[sku] = {"missing": v["missing"], "note": v["note"]}
+        elif v["verdict"] == "UNVERIFIED":
+            n_unverified += 1
+        else:
+            n_complete += 1
+    if incomplete:
+        return {"verdict": "FAIL",
+                "note": "карточки на витрине, но НЕ ПОЛНЫ: "
+                        f"{ {s: d['missing'] for s, d in incomplete.items()} }",
+                "evidence": {"incomplete": incomplete, "rows": rows}}
     ok = all(r.get("content", {}).get("vendor") == "Без бренда" for r in rows.values())
-    note = f"витрина PUBLISHED ×{len(ids)} · остатки FIT · vendor Без бренда · описания/фото на месте"
+    n_ok = n_complete + n_unverified              # карточки без известных дыр (гейт-здоровые)
+    audit_note = f"полнота по срезу СВЕРКИ: {n_ok}/{len(rows)} без дыр"
+    if n_complete:
+        audit_note += f" · полностью подтверждены {n_complete}"
+    if n_unverified:
+        audit_note += f" · {n_unverified} UNVERIFIED: срез не собрал name/спеки/цену"
+    note = (f"витрина PUBLISHED ×{len(ids)} · остатки FIT · vendor Без бренда · "
+            f"описания/фото/весогабариты/EAN на месте · {audit_note}")
     if not ok:
         return {"verdict": "FAIL", "note": "vendor не «Без бренда» у кого-то из карточек", "evidence": rows}
     return {"verdict": "PASS", "note": note, "evidence": rows}
@@ -475,6 +575,86 @@ def film_chain():
         ("СВЕРКА", node_verify, False),
         ("ПЛАНЁРКА", node_plannerka, False),
     ]
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  АВТО-ЗАПИСЬ В БИБЛИОТЕКУ (оператор: «каждый добавленный артикул и обновлённые
+#  остатки пишутся в общую библиотеку»). Аддитивно, ТОЛЬКО на живом ходу.
+# ─────────────────────────────────────────────────────────────────────────────
+
+def _sync_library(ctx, results, hsh):
+    """Живой ход (--commit) → БИБЛИОТЕКА товаров/категорий (ymarket_library_v1).
+
+    По вердиктам узлов записывает РЕАЛЬНЫЕ события (LB1: dry пишет НИЧЕГО):
+      ЗАЛИВ PASS   → карточки: что собрано (имя/цена/закупка/габариты/фото/категория);
+      ОСТАТКИ PASS → события остатков: склад + счёт (история, не снимок);
+      СВЕРКА PASS  → протокол: запись видела живое состояние витрины;
+      узел FAIL после ЗАЛИВ → last_verified=FAIL (товар залит, но НЕ подтверждён).
+    Вызывается ТОЛЬКО при `not dry AND commit` (реальный гейт записи ЯМ).
+    Библиотека — слой ЗНАНИЯ: её сбой НЕ должен ронять цикл (товар уже на витрине),
+    поэтому fail-open с заметкой. Возвращает {ok, note, n}.
+    """
+    # fail-open по построению: библиотека — слой ЗНАНИЯ, её сбой НЕ роняет цикл
+    # (товар уже на витрине). Ловим ВСЁ тело записи, не только импорт: ошибка
+    # прав/диска write_atomic, ValueError на пустом sku и т.п. → ok=False с заметкой.
+    n = 0
+    try:
+        import ymarket_library_v1 as lib
+        prof = ctx.get("profile") or {}
+        slug = prof.get("slug")
+        prods = ctx.get("prods") or []
+        res = {r.get("node"): r for r in (results or [])}
+        # 1) ЗАЛИВ удался → карточки (артефакт цикла) в общую библиотеку
+        if (res.get("ЗАЛИВ") or {}).get("verdict") == "PASS" and prods:
+            entries = []
+            for pr in prods:
+                entries.append({
+                    "offer_id": pr.get("sku"), "donor_pid": pr.get("pid"),
+                    "name": pr.get("name"), "article": pr.get("article"),
+                    "vendor": pr.get("vendor"), "barcode": pr.get("barcode"),
+                    "cost": pr.get("cost"), "price": pr.get("price"),
+                    "store_slug": slug, "cycle_hash": hsh,
+                    "builder": prof.get("builder"),
+                    "category_slug": prof.get("donor_category"),
+                    "n_photos": len(pr.get("pictures") or []),
+                    "dims": pr.get("weightDimensions"),
+                    "description_len": len(pr.get("description") or ""),
+                    "spec_n": len(pr.get("_spec") or {}),
+                    "stock_count": prof.get("stock_count"),
+                })
+            n += lib.record_cards(True, entries) or 0
+        # 2) ОСТАТКИ удались → события остатков (склад + счёт; count не выдумываем)
+        if (res.get("ОСТАТКИ") or {}).get("verdict") == "PASS":
+            wh = prof.get("warehouse_id")
+            cnt = prof.get("stock_count")
+            for pr in prods:
+                if cnt is not None:
+                    n += 1 if lib.record_stock(True, pr.get("sku"), count=cnt,
+                                               warehouse_id=wh, store_slug=slug,
+                                               cycle_hash=hsh) else 0
+        # 3) СВЕРКА удалась → протокол последней проверки живого состояния
+        if (res.get("СВЕРКА") or {}).get("verdict") == "PASS":
+            for pr in prods:
+                n += 1 if lib.record_verified(True, pr.get("sku"), verdict="PASS",
+                                              store_slug=slug, cycle_hash=hsh,
+                                              note="СВЕРКА: витрина PUBLISHED + остатки FIT") else 0
+        # 4) ЦЕПЬ ОСТАНОВЛЕНА (узел FAIL после успешного ЗАЛИВА) → честный маркер:
+        #    карточки реально созданы на ЯМ, НО живое состояние витрины/остатков НЕ
+        #    подтверждено прочтением (200 OK врёт, доказывает только СВЕРКА). Ставим
+        #    last_verified=FAIL — библиотека НЕ выдаёт «поставлено и проверено».
+        failed = [r.get("node") for r in (results or []) if r.get("verdict") == "FAIL"]
+        if failed and (res.get("ЗАЛИВ") or {}).get("verdict") == "PASS" and prods:
+            for pr in prods:
+                n += 1 if lib.record_verified(True, pr.get("sku"), verdict="FAIL",
+                                              store_slug=slug, cycle_hash=hsh,
+                                              note=f"цепь остановлена на «{', '.join(failed)}» — "
+                                                   f"живое состояние не подтверждено") else 0
+    except Exception as e:
+        return {"ok": False,
+                "note": f"библиотека не обновилась полностью (fail-open, товар уже на витрине): "
+                        f"{type(e).__name__}: {e}; записано событий {n}",
+                "n": n}
+    return {"ok": True, "note": f"библиотека: событий {n}", "n": n}
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -535,6 +715,15 @@ def run_cycle(store_slug, dry=True, commit=False, chain=None, date_str=None, ver
         for r in results:
             f.write(json.dumps(r, ensure_ascii=False) + "\n")
     ctx["results"] = results
+    # живой ход (--commit) — авто-запись реальных событий в общую библиотеку.
+    # Реальный гейт записи на ЯМ = `not dry AND commit` (ноды с commit=False дают
+    # фейк-PASS: сухие payload «успешны», но НИЧЕГО не отправлено). Поэтому и хук
+    # в библиотеку — ТОЛЬКО под этим же гейтом (иначе dry=False/commit=False
+    # записал бы фантом-карточки в общую память; dry пишет НИЧЕГО, LB1).
+    if not dry and commit:
+        syn = _sync_library(ctx, results, hsh)
+        if not syn.get("ok"):
+            print(f"  {_c('yel', '⚠')} библиотека не обновилась: {syn.get('note')}")
     # итог
     pass_n = sum(1 for r in results if r["verdict"] == "PASS")
     fail = [r for r in results if r["verdict"] == "FAIL"]

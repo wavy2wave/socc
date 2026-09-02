@@ -207,8 +207,13 @@ def load_film_products():
     return picked
 
 
-def build_product(p, pub_urls, index):
-    """Донор-строка → product-словарь ARBITER (схема ymarket_card.to_offer)."""
+def build_product(p, pub_urls, index, *, markup=None):
+    """Донор-строка → product-словарь ARBITER (схема ymarket_card.to_offer).
+
+    markup=None → модульная константа MARKUP (8.0, подтверждена оператором 2026-09-02);
+    markup=число → множитель МАНИФЕСТА магазина (профиль.markup — проводка: цена по манифесту,
+    владелец ЦЕНОВИК, L9). Ровно тот же результат при markup==MARKUP (обратносовместимо).
+    """
     pid = str(p.get("pid") or p.get("sku"))
     article = str(p.get("article") or "")
     cost = float(p.get("cost") or 0)
@@ -216,14 +221,15 @@ def build_product(p, pub_urls, index):
     if not article or not name or cost <= 0:
         return None
     ean = gen_ean13(article)
-    lo, _hi = C.propose_prices(cost, MARKUP, MARKUP)
+    mult = float(markup) if markup else MARKUP
+    lo, _hi = C.propose_prices(cost, mult, mult)
     facts = FILM_FACTS.get(pid)
     prod = {
         "sku": f"ARB-{ean[-8:]}",        # СВОЙ артикул продавца (уникален в кабинете)
         "name": name,                     # имя донора 1-в-1 (без потерь размера)
         "barcode": ean,                   # СВОЙ EAN-13 — главный рычаг анти-склейки
         "cost": cost,                     # закупка у донора (₽)
-        "price": round(lo),               # цена продажи: закупка ×8 (MARKUP, TUNABLE)
+        "price": round(lo),               # цена продажи: закупка ×markup (манифест/константа, L9)
         "article": article,               # артикул донора (только след, НЕ уходит в offer)
         "house_brand": HOUSE_BRAND,       # суффикс уникальности имени
         # ОБЯЗАТЕЛЬНОЕ «Бренд» категории (решение оператора 2026-09-02): ставим НАШ бренд ATLAS EDGE,

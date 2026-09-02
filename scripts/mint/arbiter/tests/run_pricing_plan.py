@@ -1,0 +1,237 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""ПРИЁМКА — ЦЕНОВИК·ПЛАН (ymarket_pricing_plan_v1). Сухо, 0₽, чистая математика над price_rules.
+
+Проверяем ЗАКОНЫ формы плана переценки, а не «запустилось»: разбор ПО КАРТОЧКЕ (offer_id +
+закупка + действующая + что поставить + якорь), provisional-честность (не подтверждённые
+доставка/комиссия = совет, не приказ), сортировка «что чинить сначала», якорь всегда выше
+рекомендованной. Эталон вердиктов — живая плёночная партия 2026-09-02 (закупка = скан донора,
+витрина = чтение). Никакой сети и записи.
+
+  PP1  empty_plan             — plan_cards([]) → [] без падения
+  PP2  ok_card_in_zone        — цена в зоне → OK, рекомендую == цена, gap == 0
+  PP3  raise_below_floor      — цена ниже пола КПИ → RAISE, рекомендую ≥ пола
+  PP4  sweet_below_zone       — прибыльно, но ниже сладкой зоны → SWEET, рекомендую в зоне
+  PP5  no_cost_honest         — без закупки → NO_COST, рекомендации НЕТ (не выдумываем)
+  PP6  provisional_flag       — без явных delivery/fee → provisional=True; с явными → False
+  PP7  crossed_above_recommended — якорь ВСЕГДА > рекомендованной (нет фальшивой скидки)
+  PP8  urgent_first           — сортировка: RAISE перед SWEET перед OK
+  PP9  real_film_2026-09-02   — живая партия 4 ARB → ровно те вердикты, что видел оператор
+  PP10 summary_counts         — сводка считает строки/вердикты/provisional
+  PP11 render_human           — таблица содержит offer_id+вердикт и баннер provisional; пусто → []
+"""
+from __future__ import annotations
+
+import os
+import sys
+from pathlib import Path
+
+HERE = Path(__file__).resolve().parent
+ARB = HERE.parent
+MINT = ARB.parent
+for p in (str(ARB), str(MINT)):
+    if p not in sys.path:
+        sys.path.insert(0, p)
+
+import ymarket_pricing_plan_v1 as P   # noqa: E402
+
+
+def _passed(c):
+    return "✅ PASS" if c else "❌ FAIL"
+
+
+# Живая партия 2026-09-02 16:40 (закупка = живой скан донора, витрина = чтение campaign_offers).
+_FILM = [
+    {"offer_id": "ARB-87309612", "cost": 700.0, "price": 5600},   # 700×8, в зоне
+    {"offer_id": "ARB-29846713", "cost": 600.0, "price": 4800},   # 600×8, в зоне
+    {"offer_id": "ARB-53416854", "cost": 170.0, "price": 1360},   # ×8, чуть ниже зоны → SWEET
+    {"offer_id": "ARB-87931769", "cost": 65.0, "price": 520},     # net 177 < КПИ → RAISE
+]
+
+
+def _row(cards, oid):
+    return next(x for x in P.plan_cards(cards) if x["offer_id"] == oid)
+
+
+def pp1_empty_plan():
+    rows = P.plan_cards([])
+    ok = rows == [] and P.summary(rows)["rows"] == 0
+    return ok, "plan_cards([]) → [] · summary.rows=0"
+
+
+def pp2_ok_card_in_zone():
+    x = _row(_FILM, "ARB-87309612")
+    ok = (x["verdict"] == "OK" and x["recommended"] == 5600 and x["gap"] == 0.0
+          and x["net"] is not None and x["net"] > 0)
+    return ok, f"verdict={x['verdict']} рекомендую={x['recommended']} gap={x['gap']} net={x['net']}"
+
+
+def pp3_raise_below_floor():
+    x = _row(_FILM, "ARB-87931769")
+    ok = (x["verdict"] == "RAISE" and x["recommended"] is not None
+          and x["recommended"] >= x["floor"] and x["gap"] > 0)
+    return ok, (f"verdict={x['verdict']} пол={x['floor']} рекомендую={x['recommended']} "
+                f"gap=+{x['gap']} net={x['net']} (net<КПИ → честный подъём до пола)")
+
+
+def pp4_sweet_below_zone():
+    x = _row(_FILM, "ARB-53416854")
+    z = x["zone"]
+    ok = (x["verdict"] == "SWEET" and z.get("low") is not None
+          and z["low"] <= x["recommended"] <= z["high"] and x["gap"] > 0)
+    return ok, (f"verdict={x['verdict']} зона={z.get('low')}–{z.get('high')} "
+                f"рекомендую={x['recommended']} (подъём в сладкую зону)")
+
+
+def pp5_no_cost_honest():
+    rows = P.plan_cards([{"offer_id": "ARB-X", "price": 1000}])
+    ok = (len(rows) == 1 and rows[0]["verdict"] == "NO_COST"
+          and rows[0]["recommended"] is None)
+    return ok, f"без закупки → {rows[0]['verdict']}, рекомендации нет (PP4: не выдумываем)"
+
+
+def pp6_provisional_flag():
+    r1 = P.plan_cards(_FILM)
+    r2 = P.plan_cards(_FILM, delivery=200.0, fee=0.15)
+    ok = (all(x["provisional"] for x in r1)
+          and all(not x["provisional"] for x in r2))
+    return ok, (f"без параметров: provisional={r1[0]['provisional']}; "
+                f"с явными delivery/fee: provisional={r2[0]['provisional']}")
+
+
+def pp7_crossed_above_recommended():
+    rows = P.plan_cards(_FILM)
+    ok = all(x.get("crossed") is not None and x["crossed"] > x["recommended"] for x in rows)
+    return ok, f"якорь > рекомендованной на всех {len(rows)} (нет фальшивой скидки, PP6)"
+
+
+def pp8_urgent_first():
+    rows = P.plan_cards(_FILM)
+    order = [x["verdict"] for x in rows]
+    ok = order[0] == "RAISE" and order[1] == "SWEET" and order[2:] == ["OK", "OK"]
+    return ok, f"порядок главности: {order} (чинить → держать)"
+
+
+def pp9_real_film_2026_09_02():
+    rows = P.plan_cards(_FILM)
+    got = {x["offer_id"]: x["verdict"] for x in rows}
+    want = {"ARB-87309612": "OK", "ARB-29846713": "OK",
+            "ARB-53416854": "SWEET", "ARB-87931769": "RAISE"}
+    ok = got == want
+    return ok, f"живая партия → {got} (совпадает с леджером 16:40: RAISE+SWEET, 2/4 в зоне)"
+
+
+def pp10_summary_counts():
+    s = P.summary(P.plan_cards(_FILM))
+    ok = (s["rows"] == 4 and s["by_verdict"] == {"OK": 2, "SWEET": 1, "RAISE": 1}
+          and s["urgent"] == {"RAISE": 1, "SWEET": 1} and s["provisional"] is True)
+    return ok, f"summary={s} (2 держим, 2 чинить, всё provisional)"
+
+
+def pp11_render_human():
+    lines = P.render_plan(P.plan_cards(_FILM))
+    txt = "\n".join(lines)
+    ok = (any("ARB-87931769" in l for l in lines)
+          and any("RAISE" in l for l in lines)
+          and "ПРОЕКТ" in txt and "не приказ" in txt
+          and P.render_plan([]) == [])
+    return ok, f"таблица {len(lines)} строк · баннер ПРОЕКТ есть · пустой план → []"
+
+
+# ── СЛОЙ «АКЦИИ» (PR12–PR17): решение {sku, value, discount_base}, ничего не пишет ──
+
+def pr12_promo_ok_payload():
+    """PR1/PR3: акция со снижением с реальной витринной → OK + готовый payload для trade."""
+    card = next(c for c in _FILM if c["offer_id"] == "ARB-29846713")
+    r = P.promo_card(card, sell=4200)          # regular умолч. = действующая витринная 4800 (PR2)
+    ok = (r["ok"] and r["verdict"] == "OK" and r["discount_pct"] == 12.5
+          and r["payload"] == {"sku": "ARB-29846713", "value": 4200.0,
+                               "discount_base": 4800.0})
+    return ok, (f"verdict={r['verdict']} скидка {r['discount_pct']}% payload="
+                f"{r['payload'] and list(r['payload'])}")
+
+
+def pr13_no_sell_no_invent():
+    """PR4: без цены распродажи → NO_SELL, не выдумываем (цена акции решает оператор)."""
+    card = next(c for c in _FILM if c["offer_id"] == "ARB-87309612")
+    r = P.promo_card(card, sell=None)
+    ok = (not r["ok"] and r["verdict"] == "NO_SELL" and r["payload"] is None)
+    return ok, f"verdict={r['verdict']} (sell не задан — payload нет)"
+
+
+def pr14_fake_anchor_refused():
+    """PR2: якорь ≤ продажи = «подъём под видом акции» → NOT_SALE (не рисуем скидку)."""
+    card = {"offer_id": "ARB-87931769", "cost": 65.0, "price": 520}
+    r = P.promo_card(card, sell=1200, regular=520)
+    ok = (not r["ok"] and r["verdict"] == "NOT_SALE" and "не скидка" in r["note"])
+    return ok, f"verdict={r['verdict']} · {r['note']}"
+
+
+def pr15_below_floor_refused():
+    """PR4: продажа ниже пола ЦЕНОВИКА → отказ (убыток запрещён, P1)."""
+    card = {"offer_id": "ARB-87931769", "cost": 65.0, "price": 520}
+    r = P.promo_card(card, sell=700, regular=900)     # пол 900 (net 330 < КПИ 500)
+    ok = (not r["ok"] and r["verdict"] == "BELOW_FLOOR"
+          and r["floor"] == 900 and "пола" in r["note"])
+    return ok, f"verdict={r['verdict']} пол={r['floor']} · {r['note']}"
+
+
+def pr16_range_gate():
+    """PR3: скидка вне 5–99% по правилу Маркета → DISCOUNT_RANGE."""
+    card = {"offer_id": "ARB-87309612", "cost": 700.0, "price": 5600}
+    r = P.promo_card(card, sell=4600, regular=4700)   # (4700−4600)/4700 ≈ 2.1% < 5%
+    ok = (not r["ok"] and r["verdict"] == "DISCOUNT_RANGE" and r["discount_pct"] == 2.1)
+    return ok, f"verdict={r['verdict']} скидка {r['discount_pct']}% (вне 5–99%)"
+
+
+def pr17_provisional_honest():
+    """PR6: пол/решение provisional без явных delivery/fee; с явными — confirmed."""
+    card = next(c for c in _FILM if c["offer_id"] == "ARB-53416854")
+    r_prov = P.promo_card(card, sell=1200)
+    r_cnf = P.promo_card(card, sell=1200, delivery=200, fee=0.15)
+    ok = (r_prov["ok"] and r_prov["provisional"] and "PROVISIONAL" in r_prov["note"]
+          and r_cnf["ok"] and not r_cnf["provisional"])
+    return ok, f"provisional без явных={r_prov['provisional']} · с явными={r_cnf['provisional']}"
+
+
+
+TESTS = [
+    ("PP1  empty_plan", pp1_empty_plan),
+    ("PP2  ok_card_in_zone", pp2_ok_card_in_zone),
+    ("PP3  raise_below_floor", pp3_raise_below_floor),
+    ("PP4  sweet_below_zone", pp4_sweet_below_zone),
+    ("PP5  no_cost_honest", pp5_no_cost_honest),
+    ("PP6  provisional_flag", pp6_provisional_flag),
+    ("PP7  crossed_above_recommended", pp7_crossed_above_recommended),
+    ("PP8  urgent_first", pp8_urgent_first),
+    ("PP9  real_film_2026_09_02", pp9_real_film_2026_09_02),
+    ("PP10 summary_counts", pp10_summary_counts),
+    ("PP11 render_human", pp11_render_human),
+    ("PR12 promo_ok_payload", pr12_promo_ok_payload),
+    ("PR13 no_sell_no_invent", pr13_no_sell_no_invent),
+    ("PR14 fake_anchor_refused", pr14_fake_anchor_refused),
+    ("PR15 below_floor_refused", pr15_below_floor_refused),
+    ("PR16 range_gate", pr16_range_gate),
+    ("PR17 provisional_honest", pr17_provisional_honest),
+]
+
+
+def main():
+    print("🎯 ПРИЁМКА · ЦЕНОВИК·ПЛАН (форма переценки для утверждения, 0₽, без сети)")
+    passed = 0
+    for name, fn in TESTS:
+        try:
+            ok, detail = fn()
+        except Exception as e:
+            ok, detail = False, f"исключение: {type(e).__name__}: {e}"
+        print(f"   {_passed(ok)} {name:<30} {detail}")
+        passed += 1 if ok else 0
+    print(f"\nИтого: {passed}/{len(TESTS)} PASS")
+    if passed == len(TESTS):
+        print("✅ План честен: вердикты делегированы price_rules (одна правда), цифры "
+              "provisional до слова оператора, якорь всегда выше рекомендованной, RUBICON цел.")
+    return 0 if passed == len(TESTS) else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())
