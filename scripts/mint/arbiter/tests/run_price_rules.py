@@ -632,6 +632,31 @@ def pr41_sweet_band_sibling_gate():
     return ok_all, " · ".join(detail) + " (битый sibling зоны → None, крэша/вранья нет)"
 
 
+def pr42_floor_net_vs_shelf():
+    # Нюанс-замок (найден mutation-пробой): пол-ПОЛКА floor_price округляется ВВЕРХ до 50₽ (cost=50 →
+    # 900), а безубыточность НИЖЕ (~882.35: net ровно 500). Решает net, НЕ полка: floor_hit ok = net>=tp
+    # (P1/P4), а НЕ цена>=округлённой полки. Цена в [безубыток, полка), напр. 890 (net 506.5), ПРИБЫЛЬНА
+    # и обязана быть OK, а не BELOW_FLOOR. Без этого теста «упрощение» floor_hit до price-based прошло бы
+    # все 41 приёмки зелёными, но вердикт врал бы: RAISE уже-прибыльному товару до полки 900 (лишний
+    # подъём витрины). Поймано пробой: подмена `net>=tp` → `net>=tp AND price>=fl` НЕ красила приёмку.
+    D, F = 200.0, 0.15
+    fl = pr.floor_price(50, target_profit=500, delivery=D, fee=F)
+    if not fl == 900.0:
+        return False, f"пол(50)= {fl} (ждём полку 900 при доставке 200/комиссии 15%)"
+    h = pr.floor_hit(890, 50, target_profit=500, delivery=D, fee=F)
+    if not (890 < fl):
+        return False, f"контроль: 890 < полки {fl} не выполнен — сценарий не тот"
+    if not (h["ok"] and h["verdict"] == "OK" and h.get("net", 0) >= 500.0):
+        return False, (f"floor_hit(890,50)= ok {h['ok']}/{h['verdict']} net={h.get('net')} — "
+                       f"цена прибыльна по net, но НИЖЕ полки {fl}: обязана быть OK, не RAISE (P1/P4)")
+    heq = pr.floor_hit(882.35, 50, target_profit=500, delivery=D, fee=F)
+    hlow = pr.floor_hit(880, 50, target_profit=500, delivery=D, fee=F)
+    if not (heq["ok"] and not hlow["ok"] and hlow["verdict"] == "BELOW_FLOOR"):
+        return False, f"граница: 882.35 ok={heq['ok']} · 880 ok={hlow['ok']} v={hlow['verdict']}"
+    return True, ("полка 900 при безубыточности 882.35; цена 890 (net 506.5) → OK по net, НЕ RAISE до "
+                  "полки; 880 → BELOW_FLOOR · 882.35 → OK")
+
+
 TESTS = [
     ("PR1  net_profit_formula", pr1_net_profit_formula),
     ("PR2  net_none_on_bad_input", pr2_net_none_on_bad_input),
@@ -674,6 +699,7 @@ TESTS = [
     ("PR39 crossed_sibling_gate", pr39_crossed_sibling_gate),
     ("PR40 kpi_target_net_gate", pr40_kpi_target_net_gate),
     ("PR41 sweet_band_sibling_gate", pr41_sweet_band_sibling_gate),
+    ("PR42 floor_net_vs_shelf", pr42_floor_net_vs_shelf),
 ]
 
 
