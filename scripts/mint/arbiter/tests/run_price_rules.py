@@ -29,6 +29,16 @@
   PR21 above_zone_honest         — цена выше зоны (но прибыльна) → OK «держим», флаги above_zone/over_ceiling,
                                    НЕ врём «в зоне» и НЕ авто-снижаем (решение оператора, #14)
   PR22 net_3decimal_exact        — цена с 3-м десятичным знаком цела: net 430.01, не 430.02 (1 округление, #14)
+  PR34 net_huge_finite_honest    — #21(F9): net на ОГРОМНОЙ конечной математике — конечный float,
+                                   НЕ None (Decimal.quantize 28 знаков → InvalidOperation врал NA/RAISE)
+  PR35 bool_channel_honest       — #21(F1/F3): bool (JSON true) в любом слоте канала — НЕ «закупка 1₽»:
+                                   net/пол/зона/якорь → None, floor_hit → NA, recommend → NO_COST
+  PR36 floor_never_inf           — #21(F2): пол обязан быть конечным; int·float на границе 1.5e308…
+                                   не даёт inf/nan/крэш — либо конечный >0, либо None
+  PR37 target_garbage_bad_params — #21(F5): цель КПИ 'abc'/nan/0/−5 в recommend/floor_hit → BAD_PARAMS
+                                   (пол по «дефолту» не выдумываем); строка-'500' и None работают
+  PR38 floor_hit_scale_honest    — #21(F10): 1e300 → BELOW_FLOOR с конечным net/полом; 1.6e308 →
+                                   пол переполняет float → NA (НЕ BAD_PARAMS про конфиг оператора)
 """
 from __future__ import annotations
 
@@ -399,6 +409,92 @@ def pr33_floor_price_bad_siblings():
     return True, "битые цель/шаг ('abc'/0/-1/nan/inf) → пол None, None-цель и '500' → 1200 (контроль)"
 
 
+def pr34_net_huge_finite_honest():
+    # #21 (F9): общий корень — net_profit на ОГРОМНОЙ но КОНЕЧНОЙ математике падал в
+    # Decimal.quantize (точность контекста 28 знаков < масштаба) → InvalidOperation → возвращал
+    # None → floor_hit честно «не знал» числа и ЛГАЛ на закупке масштаба 1e26+ (NA / RAISE-совет
+    # вместо числовой правды). Копеечное округление на этой шкале бессмысленно — честный конечный
+    # float (fallback на Decimal, без крэша).
+    import math
+    v = pr.net_profit(1e27, 100, delivery=_D, fee=_F)      # 8.5e26 — огромный КОНЕЧНЫЙ net
+    ok = (isinstance(v, float) and math.isfinite(v) and v > 0
+          and abs(v - 8.5e26) / 8.5e26 < 1e-6)
+    if not ok:
+        return False, f"net(1e27,100)= {v!r} (ждём конечный ~8.5e26, НЕ None — иначе враньё NA/RAISE)"
+    v2 = pr.net_profit(1300, 1e300, delivery=_D, fee=_F)   # −1e300 — реальный огромный убыток
+    ok = (v2 is not None and math.isfinite(v2) and v2 < 0 and abs(v2 + 1e300) / 1e300 < 1e-6)
+    return ok, (f"net(1e27,100)= {v:g} · net(1300,1e300)= {v2:g} — конечные числа, НЕ None"
+                f" (огромная закупка больше не врёт вердикту)")
+def pr35_bool_channel_honest():
+    # #21 (F1/F3): bool (JSON true/false) — НЕ число, а подкласс int: float(True)=1.0 ложно
+    # проходил isfinite>0 и строил закупку/пол/зону/якорь «от 1₽». Теперь bool в ЛЮБОМ слоте
+    # ценового канала → честный отказ: None/NA/NO_COST (гейты ниже), не карточка cost=1.
+    bad = [(pr.net_profit(True, 300, delivery=_D, fee=_F), "net price=True"),
+           (pr.net_profit(1300, True, delivery=_D, fee=_F), "net cost=True"),
+           (pr.net_profit(1300, 300, delivery=_D, fee=True), "net fee=True"),
+           (pr.floor_price(True, delivery=_D, fee=_F), "floor cost=True"),
+           (pr.sweet_band(True), "sweet_band(True)"),
+           (pr.crossed_price(True), "crossed_price(True)")]
+    for v, tag in bad:
+        if v is not None:
+            return False, f"{tag} → {v!r} (ждём None, не «закупка 1₽»)"
+    h = pr.floor_hit(True, True, delivery=_D, fee=_F)
+    r = pr.recommend(True, delivery=_D, fee=_F)
+    ok = (h['verdict'] == 'NA' and not h['ok'] and h.get('net') is None
+          and r['verdict'] == 'NO_COST' and not r['ok'])
+    return ok, ("net/пол/зона/якорь на bool → None · floor_hit(True,True) → NA "
+                "· recommend(True) → NO_COST (bool — не число, не 1₽)")
+def pr36_floor_never_inf():
+    # #21 (F2): пол обязан быть КОНЕЧНЫМ. Огромная конечная cost + float-step: int·float
+    # переполняла float → inf утекал после всех гейтов (враньё для сравнений / крэш). Гейт
+    # isfinite(res): не-конечный пол → честно None. Прогон границы 1.5e308…1.7e308 (и строкой):
+    # либо конечный >0, либо None — НИКОГДА inf/nan, без сырого крэша.
+    import math
+    for c in (1.5e308, 1.51e308, 1.52e308, 1.53e308, 1.55e308, 1.6e308, 1.7e308, '1.53e308'):
+        try:
+            v = pr.floor_price(c, delivery=_D, fee=_F)
+        except Exception as e:
+            return False, f"floor_price({c!r}) → {type(e).__name__}: {e} (ждём None/конечный)"
+        if v is not None and not (isinstance(v, (int, float)) and math.isfinite(v) and v > 0):
+            return False, f"floor_price({c!r}) = {v!r} — НЕКОНЕЧНЫЙ/≤0 пол (враньё)"
+    ok = (pr.floor_price(1.5e308, delivery=_D, fee=_F) is not None
+          and pr.floor_price(1.6e308, delivery=_D, fee=_F) is None)
+    return ok, "граница 1.5e308 → конечный пол, 1.6e308 → None; ни inf ни nan ни крэша"
+def pr37_target_garbage_bad_params():
+    # #21 (F5): цель КПИ (target_profit) НЕ валидировалась в recommend/floor_hit: 'abc' → сырой
+    # TypeError, 0/−5 молча строили пол не по политике, nan проходил сравнения. Цель обязана быть
+    # конечной >0 — иначе честный BAD_PARAMS (P7), пол по «дефолту» не выдумываем (это врало бы
+    # оператору, что закупка не проходит КПИ, когда цель просто бита).
+    base = dict(delivery=_D, fee=_F)
+    for tp in ('abc', float('nan'), 0, -5):
+        r = pr.recommend(300, current_price=1000, target_profit=tp, **base)
+        if r['verdict'] != 'BAD_PARAMS' or r['ok'] or r.get('recommended') is not None:
+            return False, f"recommend target={tp!r} → verdict={r['verdict']} ok={r['ok']} (ждём BAD_PARAMS)"
+        h = pr.floor_hit(1300, 300, target_profit=tp, **base)
+        if h['verdict'] != 'BAD_PARAMS' or h['ok']:
+            return False, f"floor_hit target={tp!r} → {h['verdict']} (ждём BAD_PARAMS)"
+    for tp in ('500', None):                       # строка-число и None-дефолт → работают (контроль)
+        r = pr.recommend(300, current_price=1000, target_profit=tp, **base)
+        if r['verdict'] != 'RAISE' or r['recommended'] != 1200:
+            return False, f"recommend target={tp!r} → {r['verdict']} {r.get('recommended')} (ждём RAISE→1200)"
+    return True, "битая цель ('abc'/nan/0/−5) → BAD_PARAMS без пола; '500' и None → RAISE 1200 (контроль)"
+def pr38_floor_hit_scale_honest():
+    # #21 (F10): закупка конечна, но пол на её шкале переполняет float (cost ~1.6e308): fl=None
+    # раньше врал BAD_PARAMS «конфиг оператора бит» — параметры ЦЕЛЫ, виноват масштаб → честный NA
+    # (P8). На 1e300 пол ещё конечен (1.176e300) → честный BELOW_FLOOR с конечным net, НЕ NO_COST и
+    # НЕ NA — семейная грань #19 (реально огромная закупка, но числа считаются).
+    v = pr.floor_hit(1500, 1e300, delivery=_D, fee=_F)
+    ok = (not v['ok'] and v['verdict'] == 'BELOW_FLOOR' and v.get('floor') is not None
+          and v.get('net') is not None and v['net'] < 0)
+    if not ok:
+        return False, f"floor_hit(1500,1e300)= {v} (ждём BELOW_FLOOR, конечный net/пол)"
+    w = pr.floor_hit(1500, 1.6e308, delivery=_D, fee=_F)
+    ok = (not w['ok'] and w['verdict'] == 'NA' and w.get('floor') is None
+          and w.get('net') is not None and w['verdict'] != 'BAD_PARAMS')
+    return ok, ("1e300 → BELOW_FLOOR (пол 1.176e300 конечен, net −1e300) · "
+                "1.6e308 → NA (пол переполняет float), НЕ BAD_PARAMS про конфиг")
+
+
 TESTS = [
     ("PR1  net_profit_formula", pr1_net_profit_formula),
     ("PR2  net_none_on_bad_input", pr2_net_none_on_bad_input),
@@ -433,6 +529,11 @@ TESTS = [
     ("PR31 crossed_price_huge_none", pr31_crossed_price_huge_none),
     ("PR32 recommend_huge_finite_no_crash", pr32_recommend_huge_finite_no_crash),
     ("PR33 floor_price_bad_siblings", pr33_floor_price_bad_siblings),
+    ("PR34 net_huge_finite_honest", pr34_net_huge_finite_honest),
+    ("PR35 bool_channel_honest", pr35_bool_channel_honest),
+    ("PR36 floor_never_inf", pr36_floor_never_inf),
+    ("PR37 target_garbage_bad_params", pr37_target_garbage_bad_params),
+    ("PR38 floor_hit_scale_honest", pr38_floor_hit_scale_honest),
 ]
 
 

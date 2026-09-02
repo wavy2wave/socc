@@ -317,10 +317,25 @@ def build_product(p, pub_urls, index, *, markup=None):
         prod["_spec"] = _build_spec(facts)
         prod["description"] = _build_description(facts)
         prod["manufacturerCountries"] = ["RU"]
-    # weightDimensions: ВСЕ четыре, иначе честно None (не выдумываем)
+    # weightDimensions: ВСЕ четыре честно (есть, число-не-bool, конечны, >0) — иначе НЕ выдумываем.
+    # #21 (F7): float(p['length']) без гейта ронял партию СЫРЫМ ValueError ('abc') / OverflowError
+    # (10**400, строка '1e400'), а inf проходил `> 0` и утекал в weightDimensions (пейлоад с инф).
+    # Битый/огромный габарит → карточка без weightDimensions (как строка без article/name), не крэш.
     keys = ("length", "width", "height", "weight")
-    if all(p.get(k) and float(p.get(k)) > 0 for k in keys):
-        prod["weightDimensions"] = {k: float(p[k]) for k in keys}
+    dims = {}
+    for k in keys:
+        v = p.get(k)
+        if isinstance(v, bool) or v is None:
+            break
+        try:
+            x = float(v)
+        except (TypeError, ValueError, OverflowError):
+            break
+        if not math.isfinite(x) or x <= 0:
+            break
+        dims[k] = x
+    if len(dims) == len(keys):
+        prod["weightDimensions"] = dims
     return prod
 
 

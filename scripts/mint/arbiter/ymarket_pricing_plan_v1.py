@@ -196,16 +196,23 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
     sku = (card or {}).get("offer_id") or (card or {}).get("sku")
     cost = (card or {}).get("cost")
     cur = (card or {}).get("price")
+    # #21: bool (JSON true/false) — тип-коррупция как bool-cost (#16/#19): float(True)=1.0 ложно
+    # «давал закупку/цену» и строил акцию cost=1/якорь=1 (враньё). bool → None: гейты ниже честно
+    # откажут (NO_COST/NO_PRICE).
+    cost = None if isinstance(cost, bool) else cost
+    cur = None if isinstance(cur, bool) else cur
     try:
         cost = float(cost) if cost is not None else None
     except (TypeError, ValueError, OverflowError):    # #16: float(10**400) → OverflowError
         cost = None
+    sell = None if isinstance(sell, bool) else sell    # #21: bool-sell — не цена распродажи
     try:
         sell = float(sell)
     except (TypeError, ValueError, OverflowError):
         sell = None
     explicit_regular = regular is not None            # якорь задан ЯВНО (выдержанная цена)
     if explicit_regular:
+        regular = None if isinstance(regular, bool) else regular   # #21: bool-якорь не цена
         try:
             regular = float(regular)
         except (TypeError, ValueError, OverflowError):
@@ -232,6 +239,14 @@ def promo_card(card, *, sell, regular=None, delivery=None, fee=None, target_prof
     if cost is None or not math.isfinite(cost) or cost <= 0:
         return {**base, "ok": False, "verdict": "NO_COST",
                 "note": "закупка неизвестна/≤0 → пол не посчитать, акция невозможна честно (P2/PR5)"}
+    # #21 (F10): закупка конечна, но за пределами честной ценовой ШКАЛЫ акции — ТА же грань, где
+    # recommend (#19) отказывает (зона cost×hi переполняет float / сумма границ > floatmax): это
+    # НЕ «продажа ниже пола» (пола на этой шкале нет) и НЕ «конфиг оператора бит» (параметры целы)
+    # — мусорная закупка масштаба → честный NO_COST (P8). Реальная закупка ≤ ~1e5 — вне зоны риска.
+    _band = R.sweet_band(cost)
+    if _band is None or not math.isfinite(float(_band["low"]) + float(_band["high"])):
+        return {**base, "ok": False, "verdict": "NO_COST",
+                "note": "закупка за пределами честной ценовой шкалы (переполняет float) — акцию не выдумываем (P8)"}
     if sell is None or not math.isfinite(sell) or sell <= 0:
         return {**base, "ok": False, "verdict": "NO_SELL",
                 "note": "цена распродажи не задана/не конечна/≤0 — не выдумываем (PR4)"}

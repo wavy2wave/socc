@@ -324,6 +324,42 @@ def pp24_nan_inf_sell_regular_honest():
     return True, "nan/inf sell → NO_SELL, nan/inf regular → NO_PRICE (нет −nan%), контроль OK 16.67% цел"
 
 
+def pp25_promo_huge_cost_scale_honest():
+    # #21 (F10): закупка конечна, но за пределами честной ценовой ШКАЛЫ акции (cost ~1e307: зона
+    # cost×hi переполняет float / сумма границ > floatmax) — ТА же грань, где recommend (#19)
+    # отказывает NO_COST: это НЕ «продажа ниже пола» (пола на шкале нет) и НЕ «конфиг оператора
+    # бит» (параметры целы) → честный NO_COST (P8), не крэш батча. cost=1e300 (шкала ещё конечна,
+    # пол 1.176e300) → BELOW_FLOOR с конечным полом — семейная грань #19 (реально огромная закупка,
+    # но числа считаются).
+    r = P.promo_card({"offer_id": "X", "cost": 1e307, "price": 1e308}, sell=1e306, regular=1e308)
+    if not (not r["ok"] and r["verdict"] == "NO_COST" and r["payload"] is None):
+        return False, f"cost=1e307 → {r['verdict']} (ждём NO_COST — шкала переполнена, payload нет)"
+    r2 = P.promo_card({"offer_id": "Y", "cost": 1e300, "price": 1e301}, sell=1e299, regular=1e301)
+    ok = (not r2["ok"] and r2["verdict"] == "BELOW_FLOOR" and r2["payload"] is None
+          and r2.get("floor") is not None and r2.get("net_at_sell") is not None)
+    return ok, (f"1e307 → NO_COST (шкала переполнена) · 1e300 → BELOW_FLOOR пол {r2.get('floor'):g} — "
+                f"ни крэша, ни «конфиг оператора бит»")
+
+
+def pp26_promo_bool_honest():
+    # #21 (F8): bool cost/sell/regular (JSON true/false) — float(True)=1.0 строил акцию cost=1 /
+    # якорь=1 / «скидку» от выдуманных чисел (враньё). Теперь bool в ЛЮБОМ слоте → честный отказ:
+    # cost → NO_COST (закупки нет), sell → NO_SELL (цену распродажи не выдумываем), regular → NO_PRICE
+    # (якоря нет); payload от bool НИКОГДА не строится. Плюс путь плана: карточка с bool-cost →
+    # NO_COST (вердикт recommend), партия жива.
+    card = {"offer_id": "X", "cost": 700.0, "price": 5600}
+    tests = [(P.promo_card({"offer_id": "A", "cost": True, "price": 500}, sell=400), "NO_COST"),
+             (P.promo_card(card, sell=True, regular=5600), "NO_SELL"),
+             (P.promo_card(card, sell=4400, regular=True), "NO_PRICE")]
+    for r, want in tests:
+        if r["verdict"] != want or r["ok"] or r["payload"] is not None:
+            return False, f"bool → verdict={r['verdict']} ok={r['ok']} (ждём {want}, payload нет)"
+    rows = P.plan_cards([{"offer_id": "B", "cost": True, "price": 500}])
+    if not (len(rows) == 1 and rows[0]["verdict"] == "NO_COST"):
+        return False, f"план с bool-cost → {rows and rows[0].get('verdict')} (ждём NO_COST)"
+    return True, "bool cost/sell/regular → NO_COST/NO_SELL/NO_PRICE (payload нет), план жив"
+
+
 TESTS = [
     ("PP1  empty_plan", pp1_empty_plan),
     ("PP2  ok_card_in_zone", pp2_ok_card_in_zone),
@@ -349,6 +385,8 @@ TESTS = [
     ("PP22 batch_nan_cost_no_crash", pp22_batch_nan_cost_no_crash),
     ("PP23 bad_price_no_crash", pp23_bad_price_no_crash),
     ("PP24 nan_inf_sell_regular_honest", pp24_nan_inf_sell_regular_honest),
+    ("PP25 promo_huge_cost_scale_honest", pp25_promo_huge_cost_scale_honest),
+    ("PP26 promo_bool_honest", pp26_promo_bool_honest),
 ]
 
 

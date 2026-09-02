@@ -42,18 +42,30 @@ NORM_LO, NORM_HI = 5.0, 8.0      # P6: обычная зона
 
 # ── КПИ: чистый профит после доставки (P1) ─────────────────────────────────────
 
+def _f(x):
+    """Один чок-поинт числа ценового канала (#21): bool (JSON true/false) — НЕ число, а подкласс
+    int: float(True)=1.0 ложно проходил isfinite>0 и строил цену/пол/зону/акцию от выдуманной
+    «закупки 1₽». Битое/огромное (10**400 → OverflowError, 'abc' → ValueError) и bool → nan:
+    существующие isfinite-гейты честно откажут. СТРОКИ-ЧИСЛА ('0.15','1300','500') ПАРСЯТСЯ —
+    контракт #16: мусор ≠ число, но число строкой валидно (канал из JSON/донора)."""
+    if isinstance(x, bool):
+        return float("nan")
+    try:
+        return float(x)
+    except (TypeError, ValueError, OverflowError):
+        return float("nan")
+
+
 def _resolve_io(delivery, fee):
     """Дефолты доставки/комиссии ТОЛЬКО если не переданы явно (None-sentinel). Возвращает
     (delivery, fee, provisional): provisional=True значит «считано на НЕподтверждённых
     оператором TUNABLE-дефолтах» — такой вердикт совет, а не приговор (см. recommend)."""
     d = DELIVERY_DEFAULT if delivery is None else delivery
     f = FEE_DEFAULT if fee is None else fee
-    try:
-        return float(d), float(f), (delivery is None) or (fee is None)
-    except (TypeError, ValueError, OverflowError):
-        # #16: битые доставка/комиссия (10**400 → OverflowError, 'abc' → ValueError) не должны
-        # крэшить формулу — nan провалит гейты `0 < f < 1` / `d < 0` / isfinite у вызывающих.
-        return float("nan"), float("nan"), (delivery is None) or (fee is None)
+    # #16/#21: битые доставка/комиссия (10**400 → OverflowError, 'abc' → ValueError, bool → 1.0)
+    # не должны крэшить формулу или «давать комиссию 1.0»: _f → nan провалит гейты `0 < f < 1` /
+    # `d < 0` / isfinite у вызывающих.
+    return _f(d), _f(f), (delivery is None) or (fee is None)
 
 
 def net_profit(price, cost, *, delivery=None, fee=None):
@@ -64,20 +76,30 @@ def net_profit(price, cost, *, delivery=None, fee=None):
     теряется (price 800.015 → net 430.01, а НЕ 430.02 — старое пред-округление цены
     до копейки роняло полкопейки и сдвигало net). Честно: цена/закупка ≤0, NaN/inf или
     fee вне (0,1) → None (не выдумываем, P8)."""
+    price, cost = _f(price), _f(cost)
+    # #16: nan/inf ЛОЖНО проходят `<= 0` (nan<=0 == False) и утекали в Decimal-арифметику
+    # как nan → floor_hit врал «net nan < пола». #21: bool — не число (float(True)=1.0 ложно
+    # давал «закупку 1₽»). Только КОНЕЧНОЕ положительное — честный net.
+    if not math.isfinite(price) or not math.isfinite(cost) or price <= 0 or cost <= 0:
+        return None
+    d, f, _ = _resolve_io(delivery, fee)
+    if (not (0 < f < 1) or d < 0
+            or not math.isfinite(d) or not math.isfinite(f)):
+        return None
     try:
-        price, cost = float(price), float(cost)
-        # #16: nan/inf ЛОЖНО проходят `<= 0` (nan<=0 == False) и утекали в Decimal-арифметику
-        # как nan → floor_hit врал «net nan < пола». Только КОНЕЧНОЕ положительное — честный net.
-        if not math.isfinite(price) or not math.isfinite(cost) or price <= 0 or cost <= 0:
-            return None
-        d, f, _ = _resolve_io(delivery, fee)
-        if (not (0 < f < 1) or d < 0
-                or not math.isfinite(d) or not math.isfinite(f)):
-            return None
         from decimal import Decimal, ROUND_HALF_EVEN
         net = Decimal(str(price)) * (Decimal("1") - Decimal(str(f))) \
             - Decimal(str(cost)) - Decimal(str(d))
-        return float(net.quantize(Decimal("0.01"), rounding=ROUND_HALF_EVEN))
+        try:
+            return float(net.quantize(Decimal("0.01"), rounding=ROUND_HALF_EVEN))
+        except (ArithmeticError, ValueError):
+            # #21 (F9/F10): копеечное округление ОГРОМНОГО конечного net требует коэффициент
+            # >28 знаков → quantize кидает InvalidOperation (ArithmeticError) и весь net_profit
+            # возвращал None → floor_hit/promo_card/recommend ВРАЛИ (RAISE/NA/BAD_PARAMS «закупка
+            # не дана» при честно огромном net). На таком масштабе копейки бессмысленны — честен
+            # сам конечный net. Не конечен при float() (переполнение) → честно None.
+            q = float(net)
+            return q if math.isfinite(q) else None
     except (TypeError, ValueError, ArithmeticError):
         return None
 
@@ -85,13 +107,11 @@ def net_profit(price, cost, *, delivery=None, fee=None):
 def floor_price(cost, *, target_profit=NET_FLOOR, delivery=None, fee=None,
                 step=50):
     """P3: минимальная цена, дающая target_profit чистыми: (cost + delivery + target)/(1−fee), вверх до step."""
-    try:
-        cost = float(cost)
-        # #16: нан/inf (nan<=0 ложно) или огромная cost крэшили int(math.ceil()) сырым
-        # OverflowError. Пол обязан быть КОНЕЧНЫМ числом — иначе честно None.
-        if not math.isfinite(cost) or cost <= 0:
-            return None
-    except (TypeError, ValueError, OverflowError):   # float(10**400) → OverflowError, не ValueError
+    cost = _f(cost)
+    # #16: нан/inf (nan<=0 ложно) или огромная cost крэшили int(math.ceil()) сырым
+    # OverflowError. #21: bool-cost (JSON true) — не число (float(True)=1.0 строил пол от
+    # «закупки 1₽»). Пол обязан быть КОНЕЧНЫМ числом — иначе честно None.
+    if not math.isfinite(cost) or cost <= 0:
         return None
     d, f, _ = _resolve_io(delivery, fee)
     if (not (0 < f < 1) or d < 0
@@ -102,11 +122,9 @@ def floor_price(cost, *, target_profit=NET_FLOOR, delivery=None, fee=None,
     # ZeroDivision, step=inf → 0·inf = НАН утекал наружу (враньё), step=nan → ceil(nan). Цель КПИ
     # и шаг полки обязаны быть конечными >0 — иначе пол честно не посчитан (None, P8).
     # None-цель = модульный дефолт (как `or`-идиома у recommend).
-    try:
-        tp = float(NET_FLOOR if target_profit is None else target_profit)
-        st = float(step)
-    except (TypeError, ValueError, OverflowError):
-        return None
+    tp = _f(NET_FLOOR if target_profit is None else target_profit)
+    st = _f(step)
+    # #21: bool-цель/шаг (JSON true → 1.0) — не число политики; битое/огромное _f сводит к nan.
     if not math.isfinite(tp) or tp <= 0 or not math.isfinite(st) or st <= 0:
         return None
     raw = (cost + d + tp) / (1 - f)
@@ -116,7 +134,10 @@ def floor_price(cost, *, target_profit=NET_FLOOR, delivery=None, fee=None,
     if not math.isfinite(q):
         return None                            # → int(ceil(inf)) падал сырым OverflowError; честно None
     # вверх к «круглому» шагу (50₽) — торговая полка, не дробный копеечный минимум
-    return int(math.ceil(q)) * st
+    res = int(math.ceil(q)) * st
+    # #21 (F2): огромная конечная cost + float-step: int·float переполняла float → inf утекал
+    # после всех гейтов как НЕКОНЕЧНЫЙ пол (враньё/крэш у сравнений). Пол обязан быть конечным.
+    return None if not math.isfinite(res) else res
 
 
 def floor_hit(price, cost, *, target_profit=NET_FLOOR, delivery=None, fee=None):
@@ -128,15 +149,17 @@ def floor_hit(price, cost, *, target_profit=NET_FLOOR, delivery=None, fee=None):
     # строка-цена '1300' доходила до gap `fl - price` → TypeError (1200 - '1300'), а строка-цель
     # '500' чинилась ТОЛЬКО внутри floor_price, но сравнение net шло с СЫРОЙ целью. Всё парсим
     # КАК net_profit (float + isfinite + >0): строка-число работает, битое/огромное → честный вердикт.
-    try:
-        price_f, cost_f = float(price), float(cost)
-        tp = float(NET_FLOOR if target_profit is None else target_profit)
-    except (TypeError, ValueError, OverflowError):
-        price_f = cost_f = tp = float("nan")
+    price_f, cost_f = _f(price), _f(cost)
+    tp = _f(NET_FLOOR if target_profit is None else target_profit)
     if not (math.isfinite(price_f) and price_f > 0
             and math.isfinite(cost_f) and cost_f > 0):
         return {"ok": False, "verdict": "NA", "provisional": prov,
                 "note": "цена/закупка не даны честно (P8)"}
+    if not (math.isfinite(tp) and tp > 0):
+        # #21: цель КПИ бита (bool/строка-не-число/≤0/не конечна) — параметр политики, а не данные
+        # цены: пол не считаем по ПРИЧИНЕ цели (P7), НЕ «закупка не дана» (иначе врало бы про P8).
+        return {"ok": False, "verdict": "BAD_PARAMS", "provisional": prov,
+                "note": "цель КПИ не дана честно (≤0/не конечна/не число) — пол не считаем (P7)"}
     # Параметры биты (fee вне (0,1) / доставка <0) при ВАЛИДНОЙ закупке → BAD_PARAMS с честной
     # причиной, а НЕ NA. net_profit на fee=1.0 вернул бы None по ПРИЧИНЕ параметров, и нижний
     # `if net is None` соврал бы «цена/закупка не даны» (P8-причина, которой нет). Тот же вердикт,
@@ -151,8 +174,11 @@ def floor_hit(price, cost, *, target_profit=NET_FLOOR, delivery=None, fee=None):
                 "note": "цена/закупка не даны честно (P8)"}
     fl = floor_price(cost_f, target_profit=tp, delivery=d, fee=f)
     if fl is None:
-        return {"ok": False, "verdict": "BAD_PARAMS", "provisional": prov,
-                "note": "цель КПИ/параметры биты — пол не считаем (P7/P8)",
+        # Цель/параметры уже гейтнуты выше → fl=None здесь значит: закупка так велика, что пол
+        # переполнил float (#21 F10). Это НЕ BAD_PARAMS про конфиг оператора (его параметры целы) —
+        # честно: на этой шкале пол не посчитать (P8). net несём как есть (конечен после #21).
+        return {"ok": False, "verdict": "NA", "provisional": prov,
+                "note": "закупка за пределами честной ценовой шкалы — пол переполняет float (P8)",
                 "net": net}
     gap = max(0.0, round(fl - price_f, 2))
     if net >= tp:
@@ -178,14 +204,21 @@ def sweet_band(cost, *, lo=SWEET_LO, hi=SWEET_HI, floor=None, ceil_mult=CEIL_MUL
     Потолок ×ceil_mult ограничивает только сверху и ТОЛЬКО когда не ломает пол (иначе маленький
     товар с фиксированной доставкой просто не смог бы быть прибыльным). Битый cost → None (P8).
     """
+    cost = _f(cost)
+    # #16: нан/inf крэшили _round_up; #21: bool-cost (JSON true) — не число (float(True)=1.0 давал
+    # «зону ×8 от закупки 1₽» — враньё). Битый/неконечный/неположительный cost → None (P8).
+    if not math.isfinite(cost) or cost <= 0:
+        return None
     try:
-        cost = float(cost)
-        # #16: нан/inf (nan<=0 ложно) крэшили _round_up(int(math.ceil(nan))) → честно None (P8).
-        if not math.isfinite(cost) or cost <= 0 or lo <= 0 or hi < lo:
+        lo, hi = float(lo), float(hi)
+        if lo <= 0 or hi < lo:
             return None
     except (TypeError, ValueError, OverflowError):
         return None
-    fl = float(floor) if floor else 0.0
+    try:
+        fl = float(floor) if floor else 0.0
+    except (TypeError, ValueError, OverflowError):
+        return None
     if not math.isfinite(fl):
         return None
     low_raw = max(cost * lo, fl)
@@ -208,11 +241,9 @@ def sweet_band(cost, *, lo=SWEET_LO, hi=SWEET_HI, floor=None, ceil_mult=CEIL_MUL
 
 def crossed_price(sell_price, *, min_gap=600, mult=1.25, step=100):
     """P5: зачёркнутая цена-якорь на витрине. Всегда выше sell: sell·mult, но не менее sell+min_gap."""
-    try:
-        sell_price = float(sell_price)
-        if not math.isfinite(sell_price) or sell_price <= 0:
-            return None
-    except (TypeError, ValueError, OverflowError):
+    sell_price = _f(sell_price)
+    # #21: bool-цена — не число (float(True)=1.0 строил якорь от «цены 1₽»). Честно None (P8).
+    if not math.isfinite(sell_price) or sell_price <= 0:
         return None
     anchor = max(sell_price * mult, sell_price + min_gap)
     # #16-residual: sell конечна, но sell×1.25 переполняет float (→ inf) для sell ≳ 1.4e308 →
@@ -227,10 +258,8 @@ def _mid(a, b):
     # #16-residual: зона настолько велика, что (a+b)/2.0 переполняет float (сумма int-ов > floatmax
     # → int/float-деление кидает OverflowError, не inf). Середины честно нет → None (рекомендую
     # не выдумываем). Recommend выше отказывает таким зонам до _mid — тут страховка прямых вызовов.
-    try:
-        mid = (float(a) + float(b)) / 200.0
-    except (TypeError, ValueError, OverflowError):
-        return None
+    # #21: bool/битые границы → _f(nan) → mid nan → None ниже (гейт isfinite).
+    mid = (_f(a) + _f(b)) / 200.0
     if not math.isfinite(mid):
         return None
     return int(round(mid)) * 100
@@ -256,10 +285,8 @@ def recommend(cost, *, current_price=None, target_profit=NET_FLOOR, delivery=Non
     # #16: закупку нормализуем в float ОДИН раз. Раньше нан/inf/строка-"300"/огромный int доходили
     # до формулы цены: нан ложно проходил `<= 0`, строка роняла ноту (cost*CEIL → TypeError),
     # 10**400 → сырой OverflowError. Конечная положительная — иначе честный NO_COST (P8).
-    try:
-        cost_f = float(cost)
-    except (TypeError, ValueError, OverflowError):
-        cost_f = float("nan")
+    cost_f = _f(cost)
+    # #21: bool-cost (JSON true) — не число (float(True)=1.0 строил пол/зону от «закупки 1₽»).
     if not math.isfinite(cost_f) or cost_f <= 0:
         return {"ok": False, "verdict": "NO_COST", "cost": cost_f, "provisional": prov,
                 "note": "нет честной закупки (пусто/не-число/не конечна) — цену не выдумываем (P8)"}
@@ -271,7 +298,15 @@ def recommend(cost, *, current_price=None, target_profit=NET_FLOOR, delivery=Non
             or not math.isfinite(d) or not math.isfinite(f)):
         return {"ok": False, "verdict": "BAD_PARAMS", "cost": cost_f, "provisional": prov,
                 "note": "закупка есть, но комиссия вне (0,1) или доставка <0 — пол не считаем (P7)"}
-    fl = floor_price(cost_f, target_profit=target_profit, delivery=d, fee=f)
+    # #21 (F5): цель КПИ нормализуем ОДИН раз ДО floor_price/нот. Раньше цель строкой ('abc'/'500')/
+    # bool (true→1.0) шла СЫРОЙ в формулу и ноты {target_profit:g}: не-число роняло ноту TypeError
+    # (а '500' в SET-ноте печаталось криво), bool-1.0 ложно «давал КПИ 1₽», битая цель падала в
+    # fl=None и ВРАЛА NO_COST про закупку. Цель — параметр политики: битая → BAD_PARAMS (P7).
+    tp = _f(NET_FLOOR if target_profit is None else target_profit)
+    if not math.isfinite(tp) or tp <= 0:
+        return {"ok": False, "verdict": "BAD_PARAMS", "cost": cost_f, "provisional": prov,
+                "note": "закупка есть, но цель КПИ не дана честно (≤0/не конечна/не число) — пол не считаем (P7)"}
+    fl = floor_price(cost_f, target_profit=tp, delivery=d, fee=f)
     if fl is None:
         return {"ok": False, "verdict": "NO_COST", "cost": cost_f, "provisional": prov,
                 "note": f"закупка {cost_f:g}₽ за пределами честной ценовой зоны — пол переполняет "
@@ -301,26 +336,23 @@ def recommend(cost, *, current_price=None, target_profit=NET_FLOOR, delivery=Non
     # ложный RAISE «net nan < пола» (floor_hit на nan-цене врал BELOW_FLOOR/NA).
     cur = None
     if current_price is not None:
-        try:
-            cf = float(current_price)
-            if math.isfinite(cf) and cf > 0:
-                cur = cf
-        except (TypeError, ValueError, OverflowError):
-            pass
+        cf = _f(current_price)   # #21: bool/битое → nan → «цены ещё нет» (SET), НЕ цена 1.0
+        if math.isfinite(cf) and cf > 0:
+            cur = cf
     if cur is None:
         rec = _mid(zlow, zhigh)
         out.update(recommended=rec, verdict="SET", crossed=crossed_price(rec, min_gap=min_gap))
         out["note"] = (f"цены нет: зона {zlow}–{zhigh}₽, рекомендую {rec}₽ "
-                       f"(КПИ {target_profit:g}₽ после издержек)")
+                       f"(КПИ {tp:g}₽ после издержек)")
         return out
-    v = floor_hit(cur, cost_f, target_profit=target_profit, delivery=d, fee=f)
+    v = floor_hit(cur, cost_f, target_profit=tp, delivery=d, fee=f)
     out["current"] = {"price": cur, **v}
     if not v["ok"]:
         rec = fl
         out.update(recommended=rec, verdict="RAISE", crossed=crossed_price(rec, min_gap=min_gap))
         net_txt = f"{v['net']:g}₽" if v.get("net") is not None else "net не посчитан"
         out["note"] = (f"текущая {cur:g}₽ ниже пола {fl}₽ ({net_txt} < "
-                       f"{target_profit:g}₽) — поднять минимум до {fl}₽")
+                       f"{tp:g}₽) — поднять минимум до {fl}₽")
     elif cur < zlow:
         rec = _mid(zlow, zhigh)
         out.update(recommended=rec, verdict="SWEET" if branded else "ZONE_RAISE",

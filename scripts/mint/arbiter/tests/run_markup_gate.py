@@ -237,6 +237,33 @@ def mg13_build_bool_cost_skipped():
     return ok_all, " · ".join(detail) + " (bool-закупка → честный пропуск, не карточка cost=1)"
 
 
+def mg14_dims_garbage_no_weight_dimensions():
+    # #21 (F7): габариты (length/width/height/weight из донора) шли в weightDimensions через сырой
+    # float()/фильтры — одно bool/nan/inf/10**400/≤0/None в ЛЮБОМ поле делало карточку с ЛОЖНЫМИ
+    # габаритами (JSON height=true → «высота 1.0» вместо честного отказа; вес донора НЕ выдумываем).
+    # Теперь: НЕ все 4 габарита честные конечные >0 → weightDimensions просто НЕ кладётся (продукт
+    # собирается без ложных размеров, партия жива). Валидные 4 → точный dict.
+    valid = {"length": 100.0, "width": 10.0, "height": 10.0, "weight": 1.0}
+    p = FC.build_product(dict(_DONOR, **valid), {}, 0)
+    if not (p is not None and p.get("weightDimensions") == valid):
+        return False, f"валидные габариты → {p and p.get('weightDimensions')} (ждём {valid})"
+    for k, bad in (("length", True), ("width", "abc"), ("height", float("nan")),
+                   ("weight", 0), ("length", 10 ** 400), ("width", float("inf")),
+                   ("height", None), ("weight", -3)):
+        d = dict(_DONOR, **valid)
+        d[k] = bad
+        try:
+            q = FC.build_product(d, {}, 0)
+        except Exception as e:
+            return False, f"dims[{k}]={bad!r} → {type(e).__name__}: {e} (ждём продукт БЕЗ габаритов)"
+        if q is None or "weightDimensions" in q:
+            return False, f"dims[{k}]={bad!r} → продукт={q is not None}, weightDimensions ЕСТЬ (ждём без)"
+    # контроль: габаритов вовсе нет → продукт как раньше, без ключа
+    q = FC.build_product(_DONOR, {}, 0)
+    if q is None or "weightDimensions" in q or q["price"] != 800:
+        return False, f"без габаритов → продукт {q is not None}, ключ есть? (ждём 800 без weightDimensions)"
+    return True, "валидные 4 → точные габариты; любое битое поле / их отсутствие → продукт жив БЕЗ ложных размеров"
+
 
 TESTS = [
     ("MG1 none_default", mg1_none_default),
@@ -252,6 +279,7 @@ TESTS = [
     ("MG11 build_cost_nonfinite_skipped", mg11_build_cost_nonfinite_skipped),
     ("MG12 build_subruble_margin_skipped", mg12_build_subruble_margin_skipped),
     ("MG13 build_bool_cost_skipped", mg13_build_bool_cost_skipped),
+    ("MG14 dims_garbage_no_weight_dimensions", mg14_dims_garbage_no_weight_dimensions),
 ]
 
 
