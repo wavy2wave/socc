@@ -10,6 +10,9 @@ raw-режиме на настоящем tty. `script` не доставляет
   S1 дом_стрелки   — socc home → ↓+Enter выбирает ЯМ → q → q (выход rc 0)
   S2 ям_витрина    — socc ym → цифра=витрина → АКТИВНЫЕ ЗАДАНИЯ → 1=ЖИВОЙ ЭКРАН
                       (≥2 авто-кадра) → q → q → q (выход rc 0)
+  S3 стабильность  — дом→ЯМ→витрина→live РОВНО на 80×24: кадр адресует нижнюю
+                      строку CUP (\x1b[24;1H) и ВНУТРИ кадра нет `\n` — таблицы
+                      не плывут на малом экране; авто-кадры живого растут.
 
 Запуск:  python3 scripts/socc/socc_dom_pty_smoke_v1.py   (нужен tty-запуск не обязателен;
           дравер сам создаёт pty; в CI/пайпе тоже работает — это его суть)
@@ -88,8 +91,15 @@ class Pty:
         return False
 
     def frames(self):
-        """Сколько раз ребёнок перерисовал экран (clear-код) всего."""
-        return self.buf.count(b"\x1b[2J")
+        """Сколько полных перерисовок выдал ребёнок. Движок стабильного кадра:
+        КАЖДАЯ перерисовка начинается CUP первого ряда `\x1b[1;1H`; `\x1b[2J`
+        бывает только на входе в виджет (не считаем его перерисовкой)."""
+        return self.buf.count(b"\x1b[1;1H")
+
+    def last_frame(self):
+        """Байты ПОСЛЕДНЕЙ полной перерисовки (от CUP-первого ряда до конца)."""
+        idx = self.buf.rfind(b"\x1b[1;1H")
+        return self.buf[idx:] if idx >= 0 else b""
 
     def close(self):
         try:
@@ -191,11 +201,65 @@ def s2_ym_vitrina():
         p.close()
 
 
+def s3_stability_80x24():
+    """Стабильность на РОВНО 80×24 (самый малый живой экран): низ кадра адресуется
+    CUP-строкой `\x1b[24;1H`, а внутри полного кадра нет ни одного `\n` — терминал
+    физически не может скроллить/переносить → таблицы не плывут."""
+    steps = []
+    p = Pty(_socc(["home"]), cols=80, rows=24)
+    try:
+        ok = p.wait_for("SOCC · ДОМ")
+        steps.append(("старт: меню дома на 80×24", ok))
+        fr = p.last_frame()
+        ok_row = b"\x1b[24;1H" in fr
+        ok_nl = b"\n" not in fr
+        steps.append((f"кадр дома: низ на 24;1H ({ok_row}) · без \\n внутри ({ok_nl})",
+                      ok_row and ok_nl))
+        p.send(b"\x1b[B")
+        time.sleep(0.15)
+        p.send(b"\r")
+        ok = p.wait_for("магазинов в манифесте")
+        steps.append(("↓+Enter → меню ЯМ на 80×24", ok))
+        fr = p.last_frame()
+        ok_row = b"\x1b[24;1H" in fr and b"\n" not in fr
+        steps.append(("кадр ЯМ тоже стабилен (низ + без \\n)", ok_row))
+        p.send(b"1")
+        ok = p.wait_for("АКТИВНЫЕ ЗАДАНИЯ")
+        steps.append(("цифра=1 → витрина (задания видны в нижней строке)", ok))
+        p.send(b"1")
+        ok = p.wait_for(" · ЖИВОЙ")
+        steps.append(("цифра=1 → живой экран на 80×24", ok))
+        base = p.frames()
+        time.sleep(2.4)
+        p._fill(0.4)
+        grew = p.frames() >= base + 1
+        fr = p.last_frame()
+        ok_row = b"\x1b[24;1H" in fr and b"\n" not in fr
+        steps.append((f"live 80×24: авто-кадры {base}→{p.frames()} · низ 24;1H · без \\n",
+                      grew and ok_row))
+        p.send(b"q")
+        ok = p.wait_for("ДЕЙСТВИЯ")
+        steps.append(("q из live → меню витрины", ok))
+        p.send(b"q")
+        ok = p.wait_for("магазинов в манифесте")
+        steps.append(("q → к магазинам", ok))
+        p.send(b"q")
+        ok = p.wait_for("SOCC · ДОМ")
+        steps.append(("q → обратно в ДОМ", ok))
+        p.send(b"q")
+        rc = p.exitcode()
+        steps.append((f"выход rc={rc}", rc == 0))
+        return steps
+    finally:
+        p.close()
+
+
 def main():
     print("🖥️  SOCC · ДОМ · ИНТЕРАКТИВ · ЖИВОЙ ДЫМ НА PTY (raw-клавиатура, 0₽)")
     all_ok = True
     for name, fn in (("S1 дом_стрелки", s1_dom_strelki),
-                     ("S2 ям_витрина", s2_ym_vitrina)):
+                     ("S2 ям_витрина", s2_ym_vitrina),
+                     ("S3 стабильность 80×24", s3_stability_80x24)):
         try:
             steps = fn()
         except Exception as e:
