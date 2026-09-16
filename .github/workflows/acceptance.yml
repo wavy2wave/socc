@@ -52,6 +52,9 @@ jobs:
 
       - name: Закон M3 — живое/лид-базы НЕ трекаются
         run: |
-          bad=$(git ls-files | grep -E "komanda_clinics_db|_komanda_|_scout_|ANNA_MVP/runtime/clients/|ANNA_MVP/runtime/telegram_log" || true)
+          # ВАЖНО: шаблон точный на ДАННЫЕ (.json/.jsonl), иначе он ловит КОД органов
+          # вида wb_scout_v1.py / supplier_scout_v1.py (ложное срабатывание, найдено
+          # на финальном клоне 2026-09-16).
+          bad=$(git ls-files | grep -E "(komanda_clinics_db|_komanda_[a-z_]*|_scout_targets|_scout_feed|_hermes_queue|harvest_feed).*\.json$|ANNA_MVP/runtime/clients/|ANNA_MVP/runtime/telegram_log" || true)
           if [ -n "$bad" ]; then echo "::error::В GIT ПРОСКОЧИЛО ЖИВОЕ: $bad"; exit 1; fi
           echo "M3: чисто"
