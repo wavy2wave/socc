@@ -21,6 +21,8 @@
       эскалация ЦЕНОВИКУ (профит-закон, не молчим).
   D11 ПУПОВИНА реальная: канон+библиотека с диска (0₽, сети нет) → 697 связаны, 0 убыточных.
   D12 падение ПУПОВИНЫ не роняет день (B2) — беда честна в failures, день не врёт.
+  D13 слепой кабинет честен: нет OZON_CLIENT_ID → ok=False + причина в failures
+      (обратная сторона герметичности песочницы: обе ветки покрыты, mint/.env не нужен).
 
 Сухо: env-песочница (OZON_STATE_PATH/OZON_SHIFT_MEMORY/OZON_DAY_JOURNAL/OZON_TICK_LEDGER),
 сети нет, канон не пишется.
@@ -58,6 +60,14 @@ def _sandbox():
         "OZON_DAY_JOURNAL": str(d / "day_journal.jsonl"),
         "OZON_TICK_LEDGER": str(d / "tick_ledger.json"),
         "OZON_LIVE": "0",
+        # ГЕРМЕТИЧНОСТЬ (фикс 2026-09-16, баг свежего клона): сентинел-креденшелы.
+        # Тесты здесь проверяют ЧЕСТНОСТЬ ДНЯ (память/ошибки/KPI), а не доступ к
+        # кабинету. Раньше песочница молча наследовала OZON_CLIENT_ID из mint/.env →
+        # на чистой машине день честно писал «УПРАВЛЯЮЩИЙ слеп» (ok=False) и D9 краснел,
+        # хотя орган здоров. Сентинел + OZON_LIVE=0 → сеть физически не зовётся,
+        # секрет не нужен. Слепая ветка проверена ОТДЕЛЬНЫМ тестом D13.
+        "OZON_CLIENT_ID": "SENTINEL-TEST-NO-NETWORK",
+        "OZON_API_KEY": "SENTINEL-TEST-NO-NETWORK",
     }
     old = {k: os.environ.get(k) for k in env}
     os.environ.update(env)
@@ -295,6 +305,27 @@ def _t12_pupovina_fail_not_drown():
         _restore(old)
 
 
+def _t13_slepoi_chestno():
+    """D13: без OZON_CLIENT_ID день НЕ врёт «всё хорошо», а честно слеп (ok=False + причина).
+
+    Это обратная сторона герметичности D9: песочница даёт сентинел, а ЗДЕСЬ мы его
+    снимаем и требуем честного признания слепоты. Так обе ветки покрыты и ни одна
+    не зависит от mint/.env на машине оператора (гейт «не с неба»).
+    """
+    d, old, env = _sandbox()
+    try:
+        os.environ.pop("OZON_CLIENT_ID", None)
+        os.environ.pop("OZON_API_KEY", None)
+        day = _run()
+        fails = " ".join(str(f) for f in (day.get("failures") or []))
+        honest = (day.get("ok") is False
+                  and day.get("client_id_known") is False
+                  and "Client-Id" in fails)
+        return _passed(honest), f"ok={day.get('ok')} known={day.get('client_id_known')} failures={fails[:80]}"
+    finally:
+        _restore(old)
+
+
 TESTS = [
     ("D1 сухо по умолчанию", _t01_sukhoy_po_umolchaniyu),
     ("D2 шов УПРАВЛЯЮЩЕГО", _t02_seam_upravlyayushchego),
@@ -308,6 +339,7 @@ TESTS = [
     ("D10 ПУПОВИНА-шов: убыточные → эскалация ЦЕНОВИКУ", _t10_pupovina_seam),
     ("D11 ПУПОВИНА реальная: канон+библиотека с диска, 0₽", _t11_pupovina_real),
     ("D12 падение ПУПОВИНЫ не роняет день (B2)", _t12_pupovina_fail_not_drown),
+    ("D13 слепой кабинет честен: нет Client-Id → ok=False + причина", _t13_slepoi_chestno),
 ]
 
 
