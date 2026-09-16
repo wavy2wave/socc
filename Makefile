@@ -1,12 +1,15 @@
 # SOCC · лицо машины в командах. Закон M4: каждый шаг = верифицируемый вердикт.
 PY ?= python3
 
-.PHONY: help gate test lint secrets pii bootstrap agents dry pult
+.PHONY: help gate test portability lint secrets pii bootstrap agents dry pult
 
 help:            ## что умеет make
 	@grep -E '^[a-z-]+:.*?## ' $(MAKEFILE_LIST) | awk -F':.*?## ' '{printf "  %-12s %s\n",$$1,$$2}'
 
-gate: test secrets pii   ## ГЕЙТ «не с неба»: приёмки + M2 + ПДн (то же, что CI)
+gate: portability test secrets pii   ## ГЕЙТ «не с неба»: переносимость + приёмки + M2 + ПДн (то же, что CI)
+
+portability:     ## гейт переносимости: код парсится на Python 3.11+ (PEP 701)
+	$(PY) ops/check_py311_syntax.py
 
 test:            ## все 71 сухая приёмка (0₽, stdlib)
 	$(PY) ops/run_all_acceptances.py

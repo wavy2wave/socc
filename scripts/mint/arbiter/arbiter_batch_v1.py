@@ -175,6 +175,13 @@ def echelon(cost):
     return "дорогой (₽700+)"
 
 
+def _pricey_note(result):
+    """PEP 701-совместимо (py3.9+): см. примечание в ymarket_role_head_v1."""
+    if not result.get("skipped_too_pricey"):
+        return ""
+    return ", " + str(result["skipped_too_pricey"]) + " дороже потолка"
+
+
 def print_progress(result, idx, total):
     """Живая печать прогресса категории (вызывается колбэком)."""
     cat = result["category"]
@@ -183,7 +190,7 @@ def print_progress(result, idx, total):
     else:
         print(f"  [{idx}/{total}] «{cat}»: {result['scanned']} кандидатов → "
               f"{result['proven']} PROVEN, {result['rejected']} отказано"
-              f"{f', {result['skipped_too_pricey']} дороже потолка' if result.get('skipped_too_pricey') else ''}")
+              f"{_pricey_note(result)}")
 
 
 def print_report(batch, top_k=10, json_out=False):

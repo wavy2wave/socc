@@ -30,6 +30,9 @@ jobs:
           python3 -m compileall -q scripts/mint/arbiter scripts/mint/*.py socc_cli knowledge_substrate scripts/anna_runtime_v1.py || true
           # compileall на всём — слишком шумно из-за архива; гейт ниже по приёмкам
 
+      - name: Гейт переносимости (Python 3.11+, PEP 701)
+        run: python3 ops/check_py311_syntax.py
+
       - name: Прогон всех сухих приёмок ARBITER
         run: python3 ops/run_all_acceptances.py
 

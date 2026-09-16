@@ -1,6 +1,6 @@
 {
  "schema": "process.artifact.v1",
- "updated_at": "2026-09-16T14:08:28+0300",
+ "updated_at": "2026-09-16T16:19:46+0300",
  "runs": {
   "P-f7ea1dc1": {
    "id": "P-f7ea1dc1",
@@ -211,10 +211,10 @@
     "node_ms": {
      "STUB": 0
     },
-    "ledger": "/var/folders/nd/c28v8z5d58jcmfhlvln1ww6m0000gn/T/ph-ledger-6ldim3n5/ph-test.jsonl"
+    "ledger": "/var/folders/nd/c28v8z5d58jcmfhlvln1ww6m0000gn/T/ph-ledger-k45449ye/ph-test.jsonl"
    },
    "artifacts": {
-    "ledger": "/var/folders/nd/c28v8z5d58jcmfhlvln1ww6m0000gn/T/ph-ledger-6ldim3n5/ph-test.jsonl",
+    "ledger": "/var/folders/nd/c28v8z5d58jcmfhlvln1ww6m0000gn/T/ph-ledger-k45449ye/ph-test.jsonl",
     "goods_library": "/Users/wavysexy/SOCC/MEMORY_WAVE/reports/mint/arbiter/ymarket_goods_library.json"
    },
    "knowledge": {},
@@ -233,11 +233,16 @@
      "at": "2026-09-16T14:08:28+0300",
      "organ": "CYCLE1",
      "what": "живой ход: ЦИКЛ-1 ph-test закрыт 1/1 PASS (hash a0e3d93435)"
+    },
+    {
+     "at": "2026-09-16T16:19:46+0300",
+     "organ": "CYCLE1",
+     "what": "живой ход: ЦИКЛ-1 ph-test закрыт 1/1 PASS (hash a0e3d93435)"
     }
    ],
    "state": "done",
    "created_at": "2026-09-16T10:39:15+0300",
-   "updated_at": "2026-09-16T14:08:28+0300"
+   "updated_at": "2026-09-16T16:19:46+0300"
   }
  }
 }

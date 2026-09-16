@@ -399,6 +399,15 @@ def load_day(date):
 
 # ── человеческий вид ──────────────────────────────────────────────────────────
 
+def _needs_data_note(a):
+    """PEP 701-совместимо (py3.9+): вложенная f-строка с теми же кавычками
+    невалидна до Python 3.12 — на свежем клоне CI (3.11) это был SyntaxError.
+    Вынесли в функцию: поведение то же, синтаксис переносимый."""
+    if not a.get("needs_data"):
+        return ""
+    return " · нужны данные " + str(a["needs_data"])
+
+
 def render(res):
     """Человеческий доклад ГОЛОВЫ (для дневного отчёта/фида)."""
     if not res:
@@ -411,7 +420,7 @@ def render(res):
     a = res.get("agg") or {}
     lines = [f"ГОЛОВА · предложено {a.get('proposed', 0)} "
              f"(из вселенной {a.get('universe', 0)}) · заблокировано {a.get('blocked', 0)}"
-             f"{f' · нужны данные {a['needs_data']}' if a.get('needs_data') else ''}"]
+             f"{_needs_data_note(a)}"]
     for r in res.get("shortlist", [])[:5]:
         lines.append(f"  • {r.get('name')} — {r.get('why') or ''}  [{STATE_PROPOSED}]")
     blk = res.get("blocked") or []
