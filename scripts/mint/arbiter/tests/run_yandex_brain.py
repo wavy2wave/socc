@@ -161,15 +161,24 @@ def br4_mozg_chesten_offline():
             os.environ["AGENTROUTER_API_KEY"] = saved
     if not offline_ok:
         return False, "оффлайн-путь не сработал"
-    # со стабом HTTP — мозг отвечает текстом
+    # со стабом HTTP — мозг отвечает текстом.
+    # ГЕРМЕТИЧНОСТЬ (фикс 2026-09-16, баг свежего клона): фаза стаба проверяет
+    # ПАРСИНГ ответа, а не доступ к relay. Раньше она молча требовала реальный
+    # AGENTROUTER_API_KEY из mint/.env → на чистой машине brain_call выходил
+    # на «нет ключа» и тест краснел, хотя орган здоров. Ставим сентинел-ключ
+    # на время фазы: _http_post подменён, сеть не зовётся, секрет не нужен.
     old = brain._http_post
     brain._http_post = lambda url, body: (
         200, json.dumps({"content": [{"type": "text", "text": "привет, со-пилот"}]}))
     try:
+        os.environ["AGENTROUTER_API_KEY"] = "SENTINEL-BR4-NO-NETWORK"
         r2 = brain.brain_call("система", "привет")
         online_ok = r2["ok"] is True and r2["text"] == "привет, со-пилот"
     finally:
         brain._http_post = old
+        os.environ.pop("AGENTROUTER_API_KEY", None)
+        if saved is not None:
+            os.environ["AGENTROUTER_API_KEY"] = saved
     return online_ok, f"offline честен={offline_ok} · стаб-200 отвечает={online_ok}"
 
 

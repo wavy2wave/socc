@@ -6,3 +6,20 @@ __pycache__/
 *.pyc
 .env
 .DS_Store
+
+# ── ИСКЛЮЧЕНИЕ (закон M5 · seed): канон донора, нужный приёмкам на свежем клоне ──
+# Баг 2026-09-16: blanket `runtime/` (и `**/runtime/` в корне) глушил канон → гейт
+# «не с неба» краснел 6/71 на чистом клоне, хотя на машине оператора всё зелёное.
+# git НЕ спускается в исключённый каталог, поэтому порядок строг:
+#   1) открыть сам runtime/  2) закрыть всё в нём  3) открыть ozon-library/
+#   4) закрыть всё в ней     5) точечно открыть 5 файлов сида.
+# Это ДАННЫЕ ПОСТАВЩИКА (публичный каталог cargo-avto), НЕ секреты и НЕ ПДн.
+!runtime/
+runtime/*
+!runtime/ozon-library/
+runtime/ozon-library/*
+!runtime/ozon-library/SEED_README.md
+!runtime/ozon-library/donor-rolls-2026-09-09.json
+!runtime/ozon-library/donor-size-map-2026-09-08.json
+!runtime/ozon-library/donor-reconcile-2026-09-09.json
+!runtime/ozon-library/library-2026-09-08.json

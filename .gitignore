@@ -21,8 +21,12 @@ AUTH.json
 
 # случайно оставленные ключи/экстракты/следы
 *_digest_extracts.json
-*shift_memory*
 ledger.json
+
+# ЖИВЫЕ данные смен — вне репо (M3). ВАЖНО: правило должно быть ТОЧНО на .json,
+# иначе оно глушит и КОД органов (*_shift_memory_v1.py) → машина не собирается
+# на свежем клоне (баг найден 2026-09-16 гейтом «не с неба»: 6 FAIL на клоне).
+*shift_memory*.json
 
 # волновая касса: ЖИВЫЕ каталог/выданные ключи/заказы/пользователи (M3)
 scripts/mint/wave_shop/data/
@@ -149,3 +153,19 @@ SYSTEM/ANNA_MVP/runtime/reminders.jsonl
 SYSTEM/ANNA_MVP/runtime/safety_log.jsonl
 SYSTEM/ANNA_MVP/runtime/appointments/
 SYSTEM/ANNA_MVP/runtime/cards/
+
+# код органов смен — это МАШИНА, он ОБЯЗАН быть в git
+!*shift_memory*_v1.py
+
+# ══════════════════════════════════════════════════════════════════════════════
+# SEED КАНОНА: приёмкам нужен канон донора/библиотеки, иначе гейт «не с неба»
+# на свежем клоне краснеет. Это ДАННЫЕ ПОСТАВЩИКА (публичный каталог cargo-avto),
+# НЕ секреты и НЕ ПДн → едут в git. Остальной runtime/ — живой, вне репо (M3).
+# ══════════════════════════════════════════════════════════════════════════════
+!scripts/mint/arbiter/runtime/
+!scripts/mint/arbiter/runtime/ozon-library/
+!scripts/mint/arbiter/runtime/ozon-library/donor-rolls-2026-09-09.json
+!scripts/mint/arbiter/runtime/ozon-library/donor-size-map-2026-09-08.json
+!scripts/mint/arbiter/runtime/ozon-library/donor-reconcile-2026-09-09.json
+!scripts/mint/arbiter/runtime/ozon-library/library-2026-09-08.json
+!scripts/mint/arbiter/runtime/ozon-library/SEED_README.md
