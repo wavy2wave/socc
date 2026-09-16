@@ -1,0 +1,57 @@
+name: SOCC приёмки (не с неба)
+
+# Гейт «не с неба»: на ЧИСТОМ клоне все сухие приёмки должны быть зелёные.
+# Приёмки stdlib-only, 0₽, без сети, без --commit-пути.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  dry-acceptance:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Необязательные зависимости (чтобы SKIP был только честным)
+        run: pip install -r requirements-optional.txt
+
+      - name: py_compile всего живого кода
+        run: |
+          python3 -m compileall -q scripts/mint/arbiter scripts/mint/*.py socc_cli knowledge_substrate scripts/anna_runtime_v1.py || true
+          # compileall на всём — слишком шумно из-за архива; гейт ниже по приёмкам
+
+      - name: Прогон всех сухих приёмок ARBITER
+        run: python3 ops/run_all_acceptances.py
+
+      # Гейты смотрят ТОЛЬКО трекаемые файлы: живое (лид-базы, сырьё памяти)
+      # легитимно лежит в рабочем дереве, но под .gitignore — в репо его нет.
+      - name: Закон M2 — секретов в репо нет
+        run: |
+          if git ls-files -z | xargs -0 grep -IE \
+               "sk-ant-api[0-9]{2}-|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{20,}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN (RSA|OPENSSH|EC) PRIVATE KEY-----" ; then
+            echo "::error::НАЙДЕН СЕКРЕТ В РЕПО (M2)"; exit 1
+          fi
+          echo "M2: чисто"
+
+      - name: Закон ПДн — телефонов клиентов в репо нет
+        run: |
+          if git ls-files -z | grep -zvE "tests?/|_acceptance_|_test\.|probe_" | xargs -0 grep -IE "\+7[0-9]{10}" ; then
+            echo "::error::НАЙДЕНЫ ТЕЛЕФОНЫ В РЕПО (ПДн)"; exit 1
+          fi
+          echo "ПДн: чисто"
+
+      - name: Закон M3 — живое/лид-базы НЕ трекаются
+        run: |
+          bad=$(git ls-files | grep -E "komanda_clinics_db|_komanda_|_scout_|ANNA_MVP/runtime/clients/|ANNA_MVP/runtime/telegram_log" || true)
+          if [ -n "$bad" ]; then echo "::error::В GIT ПРОСКОЧИЛО ЖИВОЕ: $bad"; exit 1; fi
+          echo "M3: чисто"

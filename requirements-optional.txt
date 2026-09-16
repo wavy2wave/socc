@@ -1,0 +1,6 @@
+# Необязательные зависимости SOCC. Ядро — stdlib-only, работает без них.
+# Без них часть приёмок даёт ЧЕСТНЫЙ SKIP (не PASS):
+#   Pillow  → фото-кузница, инфографика (run_infographic_natural, photo_*)
+#   aiogram → botfactory (scripts/mint/botfactory/.venv имеет свой)
+#   requests/openpyxl → живые READ кабинета и донор-XLSX (нужны только для --preflight)
+Pillow>=10.0
