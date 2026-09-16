@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 TESTS = ROOT / "scripts" / "mint" / "arbiter" / "tests"
+ENTITY_TESTS = ROOT / "scripts" / "entity" / "tests"
 
 SKIP_PREFIXES = ("probe_", "_verify")  # пробы сети и внутренние верификаторы — не приёмки
 
@@ -21,6 +22,9 @@ OPTIONAL_DEPS = ("PIL", "aiogram", "requests", "openpyxl")
 def main() -> int:
     tests = sorted(
         p for p in TESTS.glob("run_*.py")
+        if not p.name.startswith(SKIP_PREFIXES)
+    ) + sorted(
+        p for p in ENTITY_TESTS.glob("run_*.py")
         if not p.name.startswith(SKIP_PREFIXES)
     )
     if not tests:
