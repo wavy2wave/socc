@@ -1,0 +1,8 @@
+{
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "id": "DENTALMSK01-2026091619_DASHBOARD_V1",
+  "instance_id": "DENTALMSK01-2026091619",
+  "operator_visible": true,
+  "panel": "entity_substrate/instances/DENTALMSK01-2026091619/DASHBOARD.json",
+  "surface": "entity_dashboard_surface"
+}

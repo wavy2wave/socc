@@ -12,7 +12,27 @@
       ],
       "state": "INSTANTIATED_BOUNDED_CANDIDATE",
       "vertical": "dental_clinic_administrator"
+    },
+    {
+      "active": false,
+      "born_at_utc": "2026-09-16T19:43:14.146692+00:00",
+      "born_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_FORGE_ENTITY_DENTALMSK01-2026091619_V1_PROOF.json",
+      "deployed": false,
+      "domain": "dental_msk_01",
+      "home": "entity_substrate/instances/DENTALMSK01-2026091619",
+      "instance_hash": "b65566b46d422113",
+      "instance_id": "DENTALMSK01-2026091619",
+      "live": false,
+      "name": null,
+      "skills": [
+        "telegram_dialogue",
+        "instagram_dialogue",
+        "booking_dikidi"
+      ],
+      "state": "born",
+      "vertical": "medical_dental"
     }
   ],
-  "id": "ENTITY_REGISTRY_V1"
+  "id": "ENTITY_REGISTRY_V1",
+  "updated_at_utc": "2026-09-16T19:43:14.146716+00:00"
 }

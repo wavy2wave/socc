@@ -1,0 +1,11 @@
+{
+  "born_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "born_from": "Entity Substrate (sealed)",
+  "domain_config": "entity_substrate/domains/dental_msk_01.json",
+  "forge": "scripts/entity/entity_forge_v1.py",
+  "forge_version": "1",
+  "id": "DENTALMSK01-2026091619_LINEAGE_V1",
+  "instance_id": "DENTALMSK01-2026091619",
+  "parent_substrate_seal": "SYSTEM/AUTONOMY/self_construction_seals/ENTITY_SUBSTRATE_SEAL_V1.json",
+  "surface": "entity_lineage_surface"
+}

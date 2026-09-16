@@ -1,0 +1,13 @@
+{
+  "avg_ticket": 4000,
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "icp_signals": [
+    "no_online_booking",
+    "slow_dm_reply",
+    "reviews_mention_не_дозвониться"
+  ],
+  "id": "DENTALMSK01-2026091619_PRODUCT_V1",
+  "instance_id": "DENTALMSK01-2026091619",
+  "metric": "пропущенная заявка",
+  "surface": "entity_product_binding_surface"
+}

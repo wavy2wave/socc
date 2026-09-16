@@ -1,0 +1,11 @@
+{
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "frozen": false,
+  "frozen_at": null,
+  "frozen_reason": null,
+  "id": "DENTALMSK01-2026091619_FREEZE_V1",
+  "instance_id": "DENTALMSK01-2026091619",
+  "review_required_before_unfreeze": true,
+  "stop_available": true,
+  "surface": "entity_freeze_review_stop_surface"
+}

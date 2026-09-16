@@ -1,0 +1,99 @@
+  ⚠️  1588731: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "1588731", "name": "Воздушно-пузырьковая плёнка «МиниБабл», двухслойная, 25 г/м², 100*0.75 м, 75 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 3500, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2063678699509"], "weightDimensions": {"length": 75, "width": 42.9, "height": 42.9, "weight": 1.86}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "1588731", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.75", "unitId": 6}, {"parameterId": 51734601, "value": "100", "unitId": 6}, {"parame
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "1588731", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 1588731
+  ⚠️  9048: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "9048", "name": "Воздушно-пузырьковая плёнка «БаблБокс», трёхслойная, 60 г/м², 50*0.3 м, 15 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 3000, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2003502239051"], "weightDimensions": {"length": 50, "width": 35, "height": 50, "weight": 1.438}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "9048", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.3", "unitId": 6}, {"parameterId": 51734601, "value": "50", "unitId": 6}, {"parameterId
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "9048", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 9048
+  ⚠️  6335: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "6335", "name": "Воздушно-пузырьковая плёнка «Компакт», двухслойная, 40 г/м², 50*0.3 м, 15 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 1050, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2253271926083"], "weightDimensions": {"length": 30, "width": 54.2, "height": 54.2, "weight": 0.54}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "6335", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.3", "unitId": 6}, {"parameterId": 51734601, "value": "50", "unitId": 6}, {"parameterId
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "6335", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 6335
+  ⚠️  2050: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "2050", "name": "Воздушно-пузырьковая плёнка «Компакт», двухслойная, 55 г/м², 5*0.4 м, 2 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 325, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2696297010501"], "weightDimensions": {"length": 40, "width": 13, "height": 13, "weight": 0.122}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "2050", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.4", "unitId": 6}, {"parameterId": 51734601, "value": "5", "unitId": 6}, {"parameterId"
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "2050", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 2050
+АВТОПИЛОТ 2026-09-16 · ok=True · dry=True commit=False · businessId=да · провалов=0 · горит=2 · ЗАДАНИЯ: form +0 seed +0 · ПУЛЬС-ЦИКЛ1: ok=True прогнано=0 свеж=2 закрыто=0 · ПЛАНЁРКА: 2026-09-16 решений 26 · СОВЕТ: 2026-09-16 собран=True уже=True · СПОРЫ: 2026-09-16 собраны=True уже=True
+  ⚠️  1588731: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "1588731", "name": "Воздушно-пузырьковая плёнка «МиниБабл», двухслойная, 25 г/м², 100*0.75 м, 75 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 3500, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2063678699509"], "weightDimensions": {"length": 75, "width": 42.9, "height": 42.9, "weight": 1.86}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "1588731", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.75", "unitId": 6}, {"parameterId": 51734601, "value": "100", "unitId": 6}, {"parame
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "1588731", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 1588731
+  ⚠️  9048: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "9048", "name": "Воздушно-пузырьковая плёнка «БаблБокс», трёхслойная, 60 г/м², 50*0.3 м, 15 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 3000, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2003502239051"], "weightDimensions": {"length": 50, "width": 35, "height": 50, "weight": 1.438}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "9048", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.3", "unitId": 6}, {"parameterId": 51734601, "value": "50", "unitId": 6}, {"parameterId
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "9048", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 9048
+  ⚠️  6335: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "6335", "name": "Воздушно-пузырьковая плёнка «Компакт», двухслойная, 40 г/м², 50*0.3 м, 15 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 1050, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2253271926083"], "weightDimensions": {"length": 30, "width": 54.2, "height": 54.2, "weight": 0.54}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "6335", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.3", "unitId": 6}, {"parameterId": 51734601, "value": "50", "unitId": 6}, {"parameterId
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "6335", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 6335
+  ⚠️  2050: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "2050", "name": "Воздушно-пузырьковая плёнка «Компакт», двухслойная, 55 г/м², 5*0.4 м, 2 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 325, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2696297010501"], "weightDimensions": {"length": 40, "width": 13, "height": 13, "weight": 0.122}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "2050", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.4", "unitId": 6}, {"parameterId": 51734601, "value": "5", "unitId": 6}, {"parameterId"
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "2050", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 2050
+АВТОПИЛОТ 2026-09-16 · ok=True · dry=True commit=False · businessId=да · провалов=0 · горит=2 · ЗАДАНИЯ: form +0 seed +0 · ПУЛЬС-ЦИКЛ1: ok=True прогнано=0 свеж=2 закрыто=0 · ПЛАНЁРКА: 2026-09-16 решений 26 · СОВЕТ: 2026-09-16 собран=True уже=True · СПОРЫ: 2026-09-16 собраны=True уже=True
+  ⚠️  1588731: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "1588731", "name": "Воздушно-пузырьковая плёнка «МиниБабл», двухслойная, 25 г/м², 100*0.75 м, 75 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 3500, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2063678699509"], "weightDimensions": {"length": 75, "width": 42.9, "height": 42.9, "weight": 1.86}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "1588731", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.75", "unitId": 6}, {"parameterId": 51734601, "value": "100", "unitId": 6}, {"parame
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "1588731", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 1588731
+  ⚠️  9048: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "9048", "name": "Воздушно-пузырьковая плёнка «БаблБокс», трёхслойная, 60 г/м², 50*0.3 м, 15 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 3000, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2003502239051"], "weightDimensions": {"length": 50, "width": 35, "height": 50, "weight": 1.438}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "9048", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.3", "unitId": 6}, {"parameterId": 51734601, "value": "50", "unitId": 6}, {"parameterId
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "9048", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 9048
+  ⚠️  6335: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "6335", "name": "Воздушно-пузырьковая плёнка «Компакт», двухслойная, 40 г/м², 50*0.3 м, 15 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 1050, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2253271926083"], "weightDimensions": {"length": 30, "width": 54.2, "height": 54.2, "weight": 0.54}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "6335", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.3", "unitId": 6}, {"parameterId": 51734601, "value": "50", "unitId": 6}, {"parameterId
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "6335", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 6335
+  ⚠️  2050: нет изображений (карточка уйдёт с низким index)
+  · step1 offer-mappings: (dry) точный payload, НЕ отправлен:
+      {"offerMappings": [{"offer": {"offerId": "2050", "name": "Воздушно-пузырьковая плёнка «Компакт», двухслойная, 55 г/м², 5*0.4 м, 2 м²", "type": "DEFAULT", "boxCount": 1, "basicPrice": {"value": 325, "currencyId": "RUR"}, "marketCategoryId": 76346336, "vendor": "Без бренда", "barcodes": ["2696297010501"], "weightDimensions": {"length": 40, "width": 13, "height": 13, "weight": 0.122}}}]}
+  · step2 offer-cards: (dry) точный payload, НЕ отправлен:
+      {"offersContent": [{"offerId": "2050", "categoryId": 76346336, "parameterValues": [{"parameterId": 21194330, "valueId": 32806010, "value": "пленка"}, {"parameterId": 39979950, "valueId": 40487524, "value": "воздушно-пузырьковая"}, {"parameterId": 27141511, "valueId": 28706548, "value": "рулон"}, {"parameterId": 27143691, "valueId": 40461331, "value": "упаковочные работы"}, {"parameterId": 23679910, "value": "0.4", "unitId": 6}, {"parameterId": 51734601, "value": "5", "unitId": 6}, {"parameterId"
+  · step3 campaign-offers: (dry) точный payload, НЕ отправлен:
+      {"offers": [{"offerId": "2050", "available": true, "quantum": {"minQuantity": 1, "stepQuantity": 1}}]}
+  · step4: (dry) проверил бы витрину для 2050
+АВТОПИЛОТ 2026-09-16 · ok=False · dry=True commit=False · businessId=да · провалов=1 · горит=2 · ЗАДАНИЯ: form +0 seed +0 · ПУЛЬС-ЦИКЛ1: ok=True прогнано=0 свеж=2 закрыто=0 · ПЛАНЁРКА: 2026-09-16 решений 26 · СОВЕТ: 2026-09-16 собран=True уже=True · СПОРЫ: 2026-09-16 собраны=True уже=True

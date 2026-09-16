@@ -1,0 +1,49 @@
+{
+  "active": false,
+  "capability": "SOCC_ENTITY_FORGE_BIRTH_FROM_DOMAIN_CONFIG",
+  "commit": true,
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "deployed": false,
+  "domain": "dental_msk_01",
+  "dry": false,
+  "entity_born": true,
+  "home": "entity_substrate/instances/DENTALMSK01-2026091619",
+  "id": "SOCC_FORGE_ENTITY_DENTALMSK01-2026091619_V1_PROOF",
+  "instance_hash": "b65566b46d422113",
+  "instance_id": "DENTALMSK01-2026091619",
+  "laws": [
+    "no_medical_claims_if_vertical_medical",
+    "brain_fallback_required_before_any_live_talk",
+    "rubicon_write_only_by_operator",
+    "one_bounded_action_at_a_time",
+    "stop_after_tick",
+    "never_reveal_being_bot",
+    "no_medical_claims"
+  ],
+  "money_moved": false,
+  "network_used": false,
+  "no_daemon": true,
+  "proof_hash": "f0c5a8a1abf604ad",
+  "seal_verified": "substrate sealed PASS",
+  "skills": [
+    "telegram_dialogue",
+    "instagram_dialogue",
+    "booking_dikidi"
+  ],
+  "status": "PASS",
+  "stopped_after_step": true,
+  "surfaces": [
+    "IDENTITY.json",
+    "STATE.json",
+    "MEMORY.json",
+    "LINEAGE.json",
+    "CAPABILITY.json",
+    "LAWFUL_ACTION.json",
+    "DASHBOARD.json",
+    "PROOF_CHAIN.json",
+    "FREEZE.json",
+    "PRODUCT.json"
+  ],
+  "truth_boundary": "Entity forge: births a CERTIFIED instance from a domain config through 10 sealed-substrate surfaces. Birth ≠ launch: entity is not active, not connected, moves no money, uses no network. Launch/deploy is a separate operator-gated step.",
+  "vertical": "medical_dental"
+}

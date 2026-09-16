@@ -1,0 +1,20 @@
+{
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "execution_authorized": false,
+  "id": "DENTALMSK01-2026091619_LAWFUL_ACTION_V1",
+  "instance_id": "DENTALMSK01-2026091619",
+  "law_overrides": [
+    "no_medical_claims"
+  ],
+  "laws": [
+    "no_medical_claims_if_vertical_medical",
+    "brain_fallback_required_before_any_live_talk",
+    "rubicon_write_only_by_operator",
+    "one_bounded_action_at_a_time",
+    "stop_after_tick",
+    "never_reveal_being_bot",
+    "no_medical_claims"
+  ],
+  "rubicon": "dry_by_default_commit_by_operator",
+  "surface": "entity_lawful_action_surface"
+}

@@ -89,7 +89,23 @@ done
 
 echo
 echo "=== проверка: что реально загружено ==="
-launchctl list | grep -i socc || echo "  (пусто — агенты не загрузились)"
+# `launchctl list | grep` НЕНАДЁЖЕН: в неинтерактивной оболочке он может вернуть
+# пусто для агента, который фактически active (проверено 2026-09-16: list пусто,
+# а `launchctl print` показывает state=running, pid, runs=1). Вердикт берём из print.
+any_loaded=0
+for plist in "$AGENTS_DIR"/com.socc.*.plist; do
+  label=$(basename "$plist" .plist)
+  if info=$(launchctl print "gui/$(id -u)/$label" 2>/dev/null); then
+    state=$(printf '%s' "$info" | awk -F'= ' '/^[[:space:]]*state =/{print $2; exit}')
+    pid=$(printf '%s'  "$info" | awk -F'= ' '/^[[:space:]]*pid =/{print $2; exit}')
+    runs=$(printf '%s' "$info" | awk -F'= ' '/^[[:space:]]*runs =/{print $2; exit}')
+    echo "  ✓ $label  state=${state:-?} pid=${pid:--} runs=${runs:-0}"
+    any_loaded=1
+  else
+    echo "  ✗ $label  НЕ зарегистрирован в launchd"
+  fi
+done
+[[ $any_loaded -eq 0 ]] && echo "  (ничего не загрузилось)"
 echo
 echo "Готово. Ручной контрольный прогон (сухой, 0₽):"
 echo "  launchctl kickstart -k gui/\$(id -u)/com.socc.arbiter.daycycle.v1"

@@ -1,0 +1,11 @@
+{
+  "active": false,
+  "connected_channels": [],
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "id": "DENTALMSK01-2026091619_STATE_V1",
+  "instance_id": "DENTALMSK01-2026091619",
+  "last_action": null,
+  "state": "born",
+  "surface": "entity_state_surface",
+  "tick_count": 0
+}

@@ -1,0 +1,9 @@
+{
+  "birth_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_FORGE_ENTITY_DENTALMSK01-2026091619_V1_PROOF.json",
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "id": "DENTALMSK01-2026091619_PROOF_CHAIN_V1",
+  "instance_hash": "b65566b46d422113",
+  "instance_id": "DENTALMSK01-2026091619",
+  "proof_hash": "f0c5a8a1abf604ad",
+  "surface": "entity_proof_chain_surface"
+}

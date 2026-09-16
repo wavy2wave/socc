@@ -1,0 +1,10 @@
+{
+  "created_at_utc": "2026-09-16T19:43:14.144149+00:00",
+  "event": "Entity DENTALMSK01-2026091619 BORN from domain dental_msk_01 via forge",
+  "id": "FORGE_ENTITY_DENTALMSK01-2026091619_MEMORY_V1",
+  "instance_hash": "b65566b46d422113",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_FORGE_ENTITY_DENTALMSK01-2026091619_V1_PROOF.json",
+  "registry_added": true,
+  "status": "RECORDED",
+  "truth_boundary": "Entity forge: births a CERTIFIED instance from a domain config through 10 sealed-substrate surfaces. Birth ≠ launch: entity is not active, not connected, moves no money, uses no network. Launch/deploy is a separate operator-gated step."
+}
