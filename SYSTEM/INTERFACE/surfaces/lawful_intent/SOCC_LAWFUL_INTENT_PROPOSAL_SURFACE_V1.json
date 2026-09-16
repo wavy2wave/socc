@@ -1,0 +1,12 @@
+{
+  "active_surface_pointer": "SYSTEM/INTERFACE/surfaces/lawful_intent/ACTIVE_LAWFUL_INTENT_PROPOSAL_SURFACE.json",
+  "capability": "SOCC_CAN_FORM_CREATOR_INTENT_INTO_LAWFUL_NON_EXECUTING_PROPOSAL",
+  "created_at_utc": "2026-06-09T11:39:00.966065+00:00",
+  "id": "SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_V1",
+  "next_required_step": "validate_socc_lawful_intent_proposal_surface_v1",
+  "schema": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SCHEMA_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "surface_type": "PROPOSAL_ONLY",
+  "template": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_TEMPLATE_V1.json",
+  "truth_boundary": "This surface builds lawful intent proposals only. Non-executing, proof-bound, review-required."
+}

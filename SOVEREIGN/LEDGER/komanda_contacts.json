@@ -1,0 +1,276 @@
+{
+  "contacts": {
+    "node/1245392977": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-06-30T17:21:03.881789+00:00",
+      "key": "node/1245392977",
+      "last_run": "2026-06-30T17:21:03.881806+00:00",
+      "name": "Butterfly",
+      "place": "Некрасовка",
+      "status": "drafted"
+    },
+    "node/1364638522": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537506+00:00",
+      "key": "node/1364638522",
+      "last_run": "2026-07-01T00:09:45.537510+00:00",
+      "name": "Innostom",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/1380515416": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537522+00:00",
+      "key": "node/1380515416",
+      "last_run": "2026-07-01T00:09:45.537526+00:00",
+      "name": "Улыбка плюс",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/1583903204": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537534+00:00",
+      "key": "node/1583903204",
+      "last_run": "2026-07-01T00:09:45.537538+00:00",
+      "name": "Стоматология на Амирхана",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/1725342239": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537546+00:00",
+      "key": "node/1725342239",
+      "last_run": "2026-07-01T00:09:45.537550+00:00",
+      "name": "Denta-rell",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/1923942556": {
+      "channel": "phone",
+      "contact": "+7 843 2800440",
+      "first_seen": "2026-07-01T00:09:45.537558+00:00",
+      "key": "node/1923942556",
+      "last_run": "2026-07-01T00:09:45.537562+00:00",
+      "name": "Джаз дент",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2083511271": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537570+00:00",
+      "key": "node/2083511271",
+      "last_run": "2026-07-01T00:09:45.537573+00:00",
+      "name": "Стоматологическая поликлиника №9",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2108623639": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537580+00:00",
+      "key": "node/2108623639",
+      "last_run": "2026-07-01T00:09:45.537583+00:00",
+      "name": "Нур",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2387325807": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537591+00:00",
+      "key": "node/2387325807",
+      "last_run": "2026-07-01T00:09:45.537594+00:00",
+      "name": "Happy clinic",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2403065761": {
+      "channel": "phone",
+      "contact": "+7 843 2475025",
+      "first_seen": "2026-07-01T00:09:45.537602+00:00",
+      "key": "node/2403065761",
+      "last_run": "2026-07-01T00:09:45.537606+00:00",
+      "name": "Доктор",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2407530721": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537613+00:00",
+      "key": "node/2407530721",
+      "last_run": "2026-07-01T00:09:45.537617+00:00",
+      "name": "Зубболит",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2419480790": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537624+00:00",
+      "key": "node/2419480790",
+      "last_run": "2026-07-01T00:09:45.537627+00:00",
+      "name": "Дантист +",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2425166791": {
+      "channel": "phone",
+      "contact": "+7 843 5224612",
+      "first_seen": "2026-07-01T00:09:45.537635+00:00",
+      "key": "node/2425166791",
+      "last_run": "2026-07-01T00:09:45.537638+00:00",
+      "name": "Арт-клиника",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2498089947": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537646+00:00",
+      "key": "node/2498089947",
+      "last_run": "2026-07-01T00:09:45.537649+00:00",
+      "name": "Эндоскан",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2779457560": {
+      "channel": "phone",
+      "contact": "+7 843 5574552; +7 953 4855797",
+      "first_seen": "2026-07-01T00:09:45.537656+00:00",
+      "key": "node/2779457560",
+      "last_run": "2026-07-01T00:09:45.537659+00:00",
+      "name": "Бережная стоматология",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/2858763906": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537667+00:00",
+      "key": "node/2858763906",
+      "last_run": "2026-07-01T00:09:45.537670+00:00",
+      "name": "Детская стоматологическая поликлиника № 2",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/3812355503": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537678+00:00",
+      "key": "node/3812355503",
+      "last_run": "2026-07-01T00:09:45.537681+00:00",
+      "name": "МегаДэнт",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/3821908618": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537689+00:00",
+      "key": "node/3821908618",
+      "last_run": "2026-07-01T00:09:45.537692+00:00",
+      "name": "Денс",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/3915764339": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537699+00:00",
+      "key": "node/3915764339",
+      "last_run": "2026-07-01T00:09:45.537703+00:00",
+      "name": "Dental office",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/4060220147": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537710+00:00",
+      "key": "node/4060220147",
+      "last_run": "2026-07-01T00:09:45.537713+00:00",
+      "name": "Альянс-Престиж",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/4102975201": {
+      "channel": "phone",
+      "contact": "+7 843 2684577",
+      "first_seen": "2026-07-01T00:09:45.537720+00:00",
+      "key": "node/4102975201",
+      "last_run": "2026-07-01T00:09:45.537723+00:00",
+      "name": "Дс-оптимус",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/4386749001": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-06-30T17:21:03.881823+00:00",
+      "key": "node/4386749001",
+      "last_run": "2026-06-30T17:21:03.881827+00:00",
+      "name": "Стоматология в.а.",
+      "place": "Некрасовка",
+      "status": "drafted"
+    },
+    "node/6028503248": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-06-30T17:21:03.881838+00:00",
+      "key": "node/6028503248",
+      "last_run": "2026-06-30T17:21:03.881841+00:00",
+      "name": "Кристалл",
+      "place": "Некрасовка",
+      "status": "drafted"
+    },
+    "node/6270448123": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-06-30T17:21:03.881849+00:00",
+      "key": "node/6270448123",
+      "last_run": "2026-06-30T17:21:03.881852+00:00",
+      "name": "Фэмилидент",
+      "place": "Некрасовка",
+      "status": "drafted"
+    },
+    "node/7634032801": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-06-30T17:21:03.881859+00:00",
+      "key": "node/7634032801",
+      "last_run": "2026-06-30T17:21:03.881862+00:00",
+      "name": "Мистер Зуб",
+      "place": "Некрасовка",
+      "status": "drafted"
+    },
+    "node/845234257": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-07-01T00:09:45.537479+00:00",
+      "key": "node/845234257",
+      "last_run": "2026-07-01T00:09:45.537488+00:00",
+      "name": "Центр современной стоматологии",
+      "place": "Казань",
+      "status": "drafted"
+    },
+    "node/8934071809": {
+      "channel": "unknown",
+      "contact": "",
+      "first_seen": "2026-06-30T17:21:03.881869+00:00",
+      "key": "node/8934071809",
+      "last_run": "2026-06-30T17:21:03.881872+00:00",
+      "name": "Алви Дент",
+      "place": "Некрасовка",
+      "status": "drafted"
+    }
+  },
+  "id": "KOMANDA_CONTACTS_V1",
+  "updated_at": "2026-07-01T00:09:45.537740+00:00"
+}

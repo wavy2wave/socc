@@ -1,0 +1,143 @@
+{
+  "created_at_utc": "2026-07-01T09:11:38.394287+00:00",
+  "executor_ladder": [
+    {
+      "executor": "claude_code",
+      "required": false,
+      "role": "jeweler precision (optional power-add)"
+    },
+    {
+      "executor": "codex",
+      "required": false,
+      "role": "patch/brick quality gate"
+    },
+    {
+      "executor": "hermes",
+      "required": true,
+      "role": "in-repo repair/build agent (always present)"
+    },
+    {
+      "executor": "socc_self",
+      "required": true,
+      "role": "deterministic self-build (works offline, last resort)"
+    }
+  ],
+  "id": "TICKET_20260701T091138_запустить_следующий_bounded_шаг_самостройки_авто",
+  "intent": {
+    "entities": [
+      "SOCC"
+    ],
+    "intent_kind": "build",
+    "request": "Запустить следующий bounded-шаг самостройки: Автономное строительство — самостройка SOCC",
+    "topic": "socc"
+  },
+  "knowledge": {
+    "context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/spine2/CONTEXT_PACK.md",
+    "coverage_estimate": 0.0,
+    "coverage_met": true,
+    "coverage_target": 0.8,
+    "level": "KNOWN",
+    "raw_source_anchors": [],
+    "topic": "socc",
+    "wiki_article": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/spine2/pages/socc.md"
+  },
+  "lawful_plan": [
+    {
+      "node": 1,
+      "proof_required": true,
+      "stage": "direction"
+    },
+    {
+      "node": 2,
+      "proof_required": true,
+      "stage": "construction_plan"
+    },
+    {
+      "node": 3,
+      "proof_required": true,
+      "stage": "scientific_gate"
+    },
+    {
+      "node": 4,
+      "proof_required": true,
+      "stage": "hermes_gate"
+    },
+    {
+      "node": 5,
+      "proof_required": true,
+      "stage": "codex_gate"
+    },
+    {
+      "node": 6,
+      "proof_required": true,
+      "stage": "bounded_execution_surface"
+    },
+    {
+      "node": 7,
+      "proof_required": true,
+      "stage": "bounded_execution_session"
+    },
+    {
+      "node": 8,
+      "proof_required": true,
+      "stage": "validation"
+    },
+    {
+      "node": 9,
+      "proof_required": true,
+      "stage": "review"
+    },
+    {
+      "node": 10,
+      "proof_required": true,
+      "stage": "seal"
+    }
+  ],
+  "llm_used": false,
+  "network_used": false,
+  "no_fake_pass": true,
+  "operator_sources": [],
+  "product_framing": {
+    "is_product": false,
+    "note": "If this births a sellable entity (e.g. ANNA), plan must include product surfaces: site, payment, CRM hook, self-marketing skill."
+  },
+  "readiness_gate": {
+    "blockers": [],
+    "criteria": {
+      "discipline_clean": true,
+      "intent_resolved": true,
+      "knowledge_known_for_build": true,
+      "knowledge_present": true,
+      "route_lawful_next_present": true,
+      "route_status_pass": true
+    },
+    "ready": true
+  },
+  "request": "Запустить следующий bounded-шаг самостройки: Автономное строительство — самостройка SOCC",
+  "schema": "socc.ticket.v1",
+  "status": "READY",
+  "ticket_hash": "22270d69a9f70654c23e5751",
+  "token_budget": {
+    "estimate_high": 192000,
+    "estimate_low": 84000,
+    "honest_band": true,
+    "speed": "normal",
+    "speed_multiplier": 1.0,
+    "start_requires_budget_or_root_override": true
+  },
+  "truth_boundary": "Ticket is a lawful build permit only. It does not execute a build, spend tokens, call network/LLM, or birth any entity. Two validator slots remain pending until externally reviewed.",
+  "validation_rule": "ticket starts ONLY after >=1 validator APPROVES; both legible recommended; no fake PASS",
+  "validators": [
+    {
+      "role": "adversarial reviewer #1",
+      "slot": "claude_code",
+      "verdict": "APPROVED (operator)"
+    },
+    {
+      "role": "adversarial reviewer #2",
+      "slot": "chatgpt_latest",
+      "verdict": "APPROVED (operator)"
+    }
+  ],
+  "operator_approved": 2
+}

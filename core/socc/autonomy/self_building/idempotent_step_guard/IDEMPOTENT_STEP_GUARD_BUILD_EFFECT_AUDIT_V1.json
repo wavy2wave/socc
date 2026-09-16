@@ -1,0 +1,37 @@
+{
+  "audit": {
+    "evidence": {
+      "changed_artifacts_hashes": {
+        "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_BUILD_REPLAY_V1.json": "78b46ffa26e9cbb8e81be6e8",
+        "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_SPEC_V1.json": "d4265071c3462ee7b20239a4",
+        "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_TEST_VECTOR_V1.json": "2b4537671259137eb35859d8",
+        "scripts/socc/socc_idempotent_step_guard_v1.py": "b8741c7c278780ac87f13e9f"
+      },
+      "expected_after_ok": true,
+      "expected_before_ok": true,
+      "forbidden_false_after": true,
+      "lawful_next_after": "validate_idempotent_step_guard_v1",
+      "lawful_next_before": "build_idempotent_step_guard_v1",
+      "material_claims_count": 6,
+      "memory_exists": true,
+      "required_artifacts": {
+        "core/socc/approved_autonomy_lane_runner/proof/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_REVIEW_V1_PROOF.json": true,
+        "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_BUILD_REPLAY_V1.json": true,
+        "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_SPEC_V1.json": true,
+        "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_TEST_VECTOR_V1.json": true,
+        "scripts/socc/socc_idempotent_step_guard_v1.py": true
+      },
+      "route_changed": true,
+      "upstream_ok": true
+    },
+    "hard_failures": [],
+    "material_effect_proven": true,
+    "semantic_null_pass_blocked": false,
+    "status": "PASS"
+  },
+  "effect_auditor_enforced": true,
+  "hard_failures": [],
+  "material_effect_required": true,
+  "semantic_null_pass_blocked": false,
+  "status": "PASS"
+}

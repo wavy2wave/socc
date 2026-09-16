@@ -1,0 +1,14 @@
+{
+  "id": "CONNECTOR_ENTITY_SUBSTRATE_CANON_V1",
+  "kind": "in_repo_canon",
+  "source_root": "SYSTEM/ENTITY_SUBSTRATE",
+  "recurse": true,
+  "include_suffixes": [".md", ".json"],
+  "exclude_globs": ["*.DS_Store"],
+  "read_only": true,
+  "no_copy": true,
+  "no_move": true,
+  "no_network": true,
+  "note": "In-repo Entity Substrate canon (direction/plan/gates). These are authoritative present-day claims; freshness ranks them as CURRENT_AUTHORITY above older external chats.",
+  "truth_boundary": "Read-only in-repo canon root. Registered as current-authority source for the entity_substrate topic."
+}

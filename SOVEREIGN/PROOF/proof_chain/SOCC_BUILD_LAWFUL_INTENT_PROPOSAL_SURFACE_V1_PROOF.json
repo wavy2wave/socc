@@ -1,0 +1,17 @@
+{
+  "active_surface_pointer": "SYSTEM/INTERFACE/surfaces/lawful_intent/ACTIVE_LAWFUL_INTENT_PROPOSAL_SURFACE.json",
+  "capability": "SOCC_CAN_FORM_CREATOR_INTENT_INTO_LAWFUL_NON_EXECUTING_PROPOSAL",
+  "current_expected": "build_socc_lawful_intent_proposal_surface_v1",
+  "id": "SOCC_BUILD_LAWFUL_INTENT_PROPOSAL_SURFACE_V1_PROOF",
+  "next_after_pass": "validate_socc_lawful_intent_proposal_surface_v1",
+  "next_lawful_step": "validate_socc_lawful_intent_proposal_surface_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "-8805907369344900628",
+  "status": "PASS",
+  "surface_artifact": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_V1.json"
+}

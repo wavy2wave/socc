@@ -1,0 +1,50 @@
+{
+  "id": "BRAND_FORGE_GATES_V1",
+  "schema": "socc.gates.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-29T00:00:00+00:00",
+  "purpose": "Brand-context definitions of SOCC's gates. Every frontier must pass its assigned gates before it can be accepted and the next frontier unlocked. Gates turn branding from taste into proof.",
+  "gates": {
+    "SCIENTIFIC_QUALITY_GATE": {
+      "question": "Is this decision evidence-based and falsifiable — not just taste?",
+      "checks": [
+        "claim_links_to_evidence (research, source, measured number)",
+        "explicit_pass_fail_conditions",
+        "falsifiable_statuses (could be shown wrong)",
+        "no_invented_facts (ask creator when knowledge missing)",
+        "decision_traceable_to_strategy (visual follows positioning, not vice versa)"
+      ],
+      "verdict_on_pass": "FRONTIER_PASSES_SCIENTIFIC_QUALITY_GATE"
+    },
+    "HERMES_GATE": {
+      "question": "Does it actually render / work in reality?",
+      "checks": [
+        "tokens_parse_as_valid_json",
+        "svg_renders_at_16px_and_512px",
+        "color_contrast_meets_WCAG_AA (>=4.5:1 text, >=3:1 large)",
+        "components_build_without_error",
+        "html_opens_and_displays"
+      ],
+      "verdict_on_pass": "FRONTIER_PASSES_HERMES_GATE"
+    },
+    "CODEX_GATE": {
+      "question": "Does it conform to canon law and contracts?",
+      "checks": [
+        "no_raw_external_asset (everything re-skinned into canon)",
+        "naming_convention_followed",
+        "file_structure_correct (lives under SYSTEM/BRAND_FORGE)",
+        "truth_boundary_present_and_honest",
+        "voice_matches_SOCC_DESIGN_CANON"
+      ],
+      "verdict_on_pass": "FRONTIER_PASSES_CODEX_GATE"
+    },
+    "GUARDIAN": {
+      "question": "Can independent skeptics refute this before we accept it?",
+      "mechanism": "N adversarial agents each try to REFUTE the frontier (default to refuted=true when uncertain). Frontier survives only if a majority fail to refute.",
+      "kills": "plausible-but-weak decisions, off-strategy visuals, accessibility failures, hype language",
+      "verdict_on_pass": "FRONTIER_SURVIVES_ADVERSARIAL_REVIEW"
+    }
+  },
+  "acceptance_rule": "A frontier is ACCEPTED only when (all assigned gates PASS) AND (creator confirms). Until then status stays PENDING/REVIEW and the next frontier is LOCKED.",
+  "truth_boundary": "Gate definitions only. Defines how frontiers are judged. Running this file judges nothing by itself; gates are applied per-frontier during forging."
+}

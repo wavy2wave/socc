@@ -1,0 +1,173 @@
+{
+  "boundary": "Everything 🔴 is outward/live and gated on the operator's explicit fire. Nothing here births an entity, deploys, or touches a real clinic. Honest by construction.",
+  "created_at_msk": "2026-06-30T13:47:18+03:00",
+  "created_at_utc": "2026-06-30T10:47:18.048928+00:00",
+  "first_green_test": "FG-T1",
+  "id": "STAFF_READINESS_BOARD_V1",
+  "legend": {
+    "✅": "green-demonstrated (real proof PASS)",
+    "📊": "projection (assumptions)",
+    "🔒": "design-sealed (not proven)",
+    "🔴": "red — needs operator fire",
+    "🟡": "design (written, not run)"
+  },
+  "rows": [
+    {
+      "evidence": "STAFF_SPEC_LAYER_SEAL_V1 PASS",
+      "item": "TFS-1 Team Functor",
+      "layer": "Фундамент",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "STAFF_SPEC_LAYER_SEAL_V1 PASS",
+      "item": "PXS-1 Proof-Gated DAG",
+      "layer": "Фундамент",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "SCOUT",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "HERMES",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "ANNA",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "FORGE",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "WARDEN",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "LEDGER",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "спек написан + запечатан",
+      "item": "SCRIBE",
+      "layer": "Ростер",
+      "status": "🔒 DESIGN-SEALED"
+    },
+    {
+      "evidence": "= рабочий socc_lawful_step_engine_v1.py",
+      "item": "CONDUCTOR",
+      "layer": "Ростер",
+      "status": "✅ GREEN-DEMONSTRATED"
+    },
+    {
+      "evidence": "оператор понял (c0 PASS)",
+      "item": "B0 Positioning",
+      "layer": "Воронка",
+      "status": "✅ GREEN-DEMONSTRATED"
+    },
+    {
+      "evidence": "калькулятор работает; число станет proof на B3 (LEDGER)",
+      "item": "B1 ROI-модель",
+      "layer": "Воронка",
+      "status": "📊 PROJECTION"
+    },
+    {
+      "evidence": "карта готова; заряд ≥2 = outreach под approve",
+      "item": "B4 Карта каналов",
+      "layer": "Воронка",
+      "status": "🟡 DESIGN"
+    },
+    {
+      "evidence": "текст+оферта готовы; публикация = огонь",
+      "item": "B5 Лендинг+оферта",
+      "layer": "Воронка",
+      "status": "🟡 DESIGN"
+    },
+    {
+      "evidence": "validator отказал неполному домену; bc2da64a3f989354",
+      "item": "FG-T1 fail-closed рождение",
+      "layer": "Тесты",
+      "status": "✅ GREEN-DEMONSTRATED"
+    },
+    {
+      "evidence": "барбершоп валиден тем же кодом, 0 правок",
+      "item": "FG-T3 структурная половина (домен-параметр)",
+      "layer": "Тесты",
+      "status": "✅ GREEN-DEMONSTRATED"
+    },
+    {
+      "evidence": "живая интеграция — огонь",
+      "item": "FG-T3 полный (mint + smoke в календаре)",
+      "layer": "Тесты",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "нужен живой мозг/guard (сеть) — не доказан честно",
+      "item": "AN-T1 не диагностирую",
+      "layer": "Тесты",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "живая запись в Dikidi/1С — огонь",
+      "item": "AN-T3 реальная бронь",
+      "layer": "Тесты",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "реальная клиника, 30 дней — главный патрон",
+      "item": "B3 proof-кейс (ЧЕК)",
+      "layer": "Тесты",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "FG-T1 PASS; AN-T1 ещё нет (нужна сеть)",
+      "item": "R0 локальные тесты закона",
+      "layer": "Лестница огня",
+      "status": "✅ GREEN-DEMONSTRATED"
+    },
+    {
+      "evidence": "deploy",
+      "item": "R1 demo safe-mode",
+      "layer": "Лестница огня",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "deploy",
+      "item": "R2 лендинг живой",
+      "layer": "Лестница огня",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "outreach под approve",
+      "item": "R3 1 design-партнёр",
+      "layer": "Лестница огня",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "интеграция + доступы",
+      "item": "R4 FORGE онбордит клинику",
+      "layer": "Лестница огня",
+      "status": "🔴 RED-NEEDS-FIRE"
+    },
+    {
+      "evidence": "главный патрон",
+      "item": "R5 proof-кейс 30 дней",
+      "layer": "Лестница огня",
+      "status": "🔴 RED-NEEDS-FIRE"
+    }
+  ],
+  "staff_layer_sealed": true
+}

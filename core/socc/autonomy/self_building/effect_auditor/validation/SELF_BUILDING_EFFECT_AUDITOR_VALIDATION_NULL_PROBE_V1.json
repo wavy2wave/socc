@@ -1,0 +1,33 @@
+{
+  "control": "semantic_null",
+  "created_at_utc": "2026-06-18T09:49:17.405857+00:00",
+  "evidence": {
+    "changed_artifacts_hashes": {},
+    "expected_after_ok": true,
+    "expected_before_ok": true,
+    "forbidden_false_after": true,
+    "lawful_next_after": "build_self_building_effect_auditor_v1",
+    "lawful_next_before": "build_self_building_effect_auditor_v1",
+    "material_claims_count": 0,
+    "memory_exists": true,
+    "required_artifacts": {},
+    "route_changed": false,
+    "upstream_ok": true
+  },
+  "hard_failures": [
+    {
+      "actual": false,
+      "check": "route_changed",
+      "code": "SEMANTIC_NULL"
+    },
+    {
+      "actual": 0,
+      "check": "material_claims_count",
+      "code": "NO_MATERIAL_CLAIMS"
+    }
+  ],
+  "id": "SELF_BUILDING_EFFECT_AUDITOR_VALIDATION_NULL_PROBE_V1",
+  "material_effect_proven": false,
+  "semantic_null_pass_blocked": true,
+  "status": "FAIL"
+}

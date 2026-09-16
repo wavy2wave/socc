@@ -1,0 +1,28 @@
+{
+  "schema": "ymarket.trade.points.v1",
+  "created_at": "2026-09-01T21:22:45.486907+00:00",
+  "updated_at": "2026-09-01T21:22:45.491075+00:00",
+  "points": {
+    "cargo-msk-express": {
+      "point_id": "cargo-msk-express",
+      "first_seen": "2026-09-01T21:22:45.487102+00:00",
+      "shop": "cargo-avto",
+      "warehouse_id": 1803385,
+      "city": "Москва",
+      "phone": "8 977 962 91 25",
+      "courier_instruction": "Курьер звонит по телефону склада, ЖДЁТ № внутреннего заказа из магазина, входит как клиент, забирает заказ, доставляет как Яндекс Маркет.",
+      "contact": null,
+      "hours": null,
+      "status": "active",
+      "address_note": null,
+      "note": null,
+      "updated_at": "2026-09-01T21:22:45.487108+00:00"
+    }
+  },
+  "bindings": {
+    "1588731": "cargo-msk-express",
+    "9048": "cargo-msk-express",
+    "6335": "cargo-msk-express",
+    "2050": "cargo-msk-express"
+  }
+}

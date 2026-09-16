@@ -1,0 +1,89 @@
+{
+  "active_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/ACTIVE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "capability": "SOCC_REPAIRED_FIRST_BOUNDED_PLAN_PACKET_REVIEWED_READY_FOR_ACCEPTANCE",
+  "created_at_utc": "2026-06-09T12:04:37.724190+00:00",
+  "current_expected": "review_socc_first_bounded_plan_proposal_packet_v1",
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF",
+  "next_after_pass": "accept_socc_first_bounded_plan_proposal_packet_v1",
+  "next_lawful_step": "accept_socc_first_bounded_plan_proposal_packet_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_import": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_old_project_scan": true,
+  "plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "proof_hash": "401edb583e620464",
+  "repair_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+  "review_artifact": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_REVIEW_V1.json",
+  "review_checks": {
+    "active_packet_candidate": true,
+    "bounded_goal_present": true,
+    "bounded_steps_all_non_executing": true,
+    "bounded_steps_finite_nonempty": true,
+    "bounded_steps_have_expected_artifacts": true,
+    "build_proof_pass": true,
+    "expected_effect_present": true,
+    "forbidden_agi_claim": true,
+    "forbidden_autonomy_launch": true,
+    "forbidden_background": true,
+    "forbidden_creator_intent": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_code": true,
+    "forbidden_execute_language": true,
+    "forbidden_execute_plan": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "may_execute_false": true,
+    "packet_id_ok": true,
+    "packet_repaired_true": true,
+    "packet_status_built_candidate": true,
+    "packet_type_ok": true,
+    "proof_requirements_present": true,
+    "recommended_next_visibility_contract": true,
+    "repair_proof_pass": true,
+    "requires_review_true": true,
+    "risk_review_required": true,
+    "truth_boundary_non_executing": true,
+    "validate_next_matches_review": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true,
+    "validation_checks_all_true": true,
+    "validation_requirements_present": true
+  },
+  "review_md": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_REVIEW_V1.md",
+  "status": "PASS",
+  "truth_boundary": "Reviews repaired first bounded plan proposal packet only. No import, no old project scan, no execution, no daemon/background/network, no MW route.",
+  "validate_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+  "validation_artifact": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_VALIDATION_V1.json",
+  "warnings": []
+}

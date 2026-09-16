@@ -1,0 +1,12 @@
+{
+  "acceptance_status": "PASS",
+  "created_at_utc": "2026-06-22T11:05:41.245743+00:00",
+  "event": "Bounded session accepted; seal authorized as the next lawful step; no birth, not sealed.",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_SESSION_ACCEPTANCE_MEMORY_V1",
+  "next": "seal_entity_substrate_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "Entity/Substrate bounded execution session acceptance only. Accepts the reviewed+validated session and authorizes the seal step as the next lawful action. Does NOT seal, does NOT birth Entity/Anna, runs nothing, no daemon/background/network, no AGI/L3 claim. Seal stays a separate explicit step."
+}

@@ -1,0 +1,79 @@
+{
+  "bounded_goal": "Move SOCC from accepted bounded plan proposal surface toward a visible controlled foreground cycle by defining finite, measurable, proof-bound, non-executing planning steps.",
+  "bounded_steps": [
+    {
+      "expected_artifact": "authority observation embedded in validation/review proof",
+      "may_execute": false,
+      "step_id": "observe_route_authority_v1",
+      "summary": "Read route/pulse/control and confirm current_lawful_next before any future cycle."
+    },
+    {
+      "expected_artifact": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+      "may_execute": false,
+      "step_id": "define_controlled_cycle_visibility_contract_v1",
+      "summary": "Define what every visible controlled SOCC cycle must show: current, decision, boundary, proof, result, next."
+    },
+    {
+      "expected_artifact": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_FOREGROUND_CONTROLLED_CYCLE_PACKET_V1.json",
+      "may_execute": false,
+      "step_id": "prepare_first_foreground_controlled_cycle_packet_v1",
+      "summary": "Prepare a finite foreground controlled cycle packet with proof requirements and no daemon/background/network."
+    },
+    {
+      "expected_artifact": "validation frontier only",
+      "may_execute": false,
+      "step_id": "stop_for_validation_review_acceptance_v1",
+      "summary": "Stop after proposal/packet construction and require validation, review, and acceptance before any future run surface."
+    }
+  ],
+  "created_at_utc": "2026-06-09T11:58:11.848477+00:00",
+  "current_validation_frontier": "validate_socc_first_bounded_plan_proposal_packet_v1",
+  "expected_effect": [
+    "SOCC has a compliant first bounded plan proposal packet",
+    "packet contains finite non-executing steps with expected artifacts",
+    "packet defines measurable visibility requirements before any future cycle",
+    "packet names proof and validation requirements before review",
+    "route remains at validation frontier until validation PASS"
+  ],
+  "forbidden_actions": [
+    "execute plan",
+    "execute code",
+    "execute language",
+    "execute creator intent",
+    "mutate route authority outside lawful transition",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "lawful_next_alignment": "PASS_CURRENT_FRONTIER_MATCHED_ALL_AUTHORITY_FILES",
+  "may_execute": false,
+  "observed_current_lawful_next": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "plan_id": "SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1",
+  "plan_type": "FIRST_BOUNDED_PLAN_PROPOSAL_PACKET",
+  "proof_requirements": [
+    "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF.json",
+    "next validation must write SOCC_VALIDATE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json"
+  ],
+  "recommended_next_after_acceptance": "build_socc_controlled_cycle_visibility_contract_v1",
+  "repair_reason": "Previous simplified build produced a malformed packet that failed validation. This repair restores required bounded plan schema fields without advancing route.",
+  "repaired_at_utc": "2026-06-09T12:00:53.560532+00:00",
+  "requires_review": true,
+  "risk_class": "REVIEW_REQUIRED",
+  "source_bounded_plan_surface": "SYSTEM/INTERFACE/surfaces/bounded_plan/ACTIVE_ACCEPTED_BOUNDED_PLAN_PROPOSAL_SURFACE.json",
+  "source_intent_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This bounded plan packet is a proposal only. It cannot execute, run code, mutate route outside lawful transition, start daemon/background, use network, create MW route, claim AGI, or launch autonomy.",
+  "validation_requirements": [
+    "authority must equal validate_socc_first_bounded_plan_proposal_packet_v1",
+    "bounded_steps must be finite and non-empty",
+    "each bounded step must have may_execute false",
+    "expected_effect must be artifact/result oriented",
+    "forbidden_actions must include execution, daemon, background, network, MW, AGI/autonomy claims"
+  ]
+}

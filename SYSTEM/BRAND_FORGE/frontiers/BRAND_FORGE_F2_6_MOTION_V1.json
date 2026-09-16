@@ -1,0 +1,23 @@
+{
+  "id": "BRAND_FORGE_F2_6_MOTION_V1",
+  "schema": "socc.brand.motion.v1",
+  "phase": "P2",
+  "frontier": "F2.6",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "principle": "motion = calm breathing, never attention-grabbing — reinforces 'Спокойная забота'",
+  "rules": {
+    "easing": "ease-out / cubic-bezier(0.22,0.61,0.36,1) — soft landings, никогда не bounce",
+    "durations": {"micro": "180-260ms (hover, tap)", "entrance": "500-800ms (fade+rise)", "ambient": "2.5-3.5s (breath pulse)"},
+    "motions": [
+      "care-arc рисуется штрихом при загрузке лого (stroke-dashoffset)",
+      "сообщения: fade + лёгкий подъём (translateY 8px→0)",
+      "кнопки: мягкий подъём -1px + тень, 200ms",
+      "статус 'онлайн': медленный пульс-дыхание 3s",
+      "никаких резких/быстрых/прыгающих движений"
+    ],
+    "accessibility": "уважать prefers-reduced-motion: отключать ambient/entrance"
+  },
+  "render": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_6_MOTION_V1.html",
+  "truth_boundary": "Motion principles + live CSS demo. Specs only; defines how ANNA surfaces animate. No network/revenue/AGI."
+}

@@ -1,0 +1,15 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ENTITY/SUBSTRATE BOUNDED EXECUTION SURFACE V1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS::PASS
+CURRENT::build_entity_substrate_bounded_execution_surface_v1
+NEXT::review_entity_substrate_bounded_execution_surface_v1
+HARD_FAILURES::[]
+
+SURFACE_TYPE::BOUNDED_ENTITY_SUBSTRATE_EXECUTION_SURFACE
+EXECUTION_AUTHORIZED::False
+MAX_SESSIONS::1   MAX_TICKS::1
+ENTITY_BIRTH_ALLOWED::False
+ANNA_BIRTH_ALLOWED::False
+NO_DAEMON::True   NO_NETWORK::True
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

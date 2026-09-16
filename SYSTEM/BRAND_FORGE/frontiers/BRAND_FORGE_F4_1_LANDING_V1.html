@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Анна — тёплый администратор вашей клиники. 24/7</title>
+<style>
+  :root{
+    --bg:#F5F3EE;--surface:#fff;--surface2:#EDEAE3;--ink:#2E3D34;--muted:#6E7B71;
+    --primary:#54705C;--primary-soft:#8AA897;--accent:#D9A679;--accent-deep:#B5824F;
+    --radius:14px;--radius-lg:18px;--shadow:0 1px 0 rgba(46,61,52,.05),0 10px 34px rgba(46,61,52,.06);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  .btn{display:inline-block;border:none;border-radius:12px;padding:14px 24px;font:600 15px Inter,sans-serif;cursor:pointer}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-accent{background:var(--accent);color:var(--ink)}
+  .btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary-soft)}
+  /* nav */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:22px;letter-spacing:-.5px}
+  /* hero */
+  .hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:48px 0 64px}
+  .hero h1{font-size:48px;line-height:1.05;letter-spacing:-1.8px;margin:0 0 18px}
+  .hero p.lead{font-size:19px;color:var(--muted);margin:0 0 28px;max-width:460px}
+  .hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .hero .micro{font-size:13px;color:var(--muted);margin-top:14px}
+  /* chat card */
+  .chat{background:#fff;border-radius:22px;box-shadow:var(--shadow);overflow:hidden}
+  .chat .h{display:flex;align-items:center;gap:11px;padding:14px 16px;background:var(--primary)}
+  .chat .av{width:40px;height:40px;border-radius:50%}
+  .chat .h .nm{color:#F1E9DD;font-weight:600}.chat .h .st{color:#cfe0d4;font-size:12px}
+  .chat .b{padding:16px;background:var(--surface2)}
+  .bub{padding:11px 15px;border-radius:16px;margin:8px 0;max-width:82%;font-size:14.5px}
+  .bub.a{background:#fff;border-bottom-left-radius:5px}
+  .bub.p{background:#DCEAD7;margin-left:auto;border-bottom-right-radius:5px}
+  /* sections */
+  section{padding:64px 0}
+  .kick{font-size:13px;text-transform:uppercase;letter-spacing:.14em;color:var(--accent-deep);font-weight:600;margin:0 0 10px}
+  h2{font-size:34px;letter-spacing:-1px;margin:0 0 30px}
+  .pains{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .pain{background:var(--surface);border:1px solid rgba(46,61,52,.07);border-radius:var(--radius);padding:24px}
+  .pain .n{font-size:30px}
+  .pain h3{font-size:18px;margin:10px 0 6px}
+  .pain p{color:var(--muted);font-size:14.5px;margin:0}
+  .feats{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+  .feat{display:flex;gap:14px;background:var(--surface);border-radius:var(--radius);padding:22px;border:1px solid rgba(46,61,52,.07)}
+  .feat .ic{width:42px;height:42px;border-radius:11px;background:var(--primary-soft);flex:none;display:flex;align-items:center;justify-content:center;font-size:20px}
+  .feat h3{margin:0 0 5px;font-size:17px}.feat p{margin:0;color:var(--muted);font-size:14.5px}
+  .why{background:var(--primary);color:#EAF1EB;border-radius:24px;padding:48px}
+  .why h2{color:#fff}
+  .why .two{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:10px}
+  .why b{color:#fff}
+  .verts{display:flex;gap:12px;flex-wrap:wrap}
+  .chip{background:var(--surface);border:1px solid rgba(46,61,52,.1);border-radius:999px;padding:10px 18px;font-size:14px}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:var(--ink);font-weight:600}
+  .ctaband{background:var(--surface);border-radius:24px;box-shadow:var(--shadow);padding:48px;text-align:center}
+  .ctaband h2{margin:0 0 8px}
+  .ctaband p{color:var(--muted);margin:0 0 24px}
+  footer{padding:40px 0 60px;color:var(--muted);font-size:13px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+  .ph{font-size:12px;color:var(--accent-deep);background:#f3e7d2;border-radius:6px;padding:2px 7px}
+  @media(max-width:820px){.hero{grid-template-columns:1fr}.pains{grid-template-columns:1fr}.feats,.why .two{grid-template-columns:1fr}.hero h1{font-size:38px}}
+</style></head>
+<body>
+<div class="wrap">
+
+  <nav>
+    <div class="brand">
+      <svg viewBox="0 0 120 120" width="34" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#5E7A66"/><path d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/><path d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="86" r="4.5" fill="#F1E9DD"/></svg>
+      анна
+    </div>
+    <a class="btn btn-primary" href="#cta">Подключить</a>
+  </nav>
+
+  <header class="hero">
+    <div>
+      <h1>Ни одного потерянного пациента — даже ночью.</h1>
+      <p class="lead">Анна — администратор, который всегда на связи и говорит как ваш лучший живой сотрудник: тепло, точно, без робота. Отвечает и записывает 24/7.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#cta">Подключить к клинике</a>
+        <a class="btn btn-ghost" href="#demo">Послушать, как говорит</a>
+      </div>
+      <div class="micro">Работает в Telegram · стоматология сейчас, другие профили — на подходе</div>
+    </div>
+    <div class="chat" id="demo">
+      <div class="h">
+        <svg class="av" viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="#6E8B74"/><text x="60" y="60" font-family="Inter" font-size="56" font-weight="600" fill="#F5F3EE" text-anchor="middle" dominant-baseline="central">А</text></svg>
+        <div><div class="nm">Анна</div><div class="st">админ клиники · онлайн</div></div>
+      </div>
+      <div class="b">
+        <div class="bub a">Здравствуйте! Подскажу свободное время и запишу — что вас беспокоит?</div>
+        <div class="bub p">Зуб ноет второй день, очень больно</div>
+        <div class="bub a">Понимаю, это правда неприятно. Есть сегодня в 18:40 или завтра утром — как удобнее?</div>
+        <div class="bub p">Давайте сегодня</div>
+        <div class="bub a">Записала на 18:40, кабинет 3. Если что-то изменится — просто напишите, перенесём спокойно. Как вас зовут?</div>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div class="wrap"><section style="padding-top:8px">
+  <p class="kick">Знакомая боль</p>
+  <h2>Пациенты уходят там, где никто не ответил</h2>
+  <div class="pains">
+    <div class="pain"><div class="n">🌙</div><h3>Ночь и выходные</h3><p>Заявка приходит, когда администратор спит. Пациент пишет в другую клинику.</p></div>
+    <div class="pain"><div class="n">📋</div><h3>Неявки и хаос</h3><p>Забыли напомнить, перепутали время — окно простаивает, выручка теряется.</p></div>
+    <div class="pain"><div class="n">🔥</div><h3>Выгорание</h3><p>Один администратор не вывозит поток. Держать топ-сотрудника 24/7 — дорого.</p></div>
+  </div>
+</section></div>
+
+<div class="wrap"><section>
+  <p class="kick">Решение</p>
+  <h2>Администратор, который говорит как человек</h2>
+  <div class="feats">
+    <div class="feat"><div class="ic">🕊️</div><div><h3>Всегда на связи</h3><p>24/7, без перерывов и выгорания. Каждое обращение поймано.</p></div></div>
+    <div class="feat"><div class="ic">🧠</div><div><h3>Помнит каждого</h3><p>Историю пациента, прошлые визиты, любимого врача — без напоминаний.</p></div></div>
+    <div class="feat"><div class="ic">🤍</div><div><h3>Мягко с болью</h3><p>Сначала забота, потом запись. Не давит, не втюхивает.</p></div></div>
+    <div class="feat"><div class="ic">📅</div><div><h3>Записывает сама</h3><p>Подбирает время, подтверждает, переносит, напоминает.</p></div></div>
+  </div>
+</section></div>
+
+<div class="wrap"><section>
+  <div class="why">
+    <p class="kick" style="color:#D9A679">Почему не «чат-бот»</p>
+    <h2>Пациент не должен чувствовать робота</h2>
+    <div class="two">
+      <div><b>Тепло живого человека.</b> Анна говорит короткими, человеческими фразами — с заботой, по имени, без канцелярита и дисклеймеров.</div>
+      <div><b>Точность системы.</b> Под тёплым тоном — безупречная память и дисциплина: ничего не забыто, никто не потерян.</div>
+    </div>
+  </div>
+</section></div>
+
+<div class="wrap"><section>
+  <p class="kick">Одна личность — много клиник</p>
+  <h2>Сегодня стоматология. Дальше — больше</h2>
+  <div class="verts">
+    <span class="chip on">Стоматология</span>
+    <span class="chip">Пластическая хирургия</span>
+    <span class="chip">Многопрофильная клиника</span>
+    <span class="chip">Барбершоп</span>
+  </div>
+  <p style="color:var(--muted);margin-top:18px;max-width:560px">Личность Анны единая для всех клиник; профиль — это навык, который активируется. Один характер, которому доверяют пациенты.</p>
+</section></div>
+
+<div class="wrap"><section id="cta">
+  <div class="ctaband">
+    <h2>Подключите Анну к своей клинике</h2>
+    <p>Тёплый администратор вашей клиники. 24/7. <span class="ph">здесь будет форма / контакт</span></p>
+    <a class="btn btn-primary" href="#">Оставить заявку</a>
+    &nbsp;
+    <a class="btn btn-accent" href="#demo">Посмотреть демо</a>
+  </div>
+</section></div>
+
+<div class="wrap"><footer>
+  <div class="brand" style="font-size:18px">
+    <svg viewBox="0 0 120 120" width="26" aria-hidden="true"><rect width="120" height="120" rx="28" fill="#5E7A66"/><path d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/><path d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/></svg>
+    анна
+  </div>
+  <div>Каждый пациент — как самый важный. Круглосуточно. · <span class="ph">© демо-лендинг, не публичный</span></div>
+</footer></div>
+
+</body></html>

@@ -1,0 +1,29 @@
+{
+  "active_binding": "SYSTEM/INTERFACE/bindings/language_dashboard/ACTIVE_LANGUAGE_DASHBOARD_BINDING.json",
+  "binding_view": "SYSTEM/INTERFACE/dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_VIEW_V1.md",
+  "capability": "SOCC_LANGUAGE_ORGAN_VISIBLE_IN_DASHBOARD_READ_ONLY_VALIDATED",
+  "created_at_utc": "2026-06-09T09:18:54.711362+00:00",
+  "id": "SOCC_LANGUAGE_DASHBOARD_BINDING_VALIDATION_V1",
+  "next_required_step": "review_socc_language_dashboard_binding_v1",
+  "status": "PASS",
+  "truth_boundary": "Validation confirms read-only dashboard-language binding. It does not execute language, mutate route outside transition, start daemon/background, use network, or create MW route.",
+  "validated_binding": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_V1.json",
+  "validation_checks": {
+    "active_binding_candidate": true,
+    "binding_build_proof_pass": true,
+    "binding_status_built_candidate": true,
+    "binding_type_read_only": true,
+    "capability_ok": true,
+    "execution_controls_false": true,
+    "forbidden_background": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_language": true,
+    "forbidden_mutate_route": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "language_accept_proof_pass": true,
+    "view_exists_and_mentions_read_only": true,
+    "view_mentions_next_required_step": true
+  },
+  "validation_verdict": "LANGUAGE_DASHBOARD_BINDING_VALIDATED_READY_FOR_REVIEW"
+}

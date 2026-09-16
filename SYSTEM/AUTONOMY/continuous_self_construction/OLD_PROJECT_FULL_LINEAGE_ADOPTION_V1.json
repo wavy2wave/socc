@@ -1,0 +1,22 @@
+{
+  "adoption_hash": "fce7601cd9bb2a05",
+  "created_at_utc": "2026-06-09T21:06:10.884215+00:00",
+  "daemon_hits_count": 20285,
+  "daemon_note": "Old project daemon evidence is archived as lineage. It is not relaunched. A new SOCC daemon requires separate lawful daemon surface.",
+  "files_indexed": 93683,
+  "future_rule": [
+    "Future autonomy steps use this local ingest bundle.",
+    "Do not repeatedly scan old project unless explicit forensic repair is requested.",
+    "Do not resume old route.",
+    "Do not launch old daemon.",
+    "If old evidence is relevant, adopt/reconcile from the local ingest manifest/archive."
+  ],
+  "id": "OLD_PROJECT_FULL_LINEAGE_ADOPTION_V1",
+  "ingest_archive": "MIGRATION/old_project_ingest/supramental-agent/supramental-agent-lineage-ingest-v1.tar.gz",
+  "ingest_manifest": "MIGRATION/old_project_ingest/supramental-agent/OLD_PROJECT_FULL_INGEST_MANIFEST_V1.json",
+  "keyword_hits_count": 91346,
+  "old_project": "/Users/wavysexy/supramental-agent",
+  "old_project_mode": "one_time_ingest_complete_do_not_query_old_path_each_step",
+  "status": "ADOPTED_AS_LOCAL_CANON_INPUT",
+  "truth_boundary": "Adoption of ingested lineage only. No old route resume, no old daemon launch."
+}

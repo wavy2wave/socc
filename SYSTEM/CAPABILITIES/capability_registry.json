@@ -1,0 +1,22 @@
+{
+  "capabilities": [
+    {
+      "id": "self_building",
+      "status": "active_primary",
+      "description": "Lawful autonomous self-construction capability."
+    },
+    {
+      "id": "memory_continuity",
+      "status": "building",
+      "description": "Memory, wiki, proof, decisions, failures, and continuity.",
+      "organ": "Knowledge Substrate",
+      "organ_direction": "SYSTEM/CAPABILITIES/memory_continuity/KNOWLEDGE_SUBSTRATE_DIRECTION_V1.json",
+      "organ_active_pointer": "SYSTEM/CAPABILITIES/memory_continuity/ACTIVE_KNOWLEDGE_SUBSTRATE_DIRECTION.json"
+    },
+    {
+      "id": "entity_birth",
+      "status": "downstream",
+      "description": "Future Entity Substrate / entity creation capability."
+    }
+  ]
+}

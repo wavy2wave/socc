@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-06-10T12:27:37.083493+00:00",
+  "current_stage": "entity_substrate_hermes_gate_pass_codex_next",
+  "gate": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_HERMES_GATE_V1.json",
+  "gates_status": {
+    "Codex_gate": "next_to_run",
+    "Hermes_gate": "PASS",
+    "construction_plan": "REVIEW_PASS",
+    "direction": "ACCEPTED",
+    "execution": "not_authorized_yet",
+    "old_project_ingest": "INGESTED_ONCE",
+    "scientific_gate": "PASS"
+  },
+  "id": "ENTITY_SUBSTRATE_HERMES_GATE_PANEL_V1",
+  "lawful_next": "run_entity_substrate_codex_gate_v1",
+  "operator_visible_summary": "Entity/Substrate plan passed Hermes gate. Codex gate is next.",
+  "panel_type": "entity_substrate_dashboard",
+  "plan": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "status": "ACTIVE_GATE_PASS",
+  "truth_boundary": "Hermes gate only. It reviews engineering/lawful coherence; it does not build Entity/Substrate or execute daemon/background/network."
+}

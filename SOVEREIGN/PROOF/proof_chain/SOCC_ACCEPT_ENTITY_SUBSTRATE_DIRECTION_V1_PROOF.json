@@ -1,0 +1,21 @@
+{
+  "acceptance": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_ACCEPTANCE_V1.json",
+  "capability": "SOCC_HAS_ACCEPTED_ENTITY_SUBSTRATE_DIRECTION_AFTER_ONE_TIME_OLD_PROJECT_INGEST",
+  "created_at_utc": "2026-06-09T21:06:10.884215+00:00",
+  "current_expected": "accept_entity_substrate_direction_v1",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_ENTITY_SUBSTRATE_DIRECTION_V1_PROOF",
+  "ingest_manifest": "MIGRATION/old_project_ingest/supramental-agent/OLD_PROJECT_FULL_INGEST_MANIFEST_V1.json",
+  "next_after_pass": "build_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "next_lawful_step": "build_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "no_background": true,
+  "no_daemon_launch_now": true,
+  "no_network": true,
+  "no_old_route_resume": true,
+  "old_project_adoption": "SYSTEM/AUTONOMY/continuous_self_construction/OLD_PROJECT_FULL_LINEAGE_ADOPTION_V1.json",
+  "proof_hash": "53070f2f0a56a86c",
+  "review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ENTITY_SUBSTRATE_DIRECTION_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "Direction acceptance. Execution begins through SOCC-native foreground runner only.",
+  "warnings": []
+}

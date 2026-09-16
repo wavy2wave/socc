@@ -1,0 +1,31 @@
+{
+  "acceptance_verdict": "REPAIRED_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_ACCEPTED_AS_CANONICAL_NON_EXECUTING_PLAN",
+  "accepted_as": [
+    "finite non-executing bounded plan",
+    "measurable expected effect plan",
+    "proof-bound plan proposal",
+    "review-required transition object",
+    "input for controlled cycle visibility contract"
+  ],
+  "accepted_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "active_accepted_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/ACTIVE_ACCEPTED_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET.json",
+  "capability": "SOCC_HAS_ACCEPTED_REPAIRED_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET",
+  "created_at_utc": "2026-06-09T12:05:30.541764+00:00",
+  "id": "SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_controlled_cycle_visibility_contract_v1",
+  "not_accepted_as": [
+    "executor",
+    "code runner",
+    "route mutator",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "review": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted repaired first bounded plan proposal packet is canonical and non-executing. It authorizes only building the controlled cycle visibility contract, not execution.",
+  "validation": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_VALIDATION_V1.json"
+}

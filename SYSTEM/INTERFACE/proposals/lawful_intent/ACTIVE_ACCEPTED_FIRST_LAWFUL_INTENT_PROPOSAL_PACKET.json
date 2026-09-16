@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF.json",
+  "active_proposal_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.json",
+  "created_at_utc": "2026-06-09T10:36:27.793886+00:00",
+  "id": "ACTIVE_ACCEPTED_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET",
+  "mode": "CANONICAL_NON_EXECUTING_INTENT_PACKET",
+  "next_required_step": "build_socc_bounded_plan_proposal_surface_v1",
+  "proposal_md": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.md",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted proposal packet is non-executing and feeds bounded plan proposal surface."
+}

@@ -1,0 +1,32 @@
+{
+  "id": "SOCC_BRAND_FORGE_GENESIS_V1_PROOF",
+  "capability": "SOCC_HAS_BORN_BRAND_FORGE_CELL",
+  "created_at_utc": "2026-06-29T00:00:00+00:00",
+  "stage": "brand_forge_genesis_v1",
+  "artifact": "SYSTEM/BRAND_FORGE/BRAND_FORGE_CELL_V1.json",
+  "checks": {
+    "cell_constitution_exists": true,
+    "line_exists": true,
+    "gates_exist": true,
+    "roles_exist": true,
+    "state_exists": true,
+    "cell_registered": true,
+    "dashboard_panel_exists": true,
+    "inherits_socc_design_canon": true,
+    "inherits_socc_lifecycle": true,
+    "every_frontier_has_a_gate": true,
+    "next_frontier_locked_until_accept": true,
+    "no_pixels_in_genesis": true,
+    "no_brand_forged_yet": true,
+    "no_network": true,
+    "no_revenue_claim": true,
+    "no_entity_birth": true,
+    "no_agi_claim": true,
+    "truth_boundary_present": true
+  },
+  "gate_verdict": "BRAND_FORGE_GENESIS_PASSES_CODEX_GATE",
+  "status": "PASS",
+  "current": "brand_forge_genesis_v1",
+  "next": "accept_brand_forge_genesis_v1",
+  "truth_boundary": "Genesis proof. Confirms the Brand Forge cell is declaratively born (constitution, LINE, gates, roles, state, registry, panel) and conforms to SOCC canon. It forges no brand, produces no pixels, makes no network call, claims no revenue, claims no AGI. F1.0 stays locked until the creator accepts genesis."
+}

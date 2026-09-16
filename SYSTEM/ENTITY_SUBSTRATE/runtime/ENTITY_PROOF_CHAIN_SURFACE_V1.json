@@ -1,0 +1,16 @@
+{
+  "anna_born": false,
+  "bounded_tick": 1,
+  "created_at_utc": "2026-06-22T11:00:27.840283+00:00",
+  "declares": "proof-chain binding",
+  "entity_born": false,
+  "execution_authorized": false,
+  "id": "ENTITY_PROOF_CHAIN_SURFACE_V1",
+  "kind": "declarative_substrate_artifact",
+  "proof_chain_root": "SOVEREIGN/PROOF/proof_chain/",
+  "session_id": "ENTITY_SUBSTRATE_BOUNDED_SESSION_20260622T110027840117Z",
+  "status": "MATERIALIZED_DECLARATIVE_SUBSTRATE",
+  "surface": "entity_proof_chain_surface",
+  "this_session_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+  "truth_boundary": "Entity/Substrate bounded execution session only. Runs exactly one bounded foreground tick that materializes the ten substrate surfaces + runtime panel as declarative data artifacts. Births no Entity, births no Anna, runs no daemon/background/network/scheduler, does not widen the queue, does not resume the old route, does not approve final canon, and does not claim AGI/L3. Stops after one tick."
+}

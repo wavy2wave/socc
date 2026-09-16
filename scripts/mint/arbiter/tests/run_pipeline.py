@@ -142,9 +142,28 @@ class _Patched:
         return False
 
 
+# ВСЕ ключи, влияющие на выбор/готовность провайдера. _EnvForce гасит их по умолчанию: тест
+# перечисляет только то, что ему НУЖНО, и не зависит от того, что оператор вписал в mint/.env.
+# Зачем: 15.09 оператор вписал ЖИВЫЕ ключи YandexART — и три зелёных теста покраснели, хотя код
+# был прав (YAART теперь честно вооружён и автовыбор его берёт). Тест, читающий чужой .env, врёт
+# в обе стороны: зеленеет от чужого ключа и краснеет от рабочего.
+_PROVIDER_KEYS = (
+    "PHOTO_FORGE_PROVIDER",
+    "GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_AI_STUDIO_KEY",
+    "OPENROUTER_API_KEY", "OPENAI_API_KEY",
+    "NEUROAPI_API_KEY", "RU_OPENAI_API_KEY",
+    "FUSIONBRAIN_API_KEY", "FUSIONBRAIN_SECRET_KEY",
+    "YAART_API_KEY", "YC_API_KEY", "YAART_FOLDER_ID", "YC_FOLDER_ID",
+)
+
+
 class _EnvForce:
-    """Выставить/снять env и заморозить _ENV_TRIED (чтобы .env не перечитался). None → удалить."""
+    """Выставить/снять env и заморозить _ENV_TRIED (чтобы .env не перечитался). None → удалить.
+
+    Неперечисленные провайдерные ключи гасятся сами (см. _PROVIDER_KEYS) — герметичность по умолчанию."""
     def __init__(self, **kv):
+        for _k in _PROVIDER_KEYS:
+            kv.setdefault(_k, None)
         self._kv, self._save, self._tried = kv, {}, None
 
     def __enter__(self):

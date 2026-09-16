@@ -1,0 +1,1 @@
+{"claims": [{"text": "Review confirms language layer may proceed to acceptance. It does not execute language and does not authorize daemon/background/network.", "line": 7, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Daemon": 1}}

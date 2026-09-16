@@ -1,0 +1,69 @@
+{
+  "active_cycle_packet": "SYSTEM/CYCLE/controlled_packets/ACTIVE_FIRST_CONTROLLED_CYCLE_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "capability": "SOCC_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPT_FRONTIER_RESTORED",
+  "created_at_utc": "2026-06-09T12:18:43.843406+00:00",
+  "cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_RESTORE_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPT_FRONTIER_V1_PROOF",
+  "next_lawful_step": "accept_socc_first_controlled_cycle_packet_v1",
+  "no_background": true,
+  "no_build": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_review_rerun": true,
+  "no_validate_rerun": true,
+  "proof_hash": "4bb6662bef404065",
+  "regressed_frontier": "validate_socc_first_controlled_cycle_packet_v1",
+  "restore_checks": {
+    "active_packet_candidate": true,
+    "authority_regressed_to_validate": true,
+    "cycle_packet_exists": true,
+    "cycle_packet_no_foreground_tick": true,
+    "cycle_packet_non_executing": true,
+    "duplicate_build_detected_or_build_proof_present": true,
+    "review_artifact_pass": true,
+    "review_checks_all_true": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true,
+    "validation_checks_all_true": true
+  },
+  "restored_frontier": "accept_socc_first_controlled_cycle_packet_v1",
+  "review_artifact": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_REVIEW_V1.json",
+  "review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "Restores lawful accept frontier after duplicate build regression. Does not build, validate, review, execute, daemonize, use network, or create MW route.",
+  "validate_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "validation_artifact": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_VALIDATION_V1.json",
+  "warnings": []
+}

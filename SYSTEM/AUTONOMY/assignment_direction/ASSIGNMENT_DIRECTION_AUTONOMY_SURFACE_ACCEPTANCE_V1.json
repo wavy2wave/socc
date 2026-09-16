@@ -1,0 +1,45 @@
+{
+  "acceptance_verdict": "ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_ACCEPTED_AS_CANONICAL_TASK_TO_DIRECTION_CONTROL",
+  "accepted_as": [
+    "canonical assignment-to-direction autonomy control surface",
+    "lawful task intake gate",
+    "direction creation gate",
+    "construction plan gate",
+    "scientific quality gate requirement",
+    "Hermes quality/law/reasoning gate requirement",
+    "Codex code/patch quality gate requirement",
+    "dashboard visibility requirement"
+  ],
+  "accepted_surface": "SYSTEM/AUTONOMY/assignment_direction/ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_V1.json",
+  "active_accepted_surface": "SYSTEM/AUTONOMY/assignment_direction/ACTIVE_ACCEPTED_ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE.json",
+  "created_at_utc": "2026-06-09T15:27:26.287612+00:00",
+  "dashboard_pointer": "SYSTEM/DASHBOARD/ACTIVE_ACCEPTED_ASSIGNMENT_DIRECTION_PANEL_POINTER_V1.json",
+  "id": "ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_ACCEPTANCE_V1",
+  "next_assignment_frontier": {
+    "id": "build_assignment_intake_object_v1",
+    "must_include": [
+      "assignment_id",
+      "operator_intent",
+      "scope",
+      "non_goals",
+      "risk_boundary",
+      "expected_deliverable",
+      "evidence_requirements",
+      "dashboard visibility"
+    ],
+    "purpose": "Build the first lawful assignment intake object from operator request. It must not execute the assignment yet."
+  },
+  "next_required_step": "build_assignment_intake_object_v1",
+  "not_accepted_as": [
+    "assignment execution",
+    "patch execution",
+    "daemon/background/network autonomy",
+    "old route resume",
+    "MW route",
+    "AGI claim",
+    "L3 claim"
+  ],
+  "review": "SYSTEM/AUTONOMY/assignment_direction/ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Acceptance authorizes building the first assignment intake object only. No assignment build/patch execution is authorized."
+}

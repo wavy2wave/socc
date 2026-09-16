@@ -1,0 +1,36 @@
+{
+  "acceptance_verdict": "READ_ONLY_CREATOR_DIALOGUE_VIEW_ACCEPTED_AS_CANONICAL_CREATOR_SURFACE",
+  "accepted_as": [
+    "creator-facing read-only dialogue surface",
+    "current_lawful_next visibility surface",
+    "proof-chain visibility surface",
+    "language-dashboard status surface",
+    "lawful boundary display surface"
+  ],
+  "accepted_view": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.json",
+  "active_accepted_view": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_ACCEPTED_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+  "capability": "SOCC_HAS_CANONICAL_READ_ONLY_CREATOR_DIALOGUE_VIEW",
+  "created_at_utc": "2026-06-09T10:29:36.464605+00:00",
+  "id": "SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_lawful_intent_proposal_surface_v1",
+  "not_accepted_as": [
+    "executor",
+    "route mutator",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted creator dialogue view is canonical and read-only. It displays state and boundaries only. It cannot execute language, execute creator intent, mutate route, start daemon/background, use network, or launch autonomy.",
+  "upstream_proofs": {
+    "build": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF.json",
+    "language_dashboard_binding_accept": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+    "language_layer_accept": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+    "review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF.json",
+    "validate": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF.json"
+  },
+  "view_md": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.md"
+}

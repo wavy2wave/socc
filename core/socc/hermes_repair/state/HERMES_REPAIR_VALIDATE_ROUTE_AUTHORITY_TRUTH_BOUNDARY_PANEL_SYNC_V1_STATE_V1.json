@@ -1,0 +1,11 @@
+{
+  "id": "HERMES_REPAIR_VALIDATE_ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1_STATE",
+  "created_at_utc": "2026-06-16T13:49:21.673369+00:00",
+  "target_script": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "packet": "/Users/wavysexy/SOCC/core/socc/hermes_repair/packets/HERMES_REPAIR_VALIDATE_ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1_ATTEMPT2_V1.json",
+  "attempt": 2,
+  "retry_returncode": 1,
+  "repair_status": "FAIL",
+  "bounded_repair": true,
+  "daemon_running": false
+}

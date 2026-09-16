@@ -1,0 +1,24 @@
+{
+  "id": "CURRENT_PROJECT_ORDER_V1",
+  "status": "ACTIVE",
+  "updated": "2026-07-13",
+  "decision": "mint_first_ruble",
+  "main_line": "ln-cee92000",
+  "roadmap_node": "M1",
+  "priority": ["mint_d2_1500", "anna_health_only", "anna_pilot_after_m1"],
+  "real_money": 0,
+  "brain_health": "DEAD_403",
+  "assets": {
+    "demo_config": "scripts/mint/botfactory/config.demo_prodazha.json",
+    "runbook": "scripts/mint/P3_FIRST_LEAD_RUNBOOK.md",
+    "record": "scripts/mint/socc_mint_record_v1.py",
+    "entry": "START_HERE.md"
+  },
+  "operator_next": [
+    "botfather_token",
+    "owner_chat_id",
+    "run_demo_bot",
+    "marketplace_replies",
+    "npd_and_record_commit"
+  ]
+}

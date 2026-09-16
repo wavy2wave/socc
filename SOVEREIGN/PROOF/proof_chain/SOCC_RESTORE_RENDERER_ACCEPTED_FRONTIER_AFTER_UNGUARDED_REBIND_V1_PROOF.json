@@ -1,0 +1,36 @@
+{
+  "accidental_unguarded_rebind_detected": true,
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/restore_renderer_frontier_after_unguarded_rebind_20260608T202921Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/restore_renderer_frontier_after_unguarded_rebind_20260608T202921Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/restore_renderer_frontier_after_unguarded_rebind_20260608T202921Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "MIGRATION/audits/SOCC_QUARANTINE_ACCIDENTAL_UNGUARDED_BOUNDED_LOOP_REBIND_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "control_next_after": "socc_canonical_dashboard_renderer_accepted_v1",
+  "control_next_before": "socc_canonical_dashboard_renderer_accepted_v1",
+  "created_at_utc": "2026-06-08T20:29:22.172052+00:00",
+  "daemon_running": false,
+  "expected_frontier": "socc_canonical_dashboard_renderer_accepted_v1",
+  "hard_failures": [],
+  "id": "SOCC_RESTORE_RENDERER_ACCEPTED_FRONTIER_AFTER_UNGUARDED_REBIND_V1_PROOF",
+  "network_used": false,
+  "next_after_restore": "build_socc_sovereign_core_language_layer_v1",
+  "observe_pass": true,
+  "pulse_next_after": "socc_canonical_dashboard_renderer_accepted_v1",
+  "pulse_next_before": "socc_canonical_dashboard_renderer_accepted_v1",
+  "quarantine": "MIGRATION/audits/SOCC_QUARANTINE_ACCIDENTAL_UNGUARDED_BOUNDED_LOOP_REBIND_V1.json",
+  "renderer_accepted_evidence_ok": true,
+  "route_next_after": "socc_canonical_dashboard_renderer_accepted_v1",
+  "route_next_before": "validate_bounded_controlled_loop_execution_v1",
+  "status": "PASS",
+  "truth_boundary": "Restore renderer accepted frontier only. Does not execute bounded loop.",
+  "warnings": [
+    "ROUTE_PULSE_CONTROL_NOT_ALIGNED_BEFORE_REPAIR"
+  ]
+}

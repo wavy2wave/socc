@@ -1,0 +1,11 @@
+{
+  "created_at_msk": "2026-05-28T01:28:07+03:00",
+  "created_at_utc": "2026-05-27T22:28:07.659385+00:00",
+  "id": "IDEMPOTENT_STEP_GUARD_VALIDATION_V1_MEMORY",
+  "memory_effect": "Validated idempotent step guard: normal execution allowed, already committed rerun becomes NOOP, destructive out-of-phase rerun is blocked.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_PROOF.json",
+  "real_next": "review_idempotent_step_guard_v1",
+  "status": "PASS",
+  "truth_boundary": "Idempotent step guard validation only. This validates normal execution, already-committed noop, and out-of-phase destructive rerun blocking before routing to review. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "validation": "core/socc/autonomy/self_building/idempotent_step_guard/validation/IDEMPOTENT_STEP_GUARD_VALIDATION_V1.json"
+}

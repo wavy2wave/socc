@@ -1,0 +1,67 @@
+{
+  "autonomy_distance": {
+    "continuous_foreground_autonomy": "requires authority-bound repeatability gate",
+    "daemon_or_24_7_autonomy": "not_authorized",
+    "fresh_first_tick_run": "done_pending_validation",
+    "fresh_first_tick_seal": "validate/review/accept still needed unless superseded by repeatability gate",
+    "old_lineage_visibility": "done_after_review_accept"
+  },
+  "created_at_utc": "2026-06-09T14:23:10.871419+00:00",
+  "current_expected": "build_fresh_socc_autonomy_status_surface_v1",
+  "current_route": {
+    "authority_before": {
+      "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_fresh_socc_autonomy_status_surface_v1",
+      "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_fresh_socc_autonomy_status_surface_v1",
+      "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_fresh_socc_autonomy_status_surface_v1"
+    },
+    "current_execution_line": "fresh_SOCC_route_authority",
+    "current_lawful_next": "build_fresh_socc_autonomy_status_surface_v1",
+    "next_after_surface_build": "review_fresh_socc_autonomy_status_surface_v1"
+  },
+  "forbidden": [
+    "do not resume old route as current",
+    "do not claim L3",
+    "do not claim daemon/24-7",
+    "do not ignore lineage",
+    "do not continue blind lower tick loop"
+  ],
+  "fresh_socc_status": {
+    "current_required_action_after_surface_review_accept": "return_to_validate_first_foreground_controlled_tick_or_build_authority_bound_repeatability_gate",
+    "first_foreground_controlled_tick": {
+      "artifact": "SYSTEM/CYCLE/foreground_tick_run/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1.json",
+      "capability": "SOCC_HAS_RUN_FIRST_FOREGROUND_CONTROLLED_TICK_PENDING_VALIDATION",
+      "memory": "MEMORY_WAVE/reports/foreground_tick/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1_MEMORY.json",
+      "next_lawful_step_from_tick": "validate_socc_first_foreground_controlled_tick_v1",
+      "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_FOREGROUND_CONTROLLED_TICK_V1_PROOF.json",
+      "status": "PASS",
+      "stopped_after_tick": true,
+      "tick_count": 1
+    },
+    "fresh_route_health": "authority_bound_single_tick_exists_pending_validation"
+  },
+  "id": "FRESH_SOCC_AUTONOMY_STATUS_SURFACE_V1",
+  "lineage_status": {
+    "acceptance": "MIGRATION/adoption/old_autonomy/SOCC_OLD_AUTONOMY_EVIDENCE_LINEAGE_ONLY_ACCEPTANCE_V1.json",
+    "old_accepted_frontier": "MW156_CYCLE_1_MEANING_SEAL_AND_LAWFUL_NEXT_V1",
+    "old_evidence_role": "lineage_only_not_current_route",
+    "old_route_resume": false,
+    "old_strong_autonomy_records": 475,
+    "old_total_autonomy_records": 846,
+    "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_OLD_AUTONOMY_EVIDENCE_AS_LINEAGE_ONLY_V1_PROOF.json",
+    "visible_pointer": "core/socc/lineage/OLD_AUTONOMY_LINEAGE_ACCEPTED_POINTER_V1.json"
+  },
+  "next_required_step": "review_fresh_socc_autonomy_status_surface_v1",
+  "one_line_truth": "Fresh /SOCC is the current lawful execution line. Old supramental-agent autonomy proof is accepted as lineage-only migration evidence, not as current route.",
+  "recommended_next_after_review_accept": [
+    "review_fresh_socc_autonomy_status_surface_v1",
+    "accept_fresh_socc_autonomy_status_surface_v1",
+    "then build_authority_bound_repeatability_gate_v1"
+  ],
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Status surface only. It makes autonomy state visible. It does not run ticks, resume old route, start daemon/background/network, or claim L3.",
+  "why_you_did_not_see_result_before": [
+    "old autonomy evidence was present but not accepted into a visible lineage surface",
+    "new SOCC was building clean route authority and therefore did not auto-resume old route",
+    "there was no single operator-readable status artifact joining lineage + fresh current state"
+  ]
+}

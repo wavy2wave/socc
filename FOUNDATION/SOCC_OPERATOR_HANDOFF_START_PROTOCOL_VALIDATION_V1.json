@@ -1,0 +1,24 @@
+{
+  "accepted_truth_ok": true,
+  "bad_route_flags": [],
+  "bad_truth": [],
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_OPERATOR_HANDOFF_START_PROTOCOL_V1_PROOF.json",
+  "created_at_utc": "2026-06-08T19:25:57.542467+00:00",
+  "current_step": "validate_socc_operator_handoff_start_protocol_v1",
+  "handoff": "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.json",
+  "id": "SOCC_OPERATOR_HANDOFF_START_PROTOCOL_VALIDATION_V1",
+  "lawful_next": "review_socc_operator_handoff_start_protocol_v1",
+  "missing_startup": [],
+  "missing_startup_before": [
+    "execute only the current lawful next step",
+    "update route/pulse/control"
+  ],
+  "old_project_forensic": "MIGRATION/audits/SOCC_OLD_HANDOFF_START_PROTOCOL_FORENSIC_V1.json",
+  "repair_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_OPERATOR_HANDOFF_START_PROTOCOL_STARTUP_SEQUENCE_V1_PROOF.json",
+  "route_safety_flags_ok": true,
+  "start_here": "START_HERE_SOCC.md",
+  "startup_sequence_ok": true,
+  "status": "PASS",
+  "truth_boundary": "Validate handoff/start protocol only. No daemon/background/network.",
+  "validated_step": "socc_working_base_accepted_v1"
+}

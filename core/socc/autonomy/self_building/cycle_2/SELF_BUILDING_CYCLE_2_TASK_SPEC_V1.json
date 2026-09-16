@@ -1,0 +1,34 @@
+{
+  "created_at_msk": "2026-06-16T12:56:29+03:00",
+  "created_at_utc": "2026-06-16T09:56:29.428602+00:00",
+  "expected_delta": [
+    "show command displays CURRENT_ROUTE_AUTHORITY.truth_boundary first",
+    "pulse truth_boundary equals CURRENT_ROUTE_AUTHORITY.truth_boundary",
+    "panel truth_boundary equals CURRENT_ROUTE_AUTHORITY.truth_boundary",
+    "route hash/upstream proof/truth boundary displayed together",
+    "creator-visible pulse becomes route-truth complete"
+  ],
+  "id": "SELF_BUILDING_CYCLE_2_TASK_SPEC_V1",
+  "observed_debt": {
+    "panel_truth_boundary_matches_route": false,
+    "pulse_truth_boundary_matches_route": false,
+    "route_truth_boundary_exists": true,
+    "truth_boundary_display_drift_detected": true
+  },
+  "pass_conditions": [
+    "candidate exists",
+    "target selected",
+    "no daemon",
+    "no scheduler",
+    "no background loop",
+    "no network",
+    "no queue widening",
+    "no Entity/ANNA birth",
+    "no AGI claim"
+  ],
+  "selected_improvement_target": "build_route_authority_truth_boundary_panel_sync_v1",
+  "status": "DEFINED",
+  "target_class": "route_authority_truth_boundary_display_sync",
+  "truth_boundary": "Cycle-2 candidate build only. This prepares the second bounded self-building cycle candidate and selects route-authority truth-boundary/status-panel synchronization as the next improvement target. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "why_this_target": "After route-authority/panel lawful_next sync was review-sealed, terminal refresh still displayed an older truth_boundary. Cycle 2 therefore targets full route-authority display truth, not daemon/scheduler escalation."
+}

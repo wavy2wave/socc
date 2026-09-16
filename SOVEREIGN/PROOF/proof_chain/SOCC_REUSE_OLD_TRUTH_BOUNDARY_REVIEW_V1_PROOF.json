@@ -1,0 +1,49 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/reuse_old_truth_boundary_review_20260608T175918Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/reuse_old_truth_boundary_review_20260608T175918Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/reuse_old_truth_boundary_review_20260608T175918Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "scripts/socc/review_route_authority_truth_boundary_panel_sync_v1.py",
+    "core/socc/autonomy/self_building/truth_boundary_panel_sync/review/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_REVIEW_V1.json",
+    "core/socc/autonomy/self_building/truth_boundary_panel_sync/review/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_REVIEW_V1.md",
+    "core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_REVIEW_V1_PROOF.json",
+    "MEMORY_WAVE/reports/autonomy/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_REVIEW_V1_MEMORY.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "copy_results": {
+    "memory": "COPIED",
+    "proof": "COPIED",
+    "review_json": "COPIED",
+    "review_md": "COPIED",
+    "script": "COPIED"
+  },
+  "created_at_utc": "2026-06-08T17:59:18.287323+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_REUSE_OLD_TRUTH_BOUNDARY_REVIEW_V1_PROOF",
+  "memory_files": 17,
+  "network_used": false,
+  "new_root": "/Users/wavysexy/SOCC",
+  "next_after_review": "build_self_building_cycle_2_closure_report_v1",
+  "observe_pass": true,
+  "observe_rc": 0,
+  "old_proof_pass": true,
+  "old_review_pass": true,
+  "old_root": "/Users/wavysexy/supramental-agent",
+  "proof_files": 73,
+  "review_executed_now": false,
+  "self_building_files": 125,
+  "status": "PASS",
+  "step": "review_route_authority_truth_boundary_panel_sync_v1",
+  "tick_executed": false,
+  "truth_boundary": "Reuse old proven review only. Copies old PASS evidence and advances new SOCC route to next_after_review. No review execution, no tick, no daemon/background/network/entity/ANNA/AGI claim.",
+  "warnings": []
+}

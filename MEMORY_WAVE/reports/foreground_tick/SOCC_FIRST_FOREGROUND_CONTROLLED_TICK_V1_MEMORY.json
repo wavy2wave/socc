@@ -1,0 +1,22 @@
+{
+  "boundary": {
+    "max_ticks": 1,
+    "mode": "single_local_foreground_controlled_tick",
+    "must_stop": true,
+    "no_24_7_claim": true,
+    "no_agi_claim": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_mw_route": true,
+    "no_network": true
+  },
+  "created_at_utc": "2026-06-09T13:40:34.776302+00:00",
+  "current_before": "run_socc_first_foreground_controlled_tick_v1",
+  "id": "SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1_MEMORY",
+  "memory_event": "SOCC performed first lawful single foreground controlled tick from accepted run surface.",
+  "next_after": "validate_socc_first_foreground_controlled_tick_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_FOREGROUND_CONTROLLED_TICK_V1_PROOF.json",
+  "status": "RECORDED",
+  "tick_run": "SYSTEM/CYCLE/foreground_tick_run/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1.json",
+  "truth_boundary": "This is one local foreground controlled tick. It is not daemon autonomy, not background autonomy, not network autonomy, and not AGI."
+}

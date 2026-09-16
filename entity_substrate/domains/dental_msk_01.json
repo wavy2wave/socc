@@ -1,0 +1,11 @@
+{
+  "id": "dental_msk_01",
+  "persona": { "name": "ANNA", "tone": "тепло, на вы, профессионально, коротко" },
+  "vocabulary": ["осмотр", "гигиена", "имплант", "коронка", "лечение кариеса", "ортодонт"],
+  "sources": ["price_list.pdf", "doctors.md", "hours.md", "booking_rules.md"],
+  "integration": { "type": "dikidi", "creds_ref": "vault://dental_msk_01/dikidi" },
+  "icp_signals": ["no_online_booking", "slow_dm_reply", "reviews_mention_не_дозвониться"],
+  "channels": ["telegram", "instagram_dm"],
+  "pricing": { "metric": "пропущенная заявка", "avg_ticket": 4000 },
+  "law_overrides": ["no_medical_claims"]
+}

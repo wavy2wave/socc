@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-06-09T21:07:04.221794+00:00",
+  "current_stage": "entity_substrate_construction_plan_reviewed_scientific_gate_next",
+  "gates_status": {
+    "Codex_gate": "after_Hermes_if_code_or_patch",
+    "Hermes_gate": "after_scientific",
+    "construction_plan": "REVIEW_PASS",
+    "direction": "ACCEPTED",
+    "execution": "not_authorized_yet",
+    "old_project_ingest": "INGESTED_ONCE",
+    "scientific_gate": "next_to_run"
+  },
+  "id": "ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_REVIEW_PANEL_V1",
+  "lawful_next": "run_entity_substrate_scientific_quality_gate_v1",
+  "operator_visible_summary": "Entity/Substrate plan built by autonomy runner has passed review. Scientific gate is next.",
+  "panel_type": "entity_substrate_dashboard",
+  "plan": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "review": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_REVIEW_V1.json",
+  "status": "ACTIVE_REVIEW_PASS",
+  "truth_boundary": "Review only. No Entity/Substrate execution/build beyond reviewing runner-built plan."
+}

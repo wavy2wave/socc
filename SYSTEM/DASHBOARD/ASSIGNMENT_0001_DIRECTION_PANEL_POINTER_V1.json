@@ -1,0 +1,30 @@
+{
+  "assignment": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:31:29.327717+00:00",
+  "current_stage": "direction_built_pending_review",
+  "direction": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_DIRECTION_V1.json",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "gates_status": {
+    "Codex_gate": "required_not_run_yet",
+    "Hermes_gate": "required_not_run_yet",
+    "assignment_object": "ACCEPTED",
+    "construction_plan": "not_built_yet",
+    "dashboard_visibility": "direction_panel_written",
+    "direction": "BUILT_CANDIDATE",
+    "memory": "pending_future_assignment_memory",
+    "proof": "pending_this_build_proof",
+    "scientific_quality_gate": "required_not_run_yet",
+    "stop": "required_before_execution"
+  },
+  "id": "ASSIGNMENT_0001_DIRECTION_PANEL_POINTER_V1",
+  "lawful_next": "review_assignment_direction_v1",
+  "operator_visible_summary": "Direction has been built as candidate. Construction plan is next after review/accept. Execution is not authorized.",
+  "panel_type": "assignment_dashboard",
+  "proof_artifacts": {
+    "direction_build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+    "intake_accept_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json"
+  },
+  "status": "ACTIVE_CANDIDATE_FOR_REVIEW",
+  "truth_boundary": "Direction build only. No construction plan execution, no patch execution, no daemon/background/network, no old route resume, no L3 claim."
+}

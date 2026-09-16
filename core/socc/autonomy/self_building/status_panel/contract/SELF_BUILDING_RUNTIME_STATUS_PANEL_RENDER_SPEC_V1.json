@@ -1,0 +1,21 @@
+{
+  "created_at_msk": "2026-06-06T01:58:06+03:00",
+  "created_at_utc": "2026-06-05T22:58:06.942687+00:00",
+  "id": "SELF_BUILDING_RUNTIME_STATUS_PANEL_RENDER_SPEC_V1",
+  "render_targets": [
+    "markdown report",
+    "json status snapshot",
+    "terminal-readable summary"
+  ],
+  "status": "DEFINED",
+  "terminal_summary_lines": [
+    "SOCC_SELF_BUILDING_PULSE",
+    "CURRENT_LEVEL",
+    "LAST_TICK",
+    "LAWFUL_NEXT",
+    "READY",
+    "LOCKED",
+    "HARD_FAILURES"
+  ],
+  "truth_boundary": "Render spec defines reports only. It does not run background loops."
+}

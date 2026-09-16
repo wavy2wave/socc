@@ -1,0 +1,19 @@
+{
+  "active_root": "/Users/wavysexy/SOCC",
+  "autonomy_pulse": "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+  "control_panel": "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+  "created_at_utc": "2026-06-08T17:50:26.770247+00:00",
+  "current_lawful_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "id": "SOCC_CHAT_HANDOFF_V1",
+  "memory_files": 16,
+  "next_lawful_action": "observe_then_continue_only_from_current_lawful_next",
+  "observe_command": "python3 scripts/socc/socc_observe_v1.py",
+  "old_root_role": "source_archive_reference_not_active",
+  "proof_files": 60,
+  "route_authority": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+  "route_status": "PASS",
+  "sealed_capability": null,
+  "self_building_files": 109,
+  "status": "FRONTIER_REBOUND",
+  "truth_boundary": "Handoff only. No tick executed. No daemon/background/network/entity/ANNA/AGI claim."
+}

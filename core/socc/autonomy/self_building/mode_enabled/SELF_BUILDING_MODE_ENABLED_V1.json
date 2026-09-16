@@ -1,0 +1,176 @@
+{
+  "agi_claim_allowed": false,
+  "allowed_next_action": null,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "capability": "SELF_BUILDING_MODE_ENABLE_BLOCKED",
+  "checks": {
+    "enable_does_not_approve_final_canon": true,
+    "enable_does_not_birth_anna": true,
+    "enable_does_not_birth_entity": true,
+    "enable_does_not_claim_agi": true,
+    "enable_does_not_enable_background_loop": true,
+    "enable_does_not_enable_continuous_loop": true,
+    "enable_does_not_install_scheduler": true,
+    "enable_does_not_launch_daemon": true,
+    "enable_does_not_run_tick_now": true,
+    "enable_does_not_use_network": true,
+    "enable_does_not_widen_queue": true,
+    "ledger_exists": true,
+    "loop_build_proof_exists": false,
+    "loop_build_status_pass": false,
+    "loop_review_proof_exists": false,
+    "loop_review_real_next_ok": false,
+    "loop_review_sealed": false,
+    "loop_review_status_pass": false,
+    "loop_validation_proof_exists": false,
+    "loop_validation_status_pass": false,
+    "observable_loop_built": false,
+    "observable_loop_validated": false,
+    "panel_review_agi_claim_allowed_false": true,
+    "panel_review_anna_birth_allowed_false": true,
+    "panel_review_background_loop_enabled_false": true,
+    "panel_review_daemon_running_false": true,
+    "panel_review_entity_birth_allowed_false": true,
+    "panel_review_exists": true,
+    "panel_review_final_canon_approval_allowed_false": true,
+    "panel_review_network_used_false": true,
+    "panel_review_pass": true,
+    "panel_review_queue_widening_allowed_false": true,
+    "panel_review_scheduler_installed_false": true,
+    "progress_exists": true,
+    "refresh_command_review_sealed": true,
+    "refresh_review_agi_claim_allowed_false": true,
+    "refresh_review_anna_birth_allowed_false": true,
+    "refresh_review_background_loop_enabled_false": true,
+    "refresh_review_daemon_running_false": true,
+    "refresh_review_entity_birth_allowed_false": true,
+    "refresh_review_exists": true,
+    "refresh_review_final_canon_approval_allowed_false": true,
+    "refresh_review_network_used_false": true,
+    "refresh_review_pass": true,
+    "refresh_review_queue_widening_allowed_false": true,
+    "refresh_review_scheduler_installed_false": true,
+    "route_agi_claim_allowed_false": true,
+    "route_anna_birth_allowed_false": true,
+    "route_authority_exists": true,
+    "route_authority_points_to_enable_mode": false,
+    "route_background_loop_enabled_false": true,
+    "route_continuous_loop_enabled_false": true,
+    "route_daemon_running_false": true,
+    "route_entity_birth_allowed_false": false,
+    "route_final_canon_approval_allowed_false": true,
+    "route_network_used_false": true,
+    "route_queue_widening_allowed_false": true,
+    "route_scheduler_installed_false": true,
+    "runtime_status_panel_review_sealed": true,
+    "smoke_executed": false,
+    "smoke_returncode_zero": false,
+    "state_exists": false,
+    "stop_file_exists": true
+  },
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-16T00:23:24+03:00",
+  "created_at_utc": "2026-06-15T21:23:24.416145+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "final_canon_approval_allowed": false,
+  "hard_failures": [
+    {
+      "actual": false,
+      "check": "route_authority_points_to_enable_mode",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_proof_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_sealed",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_real_next_ok",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_validation_proof_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_validation_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "observable_loop_validated",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "smoke_executed",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "smoke_returncode_zero",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_build_proof_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_build_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "observable_loop_built",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "state_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "route_entity_birth_allowed_false",
+      "code": "CHECK_FAIL"
+    }
+  ],
+  "id": "SELF_BUILDING_MODE_ENABLED_V1",
+  "mode_class": "visible_bounded_manual_tick",
+  "mode_hash": "e0f6ee156cf207211979c0ef",
+  "network_used": false,
+  "one_tick_only_next": true,
+  "operator_command_required_for_tick": true,
+  "queue_widening_allowed": false,
+  "real_next": "repair_enable_self_building_mode_v1",
+  "scheduler_installed": false,
+  "self_building_mode_enabled": true,
+  "source_loop_build_proof": "core/socc/autonomy/self_building/loop/proof/OBSERVABLE_BOUNDED_SELF_BUILDING_LOOP_V1_PROOF.json",
+  "source_loop_review_proof": "core/socc/autonomy/self_building/loop/review/OBSERVABLE_BOUNDED_SELF_BUILDING_LOOP_V1_VALIDATION_REVIEW_PROOF.json",
+  "source_loop_validation_proof": "core/socc/autonomy/self_building/loop/validation/OBSERVABLE_BOUNDED_SELF_BUILDING_LOOP_V1_VALIDATION_PROOF.json",
+  "source_panel_review_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_PROOF.json",
+  "source_refresh_review_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_REVIEW_V1_PROOF.json",
+  "source_route_authority": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+  "status": "PASS",
+  "tick_executed_now": false,
+  "truth_boundary": "Enable bounded visible self-building mode only. This sets SOCC into a creator-visible bounded self-building mode. It does not run a tick now, does not enable continuous loop, does not launch daemon, does not install scheduler, does not enable background loop, does not use network, does not widen queue, does not birth Entity/ANNA, does not approve final canon, and does not claim AGI.",
+  "updated_at_utc": "2026-06-16T09:48:18.657205+00:00",
+  "visible_bounded_mode_ready": true
+}

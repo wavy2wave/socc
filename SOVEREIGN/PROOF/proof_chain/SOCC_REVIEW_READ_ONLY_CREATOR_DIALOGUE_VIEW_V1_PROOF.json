@@ -1,0 +1,74 @@
+{
+  "active_view_pointer": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_read_only_creator_dialogue_view_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_read_only_creator_dialogue_view_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_CREATOR_DIALOGUE_VIEW_REVIEWED_READY_FOR_ACCEPTANCE",
+  "created_at_utc": "2026-06-09T10:28:20.451195+00:00",
+  "current_expected": "review_socc_read_only_creator_dialogue_view_v1",
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF",
+  "next_after_pass": "accept_socc_read_only_creator_dialogue_view_v1",
+  "next_lawful_step": "accept_socc_read_only_creator_dialogue_view_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "dafe42de96274a71",
+  "review_artifact": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_REVIEW_V1.json",
+  "review_checks": {
+    "active_view_candidate": true,
+    "binding_accept_proof_pass": true,
+    "build_proof_exists": true,
+    "forbidden_background": true,
+    "forbidden_creator_intent_execution": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "language_accept_proof_pass": true,
+    "validate_proof_pass": true,
+    "validated_capability_ok": true,
+    "validation_artifact_pass": true,
+    "validation_checks_all_true": true,
+    "validation_next_matches_review": true,
+    "view_status_built_candidate": true,
+    "view_type_read_only": true,
+    "visible_boundaries": true,
+    "visible_current_lawful_next": true,
+    "visible_proof_chain": true
+  },
+  "review_md": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_REVIEW_V1.md",
+  "status": "PASS",
+  "truth_boundary": "Reviews validated read-only creator dialogue view. No execution, no daemon/background/network, no MW route.",
+  "validation_artifact": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_VALIDATION_V1.json",
+  "view_artifact": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.json",
+  "warnings": []
+}

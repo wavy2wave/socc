@@ -1,0 +1,11 @@
+{
+  "artifact": "CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_GATE_V1_PROOF",
+  "gate": "core/socc/codex/productive_use_gate/CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_GATE_V1.json",
+  "next": "run_codex_bounded_repair_lane_productive_use_v1_completed_in_same_megawave",
+  "packet": "core/socc/codex/productive_use_gate/BUILD_CURRENT_AUTONOMY_CAPABILITY_MAP_EXECUTION_PACKET_V1.json",
+  "proof_hash": "3551a96c1c1d7454490a9e3f",
+  "selected_target": "BUILD_CURRENT_AUTONOMY_CAPABILITY_MAP_V1",
+  "status": "PASS",
+  "truth_boundary": "Gate selected a safe productive target and did not widen scope.",
+  "ts": "2026-05-02T20:56:29.573625+00:00"
+}

@@ -1,0 +1,15 @@
+{
+  "anna_born": false,
+  "created_at_utc": "2026-06-22T11:49:25.724173+00:00",
+  "direction_status": "PASS",
+  "entity_born": false,
+  "event": "ANNA MVP direction built: thin-vertical-slice-first, honest readiness ledger (real vs vision), token-economy gates, lawful sub-chain fixed; advanced to review. No birth.",
+  "first_frontier": "anna_mvp_thin_vertical_slice",
+  "hard_failures": [],
+  "id": "ANNA_MVP_DIRECTION_MEMORY_V1",
+  "next": "review_anna_mvp_direction_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ANNA_MVP_DIRECTION_V1_PROOF.json",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "ANNA MVP direction build only. Writes a declarative direction document (lawful sub-chain, honest readiness ledger, thin-vertical-slice frontier, token gates, roadmap). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, uses no network/daemon/background/scheduler, claims no AGI/L3, approves no canon, and makes no revenue claim. ANNA birth stays gated behind its own lawful chain."
+}

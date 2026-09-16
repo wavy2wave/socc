@@ -1,0 +1,12 @@
+{
+  "active_surface": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_V1.json",
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF.json",
+  "created_at_utc": "2026-06-09T10:37:17.251323+00:00",
+  "id": "ACTIVE_BOUNDED_PLAN_PROPOSAL_SURFACE",
+  "mode": "NON_EXECUTING_BOUNDED_PLAN_PROPOSAL_ONLY",
+  "next_required_step": "validate_socc_bounded_plan_proposal_surface_v1",
+  "plan_schema": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SCHEMA_V1.json",
+  "plan_template": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_TEMPLATE_V1.json",
+  "status": "ACTIVE_CANDIDATE_FOR_VALIDATION",
+  "truth_boundary": "Active bounded plan proposal surface is candidate until validation. It is non-executing."
+}

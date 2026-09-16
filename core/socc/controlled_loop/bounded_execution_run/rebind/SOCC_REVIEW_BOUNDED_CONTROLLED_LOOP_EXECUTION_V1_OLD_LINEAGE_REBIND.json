@@ -1,0 +1,11 @@
+{
+  "created_at_utc": "2026-06-08T18:35:16.582905+00:00",
+  "id": "SOCC_REVIEW_BOUNDED_CONTROLLED_LOOP_EXECUTION_V1_OLD_LINEAGE_REBIND",
+  "lawful_next": "build_bounded_loop_repeatability_report_v1",
+  "new_step": "review_bounded_controlled_loop_execution_v1",
+  "old_review_artifact": "core/socc/controlled_loop/bounded_execution_run/review/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1.json",
+  "old_review_proof": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1_PROOF.json",
+  "old_route_transition_repair": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "This bridge reviews old proven bounded controlled loop execution lineage inside new SOCC. No raw loop execution."
+}

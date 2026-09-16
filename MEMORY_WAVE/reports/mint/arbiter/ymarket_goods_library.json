@@ -1,0 +1,4750 @@
+{
+  "schema": "ymarket.goods.library.v1",
+  "created_at": "2026-09-03T13:27:40.782747+00:00",
+  "updated_at": "2026-09-09T08:34:16.070721+00:00",
+  "goods": {
+    "ARB-29846713": {
+      "offerId": "ARB-29846713",
+      "first_seen": "2026-09-03T13:27:40.782797+00:00",
+      "events": [
+        {
+          "ts": "2026-09-03T13:27:40.782853+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2276329846713",
+          "name": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+          "cost": 600.0,
+          "price": 4800,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-03T13:27:40.785948+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "91781dfe33"
+        }
+      ],
+      "donor_pid": "9048",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "91781dfe33",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2276329846713",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+      "article": "9602037",
+      "cost": 600.0,
+      "price": 4800,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 50.0,
+        "width": 35.0,
+        "height": 50.0,
+        "weight": 1.438
+      },
+      "description_len": 1238,
+      "spec_n": 8,
+      "stock_count": 100,
+      "updated_at": "2026-09-03T13:27:40.792977+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.792972+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-87931769": {
+      "offerId": "ARB-87931769",
+      "first_seen": "2026-09-03T13:27:40.782890+00:00",
+      "events": [
+        {
+          "ts": "2026-09-03T13:27:40.782925+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2376687931769",
+          "name": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+          "cost": 65.0,
+          "price": 520,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-03T13:27:40.787884+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "91781dfe33"
+        }
+      ],
+      "donor_pid": "2050",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "91781dfe33",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2376687931769",
+      "name": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+      "article": "9600155",
+      "cost": 65.0,
+      "price": 520,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 40.0,
+        "width": 11.5,
+        "height": 11.5,
+        "weight": 0.122
+      },
+      "description_len": 1097,
+      "spec_n": 8,
+      "stock_count": 100,
+      "updated_at": "2026-09-03T13:27:40.794453+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.794449+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-87309612": {
+      "offerId": "ARB-87309612",
+      "first_seen": "2026-09-03T13:27:40.782950+00:00",
+      "events": [
+        {
+          "ts": "2026-09-03T13:27:40.782976+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2952287309612",
+          "name": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+          "cost": 700.0,
+          "price": 5600,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-03T13:27:40.789754+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "91781dfe33"
+        }
+      ],
+      "donor_pid": "1588731",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "91781dfe33",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2952287309612",
+      "name": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+      "article": "9605392",
+      "cost": 700.0,
+      "price": 5600,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 75.0,
+        "width": 38.0,
+        "height": 38.0,
+        "weight": 1.86
+      },
+      "description_len": 1105,
+      "spec_n": 8,
+      "stock_count": 100,
+      "updated_at": "2026-09-03T13:27:40.795725+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.795722+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-53416854": {
+      "offerId": "ARB-53416854",
+      "first_seen": "2026-09-03T13:27:40.782995+00:00",
+      "events": [
+        {
+          "ts": "2026-09-03T13:27:40.783019+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2803953416854",
+          "name": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+          "cost": 170.0,
+          "price": 1360,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-03T13:27:40.791381+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "91781dfe33"
+        }
+      ],
+      "donor_pid": "6335",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "91781dfe33",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2803953416854",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+      "article": "9601512",
+      "cost": 170.0,
+      "price": 1360,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 30.0,
+        "width": 48.0,
+        "height": 48.0,
+        "weight": 0.54
+      },
+      "description_len": 1104,
+      "spec_n": 8,
+      "stock_count": 100,
+      "updated_at": "2026-09-03T13:27:40.797069+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.797066+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-16214506": {
+      "offerId": "ARB-16214506",
+      "first_seen": "2026-09-08T10:06:39.445148+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445167+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2614816214506",
+          "name": "Воздушно пузырьковая пленка, 50*1.5 м «Бизнес», 30 г/м², двухслойная",
+          "cost": 770.0,
+          "price": 6160,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.451530+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.239247+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506531+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×50 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.513821+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:37:15.755435+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "10143",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2614816214506",
+      "name": "Плёнка воздушно-пузырьковая 1.5×50 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда",
+      "article": "9602472",
+      "cost": 770.0,
+      "price": 6160,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 2.25
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:37:15.755423+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:37:15.755430+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-17739462": {
+      "offerId": "ARB-17739462",
+      "first_seen": "2026-09-08T10:06:39.445177+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445187+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2360817739462",
+          "name": "Воздушно пузырьковая пленка, 100*1.5 м «Бизнес», 30 г/м², двухслойная",
+          "cost": 1580.0,
+          "price": 12640,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.457454+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.249704+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506560+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.519322+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:37:52.266296+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "10144",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2360817739462",
+      "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда",
+      "article": "9602473",
+      "cost": 1580.0,
+      "price": 12640,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 65.4,
+        "height": 65.4,
+        "weight": 4.5
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:37:52.266284+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:37:52.266291+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-51627659": {
+      "offerId": "ARB-51627659",
+      "first_seen": "2026-09-08T10:06:39.445195+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445203+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2669051627659",
+          "name": "Воздушно пузырьковая пленка, 50*1.2 м «Бизнес», 30 г/м², двухслойная",
+          "cost": 620.0,
+          "price": 4960,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.462918+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.255483+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506582+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.524018+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "10212",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2669051627659",
+      "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда",
+      "article": "9602489",
+      "cost": 620.0,
+      "price": 4960,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 1.8
+      },
+      "description_len": 1122,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.643537+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.643534+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-54145852": {
+      "offerId": "ARB-54145852",
+      "first_seen": "2026-09-08T10:06:39.445208+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445215+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2487154145852",
+          "name": "Воздушно пузырьковая пленка, 100*1.2 м «Бизнес», 30 г/м², двухслойная",
+          "cost": 1230.0,
+          "price": 9840,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.466053+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.260017+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506600+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×100 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.528372+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "10213",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2487154145852",
+      "name": "Плёнка воздушно-пузырьковая 1.2×100 м. 2 слоя, плотность 30 г/м². Для надёжной упаковки и переезда",
+      "article": "9602490",
+      "cost": 1230.0,
+      "price": 9840,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 65.4,
+        "height": 65.4,
+        "weight": 3.6
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.647531+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.647528+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-56925082": {
+      "offerId": "ARB-56925082",
+      "first_seen": "2026-09-08T10:06:39.445221+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445228+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2839356925082",
+          "name": "Воздушно пузырьковая пленка, 2*0.4 м «МалышОК», 55 г/м², двухслойная",
+          "cost": 35.0,
+          "price": 280,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.468580+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.264571+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506617+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.4×2 м. 2 слоя, плотность 55 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.532736+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "10774",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2839356925082",
+      "name": "Плёнка воздушно-пузырьковая 0.4×2 м. 2 слоя, плотность 55 г/м². Для надёжной упаковки и переезда",
+      "article": "9602694",
+      "cost": 35.0,
+      "price": 280,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 40.0,
+        "width": 8.1,
+        "height": 8.1,
+        "weight": 0.046
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.651076+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.651074+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-20503734": {
+      "offerId": "ARB-20503734",
+      "first_seen": "2026-09-08T10:06:39.445234+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445241+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2426620503734",
+          "name": "Воздушно пузырьковая пленка, 100*0.3 м «МиниБабл», 25 г/м², двухслойная",
+          "cost": 300.0,
+          "price": 2400,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.471610+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.268478+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506633+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.3×100 м. 2 слоя, плотность 25 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.536887+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:38:00.094619+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "1598444",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2426620503734",
+      "name": "Плёнка воздушно-пузырьковая 0.3×100 м. 2 слоя, плотность 25 г/м². Для надёжной упаковки и переезда",
+      "article": "9605412",
+      "cost": 300.0,
+      "price": 2400,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 30.0,
+        "width": 42.9,
+        "height": 42.9,
+        "weight": 0.74
+      },
+      "description_len": 1128,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:38:00.094611+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:38:00.094615+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-33849601": {
+      "offerId": "ARB-33849601",
+      "first_seen": "2026-09-08T10:06:39.445246+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445253+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2181033849601",
+          "name": "Воздушно пузырьковая пленка, 100*0.5 м «МиниБабл», 25 г/м², двухслойная",
+          "cost": 490.0,
+          "price": 3920,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.476053+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.272317+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506649+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.5×100 м. 2 слоя, плотность 25 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.540623+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "1598457",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2181033849601",
+      "name": "Плёнка воздушно-пузырьковая 0.5×100 м. 2 слоя, плотность 25 г/м². Для надёжной упаковки и переезда",
+      "article": "9605413",
+      "cost": 490.0,
+      "price": 3920,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 50.0,
+        "width": 42.9,
+        "height": 42.9,
+        "weight": 1.24
+      },
+      "description_len": 1128,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.657457+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.657455+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-63513197": {
+      "offerId": "ARB-63513197",
+      "first_seen": "2026-09-08T10:06:39.445258+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445265+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2459363513197",
+          "name": "Воздушно пузырьковая пленка, 100*1.5 м «МиниБабл», 25 г/м², двухслойная",
+          "cost": 1350.0,
+          "price": 10800,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.478631+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.276173+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506666+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 2 слоя, плотность 25 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.544168+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "1598469",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2459363513197",
+      "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 2 слоя, плотность 25 г/м². Для надёжной упаковки и переезда",
+      "article": "9605414",
+      "cost": 1350.0,
+      "price": 10800,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 42.9,
+        "height": 42.9,
+        "weight": 3.72
+      },
+      "description_len": 1130,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.660588+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.660586+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-49285152": {
+      "offerId": "ARB-49285152",
+      "first_seen": "2026-09-08T10:06:39.445270+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445277+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2583849285152",
+          "name": "Воздушно пузырьковая пленка с перфорацией, 50*0.5 м «Perforation», 40 г/м², двухслойная",
+          "cost": 360.0,
+          "price": 2880,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.481078+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.279753+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506682+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая с перфорацией 0.5×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.548103+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "190676",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2583849285152",
+      "name": "Плёнка воздушно-пузырьковая с перфорацией 0.5×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9604685",
+      "cost": 360.0,
+      "price": 2880,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 50.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 0.91
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.663860+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.663858+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-26247053": {
+      "offerId": "ARB-26247053",
+      "first_seen": "2026-09-08T10:06:39.445282+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445288+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2451726247053",
+          "name": "Воздушно пузырьковая пленка с перфорацией, 50*0.5 м «Perforation», 60 г/м², трёхслойная",
+          "cost": 540.0,
+          "price": 4320,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.484281+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.283095+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506697+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая с перфорацией 0.5×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.551960+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "190745",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2451726247053",
+      "name": "Плёнка воздушно-пузырьковая с перфорацией 0.5×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9604686",
+      "cost": 540.0,
+      "price": 4320,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 50.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 1.26
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.667455+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.667454+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-36274733": {
+      "offerId": "ARB-36274733",
+      "first_seen": "2026-09-08T10:06:39.445293+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445300+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2040536274733",
+          "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 40 г/м², двухслойная",
+          "cost": 2200.0,
+          "price": 17600,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.487050+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.286485+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506713+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая с перфорацией 1.5×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.555205+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "190775",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2040536274733",
+      "name": "Плёнка воздушно-пузырьковая с перфорацией 1.5×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9604687",
+      "cost": 2200.0,
+      "price": 17600,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 5.19
+      },
+      "description_len": 1128,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.670624+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.670623+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-54288181": {
+      "offerId": "ARB-54288181",
+      "first_seen": "2026-09-08T10:06:39.445305+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445311+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2494254288181",
+          "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 60 г/м², трёхслойная",
+          "cost": 3300.0,
+          "price": 26400,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.489591+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.289875+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506728+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая с перфорацией 1.5×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.558473+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "190807",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2494254288181",
+      "name": "Плёнка воздушно-пузырьковая с перфорацией 1.5×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9604688",
+      "cost": 3300.0,
+      "price": 26400,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 7.3
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.673724+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.673722+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-57807179": {
+      "offerId": "ARB-57807179",
+      "first_seen": "2026-09-08T10:06:39.445316+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445323+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2261557807179",
+          "name": "Воздушно пузырьковая пленка, 50*1.5 м «Стандарт», 40 г/м², двухслойная",
+          "cost": 990.0,
+          "price": 7920,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.492009+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.292890+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506743+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.561592+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "1955",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2261557807179",
+      "name": "Плёнка воздушно-пузырьковая 1.5×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9600073",
+      "cost": 990.0,
+      "price": 7920,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 2.72
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.677247+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.677245+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-26558215": {
+      "offerId": "ARB-26558215",
+      "first_seen": "2026-09-08T10:06:39.445332+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445338+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2310226558215",
+          "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт», 40 г/м², двухслойная",
+          "cost": 2050.0,
+          "price": 16400,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.495503+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.295964+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506758+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.564875+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "1971",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2310226558215",
+      "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9600092",
+      "cost": 2050.0,
+      "price": 16400,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 5.19
+      },
+      "description_len": 1128,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.680896+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.680894+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-71632066": {
+      "offerId": "ARB-71632066",
+      "first_seen": "2026-09-08T10:06:39.445344+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445350+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2192771632066",
+          "name": "Воздушно пузырьковая пленка, 10*1.2 м «Стандарт», 55 г/м², двухслойная",
+          "cost": 370.0,
+          "price": 2960,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.498258+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.298858+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506774+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×10 м. 2 слоя, плотность 55 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.567907+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "1975",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2192771632066",
+      "name": "Плёнка воздушно-пузырьковая 1.2×10 м. 2 слоя, плотность 55 г/м². Для надёжной упаковки и переезда",
+      "article": "9600094",
+      "cost": 370.0,
+      "price": 2960,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 19.2,
+        "height": 19.2,
+        "weight": 0.66
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.684244+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.684242+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-56738137": {
+      "offerId": "ARB-56738137",
+      "first_seen": "2026-09-08T10:06:39.445355+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445363+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2849756738137",
+          "name": "Воздушно пузырьковая пленка, 50*0.6 м «Black bubble», 40 г/м², чёрная, двухслойная",
+          "cost": 500.0,
+          "price": 4000,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.501110+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.301616+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506789+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.570922+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "20007",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2849756738137",
+      "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9603855",
+      "cost": 500.0,
+      "price": 4000,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 60.0,
+        "width": 50.8,
+        "height": 50.8,
+        "weight": 1.283
+      },
+      "description_len": 1118,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.687675+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.687673+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-09219228": {
+      "offerId": "ARB-09219228",
+      "first_seen": "2026-09-08T10:06:39.445368+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445375+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2108209219228",
+          "name": "Биг бабл, 25*1.2 м, 130 г/м², трёхслойный",
+          "cost": 2000.0,
+          "price": 16000,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.503770+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.304354+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506804+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×25 м. 3 слоя, плотность 130 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.573875+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:36:46.838023+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "2043",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2108209219228",
+      "name": "Плёнка воздушно-пузырьковая 1.2×25 м. 3 слоя, плотность 130 г/м². Для надёжной упаковки и переезда",
+      "article": "9600233",
+      "cost": 2000.0,
+      "price": 16000,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 3.9
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:36:46.838014+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:36:46.838019+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-86551711": {
+      "offerId": "ARB-86551711",
+      "first_seen": "2026-09-08T10:06:39.445379+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445386+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2115586551711",
+          "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт», 40 г/м², двухслойная",
+          "cost": 1620.0,
+          "price": 12960,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.508903+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.307163+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506819+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.577194+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "2113",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2115586551711",
+      "name": "Плёнка воздушно-пузырьковая 1.2×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9600239",
+      "cost": 1620.0,
+      "price": 12960,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 4.15
+      },
+      "description_len": 1128,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.694360+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.694358+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-12034838": {
+      "offerId": "ARB-12034838",
+      "first_seen": "2026-09-08T10:06:39.445391+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445397+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2991412034838",
+          "name": "Биг бабл, 25*1.2 м, 90 г/м², двухслойный",
+          "cost": 1400.0,
+          "price": 11200,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.513482+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.309808+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506834+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×25 м. 2 слоя, плотность 90 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.580777+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:36:58.633419+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "2187",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2991412034838",
+      "name": "Плёнка воздушно-пузырьковая 1.2×25 м. 2 слоя, плотность 90 г/м². Для надёжной упаковки и переезда",
+      "article": "9601395",
+      "cost": 1400.0,
+      "price": 11200,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 2.7
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:36:58.633407+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:36:58.633414+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-47555504": {
+      "offerId": "ARB-47555504",
+      "first_seen": "2026-09-08T10:06:39.445402+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445416+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2564247555504",
+          "name": "Воздушно пузырьковая пленка, 50*1.2 м «Стандарт», 40 г/м², двухслойная",
+          "cost": 780.0,
+          "price": 6240,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.521139+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.312390+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506849+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.584077+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "2334",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2564247555504",
+      "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9600513",
+      "cost": 780.0,
+      "price": 6240,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 2.17
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.700865+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.700863+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-20980160": {
+      "offerId": "ARB-20980160",
+      "first_seen": "2026-09-08T10:06:39.445421+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445428+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2832520980160",
+          "name": "Биг бабл, 25*1.5 м, 130 г/м², трёхслойный",
+          "cost": 2500.0,
+          "price": 20000,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.527109+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.314983+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506864+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×25 м. 3 слоя, плотность 130 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.587298+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "2833",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2832520980160",
+      "name": "Плёнка воздушно-пузырьковая 1.5×25 м. 3 слоя, плотность 130 г/м². Для надёжной упаковки и переезда",
+      "article": "9600911",
+      "cost": 2500.0,
+      "price": 20000,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 4.87
+      },
+      "description_len": 1132,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.704131+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.704129+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-96812616": {
+      "offerId": "ARB-96812616",
+      "first_seen": "2026-09-08T10:06:39.445433+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445440+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2226396812616",
+          "name": "Воздушно пузырьковая пленка, 50*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+          "cost": 1500.0,
+          "price": 12000,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.534900+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.317609+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506879+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.590502+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "2862",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2226396812616",
+      "name": "Плёнка воздушно-пузырьковая 1.5×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9600940",
+      "cost": 1500.0,
+      "price": 12000,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 3.78
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.707324+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.707323+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-70813041": {
+      "offerId": "ARB-70813041",
+      "first_seen": "2026-09-08T10:06:39.445445+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445451+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2333970813041",
+          "name": "Воздушно пузырьковая пленка, 50*0.6 м «Black bubble», 60 г/м², чёрная, трёхслойная",
+          "cost": 710.0,
+          "price": 5680,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.541323+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.320421+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506894+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.593560+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "375635",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2333970813041",
+      "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9604903",
+      "cost": 710.0,
+      "price": 5680,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 60.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 1.9
+      },
+      "description_len": 1114,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.710904+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.710902+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-47726061": {
+      "offerId": "ARB-47726061",
+      "first_seen": "2026-09-08T10:06:39.445458+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445468+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2684147726061",
+          "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+          "cost": 2380.0,
+          "price": 19040,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.548495+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.323099+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506907+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.597091+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "5653",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2684147726061",
+      "name": "Плёнка воздушно-пузырьковая 1.2×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9600892",
+      "cost": 2380.0,
+      "price": 19040,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 5.84
+      },
+      "description_len": 1128,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.714606+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.714604+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-15723146": {
+      "offerId": "ARB-15723146",
+      "first_seen": "2026-09-08T10:06:39.445473+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445479+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2566015723146",
+          "name": "Воздушно пузырьковая пленка, 50*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+          "cost": 1200.0,
+          "price": 9600,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.551866+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.325805+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506920+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.600877+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:37:05.647970+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "5813",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2566015723146",
+      "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9600879",
+      "cost": 1200.0,
+      "price": 9600,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 120.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 3.02
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:37:05.647965+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:37:05.647968+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-63700297": {
+      "offerId": "ARB-63700297",
+      "first_seen": "2026-09-08T10:06:39.445485+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445492+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2364363700297",
+          "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+          "cost": 2980.0,
+          "price": 23840,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.555757+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.328387+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506933+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.604191+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "5827",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2364363700297",
+      "name": "Плёнка воздушно-пузырьковая 1.5×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9600899",
+      "cost": 2980.0,
+      "price": 23840,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 7.3
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.721064+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.721063+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-07058684": {
+      "offerId": "ARB-07058684",
+      "first_seen": "2026-09-08T10:06:39.445497+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445503+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2413607058684",
+          "name": "Воздушно пузырьковая пленка, 50*0.6 м «Компакт», 40 г/м², двухслойная",
+          "cost": 430.0,
+          "price": 3440,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.562308+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.330939+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506946+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.607973+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:36:23.631664+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "5904",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2413607058684",
+      "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9601114",
+      "cost": 430.0,
+      "price": 3440,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 60.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 1.09
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:36:23.631652+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:36:23.631659+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-04235344": {
+      "offerId": "ARB-04235344",
+      "first_seen": "2026-09-08T10:06:39.445508+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445515+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2180004235344",
+          "name": "Воздушно пузырьковая пленка, 100*0.6 м «Компакт», 40 г/м², двухслойная",
+          "cost": 850.0,
+          "price": 6800,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.564987+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.333462+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506959+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.6×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.611532+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:36:15.487822+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "5905",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2180004235344",
+      "name": "Плёнка воздушно-пузырьковая 0.6×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9601115",
+      "cost": 850.0,
+      "price": 6800,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 60.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 2.07
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:36:15.487813+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:36:15.487818+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-72549324": {
+      "offerId": "ARB-72549324",
+      "first_seen": "2026-09-08T10:06:39.445520+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445527+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2266672549324",
+          "name": "Воздушно пузырьковая пленка, 50*0.6 м «Компакт Плюс», 60 г/м², трёхслойная",
+          "cost": 610.0,
+          "price": 4880,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.567885+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.335963+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506972+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.615563+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "5910",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2266672549324",
+      "name": "Плёнка воздушно-пузырьковая 0.6×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9601120",
+      "cost": 610.0,
+      "price": 4880,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 60.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 1.51
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.730319+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.730318+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-94366517": {
+      "offerId": "ARB-94366517",
+      "first_seen": "2026-09-08T10:06:39.445532+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445539+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2729994366517",
+          "name": "Воздушно пузырьковая пленка, 100*0.6 м «Компакт Плюс», 60 г/м², трёхслойная",
+          "cost": 1190.0,
+          "price": 9520,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.570690+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.338512+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506985+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.6×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.618906+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "5911",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2729994366517",
+      "name": "Плёнка воздушно-пузырьковая 0.6×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9601121",
+      "cost": 1190.0,
+      "price": 9520,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 60.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 2.92
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.733638+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.733637+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-37280156": {
+      "offerId": "ARB-37280156",
+      "first_seen": "2026-09-08T10:06:39.445544+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445551+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2791337280156",
+          "name": "Биг бабл, 25*1.5 м, 90 г/м², двухслойный",
+          "cost": 1700.0,
+          "price": 13600,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.576785+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.341160+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.506998+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 1.5×25 м. 2 слоя, плотность 90 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.622414+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "6169",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2791337280156",
+      "name": "Плёнка воздушно-пузырьковая 1.5×25 м. 2 слоя, плотность 90 г/м². Для надёжной упаковки и переезда",
+      "article": "9600318",
+      "cost": 1700.0,
+      "price": 13600,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 150.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 3.37
+      },
+      "description_len": 1130,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.736940+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.736939+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-08729795": {
+      "offerId": "ARB-08729795",
+      "first_seen": "2026-09-08T10:06:39.445556+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445564+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2185508729795",
+          "name": "Воздушно пузырьковая пленка, 100*0.3 м «Компакт», 40 г/м², двухслойная",
+          "cost": 420.0,
+          "price": 3360,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.579691+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.343908+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.507011+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.3×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.625853+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T15:36:32.027735+00:00",
+          "kind": "photo_god",
+          "store_slug": "atlas-express-film",
+          "verdict": "FAIL",
+          "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+        }
+      ],
+      "donor_pid": "6336",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2185508729795",
+      "name": "Плёнка воздушно-пузырьковая 0.3×100 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "article": "9601513",
+      "cost": 420.0,
+      "price": 3360,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 30.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 1.04
+      },
+      "description_len": 1126,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T15:36:32.027727+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-08T15:36:32.027731+00:00",
+        "store_slug": "atlas-express-film",
+        "note": "РУКА-БОГА: замена отправлена, но СВЕРКА не прошла: первое фото НЕ наше"
+      }
+    },
+    "ARB-73557155": {
+      "offerId": "ARB-73557155",
+      "first_seen": "2026-09-08T10:06:39.445569+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T10:06:39.445575+00:00",
+          "kind": "card",
+          "category_slug": "vozdushno-puzyrkovaya-plenka",
+          "vendor": "Без бренда",
+          "barcode": "2282273557155",
+          "name": "Воздушно пузырьковая пленка, 100*0.3 м «Компакт Плюс», 60 г/м², трёхслойная",
+          "cost": 610.0,
+          "price": 4880,
+          "markup": 8.0,
+          "stock_count": 100
+        },
+        {
+          "ts": "2026-09-08T10:06:39.582625+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T13:08:18.346579+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.507024+00:00",
+          "kind": "card",
+          "name": "Плёнка воздушно-пузырьковая 0.3×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда"
+        },
+        {
+          "ts": "2026-09-08T14:54:15.631203+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 100,
+          "store_slug": "atlas-express-film",
+          "cycle_hash": "704e29228a"
+        }
+      ],
+      "donor_pid": "6339",
+      "store_slug": "atlas-express-film",
+      "cycle_hash": "704e29228a",
+      "builder": "film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "vendor": "Без бренда",
+      "barcode": "2282273557155",
+      "name": "Плёнка воздушно-пузырьковая 0.3×100 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "article": "9601516",
+      "cost": 610.0,
+      "price": 4880,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 30.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 1.8
+      },
+      "description_len": 1124,
+      "spec_n": 11,
+      "stock_count": 100,
+      "updated_at": "2026-09-08T14:54:15.743496+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T14:54:15.743494+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB-73446218": {
+      "offerId": "ARB-73446218",
+      "first_seen": "2026-09-08T21:15:18.740627+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740657+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2240773446218",
+          "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 81.0,
+          "price": 648,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.749631+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469406+00:00",
+          "kind": "card",
+          "price": 202,
+          "markup": 2.494
+        },
+        {
+          "ts": "2026-09-08T22:11:44.480542+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670649+00:00",
+          "kind": "card",
+          "price": 648,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.679844+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604226",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2240773446218",
+      "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604226-1",
+      "cost": 81.0,
+      "price": 648,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.138
+      },
+      "description_len": 883,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.761986+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.761984+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-38877286": {
+      "offerId": "ARB-38877286",
+      "first_seen": "2026-09-08T21:15:18.740673+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740690+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2028138877286",
+          "name": "Скотч упаковочный 72 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 120.0,
+          "price": 960,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.755973+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469443+00:00",
+          "kind": "card",
+          "price": 300,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.489717+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670675+00:00",
+          "kind": "card",
+          "price": 960,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.687712+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604250",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2028138877286",
+      "name": "Скотч упаковочный 72 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604250-1",
+      "cost": 120.0,
+      "price": 960,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 7.2,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.208
+      },
+      "description_len": 883,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.766318+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.766316+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-06946549": {
+      "offerId": "ARB-06946549",
+      "first_seen": "2026-09-08T21:15:18.740701+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740715+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2243806946549",
+          "name": "Скотч упаковочный 48 мм × 33 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 40.0,
+          "price": 320,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.762021+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469468+00:00",
+          "kind": "card",
+          "price": 100,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.497457+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670693+00:00",
+          "kind": "card",
+          "price": 320,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.696022+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9605968",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2243806946549",
+      "name": "Скотч упаковочный 48 мм × 33 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9605968-1",
+      "cost": 40.0,
+      "price": 320,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 8.9,
+        "height": 8.9,
+        "weight": 0.089
+      },
+      "description_len": 883,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.770692+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.770690+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-65486718": {
+      "offerId": "ARB-65486718",
+      "first_seen": "2026-09-08T21:15:18.740725+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740739+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2646965486718",
+          "name": "Скотч канцелярский 15 мм × 33 м, 38 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 20.0,
+          "price": 160,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.767922+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469489+00:00",
+          "kind": "card",
+          "price": 50,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.504955+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670709+00:00",
+          "kind": "card",
+          "price": 160,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.703656+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9603018",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2646965486718",
+      "name": "Скотч канцелярский 15 мм × 33 м, 38 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9603018-1",
+      "cost": 20.0,
+      "price": 160,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 1.5,
+        "width": 4.9,
+        "height": 4.9,
+        "weight": 0.02
+      },
+      "description_len": 884,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.775557+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.775555+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-68371970": {
+      "offerId": "ARB-68371970",
+      "first_seen": "2026-09-08T21:15:18.740749+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740761+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2987768371970",
+          "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, коричневый. Для надёжной упаковки и переезда",
+          "cost": 81.0,
+          "price": 648,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.773407+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469509+00:00",
+          "kind": "card",
+          "price": 202,
+          "markup": 2.494
+        },
+        {
+          "ts": "2026-09-08T22:11:44.511376+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670724+00:00",
+          "kind": "card",
+          "price": 648,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.711278+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604330",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2987768371970",
+      "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, коричневый. Для надёжной упаковки и переезда",
+      "article": "9604330-1",
+      "cost": 81.0,
+      "price": 648,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.154
+      },
+      "description_len": 883,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.780284+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.780282+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-81338155": {
+      "offerId": "ARB-81338155",
+      "first_seen": "2026-09-08T21:15:18.740770+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740783+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2887381338155",
+          "name": "Скотч упаковочный 48 мм × 132 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 149.0,
+          "price": 1192,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.778324+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469528+00:00",
+          "kind": "card",
+          "price": 372,
+          "markup": 2.497
+        },
+        {
+          "ts": "2026-09-08T22:11:44.517434+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670738+00:00",
+          "kind": "card",
+          "price": 1192,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.717996+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604227",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2887381338155",
+      "name": "Скотч упаковочный 48 мм × 132 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604227-1",
+      "cost": 149.0,
+      "price": 1192,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 11.9,
+        "height": 11.9,
+        "weight": 0.257
+      },
+      "description_len": 849,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.784790+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.784788+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-63073761": {
+      "offerId": "ARB-63073761",
+      "first_seen": "2026-09-08T21:15:18.740791+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740804+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2393863073761",
+          "name": "Скотч упаковочный 48 мм × 132 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 138.0,
+          "price": 1104,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.783406+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469546+00:00",
+          "kind": "card",
+          "price": 345,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.523265+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670751+00:00",
+          "kind": "card",
+          "price": 1104,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.724281+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604264",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2393863073761",
+      "name": "Скотч упаковочный 48 мм × 132 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604264-1",
+      "cost": 138.0,
+      "price": 1104,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 11.5,
+        "height": 11.5,
+        "weight": 0.228
+      },
+      "description_len": 885,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.789966+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.789963+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-21187085": {
+      "offerId": "ARB-21187085",
+      "first_seen": "2026-09-08T21:15:18.740812+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740825+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2466421187085",
+          "name": "Скотч упаковочный 48 мм × 150 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 190.0,
+          "price": 1520,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.788129+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469566+00:00",
+          "kind": "card",
+          "price": 475,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.528370+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670765+00:00",
+          "kind": "card",
+          "price": 1520,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.730256+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604581",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2466421187085",
+      "name": "Скотч упаковочный 48 мм × 150 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604581-1",
+      "cost": 190.0,
+      "price": 1520,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 12.4,
+        "height": 12.4,
+        "weight": 0.31
+      },
+      "description_len": 884,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.794945+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.794943+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-23503892": {
+      "offerId": "ARB-23503892",
+      "first_seen": "2026-09-08T21:15:18.740833+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740844+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2320723503892",
+          "name": "Скотч упаковочный 48 мм × 150 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 175.0,
+          "price": 1400,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.792467+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469585+00:00",
+          "kind": "card",
+          "price": 438,
+          "markup": 2.503
+        },
+        {
+          "ts": "2026-09-08T22:11:44.533870+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670779+00:00",
+          "kind": "card",
+          "price": 1400,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.735546+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604596",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2320723503892",
+      "name": "Скотч упаковочный 48 мм × 150 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604596-1",
+      "cost": 175.0,
+      "price": 1400,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 11.9,
+        "height": 11.9,
+        "weight": 0.296
+      },
+      "description_len": 885,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.799740+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.799738+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-25331099": {
+      "offerId": "ARB-25331099",
+      "first_seen": "2026-09-08T21:15:18.740852+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740864+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2668825331099",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, зеленый. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.796759+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469604+00:00",
+          "kind": "card",
+          "price": 255,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.538779+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670792+00:00",
+          "kind": "card",
+          "price": 816,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.741489+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600072",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2668825331099",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, зеленый. Для надёжной упаковки и переезда",
+      "article": "9600072-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.161
+      },
+      "description_len": 881,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.804005+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.804003+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-28864412": {
+      "offerId": "ARB-28864412",
+      "first_seen": "2026-09-08T21:15:18.740872+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740884+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2385128864412",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, оранжевый. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.801043+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469621+00:00",
+          "kind": "card",
+          "price": 255,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.543146+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670804+00:00",
+          "kind": "card",
+          "price": 816,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.746914+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600109",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2385128864412",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, оранжевый. Для надёжной упаковки и переезда",
+      "article": "9600109-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.159
+      },
+      "description_len": 885,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.808577+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.808574+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-22138388": {
+      "offerId": "ARB-22138388",
+      "first_seen": "2026-09-08T21:15:18.740892+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740904+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2699122138388",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, синий. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.805095+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469638+00:00",
+          "kind": "card",
+          "price": 255,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.547748+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670817+00:00",
+          "kind": "card",
+          "price": 816,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.751900+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600108",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2699122138388",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, синий. Для надёжной упаковки и переезда",
+      "article": "9600108-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.156
+      },
+      "description_len": 877,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.813477+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.813475+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB-65564031": {
+      "offerId": "ARB-65564031",
+      "first_seen": "2026-09-08T21:15:18.740912+00:00",
+      "events": [
+        {
+          "ts": "2026-09-08T21:15:18.740923+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2427765564031",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, красный. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-08T21:15:18.809277+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-08T22:11:44.469655+00:00",
+          "kind": "card",
+          "price": 255,
+          "markup": 2.5
+        },
+        {
+          "ts": "2026-09-08T22:11:44.552162+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T07:38:25.670830+00:00",
+          "kind": "card",
+          "price": 816,
+          "markup": 8.0
+        },
+        {
+          "ts": "2026-09-09T07:38:25.757293+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600095",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2427765564031",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, красный. Для надёжной упаковки и переезда",
+      "article": "9600095-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.155
+      },
+      "description_len": 881,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T07:38:25.817818+00:00",
+      "last_verified": {
+        "verdict": "FAIL",
+        "ts": "2026-09-09T07:38:25.817816+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "цепь остановлена на «СВЕРКА» — живое состояние не подтверждено"
+      }
+    },
+    "ARB2-73446218": {
+      "offerId": "ARB2-73446218",
+      "first_seen": "2026-09-09T08:18:27.263730+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263750+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2240773446218",
+          "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 81.0,
+          "price": 648,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.270734+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.930532+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604226",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2240773446218",
+      "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604226-1",
+      "cost": 81.0,
+      "price": 648,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.138
+      },
+      "description_len": 883,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.003661+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.003658+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-38877286": {
+      "offerId": "ARB2-38877286",
+      "first_seen": "2026-09-09T08:18:27.263761+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263772+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2028138877286",
+          "name": "Скотч упаковочный 72 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 120.0,
+          "price": 960,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.276425+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.936212+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604250",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2028138877286",
+      "name": "Скотч упаковочный 72 мм × 66 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604250-1",
+      "cost": 120.0,
+      "price": 960,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 7.2,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.208
+      },
+      "description_len": 883,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.009301+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.009298+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-06946549": {
+      "offerId": "ARB2-06946549",
+      "first_seen": "2026-09-09T08:18:27.263779+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263787+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2243806946549",
+          "name": "Скотч упаковочный 48 мм × 33 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 40.0,
+          "price": 320,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.281746+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.941843+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9605968",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2243806946549",
+      "name": "Скотч упаковочный 48 мм × 33 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9605968-1",
+      "cost": 40.0,
+      "price": 320,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 8.9,
+        "height": 8.9,
+        "weight": 0.089
+      },
+      "description_len": 883,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.014606+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.014605+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-65486718": {
+      "offerId": "ARB2-65486718",
+      "first_seen": "2026-09-09T08:18:27.263793+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263801+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2646965486718",
+          "name": "Скотч канцелярский 15 мм × 33 м, 38 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 20.0,
+          "price": 160,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.286648+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.947318+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9603018",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2646965486718",
+      "name": "Скотч канцелярский 15 мм × 33 м, 38 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9603018-1",
+      "cost": 20.0,
+      "price": 160,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 1.5,
+        "width": 4.9,
+        "height": 4.9,
+        "weight": 0.02
+      },
+      "description_len": 884,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.020375+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.020373+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-68371970": {
+      "offerId": "ARB2-68371970",
+      "first_seen": "2026-09-09T08:18:27.263808+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263815+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2987768371970",
+          "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, коричневый. Для надёжной упаковки и переезда",
+          "cost": 81.0,
+          "price": 648,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.292125+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.952948+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604330",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2987768371970",
+      "name": "Скотч упаковочный 48 мм × 66 м, 45 мкм, коричневый. Для надёжной упаковки и переезда",
+      "article": "9604330-1",
+      "cost": 81.0,
+      "price": 648,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.154
+      },
+      "description_len": 883,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.026432+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.026431+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-81338155": {
+      "offerId": "ARB2-81338155",
+      "first_seen": "2026-09-09T08:18:27.263835+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263846+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2887381338155",
+          "name": "Скотч упаковочный 48 мм × 132 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 149.0,
+          "price": 1192,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.297775+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.958878+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604227",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2887381338155",
+      "name": "Скотч упаковочный 48 мм × 132 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604227-1",
+      "cost": 149.0,
+      "price": 1192,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 11.9,
+        "height": 11.9,
+        "weight": 0.257
+      },
+      "description_len": 849,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.032104+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.032103+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-63073761": {
+      "offerId": "ARB2-63073761",
+      "first_seen": "2026-09-09T08:18:27.263852+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263859+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2393863073761",
+          "name": "Скотч упаковочный 48 мм × 132 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 138.0,
+          "price": 1104,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.303306+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.964295+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604264",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2393863073761",
+      "name": "Скотч упаковочный 48 мм × 132 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604264-1",
+      "cost": 138.0,
+      "price": 1104,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 11.5,
+        "height": 11.5,
+        "weight": 0.228
+      },
+      "description_len": 885,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.037655+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.037653+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-21187085": {
+      "offerId": "ARB2-21187085",
+      "first_seen": "2026-09-09T08:18:27.263865+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263872+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2466421187085",
+          "name": "Скотч упаковочный 48 мм × 150 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 190.0,
+          "price": 1520,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.309096+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.969535+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604581",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2466421187085",
+      "name": "Скотч упаковочный 48 мм × 150 м, 45 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604581-1",
+      "cost": 190.0,
+      "price": 1520,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 12.4,
+        "height": 12.4,
+        "weight": 0.31
+      },
+      "description_len": 884,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.042900+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.042897+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-23503892": {
+      "offerId": "ARB2-23503892",
+      "first_seen": "2026-09-09T08:18:27.263877+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263884+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2320723503892",
+          "name": "Скотч упаковочный 48 мм × 150 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+          "cost": 175.0,
+          "price": 1400,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.314750+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.975149+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9604596",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2320723503892",
+      "name": "Скотч упаковочный 48 мм × 150 м, 40 мкм, прозрачный. Для надёжной упаковки и переезда",
+      "article": "9604596-1",
+      "cost": 175.0,
+      "price": 1400,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 11.9,
+        "height": 11.9,
+        "weight": 0.296
+      },
+      "description_len": 885,
+      "spec_n": 8,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.048370+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.048369+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-25331099": {
+      "offerId": "ARB2-25331099",
+      "first_seen": "2026-09-09T08:18:27.263889+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263896+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2668825331099",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, зеленый. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.319940+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.980652+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600072",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2668825331099",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, зеленый. Для надёжной упаковки и переезда",
+      "article": "9600072-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.161
+      },
+      "description_len": 881,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.053943+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.053941+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-28864412": {
+      "offerId": "ARB2-28864412",
+      "first_seen": "2026-09-09T08:18:27.263901+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263908+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2385128864412",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, оранжевый. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.415811+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.986129+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600109",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2385128864412",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, оранжевый. Для надёжной упаковки и переезда",
+      "article": "9600109-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.159
+      },
+      "description_len": 885,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.059851+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.059849+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-22138388": {
+      "offerId": "ARB2-22138388",
+      "first_seen": "2026-09-09T08:18:27.263913+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263919+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2699122138388",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, синий. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.438053+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.992615+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600108",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2699122138388",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, синий. Для надёжной упаковки и переезда",
+      "article": "9600108-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.156
+      },
+      "description_len": 877,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.065243+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.065241+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    },
+    "ARB2-65564031": {
+      "offerId": "ARB2-65564031",
+      "first_seen": "2026-09-09T08:18:27.263925+00:00",
+      "events": [
+        {
+          "ts": "2026-09-09T08:18:27.263931+00:00",
+          "kind": "card",
+          "category_slug": "klejkaya-lenta",
+          "vendor": "Без бренда",
+          "barcode": "2427765564031",
+          "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, красный. Для надёжной упаковки и переезда",
+          "cost": 102.0,
+          "price": 816,
+          "markup": 8.0,
+          "stock_count": 13
+        },
+        {
+          "ts": "2026-09-09T08:18:27.444621+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        },
+        {
+          "ts": "2026-09-09T08:34:15.997942+00:00",
+          "kind": "stock",
+          "warehouse_id": 2390811,
+          "count": 13,
+          "store_slug": "atlas-express-tape",
+          "cycle_hash": "54f09472ea"
+        }
+      ],
+      "donor_pid": "9600095",
+      "store_slug": "atlas-express-tape",
+      "cycle_hash": "54f09472ea",
+      "builder": "tape",
+      "category_slug": "klejkaya-lenta",
+      "vendor": "Без бренда",
+      "barcode": "2427765564031",
+      "name": "Скотч маркировочный 48 мм × 66 м, 45 мкм, красный. Для надёжной упаковки и переезда",
+      "article": "9600095-1",
+      "cost": 102.0,
+      "price": 816,
+      "markup": 8.0,
+      "n_photos": 1,
+      "dims": {
+        "length": 4.8,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.155
+      },
+      "description_len": 881,
+      "spec_n": 7,
+      "stock_count": 13,
+      "updated_at": "2026-09-09T08:34:16.070720+00:00",
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-09T08:34:16.070718+00:00",
+        "store_slug": "atlas-express-tape",
+        "cycle_hash": "54f09472ea",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      }
+    }
+  }
+}

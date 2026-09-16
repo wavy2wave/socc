@@ -1,0 +1,84 @@
+{
+  "acceptance_artifact": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_ACCEPTANCE_V1.json",
+  "acceptance_checks": {
+    "active_contract_candidate": true,
+    "authority_at_accept_frontier": true,
+    "build_proof_pass": true,
+    "continuous_daemon_not_authorized": true,
+    "contract_status_built_candidate": true,
+    "contract_type_visibility_only": true,
+    "forbidden_background": true,
+    "forbidden_complete": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_code": true,
+    "forbidden_execute_cycle": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "next_first_controlled_cycle_packet": true,
+    "review_artifact_pass": true,
+    "review_checks_all_true": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "schema_has_all_required_visible_fields": true,
+    "truth_boundary_non_executing": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true
+  },
+  "acceptance_md": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_ACCEPTANCE_V1.md",
+  "active_accepted_contract": "SYSTEM/CYCLE/visibility_contract/ACTIVE_ACCEPTED_CONTROLLED_CYCLE_VISIBILITY_CONTRACT.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_controlled_cycle_visibility_contract_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_controlled_cycle_packet": "next",
+    "to_first_foreground_tick": "approximately_1_to_4_lawful_steps"
+  },
+  "capability": "SOCC_HAS_ACCEPTED_CONTROLLED_CYCLE_VISIBILITY_CONTRACT",
+  "contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "contract_schema": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1.json",
+  "created_at_utc": "2026-06-09T12:12:56.134672+00:00",
+  "current_expected": "accept_socc_controlled_cycle_visibility_contract_v1",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1_PROOF",
+  "next_after_pass": "build_socc_first_controlled_cycle_packet_v1",
+  "next_lawful_step": "build_socc_first_controlled_cycle_packet_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_import": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_old_project_scan": true,
+  "proof_hash": "7e6ac737d5724939",
+  "review": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_REVIEW_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Accepts controlled cycle visibility contract only. No execution, no daemon/background/network, no MW route.",
+  "validation": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_VALIDATION_V1.json",
+  "warnings": []
+}

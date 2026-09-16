@@ -1,0 +1,31 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_ACCEPTANCE_V1.json",
+  "assignment": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:30:17.703461+00:00",
+  "current_stage": "assignment_intake_accepted_direction_not_built",
+  "gates_status": {
+    "Codex_gate": "required_not_run_yet",
+    "Hermes_gate": "required_not_run_yet",
+    "assignment_object": "ACCEPTED",
+    "construction_plan": "not_built_yet",
+    "dashboard_visibility": "candidate_pointer_written",
+    "direction": "next_to_build",
+    "memory": "pending_future_assignment_memory",
+    "proof": "pending_this_build_proof",
+    "route_authority": "PASS",
+    "scientific_quality_gate": "required_not_run_yet",
+    "stop": "required_before_execution"
+  },
+  "id": "ASSIGNMENT_0001_ACCEPTED_PANEL_POINTER_V1",
+  "lawful_next": "build_assignment_direction_v1",
+  "operator_visible_summary": "Assignment intake accepted. SOCC can now create the direction. No execution is authorized.",
+  "panel_type": "assignment_dashboard",
+  "proof_artifacts": {
+    "intake_accept_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json",
+    "intake_build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json",
+    "intake_review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json"
+  },
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Acceptance authorizes direction creation only. No build execution or patch execution is authorized."
+}

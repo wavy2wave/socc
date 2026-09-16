@@ -1,0 +1,40 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "articles": [
+    "entity_substrate"
+  ],
+  "background_loop_enabled": false,
+  "capability": "memory_continuity",
+  "created_at_msk": "2026-06-16T22:47:58+03:00",
+  "created_at_utc": "2026-06-16T19:47:58.384033+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "governance_counts": {
+    "conflicting": 598,
+    "current": 49,
+    "deprecated": 2,
+    "historical": 929
+  },
+  "hard_failures": [],
+  "id": "KNOWLEDGE_SUBSTRATE_PANEL_V1",
+  "ingested_count": 122,
+  "last_step": "review_knowledge_substrate_v1",
+  "llm_used": false,
+  "network_used": false,
+  "next_required_step": "knowledge_substrate_sealed_idle",
+  "operator_visible_summary": "Knowledge Substrate: 129 sources, 122 ingested, article 'entity_substrate' [49 current / 598 conflicting / 929 historical]. Pointer: SEALED_PILOT -> knowledge_substrate_sealed_idle.",
+  "organ": "Knowledge Substrate",
+  "panel_type": "knowledge_substrate_status",
+  "pointer_status": "SEALED_PILOT",
+  "proof_chain_status": {
+    "article": "PASS",
+    "ingest": "PASS",
+    "review": "PASS",
+    "scan": "PASS",
+    "validation": "PASS"
+  },
+  "source_count": 129,
+  "status": "PASS",
+  "truth_boundary": "Observe only. Read-only over KS artifacts. No daemon/background/network/LLM."
+}

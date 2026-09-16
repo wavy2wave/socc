@@ -1,0 +1,19 @@
+{
+  "active_surface": "SYSTEM/AUTONOMY/assignment_direction/ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_V1.json",
+  "active_surface_status": "BUILT_CANDIDATE",
+  "created_at_utc": "2026-06-09T15:25:48.859255+00:00",
+  "current_stage": "assignment_direction_surface_built_pending_review",
+  "gates": {
+    "codex_gate": "required_if_code_or_patch_present",
+    "dashboard_visibility": "required",
+    "hermes_gate": "required_if_capability_present",
+    "repeatability_seal": "PASS",
+    "scientific_quality_gate": "required_before_assignment_build"
+  },
+  "id": "ACTIVE_ASSIGNMENT_DIRECTION_PANEL_POINTER_V1",
+  "lawful_next": "review_assignment_direction_autonomy_surface_v1",
+  "operator_visible_summary": "SOCC is ready to review the assignment-direction autonomy surface. No assignment execution is authorized yet.",
+  "panel_type": "assignment_direction_autonomy",
+  "status": "ACTIVE_CANDIDATE_FOR_REVIEW",
+  "truth_boundary": "This surface enables assignment-direction autonomy as a lawful control surface. It does not run an assignment, execute patches, start daemon/background/network, or claim L3."
+}

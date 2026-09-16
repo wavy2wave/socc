@@ -1,0 +1,12 @@
+{
+  "active_session": "SYSTEM/AUTONOMY/repeatability_sessions/session_02/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_02_V1.json",
+  "created_at_utc": "2026-06-09T15:16:16.424432+00:00",
+  "id": "ACTIVE_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_02",
+  "next_required_step": "validate_first_authority_bound_repeatability_session_02_v1",
+  "session_index": 2,
+  "source_accepted_plan": "SYSTEM/AUTONOMY/repeatability_session_plan/ACTIVE_ACCEPTED_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN.json",
+  "source_accepted_session_01": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/ACTIVE_ACCEPTED_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01.json",
+  "status": "ACTIVE_RUN_PENDING_VALIDATION",
+  "tick_count": 1,
+  "truth_boundary": "Session 02 ran one local authority-bound repeatability tick and stopped. No daemon/background/network/old route/MW/L3."
+}

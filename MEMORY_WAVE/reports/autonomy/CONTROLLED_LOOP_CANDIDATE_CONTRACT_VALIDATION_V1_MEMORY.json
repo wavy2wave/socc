@@ -1,0 +1,11 @@
+{
+  "created_at_msk": "2026-05-30T18:19:44+03:00",
+  "created_at_utc": "2026-05-30T15:19:44.378695+00:00",
+  "id": "CONTROLLED_LOOP_CANDIDATE_CONTRACT_VALIDATION_V1_MEMORY",
+  "memory_effect": "Validated controlled loop candidate contract. No loop or tick execution enabled.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/CONTROLLED_LOOP_CANDIDATE_CONTRACT_VALIDATION_V1_PROOF.json",
+  "real_next": "repair_validate_controlled_loop_candidate_contract_v1",
+  "status": "FAIL",
+  "truth_boundary": "Validation of controlled loop candidate contract. This validates the candidate contract, candidate plan, risk gate, no-execution guard, discipline prerequisites, and no-execution boundary for a future single controlled tick. It does not execute a tick, does not start a loop, does not enable daemon, scheduler, background execution, 24/7 autonomy, network use, queue widening, Entity/ANNA birth, final canon approval, or AGI claim.",
+  "validation": "core/socc/autonomy/self_building/controlled_loop_candidate/validation/CONTROLLED_LOOP_CANDIDATE_CONTRACT_VALIDATION_V1.json"
+}

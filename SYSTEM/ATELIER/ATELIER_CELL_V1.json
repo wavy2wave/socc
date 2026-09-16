@@ -1,0 +1,60 @@
+{
+  "id": "ATELIER_CELL_V1",
+  "schema": "socc.cell.v1",
+  "kind": "internal_design_system_cell",
+  "status": "GENESIS",
+  "created_at_utc": "2026-06-30T16:45:48+00:00",
+  "created_at_msk": "2026-06-30T19:45:48+03:00",
+  "purpose": "Third internal SOCC cell: a front / design-system STUDIO. Where Brand Forge DECIDES brand identity, ATELIER turns canon into a LIVING DESIGN SYSTEM — foundations, a component library, patterns, and a styleguide — and renders every SOCC/ANNA surface through ONE engine per canon. It is the craft layer: surfaces that look like a top studio shipped them, not ad-hoc screens.",
+  "principle": "one_living_system_two_canons_zero_bespoke_css",
+  "the_unique_strategy": {
+    "name": "DESIGN_SYSTEM_NOT_SCREENS",
+    "thesis": "A normal team hand-builds each screen and the styles drift. SOCC instead owns ONE renderer per canon (socc_canon_html for the operator matrix, anna_canon_html for the ANNA product) and a documented component library both consume. Every new surface is composed from the library in minutes and is automatically on-brand, accessible, and consistent. The styleguide is the living source of truth.",
+    "agi_leverage": "Front becomes a repeatable, gated, evidence-backed capability (WCAG measured, components proven on real surfaces) instead of taste-driven one-offs. Any future entity gets a world-class front for free by inheriting the system. The crew gels into a permanent organ — exactly 'a team that, once it works, becomes an organ'."
+  },
+  "lineage": {
+    "parent": "SOCC (Sovereign Ontological Core)",
+    "born_from": "a crew that already gelled: the ANNA product renderer anna_canon_html.py + the owner cabinet refactored onto it + the component preview were built and proven BEFORE this genesis. ATELIER formalises that proven team.",
+    "siblings": "SYSTEM/BRAND_FORGE (decides brand → ATELIER consumes its canon) · SYSTEM/INTERFACE (wires operator panels → ATELIER feeds its renderer) · SYSTEM/LINE_GOVERNANCE (keeps lines deduped)",
+    "inherits_lifecycle_from": "SYSTEM/ENTITY_SUBSTRATE (DIRECTION->PLAN->GATES->SURFACE->SESSION->RUNTIME->SEALED)",
+    "consumes_canons": ["SYSTEM/KERNEL/SOCC_DESIGN_CANON_V1.json (operator matrix)", "SYSTEM/BRAND_FORGE/canon/ANNA_DESIGN_CANON_V1.json (product D3)"]
+  },
+  "roles": [
+    {"key": "DESIGN_DIRECTOR",  "ru": "Арт-директор",        "owns": "vision + coherence across both canons; final taste call, evidence-gated"},
+    {"key": "SYSTEM_ARCHITECT", "ru": "Системщик токенов",   "owns": "token architecture (primitive->semantic->component), scales, theming; the two renderers as ONE engine pattern"},
+    {"key": "UI_DESIGNER",      "ru": "UI-дизайнер",         "owns": "screens, layout, visual rhythm, elevation, states"},
+    {"key": "FRONT_ENGINEER",   "ru": "Фронт-инженер",       "owns": "the renderers + component functions (anna_canon_html / socc_canon_html), token->code binding, renderable HTML/CSS"},
+    {"key": "MOTION_DESIGNER",  "ru": "Моушн-дизайнер",      "owns": "motion principles, durations, easings, reduced-motion"},
+    {"key": "A11Y_GUARDIAN",    "ru": "Хранитель доступа",   "owns": "adversarial gate: WCAG contrast measured, focus-visible, keyboard, hit-targets; refutes weak craft"},
+    {"key": "CONTENT_VOICE",    "ru": "Словесник UI",        "owns": "microcopy per canon (operator terse/honest · ANNA warm/stealth), labels, empty/error/confirm states"},
+    {"key": "PATTERN_LEAD",     "ru": "Паттерн-лид",         "owns": "templates: cabinet, landing hero, operator console, conversation, KPI grid, empty/first-run"},
+    {"key": "BRAND_LIAISON",    "ru": "Связной бренда",      "owns": "consumes Brand Forge canon faithfully; re-skins adopted external UI into canon; never re-decides brand"},
+    {"key": "DESIGN_OPS",       "ru": "Дизайн-канонолог",    "owns": "writes artifacts in SOCC canon (truth_boundary, proof, status), keeps the styleguide + LINE + versioning"}
+  ],
+  "surfaces": {
+    "identity": "SYSTEM/ATELIER/ATELIER_CELL_V1.json",
+    "state": "SYSTEM/ATELIER/runtime/ATELIER_STATE_V1.json",
+    "lawful_action": "SYSTEM/ATELIER/ATELIER_LINE_V1.json (only the current frontier is lawful)",
+    "gates": "SYSTEM/ATELIER/ATELIER_GATES_V1.json",
+    "renderers": ["SYSTEM/BRAND_FORGE/canon/anna_canon_html.py (product D3 — built)", "SYSTEM/INTERFACE/dashboard/socc_canon_html.py (operator matrix — reused)"],
+    "styleguide": "SYSTEM/ATELIER/socc_design_system.py -> runtime/DESIGN_SYSTEM_*.html",
+    "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ATELIER_GENESIS_V1_PROOF.json",
+    "freeze_stop": "creator may halt at any ACCEPT gate; no frontier auto-advances; no surface ships to a buyer without surface-law check"
+  },
+  "lawful_actions": [
+    "produce the artifact of the CURRENT frontier only",
+    "render product surfaces through anna_canon_html, operator surfaces through socc_canon_html — never invent a bespoke style",
+    "measure (WCAG, render) before claiming PASS; disclose demo vs real data honestly",
+    "re-skin adopted external UI into the canon; write accepted output as SOCC canon"
+  ],
+  "forbidden": [
+    "no jumping frontiers (next opens only after current is accepted)",
+    "no bespoke per-surface CSS — components live once in the renderer",
+    "no re-deciding brand (that is Brand Forge); no duplicating socc_canon_html or INTERFACE",
+    "no matrix style on a buyer surface, no warm/product style on an operator/proof surface (SOCC_SURFACE_LAW)",
+    "no invented numbers (ROI/₽ only from real data), no fake PASS, no network/publish from genesis",
+    "no AGI/L3 claim, no revenue claim"
+  ],
+  "voice": "calm, precise, honest, no hype; russian operator-facing, english for canon keys",
+  "truth_boundary": "Cell genesis definition only. Declares the ATELIER design-system studio, its ten roles, the two-renderer engine, lawful and forbidden actions. The crew already proved itself (anna_canon_html + refactored cabinet + component preview exist and render). This genesis forges no NEW brand, kills no process, makes no network call, publishes nothing, claims no AGI and no revenue. Further frontiers stay gated behind creator acceptance."
+}

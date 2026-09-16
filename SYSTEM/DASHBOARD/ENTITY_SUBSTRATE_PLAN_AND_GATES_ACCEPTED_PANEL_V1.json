@@ -1,0 +1,12 @@
+{
+  "authorization_scope": "build_bounded_execution_surface_only_no_execution",
+  "created_at_utc": "2026-06-20T22:44:00.646924+00:00",
+  "current": "accept_entity_substrate_plan_and_gates_v1",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_PLAN_AND_GATES_ACCEPTED_PANEL_V1",
+  "next": "build_entity_substrate_bounded_execution_surface_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ENTITY_SUBSTRATE_PLAN_AND_GATES_V1_PROOF.json",
+  "stage": "entity_substrate_plan_and_gates_accepted",
+  "status": "PASS",
+  "truth_boundary": "Entity/Substrate plan-and-gates acceptance only. Authorizes the build of the bounded execution surface as the next lawful step. Does NOT execute, build, write patches, run a tick, enable loop/daemon/scheduler/background, use network, widen queue, birth Entity/ANNA, approve canon, or claim AGI."
+}

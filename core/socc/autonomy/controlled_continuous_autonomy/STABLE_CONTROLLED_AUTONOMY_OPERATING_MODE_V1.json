@@ -1,0 +1,52 @@
+{
+  "created_at_utc": "2026-06-08T19:01:57.766354+00:00",
+  "current_step": "build_stable_controlled_autonomy_operating_mode_v1",
+  "forbidden": [
+    "daemon",
+    "background loop",
+    "network autonomy",
+    "unbounded self patching",
+    "duplicate already passed step",
+    "queue widening without route authority",
+    "AGI/entity claim"
+  ],
+  "id": "STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1",
+  "lawful_next": "validate_stable_controlled_autonomy_operating_mode_v1",
+  "operating_mode": "stable_controlled_autonomy_without_daemon",
+  "proven": {
+    "codex_hermes_governance": "ACTIVE",
+    "continuity_contract": "BUILT_VALIDATED_REVIEWED",
+    "controlled_autonomy_path": "PROVEN",
+    "first_lawful_controlled_run": "EXECUTED_VALIDATED_REVIEWED",
+    "operator_panel": "ACTIVE",
+    "proof_chain": "REQUIRED",
+    "route_pulse_control_alignment": "REQUIRED"
+  },
+  "runtime_law": {
+    "entrypoint": "current_lawful_next_only",
+    "failure_goes_to": "Codex/Hermes bounded repair only when lawful",
+    "must_remain_operator_visible": true,
+    "must_stop_after_step": true,
+    "must_update_route_pulse_control": true,
+    "must_write_proof": true,
+    "step_limit_default": 1
+  },
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "source_artifacts": {
+    "codex_hermes": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_CONTRACT_V1.json",
+    "continuity_contract": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_V1.json",
+    "continuity_review": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_REVIEW_V1.json",
+    "continuity_review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_V1_PROOF.json",
+    "operator_panel": "SYSTEM/INTERFACE/panel/SOCC_RUNTIME_OPERATOR_PANEL_V1.md"
+  },
+  "status": "PASS",
+  "truth_boundary": "Stable operating mode only. It does not start daemon/background/network."
+}

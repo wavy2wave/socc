@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/wavysexy/SOCC/scripts/socc/show_self_building_status_panel_v1.py", line 24, in <module>
+    route_file_hash = hashlib.sha256(CURRENT_ROUTE_AUTHORITY.read_bytes()).hexdigest()
+                                     ^^^^^^^^^^^^^^^^^^^^^^^
+NameError: name 'CURRENT_ROUTE_AUTHORITY' is not defined

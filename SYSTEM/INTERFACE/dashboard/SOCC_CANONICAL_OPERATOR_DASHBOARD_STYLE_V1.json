@@ -1,0 +1,32 @@
+{
+  "created_at_utc": "2026-06-08T19:33:06.888665+00:00",
+  "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_STYLE_V1",
+  "principles": [
+    "one screen should reveal state",
+    "no decorative noise",
+    "monospace first",
+    "dark matrix minimalism",
+    "Russian/English SOCC terms allowed",
+    "proof-chain visible",
+    "lawful_next always prominent",
+    "safety flags always visible",
+    "lineage visible but not dominant"
+  ],
+  "required_sections": [
+    "ROOT",
+    "STATUS",
+    "CURRENT_LAWFUL_NEXT",
+    "LAST_COMMITTED_STEP",
+    "PROOF_CHAIN",
+    "PULSE",
+    "CONTROL",
+    "SAFETY_FLAGS",
+    "CAPABILITIES",
+    "LINEAGE",
+    "NEXT_ALLOWED_ACTION",
+    "FORBIDDEN_ACTIONS"
+  ],
+  "status": "PASS",
+  "style_name": "minimal_matrix_russian_agi_control_surface",
+  "truth_boundary": "Style canon only. No rendering engine yet."
+}

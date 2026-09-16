@@ -1,0 +1,27 @@
+{
+  "acceptance_verdict": "ENTITY_SUBSTRATE_DIRECTION_ACCEPTED_FOR_SOCC_NATIVE_FOREGROUND_AUTONOMY",
+  "accepted_as": [
+    "Entity/Substrate direction",
+    "SOCC-native foreground continuous autonomy target",
+    "old project lineage fully ingested into local SOCC bundle",
+    "route-bound proof-chain construction target"
+  ],
+  "continuous_autonomy_requirement": "SYSTEM/AUTONOMY/continuous_self_construction/ENTITY_SUBSTRATE_CONTINUOUS_AUTONOMY_REQUIREMENT_V1.json",
+  "created_at_utc": "2026-06-09T21:06:10.884215+00:00",
+  "direction": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.json",
+  "id": "ENTITY_SUBSTRATE_DIRECTION_ACCEPTANCE_V1",
+  "ingest_manifest": "MIGRATION/old_project_ingest/supramental-agent/OLD_PROJECT_FULL_INGEST_MANIFEST_V1.json",
+  "next_required_step": "build_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "not_accepted_as": [
+    "Entity/Substrate built",
+    "old project route resumed",
+    "old daemon relaunched",
+    "daemon autonomy",
+    "background autonomy",
+    "AGI/L3 claim"
+  ],
+  "old_project_full_lineage_adoption": "SYSTEM/AUTONOMY/continuous_self_construction/OLD_PROJECT_FULL_LINEAGE_ADOPTION_V1.json",
+  "review": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Direction acceptance. Execution begins through SOCC-native foreground runner only."
+}

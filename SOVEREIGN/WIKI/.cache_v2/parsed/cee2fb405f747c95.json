@@ -1,0 +1,1 @@
+{"claims": [{"text": "- fresh /SOCC is current route authority", "line": 8, "entities": ["SOCC"], "intent": "definition", "polarity": "assert"}, {"text": "- daemon/24-7 autonomy is not authorized", "line": 11, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 2, "Daemon": 2}}

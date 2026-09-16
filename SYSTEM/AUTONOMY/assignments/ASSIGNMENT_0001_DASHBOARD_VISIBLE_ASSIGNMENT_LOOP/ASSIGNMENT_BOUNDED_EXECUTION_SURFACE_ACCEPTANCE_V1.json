@@ -1,0 +1,30 @@
+{
+  "acceptance_verdict": "BOUNDED_EXECUTION_SURFACE_ACCEPTED_READY_FOR_ONE_FOREGROUND_EXECUTION_SESSION",
+  "accepted_as": [
+    "bounded execution surface",
+    "one foreground execution session contract",
+    "runtime dashboard/proof/memory/stop contract",
+    "final pre-run authorization surface"
+  ],
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:40:09.484866+00:00",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "id": "ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_ACCEPTANCE_V1",
+  "next_required_step": "run_assignment_bounded_execution_session_v1",
+  "not_accepted_as": [
+    "daemon execution",
+    "background execution",
+    "network autonomy",
+    "old route resume",
+    "unbounded execution",
+    "L3/AGI claim"
+  ],
+  "review": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_REVIEW_V1.json",
+  "run_frontier": {
+    "id": "run_assignment_bounded_execution_session_v1",
+    "purpose": "Run one bounded foreground assignment execution session that writes runtime dashboard, runtime state, proof, memory and stop evidence."
+  },
+  "status": "ACCEPTED",
+  "surface": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_V1.json",
+  "truth_boundary": "Acceptance authorizes exactly the next run frontier only. It does not itself execute."
+}

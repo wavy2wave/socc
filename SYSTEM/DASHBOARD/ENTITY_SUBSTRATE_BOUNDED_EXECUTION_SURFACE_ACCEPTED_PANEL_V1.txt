@@ -1,0 +1,14 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ENTITY/SUBSTRATE BOUNDED SURFACE ACCEPTED V1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS::PASS
+CURRENT::accept_entity_substrate_bounded_execution_surface_v1
+NEXT::run_entity_substrate_bounded_execution_session_v1
+HARD_FAILURES::[]
+
+AUTHORIZES::one_bounded_session_1_tick_no_birth
+SESSION_RUN_YET::False
+ENTITY_BIRTH_ALLOWED::False
+ANNA_BIRTH_ALLOWED::False
+NO_DAEMON::True   NO_NETWORK::True
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

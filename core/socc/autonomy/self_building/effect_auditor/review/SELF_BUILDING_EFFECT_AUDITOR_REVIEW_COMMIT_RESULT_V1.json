@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "build_self_building_effect_auditor_enforced_lane_v1",
+  "panel_hash": "80d81865aec75e9f3547e7f3",
+  "progress_hash": "57f42aa99c8fff8ee55a70e8",
+  "pulse_hash": "5308995a26349a614621a20d",
+  "route_hash": "6b8c3601da610055cd6e52e5",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260618T102029415480Z",
+  "status": "PASS",
+  "truth_boundary": "Self-building effect auditor review only. This review-seals semantic-null PASS control and routes next to enforcing the effect auditor across the bounded self-building lane. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_REVIEW_V1_PROOF.json"
+}

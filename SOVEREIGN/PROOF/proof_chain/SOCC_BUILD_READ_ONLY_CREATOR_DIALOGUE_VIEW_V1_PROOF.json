@@ -1,0 +1,54 @@
+{
+  "active_binding_pointer": "SYSTEM/INTERFACE/bindings/language_dashboard/ACTIVE_ACCEPTED_LANGUAGE_DASHBOARD_BINDING.json",
+  "active_dashboard_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "active_language_pointer": "SYSTEM/INTERFACE/language/ACTIVE_SOVEREIGN_CORE_LANGUAGE_LAYER.json",
+  "active_view_pointer": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+  "authority_after": {},
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_read_only_creator_dialogue_view_v1"
+  },
+  "authority_changed": {},
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_CREATOR_DIALOGUE_VIEW_BUILD_FAILED",
+  "checks": {
+    "active_binding_accepted": true,
+    "active_language_active": true,
+    "binding_accept_proof_pass": true,
+    "binding_acceptance_accepted": true,
+    "language_accept_proof_pass": true,
+    "language_acceptance_accepted": true,
+    "no_mw_route": true,
+    "view_has_no_daemon": true,
+    "view_has_no_execution_controls": true,
+    "view_has_no_network": true,
+    "view_has_no_route_mutation": true,
+    "view_is_read_only": true
+  },
+  "created_at_utc": "2026-06-09T10:26:10.533858+00:00",
+  "current_expected": "build_socc_read_only_creator_dialogue_view_v1",
+  "hard_failures": [
+    "AUTHORITY_NOT_AT_CREATOR_DIALOGUE_VIEW_BUILD_FRONTIER::core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json::validate_socc_read_only_creator_dialogue_view_v1",
+    "AUTHORITY_NOT_AT_CREATOR_DIALOGUE_VIEW_BUILD_FRONTIER::core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json::validate_socc_read_only_creator_dialogue_view_v1",
+    "AUTHORITY_NOT_AT_CREATOR_DIALOGUE_VIEW_BUILD_FRONTIER::core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json::validate_socc_read_only_creator_dialogue_view_v1"
+  ],
+  "id": "SOCC_BUILD_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF",
+  "next_after_pass": "validate_socc_read_only_creator_dialogue_view_v1",
+  "next_lawful_step": "repair_socc_read_only_creator_dialogue_view_build_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "689362d42746af0c",
+  "status": "FAIL",
+  "truth_boundary": "Builds read-only creator dialogue view. No execution, no daemon/background/network, no MW route.",
+  "view_artifact": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.json",
+  "view_md": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.md",
+  "warnings": []
+}

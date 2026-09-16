@@ -1,0 +1,1 @@
+{"claims": [{"text": "Session 02 is accepted as second repeatability evidence unit. It authorizes seal next, not daemon/24-7/L3.", "line": 29, "entities": ["Daemon"], "intent": "status_pass", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Proof": 1, "Daemon": 2}}

@@ -1,0 +1,33 @@
+{
+  "id": "KNOWLEDGE_SUBSTRATE_CONSTRUCTION_PLAN_V1",
+  "capability": "memory_continuity",
+  "status": "BUILT_PENDING_RUN",
+  "next_required_step": "scan_knowledge_sources_v1",
+  "mission": "Construct the Knowledge Substrate organ and prove it on pilot topic entity_substrate: scan -> ingest -> build wiki article with source hyperlinks -> validate -> review.",
+  "components": {
+    "package": ["knowledge_substrate/io.py", "knowledge_substrate/scanner.py", "knowledge_substrate/parser.py", "knowledge_substrate/anchors.py", "knowledge_substrate/governance.py", "knowledge_substrate/wiki.py"],
+    "connectors": ["SYSTEM/CAPABILITIES/memory_continuity/connectors/CONNECTOR_MEMORY_SOCC_V1.json", "SYSTEM/CAPABILITIES/memory_continuity/connectors/CONNECTOR_ENTITY_SUBSTRATE_CANON_V1.json"],
+    "scripts": ["scripts/socc/scan_knowledge_sources_v1.py", "scripts/socc/ingest_knowledge_sources_v1.py", "scripts/socc/build_wiki_article_entity_substrate_v1.py", "scripts/socc/validate_knowledge_substrate_v1.py", "scripts/socc/review_knowledge_substrate_v1.py", "scripts/socc/observe_knowledge_substrate_v1.py"],
+    "data_homes": ["SOVEREIGN/MEMORY/documents/", "SOVEREIGN/WIKI/pages/", "SOVEREIGN/WIKI/evolution/", "SOVEREIGN/WIKI/indexes/", "SOVEREIGN/PROOF/proof_chain/", "MEMORY_WAVE/reports/autonomy/", "SYSTEM/DASHBOARD/"]
+  },
+  "mandatory_rules": {
+    "read_only_source_ingest": true,
+    "no_copy_no_move_of_sources": true,
+    "deterministic_no_llm_at_mvp": true,
+    "source_line_anchors_required": true,
+    "freshness_newest_wins": true,
+    "idempotent_rerun_required": true,
+    "dashboard_visible": true,
+    "proof_chain_required": true,
+    "memory_required": true,
+    "bounded_stop_required": true,
+    "does_not_modify_global_route_authority": true,
+    "no_daemon": true,
+    "no_background": true,
+    "no_network": true,
+    "no_agi_claim": true,
+    "no_entity_birth": true,
+    "no_anna_birth": true
+  },
+  "truth_boundary": "Organ + pilot article only. Entity Substrate itself is NOT built here; ANNA is NOT born here. Global CURRENT_ROUTE_AUTHORITY is not modified. No daemon/background/network/LLM."
+}

@@ -1,0 +1,44 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/route_hash_exact_repair_20260608T175554Z/scripts/socc/show_self_building_status_panel_v1.py"
+  ],
+  "changed": [
+    "scripts/socc/show_self_building_status_panel_v1.py"
+  ],
+  "created_at_utc": "2026-06-08T17:55:54.917770+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "hash_candidates": {
+    "file_bytes": "ecb6cde5435762a5f0a4a27e4348a2ece35b410ae48f72670d5da65e4c76c717",
+    "json_ensure_false_sort_true_compact": "6a28509b4096aaff9993cca2dc8d1ed7a66578426dca317736a61f5af6cf82fd",
+    "json_ensure_false_sort_true_default_sep": "48e8b75b4a2443b551244d69dae02079293982ba2e6590e52645300cfaf0988d",
+    "json_ensure_true_sort_true_compact": "6a28509b4096aaff9993cca2dc8d1ed7a66578426dca317736a61f5af6cf82fd",
+    "json_ensure_true_sort_true_default_sep": "48e8b75b4a2443b551244d69dae02079293982ba2e6590e52645300cfaf0988d"
+  },
+  "id": "SOCC_REPAIR_ROUTE_HASH_EXACT_V1_PROOF",
+  "network_used": false,
+  "route_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "show_rc": 0,
+  "status": "REVIEW_REQUIRED",
+  "tick_executed": false,
+  "truth_boundary": "Route hash exact repair only. No tick executed. No daemon/background/network/entity/ANNA/AGI claim.",
+  "validation_pass": false,
+  "validation_rc": 1,
+  "validator_hard_failures": [
+    {
+      "actual": false,
+      "check": "show_outputs_route_hash",
+      "code": "POSTCHECK_FAIL"
+    }
+  ],
+  "validator_route_hash_lines": [
+    "69:route_hash = route.get(\"route_hash\")",
+    "167:    \"show_outputs_route_hash\": \"ROUTE_HASH::\" in stdout and str(route_hash) in stdout,",
+    "318:    route[\"route_hash\"] = h(route)"
+  ],
+  "warnings": []
+}

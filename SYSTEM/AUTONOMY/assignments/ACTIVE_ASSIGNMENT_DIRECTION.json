@@ -1,0 +1,12 @@
+{
+  "active_direction": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_DIRECTION_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:31:29.327717+00:00",
+  "current_stage": "direction_built_pending_review",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_DIRECTION_PANEL_POINTER_V1.json",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "id": "ACTIVE_ASSIGNMENT_DIRECTION",
+  "next_required_step": "review_assignment_direction_v1",
+  "status": "ACTIVE_CANDIDATE_FOR_REVIEW",
+  "truth_boundary": "Direction build only. No construction plan execution, no patch execution, no daemon/background/network, no old route resume, no L3 claim."
+}

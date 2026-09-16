@@ -1,0 +1,21 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "capability": "HERMES_REPAIR_TRUTH_BOUNDARY_PANEL_SYNC_APPLIED_PULSE_PANEL_SYNCED",
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-16T17:33:47+03:00",
+  "created_at_utc": "2026-06-16T14:33:47.510574+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "hermes_packet": "core/socc/hermes_repair/packets/HERMES_REPAIR_TRUTH_BOUNDARY_PANEL_SYNC_V1.json",
+  "id": "REPAIR_ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_VALIDATION_V1_PROOF",
+  "network_used": false,
+  "panel_synced": true,
+  "proof_hash": "1aa8bb3bf062c41829418855",
+  "pulse_synced": true,
+  "real_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "source_fail_proof": "core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_VALIDATION_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "Hermes repair: sync pulse and panel lawful_next/truth_boundary to match route authority. Does not execute tick, enable daemon, use network, birth entity/ANNA, or claim AGI."
+}

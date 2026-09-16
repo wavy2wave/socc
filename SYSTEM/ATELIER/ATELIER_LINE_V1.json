@@ -1,0 +1,74 @@
+{
+  "id": "ATELIER_LINE_V1",
+  "schema": "socc.line.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-30T16:45:48+00:00",
+  "purpose": "The atomic, gated LINE the ATELIER design-system studio walks. Mirrors the SOCC entity lifecycle. Each frontier = one accepted artifact. Statuses are HONEST: the crew already shipped the renderers + core components + cabinet adoption before genesis, so those frontiers are marked DONE; the rest stay LOCKED until accepted.",
+  "discipline": "design_system_not_screens · evolution_does_not_jump",
+  "gate_legend": {
+    "SCI": "Scientific — decisions evidence-based (WCAG numbers, render proofs), explicit pass/fail",
+    "HER": "Hermes — it actually renders/works (python runs, HTML opens, tokens resolve)",
+    "COD": "Codex — conforms to canon law (re-skinned, naming, surface law, truth_boundary present)",
+    "GRD": "Guardian — adversarial a11y + coherence critique before ACCEPT"
+  },
+  "phases": [
+    {
+      "phase": "P0", "title": "ATELIER GENESIS", "goal": "Formalise the studio that already gelled (no new pixels).",
+      "frontiers": [
+        {"f": "F0.1", "produces": "ATELIER_CELL_V1 (team constitution, 10 roles)", "gate": ["COD"], "status": "DONE"},
+        {"f": "F0.2", "produces": "ATELIER_LINE_V1 (this LINE) + GATES + state + genesis proof", "gate": ["COD"], "status": "IN_PROGRESS"}
+      ]
+    },
+    {
+      "phase": "P1", "title": "RENDER ENGINE (two canons, one pattern)", "goal": "One renderer per canon; surfaces compose, never re-style.",
+      "frontiers": [
+        {"f": "F1.1", "produces": "anna_canon_html.py — product D3 renderer (twin of socc_canon_html)", "gate": ["HER", "COD"], "status": "DONE"},
+        {"f": "F1.2", "produces": "reuse socc_canon_html.py for operator surfaces (no duplication)", "gate": ["COD"], "status": "DONE"}
+      ]
+    },
+    {
+      "phase": "P2", "title": "COMPONENT LIBRARY", "goal": "The atom/molecule set in both canons, token-bound.",
+      "frontiers": [
+        {"f": "F2.1", "produces": "ANNA atoms: button/badge/pill/card/kpi/avatar/bubble/field", "gate": ["HER", "GRD"], "status": "DONE"},
+        {"f": "F2.2", "produces": "ANNA molecules: dialog_row/thread/booking_row/tabs/topbar/banner/toast", "gate": ["HER", "GRD"], "status": "DONE"},
+        {"f": "F2.3", "produces": "operator component coverage parity (box/divider/badge/dot/row/line) documented", "gate": ["COD"], "status": "IN_PROGRESS"}
+      ]
+    },
+    {
+      "phase": "P3", "title": "LIVING STYLEGUIDE", "goal": "One gallery that shows the whole system, each canon in its own skin.",
+      "frontiers": [
+        {"f": "F3.1", "produces": "socc_design_system.py -> DESIGN_SYSTEM_ANNA.html + DESIGN_SYSTEM_SOCC.html + INDEX", "gate": ["HER", "GRD"], "status": "IN_REVIEW"}
+      ]
+    },
+    {
+      "phase": "P4", "title": "PATTERNS / TEMPLATES", "goal": "Composable templates for the real surfaces.",
+      "frontiers": [
+        {"f": "F4.1", "produces": "owner cabinet pattern (refactored onto the system)", "gate": ["HER", "GRD"], "status": "DONE"},
+        {"f": "F4.2", "produces": "landing hero (B2B) pattern -> SYSTEM/BRAND_FORGE/anna_landing.py + runtime/ANNA_LANDING_V1.html (hero/features/steps/faq/lead_form/cta_band added to renderer)", "gate": ["HER", "GRD"], "status": "IN_REVIEW"},
+        {"f": "F4.3", "produces": "operator console + conversation patterns", "gate": ["HER", "GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P5", "title": "MOTION + ACCESSIBILITY", "goal": "Motion system + a measured WCAG pass across both canons.",
+      "frontiers": [
+        {"f": "F5.1", "produces": "MOTION_SYSTEM (principles, durations, easings, reduced-motion)", "gate": ["GRD"], "status": "LOCKED"},
+        {"f": "F5.2", "produces": "A11Y_REPORT (contrast pairs measured + focus/keyboard rules)", "gate": ["SCI", "GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P6", "title": "ADOPTION", "goal": "Every SOCC/ANNA surface renders through the system.",
+      "frontiers": [
+        {"f": "F6.1", "produces": "migrate remaining surfaces (landing, touchpoints, dashboards) onto the renderers", "gate": ["HER", "COD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P7", "title": "SEAL", "goal": "Canonize the design system; the studio stays a reusable organ.",
+      "frontiers": [
+        {"f": "F7.1", "produces": "SEAL (verify full chain, canonize & accept -> design system is law; ATELIER reusable)", "gate": ["SCI", "HER", "COD", "GRD"], "status": "LOCKED"}
+      ]
+    }
+  ],
+  "current": "F0.2",
+  "next_after_genesis": "F2.3",
+  "truth_boundary": "LINE declaration. Lists the gated frontier sequence. Statuses are honest: renderers + core components + cabinet adoption are genuinely DONE (built & rendered by this line); the styleguide is IN_REVIEW (built, awaiting creator look); motion/a11y/landing/seal are LOCKED. No frontier past the current one is executed until accepted. Producing this LINE makes no external claim."
+}

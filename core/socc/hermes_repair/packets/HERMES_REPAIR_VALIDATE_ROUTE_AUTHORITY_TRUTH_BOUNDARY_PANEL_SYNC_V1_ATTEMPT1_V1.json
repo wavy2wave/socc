@@ -1,0 +1,14 @@
+{
+  "id": "HERMES_REPAIR_VALIDATE_ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1_ATTEMPT1_V1.json",
+  "created_at_utc": "2026-06-16T13:49:21.598572+00:00",
+  "target_script": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "attempt": 1,
+  "fail_stdout": "\nHARD_FAILURES::[{\"code\": \"PRECHECK_FAIL\", \"check\": \"pulse_lawful_next_matches_route\", \"actual\": false}, {\"code\": \"PRECHECK_FAIL\", \"check\": \"pulse_truth_boundary_matches_route\", \"actual\": false}, {\"code\": \"PRECHECK_FAIL\", \"check\": \"panel_lawful_next_matches_route\", \"actual\": false}, {\"code\": \"PRECHECK_FAIL\", \"check\": \"panel_truth_boundary_matches_route\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_returncode_zero\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_lawful_next\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_truth_boundary_source\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_route_hash\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_route_upstream_sync_proof\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_current_route_authority_path\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_truth_boundary_contains_route_truth\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_self_building_mode_true\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_daemon_false\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_scheduler_false\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_background_false\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_network_false\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_queue_false\", \"actual\": false}, {\"code\": \"POSTCHECK_FAIL\", \"check\": \"show_outputs_hard_failures_empty\", \"actual\": false}]\nTRUTH_BOUNDARY::Route-authority truth-boundary/status-panel sync validation only. This validates that CURRENT_ROUTE_AUTHORITY, pulse, panel, and terminal refresh agree on truth_boundary and lawful_next. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.\n",
+  "fail_stderr": "",
+  "repair_action": "rerun_script_after_state_reset_check",
+  "bounded_repair": true,
+  "daemon_running": false,
+  "continuous_loop_enabled": false,
+  "network_used": false,
+  "packet_hash": "9b65ba787c1ec372"
+}

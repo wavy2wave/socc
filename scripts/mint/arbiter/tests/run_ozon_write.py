@@ -441,7 +441,7 @@ def t29_import_info_parse():
 
 
 def t30_warehouse_list():
-    hands._http_call = _script(_resp(200, {"result": [{"warehouse_id": 2390811, "name": "FBS"}]}))
+    hands._http_call = _script(_resp(200, {"warehouses": [{"warehouse_id": 2390811, "name": "FBS"}]}))
     res = hands.warehouse_list()
     ok1 = res["ok"] and res["warehouses"][0]["warehouse_id"] == 2390811
     orig = hands.creds_present

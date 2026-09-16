@@ -1,0 +1,19 @@
+{
+  "id": "service-leadgen-RU-00f71a4e23",
+  "ts": "2026-07-01T00:25:38.027073+00:00",
+  "organ": "MINT",
+  "status": "PASS",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price_from_formula": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": true
+  },
+  "hard_failures": [],
+  "next_after_pass": "t6_emit_verified_tx",
+  "next_lawful_step": "emit",
+  "truth_boundary": "dry-run: verified из симуляции (песочница)",
+  "proof_hash": "5a5d5decb2c98644"
+}

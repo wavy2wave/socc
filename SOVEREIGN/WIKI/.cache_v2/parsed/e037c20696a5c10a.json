@@ -1,0 +1,1 @@
+{"claims": [{"text": "SOCC must know:", "line": 3, "entities": ["SOCC"], "intent": "requirement", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 1}}

@@ -1,0 +1,41 @@
+{
+  "acceptance_verdict": "ASSIGNMENT_INTAKE_OBJECT_ACCEPTED_AS_LAWFUL_OPERATOR_TASK",
+  "accepted_as": [
+    "lawful assignment object",
+    "dashboard-visible task nucleus",
+    "source for direction creation",
+    "source for construction plan and gates"
+  ],
+  "accepted_assignment": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_V1.json",
+  "active_accepted_assignment": "SYSTEM/AUTONOMY/assignments/ACTIVE_ACCEPTED_ASSIGNMENT_INTAKE_OBJECT.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:30:17.703461+00:00",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_ACCEPTED_PANEL_POINTER_V1.json",
+  "id": "ASSIGNMENT_INTAKE_OBJECT_ACCEPTANCE_V1",
+  "next_direction_frontier": {
+    "id": "build_assignment_direction_v1",
+    "must_include": [
+      "direction_id",
+      "direction_name",
+      "why this direction exists",
+      "construction lane",
+      "dashboard current stage",
+      "quality gates placeholders",
+      "proof-chain targets",
+      "lawful next"
+    ],
+    "purpose": "Create direction for ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP."
+  },
+  "next_required_step": "build_assignment_direction_v1",
+  "not_accepted_as": [
+    "assignment execution",
+    "patch execution",
+    "daemon/background/network autonomy",
+    "old route resume",
+    "skip-gates permission",
+    "AGI/L3 claim"
+  ],
+  "review": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Acceptance authorizes direction creation only. No build execution or patch execution is authorized."
+}

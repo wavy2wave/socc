@@ -1,0 +1,43 @@
+{
+  "acceptance_verdict": "CONTROLLED_CYCLE_VISIBILITY_CONTRACT_ACCEPTED_AS_CANONICAL_CYCLE_VISIBILITY_LAW",
+  "accepted_as": [
+    "canonical visible controlled cycle contract",
+    "proof-bound cycle output requirement",
+    "operator-visible cycle status law",
+    "input for first controlled cycle packet"
+  ],
+  "accepted_contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "accepted_schema": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1.json",
+  "active_accepted_contract": "SYSTEM/CYCLE/visibility_contract/ACTIVE_ACCEPTED_CONTROLLED_CYCLE_VISIBILITY_CONTRACT.json",
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_controlled_cycle_packet": "next",
+    "to_first_foreground_tick": "approximately_1_to_4_lawful_steps"
+  },
+  "capability": "SOCC_HAS_ACCEPTED_CONTROLLED_CYCLE_VISIBILITY_CONTRACT",
+  "created_at_utc": "2026-06-09T12:12:56.130640+00:00",
+  "id": "SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_first_controlled_cycle_packet_v1",
+  "not_accepted_as": [
+    "executor",
+    "code runner",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "required_cycle_visibility_chain": [
+    "current",
+    "decision",
+    "boundary",
+    "proof",
+    "result",
+    "next"
+  ],
+  "review": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted visibility contract authorizes building the first controlled cycle packet only. It does not execute cycles or authorize daemon/background/network autonomy.",
+  "validation": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_VALIDATION_V1.json"
+}

@@ -1,0 +1,98 @@
+{
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "construction_lane": {
+    "execution_authorized": false,
+    "lane_goal": "Create a dashboard-visible assignment loop where accepted tasks become directions, plans, gates, proofs and bounded execution surfaces.",
+    "lane_type": "SOCC_INTERNAL_SELF_CONSTRUCTION",
+    "next_major_artifact": "ASSIGNMENT_CONSTRUCTION_PLAN_V1"
+  },
+  "created_at_utc": "2026-06-09T15:31:29.327717+00:00",
+  "current_expected": "build_assignment_direction_v1",
+  "dashboard_state": {
+    "current_stage": "direction_built_pending_review",
+    "lawful_next": "review_assignment_direction_v1",
+    "operator_visible_summary": "Direction exists. Construction plan is not built yet. Execution is not authorized.",
+    "panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_DIRECTION_PANEL_POINTER_V1.json"
+  },
+  "direction_contract": {
+    "assignment_intake_required": true,
+    "bounded_stop_required": true,
+    "codex_gate_required_if_code_or_patch": true,
+    "construction_plan_required_next": true,
+    "dashboard_visibility_required": true,
+    "hermes_gate_required": true,
+    "memory_required": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_l3_claim": true,
+    "no_network_without_explicit_lawful_scope": true,
+    "no_old_route_resume": true,
+    "proof_chain_required": true,
+    "review_accept_required_before_execution": true,
+    "scientific_quality_gate_required": true
+  },
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "direction_name": "Dashboard-visible assignment autonomy loop with scientific, Hermes and Codex gates",
+  "future_frontiers": [
+    "review_assignment_direction_v1",
+    "accept_assignment_direction_v1",
+    "build_assignment_construction_plan_v1",
+    "review_assignment_construction_plan_v1",
+    "run_assignment_scientific_quality_gate_v1",
+    "run_assignment_hermes_gate_v1",
+    "run_assignment_codex_gate_v1",
+    "review_assignment_build_plan_and_gates_v1",
+    "accept_assignment_build_plan_and_gates_v1",
+    "build_assignment_bounded_execution_surface_v1"
+  ],
+  "id": "ASSIGNMENT_0001_DIRECTION_V1",
+  "next_required_step": "review_assignment_direction_v1",
+  "proof_chain_targets": [
+    "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_CONSTRUCTION_PLAN_V1_PROOF.json"
+  ],
+  "quality_gates_placeholders": {
+    "Codex_gate": {
+      "must_check_if_code_or_patch": [
+        "idempotence",
+        "filesystem safety",
+        "patch quality",
+        "rollback or stop condition",
+        "test/validation plan"
+      ],
+      "status": "required_not_run_yet"
+    },
+    "Hermes_gate": {
+      "must_check": [
+        "lawful scope",
+        "reasoning quality",
+        "risk boundary",
+        "no unsafe escalation",
+        "operator clarity"
+      ],
+      "status": "required_not_run_yet"
+    },
+    "scientific_quality_gate": {
+      "must_check": [
+        "testability",
+        "measurability",
+        "falsifiability",
+        "minimal_scope",
+        "failure_modes",
+        "evidence_chain",
+        "operator-visible result"
+      ],
+      "status": "required_not_run_yet"
+    }
+  },
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Direction build only. No construction plan execution, no patch execution, no daemon/background/network, no old route resume, no L3 claim.",
+  "why_this_direction_exists": [
+    "Operator wants working autonomy on a concrete task, not abstract proof only.",
+    "SOCC must transform task text into a lawful direction and later into construction plan.",
+    "Dashboard visibility is required so operator can inspect assignment, gates, proofs, progress and lawful next.",
+    "Hermes/Codex/scientific quality gates are mandatory before any build execution."
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "control": "positive_material_effect",
+  "created_at_utc": "2026-06-18T09:49:17.405537+00:00",
+  "evidence": {
+    "changed_artifacts_hashes": {
+      "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_V1_PROOF.json": "da44c77e06d46909d098c517"
+    },
+    "expected_after_ok": true,
+    "expected_before_ok": true,
+    "forbidden_false_after": true,
+    "lawful_next_after": "validate_self_building_effect_auditor_v1",
+    "lawful_next_before": "build_self_building_effect_auditor_v1",
+    "material_claims_count": 5,
+    "memory_exists": true,
+    "required_artifacts": {
+      "MEMORY_WAVE/reports/autonomy/SELF_BUILDING_EFFECT_AUDITOR_V1_MEMORY.json": true,
+      "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_V1_PROOF.json": true,
+      "core/socc/autonomy/self_building/effect_auditor/SELF_BUILDING_EFFECT_AUDITOR_BUILD_REPLAY_V1.json": true
+    },
+    "route_changed": true,
+    "upstream_ok": true
+  },
+  "hard_failures": [],
+  "id": "SELF_BUILDING_EFFECT_AUDITOR_VALIDATION_REPLAY_V1",
+  "material_effect_proven": true,
+  "semantic_null_pass_blocked": false,
+  "status": "PASS"
+}

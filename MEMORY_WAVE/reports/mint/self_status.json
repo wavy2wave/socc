@@ -1,0 +1,113 @@
+{
+  "ts": "2026-07-01T08:18:35.009809+00:00",
+  "organ": "MINT",
+  "charter": {
+    "id": "MINT",
+    "kind": "финансовый орган SOCC — кластер вселенных-venture",
+    "mandate": "держать систему в плюсе через ДОКАЗАННЫЕ транзакции; находить, замыкать и тиражировать связки",
+    "is_not": [
+      "бот",
+      "демон/24-7",
+      "генератор дохода из воздуха",
+      "АГИ без proof"
+    ],
+    "responsibilities": [
+      "register_venture(D)",
+      "prospect(D)",
+      "run_connection(D)",
+      "verify_transaction(claim)",
+      "rank_ventures()",
+      "learn_from_ledger()",
+      "report(operator)"
+    ],
+    "laws": [
+      {
+        "code": "MN1",
+        "text": "нет дохода без события поступления",
+        "enforced_by": "ledger.verify: amount>0 ∧ verify_source ∧ существует claim"
+      },
+      {
+        "code": "MN2",
+        "text": "транзакция на легальную сущность создателя",
+        "enforced_by": "warden.gate: MN2_legal_entity"
+      },
+      {
+        "code": "MN3",
+        "text": "закон выше прибыли",
+        "enforced_by": "warden.gate: fail-closed при любой красной линии"
+      },
+      {
+        "code": "RL1",
+        "text": "нет денежных мулов/дропов",
+        "enforced_by": "warden: RL1 денойлист + _mule_structure (приём чужого + пересылка)"
+      },
+      {
+        "code": "RL2",
+        "text": "нет перепродажи доступа в обход ToS",
+        "enforced_by": "warden: RL2"
+      },
+      {
+        "code": "RL3",
+        "text": "нет фейк-личности живого человека",
+        "enforced_by": "warden: RL3"
+      },
+      {
+        "code": "RL4",
+        "text": "серое ≤ легальное (без обмана покупателя/площадки)",
+        "enforced_by": "warden: RL4"
+      }
+    ],
+    "success_metric": "суммарный РЕАЛЬНЫЙ verified ₽ / стоимость; вселенные соревнуются по ROI (f_D)",
+    "cadence": "bounded-tick (без демона); реальные деньги двигает только оператор (RUBICON)",
+    "honesty_boundary": [
+      "не двигает чужие/реальные средства автономно (RUBICON)",
+      "verified=true только из реального источника",
+      "dry-run в канон не пишет; симуляция не считается реальными деньгами"
+    ],
+    "hierarchy": {
+      "вселенная (venture/Domain D)": "тема со своим спросом/площадкой/правилами; соревнуется по ROI",
+      "связка": "клетка — proof-gated цикл t0..t6 с доказанным концом (verified)",
+      "«бог»": "паттерн-связки, промотированный в геном после k подтверждённых verified (φ_promote)",
+      "«полубог»": "способность родить ЛЕГАЛЬНУЮ собственную интернет-личность бренда (не подделка человека)"
+    }
+  },
+  "universes": [
+    {
+      "venture": "resale-avito-RU",
+      "verified_tx": 1,
+      "verified_profit": 3500.0,
+      "roi": 1.0
+    },
+    {
+      "venture": "ozon-dropship-RU",
+      "verified_tx": 1,
+      "verified_profit": 601.0,
+      "roi": 0.412
+    },
+    {
+      "venture": "service-leadgen-RU",
+      "verified_tx": 1,
+      "verified_profit": 600.0,
+      "roi": null
+    }
+  ],
+  "money": {
+    "real_verified_tx": 0,
+    "real_verified_profit": 0,
+    "simulated_verified_tx": 3,
+    "simulated_verified_profit": 4701.0,
+    "ledger_honesty": "PASS"
+  },
+  "learning": {
+    "status": "learning",
+    "god_pattern": {
+      "signature": "ozon-dropship-RU|2000-3500",
+      "verified": 1,
+      "conversion": 0.6667,
+      "multiplier": 0.6667,
+      "verified_profit_avg": 601.0
+    }
+  },
+  "next_lawful_step": "ПЕРВЫЙ реальный verified ₽: провести связку D2 (услуги) до чека НПД/поступления — RUBICON оператора (даже если песочница уже зелёная, реальных денег пока 0)",
+  "self_note": "каждый ₽ ведёт к verified-событию в revenue_ledger; реальные деньги ≠ симуляция; нет события — нет числа"
+}

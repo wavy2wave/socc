@@ -1,0 +1,172 @@
+{
+  "ts": "2026-08-05T12:59:06.042245+00:00",
+  "finished_at": "2026-08-05T12:59:09.619166+00:00",
+  "city": "msk",
+  "limit_per_category": 4,
+  "delivery": 100.0,
+  "house_brand": "RAINO",
+  "categories_run": 2,
+  "scanned": 8,
+  "proven": 3,
+  "rejected": 5,
+  "categories_failed": [],
+  "categories_zero_proven": [
+    "крючки самоклеящиеся"
+  ],
+  "per_category": [
+    {
+      "category": "точилка для ножей",
+      "scanned": 4,
+      "proven": 3,
+      "rejected": 1,
+      "skipped_too_pricey": 0,
+      "market_ceiling": 1194.0,
+      "winners": [
+        {
+          "category": "точилка для ножей",
+          "name": "Точильный камень точилка для ножей",
+          "sku": "495464539",
+          "url": "https://www.wildberries.ru/catalog/495464539/detail.aspx",
+          "cost_buy": 172.0,
+          "price_sell": 860.0,
+          "profit_net": 29.0,
+          "markup": 5.0,
+          "profit_per_rouble": 0.17,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 1194.0,
+          "demand_strength": 100,
+          "collision_risk": 12
+        },
+        {
+          "category": "точилка для ножей",
+          "name": "Точилка для ножей",
+          "sku": "492296408",
+          "url": "https://www.wildberries.ru/catalog/492296408/detail.aspx",
+          "cost_buy": 204.0,
+          "price_sell": 1020.0,
+          "profit_net": 53.0,
+          "markup": 5.0,
+          "profit_per_rouble": 0.26,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 1194.0,
+          "demand_strength": 100,
+          "collision_risk": 12
+        },
+        {
+          "category": "точилка для ножей",
+          "name": "Точилка для ножей",
+          "sku": "527608963",
+          "url": "https://www.wildberries.ru/catalog/527608963/detail.aspx",
+          "cost_buy": 227.0,
+          "price_sell": 1135.0,
+          "profit_net": 70.25,
+          "markup": 5.0,
+          "profit_per_rouble": 0.31,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 1194.0,
+          "demand_strength": 100,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "scanned": 4,
+      "proven": 0,
+      "rejected": 4,
+      "skipped_too_pricey": 0,
+      "market_ceiling": 537.0,
+      "winners": [],
+      "error": null
+    }
+  ],
+  "winners": [
+    {
+      "category": "точилка для ножей",
+      "name": "Точилка для ножей",
+      "sku": "527608963",
+      "url": "https://www.wildberries.ru/catalog/527608963/detail.aspx",
+      "cost_buy": 227.0,
+      "price_sell": 1135.0,
+      "profit_net": 70.25,
+      "markup": 5.0,
+      "profit_per_rouble": 0.31,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 1194.0,
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "точилка для ножей",
+      "name": "Точилка для ножей",
+      "sku": "492296408",
+      "url": "https://www.wildberries.ru/catalog/492296408/detail.aspx",
+      "cost_buy": 204.0,
+      "price_sell": 1020.0,
+      "profit_net": 53.0,
+      "markup": 5.0,
+      "profit_per_rouble": 0.26,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 1194.0,
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "точилка для ножей",
+      "name": "Точильный камень точилка для ножей",
+      "sku": "495464539",
+      "url": "https://www.wildberries.ru/catalog/495464539/detail.aspx",
+      "cost_buy": 172.0,
+      "price_sell": 860.0,
+      "profit_net": 29.0,
+      "markup": 5.0,
+      "profit_per_rouble": 0.17,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 1194.0,
+      "demand_strength": 100,
+      "collision_risk": 12
+    }
+  ],
+  "honesty": "PROVEN = доказанная ГИПОТЕЗА (спрос+маржа+закон+честная цена после комиссии Озон 65% и доставки), НЕ доход. Реальный ₽ — только verified в revenue_ledger.",
+  "invalidated": {
+    "value": true,
+    "at": "2026-08-06 (фаза A ЧЕСТНОСТЬ)",
+    "reason": "Посчитано при УСТАРЕВШИХ константах: NET_COEFF=0.35 (в модели «комиссия Озон 65% общим котлом») и delivery=100.0. Дознание кабинета (ozon_truth_v1, 2026-08-05) заменило их ФАКТОМ 6 реальных продаж: NET_COEFF=0.298, DELIVERY_NET=₽325. Вердикт PROVEN здесь судился доставко-слепым profit_net (доставка вычиталась лишь в цене, но не в ЭКОН-гейте — фаза A закрыла эту дыру). Порог min_profit=₽200 применялся к неверному числу. Перепрогон под честными константами даёт другой набор победителей. Историю не стираем — помечаем.",
+    "constants_then": {
+      "net_coeff": 0.35,
+      "delivery": 100.0,
+      "commission_model": "65% общим котлом"
+    },
+    "constants_now": {
+      "net_coeff": 0.298,
+      "delivery": 325.0,
+      "commission_model": "53% + доставка отдельной строкой",
+      "source": "ozon_truth_v1 / 6 реальных продаж 2026-08-05"
+    },
+    "recompute_note": "Из 3 прежних PROVEN под честными константами порог min_profit=₽200 проходят 0. Это оценка по формуле price·0.298−cost−325, НЕ повторный прогон движка.",
+    "winners_recomputed": [
+      {
+        "sku": "527608963",
+        "name": "Точилка для ножей",
+        "profit_net_old": 70.25,
+        "profit_net_honest": -213.77,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "492296408",
+        "name": "Точилка для ножей",
+        "profit_net_old": 53.0,
+        "profit_net_honest": -225.04,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "495464539",
+        "name": "Точильный камень точилка для ножей",
+        "profit_net_old": 29.0,
+        "profit_net_honest": -240.72,
+        "passes_min_profit": false
+      }
+    ]
+  }
+}

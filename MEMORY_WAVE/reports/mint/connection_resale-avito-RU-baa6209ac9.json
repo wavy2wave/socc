@@ -1,0 +1,17 @@
+{
+  "id": "resale-avito-RU-baa6209ac9",
+  "ts": "2026-06-30T17:13:54.211289+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": false
+  },
+  "hard_failures": [
+    "warden_gate"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_resale-avito-RU-baa6209ac9_repair_required",
+  "truth_boundary": "WARDEN: RL4: связка обманывает покупателя/площадку о сути сделки",
+  "proof_hash": "e6e033ef89553f7c"
+}

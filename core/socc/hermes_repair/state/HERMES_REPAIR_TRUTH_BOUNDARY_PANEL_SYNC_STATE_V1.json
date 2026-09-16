@@ -1,0 +1,12 @@
+{
+  "bounded_repair": true,
+  "created_at_utc": "2026-06-16T14:33:47.510433+00:00",
+  "daemon_running": false,
+  "id": "HERMES_REPAIR_TRUTH_BOUNDARY_PANEL_SYNC_STATE_V1",
+  "packet": "core/socc/hermes_repair/packets/HERMES_REPAIR_TRUTH_BOUNDARY_PANEL_SYNC_V1.json",
+  "panel_synced": true,
+  "pulse_lawful_next_after": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "pulse_lawful_next_before": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "pulse_synced": true,
+  "repair_status": "PASS"
+}

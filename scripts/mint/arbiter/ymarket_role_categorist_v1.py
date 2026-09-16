@@ -46,6 +46,7 @@ for _p in (str(HERE), str(HERE.parent)):
 import ymarket_role_merchandiser_v1 as merch   # noqa: E402  габариты города, тариф, обрыв, экономика
 import ymarket_role_pricer_v1 as pricer        # noqa: E402  пол маржи (через merch.screen_one)
 import ymarket_card_v1 as card                 # noqa: E402  карта категорий (marketCategoryId)
+import uniqueizer_v1 as uq                     # noqa: E402  чистые контент-законы (stdlib) — флаг чужого МП
 
 CHARTER = {
     "id": "YM_CATEGORIST",
@@ -262,7 +263,13 @@ def score_item(item, city=None, cats=None, max_cost=DEFAULT_MAX_COST_RUB,
     # был правдивым и годным для RUBICON-write (раннеру нужен category_id, чтобы карточка встала).
     for k in ("category", "slug", "category_id", "in_stock", "stock_source",
               "length", "width", "height", "weight", "weight_source", "pictures", "link",
-              "description", "_spec"):
+              "description", "_spec",
+              # ПРОВЕНАНС-персист (04.09): barcode (штрихкод из слоя ОВХ/донора), dims_source/
+              # dims_cached (откуда габариты: 'card'|'physics' + кэш ОВХ) и _platform_residue
+              # (чужой маркетплейс в имени — флаг, НЕ чистка) живут на сквозной строке, а не
+              # срезаются тут. Иначе durable готовности не воспроизводим между снимками
+              # (живой аудит 04.09: физика 2050 11.5 vs 13, dims_source не персистён).
+              "barcode", "dims_source", "dims_cached", "_platform_residue"):
         if k in item:
             out[k] = item[k]
 
@@ -342,8 +349,11 @@ def _donor_colmap(header_lc):
         return None
 
     used = set()
-    # cost = донорская розница = НАША закупка. Точное «цена», НЕ «цена поставщика»/«валюта».
-    ci = find(lambda h: h == "цена", used) or find(
+    # cost = донорская закупка = НАША закупка (C1). В новых выгрузках cargo есть явная «Закупка SKU, ₽»
+    # (опт, что платим донору) — её берём ПЕРВОЙ; «Цена продажи, ₽» = Ozon-розница донора, НЕ наша закупка.
+    # Fallback для старых выгрузок без «Закупки»: точное «цена»/«цена ...», кроме поставщик/валюта.
+    ci = find(lambda h: "закупк" in h, used) or find(
+        lambda h: h == "цена", used) or find(
         lambda h: h.startswith("цена") and "поставщик" not in h and "валют" not in h, used)
     if ci is not None:
         idx["cost"] = ci; used.add(ci)
@@ -358,7 +368,7 @@ def _donor_colmap(header_lc):
         ("height_mm",    lambda h: h.startswith("высота")),
         ("weight_g",     lambda h: h == "вес, г" or h == "вес,г"),
         ("weight_kg",    lambda h: h == "вес, кг" or h == "вес,кг"),
-        ("pictures",     lambda h: "изображен" in h),
+        ("pictures",     lambda h: "фото без вотермарка" in h or "без водян" in h or "изображен" in h),
         ("link",         lambda h: "ссылка" in h),
         ("description",  lambda h: "описание" in h),
         # ── Спец-колонки короба (всё опционально; профиль kartonnye-koroba → ТОП-заполнение) ──
@@ -444,6 +454,13 @@ def read_donor(xlsx_path, slug=None, cats=None):
         # Источник наличия — «есть» только если донор прямо говорит «в наличии» (S1: лучше ноль, чем ложь).
         if in_stock is True:
             item["stock_source"] = "donor:в наличии"
+        # ФЛАГ чужой платформы в имени (04.09, Правка C): XLSX-путь читателя до сих пор его НЕ ставил
+        # (адверсариал-аудит #7) — имя 1-в-1 НЕ чистим, но доносим до шорт-листа/durable (живой путь
+        # ставит в zaliv._map_live_row). Через score_item passthrough (Правка B) флаг едет на строке
+        # сквозь канал и виден в readiness shortlist_prov/residue_skus до момента слова.
+        _pr = uq.platform_residue(name)
+        if _pr:
+            item["_platform_residue"] = _pr
         # ── ТОП-заполнение: _spec для профиля категории + факты в описание (всевозможные данные → ТОП) ──
         tip = _norm(cell(r, "tip_kartona"))
         forma = _norm(cell(r, "forma"))

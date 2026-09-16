@@ -1,0 +1,9 @@
+{
+  "id": "HERMES_GENERIC_PACKET_REVIEW_SELF_BUILDING_EFFECT_AUDITOR_V1_ATTEMPT1",
+  "ts": "2026-06-17T22:46:46.862163+00:00",
+  "failed_script": "review_self_building_effect_auditor_v1",
+  "repair_script_expected": "repair_self_building_effect_auditor_review_v1",
+  "repair_script_found": false,
+  "bounded_repair": true,
+  "daemon_running": false
+}

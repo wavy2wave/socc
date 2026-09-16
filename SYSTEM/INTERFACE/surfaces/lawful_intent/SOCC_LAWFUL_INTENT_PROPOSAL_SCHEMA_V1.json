@@ -1,0 +1,27 @@
+{
+  "created_at_utc": "2026-06-09T10:30:28.201763+00:00",
+  "field_rules": {
+    "bounded_patch_summary": "must_not_mutate_route_unless_current_lawful_next_allows_it",
+    "lawful_next_alignment": "must_match_route_authority_current_lawful_next",
+    "may_execute": "must_be_false_in_v1",
+    "required_proof": "must_name_proof_artifact_before_execution_candidate",
+    "requires_review": "must_be_true_before_any_future_action_surface"
+  },
+  "id": "SOCC_LAWFUL_INTENT_PROPOSAL_SCHEMA_V1",
+  "required_fields": [
+    "proposal_id",
+    "created_at_utc",
+    "creator_intent",
+    "observed_current_lawful_next",
+    "lawful_next_alignment",
+    "bounded_patch_summary",
+    "expected_effect",
+    "required_proof",
+    "forbidden_actions",
+    "risk_class",
+    "requires_review",
+    "may_execute"
+  ],
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Schema defines proposal objects only. It does not execute, approve, or mutate route."
+}

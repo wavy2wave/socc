@@ -1,0 +1,1 @@
+{"claims": [{"text": "This panel is a control surface, not an executor. It displays route/pulse/control/proof-chain state and must not start autonomous background execution.", "line": 17, "entities": ["Proof"], "intent": "requirement", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Proof": 1}}

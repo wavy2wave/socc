@@ -1,0 +1,149 @@
+{
+  "active_memory_files": 3549,
+  "active_proof_files": 1045,
+  "active_self_building_files": 4613,
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [],
+  "changed": [],
+  "copy_results": {},
+  "created_at_utc": "2026-06-08T18:09:04.641325+00:00",
+  "current_next_before": "build_enforced_self_building_next_target_selector_v1",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "evidence": [
+    {
+      "exists": true,
+      "next": null,
+      "pass": false,
+      "rel": "scripts/socc/build_atomic_commit_enforced_self_building_lane_v1.py",
+      "status": null
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": false,
+      "rel": "scripts/socc/review_atomic_commit_enforced_self_building_lane_v1.py",
+      "status": null
+    },
+    {
+      "exists": true,
+      "next": "review_atomic_commit_enforced_self_building_lane_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_VALIDATION_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_enforced_self_building_next_target_selector_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_REVIEW_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "review_atomic_commit_enforced_self_building_lane_v1",
+      "pass": true,
+      "rel": "MEMORY_WAVE/reports/autonomy/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_VALIDATION_V1_MEMORY.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_enforced_self_building_next_target_selector_v1",
+      "pass": true,
+      "rel": "MEMORY_WAVE/reports/autonomy/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_REVIEW_V1_MEMORY.json",
+      "status": "PASS"
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_self_building_lane/validation/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_VALIDATION_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_self_building_lane/review/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_REVIEW_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_self_building_lane/review/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_REVIEW_V1.md",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_self_building_lane/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_self_building_lane/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_V1.md",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_lane/validation/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_VALIDATION_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_lane/review/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_REVIEW_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_lane/review/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_REVIEW_V1.md",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_lane/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/atomic_commit_enforced_lane/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_V1.md",
+      "status": null
+    }
+  ],
+  "hard_failures": [
+    "CURRENT_NEXT_NOT_EXPECTED_STEP"
+  ],
+  "id": "SOCC_EXACT_REUSE_ATOMIC_COMMIT_ENFORCED_LANE_V1_PROOF",
+  "match_mode": "EXACT_ALLOWLIST_ONLY",
+  "network_used": false,
+  "new_root": "/Users/wavysexy/SOCC",
+  "next_after_exact_reuse": "build_enforced_self_building_next_target_selector_v1",
+  "observe_pass": false,
+  "observe_rc": null,
+  "old_root": "/Users/wavysexy/supramental-agent",
+  "pass_evidence_count": 4,
+  "review_pass_count": 2,
+  "status": "REVIEW_REQUIRED",
+  "step": "build_atomic_commit_enforced_self_building_lane_v1",
+  "step_executed_now": false,
+  "tick_executed": false,
+  "truth_boundary": "Exact allowlist reuse only. No fuzzy scan, no duplicate execution, no tick, no daemon/background/network/entity/ANNA/AGI claim.",
+  "validation_pass_count": 2,
+  "warnings": []
+}

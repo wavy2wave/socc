@@ -1,0 +1,68 @@
+{
+  "schema": "ymarket.runner.report.v1",
+  "source": "donor",
+  "ts": "2026-09-01T21:52:49.506321+00:00",
+  "xlsx": "/tmp/cargo_party_v1.xlsx",
+  "sheet": "cargo",
+  "slug": "puzyrkovaya-plenka",
+  "category_id": 76346336,
+  "need_mapping_category": false,
+  "colmap": {
+    "cost": "цена",
+    "sku": "артикул",
+    "name": "название",
+    "availability": "наличие",
+    "link": "ссылка"
+  },
+  "donor_blocker": null,
+  "dropship": {
+    "max_cost": 700.0,
+    "markup_range": [
+      5.0,
+      10.0
+    ],
+    "note": "донорская «Цена»=закупка; цена продажи предложена (×наценка), не из файла"
+  },
+  "categorist_agg": {
+    "rows_read": 71,
+    "rows_skipped": 0,
+    "selected": 0,
+    "needs_data": 48,
+    "rejected": 23,
+    "avg_profit_low_end": null,
+    "total_profit_low_end": null
+  },
+  "counts": {
+    "rows_selected": 0,
+    "needs_data": 48,
+    "rejected": 23
+  },
+  "skus_requested": [
+    "1588731",
+    "2050",
+    "6335",
+    "9048"
+  ],
+  "skus_missing": [
+    "1588731",
+    "2050",
+    "6335",
+    "9048"
+  ],
+  "preflight": {
+    "total": 0,
+    "ok": 0,
+    "need_mapping": 0,
+    "no_pictures": 0,
+    "build_error": 0,
+    "with_specs": 0,
+    "topfill": 0,
+    "min_emitted": null,
+    "sum_emitted": 0,
+    "avg_emitted": 0
+  },
+  "preflight_rows": [],
+  "creds_present": true,
+  "committed": false,
+  "elapsed_sec": 0.08
+}

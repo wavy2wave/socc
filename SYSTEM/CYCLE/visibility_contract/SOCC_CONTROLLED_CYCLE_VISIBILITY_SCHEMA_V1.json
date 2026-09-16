@@ -1,0 +1,31 @@
+{
+  "created_at_utc": "2026-06-09T12:06:41.512496+00:00",
+  "field_rules": {
+    "allowed_action_boundary": "must_be_finite_and_non_daemon",
+    "decision_reason": "must_explain_why_this_step_is_lawful_next",
+    "expected_artifact_delta": "must_be_measurable",
+    "operator_visible_status": "must_include_PASS_FAIL_OR_GUARD_STOP",
+    "proof_required": "must_name_proof_artifact_before_future_execution_candidate",
+    "result_summary": "must_be_visible_to_operator_after_cycle",
+    "selected_bounded_step": "must_come_from_accepted_bounded_plan_packet"
+  },
+  "id": "SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1",
+  "required_visible_fields_per_cycle": [
+    "cycle_id",
+    "created_at_utc",
+    "observed_current_lawful_next",
+    "source_plan_packet",
+    "selected_bounded_step",
+    "decision_reason",
+    "allowed_action_boundary",
+    "forbidden_actions",
+    "expected_artifact_delta",
+    "proof_required",
+    "result_summary",
+    "next_lawful_step_after_cycle",
+    "hard_failures",
+    "operator_visible_status"
+  ],
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Schema defines what a controlled cycle must show. It does not execute cycles."
+}

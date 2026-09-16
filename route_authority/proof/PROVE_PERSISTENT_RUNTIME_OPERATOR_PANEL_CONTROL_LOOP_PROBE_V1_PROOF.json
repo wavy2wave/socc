@@ -1,0 +1,30 @@
+{
+  "autonomy_gap_remaining": [
+    "persistent_background_runtime_activation_boundary"
+  ],
+  "background_loop_enabled": false,
+  "created_at_utc": "2026-06-03T20:30:25.455678+00:00",
+  "daemon_running": false,
+  "fail_closed_visibility_proven": true,
+  "hard_failures": [],
+  "id": "PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF",
+  "lawful_next_visibility_proven": true,
+  "live_panel_state": "route_authority/self_construction_autonomy/OPERATOR_RUNTIME_PANEL_LIVE_STATE_V1.json",
+  "live_panel_stream": "route_authority/self_construction_autonomy/OPERATOR_RUNTIME_PANEL_LIVE_STREAM_V1.jsonl",
+  "max_control_loop_probe_ticks": 3,
+  "operator_panel_control_loop_tick_count_proven": 3,
+  "operator_panel_observed_proven": true,
+  "persistent_loop_proven": false,
+  "persistent_runtime_operator_panel_control_loop_probe_executed_proven": true,
+  "persistent_runtime_operator_panel_control_loop_probe_proven": true,
+  "probe_proof": "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_PROOF_V1.json",
+  "proof_hash": "4979f33b3ab4a1295792b67c",
+  "queued_workload_visibility_proven": true,
+  "real_next": "build_persistent_background_runtime_activation_boundary_v1",
+  "route_authority_stability_during_control_loop_proven": true,
+  "runtime_background_activation_executed": false,
+  "runtime_evidence_visibility_proven": true,
+  "status": "PASS",
+  "stop_control_visibility_proven": true,
+  "truth_boundary_visibility_proven": true
+}

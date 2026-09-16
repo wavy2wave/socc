@@ -1,0 +1,85 @@
+{
+ "schema": "ymarket.categorist.readiness.klejkaya-lenta.v1",
+ "purpose": "Первый готовый результат ПОСЛЕ снятия T3-маппинг-гейта органом: профиль 90741 «Скотч» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ», канон ymarket_mapping_confirmed_2026-09-04) → живой сухой скан канон-канала (0₽ GET, дефолтные бюджеты 360/300) = ready 5.",
+ "run": {
+  "configured": true,
+  "slug": "klejkaya-lenta",
+  "source": "live",
+  "grid_main": 60,
+  "grid_related": 11,
+  "selected": 5,
+  "needs_data": 60,
+  "parcel_dims": 16,
+  "rejected": 6,
+  "ready": 5,
+  "errors": 0,
+  "topfill": 0,
+  "need_mapping": 0,
+  "no_pictures": 5,
+  "with_specs": 5,
+  "avg_emitted": 0.0
+ },
+ "shortlist": [
+  {
+   "sku": "6178",
+   "name": "Клейкая лента прозрачная Unibob®, 48мм*132м*40мкм",
+   "basicPrice_payload_rub": 625,
+   "barcode": "2112738382360",
+   "len_cm": 4.8,
+   "w_cm": 13.2,
+   "h_cm": 13.2,
+   "weight_kg": 0.257
+  },
+  {
+   "sku": "5242",
+   "name": "Клейкая лента кристально-прозрачная Unibob®, 48мм*66м*45мкм",
+   "basicPrice_payload_rub": 550,
+   "barcode": "2403082514676",
+   "len_cm": 4.8,
+   "w_cm": 11.4,
+   "h_cm": 11.4,
+   "weight_kg": 0.153
+  },
+  {
+   "sku": "5460",
+   "name": "Клейкая лента прозрачная широкая Unibob®, 72мм*66м*45мкм",
+   "basicPrice_payload_rub": 535,
+   "barcode": "2228669665370",
+   "len_cm": 7.2,
+   "w_cm": 11.5,
+   "h_cm": 11.5,
+   "weight_kg": 0.24
+  },
+  {
+   "sku": "1951",
+   "name": "Клейкая лента коричневая Unibob®, 48мм*66м*45мкм",
+   "basicPrice_payload_rub": 375,
+   "barcode": "2201645119180",
+   "len_cm": 4.8,
+   "w_cm": 11.5,
+   "h_cm": 11.5,
+   "weight_kg": 0.158
+  },
+  {
+   "sku": "5249",
+   "name": "Клейкая лента прозрачная Unibob®, 48мм*66м*45мкм",
+   "basicPrice_payload_rub": 365,
+   "barcode": "2454399760430",
+   "len_cm": 4.8,
+   "w_cm": 11.6,
+   "h_cm": 11.6,
+   "weight_kg": 0.163
+  }
+ ],
+ "payload_proof": "каждая из 5 карточек понесла marketCategoryId 90741 (Скотч) + barcode + weightDimensions (physics-цилиндр: длина=диаметр рулона, Ш=В=диаметр катушки, вес из карточки) + boxCount 1 + basicPrice; шаг 2 (offer-cards) пропущен — parameterValues ПУСТО (у Скотча 90741 констант нет).",
+ "caveats": [
+  "no_pictures 5 — своих пикселей нет (фото-гейт #9/бренд-замок отсечёт при РЕАЛЬНОМ заливе; фото off).",
+  "topfill 0 / avg_emitted 0.0 — параметры характеристик НЕ эмитированы (у 90741 в конфирмации констант нет; полнота #11).",
+  "needs_data 60 — остальные кандидаты сетки без dims/склад-источника в бюджете (честно ждут дня).",
+  "rejected 6 (закупка>700₽/маржа) — вне шорт-листа.",
+  "скан = живая 1-я страница донор-категории (лимит 60+11) — категория может быть шире."
+ ],
+ "rubicon": "не пересечён: 0₽ GET; payload «точный, НЕ отправлен» (dry); записи только в локальные каноны.",
+ "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+ "generated": "2026-09-04"
+}

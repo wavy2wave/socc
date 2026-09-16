@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "validate_self_building_effect_auditor_enforced_lane_v1",
+  "panel_hash": "ff2fcb66466329230fdaabbe",
+  "progress_hash": "4289cf35cc8eacc73ecfb4eb",
+  "pulse_hash": "b0cd1fe2c573173580f1c95d",
+  "route_hash": "4d1489ff3b3556cacbe0acb8",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260618T102029467509Z",
+  "status": "PASS",
+  "truth_boundary": "Self-building effect auditor enforced-lane build only. This builds the lane-level enforcement wrapper requiring future bounded self-building steps to prove material effect through the review-sealed effect auditor before PASS is accepted. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_ENFORCED_LANE_V1_PROOF.json"
+}

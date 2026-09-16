@@ -1,0 +1,31 @@
+{
+  "autonomy_gap_remaining": [
+    "prove_persistent_runtime_operator_panel_control_loop_probe"
+  ],
+  "background_loop_enabled": false,
+  "control_loop_probe_executed": true,
+  "control_mutated": true,
+  "created_at_utc": "2026-06-03T20:19:34.736359+00:00",
+  "daemon_running": false,
+  "execution": "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_EXECUTION_V1.json",
+  "fail_closed_visibility_observed": true,
+  "hard_failures": [],
+  "id": "EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF",
+  "lawful_next_visibility_observed": true,
+  "max_control_loop_probe_ticks": 3,
+  "operator_panel_control_loop_tick_count": 3,
+  "operator_panel_observed": true,
+  "persistent_loop_proven": false,
+  "persistent_runtime_operator_panel_control_loop_probe_executed": true,
+  "proof_hash": "40c5ff1df532e4cd8c54b927",
+  "pulse_mutated": true,
+  "queued_workload_visibility_observed": true,
+  "real_next": "prove_persistent_runtime_operator_panel_control_loop_probe_v1",
+  "route_authority_stable_during_control_loop": true,
+  "route_mutated": true,
+  "runtime_background_activation_executed": false,
+  "runtime_evidence_visibility_observed": true,
+  "status": "PASS",
+  "stop_control_visibility_observed": true,
+  "truth_boundary_visibility_observed": true
+}

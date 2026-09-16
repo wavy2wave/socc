@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  ОЗОН СУХОЙ автопилот — самоходный день органа ОЗОН-МЕНЕДЖЕР по расписанию (launchd, 24/7).
+  ЗАКОН (RUBICON): вызывает ТОЛЬКО ozon_autopilot_v1.py, у которого ФИЗИЧЕСКИ нет пути к commit.
+         День идёт сухо (dry=True), живое — только READ кабинета (дознание, 0₽ GET). Реальный write
+         Ozon НЕ открыт: ключ ждёт ротации (скомпрометирован 06.08) + слово оператора.
+  СЕКРЕТЫ: здесь НЕТ ни токена, ни Client-Id — скрипт сам грузит их из gitignored mint/.env.
+  УСТАНОВКА (только по слову оператора — файл создан, НЕ загружен):
+      cp com.wavy.socc.ozon_autopilot.plist ~/Library/LaunchAgents/
+      launchctl load ~/Library/LaunchAgents/com.wavy.socc.ozon_autopilot.plist
+      launchctl kickstart gui/$(id -u)/com.wavy.socc.ozon_autopilot   # проверка вручную
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.wavy.socc.ozon_autopilot</string>
+
+    <!-- Интерпретатор: venv photoforge (py3.13) — проверенный под launchd интерпретатор; ОЗОН-орган
+         стдлиб-чист (py_compile + import + --help зелёные). -->
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/wavysexy/.venvs/photoforge/bin/python</string>
+        <string>/Users/wavysexy/SOCC/scripts/mint/arbiter/ozon_autopilot_v1.py</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>/Users/wavysexy/SOCC/scripts/mint/arbiter</string>
+
+    <!-- Три сухих прогона в сутки (как ЯМ). Минуты нарочно не круглые (не забивать :00). -->
+    <key>StartCalendarInterval</key>
+    <array>
+        <dict><key>Hour</key><integer>8</integer><key>Minute</key><integer>7</integer></dict>
+        <dict><key>Hour</key><integer>14</integer><key>Minute</key><integer>17</integer></dict>
+        <dict><key>Hour</key><integer>20</integer><key>Minute</key><integer>47</integer></dict>
+    </array>
+
+    <!-- Не палить при загрузке: строго по расписанию (проверка — kickstart'ом вручную). -->
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/Users/wavysexy/SOCC/MEMORY_WAVE/reports/mint/arbiter/ozon_autopilot.launchd.out</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/wavysexy/SOCC/MEMORY_WAVE/reports/mint/arbiter/ozon_autopilot.launchd.err</string>
+
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>

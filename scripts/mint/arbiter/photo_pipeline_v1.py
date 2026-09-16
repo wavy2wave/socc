@@ -28,6 +28,7 @@ stdlib-only, ленивый: грузится без сети/ключей/PIL/�
 """
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
@@ -435,6 +436,10 @@ def _key_kind(prov):
                             or os.getenv("GOOGLE_AI_STUDIO_KEY")) else "none"
     if prov == "ru_openai":
         return "native" if (os.getenv("NEUROAPI_API_KEY") or os.getenv("RU_OPENAI_API_KEY")) else "none"
+    if prov == "yandexart":
+        # Родной контур = ПАРА (ключ И каталог): без каталога modelUri art://<folder>/… не собрать,
+        # канал не боевой. Порознь они бесполезны — поэтому «native» только при обоих.
+        return "native" if (pf._yaart_key() and pf._yaart_folder()) else "none"
     return "native" if os.getenv("OPENROUTER_API_KEY") else "none"
 
 
@@ -460,7 +465,23 @@ def doctor(probe=True):
         "OPENAI_API_KEY": bool(os.getenv("OPENAI_API_KEY")),
         "NEUROAPI_API_KEY": bool(os.getenv("NEUROAPI_API_KEY")),
         "RU_OPENAI_API_KEY": bool(os.getenv("RU_OPENAI_API_KEY")),
+        "YAART_API_KEY": bool(os.getenv("YAART_API_KEY")),
+        "YC_API_KEY": bool(os.getenv("YC_API_KEY")),
+        "YAART_FOLDER_ID": bool(os.getenv("YAART_FOLDER_ID")),
+        "YC_FOLDER_ID": bool(os.getenv("YC_FOLDER_ID")),
         "PHOTO_FORGE_PROVIDER": os.getenv("PHOTO_FORGE_PROVIDER") or None,
+    }
+    # ЧЕСТНАЯ КАРТА КАНАЛОВ: какие шлюзы ВООРУЖЕНЫ прямо сейчас и какой выберет автовыбор.
+    # Ловушка, которую это вскрывает: PHOTO_FORGE_PROVIDER в .env — ЖЁСТКИЙ override, он перебивает
+    # автовыбор. Оператор вписал YAART-ключи, но строка `PHOTO_FORGE_PROVIDER=ru_openai` осталась →
+    # YandexART молча НЕ включится. Доктор обязан это сказать, иначе «вписал и не заработало».
+    forced = (os.getenv("PHOTO_FORGE_PROVIDER") or "").strip().lower() or None
+    yaart_armed = bool(pf._yaart_key() and pf._yaart_folder())
+    channels = {
+        "yandexart": {"armed": yaart_armed, "needs": "YAART_API_KEY + YAART_FOLDER_ID (или YC_API_KEY/YC_FOLDER_ID)"},
+        "ru_openai": {"armed": bool(pf.creds_present()), "needs": "NEUROAPI_API_KEY/RU_OPENAI_API_KEY"},
+        "google": {"armed": bool(pf._google_key()), "needs": "GEMINI_API_KEY/GOOGLE_AI_STUDIO_KEY (гео-блок из РФ)"},
+        "openrouter": {"armed": bool(pf._openrouter_key()), "needs": "OPENROUTER_API_KEY (гео-блок из РФ)"},
     }
     out = {
         "provider": prov,
@@ -470,6 +491,8 @@ def doctor(probe=True):
         "creds_present": pf.creds_present(),
         "key_kind": kind,                  # native | none
         "key_env_set": key_names,          # ИМЕНА → bool, НЕ значения
+        "channels": channels,              # какие шлюзы вооружены ПРЯМО СЕЙЧАС
+        "forced_provider": forced,         # жёсткий override из .env (None = автовыбор)
         "capabilities": caps,
         "neighbors": {"uniqueizer": _uniq() is not None, "hunter": _hunter() is not None},
         "caveat": ("виден OPENAI_API_KEY, но ARBITER-кузница его НЕ использует (изоляция органа: "
@@ -477,14 +500,53 @@ def doctor(probe=True):
                    "Впиши РОДНОЙ OPENROUTER_API_KEY в mint/.env — иначе openrouter обезоружен."
                    if ignored_foreign else None),
         "probe": None,
+        "subscription": None,
+        "yaart": None,
     }
     if probe and pf.creds_present():
         out["probe"] = _probe_provider(prov)
+        out["subscription"] = _probe_subscription(prov)
     elif probe:
         out["probe"] = {"ok": False, "why": "нет ключа — живой зонд пропущен (впиши ключ в mint/.env)"}
+    # YandexART зондируем ВСЕГДА, когда он вооружён — даже если активен другой шлюз: оператор,
+    # вписав YAART-ключи, хочет знать, что канал РЕАЛЬНО жив, а не просто «лежит в .env».
+    if probe and yaart_armed:
+        out["yaart"] = _probe_yandexart()
     # Готовность честно: РОДНОЙ ключ ИЛИ 0₽ зонд подтвердил слаг. Чужой OPENAI_API_KEY (kind=none) — НЕ готов.
     probe_ok = bool(out["probe"] and out["probe"].get("ok") and out["probe"].get("model_visible"))
     out["ready_for_live"] = (kind == "native") or probe_ok
+    # ЖИВОСТЬ ПОДПИСКИ — последнее слово. Валидный ключ + видимый слаг ещё НЕ значит «генерация пойдёт»:
+    # замороженный аккаунт отдаёт каталог, но 400 на любую генерацию. Мёртвая подписка → готовности нет.
+    sub = out.get("subscription") or {}
+    if sub.get("probed") and sub.get("alive") is False:
+        out["ready_for_live"] = False
+        out["caveat"] = ("%s | %s" % (out["caveat"], sub["why"]) if out.get("caveat") else sub["why"])
+    # ЖИВОСТЬ YandexART + СВЕРКА КАТАЛОГА. Мёртвый ключ рушит готовность, когда YAART активен.
+    # Рассинхрон каталога роняет живой кадр ДАЖЕ с живым ключом («does not match») — это тоже «не готов».
+    ya = out.get("yaart") or {}
+    if ya.get("probed") and ya.get("alive") is False:
+        if prov == "yandexart":
+            out["ready_for_live"] = False
+        out["caveat"] = ("%s | %s" % (out["caveat"], ya["why"]) if out.get("caveat") else ya["why"])
+    if ya.get("alive") and ya.get("sa_folder"):
+        _want = pf._yaart_folder()
+        if _want and _want != ya["sa_folder"]:
+            _mm = ("РАССИНХРОН КАТАЛОГА: YAART_FOLDER_ID=%s, а ключ принадлежит каталогу %s — "
+                   "живой кадр упадёт на «does not match with service account folder». "
+                   "Впиши верный каталог." % (_want, ya["sa_folder"]))
+            out["folder_mismatch"] = _mm
+            out["ready_for_live"] = False
+            out["caveat"] = "%s | %s" % (out["caveat"], _mm) if out.get("caveat") else _mm
+    # ЛОВУШКА ПЕРЕКЛЮЧЕНИЯ КАНАЛА: ключи YandexART вписаны, но .env держит жёсткий override на другой
+    # шлюз → автовыбор не сработает, оператор решит «вписал и не заработало». Говорим прямо, что снять.
+    # Условие НЕ завязано на готовность активного канала: даже если ru_openai жив, оператор, вписывая
+    # YandexART, ждёт YandexART — молчать тут значит врать про то, что переключение уже произошло.
+    if channels["yandexart"]["armed"] and forced and forced != "yandexart":
+        _trap = ("YandexART вооружён (ключ+каталог есть), НО PHOTO_FORGE_PROVIDER=%s в .env — жёсткий "
+                 "override перебивает автовыбор → канал НЕ включится. Смени строку на "
+                 "PHOTO_FORGE_PROVIDER=yandexart (или удали её) — и YandexART поедет" % forced)
+        out["caveat"] = "%s | %s" % (out["caveat"], _trap) if out.get("caveat") else _trap
+        out["switch_trap"] = _trap
     return out
 
 
@@ -493,6 +555,14 @@ def _probe_provider(prov):
 
     Ничего не генерит (не тратит квоту генерации). Ловит неверный ключ/слаг/RU-egress ДО первого кадра.
     """
+    if prov == "yandexart":
+        # У YandexART НЕТ OpenAI-шного GET /models: общий зонд уходил на чужую базу и врал
+        # «сеть недоступна: RuntimeError». Живость этого канала меряет отдельный _probe_yandexart
+        # (0₽, POST генерации с заведомо чужим каталогом) — он и есть честный ответ.
+        return {"ok": True, "model_visible": None, "target": pf._default_model(),
+                "models_count": 0,
+                "why": "каталога /models у YandexART нет — живость меряет отдельный YAART-зонд",
+                "hint": None}
     try:
         resp = pf._request("GET", "/models")
     except pf.ForgeHTTPError as e:
@@ -515,6 +585,93 @@ def _probe_provider(prov):
     return {"ok": True, "model_visible": seen, "target": want,
             "models_count": len(names),
             "hint": None if seen else "целевой слаг не виден в каталоге — уточни модель"}
+
+
+# ── 0₽ зонд ЖИВОСТИ ПОДПИСКИ (ловит «ключ валиден, а генерация мертва») ──────────────────
+# Зачем отдельный зонд: GET /models отдаёт каталог по валидному ключу и про подписку НЕ знает;
+# /v1/balance у оператора выключен («Balance call disable for this API key») и врёт HTTP 200.
+# Итог был: доктор печатал ready_for_live=True, а КАЖДАЯ генерация падала
+# 400 «Your subscription end, your account are freezed until renew». Это ложь про готовность.
+#
+# Различитель БЕЗ ТРАТ: шлём generate-запрос с заведомо НЕСУЩЕСТВУЮЩИМ слагом. Шлюз проверяет
+# заморозку РАНЬШЕ валидации модели → при мёртвой подписке ответ = заморозка, при живой = «модель
+# не найдена». Картинки не будет НИ В ОДНОМ исходе → 0₽. Живой кадр этот зонд не родит никогда.
+_DEAD_ACCOUNT_MARKERS = ("account are freezed", "freezed until renew", "subscription end",
+                         "account is frozen", "subscription expired", "insufficient balance",
+                         "not enough credits", "no credits", "balance is empty")
+_PROBE_BOGUS_MODEL = "__socc_probe_no_such_model__"
+
+
+def _probe_subscription(prov):
+    """0₽ зонд живости подписки/аккаунта активного шлюза. Возвращает {probed, alive, status, why, hint}.
+
+    alive=True  — шлюз жив (отказал по несуществующей модели, значит заморозки нет).
+    alive=False — ПОДПИСКА/АККАУНТ МЁРТВ (найден маркер заморозки в теле) → живой кадр невозможен.
+    alive=None  — не дозвонились/неоднозначно; честно «не знаю», готовность НЕ понижаем.
+    """
+    if prov != "ru_openai":
+        return {"probed": False, "alive": None,
+                "why": "живость подписки зондируем только на ru_openai (у остальных свой контур)"}
+    body = {"model": _PROBE_BOGUS_MODEL, "prompt": "probe", "n": 1, "response_format": "b64_json"}
+    try:
+        pf._request("POST", pf.RU_OPENAI_IMAGES_PATH, body=body, timeout=30)
+    except pf.ForgeHTTPError as e:
+        blob = (str(e.body) + " " + str(e)).lower()
+        if any(m in blob for m in _DEAD_ACCOUNT_MARKERS):
+            return {"probed": True, "alive": False, "status": e.status,
+                    "why": "ПОДПИСКА/АККАУНТ МЁРТВ: %s" % str(e.body)[:200],
+                    "hint": ("продли подписку и/или пополни баланс на vsegpt.ru — до этого живой "
+                             "кадр невозможен, а доктор обязан говорить False, а не True")}
+        return {"probed": True, "alive": True, "status": e.status,
+                "why": "шлюз жив: отказал по несуществующей модели (заморозки нет)"}
+    except Exception as e:
+        return {"probed": True, "alive": None,
+                "why": "зонд не дошёл (%s) — состояние подписки не установлено" % type(e).__name__}
+    return {"probed": True, "alive": None,
+            "why": "шлюз принял несуществующий слаг — состояние неоднозначно"}
+
+
+# ── 0₽ зонд ЖИВОСТИ YandexART (та же болезнь: «ключ валиден» ≠ «генерация пойдёт») ──────────
+# Бесплатного аналога GET /models у YandexART НЕТ: и роутинг, и валидация тела идут РАНЬШЕ
+# авторизации. Проверено живьём 15.09.2026 — пустое тело и /operations/<bogus> отдают 400/500
+# на ЛЮБОМ ключе, включая ОТСУТСТВУЮЩИЙ, то есть не различают ничего.
+# Рабочий различитель — POST генерации с СИНТАКСИЧЕСКИ ВЕРНЫМ, НО ЧУЖИМ каталогом:
+#     живой ключ → 400 «Specified folder ID '…' does not match with service account folder ID '<родной>'»
+#     битый      → 401 «Unknown api key»
+#     без ключа  → 401 «IAM token or API key has to be passed»
+# Кадр физически невозможен: каталог намеренно не совпадает с каталогом сервисного аккаунта →
+# модель не поднимется → 0₽ ГАРАНТИРОВАННО (не «скорее всего», а по устройству шлюза).
+# Бонус: шлюз САМ называет родной каталог ключа → этим ловим рассинхрон YAART_FOLDER_ID.
+_YAART_PROBE_FOLDER = "b1g" + "z" * 17          # формат каталога соблюдён, владения за ним нет
+
+
+def _probe_yandexart():
+    """0₽ зонд живости ключа YandexART. {probed, alive, status, why, sa_folder, hint}."""
+    if not pf._yaart_key():
+        return {"probed": False, "alive": None, "why": "нет ключа YandexART — зонд пропущен"}
+    body = {"modelUri": "art://%s/%s" % (_YAART_PROBE_FOLDER, pf.YAART_DEFAULT_MODEL),
+            "messages": [{"role": "user", "weight": "1", "text": "probe"}]}
+    try:
+        pf._ya_request("POST", pf.YAART_GEN_PATH, body=body, timeout=30)
+    except pf.ForgeHTTPError as e:
+        blob = str(e.body) + " " + str(e)
+        if e.status in (401, 403):
+            return {"probed": True, "alive": False, "status": e.status,
+                    "why": "КЛЮЧ YandexART МЁРТВ/НЕ ПРИНЯТ (%s): %s" % (e.status, str(e.body)[:160]),
+                    "hint": ("ключ отозван или это не API-ключ сервисного аккаунта — перевыпусти "
+                             "в консоли YC; роль каталога ai.imageGeneration.user")}
+        if "does not match with service account folder" in blob:
+            ids = re.findall(r"folder ID '([^']+)'", blob)
+            return {"probed": True, "alive": True, "status": e.status,
+                    "sa_folder": (ids[-1] if len(ids) >= 2 else None),   # каталог назван САМИМ шлюзом
+                    "why": "ключ жив: шлюз узнал сервисный аккаунт и назвал его каталог"}
+        return {"probed": True, "alive": None, "status": e.status,
+                "why": "неожиданный ответ шлюза (%s): %s" % (e.status, str(e.body)[:160])}
+    except Exception as e:
+        return {"probed": True, "alive": None,
+                "why": "зонд не дошёл (%s) — состояние YandexART не установлено" % type(e).__name__}
+    return {"probed": True, "alive": None,
+            "why": "шлюз ПРИНЯЛ чужой каталог (ожидался 400) — состояние неоднозначно"}
 
 
 def _main(argv=None):
@@ -558,8 +715,38 @@ def _main(argv=None):
             print("   ключ-ENV (имена→задан):")
             for k, v in d["key_env_set"].items():
                 print("       %-22s %s" % (k, v))
+            if d.get("channels"):
+                armed = [n for n, c in d["channels"].items() if c.get("armed")]
+                print("   каналы вооружены: %s" % (", ".join(armed) if armed else "НИ ОДИН"))
+                for n, c in d["channels"].items():
+                    if not c.get("armed"):
+                        print("       %-12s выключен → нужно: %s" % (n, c["needs"]))
+                if d.get("forced_provider"):
+                    print("   override .env:    PHOTO_FORGE_PROVIDER=%s" % d["forced_provider"])
             if d.get("probe") is not None:
                 print("   зонд:", json.dumps(d["probe"], ensure_ascii=False))
+            sub = d.get("subscription")
+            if sub:
+                verdict = {True: "ЖИВ", False: "МЁРТВ", None: "?"}[sub.get("alive")]
+                print("   подписка:   %s — %s" % (verdict, sub.get("why")))
+                if sub.get("hint"):
+                    print("       → %s" % sub["hint"])
+            # YandexART — печатаем ВСЕГДА, когда зонд был (ключ есть), даже если активен другой
+            # шлюз: иначе оператор вписывает YAART-ключи и по выводу не видит, зарядился канал или нет.
+            ya = d.get("yaart")
+            if ya:
+                if not ya.get("probed"):
+                    print("   YandexART:  ключа нет — канал не зондировался")
+                else:
+                    verdict = {True: "ЖИВ", False: "МЁРТВ", None: "?"}[ya.get("alive")]
+                    print("   YandexART:  %s — %s" % (verdict, ya.get("why")))
+                    if ya.get("sa_folder"):
+                        print("       каталог ключа: %s (в .env: %s)"
+                              % (ya["sa_folder"], pf._yaart_folder() or "не задан"))
+                    if ya.get("hint"):
+                        print("       → %s" % ya["hint"])
+            if d.get("folder_mismatch"):
+                print("   ⚠  РАССИНХРОН КАТАЛОГА — живой кадр упадёт; см. caveat выше")
         return 0 if d["creds_present"] else 1
 
     product = None

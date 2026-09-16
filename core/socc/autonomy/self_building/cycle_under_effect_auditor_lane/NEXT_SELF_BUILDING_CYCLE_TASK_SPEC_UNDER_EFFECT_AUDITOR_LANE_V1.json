@@ -1,0 +1,27 @@
+{
+  "created_at_msk": "2026-06-18T13:26:37+03:00",
+  "created_at_utc": "2026-06-18T10:26:37.220236+00:00",
+  "expected_material_effect": [
+    "define idempotent guard for already-committed steps",
+    "block destructive rerun when route has advanced beyond step",
+    "return ALREADY_COMMITTED/NOOP instead of rewriting PASS proof to FAIL",
+    "preserve route/proof/memory coherence"
+  ],
+  "forbidden": [
+    "continuous_loop_enabled",
+    "daemon_running",
+    "scheduler_installed",
+    "background_loop_enabled",
+    "network_used",
+    "queue_widening_allowed",
+    "entity_birth_allowed",
+    "anna_birth_allowed",
+    "agi_claim_allowed",
+    "final_canon_approval_allowed"
+  ],
+  "id": "NEXT_SELF_BUILDING_CYCLE_TASK_SPEC_UNDER_EFFECT_AUDITOR_LANE_V1",
+  "reason": "Previous defect: out-of-phase validation rerun overwrote already-committed validation artifacts with FAIL. Next cycle should prevent backward reruns from corrupting proof state.",
+  "selected_target": "build_idempotent_step_guard_v1",
+  "status": "DEFINED",
+  "target_class": "IDEMPOTENT_STEP_GUARD"
+}

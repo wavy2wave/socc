@@ -326,6 +326,8 @@ def shortlist_to_prod(row):
     }
     if isinstance(row.get("_spec"), dict) and row["_spec"]:
         prod["_spec"] = row["_spec"]
+    if row.get("_platform_residue"):
+        prod["_platform_residue"] = row["_platform_residue"]  # флаг чужой платформы в имени (04.09, только флаг)
     L, W, H, wt = row.get("length"), row.get("width"), row.get("height"), row.get("weight")
     if all(isinstance(x, (int, float)) and x > 0 for x in (L, W, H, wt)):
         prod["weightDimensions"] = {"length": L, "width": W, "height": H, "weight": wt}

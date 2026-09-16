@@ -38,6 +38,10 @@ ymarket_hands_v1 (шов _http_call → петля _request), но под Ozon: 
   живой сверке — чтение витрины: PRODUCT_INFO_LIST_PATH по умолчанию /v3 (у /v1 велик риск 404).
 
 Env: OZON_CLIENT_ID + OZON_API_KEY (в SOCC/scripts/mint/.env, chmod 600, gitignored).
+АККАУНТ: env OZON_ACCOUNT выбирает слот ключей:
+  • не задан / "main" → OZON_CLIENT_ID + OZON_API_KEY   (основной кабинет — плёнка/ARB)
+  • "box"            → OZON_BOX_CLIENT_ID + OZON_BOX_API_KEY  (кабинет Express Box — коробки)
+Отдельные кабинеты = отдельные витрины/лимиты: коробки льются в свой (не забивают плёнку).
 """
 import os
 import json
@@ -51,6 +55,7 @@ _MAX_RETRIES = 3
 # ── ВЕРСИИ ПУТЕЙ (overridable — Ozon ломает версии; правится одной строкой без правки логики) ──
 PRODUCT_INFO_LIST_PATH = "/v3/product/info/list"      # ⚠ ЖИВАЯ СВЕРКА: /v1 может отдать 404 → /v3|/v4
 PRODUCT_INFO_PRICES_PATH = "/v5/product/info/prices"  # v1 устарел → v5 (чтение цены+color_index)
+PRODUCT_RATING_PATH = "/v1/product/rating-by-sku"     # контент-рейтинг карточки 0..100 (только по Ozon sku)
 
 _ENV_TRIED = False
 
@@ -83,19 +88,30 @@ def _ensure_env():
         pass
 
 
-def creds_present():
-    """Есть ли ОБА ключа Ozon (Client-Id + Api-Key) в env (включая gitignored .env)."""
+def _account_creds():
+    """Ключи активного аккаунта по OZON_ACCOUNT (main|box). Никогда не падает — только читает env."""
     _ensure_env()
-    return bool(os.getenv("OZON_CLIENT_ID") and os.getenv("OZON_API_KEY"))
+    if os.getenv("OZON_ACCOUNT", "main").strip().lower() == "box":
+        return os.getenv("OZON_BOX_CLIENT_ID"), os.getenv("OZON_BOX_API_KEY")
+    return os.getenv("OZON_CLIENT_ID"), os.getenv("OZON_API_KEY")
+
+
+def creds_present():
+    """Есть ли ОБА ключа Ozon (Client-Id + Api-Key) активного аккаунта в env (включая gitignored .env)."""
+    _ensure_env()
+    cid, key = _account_creds()
+    return bool(cid and key)
 
 
 def _headers():
-    """Заголовки Seller API (единый источник ключей). Нет ключа → RuntimeError (это не код — ключи)."""
+    """Заголовки Seller API (единый источник ключей активного аккаунта). Нет ключа → RuntimeError."""
     _ensure_env()
-    cid, key = os.getenv("OZON_CLIENT_ID"), os.getenv("OZON_API_KEY")
+    cid, key = _account_creds()
+    label = ("OZON_BOX_CLIENT_ID / OZON_BOX_API_KEY" if os.getenv("OZON_ACCOUNT", "main").strip().lower() == "box"
+             else "OZON_CLIENT_ID / OZON_API_KEY")
     if not (cid and key):
         raise RuntimeError(
-            "OZON_CLIENT_ID / OZON_API_KEY не заданы — реальный режим недоступен (нужны ключи "
+            f"{label} не заданы — реальный режим аккаунта 'box' недоступен (нужны ключи "
             "кабинета Ozon; впиши в SOCC/scripts/mint/.env, он gitignored)")
     return {"Client-Id": cid, "Api-Key": key,
             "Content-Type": "application/json", "Accept": "application/json"}
@@ -342,6 +358,17 @@ def set_stock(stocks, dry=True, commit=False, timeout=60):
                 lambda: _request("POST", "/v2/products/stocks", body=body, timeout=timeout), body)
 
 
+def archive_products(product_ids, dry=True, commit=False, timeout=60):
+    """POST /v1/product/archive → снять карточку(и) в архив, ≤100 id за вызов.
+
+    Архив = карточка скрывается с витрины/маркета (обратимо: unarchive). Остатки/цены остаются.
+    Доктрина: дубль НЕ продаём — жив близнец; архив парка = снять дубль по слову оператора (РУБИКОН).
+    """
+    body = {"product_id": [int(pid) for pid in product_ids]}
+    return _dry(dry, commit, "archive_products /v1/product/archive",
+                lambda: _request("POST", "/v1/product/archive", body=body, timeout=timeout), body)
+
+
 def ship_posting(posting_number, packages, additional_data=True, dry=True, commit=False, timeout=60):
     """POST /v2/posting/fbs/ship → отгрузка отправления (M4: логистика тронута).
 
@@ -396,17 +423,21 @@ def _parse_shelf_item(it):
     """
     if not isinstance(it, dict):
         return {"offer_id": None, "product_id": 0, "moderation": None, "visible": False,
-                "stock": 0, "price": None, "price_index": None,
+                "stock": 0, "price": None, "price_index": None, "sku": None,
                 "errors": ["item не dict"], "missing_required_attrs": []}
     offer_id = it.get("offer_id") or it.get("offerId")
     product_id = it.get("id") or it.get("product_id") or 0
+    sku = it.get("sku")                       # Ozon sku (int64) — нужен для rating-by-sku (НЕ product_id!)
     sb = it.get("statuses") if isinstance(it.get("statuses"), dict) else \
         (it.get("status") if isinstance(it.get("status"), dict) else {})
     moderation = sb.get("moderate_status") or sb.get("moderation_status") or it.get("moderate_status")
     visible = it.get("visible")
     if visible is None:
-        vd = it.get("visibility_details")
-        visible = bool(vd.get("active_product")) if isinstance(vd, dict) else False
+        vd = it.get("visibility_details") if isinstance(it.get("visibility_details"), dict) else {}
+        if "active_product" in vd:                      # v2-схема
+            visible = bool(vd.get("active_product"))
+        else:                                           # v3-схема: витрина = цена И остаток
+            visible = bool(vd.get("has_price") and vd.get("has_stock"))
     visible = bool(visible)
     stock = _extract_present_stock(it.get("stocks"))
     errors = []
@@ -421,6 +452,7 @@ def _parse_shelf_item(it):
     return {"offer_id": offer_id, "product_id": product_id, "moderation": moderation,
             "visible": visible, "stock": stock, "price": it.get("price"),
             "price_index": it.get("price_index") or it.get("price_indexes"),
+            "sku": it.get("sku"),
             "errors": errors, "missing_required_attrs": []}
 
 
@@ -494,18 +526,69 @@ def read_price_index(offer_ids, limit=1000, timeout=30):
     return {"ok": True, "items": out, "cursor": (data.get("cursor", "") if isinstance(data, dict) else "")}
 
 
-def warehouse_list(timeout=30):
-    """POST /v1/warehouse/list → склады FBS. ИСТОЧНИК warehouse_id для set_stock (не выдумываем!).
+def read_content_rating(offer_ids, limit=100, timeout=30):
+    """POST /v1/product/rating-by-sku → контент-рейтинг карточек 0..100 (аналог contentRating ЯМ).
 
+    Ozon отдаёт рейтинг ТОЛЬКО по своему sku (int64), НЕ по offer_id/product_id → два шага:
+      шаг 1: read_shelf() → item.sku (аддитивное поле в _parse_shelf_item);
+      шаг 2: батчами ≤100 POST {"skus":[int…]}.
+    rating=None у карточки = ещё НЕ оценена (Ozon считает ~1 сутки) — это НЕ ошибка и НЕ ретрай.
+    groups[].improve_attributes — конкретные атрибуты, что поднимут рейтинг (actionable).
+    Fail-soft: {'ok':bool,'ratings':[{offer_id,sku,rating,groups}],'not_rated':[{offer_id,sku}],'_error'?}.
+    """
+    if not creds_present():
+        return {"ok": False, "ratings": [], "_error": "нет ключей Ozon"}
+    oids = [str(o) for o in offer_ids]
+    shelf = read_shelf(oids, timeout=timeout)
+    sku_of = {}
+    for c in (shelf.get("cards") or []):
+        sk = c.get("sku")
+        if sk is not None:
+            try:
+                n = int(sk)
+            except (TypeError, ValueError):
+                n = 0
+            if n > 0:                       # sku≤0 = припаркованная (SPU-дубль, не продаётся) — рейтинга нет
+                sku_of[str(c.get("offer_id"))] = n
+    if not sku_of:
+        return {"ok": bool(shelf.get("ok")), "ratings": [],
+                "_error": None if shelf.get("ok") else shelf.get("_error"),
+                "not_rated": [{"offer_id": o, "sku": None} for o in oids]}
+    try:
+        data = _request("POST", PRODUCT_RATING_PATH,
+                        body={"skus": [str(s) for s in sku_of.values()]}, timeout=timeout)
+    except Exception as e:
+        return {"ok": False, "ratings": [], "_error": f"{type(e).__name__}: {e}"}
+    by_sku = {}
+    for p in ((data.get("products") if isinstance(data, dict) else (data or [])) or []):
+        if isinstance(p, dict) and p.get("sku") is not None:
+            by_sku[int(p["sku"])] = p
+    ratings, not_rated = [], []
+    for off in oids:
+        sk = sku_of.get(off)
+        p = by_sku.get(sk) if sk is not None else None
+        if p is not None:
+            ratings.append({"offer_id": off, "sku": sk, "rating": p.get("rating"),
+                            "groups": p.get("groups")})
+        else:
+            not_rated.append({"offer_id": off, "sku": sk})
+    return {"ok": True, "ratings": ratings, "not_rated": not_rated}
+
+
+def warehouse_list(timeout=30):
+    """POST /v2/warehouse/list → склады FBS. ИСТОЧНИК warehouse_id для set_stock (не выдумываем!).
+
+    /v1/warehouse/list → 400 code 9 (obsolete, нельзя использовать) — ЛИВЫМ проверено 2026-09-08;
+    /v2/warehouse/list отвечает на верхнем уровне {'warehouses':[...]} (НЕ в result).
     Возвращает {'ok':bool,'warehouses':[...],'_error'?}. Fail-soft.
     """
     if not creds_present():
         return {"ok": False, "warehouses": [], "_error": "нет ключей Ozon"}
     try:
-        data = _request("POST", "/v1/warehouse/list", body={}, timeout=timeout)
+        data = _request("POST", "/v2/warehouse/list", body={}, timeout=timeout)
     except Exception as e:
         return {"ok": False, "warehouses": [], "_error": f"{type(e).__name__}: {e}"}
-    res = data.get("result", []) if isinstance(data, dict) else (data or [])
+    res = data.get("warehouses", []) if isinstance(data, dict) else (data or [])
     return {"ok": True, "warehouses": res if isinstance(res, list) else []}
 
 

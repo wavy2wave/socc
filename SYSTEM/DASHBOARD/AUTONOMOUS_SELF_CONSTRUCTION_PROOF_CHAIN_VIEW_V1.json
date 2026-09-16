@@ -1,0 +1,278 @@
+{
+  "artifacts": {
+    "memory": {
+      "exists": true,
+      "first_line": null,
+      "path": "MEMORY_WAVE/reports/assignments/ASSIGNMENT_0001_RUNTIME_MEMORY_V1.json",
+      "sha16": "91c3ed225f93d1f6",
+      "status": "RECORDED"
+    },
+    "operator_autonomy_dashboard": {
+      "exists": true,
+      "first_line": "# SOCC Operator Autonomy Dashboard View V1",
+      "path": "SYSTEM/DASHBOARD/OPERATOR_AUTONOMY_DASHBOARD_VIEW_V1.md",
+      "sha16": "b770dcf3bb75243e",
+      "status": null
+    },
+    "operator_mini_panel": {
+      "exists": true,
+      "first_line": "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━",
+      "path": "SYSTEM/DASHBOARD/OPERATOR_MINI_AUTONOMY_PANEL_V1.txt",
+      "sha16": "af158d8b03bc7297",
+      "status": null
+    },
+    "runtime_dashboard": {
+      "exists": true,
+      "first_line": null,
+      "path": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_RUNTIME_PANEL_V1.json",
+      "sha16": "2d0b67c637383d92",
+      "status": "RUNTIME_ACTIVE_PENDING_VALIDATION"
+    },
+    "runtime_state": {
+      "exists": true,
+      "first_line": null,
+      "path": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/RUNTIME/ASSIGNMENT_RUNTIME_STATE_V1.json",
+      "sha16": "2c5e34b1cdbc52df",
+      "status": "RUN_PASS_PENDING_VALIDATION"
+    },
+    "seal": {
+      "exists": true,
+      "first_line": null,
+      "path": "SYSTEM/AUTONOMY/self_construction_seals/ASSIGNMENT_AUTONOMOUS_SELF_CONSTRUCTION_STEP_SEAL_V1.json",
+      "sha16": "a462cdbf0330211d",
+      "status": "SEALED"
+    }
+  },
+  "chain": [
+    {
+      "capability": "SOCC_HAS_BUILT_FIRST_ASSIGNMENT_INTAKE_OBJECT_CANDIDATE",
+      "exists": true,
+      "name": "assignment_intake_build",
+      "next_lawful_step": "review_assignment_intake_object_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json",
+      "sha16": "7299a14a91cdfc92",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_INTAKE_OBJECT_REVIEWED_READY_FOR_ACCEPTANCE",
+      "exists": true,
+      "name": "assignment_intake_review",
+      "next_lawful_step": "accept_assignment_intake_object_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json",
+      "sha16": "566145eec1a4bf69",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_ACCEPTED_FIRST_ASSIGNMENT_INTAKE_OBJECT",
+      "exists": true,
+      "name": "assignment_intake_accept",
+      "next_lawful_step": "build_assignment_direction_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json",
+      "sha16": "2e5c11bf2e194b1b",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_BUILT_ASSIGNMENT_DIRECTION_CANDIDATE",
+      "exists": true,
+      "name": "assignment_direction_build",
+      "next_lawful_step": "review_assignment_direction_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+      "sha16": "a95f346f3a81665f",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_DIRECTION_REVIEWED_READY_FOR_ACCEPTANCE",
+      "exists": true,
+      "name": "assignment_direction_review",
+      "next_lawful_step": "accept_assignment_direction_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+      "sha16": "85cc10f7479bd4b5",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_ACCEPTED_ASSIGNMENT_DIRECTION_READY_FOR_CONSTRUCTION_PLAN",
+      "exists": true,
+      "name": "assignment_direction_accept",
+      "next_lawful_step": "build_assignment_construction_plan_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+      "sha16": "d9d772b81abe7c06",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_BUILT_ASSIGNMENT_CONSTRUCTION_PLAN_CANDIDATE",
+      "exists": true,
+      "name": "construction_plan_build",
+      "next_lawful_step": "review_assignment_construction_plan_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_CONSTRUCTION_PLAN_V1_PROOF.json",
+      "sha16": "97f592f8cb73843c",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_CONSTRUCTION_PLAN_REVIEWED_READY_FOR_SCIENTIFIC_GATE",
+      "exists": true,
+      "name": "construction_plan_review",
+      "next_lawful_step": "run_assignment_scientific_quality_gate_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_CONSTRUCTION_PLAN_V1_PROOF.json",
+      "sha16": "cf6d5771c7f5ae97",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_SCIENTIFIC_QUALITY_GATE_PASSED",
+      "exists": true,
+      "name": "scientific_gate",
+      "next_lawful_step": "run_assignment_hermes_gate_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_SCIENTIFIC_QUALITY_GATE_V1_PROOF.json",
+      "sha16": "bfbcbcb92e12a1ae",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_HERMES_GATE_PASSED",
+      "exists": true,
+      "name": "hermes_gate",
+      "next_lawful_step": "run_assignment_codex_gate_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_HERMES_GATE_V1_PROOF.json",
+      "sha16": "e4c656a277a2ac1a",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_CODEX_GATE_PASSED",
+      "exists": true,
+      "name": "codex_gate",
+      "next_lawful_step": "review_assignment_build_plan_and_gates_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_CODEX_GATE_V1_PROOF.json",
+      "sha16": "d5a6aaf880e9a3b1",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_BUILD_PLAN_AND_GATES_REVIEWED_READY_FOR_ACCEPTANCE",
+      "exists": true,
+      "name": "plan_and_gates_review",
+      "next_lawful_step": "accept_assignment_build_plan_and_gates_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_BUILD_PLAN_AND_GATES_V1_PROOF.json",
+      "sha16": "d2b219f69036feda",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_ACCEPTED_ASSIGNMENT_BUILD_PLAN_AND_GATES_READY_FOR_BOUNDED_EXECUTION_SURFACE",
+      "exists": true,
+      "name": "plan_and_gates_accept",
+      "next_lawful_step": "build_assignment_bounded_execution_surface_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_BUILD_PLAN_AND_GATES_V1_PROOF.json",
+      "sha16": "350722866195dad5",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_BUILT_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_CANDIDATE",
+      "exists": true,
+      "name": "bounded_surface_build",
+      "next_lawful_step": "review_assignment_bounded_execution_surface_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_V1_PROOF.json",
+      "sha16": "104d25bd0580f127",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_REVIEWED_READY_FOR_ACCEPTANCE",
+      "exists": true,
+      "name": "bounded_surface_review",
+      "next_lawful_step": "accept_assignment_bounded_execution_surface_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_V1_PROOF.json",
+      "sha16": "4cf0e6652a0d0563",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_ACCEPTED_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_READY_FOR_ONE_FOREGROUND_RUN",
+      "exists": true,
+      "name": "bounded_surface_accept",
+      "next_lawful_step": "run_assignment_bounded_execution_session_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_V1_PROOF.json",
+      "sha16": "4d3f7174f76c493d",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_RUN_FIRST_BOUNDED_ASSIGNMENT_EXECUTION_SESSION_PENDING_VALIDATION",
+      "exists": true,
+      "name": "bounded_run",
+      "next_lawful_step": "validate_assignment_bounded_execution_session_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+      "sha16": "6a0a965ff695449c",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_VALIDATED_FIRST_BOUNDED_ASSIGNMENT_EXECUTION_SESSION",
+      "exists": true,
+      "name": "bounded_run_validate",
+      "next_lawful_step": "review_assignment_bounded_execution_session_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+      "sha16": "90b10cd940507d79",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_REVIEWED_FIRST_BOUNDED_ASSIGNMENT_EXECUTION_SESSION",
+      "exists": true,
+      "name": "bounded_run_review",
+      "next_lawful_step": "accept_assignment_bounded_execution_session_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+      "sha16": "622838205dbb1e41",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_ACCEPTED_FIRST_BOUNDED_ASSIGNMENT_EXECUTION_SESSION_READY_FOR_SELF_CONSTRUCTION_SEAL",
+      "exists": true,
+      "name": "bounded_run_accept",
+      "next_lawful_step": "seal_assignment_autonomous_self_construction_step_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+      "sha16": "ff2c5f24ceb3f47e",
+      "status": "PASS"
+    },
+    {
+      "capability": "SOCC_HAS_SEALED_FIRST_BOUNDED_AUTONOMOUS_SELF_CONSTRUCTION_STEP",
+      "exists": true,
+      "name": "self_construction_seal",
+      "next_lawful_step": "build_entity_substrate_direction_v1",
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_SEAL_ASSIGNMENT_AUTONOMOUS_SELF_CONSTRUCTION_STEP_V1_PROOF.json",
+      "sha16": "87602ab38d2d8648",
+      "status": "PASS"
+    }
+  ],
+  "checks": {
+    "current_route_at_entity_substrate": true,
+    "no_agi": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_l3": true,
+    "no_mw": true,
+    "no_network": true,
+    "no_old_route": true,
+    "proof_chain_all_present_and_pass": true,
+    "run_proof_pass": true,
+    "runtime_stopped_after_run": true,
+    "runtime_tick_count_1": true,
+    "seal_status_sealed": true
+  },
+  "created_at_utc": "2026-06-09T16:29:04.004365+00:00",
+  "current_lawful_next": [
+    "build_entity_substrate_direction_v1"
+  ],
+  "hard_failures": [],
+  "id": "AUTONOMOUS_SELF_CONSTRUCTION_PROOF_CHAIN_VIEW_V1",
+  "project_goal_order": [
+    "1. show/prove autonomous self-construction",
+    "2. Entity Substrate is built by autonomous self-construction",
+    "3. Anna MVP is built after Entity Substrate"
+  ],
+  "status": "PASS",
+  "truth_boundary": "Read-only view. It shows bounded autonomous self-construction proof-chain before Entity Substrate. It does not mutate route or execute anything.",
+  "what_is_not_proven_yet": [
+    "continuous daemon autonomy",
+    "unbounded live loop",
+    "Entity Substrate built by the loop",
+    "Anna MVP"
+  ],
+  "what_is_proven_now": {
+    "bounded_autonomous_self_construction": true,
+    "dashboard_visible_artifacts": true,
+    "one_foreground_tick": 1,
+    "proof_memory_stop": true,
+    "stopped_after_run": true
+  }
+}

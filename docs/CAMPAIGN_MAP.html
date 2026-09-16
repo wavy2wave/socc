@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOCC · Карта кампании ANNA</title>
+<!-- Conforms to SOCC_DESIGN_CANON_V1 (ACTIVE, house/BRAINS brand). Single source: SYSTEM/KERNEL/socc-tokens.css -->
+<link rel="stylesheet" href="../SYSTEM/KERNEL/socc-tokens.css">
+<style>
+  /* Fallback mirror of SOCC_DESIGN_CANON_V1 web_palette_hex so the file renders standalone (file://).
+     These values are IDENTICAL to socc-tokens.css — canon is the single source of truth. */
+  :root{
+    --socc-bg:#0B0F14;--socc-surface:#121821;--socc-primary:#22D3EE;--socc-success:#22C55E;
+    --socc-warning:#EAB308;--socc-danger:#EF4444;--socc-event:#A855F7;--socc-text:#E6EDF3;
+    --socc-muted:#7D8893;--socc-line:#1d2733;--socc-surface-2:#0e141d;
+    --socc-font-mono:ui-monospace,"SF Mono",Menlo,Monaco,monospace;
+    --socc-font-ui:Inter,system-ui,-apple-system,sans-serif;--socc-radius:10px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--socc-bg);color:var(--socc-text);
+       font-family:var(--socc-font-ui);font-size:15px;line-height:1.55;padding:30px}
+  .wrap{max-width:1080px;margin:0 auto}
+  .mono{font-family:var(--socc-font-mono)}
+  .headbox{border:2px solid var(--socc-primary);border-radius:var(--socc-radius);
+           padding:16px 22px;background:linear-gradient(180deg,#0c1620,#0b0f14);margin-bottom:8px}
+  .headbox h1{font-family:var(--socc-font-mono);color:var(--socc-primary);margin:0;
+              font-size:28px;letter-spacing:.5px}
+  .sub{color:var(--socc-muted);font-family:var(--socc-font-mono);font-size:12.5px;margin:8px 0 24px}
+  .line{background:var(--socc-surface);border:1px solid var(--socc-line);border-left:3px solid var(--socc-primary);
+        border-radius:var(--socc-radius);padding:16px 20px;margin-bottom:8px}
+  .line p{margin:6px 0}.line b{color:var(--socc-primary);font-weight:600}
+  .divider{font-family:var(--socc-font-mono);color:var(--socc-muted);font-size:13px;letter-spacing:1px;margin:28px 0 12px}
+  .grid{display:grid;gap:11px}
+  .roster{grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+  .funnel{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .card{background:var(--socc-surface);border:1px solid var(--socc-line);border-radius:var(--socc-radius);
+        padding:13px 15px;position:relative}
+  .card .role{font-weight:700;font-size:15px;margin-bottom:3px}
+  .card .desc{color:var(--socc-muted);font-size:12.5px;line-height:1.45}
+  .badge{position:absolute;top:12px;right:12px;font-family:var(--socc-font-mono);font-size:10.5px;
+         font-weight:700;padding:2px 7px;border-radius:4px;letter-spacing:.3px}
+  .b-pass{background:#0f2e1c;color:var(--socc-success)}
+  .b-review{background:#2e2710;color:var(--socc-warning)}
+  .b-fail{background:#2e1416;color:var(--socc-danger)}
+  .b-primary{background:#0c2a31;color:var(--socc-primary)}
+  .dot{font-family:var(--socc-font-mono)}.on{color:var(--socc-success)}.off{color:var(--socc-muted)}
+  .ladder{display:flex;flex-direction:column;gap:8px}
+  .rung{display:flex;align-items:center;gap:14px;background:var(--socc-surface-2);border:1px solid var(--socc-line);
+        border-radius:var(--socc-radius);padding:12px 16px}
+  .rung .k{font-family:var(--socc-font-mono);font-weight:800;min-width:32px;color:var(--socc-muted)}
+  .rung .t b{font-size:14.5px}.rung .t small{color:var(--socc-muted);display:block;font-size:12px}
+  .rung.here{border-color:var(--socc-success);box-shadow:0 0 0 1px var(--socc-success) inset}
+  .rung.here .k{color:var(--socc-success)}
+  .here-tag{margin-left:auto;font-family:var(--socc-font-mono);font-size:11px;font-weight:800;color:var(--socc-success)}
+  .fire{margin-left:auto;font-family:var(--socc-font-mono);color:var(--socc-danger);font-weight:700;font-size:11px}
+  .legend{display:flex;flex-wrap:wrap;gap:18px;color:var(--socc-muted);font-family:var(--socc-font-mono);font-size:12px;margin-top:12px}
+  .progress{height:8px;background:var(--socc-surface-2);border:1px solid var(--socc-line);border-radius:20px;overflow:hidden;margin:8px 0}
+  .progress>i{display:block;height:100%;width:54%;background:linear-gradient(90deg,var(--socc-primary),var(--socc-success))}
+  .foot{margin-top:26px;color:var(--socc-muted);font-family:var(--socc-font-mono);font-size:11.5px;
+        border-top:1px solid var(--socc-line);padding-top:14px;line-height:1.7}
+  .foot b{color:var(--socc-warning)}
+</style>
+</head>
+<body class="socc">
+<div class="wrap">
+
+  <div class="headbox"><h1>╔═ SOCC · КАРТА КАМПАНИИ ANNA ═╗</h1></div>
+  <p class="sub">one operator · вечная команда под капотом · «заряжаем ружьё, потом — выстрел» · snapshot 2026-06-30
+     · <span style="color:var(--socc-warning)">[REVIEW]</span> conforms to SOCC_DESIGN_CANON_V1</p>
+
+  <div class="line">
+    <p>🎯 <b>Что строим:</b> ANNA — администратор, который не спит и не теряет пациентов. Отвечает за 4 сек 24/7, пишет запись в реальную систему клиники (Dikidi/1С), ловит ушедших из-за молчания.</p>
+    <p>🧠 <b>Гениальность:</b> ANNA — сущность №0 SOCC. SOCC рождает целую команду сущностей под любой продукт — сменил домен-файл, та же машина на барбершоп. Ты один у руля.</p>
+    <p>🔫 <b>Стратегия:</b> готовим всё, выстрел — по твоему «огонь». Страх продаж убит: HERMES пишет → ты approve; оферта «плати с пойманного» снимает риск с клиента.</p>
+  </div>
+
+  <div class="divider">── РОСТЕР · вечная команда ──────────────── [SEALED design-canon]</div>
+  <div class="grid roster">
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">🔭 SCOUT</div><div class="desc">находит клиники и доказывает их боль</div></div>
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">📨 HERMES</div><div class="desc">привлекает — ты только approve</div></div>
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">🦷 ANNA №0</div><div class="desc">demo · «не диагностирую/не фейкаю»</div></div>
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">🔨 FORGE</div><div class="desc">онбордит клинику &lt; 1 дня (= рождение Π)</div></div>
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">🛡 WARDEN</div><div class="desc">закон выше аптайма · ничего не прячет</div></div>
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">📊 LEDGER</div><div class="desc">истина в числах · сенсор эволюции</div></div>
+    <div class="card"><span class="badge b-primary">[SEALED]</span><div class="role">✍️ SCRIBE</div><div class="desc">прицел, ROI, лендинг, возражения</div></div>
+    <div class="card"><span class="badge b-pass">[LIVE]</span><div class="role">🎼 CONDUCTOR</div><div class="desc">= рабочий socc_lawful_step_engine</div></div>
+  </div>
+
+  <div class="divider">── ВОРОНКА · боеприпасы ──────────────────────────────────</div>
+  <div class="grid funnel">
+    <div class="card"><span class="badge b-pass">[PASS]</span><div class="role">B0 · Прицел</div><div class="desc">категория · враг (тишина после 18:00) · обещание · моат — понят тобой (c0 PASS)</div></div>
+    <div class="card"><span class="badge b-review">[PROJ]</span><div class="role">B1 · ROI-калькулятор</div><div class="desc">работает; даже пессимистично окупается ~18 дней. Proof — на реальной клинике</div></div>
+    <div class="card"><span class="badge b-review">[DESIGN]</span><div class="role">B4 · Карта каналов</div><div class="desc">владельцы дверей (плечо ×40–100); заряд = approve</div></div>
+    <div class="card"><span class="badge b-review">[DESIGN]</span><div class="role">B5 · Лендинг+оферта</div><div class="desc">текст готов; «плати с пойманного» убивает страх продаж</div></div>
+  </div>
+
+  <div class="divider">── ЛЕСТНИЦА ОГНЯ · ты здесь ───────────────────────────────</div>
+  <div class="ladder">
+    <div class="rung here"><div class="k">R0</div><div class="t"><b><span class="dot on">●</span> Локальные тесты закона</b><small>FG-T1 «fail-closed рождение» доказан кодом · барбершоп валиден без правок</small></div><div class="here-tag">◀ ТЫ ЗДЕСЬ [PASS]</div></div>
+    <div class="rung"><div class="k">R1</div><div class="t"><b><span class="dot off">○</span> Demo-бот в safe-mode</b><small>публичная ANNA без записи в боевые системы</small></div><div class="fire">[FIRE] deploy</div></div>
+    <div class="rung"><div class="k">R2</div><div class="t"><b><span class="dot off">○</span> Лендинг живой</b><small>публикация + ссылка на demo + калькулятор</small></div><div class="fire">[FIRE] deploy</div></div>
+    <div class="rung"><div class="k">R3</div><div class="t"><b><span class="dot off">○</span> 1 design-партнёр</b><small>оферта риск-реверса · касание под approve</small></div><div class="fire">[FIRE] approve</div></div>
+    <div class="rung"><div class="k">R4</div><div class="t"><b><span class="dot off">○</span> FORGE онбордит клинику</b><small>mint → connect Dikidi/1С → smoke → go-live (твои доступы)</small></div><div class="fire">[FIRE] интеграция</div></div>
+    <div class="rung"><div class="k">R5</div><div class="t"><b><span class="dot off">○</span> Главный патрон: proof-кейс</b><small>30 дней · LEDGER считает → ЧЕК «₽X возвращено» + видео</small></div><div class="fire">[FIRE] клиника</div></div>
+  </div>
+
+  <div class="legend">
+    <span class="b-primary" style="padding:1px 6px;border-radius:4px">[SEALED]</span>
+    <span class="b-pass" style="padding:1px 6px;border-radius:4px">[PASS] доказано</span>
+    <span class="b-review" style="padding:1px 6px;border-radius:4px">[PROJ/DESIGN]</span>
+    <span class="b-fail" style="padding:1px 6px;border-radius:4px">[FIRE] ждёт огня</span>
+  </div>
+
+  <div class="divider">── ГОТОВНОСТЬ · посчитано из файлов ───────────────────────</div>
+  <div class="progress"><i></i></div>
+  <p class="sub">sealed 9 · proven-by-code 5 · projection 1 · design 2 · fire-gated 9 — ружьё заряжено, первый предохранитель доказан.</p>
+
+  <div class="foot">
+    style :: conforms to <b>SOCC_DESIGN_CANON_V1</b> (ACTIVE, house/BRAINS) · tokens SYSTEM/KERNEL/socc-tokens.css<br>
+    status :: <b>[REVIEW]</b> — не запечатано в канон (утверждение за оператором) · идём законно<br>
+    proof :: STAFF_SPEC_LAYER_SEAL c0309ebcd5c86658 · FG-T1 bc2da64a3f989354<br>
+    boundary :: всё [FIRE] — наружное/живое, ждёт явного спуска оператора. Ничего не рождено, не задеплоено. Спуск — твой. 🌞
+  </div>
+
+</div>
+</body>
+</html>

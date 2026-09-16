@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_INTAKE_OBJECT_V1_PROOF.json",
+  "active_assignment": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_INTAKE_OBJECT_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:30:17.703461+00:00",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_ACCEPTED_PANEL_POINTER_V1.json",
+  "id": "ACTIVE_ACCEPTED_ASSIGNMENT_INTAKE_OBJECT",
+  "next_required_step": "build_assignment_direction_v1",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Acceptance authorizes direction creation only. No build execution or patch execution is authorized."
+}

@@ -35,9 +35,15 @@ SOCC · ДОМ — единый read-хаб органов (0₽):
   socc home                  — весь ДОМ (дашборд: ЯМ·OZON·SUBSTRATE·ANNA·КЕРНЕЛЬ)
   socc ym [дело|планёрка|задания|штаб|день|kpi|артефакты|авто|мозг] — ЯМ-ЦИКЛ
   socc ozon                  — OZON-менеджер (read-сводка)
+  socc библиотека            — ХРАНИТЕЛЬ ДАННЫХ · системная библиотека (0₽ read)
+                               полки · магазины [slug] · типы <slug> · ходы · ход PID · экспорт
+                               МОЗГ БИБЛИОТЕКАРЯ (АГИ-слой, 0₽): здоровье · целостность ·
+                               эволюция · сводка · вопрос «свободная фраза» (или прямо фразой)
   socc substrate             — ENTITY SUBSTRATE
   socc anna                  — ANNA · дашборд · вход
   socc kernel                — КЕРНЕЛЬ · route authority
+  socc агент                 — АГЕНТ: живой экран (система работает перед тобой;
+                               фразы «прогон»/«статус»/«полка»; сухо/чтение 0₽)
   CYCLE = socc home · CYCLE YM = socc ym  (тождественный алиас)
 """
 
@@ -161,7 +167,9 @@ def cmd_think(request: str):
 _HOME_KEYS = ("home", "дом", "ym", "ям", "маркет", "cycle-ym", "ozon", "озон",
               "substrate", "entity-substrate", "sub", "субстрат", "anna", "анна",
               "kernel", "ядро", "кернель", "migrate", "migration", "миграция",
-              "line-migrator")
+              "line-migrator",
+              "задания", "zadaniya", "tasks",
+              "библиотека", "хранитель", "keeper", "lib", "биб", "хран")
 
 
 def cmd_home(args):
@@ -170,6 +178,27 @@ def cmd_home(args):
     if args and args[0] in ("home", "дом", "hub"):
         args = args[1:]
     sys.exit(dispatch(args))
+
+
+def cmd_agent(args):
+    """SOCC · АГЕНТ — живой экран в духе Claude Code: система реально работает.
+
+    Пишешь фразу → агент «думает» и по-настоящему делает (сухой прогон ЦИКЛ-1 0₽,
+    ответы из реального стора). Живой ход — только с пульта по слову (RUBICON).
+    """
+    from socc_cli.agent import run_agent
+    store, once = None, None
+    i = 0
+    while i < len(args):
+        if args[i] in ("--store", "-s") and i + 1 < len(args):
+            store = args[i + 1]
+            i += 2
+        elif args[i] in ("--once", "-o") and i + 1 < len(args):
+            once = args[i + 1]
+            i += 2
+        else:
+            i += 1
+    sys.exit(run_agent(store=store, once=once))
 
 
 def main():
@@ -212,6 +241,8 @@ def main():
             except (IndexError, ValueError):
                 pass
         cmd_watch(interval=interval)
+    elif args[0] in ("агент", "agent", "а"):
+        cmd_agent(args[1:])
     elif args[0] == "energy":
         from core.energy.__main__ import main as energy_main
         sys.exit(energy_main(["energy"] + args[1:]))

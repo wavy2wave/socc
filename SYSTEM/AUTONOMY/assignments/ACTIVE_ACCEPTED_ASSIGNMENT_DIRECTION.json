@@ -1,0 +1,11 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_DIRECTION_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_DIRECTION_V1_PROOF.json",
+  "active_direction": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_DIRECTION_V1.json",
+  "created_at_utc": "2026-06-09T15:32:29.604892+00:00",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_DIRECTION_ACCEPTED_PANEL_POINTER_V1.json",
+  "id": "ACTIVE_ACCEPTED_ASSIGNMENT_DIRECTION",
+  "next_required_step": "build_assignment_construction_plan_v1",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Direction acceptance authorizes construction plan build only. No execution."
+}

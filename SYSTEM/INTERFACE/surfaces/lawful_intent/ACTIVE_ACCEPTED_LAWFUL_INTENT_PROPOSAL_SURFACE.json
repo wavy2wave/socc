@@ -1,0 +1,13 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_LAWFUL_INTENT_PROPOSAL_SURFACE_V1_PROOF.json",
+  "active_surface": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_V1.json",
+  "created_at_utc": "2026-06-09T10:33:16.839771+00:00",
+  "id": "ACTIVE_ACCEPTED_LAWFUL_INTENT_PROPOSAL_SURFACE",
+  "mode": "CANONICAL_NON_EXECUTING_PROPOSAL_ONLY",
+  "next_required_step": "build_socc_first_lawful_intent_proposal_packet_v1",
+  "proposal_schema": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SCHEMA_V1.json",
+  "proposal_template": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_TEMPLATE_V1.json",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted lawful intent proposal surface is non-executing and review-required."
+}

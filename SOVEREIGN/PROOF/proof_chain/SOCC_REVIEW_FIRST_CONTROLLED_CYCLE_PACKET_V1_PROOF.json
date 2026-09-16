@@ -1,0 +1,103 @@
+{
+  "active_cycle_packet": "SYSTEM/CYCLE/controlled_packets/ACTIVE_FIRST_CONTROLLED_CYCLE_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_foreground_tick": "approximately_1_lawful_step_after_packet_acceptance"
+  },
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "capability": "SOCC_FIRST_CONTROLLED_CYCLE_PACKET_REVIEWED_READY_FOR_ACCEPTANCE",
+  "created_at_utc": "2026-06-09T12:16:37.161854+00:00",
+  "current_expected": "review_socc_first_controlled_cycle_packet_v1",
+  "cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF",
+  "next_after_pass": "accept_socc_first_controlled_cycle_packet_v1",
+  "next_lawful_step": "accept_socc_first_controlled_cycle_packet_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_import": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_old_project_scan": true,
+  "proof_hash": "acf4c83bc4bfeac8",
+  "review_artifact": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_REVIEW_V1.json",
+  "review_checks": {
+    "active_packet_candidate": true,
+    "active_packet_next_matches_validate_frontier": true,
+    "active_plan_accepted": true,
+    "active_visibility_accepted": true,
+    "allowed_boundary_build_only": true,
+    "build_proof_pass": true,
+    "continuous_daemon_not_authorized": true,
+    "decision_reason_present": true,
+    "expected_artifact_delta_present": true,
+    "forbidden_background": true,
+    "forbidden_complete": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_code": true,
+    "forbidden_execute_cycle": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "may_execute_false": true,
+    "may_run_foreground_tick_false": true,
+    "may_start_daemon_false": true,
+    "may_use_network_false": true,
+    "operator_visible_status_present": true,
+    "packet_has_required_visible_fields": true,
+    "packet_mode_foreground_non_executing": true,
+    "packet_next_matches_validate_frontier": true,
+    "packet_observed_current_matches_build": true,
+    "packet_result_summary_present": true,
+    "packet_status_built_candidate": true,
+    "packet_type_ok": true,
+    "plan_accept_proof_pass": true,
+    "plan_packet_may_execute_false": true,
+    "proof_required_present": true,
+    "requires_review_true": true,
+    "requires_validation_true": true,
+    "selected_step_non_executing": true,
+    "selected_step_present": true,
+    "truth_boundary_non_executing": true,
+    "validate_next_matches_review": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true,
+    "validation_checks_all_true": true,
+    "visibility_accept_proof_pass": true,
+    "visibility_contract_visibility_only": true
+  },
+  "review_md": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_REVIEW_V1.md",
+  "status": "PASS",
+  "truth_boundary": "Reviews first controlled cycle packet only. No execution, no daemon/background/network, no MW route.",
+  "validate_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "validation_artifact": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_VALIDATION_V1.json",
+  "warnings": []
+}

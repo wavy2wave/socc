@@ -1,0 +1,10 @@
+{
+  "created_at_utc": "2026-06-17T11:44:24.351367+00:00",
+  "id": "KNOWLEDGE_SUBSTRATE_SOURCE_SCAN_V1_MEMORY",
+  "memory_effect": "Scanned 144 sources (14 new, 0 changed) into the Knowledge Substrate registry.",
+  "proof": "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_SUBSTRATE_SOURCE_SCAN_V1_PROOF.json",
+  "real_next": "ingest_knowledge_sources_v1",
+  "registry": "SOVEREIGN/MEMORY/documents/SOURCE_REGISTRY_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Knowledge Substrate source scan only. Read-only walk of connector roots; files never moved/copied. Registers metadata + line counts. Global route authority untouched. No daemon/background/network/LLM."
+}

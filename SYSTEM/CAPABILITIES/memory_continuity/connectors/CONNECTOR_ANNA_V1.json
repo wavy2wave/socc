@@ -1,0 +1,28 @@
+{
+  "id": "CONNECTOR_ANNA_V1",
+  "kind": "explicit_file_list",
+  "topic": "anna",
+  "file_list": [
+    "/Users/wavysexy/Downloads/ANNA последний этап.md",
+    "/Users/wavysexy/Downloads/ANNA последний этап (4).txt",
+    "/Users/wavysexy/Downloads/ANNA последний этап (3).txt",
+    "/Users/wavysexy/Downloads/ANNA последний этап (2).txt",
+    "/Users/wavysexy/Downloads/ANNA последний этап (1).txt",
+    "/Users/wavysexy/Downloads/ANNA последний этап.txt",
+    "/Users/wavysexy/Downloads/Развитие бота Анна.md",
+    "/Users/wavysexy/Downloads/ANNA Entity Development.txt",
+    "/Users/wavysexy/Downloads/AGI агент Анна.md",
+    "/Users/wavysexy/Downloads/Анна как цифровая личность.md",
+    "/Users/wavysexy/Downloads/MEMORY SOCC/ANNA Entity Development.txt",
+    "/Users/wavysexy/wavecore-bot/persona/compiled/anna_master_protocol.md",
+    "/Users/wavysexy/wavecore-bot/persona/compiled/anna_compiled_protocols.md",
+    "/Users/wavysexy/wavecore-bot/prompts/anna_system_prompt.md",
+    "/Users/wavysexy/Obsidian/AnnaOS/anna/protocols/dental-triage.md"
+  ],
+  "read_only": true,
+  "no_copy": true,
+  "no_move": true,
+  "no_network": true,
+  "note": "Richest ANNA discussion + persona/protocol sources gathered across the disk. Read-only; metadata + line anchors only.",
+  "truth_boundary": "Read-only explicit ANNA source list. Files never moved/copied; only registered for the anna wiki topic."
+}

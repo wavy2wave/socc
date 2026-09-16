@@ -1,0 +1,56 @@
+{
+  "accepted_capabilities": {
+    "bounded_controlled_loop_execution": "PASS",
+    "bounded_loop_repeatability": "PASS",
+    "codex_hermes_governance": "PASS",
+    "continuity_contract": "BUILT_VALIDATED_REVIEWED",
+    "controlled_continuous_autonomy_seal": "PASS",
+    "first_lawful_controlled_run": "EXECUTED_VALIDATED_REVIEWED",
+    "migration_from_supramental_agent": "REBOUND_BY_PROOF_CHAIN",
+    "runtime_operator_panel": "PASS",
+    "stable_operating_mode": "BUILT_VALIDATED_REVIEWED"
+  },
+  "accepted_step": "accept_socc_stable_controlled_autonomy_foundation_v1",
+  "created_at_utc": "2026-06-08T19:09:45.094650+00:00",
+  "forbidden": [
+    "daemon",
+    "background loop",
+    "network autonomy",
+    "unbounded self patching",
+    "duplicate already passed step",
+    "queue widening without route authority",
+    "AGI/entity claim"
+  ],
+  "foundation_state": "ACCEPTED",
+  "id": "SOCC_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_V1",
+  "lawful_next": "validate_socc_stable_controlled_autonomy_foundation_v1",
+  "meaning": "The new SOCC root is accepted as the stable controlled-autonomy foundation.",
+  "operating_rule": {
+    "codex_hermes_repair_required_on_lawful_failure": true,
+    "default_step_limit": 1,
+    "entrypoint": "current_lawful_next_only",
+    "operator_panel_required": true,
+    "proof_required": true,
+    "route_pulse_control_alignment_required": true,
+    "stop_after_bounded_step": true
+  },
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "source_artifacts": {
+    "stable_mode": "core/socc/autonomy/controlled_continuous_autonomy/STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1.json",
+    "stable_mode_build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1_PROOF.json",
+    "stable_mode_review": "core/socc/autonomy/controlled_continuous_autonomy/STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_REVIEW_V1.json",
+    "stable_mode_review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1_PROOF.json",
+    "stable_mode_validation": "core/socc/autonomy/controlled_continuous_autonomy/STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_VALIDATION_V1.json",
+    "stable_mode_validation_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1_PROOF.json"
+  },
+  "status": "PASS",
+  "truth_boundary": "Foundation acceptance only. No daemon/background/network."
+}

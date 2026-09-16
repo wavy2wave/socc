@@ -1,0 +1,78 @@
+{
+  "id": "BRAND_FORGE_LINE_V1",
+  "schema": "socc.line.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-29T00:00:00+00:00",
+  "purpose": "The atomic, gated development LINE the Brand Forge walks. Mirrors SOCC entity lifecycle. Each frontier = one accepted artifact. The next frontier is unlawful until the current one passes its gate and is accepted by the creator.",
+  "discipline": "evolution_does_not_jump",
+  "professional_mapping": "Phases mirror a real top-tier branding studio pipeline: strategy -> verbal -> visual -> design system -> application. SOCC gates wrap each step so taste never overrides evidence.",
+  "gate_legend": {
+    "SCI": "Scientific Quality Gate — decision is evidence-based, falsifiable, explicit pass/fail",
+    "HER": "Hermes Gate — it actually renders/works (tokens compile, SVG renders, contrast measured)",
+    "COD": "Codex Gate — conforms to canon law (re-skinned, naming, file structure, truth_boundary present)",
+    "GRD": "Guardian — N adversarial skeptics try to refute before ACCEPT"
+  },
+  "phases": [
+    {
+      "phase": "P0",
+      "title": "FORGE GENESIS",
+      "goal": "Build the factory itself (no pixels).",
+      "frontiers": [
+        {"f": "F0.1", "produces": "BRAND_FORGE_CELL_V1 (team constitution)",     "gate": ["COD"], "status": "IN_PROGRESS"},
+        {"f": "F0.2", "produces": "BRAND_FORGE_LINE_V1 (this LINE)",              "gate": ["COD"], "status": "IN_PROGRESS"},
+        {"f": "F0.3", "produces": "BRAND_FORGE_GATES_V1 (brand gate defs)",       "gate": ["COD"], "status": "PENDING"},
+        {"f": "F0.4", "produces": "state + cell registry + proof + panel",        "gate": ["COD"], "status": "PENDING"}
+      ]
+    },
+    {
+      "phase": "P1",
+      "title": "STRATEGY CORE (verbal, zero pixels) — the loaded gun",
+      "goal": "Decide who/for-whom/why before any visual. This is the foundation that makes ANNA sell.",
+      "frontiers": [
+        {"f": "F1.0", "produces": "BRAND_TARGET_DECISION (which brand first + brand architecture: SOCC house brand vs ANNA product brand)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.1", "produces": "MARKET_RESEARCH (CIS dental + AI-receptionist competitor teardown, evidence ledger)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.2", "produces": "AUDIENCE (personas: clinic owner, administrator, patient)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.3", "produces": "POSITIONING (one-line positioning statement + differentiation)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.4", "produces": "ARCHETYPE_AND_PERSONALITY (from 12 archetypes -> chosen + traits)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.5", "produces": "BRAND_PLATFORM (mission/vision/values/promise)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F1.6", "produces": "VERBAL_IDENTITY (name confirm, tagline, tone of voice, messaging matrix)", "gate": ["SCI","GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P2",
+      "title": "VISUAL CORE (pixels, evidence-gated)",
+      "goal": "Translate strategy into a coherent visual world.",
+      "frontiers": [
+        {"f": "F2.1", "produces": "MOODBOARD (3 distinct visual directions -> creator picks 1)", "gate": ["SCI","GRD"], "status": "LOCKED"},
+        {"f": "F2.2", "produces": "LOGO_MARK (logotype + logomark, delivered as SVG + construction rules)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F2.3", "produces": "COLOR_SYSTEM (palette + design tokens + WCAG contrast proof)", "gate": ["SCI","HER","GRD"], "status": "LOCKED"},
+        {"f": "F2.4", "produces": "TYPOGRAPHY (font pairing + type scale + tokens)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F2.5", "produces": "ICONOGRAPHY_ILLUSTRATION_IMAGERY (style rules + sample SVG)", "gate": ["GRD"], "status": "LOCKED"},
+        {"f": "F2.6", "produces": "MOTION (animation principles)", "gate": ["GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P3",
+      "title": "SYSTEM & CANON",
+      "goal": "Freeze everything into law + machine-readable single source of truth.",
+      "frontiers": [
+        {"f": "F3.1", "produces": "BRANDBOOK (human-readable guidelines, HTML)", "gate": ["COD","GRD"], "status": "LOCKED"},
+        {"f": "F3.2", "produces": "DESIGN_TOKENS_JSON (machine canon, mirrors SOCC_DESIGN_CANON, one source of truth)", "gate": ["HER","COD"], "status": "LOCKED"},
+        {"f": "F3.3", "produces": "COMPONENT_LIBRARY (atomic-design components, token-bound, renderable)", "gate": ["HER","COD","GRD"], "status": "LOCKED"}
+      ]
+    },
+    {
+      "phase": "P4",
+      "title": "APPLICATION & SEAL",
+      "goal": "Apply to real touchpoints, then canonize & accept.",
+      "frontiers": [
+        {"f": "F4.1", "produces": "LANDING_OR_DASHBOARD (first applied surface, renderable)", "gate": ["HER","GRD"], "status": "LOCKED"},
+        {"f": "F4.2", "produces": "TOUCHPOINTS (Telegram avatar/voice, presentation, collateral)", "gate": ["GRD"], "status": "LOCKED"},
+        {"f": "F4.3", "produces": "SEAL (verify full chain, canonize & accept -> brand is 'принят'; forge stays reusable)", "gate": ["SCI","HER","COD","GRD"], "status": "LOCKED"}
+      ]
+    }
+  ],
+  "current": "F0.1",
+  "next_after_genesis": "F1.0",
+  "truth_boundary": "LINE declaration only. Lists the gated frontier sequence. No frontier past F0.x is executed or unlocked until genesis is accepted. Producing this LINE forges no brand and makes no external claim."
+}

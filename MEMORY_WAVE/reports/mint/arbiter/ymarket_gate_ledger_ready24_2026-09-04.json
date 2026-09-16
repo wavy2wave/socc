@@ -1,0 +1,741 @@
+{
+ "schema": "ymarket.gate-ledger.ready24.v1",
+ "purpose": "Консолидированный gate-ledger 24 ready-SKU ЯМ (5 done-категорий, сухие сканы 04.09, 0₽): адверсариал-верифицирован (ultracode wf_9920f035-2f8, 12 агентов: 6 измерений × refute-пасс). Цель — момент «давай зальем»: per-SKU гейты + реальные дефекты + честные UNKNOWN. RUBICON не пересечён. Корректировка 04.09 вечер (Правки A–D): barcode-блокера НЕТ (write-EAN=own gen_ean13), puzyr×4 → DUBL-LIVE ПОДТВЕРЖДЁН, «для OZON» REFUTED.",
+ "run": {
+  "when": "2026-09-04",
+  "method": "детерм. чекер + Workflow 12 агентов (leaf-honesty/name-residue/vendor-brand/price-floor/logistics-dims/data-gate, каждый с адверсариал-verify)",
+  "money": 0,
+  "verified_findings": 7
+ },
+ "sets": {
+  "karton-i-gofrokarton": {
+   "cid": 76280526,
+   "leaf": "Гофролисты",
+   "consts": {
+    "Тип": {
+     "parameterId": 21194330,
+     "valueId": 34060209,
+     "label": "картон"
+    },
+    "Материал": {
+     "parameterId": 17352854,
+     "valueId": 36092446,
+     "label": "гофрированный картон"
+    }
+   },
+   "const_note": null
+  },
+  "klejkaya-lenta": {
+   "cid": 90741,
+   "leaf": "Скотч",
+   "consts": {},
+   "const_note": "Констант НЕТ: одно/двусторонний и вид зависят от товара — решается на карточке из донор-поля."
+  },
+  "streich-plenka": {
+   "cid": 76346336,
+   "leaf": "Упаковочные плёнки",
+   "consts": {
+    "Тип пленки": {
+     "parameterId": 39979950,
+     "valueId": 40487523,
+     "label": "стрейч-пленка"
+    },
+    "Форма выпуска": {
+     "parameterId": 27141511,
+     "valueId": 28706548,
+     "label": "рулон"
+    },
+    "Назначение": {
+     "parameterId": 27143691,
+     "valueId": 40461331,
+     "label": "упаковочные работы"
+    },
+    "Материал": {
+     "parameterId": 17352854,
+     "valueId": 36091668,
+     "label": "полиэтилен"
+    }
+   },
+   "const_note": null
+  },
+  "upakovochnaya-bumaga": {
+   "cid": 76346336,
+   "leaf": "Упаковочные плёнки",
+   "consts": {
+    "Тип": {
+     "parameterId": 21194330,
+     "valueId": 34061629,
+     "label": "бумага"
+    },
+    "Назначение": {
+     "parameterId": 27143691,
+     "valueId": 40461331,
+     "label": "упаковочные работы"
+    }
+   },
+   "const_note": null
+  },
+  "puzyrkovaya-plenka": {
+   "cid": 76346336,
+   "leaf": "Упаковочные плёнки",
+   "consts": {
+    "Тип": {
+     "parameterId": 21194330,
+     "valueId": 32806010,
+     "label": "пленка"
+    },
+    "Тип пленки": {
+     "parameterId": 39979950,
+     "valueId": 40487524,
+     "label": "воздушно-пузырьковая"
+    },
+    "Форма выпуска": {
+     "parameterId": 27141511,
+     "valueId": 28706548,
+     "label": "рулон"
+    },
+    "Назначение": {
+     "parameterId": 27143691,
+     "valueId": 40461331,
+     "label": "упаковочные работы"
+    }
+   },
+   "const_note": "Категорийные константы: для ВСЕЙ этой категории верны по определению (не выдумка — товар физически такой). Дают большой прирост заполненности."
+  }
+ },
+ "total_skus": 24,
+ "payload_full_skus": 19,
+ "streich_barcode_unknown": 0,
+ "skus": [
+  {
+   "set": "karton-i-gofrokarton",
+   "leaf": "Гофролисты",
+   "sku": "5273",
+   "name_card": "Лист гофрокартона Т-24 В, 1200*800 мм, 0.96 м², волна вдоль 1200 мм",
+   "price_rub": 265,
+   "weight_kg": 0.43,
+   "barcode": "2515246864760",
+   "dims_cm": [
+    80,
+    6.8,
+    6.8
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "лист 1200×800×~3мм упакован как рулон Ø6.8; если донор шлёт плашмя — длинная сторона занижена (80 vs 120 см); dims_source не персистён",
+   "flags": [
+    "dims physics-цилиндр применён к ЖЁСТКОМУ листу (не рулон)"
+   ]
+  },
+  {
+   "set": "klejkaya-lenta",
+   "leaf": "Скотч",
+   "sku": "1951",
+   "name_card": "Клейкая лента коричневая Unibob®, 48мм*66м*45мкм",
+   "price_rub": 375,
+   "weight_kg": 0.158,
+   "barcode": "2201645119180",
+   "dims_cm": [
+    4.8,
+    11.5,
+    11.5
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "®-ТМ в заголовке при бренде «Без бренда» — решение: бренд Unibob+доказательство ИЛИ чистка ®",
+   "flags": [
+    "имя verbatim несёт ® Unibob",
+    "vendor штамп = «Без бренда»",
+    "brand_law L8: бренд не заявляем НИГДЕ"
+   ]
+  },
+  {
+   "set": "klejkaya-lenta",
+   "leaf": "Скотч",
+   "sku": "5242",
+   "name_card": "Клейкая лента кристально-прозрачная Unibob®, 48мм*66м*45мкм",
+   "price_rub": 550,
+   "weight_kg": 0.153,
+   "barcode": "2403082514676",
+   "dims_cm": [
+    4.8,
+    11.4,
+    11.4
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "®-ТМ в заголовке при бренде «Без бренда» — решение: бренд Unibob+доказательство ИЛИ чистка ®",
+   "flags": [
+    "имя verbatim несёт ® Unibob",
+    "vendor штамп = «Без бренда»",
+    "brand_law L8: бренд не заявляем НИГДЕ"
+   ]
+  },
+  {
+   "set": "klejkaya-lenta",
+   "leaf": "Скотч",
+   "sku": "5249",
+   "name_card": "Клейкая лента прозрачная Unibob®, 48мм*66м*45мкм",
+   "price_rub": 365,
+   "weight_kg": 0.163,
+   "barcode": "2454399760430",
+   "dims_cm": [
+    4.8,
+    11.6,
+    11.6
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "®-ТМ в заголовке при бренде «Без бренда» — решение: бренд Unibob+доказательство ИЛИ чистка ®",
+   "flags": [
+    "имя verbatim несёт ® Unibob",
+    "vendor штамп = «Без бренда»",
+    "brand_law L8: бренд не заявляем НИГДЕ"
+   ]
+  },
+  {
+   "set": "klejkaya-lenta",
+   "leaf": "Скотч",
+   "sku": "5460",
+   "name_card": "Клейкая лента прозрачная широкая Unibob®, 72мм*66м*45мкм",
+   "price_rub": 535,
+   "weight_kg": 0.24,
+   "barcode": "2228669665370",
+   "dims_cm": [
+    7.2,
+    11.5,
+    11.5
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "®-ТМ в заголовке при бренде «Без бренда» — решение: бренд Unibob+доказательство ИЛИ чистка ®",
+   "flags": [
+    "имя verbatim несёт ® Unibob",
+    "vendor штамп = «Без бренда»",
+    "brand_law L8: бренд не заявляем НИГДЕ"
+   ]
+  },
+  {
+   "set": "klejkaya-lenta",
+   "leaf": "Скотч",
+   "sku": "6178",
+   "name_card": "Клейкая лента прозрачная Unibob®, 48мм*132м*40мкм",
+   "price_rub": 625,
+   "weight_kg": 0.257,
+   "barcode": "2112738382360",
+   "dims_cm": [
+    4.8,
+    13.2,
+    13.2
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "®-ТМ в заголовке при бренде «Без бренда» — решение: бренд Unibob+доказательство ИЛИ чистка ®",
+   "flags": [
+    "имя verbatim несёт ® Unibob",
+    "vendor штамп = «Без бренда»",
+    "brand_law L8: бренд не заявляем НИГДЕ"
+   ]
+  },
+  {
+   "set": "puzyrkovaya-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "1588731",
+   "name_card": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+   "price_rub": 3500,
+   "weight_kg": 1.86,
+   "barcode": "2063678699509",
+   "dims_cm": [
+    75,
+    38,
+    38
+   ],
+   "dims_present": true,
+   "vendor": "Без бренда",
+   "gate": "DUBL-LIVE (решение оператора)",
+   "gate_note": "ПОДТВЕРЖДЁН детерминированно (twin-gate 04.09): ready-sku (донор-pid) == donor_pid ЖИВОЙ ARB-карточки goods_library 1-в-1. Тот же физ-товар на витрине atlas-express-film фирменно; повторный залив = вторая карточка + коллизия. Судьба — оператор.",
+   "flags": [
+    "ready-sku = donor_pid живой ARB (1-в-1)",
+    "категор-канал ×5 vs живая ×8 = −37.5%"
+   ],
+   "dubl_live": true,
+   "dubl_evidence": [
+    {
+     "offer_id": "ARB-87309612",
+     "price": 5600,
+     "store_slug": "atlas-express-film",
+     "article": "9605392"
+    }
+   ]
+  },
+  {
+   "set": "puzyrkovaya-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "2050",
+   "name_card": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+   "price_rub": 325,
+   "weight_kg": 0.122,
+   "barcode": "2696297010501",
+   "dims_cm": [
+    40,
+    11.5,
+    11.5
+   ],
+   "dims_present": true,
+   "vendor": "Без бренда",
+   "gate": "DUBL-LIVE (решение оператора)",
+   "gate_note": "ПОДТВЕРЖДЁН детерминированно (twin-gate 04.09): ready-sku (донор-pid) == donor_pid ЖИВОЙ ARB-карточки goods_library 1-в-1. Тот же физ-товар на витрине atlas-express-film фирменно; повторный залив = вторая карточка + коллизия. Судьба — оператор.",
+   "flags": [
+    "ready-sku = donor_pid живой ARB (1-в-1)",
+    "категор-канал ×5 vs живая ×8 = −37.5%"
+   ],
+   "dubl_live": true,
+   "dubl_evidence": [
+    {
+     "offer_id": "ARB-87931769",
+     "price": 520,
+     "store_slug": "atlas-express-film",
+     "article": "9600155"
+    }
+   ]
+  },
+  {
+   "set": "puzyrkovaya-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "6335",
+   "name_card": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+   "price_rub": 850,
+   "weight_kg": 0.54,
+   "barcode": "2253271926083",
+   "dims_cm": [
+    30,
+    48,
+    48
+   ],
+   "dims_present": true,
+   "vendor": "Без бренда",
+   "gate": "DUBL-LIVE (решение оператора)",
+   "gate_note": "ПОДТВЕРЖДЁН детерминированно (twin-gate 04.09): ready-sku (донор-pid) == donor_pid ЖИВОЙ ARB-карточки goods_library 1-в-1. Тот же физ-товар на витрине atlas-express-film фирменно; повторный залив = вторая карточка + коллизия. Судьба — оператор.",
+   "flags": [
+    "ready-sku = donor_pid живой ARB (1-в-1)",
+    "категор-канал ×5 vs живая ×8 = −37.5%"
+   ],
+   "dubl_live": true,
+   "dubl_evidence": [
+    {
+     "offer_id": "ARB-53416854",
+     "price": 1360,
+     "store_slug": "atlas-express-film",
+     "article": "9601512"
+    }
+   ]
+  },
+  {
+   "set": "puzyrkovaya-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "9048",
+   "name_card": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+   "price_rub": 3000,
+   "weight_kg": 1.438,
+   "barcode": "2003502239051",
+   "dims_cm": [
+    50,
+    35,
+    50
+   ],
+   "dims_present": true,
+   "vendor": "Без бренда",
+   "gate": "DUBL-LIVE (решение оператора)",
+   "gate_note": "ПОДТВЕРЖДЁН детерминированно (twin-gate 04.09): ready-sku (донор-pid) == donor_pid ЖИВОЙ ARB-карточки goods_library 1-в-1. Тот же физ-товар на витрине atlas-express-film фирменно; повторный залив = вторая карточка + коллизия. Судьба — оператор.",
+   "flags": [
+    "ready-sku = donor_pid живой ARB (1-в-1)",
+    "категор-канал ×5 vs живая ×8 = −37.5%"
+   ],
+   "dubl_live": true,
+   "dubl_evidence": [
+    {
+     "offer_id": "ARB-29846713",
+     "price": 4800,
+     "store_slug": "atlas-express-film",
+     "article": "9602037"
+    }
+   ]
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "10155",
+   "name_card": "Стрейч пленка прозрачная, 500 мм, 20 мкм, 2.2 кг, 1 сорт",
+   "price_rub": 2725,
+   "weight_kg": 2.2,
+   "barcode": "2519720851383",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "19946",
+   "name_card": "Стрейч пленка белая, 500 мм, 23 мкм, 2 кг, 1 сорт",
+   "price_rub": 2690,
+   "weight_kg": 2.0,
+   "barcode": "2356551953714",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "20994",
+   "name_card": "Стрейч пленка черная, 500 мм, 20 мкм, 2 кг, 1 сорт",
+   "price_rub": 2690,
+   "weight_kg": 2.0,
+   "barcode": "2257388985414",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "2227175",
+   "name_card": "Диспенсер-ручка для стрейч пленки, пластиковый",
+   "price_rub": 300,
+   "weight_kg": 0.081,
+   "barcode": "2715584571652",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ИСКЛЮЧИТЬ/ПЕРЕ-ЛИСТ",
+   "gate_note": "пластиковая ручка в плёночном профиле (лист 76346336) с ложными константами; правильный лист 75355556 «Диспенсеры». Свой EAN у write-path есть — блокер не штрихкод, а лист. Судьба — решение оператора.",
+   "flags": [
+    "не-плёнка",
+    "лист 75355556"
+   ],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "267897",
+   "name_card": "Стрейч пленка прозрачная, 125 мм, 20 мкм, 0.5 кг, 1 сорт",
+   "price_rub": 875,
+   "weight_kg": 0.5,
+   "barcode": "2317835638437",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "5246",
+   "name_card": "Стрейч пленка прозрачная, 500 мм, 20 мкм, 2 кг, 1 сорт",
+   "price_rub": 2490,
+   "weight_kg": 2.0,
+   "barcode": "2560295322815",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "5263",
+   "name_card": "Стрейч пленка прозрачная, 500 мм, 20 мкм, 1.2 кг, 1 сорт",
+   "price_rub": 1470,
+   "weight_kg": 1.2,
+   "barcode": "2448502995819",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "5303",
+   "name_card": "Стрейч пленка черная, 500 мм, 20 мкм, 1.2 кг, 1 сорт",
+   "price_rub": 1575,
+   "weight_kg": 1.2,
+   "barcode": "2335687708818",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "5484",
+   "name_card": "Стрейч пленка «Эконом», серая, 500 мм, 20 мкм, 2 кг, 2 сорт",
+   "price_rub": 1750,
+   "weight_kg": 2.0,
+   "barcode": "2884984397817",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "streich-plenka",
+   "leaf": "Упаковочные плёнки",
+   "sku": "8576",
+   "name_card": "Стрейч пленка белая, 500 мм, 23 мкм, 1.2 кг, 1 сорт",
+   "price_rub": 1575,
+   "weight_kg": 1.2,
+   "barcode": "2467025558226",
+   "dims_cm": null,
+   "dims_present": "physics-овх-кэш",
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "write-path ВСЕГДА штампит свой детерм. gen_ean13(sku) (barcode_source=own-ean13, ДОКАЗАНО 4/4 живых ARB 03.09); в durable поле отсутствовало = дыра персистенции (Правка A зеркалит). dims — в ovh-кэше (physics).",
+   "flags": [],
+   "barcode_source": "own-ean13"
+  },
+  {
+   "set": "upakovochnaya-bumaga",
+   "leaf": "Упаковочные плёнки",
+   "sku": "2003",
+   "name_card": "Крафт-бумага в рулоне, 20*0.84 м, 80 г/м²",
+   "price_rub": 985,
+   "weight_kg": 1.374,
+   "barcode": "2154113767461",
+   "dims_cm": [
+    84,
+    7,
+    7
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "",
+   "flags": []
+  },
+  {
+   "set": "upakovochnaya-bumaga",
+   "leaf": "Упаковочные плёнки",
+   "sku": "2010",
+   "name_card": "Крафт-бумага в рулоне, 10*0.84 м, 80 г/м²",
+   "price_rub": 575,
+   "weight_kg": 0.678,
+   "barcode": "2361422222363",
+   "dims_cm": [
+    84,
+    5.4,
+    5.4
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "",
+   "flags": []
+  },
+  {
+   "set": "upakovochnaya-bumaga",
+   "leaf": "Упаковочные плёнки",
+   "sku": "5951",
+   "name_card": "Рулон крафт бумаги, 40*0.84 м",
+   "price_rub": 1840,
+   "weight_kg": 2.703,
+   "barcode": "2507837728599",
+   "dims_cm": [
+    84,
+    9.6,
+    9.6
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "",
+   "flags": []
+  },
+  {
+   "set": "upakovochnaya-bumaga",
+   "leaf": "Упаковочные плёнки",
+   "sku": "8580",
+   "name_card": "Крафт-бумага в рулоне, белая, 10*0.84 м, 70 г/м²",
+   "price_rub": 755,
+   "weight_kg": 0.593,
+   "barcode": "2624409899553",
+   "dims_cm": [
+    84,
+    4.7,
+    4.7
+   ],
+   "dims_present": true,
+   "vendor": null,
+   "gate": "ФОРМАЛЬНО-ГОТОВ",
+   "gate_note": "",
+   "flags": []
+  }
+ ],
+ "findings_confirmed": [
+  {
+   "sev": "HIGH",
+   "scope": "2227175 (streich)",
+   "title": "диспенсер-ручка в плёночном профиле",
+   "claim": "пластиковая ручка (0.081кг) в ready-10 листа 76346336 «Упаковочные плёнки» с ложными константами Тип=стрейч-пленка/Форма=рулон/Материал=полиэтилен; правильный лист 75355556 «Диспенсеры для стрейч-плёнки»; оверрайда в коде нет — только оговорка «per-card». Залив как есть = категорийная ложь (L3).",
+   "evidence": "readiness_streich 2026-09-04 (.json/.md caveats + payload_proof); досье hint_rules; mapping_confirmed rivals_refuted 75355556",
+   "rec": "вынести из плёночной партии: пере-листовать в 75355556 (орган CATEGORIST, живой GET) или исключить из батча",
+   "owner": "CATEGORIST / оператор"
+  },
+  {
+   "sev": "HIGH",
+   "scope": "puzyr×4 (2050/6335/9048/1588731)",
+   "title": "twin-каннибализация — DUBL-LIVE ПОДТВЕРЖДЁН (детерм.)",
+   "claim": "ready-sku == donor_pid ЖИВОЙ ARB-карточки 1-в-1 по goods_library: 1588731↔ARB-87309612 5600₽, 9048↔ARB-29846713 4800₽, 6335↔ARB-53416854 1360₽, 2050↔ARB-87931769 520₽ (все atlas-express-film). Один физ-товар донора = готовый кандидат И живая карточка; повторный залив = вторая дешёвая карточка + коллизия EAN.",
+   "evidence": "twin-gate 4/4 на ymarket_runner_categorist_live_vozdushno-plenka_2026-09-04_00-18-11; goods_library donor_pids {9048,2050,6335,1588731}",
+   "rec": "dedup-гейт категорийщика против goods_library; что задумано для этих 4 — решение оператора",
+   "owner": "оператор"
+  },
+  {
+   "sev": "MEDIUM",
+   "scope": "klejkaya×5 (6178/5242/5460/1951/5249)",
+   "title": "® Unibob в имени при «Без бренда»",
+   "claim": "имя уйдёт verbatim с зарегистрированной ТМ донора; runner штампит vendor=«Без бренда» (доказано живым инцидентом NO_CARD_ERRORS) → рассогласование имя/бренд, нарушение собственной brand_law L8.",
+   "evidence": "readiness_klejkaya verbatim-имена; runner_v1.py:340-341; card_v1.py:258 verbatim; cycle1_v1.py:254-265 no-brand",
+   "rec": "осознанный выбор: бренд Unibob+доказательство ИЛИ чистка ® из заголовка; авто-чистки ® в коде нет",
+   "owner": "оператор"
+  }
+ ],
+ "findings_refuted": [
+  "пузырчатка унаследует Тип=стрейч — НЕ подтвердилось: у 4 свои константы Тип=воздушно-пузырьковая (профиль честный)",
+  "имя/бренд пузырчатки «Без бренда»+токены серии — НЕ дефект: паттерн живой ARB-витрины PASS+FIT (токены без ®, ATLAS EDGE не протекает)",
+  "отсутствие vendor в durable у 20/24 — НЕ дыра: vendor = build-time штамп runner_v1:340-341, инцидент «Заполните поле Бренд» закрыт штампом",
+  "ценовая инверсия скотча 5242 vs 5249 (+51%) — НЕ дефект: зеркалит премиум-градацию донора, единый ×5, floor не нарушен; закупка не персистена (честный UNKNOWN)",
+  "dims streich «потеряны» артефактизацией — частично: готовность завышена в readiness, НО dims физически в ovh-кэше, ре-скан для габаритов НЕ нужен (только для EAN)",
+  "склейка имени 2227175 «пленки рукав Алтай» — покрывается HIGH-находкой (readiness-имя уже чистое); отдельным дефектом не держим"
+ ],
+ "not_autonomous": [
+  "фото #9",
+  "полнота карточки #11",
+  "floor-guard #17",
+  "ОВХ-верификация #10",
+  "доктринальная подпись own-EAN для streich×9 (данных-блокера НЕТ: write-path штампит свой gen_ean13, 4/4 ARB живьём) — если оператор захочет донор-GTIN вместо, это новая политика",
+  "решение по puzyr×4 (DUBL-LIVE ПОДТВЕРЖДЁН: судьба этих 4)",
+  "решение по Unibob®×5",
+  "аудит A–D #3 HIGH: goods_library-синхронизация после ЖИВОГО --commit runner (чтобы twin-гейт видел свежие живые карточки; сейчас ловит на слове по текущей библиотеке)",
+  "аудит A–D #5: зеркало spec_units/полнота данных донора в streich-профиле (сосед #11 полнота карточки)",
+  "аудит A–D #6: гейт в категорийщик — 2227175 диспенсер не пере-предлагать в плёночных профилях без слова (см. findings_confirmed HIGH)"
+ ],
+ "rubicon": "не пересечён: 0₽; все заливы — только по слову оператора",
+ "sources": [
+  "ymarket_categorist_readiness_{streich,klejkaya-lenta,karton-i-gofrokarton,upakovochnaya-bumaga}_2026-09-04.{json,md}",
+  "ymarket_runner_categorist_live_{vozdushno-plenka,streich-plenka}_2026-09-04_*.json",
+  "ymarket_categorist_dossiers.json",
+  "ymarket_cats_v1.json",
+  "ymarket_goods_library.json",
+  "ymarket_product_matrix.json",
+  "runtime/ovh_dims_cache.json"
+ ],
+ "gate_formal_ready": 19,
+ "gate_dubl_live_operator": 4,
+ "gate_exclude": 1,
+ "barcode_all_own_ean13": true,
+ "findings_resolved": [
+  {
+   "scope": "streich×9 barcode",
+   "was": "HIGH · БЛОК-ШТРИХКОД (UNKNOWN) — data-гейт не пройден",
+   "resolved": "дыра персистенции, НЕ отсутствие EAN: score_item срезал поле, шорт-лист без barcode. Write-path всегда штампит свой gen_ean13(sku) (barcode_source=own-ean13). Правка A зеркалит EAN в durable. Гейт снят → ФОРМАЛЬНО-ГОТОВ."
+  },
+  {
+   "scope": "5273 (karton) dims_source",
+   "was": "LOW · physics-цилиндр + dims_source не персистён",
+   "resolved": "Правка B персистит dims_source/dims_cached сквозь канал. Остаётся физ-вопрос оператору/СКЛАД: лист плашмя vs туба (длинная сторона 80 vs 120 см)."
+  },
+  {
+   "scope": "2050 (puzyr) dims_source",
+   "was": "LOW · physics-dims не воспроизводимы между снимками",
+   "resolved": "Правка B персистит dims_source. Остаётся физ-вопрос 11.5-vs-13 (ovh-кэш vs dossier) — не срочно: SKU под DUBL-LIVE (решение оператора)."
+  },
+  {
+   "scope": "19946 (streich) «для OZON»",
+   "was": "MEDIUM · имя-кандидат несёт чужой маркетплейс",
+   "resolved": "REFUTED: канон-имя readiness чистое, платформ-токенов ноль по всем 2026-09-04. «для OZON» был в live-candidate main_film (не в durable). Правка C: platform_residue ФЛАГ (имя 1-в-1 не чистит) на живом скане + meta карточки."
+  },
+  {
+   "scope": "gate-ledger (внутр.)",
+   "was": "LOW · классификатор полей",
+   "resolved": "исправлено ранее (фактическое поле, не ярлык)"
+  },
+  {
+   "scope": "(аудит A–D, #1) stamped-строки умирали в thunk (Правка A невидима в readiness)",
+   "was": "readiness() не проектировал sh['shortlist']; write-EAN/провенанс/флаг жили только внутри thunk",
+   "resolved": "добавлены _shortlist_prov_rows → shortlist_prov + residue_skus в durable; e2e-тест [A1] реальным продюсером runner.shortlist_to_prod"
+  },
+  {
+   "scope": "(аудит A–D, #2) честность _stamp_write_meta (зеркало dims/weight)",
+   "was": "зеркало dims/weight выглядело источником правды",
+   "resolved": "докa переписана: зеркало dims/weight = safety-net на будущее; реальный источник провенанса габаритов — строка категорийщика (Правка B)"
+  },
+  {
+   "scope": "(аудит A–D, #4) twin-gate fail-open",
+   "was": "нет goods_library → молчаливое «0 дублей» (ложь «не дубль»)",
+   "resolved": "громкий SystemExit без библиотеки живых donor_pid; потребителей вне теста/CLI нет → автопилот не задет"
+  },
+  {
+   "scope": "(аудит A–D, #7) XLSX-путь не флагал чужую платформу",
+   "was": "флаг _platform_residue только у live-скана zaliv (_map_live_row)",
+   "resolved": "read_donor (categorist) ставит _platform_residue через uniqueizer.platform_residue"
+  },
+  {
+   "scope": "(аудит A–D, #8) поверхность residue для оператора",
+   "was": "флаг существовал в строках, но не был виден в render/readiness",
+   "resolved": "render() показывает ⚑ «имя несёт чужую площадку (флаг; реши при слове)» + SKU в residue_skus до слова"
+  },
+  {
+   "scope": "(аудит A–D, #9) границы токенов platform_residue",
+   "was": "один список токенов → хим. озон/озоновый ловились как флаг, склонения однозначных брендов не ловились",
+   "resolved": "два класса: STRICT (озон/ozon, отдельное слово, хим.-защита) и PREFIX (маркетплейс/алиэкспресс/вайлдберриз/авито, по началу токена — ловит склонения); тесты словоформ"
+  }
+ ],
+ "audit_pravki_ab_2026_09_04": {
+  "purpose": "повторный адверсариал Правок A–D (канал кода 04.09): закрыть вранье/потери на границе durable-readiness и защитить имя 1-в-1",
+  "findings_total": 9,
+  "closed_code": 6,
+  "open_operator": 3,
+  "acceptance": {
+   "run_gate_persistence": 41,
+   "regression_note": "zaliv 53 · categorist 36 · donor_topfill 46 · reconcile 69 · donor_skus 12 · card_unique 16 · card_audit 22 · m1 12 · m2_pricing 8 · yandex_m1 15 · yandex_m2 15 · pipeline 25 · cycle1-слой · registry · proof_cross 5 — зелёные"
+  },
+  "rubicon": "не пересечён: 0₽, без сети (все входы — фикстуры/швы)"
+ }
+}

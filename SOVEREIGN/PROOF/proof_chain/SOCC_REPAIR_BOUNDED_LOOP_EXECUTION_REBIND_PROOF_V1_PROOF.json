@@ -1,0 +1,28 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/repair_bounded_loop_execution_rebind_proof_20260608T184926Z/SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_EXECUTE_BOUNDED_CONTROLLED_LOOP_FROM_OLD_LINEAGE_V1_PROOF.json"
+  ],
+  "bridge_status": "PASS",
+  "changed": [
+    "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_EXECUTE_BOUNDED_CONTROLLED_LOOP_FROM_OLD_LINEAGE_V1_PROOF.json"
+  ],
+  "created_at_utc": "2026-06-08T18:49:26.467162+00:00",
+  "daemon_running": false,
+  "downstream_chain_bad": [],
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_BOUNDED_LOOP_EXECUTION_REBIND_PROOF_V1_PROOF",
+  "loop_executed_now": false,
+  "network_used": false,
+  "old_main_run_pass": true,
+  "old_primary_iteration_pass_count": 3,
+  "old_secondary_iteration_pass_count": 3,
+  "status": "PASS",
+  "target_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_EXECUTE_BOUNDED_CONTROLLED_LOOP_FROM_OLD_LINEAGE_V1_PROOF.json",
+  "target_status_after": "PASS",
+  "target_status_before": "REVIEW_REQUIRED",
+  "truth_boundary": "Forensic proof repair only. No execution.",
+  "warnings": [
+    "REPAIRED_OVERWRITTEN_REBIND_PROOF"
+  ]
+}

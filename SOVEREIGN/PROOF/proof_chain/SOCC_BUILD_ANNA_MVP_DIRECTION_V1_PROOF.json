@@ -1,0 +1,133 @@
+{
+  "anna_born": false,
+  "atomic_commit_result": {
+    "coherence": {
+      "panel_lawful_next_matches_route": true,
+      "panel_truth_boundary_matches_route": true,
+      "panel_upstream_matches_route": true,
+      "progress_lawful_next_matches_route": true,
+      "progress_truth_boundary_matches_route": true,
+      "progress_upstream_matches_route": true,
+      "pulse_lawful_next_matches_route": true,
+      "pulse_truth_boundary_matches_route": true,
+      "pulse_upstream_matches_route": true
+    },
+    "committed": true,
+    "hard_failures": [],
+    "lawful_next": "review_anna_mvp_direction_v1",
+    "panel_hash": "876c38792a6144e7954543a2",
+    "progress_hash": "df99f6d46d0045dc73151dc7",
+    "pulse_hash": "2585d4277af351ba10952bd2",
+    "route_hash": "ed130c6d5731e78a78cda1bc",
+    "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260622T114925727957Z",
+    "status": "PASS",
+    "truth_boundary": "ANNA MVP direction build only. Writes a declarative direction document (lawful sub-chain, honest readiness ledger, thin-vertical-slice frontier, token gates, roadmap). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, uses no network/daemon/background/scheduler, claims no AGI/L3, approves no canon, and makes no revenue claim. ANNA birth stays gated behind its own lawful chain.",
+    "upstream_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ANNA_MVP_DIRECTION_V1_PROOF.json"
+  },
+  "backup_dir": "core/socc/route_authority/self_construction_autonomy/anna_mvp_direction_backups/20260622T114925724943Z",
+  "build_checks": {
+    "authority_at_current": true,
+    "birth_still_gated": true,
+    "entity_substrate_sealed": true,
+    "first_frontier_is_review": true,
+    "frontiers_nonempty": true,
+    "readiness_ledger_honest_has_absent_or_partial": true,
+    "seal_unlocks_this_step": true,
+    "thin_slice_selected": true
+  },
+  "capability": "SOCC_HAS_BUILT_ANNA_MVP_DIRECTION_THIN_VERTICAL_SLICE_FIRST",
+  "checks": {
+    "active_seal_exists": true,
+    "authority_at_current": true,
+    "birth_still_gated": true,
+    "build_checks_all_true": true,
+    "direction_document_only": true,
+    "enforcer_exists": true,
+    "entity_substrate_direction_exists": true,
+    "entity_substrate_sealed": true,
+    "first_frontier_is_review": true,
+    "frontiers_nonempty": true,
+    "no_agent_spawn": true,
+    "no_agi_claim": true,
+    "no_anna_birth": true,
+    "no_anna_instantiation": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_entity_birth": true,
+    "no_l3_claim": true,
+    "no_network": true,
+    "no_old_route_resume": true,
+    "no_revenue_claim": true,
+    "product_binding_surface_exists": true,
+    "readiness_ledger_honest_has_absent_or_partial": true,
+    "seal_proof_exists": true,
+    "seal_unlocks_this_step": true,
+    "thin_slice_selected": true
+  },
+  "created_at_msk": "2026-06-22T14:49:25+03:00",
+  "created_at_utc": "2026-06-22T11:49:25.724173+00:00",
+  "current_expected": "build_anna_mvp_direction_v1",
+  "depends_on_seal": "SOVEREIGN/PROOF/proof_chain/SOCC_SEAL_ENTITY_SUBSTRATE_V1_PROOF.json",
+  "direction": "SYSTEM/ANNA_MVP/ANNA_MVP_DIRECTION_V1.json",
+  "direction_hash": "6ac1d22fc3a636dd",
+  "direction_md": "SYSTEM/ANNA_MVP/ANNA_MVP_DIRECTION_V1.md",
+  "entity_born": false,
+  "final_canon_approval_allowed": false,
+  "first_frontier": "anna_mvp_thin_vertical_slice",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_ANNA_MVP_DIRECTION_V1_PROOF",
+  "next_after_pass": "review_anna_mvp_direction_v1",
+  "next_lawful_step": "review_anna_mvp_direction_v1",
+  "no_agent_spawn": true,
+  "no_agi_claim": true,
+  "no_anna_birth": true,
+  "no_anna_instantiation": true,
+  "no_background": true,
+  "no_daemon": true,
+  "no_entity_birth": true,
+  "no_l3_claim": true,
+  "no_network": true,
+  "no_revenue_claim": true,
+  "proof_hash": "f649599498b2e023",
+  "readiness_ledger": {
+    "anna_product": {
+      "have": "Telegram bot, rule-based triage, shallow per-client memory (wavecore-bot/anna)",
+      "missing": "real booking, CRM, calls/SMS/Max multichannel, payments, unkillable runtime",
+      "state": "PARTIAL"
+    },
+    "entity_birth_engine": {
+      "have": "sealed declarative entity substrate (10 surfaces, proofs, seal)",
+      "missing": "instantiation engine that reads surfaces and creates a live vertical agent",
+      "state": "PARTIAL"
+    },
+    "internal_living_wiki": {
+      "have": "knowledge_substrate/wiki.py builder; wavecore-bot vault (~100 files)",
+      "missing": "programmatic READ loop that feeds task-building; populated articles",
+      "state": "PARTIAL"
+    },
+    "multi_model_fallback": {
+      "have": "real Hermes + Codex gates (serial); claude-proxy HTTP passthrough",
+      "missing": "fallback orchestrator Cloud->Codex->Hermes (if one fails, next takes over)",
+      "state": "PARTIAL"
+    },
+    "quality_gates_atom_to_whole": {
+      "have": "scientific/hermes/codex gates, proof+enforcer, no-fake-pass, atomic transitions",
+      "missing": "general gate factory (currently per-domain scripts)",
+      "state": "HAVE"
+    },
+    "ticket_system": {
+      "have": "task_spec JSON with pass_conditions/target (cycle_2)",
+      "missing": "token budget field, agent list, MW-key, auto-generation from live request",
+      "state": "PARTIAL"
+    },
+    "token_budgeting": {
+      "have": "tick budget only (iteration counter)",
+      "missing": "token ledger, balance, est-vs-actual, budget-gate before work",
+      "state": "ABSENT"
+    }
+  },
+  "status": "PASS",
+  "stopped_after_step": true,
+  "truth_boundary": "ANNA MVP direction build only. Writes a declarative direction document (lawful sub-chain, honest readiness ledger, thin-vertical-slice frontier, token gates, roadmap). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, uses no network/daemon/background/scheduler, claims no AGI/L3, approves no canon, and makes no revenue claim. ANNA birth stays gated behind its own lawful chain.",
+  "warnings": []
+}

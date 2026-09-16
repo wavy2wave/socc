@@ -1,0 +1,50 @@
+{
+  "accepted_capabilities": {
+    "bounded_controlled_loop_execution": "PASS",
+    "bounded_loop_repeatability": "PASS",
+    "codex_hermes_governance": "PASS",
+    "continuity_contract": "BUILT_VALIDATED_REVIEWED",
+    "controlled_continuous_autonomy_seal": "PASS",
+    "first_lawful_controlled_run": "EXECUTED_VALIDATED_REVIEWED",
+    "migration_from_supramental_agent": "REBOUND_BY_PROOF_CHAIN",
+    "runtime_operator_panel": "PASS",
+    "stable_operating_mode": "BUILT_VALIDATED_REVIEWED"
+  },
+  "accepted_step": "final_accept_socc_working_base_v1",
+  "canonical_root": "/Users/wavysexy/SOCC",
+  "created_at_utc": "2026-06-08T19:19:02.049486+00:00",
+  "do_not_repeat": [
+    "do not restart migration from scratch",
+    "do not rebuild already passed bounded loop lineage",
+    "do not duplicate accepted foundation",
+    "do not bypass current_lawful_next",
+    "do not start daemon/background loop without separate lawful authorization"
+  ],
+  "foundation": "FOUNDATION/SOCC_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_V1.json",
+  "foundation_review": "FOUNDATION/SOCC_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_REVIEW_V1.json",
+  "foundation_validation": "FOUNDATION/SOCC_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_VALIDATION_V1.json",
+  "id": "SOCC_WORKING_BASE_V1",
+  "lawful_next": "socc_working_base_accepted_v1",
+  "meaning": "SOCC is accepted as the current working base after migration from supramental-agent into the new SOCC root.",
+  "operating_rule": {
+    "codex_hermes_repair_required_on_lawful_failure": true,
+    "default_step_limit": 1,
+    "entrypoint": "current_lawful_next_only",
+    "operator_panel_required": true,
+    "proof_required": true,
+    "route_pulse_control_alignment_required": true,
+    "stop_after_bounded_step": true
+  },
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "status": "PASS",
+  "truth_boundary": "Final working base acceptance only. No daemon/background/network.",
+  "working_base_state": "ACCEPTED"
+}

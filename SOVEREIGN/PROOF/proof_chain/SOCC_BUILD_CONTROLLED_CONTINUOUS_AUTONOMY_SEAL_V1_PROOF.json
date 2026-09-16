@@ -1,0 +1,31 @@
+{
+  "agi_claim_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/build_controlled_continuous_autonomy_seal_20260608T185013Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/build_controlled_continuous_autonomy_seal_20260608T185013Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/build_controlled_continuous_autonomy_seal_20260608T185013Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_proofs": [],
+  "changed": [
+    "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1.json",
+    "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T18:50:13.622125+00:00",
+  "current_before": "build_controlled_continuous_autonomy_seal_v1",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_BUILD_CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1_PROOF",
+  "missing_artifacts": [],
+  "missing_proofs": [],
+  "network_used": false,
+  "next_after_seal": "validate_controlled_continuous_autonomy_seal_v1",
+  "observe_pass": true,
+  "status": "PASS",
+  "truth_boundary": "Controlled continuous autonomy seal only. No daemon/background/network.",
+  "warnings": []
+}

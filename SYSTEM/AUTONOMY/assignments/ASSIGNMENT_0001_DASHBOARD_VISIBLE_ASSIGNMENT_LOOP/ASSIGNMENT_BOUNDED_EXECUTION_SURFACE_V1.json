@@ -1,0 +1,110 @@
+{
+  "allowed_writes": [
+    "SYSTEM/DASHBOARD/ASSIGNMENT_0001_RUNTIME_PANEL_V1.json",
+    "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/RUNTIME/",
+    "MEMORY_WAVE/reports/assignments/ASSIGNMENT_0001_RUNTIME_MEMORY_V1.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+    "MIGRATION/audits/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1.json"
+  ],
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:39:15.232912+00:00",
+  "current_expected": "build_assignment_bounded_execution_surface_v1",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "execution_purpose": "Run one bounded local assignment execution session to materialize the dashboard-visible assignment autonomy loop artifacts.",
+  "execution_scope": {
+    "agi_claim_allowed": false,
+    "background_allowed": false,
+    "daemon_allowed": false,
+    "l3_claim_allowed": false,
+    "max_sessions": 1,
+    "max_ticks": 1,
+    "mode": "single_foreground_bounded_execution_session",
+    "must_stop_after_run": true,
+    "mw_route_allowed": false,
+    "network_allowed": false,
+    "old_route_resume_allowed": false,
+    "operator_foreground_only": true
+  },
+  "forbidden_writes": [
+    "core/socc/route_authority/* except lawful next transition fields",
+    "old supramental-agent route files",
+    "network config",
+    "launch agents",
+    "daemon plist",
+    "cron jobs",
+    "background workers",
+    "MW route"
+  ],
+  "future_frontiers": [
+    "review_assignment_bounded_execution_surface_v1",
+    "accept_assignment_bounded_execution_surface_v1",
+    "run_assignment_bounded_execution_session_v1",
+    "validate_assignment_bounded_execution_session_v1",
+    "review_assignment_bounded_execution_session_v1",
+    "accept_assignment_bounded_execution_session_v1",
+    "seal_assignment_autonomous_self_construction_step_v1",
+    "build_entity_substrate_direction_v1"
+  ],
+  "id": "ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_V1",
+  "next_required_step": "review_assignment_bounded_execution_surface_v1",
+  "pass_definition": {
+    "fail_if": [
+      "any daemon/background/network action is attempted",
+      "old route is resumed",
+      "execution exceeds one bounded tick",
+      "proof/memory/dashboard missing",
+      "route authority does not match expected run frontier"
+    ],
+    "pass_only_if": [
+      "route authority equals run_assignment_bounded_execution_session_v1",
+      "exactly one bounded foreground session runs",
+      "runtime dashboard panel is written",
+      "runtime assignment state is written",
+      "proof is written",
+      "memory is written",
+      "stop is observed",
+      "no daemon/background/network/old route/MW/L3"
+    ]
+  },
+  "pre_run_checks_required": {
+    "Codex_gate_pass": true,
+    "Hermes_gate_pass": true,
+    "bounded_surface_accepted": true,
+    "construction_plan_accepted": true,
+    "dashboard_visible": true,
+    "memory_required": true,
+    "proof_required": true,
+    "route_authority_equals_run_frontier": "run_assignment_bounded_execution_session_v1",
+    "scientific_gate_pass": true,
+    "stop_required": true
+  },
+  "run_outputs_required": {
+    "bounded_stop_observed": true,
+    "lawful_next_after_run": true,
+    "memory_record": true,
+    "proof_chain": true,
+    "runtime_assignment_state": true,
+    "runtime_dashboard_panel": true
+  },
+  "runtime_artifacts_to_build": [
+    {
+      "path": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_RUNTIME_PANEL_V1.json",
+      "purpose": "Operator-visible runtime panel showing assignment, direction, current stage, gates, proof, memory, stop and next."
+    },
+    {
+      "path": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/RUNTIME/ASSIGNMENT_RUNTIME_STATE_V1.json",
+      "purpose": "Machine-readable runtime state for the assignment loop."
+    },
+    {
+      "path": "MEMORY_WAVE/reports/assignments/ASSIGNMENT_0001_RUNTIME_MEMORY_V1.json",
+      "purpose": "Memory record that bounded execution occurred and stopped."
+    },
+    {
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+      "purpose": "Proof that bounded execution wrote expected artifacts and stopped."
+    }
+  ],
+  "status": "BUILT_CANDIDATE",
+  "surface_type": "BOUNDED_ASSIGNMENT_EXECUTION_SURFACE",
+  "truth_boundary": "Execution surface build only. It authorizes no execution until separate review and acceptance. No daemon/background/network/old route/MW/L3."
+}

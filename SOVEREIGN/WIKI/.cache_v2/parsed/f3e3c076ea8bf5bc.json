@@ -1,0 +1,1 @@
+{"claims": [{"text": "Validation confirms first lawful intent proposal packet is aligned, proof-bound, review-required, and non-executing.", "line": 10, "entities": ["Proof"], "intent": "requirement", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 1, "Proof": 1}}

@@ -1,0 +1,18 @@
+{
+  "created_at_utc": "2026-06-08T20:28:22.724577+00:00",
+  "current_step": "execute_bounded_controlled_loop_v1",
+  "id": "SOCC_BOUNDED_CONTROLLED_LOOP_EXECUTION_REBOUND_V1",
+  "lawful_next": "validate_bounded_controlled_loop_execution_v1",
+  "mode": "exact_old_proof_rebind",
+  "old_evidence": {
+    "iteration_pass_count": 3,
+    "iterations": [
+      "/Users/wavysexy/supramental-agent/core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_1_V1_PROOF.json",
+      "/Users/wavysexy/supramental-agent/core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_2_V1_PROOF.json",
+      "/Users/wavysexy/supramental-agent/core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_3_V1_PROOF.json"
+    ],
+    "run_proof": "/Users/wavysexy/supramental-agent/core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_V1_PROOF.json"
+  },
+  "status": "PASS",
+  "truth_boundary": "Rebind old bounded loop execution proof only. No raw execution now."
+}

@@ -1,0 +1,19 @@
+{
+  "id": "resale-avito-RU-9ddcc0cbb3",
+  "ts": "2026-06-30T17:13:54.219246+00:00",
+  "organ": "MINT",
+  "status": "PASS",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": true
+  },
+  "hard_failures": [],
+  "next_after_pass": "t6_emit_verified_tx",
+  "next_lawful_step": "emit",
+  "truth_boundary": "dry-run: verified из симуляции (песочница)",
+  "proof_hash": "ac2213c9571b2d4c"
+}

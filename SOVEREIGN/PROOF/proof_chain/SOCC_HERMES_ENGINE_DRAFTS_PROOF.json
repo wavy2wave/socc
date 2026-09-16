@@ -1,0 +1,32 @@
+{
+  "born": false,
+  "capability": "HERMES_DRAFTS_EVIDENCE_BOUND_TOUCHES_PENDING_APPROVE",
+  "checks": {
+    "all_cite_real_evidence": true,
+    "all_pending_approve": true,
+    "drafts_produced": true,
+    "no_network": true,
+    "no_unproven_claims": true,
+    "nothing_sent": true
+  },
+  "created_at_msk": "2026-06-30T15:29:04+03:00",
+  "created_at_utc": "2026-06-30T12:29:04.605896+00:00",
+  "does_not_prove": [
+    "actual send (operator approve = fire)",
+    "follow-up sequence h4, objection-bank h5 (later)"
+  ],
+  "drafts": 3,
+  "engine": "scripts/socc/hermes_engine_v1.py",
+  "hard_failures": [],
+  "id": "SOCC_HERMES_ENGINE_DRAFTS_PROOF",
+  "network_used": false,
+  "proof_hash": "ab1a53c32efece45",
+  "proves": [
+    "HERMES h0..h2: ingest SCOUT targets → draft personalized touch on real pain → queue PENDING_APPROVE",
+    "H1 law: nothing sent without approve (sent=False on all)"
+  ],
+  "queue": "entity_substrate/domains/_hermes_queue.json",
+  "sent": 0,
+  "status": "PASS",
+  "truth_boundary": "HERMES drafts proven. Nothing sent (H1). Every draft cites real SCOUT evidence. Sending = operator fire. No network."
+}

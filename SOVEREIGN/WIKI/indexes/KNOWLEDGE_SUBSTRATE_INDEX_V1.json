@@ -1,0 +1,30 @@
+{
+  "articles": {
+    "anna": {
+      "governance_counts": {
+        "conflicting": 802,
+        "current": 100,
+        "deprecated": 1,
+        "historical": 2030
+      },
+      "page_json": "SOVEREIGN/WIKI/pages/anna.json",
+      "page_md": "SOVEREIGN/WIKI/pages/anna.md",
+      "source_count": 112,
+      "timeline": "SOVEREIGN/WIKI/evolution/anna_timeline_v1.json"
+    },
+    "entity_substrate": {
+      "governance_counts": {
+        "conflicting": 598,
+        "current": 49,
+        "deprecated": 2,
+        "historical": 929
+      },
+      "page_json": "SOVEREIGN/WIKI/pages/entity_substrate.json",
+      "page_md": "SOVEREIGN/WIKI/pages/entity_substrate.md",
+      "source_count": 84,
+      "timeline": "SOVEREIGN/WIKI/evolution/entity_substrate_timeline_v1.json"
+    }
+  },
+  "id": "KNOWLEDGE_SUBSTRATE_INDEX_V1",
+  "updated_at_utc": "2026-06-17T12:03:51.355300+00:00"
+}

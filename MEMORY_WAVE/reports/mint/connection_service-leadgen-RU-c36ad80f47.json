@@ -1,0 +1,17 @@
+{
+  "id": "service-leadgen-RU-c36ad80f47",
+  "ts": "2026-06-30T15:08:15.315311+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": false
+  },
+  "hard_failures": [
+    "warden_gate"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-c36ad80f47_repair_required",
+  "truth_boundary": "WARDEN: RL1: связка принимает/переводит чужие средства (мул/дроп)",
+  "proof_hash": "f099e4e7b038dd08"
+}

@@ -1,0 +1,9 @@
+{
+  "active_run_surface": "SYSTEM/CYCLE/foreground_tick_run_surface/SOCC_FIRST_FOREGROUND_TICK_RUN_SURFACE_V1.json",
+  "created_at_utc": "2026-06-09T13:34:21.897206+00:00",
+  "id": "ACTIVE_FIRST_FOREGROUND_TICK_RUN_SURFACE",
+  "next_required_step": "validate_socc_first_foreground_tick_run_surface_v1",
+  "source_active_accepted_tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/ACTIVE_ACCEPTED_FIRST_FOREGROUND_TICK_PLAN.json",
+  "status": "ACTIVE_CANDIDATE_FOR_VALIDATION",
+  "truth_boundary": "This run surface is non-executing. It defines how a future foreground tick may be run after validation/review/acceptance. It does not run the tick."
+}

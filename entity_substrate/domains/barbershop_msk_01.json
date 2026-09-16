@@ -1,0 +1,10 @@
+{
+  "id": "barbershop_msk_01",
+  "persona": { "name": "Алиса", "tone": "дружелюбно, на ты, коротко" },
+  "vocabulary": ["фейд", "тейпер", "бородка", "стрижка машинкой", "камуфляж седины"],
+  "sources": ["price_list.pdf", "masters.md", "hours.md"],
+  "integration": { "type": "yclients", "creds_ref": "vault://barbershop_msk_01/yclients" },
+  "icp_signals": ["no_online_booking", "slow_dm_reply"],
+  "channels": ["telegram", "instagram_dm"],
+  "pricing": { "metric": "пропущенная запись", "avg_ticket": 1500 }
+}

@@ -1,0 +1,11 @@
+{
+  "created_at_msk": "2026-06-16T16:49:16+03:00",
+  "created_at_utc": "2026-06-16T13:49:16.254555+00:00",
+  "id": "ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1_MEMORY",
+  "memory_effect": "SOCC built route-authority truth-boundary/status-panel synchronization. Pulse, panel, and show command now prefer CURRENT_ROUTE_AUTHORITY.truth_boundary.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1_PROOF.json",
+  "real_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "status": "PASS",
+  "sync": "core/socc/autonomy/self_building/truth_boundary_panel_sync/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1.json",
+  "truth_boundary": "Route-authority truth-boundary/status-panel sync build only. This makes pulse, panel, and show command prefer CURRENT_ROUTE_AUTHORITY.truth_boundary as the visible truth boundary. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

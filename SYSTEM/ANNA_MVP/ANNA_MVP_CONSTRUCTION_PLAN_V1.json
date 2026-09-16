@@ -1,0 +1,82 @@
+{
+  "checks": {
+    "authority_at_current": true,
+    "enforcer_exists": true,
+    "no_agent_spawn": true,
+    "no_agi_claim": true,
+    "no_anna_birth": true,
+    "no_anna_instantiation": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_entity_birth": true,
+    "no_l3_claim": true,
+    "no_mw_route": true,
+    "no_network": true,
+    "no_old_route_resume": true,
+    "no_revenue_claim": true,
+    "no_scheduler": true,
+    "predecessor_points_to_current": true,
+    "predecessor_proof_exists": true,
+    "predecessor_proof_pass": true
+  },
+  "created_at_utc": "2026-06-22T11:56:14.948169+00:00",
+  "hard_failures": [],
+  "id": "ANNA_MVP_CONSTRUCTION_PLAN_V1",
+  "mandatory_rules": {
+    "Codex_gate_required_if_code_or_patch": true,
+    "Hermes_gate_required": true,
+    "bounded_scope": true,
+    "bounded_stop_required": true,
+    "filesystem_safe": true,
+    "idempotent": true,
+    "memory_required": true,
+    "no_background": true,
+    "no_birth_without_seal_and_proof": true,
+    "no_daemon": true,
+    "no_network_without_scope": true,
+    "proof_chain_required": true,
+    "review_accept_before_execution": true,
+    "scientific_quality_gate_required": true,
+    "stop_condition": true,
+    "token_budget_required": true
+  },
+  "next_chain": [
+    "build_anna_mvp_bounded_execution_surface_v1",
+    "review_anna_mvp_bounded_execution_surface_v1",
+    "accept_anna_mvp_bounded_execution_surface_v1",
+    "run_anna_mvp_bounded_execution_session_v1",
+    "validate_anna_mvp_bounded_execution_session_v1",
+    "review_anna_mvp_bounded_execution_session_v1",
+    "accept_anna_mvp_bounded_execution_session_v1",
+    "seal_anna_mvp_v1",
+    "ship_anna_mvp_to_first_clinic_v1"
+  ],
+  "plan_for": "anna_mvp_thin_vertical_slice",
+  "plan_state": "BUILT_CANDIDATE",
+  "required_runtime_surfaces": [
+    "anna_identity_surface",
+    "anna_skill_booking_surface",
+    "anna_memory_binding_surface",
+    "anna_channel_telegram_surface",
+    "anna_runtime_panel"
+  ],
+  "status": "PASS",
+  "thin_slice": {
+    "births": "exactly one ANNA (dental) object from the sealed substrate",
+    "channel": "telegram",
+    "memory": "per-client profile + history (reuse wavecore-bot/anna)",
+    "out_of_scope": [
+      "self-marketing",
+      "calls/sms/max",
+      "payments",
+      "crm",
+      "multi-clinic"
+    ],
+    "skill": "booking intent -> appointment record (local store first)"
+  },
+  "token_budget_estimate": {
+    "note": "token ledger is ABSENT (roadmap item 1); budget metered once ledger exists",
+    "state": "ESTIMATE_PENDING_LEDGER"
+  },
+  "truth_boundary": "ANNA MVP lawful chain step (document/verification only). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, no daemon/background/network, no revenue claim. ANNA birth is gated to its own bounded session behind seal."
+}

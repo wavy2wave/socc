@@ -1,0 +1,1 @@
+{"claims": [{"text": "«⚠️ линия объявила goal=ANNA, но правит graph.html (тема=память/виз) — дрейф. Перешпилить или handoff?»", "line": 41, "entities": ["ANNA"], "intent": "definition", "polarity": "assert"}], "dates": [], "entity_counts": {"ANNA": 3, "Telegram": 1, "Booking": 3, "Wikipedia": 1, "SOCC": 3, "Daemon": 1}}

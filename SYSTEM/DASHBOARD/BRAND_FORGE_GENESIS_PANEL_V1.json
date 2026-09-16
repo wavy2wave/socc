@@ -1,0 +1,21 @@
+{
+  "id": "BRAND_FORGE_GENESIS_PANEL_V1",
+  "created_at_utc": "2026-06-29T00:00:00+00:00",
+  "cell": "BRAND_FORGE_CELL_V1",
+  "cell_born": true,
+  "brand_forged": false,
+  "stage": "brand_forge_genesis",
+  "current": "brand_forge_genesis_v1",
+  "next": "accept_brand_forge_genesis_v1",
+  "line": "SYSTEM/BRAND_FORGE/BRAND_FORGE_LINE_V1.json",
+  "current_frontier": "F0.4",
+  "next_frontier_after_accept": "F1.0",
+  "frontiers_total": 25,
+  "frontiers_accepted": 0,
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BRAND_FORGE_GENESIS_V1_PROOF.json",
+  "roles_count": 9,
+  "gates": ["SCIENTIFIC", "HERMES", "CODEX", "GUARDIAN"],
+  "hard_failures": [],
+  "status": "PASS",
+  "truth_boundary": "Brand Forge genesis panel. Cell born and gated at genesis close. No brand forged, no pixels, no network, no revenue. Awaiting creator acceptance to unlock the strategy core (F1.0)."
+}

@@ -1,0 +1,63 @@
+{
+  "accepted_layers": {
+    "bounded_loop_execution": "PASS",
+    "bounded_loop_repeatability": "PASS",
+    "bounded_loop_review": "PASS",
+    "bounded_loop_validation": "PASS",
+    "codex_hermes_governance": "PASS",
+    "route_pulse_control_alignment": "PASS",
+    "runtime_operator_panel": "PASS"
+  },
+  "capability_statement": {
+    "meaning": "SOCC has proven bounded loop execution, validation, review, repeatability, operator panel, and Codex/Hermes governance. It may proceed only through lawful next step, proof-chain, idempotent guard, review gates, and operator-visible panel.",
+    "name": "controlled_continuous_self_construction",
+    "not_meaning": [
+      "not background daemon enabled",
+      "not unbounded autonomous mutation",
+      "not AGI/entity claim",
+      "not network-enabled autonomy",
+      "not queue widening without route authority"
+    ]
+  },
+  "created_at_utc": "2026-06-08T18:50:13.154023+00:00",
+  "current_step": "build_controlled_continuous_autonomy_seal_v1",
+  "distance_to_continuous_autonomy": "99.9%",
+  "id": "CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1",
+  "lawful_next": "validate_controlled_continuous_autonomy_seal_v1",
+  "next_after_seal": "validate_controlled_continuous_autonomy_seal_v1",
+  "required_artifacts": {
+    "codex_hermes_adoption": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_ADOPTION_V1.json",
+    "codex_hermes_contract": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_CONTRACT_V1.json",
+    "codex_hermes_review": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_REVIEW_V1.json",
+    "codex_hermes_validation": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_VALIDATION_V1.json",
+    "operator_panel": "SYSTEM/INTERFACE/panel/SOCC_RUNTIME_OPERATOR_PANEL_V1.md",
+    "panel_adoption": "SYSTEM/INTERFACE/panel/RUNTIME_OPERATOR_PANEL_ADOPTION_V1.json",
+    "panel_review": "SYSTEM/INTERFACE/panel/RUNTIME_OPERATOR_PANEL_ADOPTION_REVIEW_V1.json",
+    "panel_validation": "SYSTEM/INTERFACE/panel/RUNTIME_OPERATOR_PANEL_ADOPTION_VALIDATION_V1.json",
+    "repeatability_report": "core/socc/controlled_loop/bounded_execution_run/rebind/BOUNDED_LOOP_REPEATABILITY_REPORT_V1.json"
+  },
+  "required_proofs": {
+    "bounded_loop_execution_rebind": "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_EXECUTE_BOUNDED_CONTROLLED_LOOP_FROM_OLD_LINEAGE_V1_PROOF.json",
+    "bounded_loop_repeatability": "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_BOUNDED_LOOP_REPEATABILITY_REPORT_V1_PROOF.json",
+    "bounded_loop_review": "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_REVIEW_BOUNDED_CONTROLLED_LOOP_EXECUTION_V1_PROOF.json",
+    "bounded_loop_validation": "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_VALIDATE_BOUNDED_CONTROLLED_LOOP_EXECUTION_V1_PROOF.json",
+    "codex_hermes_adoption": "SOVEREIGN/PROOF/proof_chain/SOCC_ADOPT_CODEX_HERMES_GOVERNANCE_V1_PROOF.json",
+    "codex_hermes_review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_CODEX_HERMES_GOVERNANCE_ADOPTION_V1_PROOF.json",
+    "codex_hermes_validation": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_CODEX_HERMES_GOVERNANCE_ADOPTION_V1_PROOF.json",
+    "runtime_panel_adoption": "SOVEREIGN/PROOF/proof_chain/SOCC_REBIND_RUNTIME_OPERATOR_PANEL_ADOPTION_V1_PROOF.json",
+    "runtime_panel_review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_RUNTIME_OPERATOR_PANEL_ADOPTION_V1_PROOF.json",
+    "runtime_panel_validation": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_RUNTIME_OPERATOR_PANEL_ADOPTION_V1_PROOF.json"
+  },
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "seal_type": "controlled_continuous_autonomy_ready_not_daemon_enabled",
+  "status": "PASS",
+  "truth_boundary": "This seal proves readiness for controlled continuous autonomy path. It does not start daemon/background/network."
+}

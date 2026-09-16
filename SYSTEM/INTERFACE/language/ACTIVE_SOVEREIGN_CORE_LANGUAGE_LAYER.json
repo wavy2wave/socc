@@ -1,0 +1,11 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+  "active_language_layer": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_V1.json",
+  "created_at_utc": "2026-06-09T09:14:28.125913+00:00",
+  "id": "ACTIVE_SOVEREIGN_CORE_LANGUAGE_LAYER",
+  "mode": "NON_EXECUTING_LANGUAGE_ORGAN",
+  "next_required_step": "build_socc_language_dashboard_binding_v1",
+  "status": "ACTIVE",
+  "truth_boundary": "Active language pointer is read/reference only. It does not execute language."
+}

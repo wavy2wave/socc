@@ -1,0 +1,36 @@
+{
+  "active_root": "/Users/wavysexy/SOCC",
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "autonomy_pulse": "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+  "background_loop_enabled": false,
+  "changed": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "SYSTEM/KERNEL/SOCC_PRODUCT_CANON_V1.md",
+    "SYSTEM/INTERFACE/observe/SOCC_CHAT_HANDOFF_V1.json",
+    "SYSTEM/INTERFACE/observe/SOCC_CHAT_HANDOFF_V1.md",
+    "scripts/socc/socc_observe_v1.py"
+  ],
+  "control_panel": "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+  "created_at_utc": "2026-06-08T17:50:26.856561+00:00",
+  "current_lawful_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_SAFE_FRONTIER_BOOT_REBIND_V3_PROOF",
+  "memory_files": 16,
+  "network_used": false,
+  "observe_pass": true,
+  "observe_rc": 0,
+  "old_root": "/Users/wavysexy/supramental-agent",
+  "proof_files": 60,
+  "route_authority": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+  "self_building_files": 109,
+  "status": "PASS",
+  "truth_boundary": "Safe frontier boot rebind. No tick executed. No daemon/background/network/entity/ANNA/AGI claim.",
+  "warnings": [
+    "ROUTE_PULSE_NEXT_DIFF::validate_route_authority_truth_boundary_panel_sync_v1 != enable_self_building_mode_v1",
+    "ROUTE_CONTROL_NEXT_DIFF::validate_route_authority_truth_boundary_panel_sync_v1 != prove_persistent_loop_proven_from_managed_runtime_v1"
+  ]
+}

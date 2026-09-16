@@ -1,0 +1,742 @@
+{
+  "active_memory_files": 3573,
+  "active_proof_files": 1174,
+  "active_self_building_files": 4743,
+  "background_loop_enabled": false,
+  "backups": [
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_PROOF.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1_PROOF.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_PROOF.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/autonomy/self_building/status_panel/validation/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/runtime_operator_panel_adoption_20260608T183846Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_PROOF_V1.json",
+    "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_MEMORY.json",
+    "proofs/socc/build_controlled_autonomy_visible_status_panel_v1.proof.json",
+    "proofs/socc/review_controlled_autonomy_visible_status_panel_v1.proof.json",
+    "proofs/socc/validate_controlled_autonomy_visible_status_panel_v1.proof.json",
+    "route_authority/proof/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json",
+    "route_authority/proof/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json",
+    "route_authority/proof/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json",
+    "route_authority/proof/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_REVIEW_V1.json",
+    "route_authority/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_PROOF.json",
+    "memory_waves/socc/review_controlled_autonomy_visible_status_panel_v1.memory.json",
+    "reports/socc/review_controlled_autonomy_visible_status_panel_v1.report.json",
+    "dashboards/socc/controlled_autonomy_visible_status_panel_v1.json",
+    "route_authority/self_construction_autonomy/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json",
+    "route_authority/self_construction_autonomy/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_EXECUTION_V1.json",
+    "route_authority/self_construction_autonomy/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json",
+    "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_MEMORY.json",
+    "core/socc/autonomy/self_building/status_panel/validation/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1.json",
+    "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_MEMORY.json",
+    "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.json",
+    "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+    "reports/socc/build_controlled_autonomy_visible_status_panel_v1.report.json",
+    "reports/socc/validate_controlled_autonomy_visible_status_panel_v1.report.json",
+    "SYSTEM/INTERFACE/panel/RUNTIME_OPERATOR_PANEL_ADOPTION_V1.json",
+    "SYSTEM/INTERFACE/panel/SOCC_RUNTIME_OPERATOR_PANEL_V1.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "copy_results": {
+    "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_MEMORY.json": "COPIED",
+    "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_MEMORY.json": "COPIED",
+    "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_MEMORY.json": "COPIED",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_PROOF.json": "COPIED",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1_PROOF.json": "COPIED",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_PROOF.json": "COPIED",
+    "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.json": "COPIED",
+    "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.md": "KEEP_IDENTICAL",
+    "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json": "COPIED",
+    "core/socc/autonomy/self_building/status_panel/validation/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1.json": "COPIED",
+    "dashboards/socc/controlled_autonomy_visible_status_panel_v1.json": "COPIED",
+    "memory_waves/socc/review_controlled_autonomy_visible_status_panel_v1.memory.json": "COPIED",
+    "proofs/socc/build_controlled_autonomy_visible_status_panel_v1.proof.json": "COPIED",
+    "proofs/socc/review_controlled_autonomy_visible_status_panel_v1.proof.json": "COPIED",
+    "proofs/socc/validate_controlled_autonomy_visible_status_panel_v1.proof.json": "COPIED",
+    "reports/socc/build_controlled_autonomy_visible_status_panel_v1.report.json": "COPIED",
+    "reports/socc/review_controlled_autonomy_visible_status_panel_v1.report.json": "COPIED",
+    "reports/socc/validate_controlled_autonomy_visible_status_panel_v1.report.json": "COPIED",
+    "route_authority/proof/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json": "COPIED",
+    "route_authority/proof/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json": "COPIED",
+    "route_authority/proof/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json": "COPIED",
+    "route_authority/proof/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json": "COPIED",
+    "route_authority/self_construction_autonomy/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json": "COPIED",
+    "route_authority/self_construction_autonomy/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json": "COPIED",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_REVIEW_V1.json": "COPIED",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_EXECUTION_V1.json": "COPIED",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_PROOF_V1.json": "COPIED",
+    "route_authority/self_construction_autonomy/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json": "COPIED",
+    "route_authority/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json": "COPIED"
+  },
+  "created_at_utc": "2026-06-08T18:38:49.694739+00:00",
+  "current_before": "build_runtime_operator_panel_adoption_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_REBIND_RUNTIME_OPERATOR_PANEL_ADOPTION_V1_PROOF",
+  "mode": "OLD_PANEL_RUNTIME_LINEAGE_ADOPTION",
+  "network_used": false,
+  "next_after_rebind": "validate_runtime_operator_panel_adoption_v1",
+  "observe_pass": true,
+  "panel_candidate_count": 1406,
+  "panel_pass_candidate_count": 854,
+  "panel_strong_pass_count": 678,
+  "script_candidate_count": 0,
+  "status": "PASS",
+  "top_pass_candidates": [
+    {
+      "class": "proof",
+      "next": "build_persistent_background_runtime_activation_boundary_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_PROOF_V1.json",
+      "score": 1590,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": "execute_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_MEMORY.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "validate_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "proofs/socc/build_controlled_autonomy_visible_status_panel_v1.proof.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "validate_controlled_persistent_loop_proof_protocol_v1",
+      "pass": true,
+      "rel": "proofs/socc/review_controlled_autonomy_visible_status_panel_v1.proof.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "review_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "proofs/socc/validate_controlled_autonomy_visible_status_panel_v1.proof.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "validate_persistent_runtime_operator_panel_and_control_loop_v1",
+      "pass": true,
+      "rel": "route_authority/proof/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "prove_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "route_authority/proof/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "build_persistent_background_runtime_activation_boundary_v1",
+      "pass": true,
+      "rel": "route_authority/proof/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "execute_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "route_authority/proof/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": "execute_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_REVIEW_V1.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": "execute_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json",
+      "score": 1550,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "build_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1_PROOF.json",
+      "score": 1520,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "build_self_building_status_panel_refresh_command_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_PROOF.json",
+      "score": 1520,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "validate_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1_PROOF.json",
+      "score": 1520,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "review_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_PROOF.json",
+      "score": 1520,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": "validate_controlled_persistent_loop_proof_protocol_v1",
+      "pass": true,
+      "rel": "memory_waves/socc/review_controlled_autonomy_visible_status_panel_v1.memory.json",
+      "score": 1510,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": "validate_controlled_persistent_loop_proof_protocol_v1",
+      "pass": true,
+      "rel": "reports/socc/review_controlled_autonomy_visible_status_panel_v1.report.json",
+      "score": 1510,
+      "status": "PASS"
+    },
+    {
+      "class": "memory",
+      "next": "validate_persistent_runtime_operator_panel_and_control_loop_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_MEMORY.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "memory",
+      "next": "prove_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_MEMORY.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "memory",
+      "next": "build_persistent_background_runtime_activation_boundary_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_MEMORY.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "validate_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "dashboards/socc/controlled_autonomy_visible_status_panel_v1.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "validate_persistent_runtime_operator_panel_and_control_loop_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "prove_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "prove_persistent_runtime_operator_panel_control_loop_probe_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_EXECUTION_V1.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "build_persistent_background_runtime_activation_boundary_v1",
+      "pass": true,
+      "rel": "route_authority/self_construction_autonomy/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json",
+      "score": 1500,
+      "status": "PASS"
+    },
+    {
+      "class": "validation",
+      "next": "review_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_MEMORY.json",
+      "score": 1490,
+      "status": "PASS"
+    },
+    {
+      "class": "validation",
+      "next": "review_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/status_panel/validation/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1.json",
+      "score": 1490,
+      "status": "VALIDATED"
+    },
+    {
+      "class": "review",
+      "next": "build_self_building_status_panel_refresh_command_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_MEMORY.json",
+      "score": 1480,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": "build_self_building_status_panel_refresh_command_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.json",
+      "score": 1480,
+      "status": "REVIEW_SEALED"
+    },
+    {
+      "class": "review",
+      "next": null,
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.md",
+      "score": 1480,
+      "status": null
+    },
+    {
+      "class": "panel",
+      "next": "validate_controlled_tick_repeatability_2_report_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+      "score": 1480,
+      "status": "PASS"
+    },
+    {
+      "class": "memory",
+      "next": "validate_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "memory_waves/socc/build_controlled_autonomy_visible_status_panel_v1.memory.json",
+      "score": 1460,
+      "status": "PASS"
+    },
+    {
+      "class": "memory",
+      "next": "review_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "memory_waves/socc/validate_controlled_autonomy_visible_status_panel_v1.memory.json",
+      "score": 1460,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "validate_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "reports/socc/build_controlled_autonomy_visible_status_panel_v1.report.json",
+      "score": 1460,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "review_controlled_autonomy_visible_status_panel_v1",
+      "pass": true,
+      "rel": "reports/socc/validate_controlled_autonomy_visible_status_panel_v1.report.json",
+      "score": 1460,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": null,
+      "pass": true,
+      "rel": "scripts/socc/execute_persistent_runtime_operator_panel_control_loop_probe_v1.py",
+      "score": 1460,
+      "status": null
+    },
+    {
+      "class": "proof",
+      "next": "build_self_building_cycle_2_candidate_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_REVIEW_V1_PROOF.json",
+      "score": 1440,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "validate_self_building_status_panel_refresh_command_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_V1_PROOF.json",
+      "score": 1440,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "review_self_building_status_panel_refresh_command_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_VALIDATION_V1_PROOF.json",
+      "score": 1440,
+      "status": "PASS"
+    },
+    {
+      "class": "review",
+      "next": null,
+      "pass": true,
+      "rel": "scripts/socc/review_self_building_runtime_status_panel_v1.py",
+      "score": 1440,
+      "status": null
+    },
+    {
+      "class": "memory",
+      "next": "build_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1_MEMORY.json",
+      "score": 1430,
+      "status": "PASS"
+    },
+    {
+      "class": "memory",
+      "next": "validate_self_building_runtime_status_panel_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1_MEMORY.json",
+      "score": 1430,
+      "status": "PASS"
+    },
+    {
+      "class": "proof",
+      "next": "execute_executable_pulse_tick_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/EXECUTABLE_PULSE_TICK_OPERATOR_APPROVAL_V1_PROOF.json",
+      "score": 1430,
+      "status": "PASS"
+    },
+    {
+      "class": "panel",
+      "next": "build_route_authority_atomic_commit_helper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T214449696121Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_route_authority_atomic_commit_helper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T214555380628Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_route_authority_atomic_commit_helper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T214653882807Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_atomic_commit_enforced_self_building_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T214804730383Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_atomic_commit_enforced_self_building_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T214929101193Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_atomic_commit_enforced_self_building_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T215035043527Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_enforced_self_building_next_target_selector_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T215246979194Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_enforced_self_building_next_target_selector_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T215405631412Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_enforced_self_building_next_target_selector_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T215623100093Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_enforced_self_building_next_target_selector_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T215727800263Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_self_building_effect_auditor_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T215925754875Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_self_building_effect_auditor_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T220037177053Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_self_building_effect_auditor_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T220146096625Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_self_building_effect_auditor_enforced_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T220407900465Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_self_building_effect_auditor_enforced_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T220534633464Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_self_building_effect_auditor_enforced_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T221604296385Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_next_self_building_cycle_under_effect_auditor_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T221727184506Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_next_self_building_cycle_under_effect_auditor_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T221847903649Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_next_self_building_cycle_under_effect_auditor_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T222453769860Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_idempotent_step_guard_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T222610494707Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_idempotent_step_guard_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T222807666776Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_idempotent_step_guard_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T222917258025Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_idempotent_guard_enforced_step_wrapper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T223032204407Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_idempotent_guard_enforced_step_wrapper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T223141158023Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_idempotent_guard_enforced_step_wrapper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T224206295566Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_idempotent_guard_wrapper_mandatory_integration_contract_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T224452363348Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_idempotent_guard_wrapper_mandatory_integration_contract_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T224612070894Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_idempotent_guard_wrapper_mandatory_integration_contract_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T224746463718Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_wrapper_integration_candidate_for_future_bounded_steps_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T224913624940Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_wrapper_integration_candidate_for_future_bounded_steps_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T225349400850Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_wrapper_integration_candidate_for_future_bounded_steps_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T225535934917Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_first_wrapper_integrated_bounded_step_candidate_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T230025889856Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_first_wrapper_integrated_bounded_step_candidate_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T230215458357Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_first_wrapper_integrated_bounded_step_candidate_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T230348924060Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "build_real_wrapper_enforced_bounded_step_execution_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T230522681238Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "validate_real_wrapper_enforced_bounded_step_execution_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T230658239321Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    },
+    {
+      "class": "panel",
+      "next": "review_real_wrapper_enforced_bounded_step_execution_lane_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260527T230830924659Z/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+      "score": 1430,
+      "status": "BUILT"
+    }
+  ],
+  "truth_boundary": "Panel adoption lineage rebind only. No daemon/background/network.",
+  "warnings": []
+}

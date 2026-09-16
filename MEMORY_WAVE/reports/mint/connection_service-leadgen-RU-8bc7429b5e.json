@@ -1,0 +1,21 @@
+{
+  "id": "service-leadgen-RU-8bc7429b5e",
+  "ts": "2026-06-30T14:44:46.330134+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price_from_formula": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": false
+  },
+  "hard_failures": [
+    "t4_verify_money"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-8bc7429b5e_repair_required",
+  "truth_boundary": "t4: bank_statement_ip: сумма ≤ 0 — деньги не прочитаны из источника (не verified, LG2)",
+  "proof_hash": "331bfec8a621852f"
+}

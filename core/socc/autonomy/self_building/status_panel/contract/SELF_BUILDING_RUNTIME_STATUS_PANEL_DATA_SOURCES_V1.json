@@ -1,0 +1,24 @@
+{
+  "created_at_msk": "2026-06-06T01:58:06+03:00",
+  "created_at_utc": "2026-06-05T22:58:06.942682+00:00",
+  "id": "SELF_BUILDING_RUNTIME_STATUS_PANEL_DATA_SOURCES_V1",
+  "memory_sources": [
+    "MEMORY_WAVE/reports/autonomy"
+  ],
+  "must_not_read": [
+    "network",
+    "external science intake without contract",
+    "private unrelated files"
+  ],
+  "primary_sources": [
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_TICK_EXECUTION_PLAN_REVIEW_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_TICK_EXECUTION_PLAN_VALIDATION_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/ONE_BOUNDED_SELF_BUILDING_TICK_RUN_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/AUTONOMY_EVOLUTION_MAP_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_MODE_CONTRACT_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/CREATOR_FEEDBACK_LAYER_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_READINESS_EVALUATOR_V1_PROOF.json"
+  ],
+  "status": "DEFINED",
+  "truth_boundary": "Data sources are local proof/memory paths only."
+}

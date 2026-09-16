@@ -111,10 +111,30 @@ class _Patch:
         return False
 
 
+# ВСЕ ключи, влияющие на выбор/готовность провайдера. _EnvForce гасит их по умолчанию: тест
+# перечисляет только то, что ему НУЖНО, и не зависит от того, что оператор вписал в mint/.env.
+# Зачем: 15.09 оператор вписал ЖИВЫЕ ключи YandexART — и три зелёных теста покраснели, хотя код
+# был прав (YAART теперь честно вооружён и автовыбор его берёт). Тест, читающий чужой .env, врёт
+# в обе стороны: зеленеет от чужого ключа и краснеет от рабочего.
+_PROVIDER_KEYS = (
+    "PHOTO_FORGE_PROVIDER",
+    "GEMINI_API_KEY", "GOOGLE_API_KEY", "GOOGLE_AI_STUDIO_KEY",
+    "OPENROUTER_API_KEY", "OPENAI_API_KEY",
+    "NEUROAPI_API_KEY", "RU_OPENAI_API_KEY",
+    "FUSIONBRAIN_API_KEY", "FUSIONBRAIN_SECRET_KEY",
+    "YAART_API_KEY", "YC_API_KEY", "YAART_FOLDER_ID", "YC_FOLDER_ID",
+)
+
+
 class _EnvForce:
     """Детерминированно выставить/снять env-переменные и заморозить _ENV_TRIED (чтобы _ensure_env
-    не перечитал .env поверх). value=None → переменную удалить. Откат гарантирован."""
+    не перечитал .env поверх). value=None → переменную удалить. Откат гарантирован.
+
+    Неперечисленные провайдерные ключи гасятся САМИ (см. _PROVIDER_KEYS): герметичность по умолчанию,
+    чтобы регрессия не зависела от того, что оператор вписал в mint/.env."""
     def __init__(self, **kv):
+        for _k in _PROVIDER_KEYS:
+            kv.setdefault(_k, None)
         self._kv = kv
         self._save = {}
         self._tried = None
@@ -973,6 +993,272 @@ def t40_shape_hint_from_dims():
                 f"parse={parse_ok} compat={compat}")
 
 
+# ══ YandexART (Яндекс Cloud) — самый дешёвый РФ-канал карточек (~$0.0176 flat) ════════════════
+# Форма: НЕ OpenAI Images и НЕ chat — ЯК: modelUri art://<folder>/… + generationOptions.aspectRatio
+# {4:5} + messages[{weight,text}]; POST imageGenerationAsync → Operation{id} → поллим GET /operations/<id>
+# до done → response.image = голый base64 JPEG. Изоляция: свои YAART_API_KEY/YAART_FOLDER_ID (алиас
+# YC_API_KEY/YC_FOLDER_ID), S3-статики YC_ACCESS_KEY_ID/YC_SECRET_KEY НИКОГДА не заимствуются.
+
+# ── F41: yandexart build_request — форма ЯК, НЕ OpenAI/chat/google; каталог в modelUri ──
+def t41_yandexart_request_shape():
+    with _EnvForce(YAART_FOLDER_ID="folder-test"):
+        with_f = pf._build_request_yandexart("рисуй плёнку")
+        disp = pf.build_request("рисуй плёнку", None, None, provider="yandexart")   # диспетчер делегирует
+    with _EnvForce(YAART_FOLDER_ID=""):
+        no_f = pf._build_request_yandexart("рисуй плёнку")
+    ok = (with_f["modelUri"] == "art://folder-test/yandex-art/latest"
+          and no_f["modelUri"] == "art:///yandex-art/latest"
+          and with_f["generationOptions"]["aspectRatio"] == {"widthRatio": "4", "heightRatio": "5"}
+          and with_f["messages"] == [{"weight": "1", "text": "рисуй плёнку"}]
+          and "prompt" not in with_f and "contents" not in with_f        # НЕ OpenAI и НЕ google
+          and disp.get("modelUri") == "art://folder-test/yandex-art/latest"
+          and disp.get("messages", [{}])[0].get("text") == "рисуй плёнку")
+    return ok, (f"uri={with_f['modelUri']} empty={no_f['modelUri']} "
+                f"ratio={with_f['generationOptions']['aspectRatio']} dispatch={bool(disp)}")
+
+
+# ── F42: yandexart авто-выбор + ИЗОЛЯЦИЯ (S3-статики YC_* не берём; алиас YC_API_KEY — берём) ──
+def t42_yandexart_autodetect_isolation():
+    # только свои YAART_* (нет google/fusionbrain/ru/openrouter) → авто yandexart
+    with _EnvForce(PHOTO_FORGE_PROVIDER=None, GEMINI_API_KEY=None, GOOGLE_API_KEY=None,
+                   GOOGLE_AI_STUDIO_KEY=None, FUSIONBRAIN_API_KEY=None, FUSIONBRAIN_SECRET_KEY=None,
+                   OPENROUTER_API_KEY=None, OPENAI_API_KEY=None, RU_OPENAI_API_KEY=None,
+                   NEUROAPI_API_KEY=None, YAART_API_KEY="ya-K", YAART_FOLDER_ID="ya-F"):
+        p_auto = pf._provider()
+        ready = pf._yaart_ready()
+    # ЧУЖИЕ S3-статики YC_ACCESS_KEY_ID/YC_SECRET_KEY → НЕ готов и НЕ yandexart (не заимствует соседей)
+    with _EnvForce(PHOTO_FORGE_PROVIDER=None, GEMINI_API_KEY=None, GOOGLE_API_KEY=None,
+                   GOOGLE_AI_STUDIO_KEY=None, FUSIONBRAIN_API_KEY=None, FUSIONBRAIN_SECRET_KEY=None,
+                   OPENROUTER_API_KEY=None, OPENAI_API_KEY=None, RU_OPENAI_API_KEY=None,
+                   NEUROAPI_API_KEY=None, YAART_API_KEY=None, YAART_FOLDER_ID=None,
+                   YC_API_KEY=None, YC_FOLDER_ID=None,
+                   YC_ACCESS_KEY_ID="AKIA123", YC_SECRET_KEY="s3secret"):
+        s3_key = pf._yaart_key()
+        s3_ready = pf._yaart_ready()
+        p_s3 = pf._provider()
+    # АЛИАС YC_API_KEY/YC_FOLDER_ID (сервисный API-ключ, НЕ S3) → готов
+    with _EnvForce(PHOTO_FORGE_PROVIDER=None, GEMINI_API_KEY=None, GOOGLE_API_KEY=None,
+                   GOOGLE_AI_STUDIO_KEY=None, FUSIONBRAIN_API_KEY=None, FUSIONBRAIN_SECRET_KEY=None,
+                   OPENROUTER_API_KEY=None, OPENAI_API_KEY=None, RU_OPENAI_API_KEY=None,
+                   NEUROAPI_API_KEY=None, YAART_API_KEY=None, YAART_FOLDER_ID=None,
+                   YC_ACCESS_KEY_ID=None, YC_SECRET_KEY=None,
+                   YC_API_KEY="yc-K", YC_FOLDER_ID="yc-F"):
+        alias_key = pf._yaart_key()
+        alias_folder = pf._yaart_folder()
+        alias_ready = pf._yaart_ready()
+    # форс yandexart перебивает даже google-ключ
+    with _EnvForce(PHOTO_FORGE_PROVIDER="yandexart", GEMINI_API_KEY="AIza-TEST",
+                   YAART_API_KEY=None, YAART_FOLDER_ID=None):
+        p_forced = pf._provider()
+    ok = (p_auto == "yandexart" and ready
+          and s3_key is None and s3_ready is False and p_s3 != "yandexart"   # S3-статики НЕ органы
+          and alias_key == "yc-K" and alias_folder == "yc-F" and alias_ready
+          and p_forced == "yandexart")
+    return ok, (f"auto→{p_auto} ready={ready} s3_key={s3_key} s3_prov={p_s3} "
+                f"alias={alias_key}/{alias_folder} force→{p_forced}")
+
+
+# ── F43: yandexart dry — наружу 0, превью ЯК (modelUri + 4:5), edit→generate mode_note ──
+def t43_yandexart_dry_preview():
+    with _EnvForce(PHOTO_FORGE_PROVIDER="yandexart", YAART_API_KEY="ya-K", YAART_FOLDER_ID="ya-F"):
+        res = pf.forge(mode="generate", facts={"вид": "плёнка"}, dry=True)
+        res_edit = pf.forge(mode="edit", source="https://site/donor.jpg",
+                            facts={"вид": "плёнка"}, dry=True)
+    r = res.get("request", {})
+    ok = (res["dry"] is True and res.get("sent") is False
+          and res.get("provider") == "yandexart"
+          and res.get("model") == "art://ya-F/yandex-art/latest"
+          and res.get("est_cost_usd") == pf.YAART_EST_USD
+          and r.get("aspect_ratio") == "4:5" and r.get("has_source_image") is False
+          and res_edit.get("sent") is False and bool(res_edit.get("mode_note")))
+    return ok, (f"provider={res.get('provider')} sent={res.get('sent')} "
+                f"model={res.get('model')} est={res.get('est_cost_usd')} ar={r.get('aspect_ratio')}")
+
+
+# ── F44: yandexart ЖИВОЙ кадр (фейк-сеть: POST→op, GET→done+image) → ok, файл, расход в леджер ──
+def t44_yandexart_live_generate():
+    tmp = Path(tempfile.mkdtemp(prefix="forge_ya_test_"))
+    save_state, save_ledger, save_hunter, save_http = pf.STATE, pf.LEDGER, pf._hunter, pf._http_call
+    hits = []
+    b64 = base64.b64encode(_PNG).decode("ascii")
+
+    def _http(method, url, headers, body, timeout):
+        hits.append((method, url.replace(pf.YAART_API, ""), headers.get("Authorization")))
+        if url.endswith(pf.YAART_GEN_PATH):
+            return _resp(200, {"id": "op1", "done": False})        # асинхрон: операция принята
+        if pf.YAART_OPS_PATH + "op1" in url:
+            return _resp(200, {"done": True, "response": {"image": b64}})   # готово → base64 JPEG
+        return _resp(500)
+
+    try:
+        pf.STATE = tmp
+        pf.LEDGER = tmp / "photoforge_ledger.json"
+        pf._hunter = lambda: None                                # приёмка → ok_needs_human
+        pf._http_call = _http
+        with _EnvForce(PHOTO_FORGE_PROVIDER="yandexart", YAART_API_KEY="ya-TEST", YAART_FOLDER_ID="folder-test"):
+            res = pf.forge(mode="generate", facts={"вид": "плёнка"}, dry=False,
+                           out_dir=str(tmp), tag="yatst")
+        saved_ok = bool(res.get("path")) and Path(res["path"]).exists()
+        ledger = json.loads(pf.LEDGER.read_text(encoding="utf-8")) if pf.LEDGER.exists() else []
+        post_ok = bool(hits) and hits[0][0] == "POST" and hits[0][1] == pf.YAART_GEN_PATH
+        poll_ok = len(hits) == 2 and hits[1][0] == "GET" and pf.YAART_OPS_PATH + "op1" in hits[1][1]
+        auth = bool(hits) and hits[0][2] == "Api-Key ya-TEST"    # НЕ Bearer и НЕ x-goog
+        ok = (res.get("ok") is True and res.get("sent") is True and res.get("provider") == "yandexart"
+              and res.get("tier") == "ok_needs_human"
+              and res.get("cost_source") == "estimate" and res.get("cost_usd") == pf.YAART_EST_USD
+              and res.get("model") == "art://folder-test/yandex-art/latest"
+              and saved_ok and len(ledger) == 1
+              and ledger[0]["cost_source"] == "estimate" and ledger[0]["provider"] == "yandexart"
+              and post_ok and poll_ok and auth)
+        return ok, (f"ok={res.get('ok')} tier={res.get('tier')} cost={res.get('cost_usd')} "
+                    f"src={res.get('cost_source')} файл={'есть' if saved_ok else 'НЕТ'} "
+                    f"POST={post_ok} POLL={poll_ok} auth={'Api-Key' if auth else '-'}")
+    finally:
+        pf.STATE, pf.LEDGER, pf._hunter, pf._http_call = save_state, save_ledger, save_hunter, save_http
+        try:
+            import shutil
+            shutil.rmtree(tmp, ignore_errors=True)
+        except Exception:
+            pass
+
+
+# ── F45: yandexart 200-БЕЗ-КАРТИНКИ на ПЛАТНОМ канале → расход В ЛЕДЖЕР, ретраи считаются ──
+# Асинхрон-аналог F35: операция ПРИНЯТА (генерация пошла = вероятное списание), а кадра нет → каждая
+# попытка — строка в леджере (не «$0.00»), итог честный sum. У операции нет usage → цена=ОЦЕНКА.
+def t45_yandexart_no_image_ledgers_spend():
+    tmp = Path(tempfile.mkdtemp(prefix="forge_ya_nimg_"))
+    save_state, save_ledger, save_hunter, save_http = pf.STATE, pf.LEDGER, pf._hunter, pf._http_call
+    hits = []
+    est = pf.YAART_EST_USD
+
+    def _http(method, url, headers, body, timeout):
+        hits.append(method + " " + url.replace(pf.YAART_API, ""))
+        if url.endswith(pf.YAART_GEN_PATH):
+            return _resp(200, {"id": "opX", "done": False})
+        return _resp(200, {"done": True})                        # done, но response.image НЕТ → промах
+
+    try:
+        pf.STATE = tmp
+        pf.LEDGER = tmp / "led.json"
+        pf._hunter = lambda: None
+        pf._http_call = _http
+        with _EnvForce(PHOTO_FORGE_PROVIDER="yandexart", YAART_API_KEY="ya-TEST", YAART_FOLDER_ID="folder-test"):
+            res = pf.forge(mode="generate", facts={"вид": "плёнка"}, dry=False,
+                           retries=2, out_dir=str(tmp), tag="nimg")
+        ledger = json.loads(pf.LEDGER.read_text(encoding="utf-8")) if pf.LEDGER.exists() else []
+        n_calls = len(hits)
+        ok = (res.get("ok") is False and res.get("sent") is True
+              and n_calls == 6                                   # 3 попытки × (POST + 1 поллинг)
+              and len(ledger) == 3                               # каждая — строка в леджере
+              and all(e.get("tier") == "no_image" for e in ledger)
+              and all(e.get("cost_source") == "estimate_no_image" for e in ledger)
+              and all(e.get("cost_usd") == est for e in ledger)
+              and res.get("cost_source") == "sum"
+              and res.get("cost_usd") == round(3 * est, 6)
+              and res.get("path") is None)
+        return ok, (f"calls={n_calls} led={len(ledger)} sum={res.get('cost_usd')} "
+                    f"src={res.get('cost_source')} post={hits.count('POST' + pf.YAART_GEN_PATH) if hits else 0}")
+    finally:
+        pf.STATE, pf.LEDGER, pf._hunter, pf._http_call = save_state, save_ledger, save_hunter, save_http
+        try:
+            import shutil
+            shutil.rmtree(tmp, ignore_errors=True)
+        except Exception:
+            pass
+
+
+# ── F46: yandexart живой БЕЗ ключа/каталога → отказ ДО сети, 0 вызовов, леджера нет ──
+def t46_yandexart_live_refuses():
+    tmp = Path(tempfile.mkdtemp(prefix="forge_ya_refuse_"))
+    save_state, save_ledger, save_http = pf.STATE, pf.LEDGER, pf._http_call
+    hitsA, hitsB = [], []
+
+    def _httpA(method, url, headers, body, timeout):
+        hitsA.append(url)                                        # любая сеть здесь = ПРОВАЛ
+        return _resp(500)
+
+    def _httpB(method, url, headers, body, timeout):
+        hitsB.append(url)
+        return _resp(500)
+
+    try:
+        pf.STATE = tmp
+        # A: ключ ЕСТЬ, каталога НЕТ → modelUri не собрать → отказ
+        pf.LEDGER = tmp / "led_a.json"
+        pf._http_call = _httpA
+        with _EnvForce(PHOTO_FORGE_PROVIDER="yandexart", YAART_API_KEY="ya-TEST", YAART_FOLDER_ID=None):
+            resA = pf.forge(mode="generate", facts={"вид": "плёнка"}, dry=False, out_dir=str(tmp), tag="A")
+        caseA = (resA.get("ok") is False and resA.get("sent") is None
+                 and "YAART_FOLDER_ID" in str(resA.get("why"))
+                 and len(hitsA) == 0 and not pf.LEDGER.exists()
+                 and resA.get("cost_usd") is None)
+        # B: каталог ЕСТЬ, ключа НЕТ → живой недоступен
+        pf.LEDGER = tmp / "led_b.json"
+        pf._http_call = _httpB
+        with _EnvForce(PHOTO_FORGE_PROVIDER="yandexart", YAART_API_KEY=None, YAART_FOLDER_ID="folder-test"):
+            resB = pf.forge(mode="generate", facts={"вид": "плёнка"}, dry=False, out_dir=str(tmp), tag="B")
+        caseB = (resB.get("ok") is False and "ключ" in str(resB.get("why"))
+                 and len(hitsB) == 0 and not pf.LEDGER.exists())
+        ok = caseA and caseB
+        return ok, (f"A: ok={resA.get('ok')} сеть={len(hitsA)} why_fld={'YAART_FOLDER_ID' in str(resA.get('why'))} | "
+                    f"B: ok={resB.get('ok')} сеть={len(hitsB)} why_key={'ключ' in str(resB.get('why'))}")
+    finally:
+        pf.STATE, pf.LEDGER, pf._http_call = save_state, save_ledger, save_http
+        try:
+            import shutil
+            shutil.rmtree(tmp, ignore_errors=True)
+        except Exception:
+            pass
+
+
+# ── F47: yandexart поллинг — done:true возвращает операцию; вечный not-done упирается в дедлайн ──
+def t47_ya_poll_done_and_deadline():
+    save_time, save_http = pf.time, pf._http_call
+    hitsA, hitsB = [], []
+
+    def _http_done(method, url, headers, body, timeout):
+        hitsA.append(url)
+        return _resp(200, {"done": True, "response": {"image": "QUJD"}})
+
+    def _http_notdone(method, url, headers, body, timeout):
+        hitsB.append(url)
+        return _resp(200, {"done": False})
+
+    class _Clk:
+        """Фейковые часы: time() по расписанию, sleep мгновенно (без реальных 200с дедлайна)."""
+        def __init__(self, seq):
+            self._it = iter(seq)
+
+        def time(self):
+            return next(self._it, float("inf"))
+
+        def sleep(self, s):
+            return None
+
+    try:
+        # A: первый GET уже done → _ya_poll возвращает операцию без лишних опросов (1 GET)
+        pf.time = _Clk([0.0])
+        pf._http_call = _http_done
+        with _EnvForce(YAART_API_KEY="ya-TEST", YAART_FOLDER_ID="folder-test"):
+            opA = pf._ya_poll("op1", timeout_total=200)
+        caseA = (len(hitsA) == 1 and isinstance(opA, dict) and opA.get("done") is True)
+        # B: операция НЕ готова, дедлайн исчерпан (часы прыгнули) → RuntimeError про operation id
+        pf.time = _Clk([0.0, 100.0])
+        pf._http_call = _http_notdone
+        raised = None
+        with _EnvForce(YAART_API_KEY="ya-TEST", YAART_FOLDER_ID="folder-test"):
+            try:
+                pf._ya_poll("opB", timeout_total=5)
+            except RuntimeError as e:
+                raised = str(e)
+        caseB = (raised is not None and "opB" in raised and len(hitsB) == 1)
+        ok = caseA and caseB
+        return ok, (f"A: GETs={len(hitsA)} done={opA.get('done') if isinstance(opA, dict) else '-'} | "
+                    f"B: GETs={len(hitsB)} raise={'да' if raised else 'нет'}")
+    finally:
+        pf.time, pf._http_call = save_time, save_http
+
+
 TESTS = [
     ("F1  no_key_honest", t1_no_key_honest),
     ("F2  auth_401_is_keys", t2_auth_401_is_keys),
@@ -1014,6 +1300,13 @@ TESTS = [
     ("F38 subject_metrics", t38_subject_metrics),
     ("F39 verify_canon_subject_gate", t39_verify_canon_subject_gate),
     ("F40 shape_hint_from_dims", t40_shape_hint_from_dims),
+    ("F41 ya_request_shape", t41_yandexart_request_shape),
+    ("F42 ya_autodetect_iso", t42_yandexart_autodetect_isolation),
+    ("F43 ya_dry_preview", t43_yandexart_dry_preview),
+    ("F44 ya_live_generate", t44_yandexart_live_generate),
+    ("F45 ya_noimg_ledgers_spend", t45_yandexart_no_image_ledgers_spend),
+    ("F46 ya_refuses_nokey_nofolder", t46_yandexart_live_refuses),
+    ("F47 ya_poll_done_deadline", t47_ya_poll_done_and_deadline),
 ]
 
 

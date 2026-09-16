@@ -1,0 +1,13 @@
+{
+  "accepted_lineage": "MIGRATION/adoption/old_autonomy/SOCC_OLD_AUTONOMY_EVIDENCE_LINEAGE_ONLY_ACCEPTANCE_V1.json",
+  "adoption_candidate": "MIGRATION/adoption/old_autonomy/SOCC_OLD_L2_AUTONOMY_EVIDENCE_ADOPTION_CANDIDATE_V1.json",
+  "created_at_utc": "2026-06-09T14:17:10.313861+00:00",
+  "current_execution_line": "fresh_SOCC_route_authority",
+  "id": "OLD_AUTONOMY_LINEAGE_ACCEPTED_POINTER_V1",
+  "next_required_step": "build_fresh_socc_autonomy_status_surface_v1",
+  "old_evidence_role": "lineage_only_not_current_route",
+  "old_route_resume": false,
+  "review": "MIGRATION/adoption/old_autonomy/SOCC_OLD_AUTONOMY_EVIDENCE_LINEAGE_ONLY_REVIEW_V1.json",
+  "status": "ACTIVE_LINEAGE_POINTER",
+  "truth_boundary": "Old autonomy evidence is accepted only as lineage/migration proof. Fresh /SOCC remains the current lawful execution line."
+}

@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "validate_idempotent_step_guard_v1",
+  "panel_hash": "274fffc8343e102c8a676bd1",
+  "progress_hash": "79d60977c2599190a325a734",
+  "pulse_hash": "df34108f1fa38d09b076a2b0",
+  "route_hash": "b6dafff57ed496bceac62c1e",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260618T102909613554Z",
+  "status": "PASS",
+  "truth_boundary": "Idempotent step guard build only. This builds a bounded guard that detects already-committed or out-of-phase reruns and prevents destructive proof overwrite. It returns ALREADY_COMMITTED_NOOP for safe reruns and blocks backward reruns that would corrupt proof state. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_V1_PROOF.json"
+}

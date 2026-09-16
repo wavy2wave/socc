@@ -1,0 +1,181 @@
+{
+  "active_memory_files": 3559,
+  "active_proof_files": 1080,
+  "active_self_building_files": 4657,
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/exact_reuse_idempotent_step_guard_20260608T181614Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/exact_reuse_idempotent_step_guard_20260608T181614Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/exact_reuse_idempotent_step_guard_20260608T181614Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "scripts/socc/build_idempotent_step_guard_v1.py",
+    "scripts/socc/review_idempotent_step_guard_v1.py",
+    "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_REVIEW_V1_PROOF.json",
+    "MEMORY_WAVE/reports/autonomy/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/autonomy/IDEMPOTENT_STEP_GUARD_REVIEW_V1_MEMORY.json",
+    "core/socc/autonomy/self_building/idempotent_step_guard/validation/IDEMPOTENT_STEP_GUARD_VALIDATION_V1.json",
+    "core/socc/autonomy/self_building/idempotent_step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.json",
+    "core/socc/autonomy/self_building/idempotent_step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "copy_results": {
+    "MEMORY_WAVE/reports/autonomy/IDEMPOTENT_STEP_GUARD_REVIEW_V1_MEMORY.json": "COPIED",
+    "MEMORY_WAVE/reports/autonomy/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_MEMORY.json": "COPIED",
+    "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_REVIEW_V1_PROOF.json": "COPIED",
+    "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_PROOF.json": "COPIED",
+    "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_V1.json": "SOURCE_MISSING",
+    "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_V1.md": "SOURCE_MISSING",
+    "core/socc/autonomy/self_building/idempotent_step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.json": "COPIED",
+    "core/socc/autonomy/self_building/idempotent_step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.md": "COPIED",
+    "core/socc/autonomy/self_building/idempotent_step_guard/validation/IDEMPOTENT_STEP_GUARD_VALIDATION_V1.json": "COPIED",
+    "core/socc/autonomy/self_building/step_guard/IDEMPOTENT_STEP_GUARD_V1.json": "SOURCE_MISSING",
+    "core/socc/autonomy/self_building/step_guard/IDEMPOTENT_STEP_GUARD_V1.md": "SOURCE_MISSING",
+    "core/socc/autonomy/self_building/step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.json": "SOURCE_MISSING",
+    "core/socc/autonomy/self_building/step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.md": "SOURCE_MISSING",
+    "core/socc/autonomy/self_building/step_guard/validation/IDEMPOTENT_STEP_GUARD_VALIDATION_V1.json": "SOURCE_MISSING",
+    "scripts/socc/build_idempotent_step_guard_v1.py": "COPIED",
+    "scripts/socc/review_idempotent_step_guard_v1.py": "COPIED"
+  },
+  "created_at_utc": "2026-06-08T18:16:14.807992+00:00",
+  "current_next_before": "build_idempotent_step_guard_v1",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "evidence": [
+    {
+      "exists": true,
+      "next": null,
+      "pass": false,
+      "rel": "scripts/socc/build_idempotent_step_guard_v1.py",
+      "status": null
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": false,
+      "rel": "scripts/socc/review_idempotent_step_guard_v1.py",
+      "status": null
+    },
+    {
+      "exists": true,
+      "next": "review_idempotent_step_guard_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_idempotent_guard_enforced_step_wrapper_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_STEP_GUARD_REVIEW_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "review_idempotent_step_guard_v1",
+      "pass": true,
+      "rel": "MEMORY_WAVE/reports/autonomy/IDEMPOTENT_STEP_GUARD_VALIDATION_V1_MEMORY.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_idempotent_guard_enforced_step_wrapper_v1",
+      "pass": true,
+      "rel": "MEMORY_WAVE/reports/autonomy/IDEMPOTENT_STEP_GUARD_REVIEW_V1_MEMORY.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "review_idempotent_step_guard_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/idempotent_step_guard/validation/IDEMPOTENT_STEP_GUARD_VALIDATION_V1.json",
+      "status": "VALIDATED"
+    },
+    {
+      "exists": true,
+      "next": "build_idempotent_guard_enforced_step_wrapper_v1",
+      "pass": true,
+      "rel": "core/socc/autonomy/self_building/idempotent_step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.json",
+      "status": "REVIEW_SEALED"
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/idempotent_step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.md",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/idempotent_step_guard/IDEMPOTENT_STEP_GUARD_V1.md",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/step_guard/validation/IDEMPOTENT_STEP_GUARD_VALIDATION_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/step_guard/review/IDEMPOTENT_STEP_GUARD_REVIEW_V1.md",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/step_guard/IDEMPOTENT_STEP_GUARD_V1.json",
+      "status": null
+    },
+    {
+      "exists": false,
+      "next": null,
+      "pass": false,
+      "rel": "core/socc/autonomy/self_building/step_guard/IDEMPOTENT_STEP_GUARD_V1.md",
+      "status": null
+    }
+  ],
+  "hard_failures": [],
+  "id": "SOCC_EXACT_REUSE_IDEMPOTENT_STEP_GUARD_V1_PROOF",
+  "match_mode": "EXACT_ALLOWLIST_ONLY",
+  "network_used": false,
+  "new_root": "/Users/wavysexy/SOCC",
+  "next_after_exact_reuse": "build_idempotent_guard_enforced_step_wrapper_v1",
+  "observe_pass": true,
+  "observe_rc": 0,
+  "old_root": "/Users/wavysexy/supramental-agent",
+  "pass_evidence_count": 6,
+  "review_pass_count": 3,
+  "status": "PASS",
+  "step": "build_idempotent_step_guard_v1",
+  "step_executed_now": false,
+  "tick_executed": false,
+  "truth_boundary": "Exact allowlist reuse only. No fuzzy scan, no duplicate execution, no tick, no daemon/background/network/entity/ANNA/AGI claim.",
+  "validation_pass_count": 3,
+  "warnings": []
+}

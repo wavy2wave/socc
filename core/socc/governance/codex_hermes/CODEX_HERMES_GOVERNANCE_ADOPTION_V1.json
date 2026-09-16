@@ -1,0 +1,35 @@
+{
+  "contract": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_CONTRACT_V1.json",
+  "created_at_utc": "2026-06-08T18:45:52.815693+00:00",
+  "forensic_counts": {
+    "candidate_count": 5536,
+    "codex_pass_count": 878,
+    "hermes_pass_count": 765,
+    "law_governance_pass_count": 209,
+    "pass_count": 1982,
+    "repair_pass_count": 849
+  },
+  "forensic_report": "MIGRATION/audits/SOCC_CODEX_HERMES_GOVERNANCE_FORENSIC_V1.json",
+  "id": "CODEX_HERMES_GOVERNANCE_ADOPTION_V1",
+  "lawful_next": "validate_codex_hermes_governance_adoption_v1",
+  "new_step": "build_codex_hermes_governance_adoption_v1",
+  "selected_old_governance_lineage": [
+    "core/socc/repair_engine/proof/HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json",
+    "core/socc/control_room/proof/VALIDATE_MW19_HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json",
+    "core/socc/hermes_codex_combo/state/HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json",
+    "core/socc/hermes_codex_combo/proof/VALIDATE_HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json",
+    "core/socc/repair_engine/proof/MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_PROOF.json",
+    "core/socc/control_room/proof/VALIDATE_MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_V1_PROOF.json",
+    "core/socc/hermes_repair/proof/CONTROLLED_FAIL_REPAIRED_PASS_V1.json",
+    "core/socc/hermes_repair/proof/VALIDATE_FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json",
+    "core/socc/hermes_repair/state/FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json",
+    "core/socc/codex/bounded_repair_lane/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_V1.json",
+    "core/socc/codex/bounded_repair_lane_probe/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PROBE_V1.json",
+    "core/socc/codex/bounded_repair_lane_productive_use/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_V1.json",
+    "core/socc/codex/productive_use_gate/proof/CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_GATE_V1_PROOF.json",
+    "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_REPAIR_LOOP_SAFE_FAIL_V1.json",
+    "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_SAFE_FAIL_TARGET_REPAIR_V1.json"
+  ],
+  "status": "PASS",
+  "truth_boundary": "Adopts old Codex/Hermes governance lineage into new SOCC. Does not start daemon/background/network."
+}

@@ -1,0 +1,10 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_BUILD_PLAN_AND_GATES_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_BUILD_PLAN_AND_GATES_V1_PROOF.json",
+  "construction_plan": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_CONSTRUCTION_PLAN_V1.json",
+  "created_at_utc": "2026-06-09T15:38:18.812759+00:00",
+  "id": "ACTIVE_ACCEPTED_ASSIGNMENT_BUILD_PLAN_AND_GATES",
+  "next_required_step": "build_assignment_bounded_execution_surface_v1",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Acceptance authorizes bounded execution surface build only. No execution."
+}

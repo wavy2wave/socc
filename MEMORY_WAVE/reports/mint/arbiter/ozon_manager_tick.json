@@ -1,0 +1,140 @@
+{
+  "at": "2026-09-10T22:09:06.317065+00:00",
+  "tick_id": "OZTICK_20260910T220906",
+  "action": "FIX_ERRORS",
+  "kpis": {
+    "tracked": 1,
+    "working_set": 0,
+    "cards_on_shelf": 0,
+    "cards_errored": 1,
+    "errored_ids": [
+      "E1"
+    ],
+    "need_mapping": 0,
+    "ready_to_publish": 0,
+    "index_red": 0,
+    "index_red_ids": [],
+    "daily_today": {
+      "uploaded": 0,
+      "shipped": 0,
+      "delivered": 0,
+      "fixed": 0
+    },
+    "counters": {}
+  },
+  "result": {
+    "note": "1 карточек с errors[] (OZ1 «#errored→0»): E1. Починка вручную/fix_one — M2+.",
+    "errored_ids": [
+      "E1"
+    ]
+  },
+  "proof": {
+    "capability": "OZON_MANAGER_BOUNDED_TICK",
+    "tick_id": "OZTICK_20260910T220906",
+    "action": "FIX_ERRORS",
+    "checks": {
+      "state_loaded": true,
+      "self_honest": true,
+      "action_decided": true,
+      "no_fakepass": true,
+      "errors_first": true,
+      "no_money": true
+    },
+    "status": "PASS",
+    "no_daemon": true,
+    "no_background": true,
+    "moved_money": false,
+    "network_used": false,
+    "self_status": {
+      "ts": "2026-09-10T22:09:06.316407+00:00",
+      "organ": "OZON_MANAGER",
+      "charter": {
+        "id": "OZON_MANAGER",
+        "kind": "живой менеджер магазина Ozon (орган оси ARBITER; паутина узлов, не конвейер)",
+        "mandate": "вести магазин Ozon к успеху «как швейцарские часы»: карточки полностью заполнены и на витрине, зелёный индекс, быстрая отгрузка; контролировать доход и его РОСТ",
+        "is_not": [
+          "бот-однокнопка",
+          "демон/24-7",
+          "автопубликатор без отмашки",
+          "генератор ранга из воздуха"
+        ],
+        "responsibilities": [
+          "observe(state)",
+          "decide(<=1 action)",
+          "fix_errors",
+          "fix_index",
+          "publish_ready",
+          "resolve_mapping(operator)",
+          "keep_norms",
+          "emit_self",
+          "prove_tick",
+          "report(operator)"
+        ],
+        "laws": [
+          {
+            "code": "OZ1",
+            "text": "ни одна карточка не остаётся с ошибкой (цель #errored → 0); 200≠успех — читаем errors[], а не HTTP-код",
+            "enforced_by": "decide: FIX_ERRORS выше всего; state.kpis.cards_errored из реального READ"
+          },
+          {
+            "code": "OZ2",
+            "text": "категорию/обязательные атрибуты не выдумываем — need_mapping не летит",
+            "enforced_by": "card без category_id/attrs → write ok=False; decide→RESOLVE_MAPPING"
+          },
+          {
+            "code": "OZ3",
+            "text": "карточка DONE только на витрине (модерация OK И visible И stock>0)",
+            "enforced_by": "state.advance_lifecycle→ON_SHELF лишь при полном соответствии §4"
+          },
+          {
+            "code": "OZ4",
+            "text": "публикация доказана независимым READ витрины (не ответом на запись)",
+            "enforced_by": "proof.verify_publish real-source-only; published_verified в state"
+          },
+          {
+            "code": "OZ5",
+            "text": "красный/жёлтый индекс = карточку прячут → чинить цену или снять",
+            "enforced_by": "decide: index_red>0 → FIX_INDEX; econ.is_hidden_by_index"
+          },
+          {
+            "code": "OZ6",
+            "text": "реальная запись/деньги только по отмашке (not dry AND commit); RUBICON",
+            "enforced_by": "write двойной гейт; tick dry=True по умолчанию; proof.moved_money=False"
+          }
+        ],
+        "success_metric": "0 карточек с ошибкой ∧ индекс в зелёном ∧ доказанно на витрине больше ∧ дневные нормы (залито/отгружено/доставлено) растут; при равном — вперёд карточка с большей выгодой (econ.priority_weight)",
+        "cadence": "bounded-tick (внешний планировщик зовёт тик; между тиками помнит через state/shift)",
+        "honesty_boundary": [
+          "не публикует и не двигает деньги автономно (отмашка/RUBICON оператора)",
+          "cards_on_shelf только после proof-gate (независимый READ), не по ответу на import",
+          "сухая готовность ≠ живая карточка; 200 ≠ успех",
+          "нет данных индекса → цвет None, не выдумываем зелёный"
+        ]
+      },
+      "kpis": {
+        "cards_tracked": 1,
+        "cards_on_shelf": 0,
+        "cards_errored": 1,
+        "errored_ids": [
+          "E1"
+        ],
+        "need_mapping": 0,
+        "ready_to_publish": 0,
+        "index_red": 0,
+        "index_red_ids": [],
+        "index_clean": true
+      },
+      "daily_today": {
+        "uploaded": 0,
+        "shipped": 0,
+        "delivered": 0,
+        "fixed": 0
+      },
+      "counters": {},
+      "next_lawful_step": "ПОЧИНИТЬ ОШИБКИ: 1 карточек с errors[] (закон OZ1 «#errored→0») — E1",
+      "self_note": "каждое число ведёт к реальному READ витрины; живая карточка ≠ сухая готовность; публикация доказана только независимым READ (200≠успех)"
+    },
+    "truth_boundary": "Один ограниченный тик ОЗОН-МЕНЕДЖЕРА. Без демона, без движения денег. Реальная запись карточек — только по --commit оператора; публикация считается доказанной лишь после независимого READ витрины (200≠успех)."
+  },
+  "errors": []
+}

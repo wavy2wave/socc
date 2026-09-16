@@ -1,0 +1,14 @@
+{
+  "configured_backends": [
+    "openai:gpt-5.4-mini",
+    "anthropic:claude-sonnet-4-6",
+    "gateway x3"
+  ],
+  "error": "poison_output (cli): Failed to authenticate. API Error: 403 {\"error\":\"This organization has been disa",
+  "independent_floor": false,
+  "latency_ms": 22693,
+  "ok": false,
+  "sample": "",
+  "ts": "2026-07-13T16:24:14.896367+00:00",
+  "warning": "НЕТ независимого floor-ключа: вся цепочка = один freemodel-аккаунт (единая точка отказа). Добавь настоящий ANTHROPIC_API_KEY (sk-ant-*) или иной не-freemodel ключ в .secrets/anna_llm.env."
+}

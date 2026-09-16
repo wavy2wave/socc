@@ -1,0 +1,53 @@
+{
+  "candidates": [
+    {
+      "agi_claim": false,
+      "anna_birth": false,
+      "bounded": true,
+      "entity_birth": false,
+      "evidence_ready": true,
+      "final_canon_approval": false,
+      "name": "build_self_building_effect_auditor_v1",
+      "priority": 100,
+      "queue_widening": false,
+      "reason": "Next major risk after writeback control: prevent semantic-null PASS and prove material effect of each build.",
+      "requires_daemon": false,
+      "requires_network": false,
+      "requires_scheduler": false
+    },
+    {
+      "agi_claim": false,
+      "anna_birth": false,
+      "bounded": true,
+      "entity_birth": false,
+      "evidence_ready": true,
+      "final_canon_approval": false,
+      "name": "build_self_building_crash_recovery_probe_v1",
+      "priority": 80,
+      "queue_widening": false,
+      "reason": "Useful after atomic commits, but effect-auditor is more fundamental before runtime continuity.",
+      "requires_daemon": false,
+      "requires_network": false,
+      "requires_scheduler": false
+    },
+    {
+      "agi_claim": false,
+      "anna_birth": false,
+      "bounded": false,
+      "entity_birth": false,
+      "evidence_ready": false,
+      "final_canon_approval": false,
+      "name": "install_scheduler_v1",
+      "priority": 999,
+      "queue_widening": false,
+      "reason": "Intentionally rejected: scheduler is not yet lawful.",
+      "requires_daemon": false,
+      "requires_network": false,
+      "requires_scheduler": true
+    }
+  ],
+  "created_at_msk": "2026-06-17T01:02:04+03:00",
+  "created_at_utc": "2026-06-16T22:02:04.172095+00:00",
+  "id": "ENFORCED_SELF_BUILDING_NEXT_TARGET_CANDIDATE_QUEUE_V1",
+  "status": "BUILT"
+}

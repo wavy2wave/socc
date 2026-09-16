@@ -1,0 +1,49 @@
+{
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_sovereign_core_language_layer_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_sovereign_core_language_layer_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "created_at_utc": "2026-06-09T09:07:47.433183+00:00",
+  "expected_current": "socc_canonical_dashboard_renderer_accepted_v1",
+  "hard_failures": [],
+  "id": "SOCC_RECONCILE_LANGUAGE_LAYER_USING_DISCOVERED_AUTHORITY_PATHS_V1_PROOF",
+  "language_build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+  "language_build_proof_pass": true,
+  "language_layer": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_V1.json",
+  "locator_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_LOCATE_REAL_AUTHORITY_AND_LANGUAGE_ARTIFACTS_V1_PROOF.json",
+  "next_lawful_step": "validate_socc_sovereign_core_language_layer_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "e36d8f0c4096414f",
+  "status": "PASS",
+  "truth_boundary": "This patch only reconciles the already-built Sovereign Core Language Layer into the validation frontier using discovered real authority files. It does not validate, execute, start daemon, create MW route, or create parallel lawful_next.",
+  "validate_next": "validate_socc_sovereign_core_language_layer_v1",
+  "warnings": []
+}

@@ -89,6 +89,25 @@ RU_OPENAI_IMAGES_PATH = "/images/generations"         # OpenAI Images generate (
 RU_OPENAI_DEFAULT_MODEL = "gemini-3.1-flash-lite-image"   # самый дешёвый наследник Nano Banana (~$0.02)
 RU_OPENAI_EST_USD = 0.02                              # оценка кадра; факт возьмём из usage, если вернёт
 
+# ── ПЯТЫЙ ПРОВАЙДЕР: YandexART (Яндекс Cloud) — САМЫЙ дешёвый РФ-канал (~$0.0176/card flat) ───
+# Ультрасвип 2026-09-08: first-party Яндекс, modelUri art://<folder_id>/yandex-art/latest, эндпоинт
+#   POST https://llm.api.cloud.yandex.net/foundationModels/v1/imageGenerationAsync  (АСИНХРОННО)
+# → Operation{id}; поллить GET /operations/<id> до done:true → response.image = ГОЛЫЙ base64 JPEG.
+# Синк-путь /imageGeneration = 404 (не существует). Цена ПЛОСКАЯ за запрос ($0.0176 ≈1.6-2.2₽),
+# ~1.8× дешевле вшитого ru_openai (VseGPT flux 3.9₽). 0₽-старт: триал 30д + playground без платёжки;
+# РФ-карта, депозита/флора 1000₽ НЕТ. Auth: сервисный аккаунт + роль ai.art.user на каталог → API-ключ.
+# ИЗОЛЯЦИЯ ОРГАНА: свои YAART_API_KEY + YAART_FOLDER_ID (алиас YC_API_KEY/YC_FOLDER_ID); НИКОГДА не
+# берём пару S3-статиков YC_ACCESS_KEY_ID/YC_SECRET_KEY (.env) — это другой сервис, ключ не подойдёт.
+# Всегда шлём aspectRatio widthRatio:4/heightRatio:5 (4:5 РОДНОЙ для карточки; без него квадрат 1:1).
+# Форма тела ИНАЯ (modelUri+messages), поэтому — отдельная патчабельная ветвь как fusionbrain/ru_openai.
+YAART_API = "https://llm.api.cloud.yandex.net"        # хост (НЕ .yandexcloud.net — на нём 404)
+YAART_GEN_PATH = "/foundationModels/v1/imageGenerationAsync"
+YAART_OPS_PATH = "/operations/"                       # + operation id (поллинг результата)
+YAART_DEFAULT_MODEL = "yandex-art/latest"             # ярлык для лога; реальная модель = art://<folder>/…
+YAART_EST_USD = 0.0176                                # flat-оценка кадра; факт — в биллинге кабинета (у op нет usage)
+_YA_POLL_MAX_SEC = 200                                # генерция async может идти минуты (доки: «от пары минут»)
+_YA_POLL_DELAY = 3.0                                  # секунд между опросами операции
+
 # Транзиторные http-коды: моргнуло → ограниченный ретрай (не демон). 401/403 — ключи, НЕ ретраим.
 _TRANSIENT = (408, 409, 429, 500, 502, 503, 504)
 _MAX_RETRIES = 3
@@ -173,19 +192,54 @@ def _ru_openai_model():
     return os.getenv("RU_OPENAI_MODEL") or RU_OPENAI_DEFAULT_MODEL
 
 
+def _yaart_key():
+    """API-ключ сервисного аккаунта Yandex Cloud для YandexART — ТОЛЬКО родные
+    YAART_API_KEY / YC_API_KEY. Изоляция органа: НИКОГДА не берём S3-статики YC_ACCESS_KEY_ID/
+    YC_SECRET_KEY (они для AWS-совместимого бакета, на foundationModels дадут 401) и чужой ключ соседа.
+    Нет ключа → канал обезоружен (сухой режим), это честно.
+
+    РОЛЬ: в докстринге раньше стояло `ai.art.user` — такой роли в Yandex Cloud НЕ СУЩЕСТВУЕТ.
+    Проверено живьём 15.09.2026 (`yc iam role list`, 733 роли): верная роль —
+    **`ai.imageGeneration.user`**. Выдаётся на каталог сервисному аккаунту."""
+    _ensure_env()
+    return os.getenv("YAART_API_KEY") or os.getenv("YC_API_KEY") or None
+
+
+def _yaart_folder():
+    """folder_id каталога, где живёт art://<folder_id>/yandex-art/latest. Без каталога modelUri не собрать."""
+    _ensure_env()
+    return (os.getenv("YAART_FOLDER_ID") or os.getenv("YC_FOLDER_ID") or "").strip()
+
+
+def _yaart_ready():
+    """Канал YandexART готов: есть И ключ, И folder_id (обязательная пара, как у fusionbrain)."""
+    return bool(_yaart_key() and _yaart_folder())
+
+
+def _yaart_model_uri():
+    """modelUri для YandexART: art://<folder_id>/yandex-art/latest (каталог задаёт, ГДЕ живёт модель;
+    чужой каталог шлюз отвергает: «does not match with service account folder ID»). Пустой каталог →
+    заглушка art:///… — живой путь без каталога не пустится, это честно видно в превью."""
+    folder = _yaart_folder()
+    return "art://%s/yandex-art/latest" % folder if folder else "art:///yandex-art/latest"
+
+
 def _provider():
-    """Какой шлюз к генерации использовать. Override PHOTO_FORGE_PROVIDER=google|openrouter|fusionbrain|ru_openai;
-    иначе google при наличии ключа AIza (даровая Nano Banana предпочтительна), иначе fusionbrain при
-    паре ключей Kandinsky, иначе ru_openai при родном ключе RU-агрегатора (единственный ПЛАТНЫЙ канал,
-    достижимый из РФ-egress этой машины — openrouter гео-режется), иначе openrouter (дефолт-совместимость)."""
+    """Какой шлюз к генерации использовать. Override
+    PHOTO_FORGE_PROVIDER=google|openrouter|fusionbrain|ru_openai|yandexart;
+    иначе google при ключе AIza (даровая Nano Banana), иначе fusionbrain при паре ключей Kandinsky,
+    иначе yandexart при ключе+папке (дешёвый РФ-канал), иначе ru_openai при родном ключе RU-агрегатора
+    (ПЛАТНЫЙ, но достижимый из РФ — openrouter/google гео-режутся), иначе openrouter (дефолт)."""
     _ensure_env()
     forced = (os.getenv("PHOTO_FORGE_PROVIDER") or "").strip().lower()
-    if forced in ("google", "openrouter", "fusionbrain", "ru_openai"):
+    if forced in ("google", "openrouter", "fusionbrain", "ru_openai", "yandexart"):
         return forced
     if _google_key():
         return "google"
     if _fusionbrain_ready():
         return "fusionbrain"
+    if _yaart_ready():
+        return "yandexart"
     if _ru_openai_key():
         return "ru_openai"
     return "openrouter"
@@ -214,12 +268,15 @@ def _base_url():
 
 def _default_model():
     """Слаг активного провайдера (у Google — свой без префикса google/; у FusionBrain — ярлык kandinsky;
-    у ru_openai — override RU_OPENAI_MODEL, иначе самый дешёвый наследник Nano Banana на агрегаторе)."""
+    у yandexart — modelUri art://<folder>/yandex-art/latest; у ru_openai — override RU_OPENAI_MODEL,
+    иначе самый дешёвый наследник Nano Banana на агрегаторе)."""
     prov = _provider()
     if prov == "google":
         return GOOGLE_DEFAULT_MODEL
     if prov == "fusionbrain":
         return FUSIONBRAIN_DEFAULT_MODEL
+    if prov == "yandexart":
+        return _yaart_model_uri()
     if prov == "ru_openai":
         return _ru_openai_model()
     return DEFAULT_MODEL
@@ -237,7 +294,7 @@ def _endpoint_path(model=None):
 
 def creds_present():
     """Есть ли ключ ХОТЬ ОДНОГО провайдера для живого режима. Без ключей — только dry (0₽), без падения."""
-    return bool(_google_key() or _openrouter_key() or _fusionbrain_ready() or _ru_openai_key())
+    return bool(_google_key() or _openrouter_key() or _fusionbrain_ready() or _yaart_key() or _ru_openai_key())
 
 
 # ── Паспорт возможностей (честно, что орган РЕАЛЬНО умеет здесь) ────────────────────
@@ -667,6 +724,8 @@ def build_request(prompt, source_image_b64=None, model=None, provider=None):
         return _build_request_fusionbrain(prompt)
     if prov == "ru_openai":
         return _build_request_ru_openai(prompt, model)
+    if prov == "yandexart":
+        return _build_request_yandexart(prompt)
     return _build_request_openrouter(prompt, source_image_b64, model)
 
 
@@ -716,6 +775,26 @@ def _build_request_ru_openai(prompt, model=None, num_images=1, size=None):
     if size:
         body["size"] = size
     return body
+
+
+def _build_request_yandexart(prompt):
+    """Тело YandexART (imageGenerationAsync): генерация С НУЛЯ (наши пиксели), АСИНХРОННО.
+
+    modelUri = art://<folder_id>/yandex-art/latest — модель живёт в каталоге (folder_id обязателен;
+    пустой → заглушка 'art:///…', живой путь НЕ пустится без каталога). aspectRatio 4:5 РОДНОЙ
+    (widthRatio/heightRatio строки, как в доках; без него YandexART отдаст квадрат 1:1 — ловушка).
+    weight "1" на единственном сообщении — формат доков. Донор не прикладывается (диффузия) →
+    generate-only. Тело ЧИСТОЕ (без маркеров): уходит в сеть как есть; _preview/тесты узнают yandexart
+    по паре top-level 'modelUri' + 'messages'."""
+    folder = _yaart_folder()
+    model_uri = "art://%s/yandex-art/latest" % folder if folder else "art:///yandex-art/latest"
+    return {
+        "modelUri": model_uri,
+        "generationOptions": {
+            "aspectRatio": {"widthRatio": "4", "heightRatio": "5"},
+        },
+        "messages": [{"weight": "1", "text": prompt}],
+    }
 
 
 def _sniff_mime(b64):
@@ -1284,6 +1363,12 @@ def _preview(payload, limit=180):
                 "response_format": payload.get("response_format"), "n": payload.get("n"),
                 "text": (payload.get("prompt") or "")[:limit],
                 "has_source_image": False}
+    if "modelUri" in payload and "messages" in payload:    # yandexart (async): art://<folder>/… + messages[]
+        ar = (payload.get("generationOptions") or {}).get("aspectRatio") or {}
+        return {"provider": "yandexart", "model": payload.get("modelUri"),
+                "aspect_ratio": "%s:%s" % (ar.get("widthRatio"), ar.get("heightRatio")),
+                "text": (((payload.get("messages") or [{}])[0] or {}).get("text") or "")[:limit],
+                "has_source_image": False}
     out = {"provider": "openrouter", "model": payload.get("model"),
            "modalities": payload.get("modalities")}
     try:
@@ -1297,7 +1382,7 @@ def _preview(payload, limit=180):
 
 # ── Главная кузница ─────────────────────────────────────────────────────────────────
 def _forge_fusionbrain(source, facts, ops, mode, dry, model, retries,
-                       require_verified, out_dir, tag, canon, brand):
+                       require_verified, out_dir, tag, canon, brand, donor_phashes=()):
     """Ветка Kandinsky/FusionBrain: генерация С НУЛЯ по фактам (наши пиксели). Отдельный асинхронный
     путь (pipelines → run → poll status), т.к. авторизация парная и POST — multipart, чего нет у
     openrouter/google. Держит те же законы: dry→0₽, censored/пустой кадр = ПРОМАХ (ретрай), приёмка
@@ -1362,7 +1447,7 @@ def _forge_fusionbrain(source, facts, ops, mode, dry, model, retries,
                 cur_prompt = prompt + " Верни именно изображение товара."
             continue
 
-        verdict = (verify_canon(raw, facts, donor_phashes=()) if canon
+        verdict = (verify_canon(raw, facts, donor_phashes=donor_phashes) if canon
                    else verify_output(raw, facts, donor_phashes=()))
         event = {"ts": int(time.time()), "mode": "generate", "provider": "fusionbrain",
                  "model": use_model, "tier": verdict["tier"], "cost_usd": 0.0,
@@ -1399,7 +1484,7 @@ def _forge_fusionbrain(source, facts, ops, mode, dry, model, retries,
 
 
 def _forge_ru_openai(source, facts, ops, mode, dry, model, retries,
-                     require_verified, out_dir, tag, canon, brand):
+                     require_verified, out_dir, tag, canon, brand, donor_phashes=()):
     """Ветка RU-агрегатора (neuroapi/aitunnel) на OpenAI Images API: генерация С НУЛЯ по фактам
     (наши пиксели). Отдельный путь (как fusionbrain): форма /images/generations иная, чем
     chat/completions, и это generate-only (edit донора = /images/edits multipart тут не поддержан) →
@@ -1469,7 +1554,7 @@ def _forge_ru_openai(source, facts, ops, mode, dry, model, retries,
             cur_prompt = prompt + " Верни именно изображение товара."
             continue
 
-        verdict = (verify_canon(raw, facts, donor_phashes=()) if canon
+        verdict = (verify_canon(raw, facts, donor_phashes=donor_phashes) if canon
                    else verify_output(raw, facts, donor_phashes=()))
         cost = _usage_cost(resp)
         event = {"ts": int(time.time()), "mode": "generate", "provider": "ru_openai", "model": use_model,
@@ -1509,9 +1594,221 @@ def _forge_ru_openai(source, facts, ops, mode, dry, model, retries,
             "attempts": attempts}
 
 
+# ── Пятый провайдер: YandexART (Яндекс Cloud) — асинхронный шов и живая ветвь ─────────────
+def _ya_request(method, path, body=None, timeout=120):
+    """JSON-вызов к Yandex Cloud (YandexART): фиксированный хост + заголовок Api-Key, ЧЕРЕЗ общий шов
+    _http_call (тесты патчат ИМЕННО его, как у ru_openai — одна точка сети на всю кузницу).
+    401/403 → сразу ключи; транзитор → ограниченный ретрай; иной не-2xx → ForgeHTTPError."""
+    key = _yaart_key()
+    if not key:
+        raise RuntimeError("нет ключа YandexART (YAART_API_KEY / YC_API_KEY) — живой режим недоступен, используй dry")
+    url = YAART_API + path
+    headers = {"Authorization": "Api-Key " + key, "Content-Type": "application/json"}
+    retries = 0
+    last_exc = None
+    for attempt in range(_MAX_RETRIES):
+        try:
+            r = _http_call(method, url, headers, body, timeout)
+        except Exception as e:                       # сетевой сбой/timeout — транзиторный
+            last_exc = e
+            if attempt + 1 < _MAX_RETRIES:
+                import random
+                time.sleep(0.5 + random.random() * 1.0)
+                retries += 1
+                continue
+            raise RuntimeError("сеть к YandexART упала после %d ретраев: %s" % (retries, e))
+        if r.status_code in (401, 403):
+            raise ForgeHTTPError(r.status_code, _safe_json(r), url)
+        if r.status_code in _TRANSIENT and attempt + 1 < _MAX_RETRIES:
+            import random
+            time.sleep(0.5 + random.random() * 1.0)
+            retries += 1
+            continue
+        if not (200 <= r.status_code < 300):
+            raise ForgeHTTPError(r.status_code, _safe_json(r), url)
+        return _safe_json(r)
+    raise RuntimeError("исчерпаны ретраи к %s (последняя ошибка: %s)" % (url, last_exc))
+
+
+def _ya_poll(operation_id, timeout_total=_YA_POLL_MAX_SEC):
+    """Поллить GET /operations/<id> пока done:true. done+error тоже возвращаем (в _ya_op_image/error разбор).
+    Генерация async может идти минуты (доки) → суммарный дедлайн, не число попыток; превышен → исключение."""
+    import random
+    deadline = time.time() + timeout_total
+    while True:
+        op = _ya_request("GET", YAART_OPS_PATH + operation_id, timeout=30)
+        if isinstance(op, dict) and op.get("done"):
+            return op
+        if time.time() > deadline:
+            raise RuntimeError("YandexART операция %s не завершилась за %ss" % (operation_id, int(timeout_total)))
+        time.sleep(_YA_POLL_DELAY + random.random() * 0.5)
+
+
+def _ya_op_image(op):
+    """Готовая операция YandexART → (mime, bytes) картинки | (None, None) промах. 200 ≠ успех: верим байтам.
+    done+response.image = ГОЛЫЙ base64 JPEG (доки: jq -r '.response | .image' | base64 -d). Гейтим
+    сигнатурой — base64 текста ошибки не пройдёт _magic_is_image → честный ПРОМАХ."""
+    if not isinstance(op, dict) or not op.get("done"):
+        return None, None
+    resp = op.get("response")
+    if isinstance(resp, dict):
+        img = resp.get("image")
+        if isinstance(img, str) and img:
+            try:
+                raw = base64.b64decode(img, validate=False)
+            except Exception:
+                raw = None
+            if raw and _magic_is_image(raw):
+                return "image/jpeg", raw
+    return None, None
+
+
+def _ya_op_error(op):
+    """Ошибка готовой операции (done+error) — для честного лога попытки. None, если её нет."""
+    if isinstance(op, dict):
+        err = op.get("error")
+        if err:
+            if isinstance(err, dict):
+                return err.get("message") or str(err)
+            return str(err)
+    return None
+
+
+def _forge_yandexart(source, facts, ops, mode, dry, model, retries,
+                     require_verified, out_dir, tag, canon, brand, donor_phashes=()):
+    """Ветка YandexART (Яндекс Cloud) — САМЫЙ дешёвый РФ-канал карточек (~$0.0176/кадр flat): генерация
+    С НУЛЯ по фактам (наши пиксели), АСИНХРОННАЯ. Отдельный путь (как ru_openai/fusionbrain): свой хост
+    llm.api.cloud.yandex.net + Api-Key, тело modelUri + aspectRatio{4:5} + messages[weight,text]; POST
+    imageGenerationAsync → Operation{id} → поллим GET /operations/<id> до done → response.image = голый
+    base64 JPEG. generate-only (диффузия не редактирует донора) → честный откат edit→generate. Те же
+    законы: dry→0₽, пусто/error = ПРОМАХ (ретрай), приёмка verify_output/verify_canon, событие расхода
+    в леджер (оценка YAART_EST_USD — у операции нет usage-цены, факт смотри в биллинге кабинета)."""
+    facts = facts or {}
+    # ЧЕСТНАЯ ГРАНИЦА: рисуем С НУЛЯ, донор не редактируем → права ВСЕГДА наши пиксели.
+    rights = rights_note("generate")
+    prompt = build_prompt(facts, ops, "generate", brand=brand)
+    folder = _yaart_folder()
+    payload = _build_request_yandexart(prompt)
+    model_uri = payload["modelUri"]
+
+    # СУХОЙ ГЕЙТ — наружу ничего (0₽). Форма тела честно видна в превью (modelUri + 4:5).
+    if dry:
+        report = {"ok": True, "dry": True, "mode": "generate", "sent": False, "provider": "yandexart",
+                  "model": model_uri, "request": _preview(payload), "est_cost_usd": YAART_EST_USD,
+                  "rights": rights, "canon": bool(canon),
+                  "verify_plan": ("выход пройдёт verify_canon (образ/знак/pHash + белый фон + 4:5)"
+                                  if canon else "выход пройдёт photo_hunter (образ/знак/pHash)"),
+                  "note": "СУХОЙ ГЕЙТ: наружу ничего не ушло (0₽); живой кадр — dry=False по отмашке"}
+        if mode == "edit":
+            report["mode_note"] = ("запрошен edit, но YandexART не редактирует донора (диффузия) — "
+                                   "кую С НУЛЯ по фактам (наши пиксели)")
+        if not folder:
+            report["hint"] = "folder_id пока пуст → modelUri art://<folder>/… не собрать; впиши YAART_FOLDER_ID"
+        return report
+
+    if not _yaart_key():
+        return {"ok": False, "dry": False, "provider": "yandexart", "mode": "generate", "rights": rights,
+                "why": "нет ключа YandexART (YAART_API_KEY / YC_API_KEY) — живой режим недоступен",
+                "hint": "впиши ключ в mint/.env (gitignored)"}
+    if not folder:
+        return {"ok": False, "dry": False, "provider": "yandexart", "mode": "generate", "rights": rights,
+                "why": "нет YAART_FOLDER_ID — modelUri art://<folder>/yandex-art/latest без каталога не собрать",
+                "hint": "впиши folder_id каталога (сервисному аккаунту дана роль ai.art.user)"}
+
+    attempts = []
+    spent = 0.0                                   # сумма РЕАЛЬНОГО расхода по всем платным попыткам (честный итог)
+    cur_prompt = prompt
+    for i in range(retries + 1):
+        cur_payload = _build_request_yandexart(cur_prompt)
+        try:
+            op = _ya_request("POST", YAART_GEN_PATH, body=cur_payload)
+        except ForgeHTTPError as e:
+            return {"ok": False, "dry": False, "provider": "yandexart", "mode": "generate",
+                    "rights": rights, "status": e.status, "why": "шлюз YandexART: %s" % e,
+                    "attempts": attempts}
+        except Exception as e:
+            return {"ok": False, "dry": False, "provider": "yandexart", "mode": "generate",
+                    "rights": rights, "why": "YandexART: %s" % e, "attempts": attempts}
+        if not isinstance(op, dict) or not op.get("id"):
+            return {"ok": False, "dry": False, "provider": "yandexart", "mode": "generate",
+                    "rights": rights, "why": "YandexART не вернул operation id (200 ≠ успех)",
+                    "attempts": attempts}
+        op_id = op["id"]
+        if not op.get("done"):
+            try:
+                op = _ya_poll(op_id)
+            except Exception as e:
+                # операция ПРИНЯТА (генерация пошла → вероятное списание), а результат не дождались.
+                # Это НЕ 0₽: честно фиксируем оценку в леджер и уходим (не «тихий $0.00»).
+                ni_event = {"ts": int(time.time()), "mode": "generate", "provider": "yandexart",
+                            "model": model_uri, "tier": "poll_error",
+                            "cost_usd": YAART_EST_USD, "cost_source": "estimate_poll_error",
+                            "rights": rights["level"], "attempt": i, "saved": None,
+                            "op_id": op_id, "why": str(e)}
+                _ledger_append(ni_event)
+                spent += YAART_EST_USD
+                return {"ok": False, "dry": False, "sent": True, "mode": "generate", "rights": rights,
+                        "provider": "yandexart", "why": "YandexART poll: %s" % e,
+                        "cost_usd": round(spent, 6), "cost_source": "sum",
+                        "attempts": attempts + [{"i": i, "verdict": "poll_error", "why": str(e)}]}
+
+        mime, raw = _ya_op_image(op)
+        if not raw:                               # 200 ≠ успех: картинки нет → промах (error или пусто), ретрай
+            yaerr = _ya_op_error(op)
+            # ДЕНЬГИ-ПРАВДА: операция принята = генерация шла = вероятное списание → пишем оценку ДО continue.
+            ni_event = {"ts": int(time.time()), "mode": "generate", "provider": "yandexart",
+                        "model": model_uri, "tier": "no_image",
+                        "cost_usd": YAART_EST_USD, "cost_source": "estimate_no_image",
+                        "rights": rights["level"], "attempt": i, "saved": None,
+                        "op_id": op_id, "ya_error": yaerr}
+            _ledger_append(ni_event)
+            spent += YAART_EST_USD
+            attempts.append({"i": i, "verdict": "no_image", "ya_error": yaerr,
+                             "cost_usd": YAART_EST_USD, "cost_source": "estimate_no_image"})
+            cur_prompt = prompt + " Верни именно изображение товара."
+            continue
+
+        verdict = (verify_canon(raw, facts, donor_phashes=donor_phashes) if canon
+                   else verify_output(raw, facts, donor_phashes=()))
+        event = {"ts": int(time.time()), "mode": "generate", "provider": "yandexart", "model": model_uri,
+                 "tier": verdict["tier"], "cost_usd": YAART_EST_USD, "cost_source": "estimate",
+                 "rights": rights["level"], "attempt": i}
+
+        accept = verdict["tier"] == "verified" or (verdict["tier"] == "ok_needs_human"
+                                                   and not require_verified)
+        if accept:
+            path = _save_image(raw, mime or "image/jpeg", out_dir, tag)
+            event["saved"] = path
+            _ledger_append(event)
+            report = {"ok": True, "dry": False, "sent": True, "mode": "generate", "path": path,
+                      "provider": "yandexart", "model": model_uri,
+                      "tier": verdict["tier"], "verdict": verdict, "rights": rights,
+                      "cost_usd": event["cost_usd"], "cost_source": event["cost_source"],
+                      "attempts": attempts + [{"i": i, "verdict": verdict["tier"]}]}
+            if mode == "edit":
+                report["mode_note"] = ("запрошен edit → выкован С НУЛЯ по фактам (YandexART-ветвь не "
+                                       "редактирует донора); это наши пиксели, но не тот же SKU-кадр")
+            return report
+
+        _ledger_append(dict(event, saved=None))
+        spent += YAART_EST_USD                # отбитый кадр — тоже оплачен: копим в честный итог
+        attempts.append({"i": i, "verdict": verdict["tier"], "why": verdict["why"]})
+        if canon:
+            cur_prompt = (prompt + " КРИТИЧНО: строго чистый БЕЛЫЙ фон #FFFFFF без предметов, товар "
+                          "КРУПНО по центру — занимает почти весь кадр (≈85% высоты), небольшие "
+                          "равные поля, вертикаль 4:5, никакого текста и логотипов на изображении.")
+        else:
+            cur_prompt = prompt + " Чистый ровный фон, товар в центре, без текста и логотипов."
+
+    return {"ok": False, "dry": False, "sent": True, "mode": "generate", "rights": rights,
+            "provider": "yandexart", "why": "не удалось получить годный кадр за %d попыток" % (retries + 1),
+            "cost_usd": round(spent, 6), "cost_source": "sum",   # ЧЕСТНЫЙ итог сожжённого (леджер = построчно)
+            "attempts": attempts}
+
+
 def forge(source=None, facts=None, ops=None, mode="edit", dry=True, model=None,
           retries=2, require_verified=False, out_dir=None, tag="item",
-          canon=False, brand=None):
+          canon=False, brand=None, donor_phashes=()):
     """Сковать один кадр. dry=True (по умолчанию) — собрать запрос, НЕ слать, 0₽.
 
     mode='edit' требует source (донорский кадр). 'generate' — рисует с нуля по facts.
@@ -1543,12 +1840,20 @@ def forge(source=None, facts=None, ops=None, mode="edit", dry=True, model=None,
     # multipart). Делегируем ЦЕЛИКОМ (и dry, и live), чтобы ветки openrouter/google остались нетронуты.
     if prov == "fusionbrain":
         return _forge_fusionbrain(source, facts, ops, mode, dry, model, retries,
-                                  require_verified, out_dir, tag, canon, brand)
+                                  require_verified, out_dir, tag, canon, brand,
+                                  donor_phashes)
     if prov == "ru_openai":
         # RU-агрегатор (OpenAI Images) — тоже отдельный путь: тело /images/generations, generate-only.
         # Делегируем ЦЕЛИКОМ (dry+live), чтобы ветки openrouter/google остались байт-в-байт.
         return _forge_ru_openai(source, facts, ops, mode, dry, model, retries,
-                                require_verified, out_dir, tag, canon, brand)
+                                require_verified, out_dir, tag, canon, brand,
+                                donor_phashes)
+    if prov == "yandexart":
+        # YandexART (Яндекс Cloud) — дешёвый РФ-канал: АСИНХРОННАЯ генерация с нуля, свой Api-Key/хост
+        # (modelUri + поллинг operations). Тоже отдельная ветвь, как fusionbrain/ru_openai.
+        return _forge_yandexart(source, facts, ops, mode, dry, model, retries,
+                                require_verified, out_dir, tag, canon, brand,
+                                donor_phashes)
     rights = rights_note(mode)
     use_model = model or _default_model()
     src_b64, src_raw = (None, None)

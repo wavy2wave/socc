@@ -1,0 +1,12 @@
+{
+  "created_at_utc": "2026-06-20T22:40:05.939247+00:00",
+  "event": "Entity/Substrate plan and all three gates reviewed; ready for acceptance.",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_PLAN_AND_GATES_REVIEW_MEMORY_V1",
+  "next": "accept_entity_substrate_plan_and_gates_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_ENTITY_SUBSTRATE_PLAN_AND_GATES_V1_PROOF.json",
+  "review_status": "PASS",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "Entity/Substrate plan-and-gates review only. Confirms the construction plan and all three quality gates (scientific, hermes, codex) passed and chain correctly, and that the plan is ready for acceptance. Does not build Entity/Substrate, write patches, execute code, run a tick, enable loop/daemon/scheduler/background, use network, widen queue, birth Entity/ANNA, approve canon, or claim AGI."
+}

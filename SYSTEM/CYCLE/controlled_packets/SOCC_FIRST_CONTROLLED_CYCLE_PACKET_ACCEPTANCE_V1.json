@@ -1,0 +1,42 @@
+{
+  "acceptance_verdict": "FIRST_CONTROLLED_CYCLE_PACKET_ACCEPTED_AS_CANONICAL_NON_EXECUTING_FOREGROUND_PACKET",
+  "accepted_as": [
+    "canonical visible controlled cycle packet",
+    "foreground-only non-executing packet",
+    "proof-bound current/decision/boundary/proof/result/next carrier",
+    "input for first foreground tick plan"
+  ],
+  "accepted_cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "active_accepted_packet": "SYSTEM/CYCLE/controlled_packets/ACTIVE_ACCEPTED_FIRST_CONTROLLED_CYCLE_PACKET.json",
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_foreground_controlled_tick": "near_after_tick_plan_validation_review_acceptance",
+    "to_first_foreground_tick_plan": "next"
+  },
+  "capability": "SOCC_HAS_ACCEPTED_FIRST_CONTROLLED_CYCLE_PACKET",
+  "created_at_utc": "2026-06-09T13:23:34.480439+00:00",
+  "id": "SOCC_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_first_foreground_tick_plan_v1",
+  "not_accepted_as": [
+    "executor",
+    "foreground tick runner",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "required_visible_chain": [
+    "current",
+    "decision",
+    "boundary",
+    "proof",
+    "result",
+    "next"
+  ],
+  "review": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted first controlled cycle packet authorizes building the first foreground tick plan only. It does not run a tick and does not authorize daemon/background/network autonomy.",
+  "validation": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_VALIDATION_V1.json"
+}

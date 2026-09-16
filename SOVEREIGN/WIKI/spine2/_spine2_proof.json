@@ -1,0 +1,74 @@
+{
+  "id": "SOCC_MEMORY_SPINE_V2",
+  "built_at": "2026-08-17T21:06:44.185580+00:00",
+  "sources_scanned": 576,
+  "cache_hits": 576,
+  "junk_dropped": 28689,
+  "topics": {
+    "anna": {
+      "title": "ANNA — продукт (ИИ-администратор стоматологий)",
+      "current": 84,
+      "forks": 34,
+      "boundary_collapsed": 3535,
+      "timeline": 174,
+      "sources": 359,
+      "main_line_authored": true
+    },
+    "entity_substrate": {
+      "title": "Entity Substrate — орган рождения сущностей",
+      "current": 24,
+      "forks": 4,
+      "boundary_collapsed": 17,
+      "timeline": 87,
+      "sources": 100,
+      "main_line_authored": true
+    },
+    "socc": {
+      "title": "SOCC — суверенное ядро (кто такая система)",
+      "current": 0,
+      "forks": 1,
+      "boundary_collapsed": 88,
+      "timeline": 141,
+      "sources": 216,
+      "main_line_authored": true
+    },
+    "self_construction": {
+      "title": "Автономное строительство — самостройка SOCC",
+      "current": 26,
+      "forks": 6,
+      "boundary_collapsed": 2132,
+      "timeline": 163,
+      "sources": 242,
+      "main_line_authored": true
+    },
+    "memory": {
+      "title": "Память — Memory Wave + живая вики (знание системы)",
+      "current": 22,
+      "forks": 7,
+      "boundary_collapsed": 61,
+      "timeline": 158,
+      "sources": 192,
+      "main_line_authored": true
+    },
+    "law_proof": {
+      "title": "Закон и доказательство — Proof, гейты Codex/Hermes",
+      "current": 7,
+      "forks": 10,
+      "boundary_collapsed": 77,
+      "timeline": 164,
+      "sources": 304,
+      "main_line_authored": true
+    },
+    "vision": {
+      "title": "Видение — Supramental / AGI-направление",
+      "current": 2,
+      "forks": 3,
+      "boundary_collapsed": 0,
+      "timeline": 155,
+      "sources": 100,
+      "main_line_authored": true
+    }
+  },
+  "by": "meaning (TOPIC_MAP_V1)",
+  "truth_boundary": "Meaning-based spine build. Writes only under SOVEREIGN/WIKI/spine2/ + .cache_v2/. Atomic writes. No v1 spine, route authority, proof chain, network, daemon. no-LLM."
+}

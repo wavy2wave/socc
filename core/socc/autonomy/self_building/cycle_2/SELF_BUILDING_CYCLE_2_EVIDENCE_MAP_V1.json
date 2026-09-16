@@ -1,0 +1,17 @@
+{
+  "created_at_msk": "2026-06-16T12:56:29+03:00",
+  "created_at_utc": "2026-06-16T09:56:29.428748+00:00",
+  "evidence_claim": "Cycle 1 matured self-building mode and route-first display. Cycle 2 candidate targets remaining truth_boundary display drift.",
+  "id": "SELF_BUILDING_CYCLE_2_EVIDENCE_MAP_V1",
+  "sources": {
+    "current_route_authority": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "mode_enabled_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_MODE_ENABLED_V1_PROOF.json",
+    "panel": "core/socc/autonomy/self_building/status_panel/runtime/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+    "pulse": "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+    "route_sync_review_proof": "core/socc/approved_autonomy_lane_runner/proof/CURRENT_ROUTE_AUTHORITY_PANEL_SYNC_REVIEW_V1_PROOF.json",
+    "show_script": "scripts/socc/show_self_building_status_panel_v1.py",
+    "visible_tick_review_proof": "core/socc/approved_autonomy_lane_runner/proof/VISIBLE_SELF_BUILDING_MODE_ONE_TICK_REVIEW_V1_PROOF.json"
+  },
+  "status": "BUILT",
+  "truth_boundary": "Cycle-2 candidate build only. This prepares the second bounded self-building cycle candidate and selects route-authority truth-boundary/status-panel synchronization as the next improvement target. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

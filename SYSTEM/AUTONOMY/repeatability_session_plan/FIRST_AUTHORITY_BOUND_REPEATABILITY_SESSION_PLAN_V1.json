@@ -1,0 +1,98 @@
+{
+  "autonomy_distance": {
+    "continuous_foreground_autonomy": "requires two bounded sessions + validation/review/accept + seal",
+    "daemon_or_24_7_autonomy": "not_authorized",
+    "repeatability_gate": "accepted",
+    "repeatability_session_plan": "built_candidate_pending_review"
+  },
+  "created_at_utc": "2026-06-09T14:29:10.137247+00:00",
+  "current_execution_line": "fresh_SOCC_route_authority",
+  "current_expected": "build_first_authority_bound_repeatability_session_plan_v1",
+  "future_session_run_frontiers": [
+    "run_first_authority_bound_repeatability_session_01_v1",
+    "validate_first_authority_bound_repeatability_session_01_v1",
+    "review_first_authority_bound_repeatability_session_01_v1",
+    "accept_first_authority_bound_repeatability_session_01_v1",
+    "run_first_authority_bound_repeatability_session_02_v1",
+    "validate_first_authority_bound_repeatability_session_02_v1",
+    "review_first_authority_bound_repeatability_session_02_v1",
+    "accept_first_authority_bound_repeatability_session_02_v1",
+    "seal_first_authority_bound_repeatability_evidence_v1"
+  ],
+  "id": "FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN_V1",
+  "next_required_step": "review_first_authority_bound_repeatability_session_plan_v1",
+  "old_evidence_role": "lineage_only_not_current_route",
+  "pass_definition": {
+    "not_pass_if": [
+      "plan runs any session now",
+      "plan allows daemon/background/network",
+      "plan uses old route as current",
+      "plan has no proof or memory requirement",
+      "plan lacks stop condition"
+    ],
+    "session_plan_pass_only_if": [
+      "both sessions are planned under accepted gate",
+      "each session requires exact route preflight",
+      "each session requires proof and memory",
+      "each session has stop condition",
+      "no daemon/background/network/MW route is allowed",
+      "old route resume is forbidden",
+      "future run requires separate route frontier"
+    ]
+  },
+  "per_session_required_schema": [
+    "before",
+    "route_preflight",
+    "decision",
+    "boundary",
+    "action",
+    "result",
+    "proof",
+    "memory",
+    "next",
+    "stop"
+  ],
+  "plan_type": "FRESH_SOCC_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN",
+  "planned_sessions": [
+    {
+      "memory_required": true,
+      "must_stop_after_session": true,
+      "planned_ticks": 1,
+      "proof_required": true,
+      "route_preflight_required": true,
+      "session_id": "REPEATABILITY_SESSION_01",
+      "validation_required_after_session": true
+    },
+    {
+      "memory_required": true,
+      "must_stop_after_session": true,
+      "planned_ticks": 1,
+      "proof_required": true,
+      "route_preflight_required": true,
+      "session_id": "REPEATABILITY_SESSION_02",
+      "validation_required_after_session": true
+    }
+  ],
+  "purpose": "Plan the first two fresh authority-bound repeatability sessions. This plan does not run sessions.",
+  "session_plan_contract": {
+    "agi_claim_allowed": false,
+    "background_allowed": false,
+    "daemon_allowed": false,
+    "fresh_route_only": true,
+    "l3_claim_allowed": false,
+    "mw_route_allowed": false,
+    "network_allowed": false,
+    "old_route_resume_allowed": false,
+    "requires_plan_acceptance": true,
+    "requires_plan_review": true,
+    "requires_separate_future_session_run_frontier": true,
+    "run_now": false,
+    "session_count": 2,
+    "ticks_per_session": 1,
+    "total_planned_ticks": 2
+  },
+  "source_active_accepted_gate": "SYSTEM/AUTONOMY/repeatability_gate/ACTIVE_ACCEPTED_AUTHORITY_BOUND_REPEATABILITY_GATE.json",
+  "source_gate": "SYSTEM/AUTONOMY/repeatability_gate/AUTHORITY_BOUND_REPEATABILITY_GATE_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This is a session plan only. It does not run sessions, does not resume old route, does not start daemon/background/network, and does not claim L3."
+}

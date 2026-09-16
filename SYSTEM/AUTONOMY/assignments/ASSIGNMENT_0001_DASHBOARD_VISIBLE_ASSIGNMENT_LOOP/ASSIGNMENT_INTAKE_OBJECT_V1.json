@@ -1,0 +1,110 @@
+{
+  "assignment_text": "Build a working dashboard-visible assignment autonomy loop. SOCC must take an operator task, create a direction, generate a construction plan, run scientific quality filters, Hermes review gate, Codex code/patch quality gate, collect proof/memory/stop evidence, and expose the task/direction/progress in dashboard state. No daemon/background/network autonomy. No old route resume. No execution before review/accept gates.",
+  "assignment_type": "SOCC_INTERNAL_SELF_CONSTRUCTION_ASSIGNMENT",
+  "created_at_utc": "2026-06-09T15:28:28.691999+00:00",
+  "current_expected": "build_assignment_intake_object_v1",
+  "evidence_requirements": {
+    "Codex_gate_required_if_code_or_patch": true,
+    "Hermes_gate_required": true,
+    "bounded_stop_required": true,
+    "dashboard_pointer_required": true,
+    "memory_required": true,
+    "proof_chain_required": true,
+    "review_accept_before_execution": true,
+    "route_authority_preflight": true,
+    "scientific_gate_required": true
+  },
+  "expected_deliverable": {
+    "must_include": [
+      "assignment_id",
+      "direction_id",
+      "construction_plan",
+      "scientific_quality_gate",
+      "Hermes_gate",
+      "Codex_gate",
+      "dashboard_panel",
+      "proof_chain",
+      "memory",
+      "bounded_stop",
+      "lawful_next"
+    ],
+    "primary": "dashboard-visible assignment direction autonomy loop"
+  },
+  "future_frontiers": [
+    "review_assignment_intake_object_v1",
+    "accept_assignment_intake_object_v1",
+    "build_assignment_direction_v1",
+    "review_assignment_direction_v1",
+    "accept_assignment_direction_v1",
+    "build_assignment_construction_plan_v1",
+    "review_assignment_construction_plan_v1",
+    "run_assignment_scientific_quality_gate_v1",
+    "run_assignment_hermes_gate_v1",
+    "run_assignment_codex_gate_v1",
+    "review_assignment_build_plan_and_gates_v1",
+    "accept_assignment_build_plan_and_gates_v1",
+    "build_assignment_bounded_execution_surface_v1"
+  ],
+  "id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "initial_gates_status": {
+    "Codex_gate": "required_not_run_yet",
+    "Hermes_gate": "required_not_run_yet",
+    "assignment_object": "BUILT_CANDIDATE",
+    "construction_plan": "not_built_yet",
+    "dashboard_visibility": "candidate_pointer_written",
+    "direction": "not_built_yet",
+    "memory": "pending_future_assignment_memory",
+    "proof": "pending_this_build_proof",
+    "route_authority": "PASS",
+    "scientific_quality_gate": "required_not_run_yet",
+    "stop": "required_before_execution"
+  },
+  "next_required_step": "review_assignment_intake_object_v1",
+  "non_goals": [
+    "do not create another abstract canon without dashboard visibility",
+    "do not bypass Hermes/Codex gates",
+    "do not execute code before accepted build plan",
+    "do not treat chat text as enough evidence",
+    "do not claim full 24/7 autonomy"
+  ],
+  "operator": "wavy",
+  "operator_intent": {
+    "desired_experience": "Operator opens dashboard and sees the assignment direction, current stage, gates, proofs, and lawful next step.",
+    "plain": "Show working lawful autonomy on a real assignment: task intake, direction, construction plan, quality gates, Hermes/Codex involvement, proof-chain, and dashboard visibility.",
+    "quality_priority": "scientific, AGI-engineering, lawful, proof-bound",
+    "speed_priority": "fast but not lawless"
+  },
+  "risk_boundary": {
+    "background": "not authorized",
+    "code_execution": "not authorized",
+    "daemon": "not authorized",
+    "filesystem_mutation": "allowed only for intake artifacts in this patch",
+    "network": "not authorized",
+    "old_route_resume": "forbidden",
+    "operator_review_required": true,
+    "patch_execution": "not authorized"
+  },
+  "scope": {
+    "allowed": [
+      "create assignment object",
+      "create direction",
+      "create construction plan",
+      "define scientific quality criteria",
+      "prepare Hermes gate contract",
+      "prepare Codex gate contract",
+      "create dashboard-visible pointers",
+      "create proof/memory/stop requirements"
+    ],
+    "not_allowed_yet": [
+      "execute build patches",
+      "start daemon",
+      "background loop",
+      "network autonomy",
+      "resume old route",
+      "skip gates",
+      "claim L3/AGI"
+    ]
+  },
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Assignment intake object only. No assignment build execution, no patch execution, no daemon/background/network, no old route resume, no L3 claim."
+}

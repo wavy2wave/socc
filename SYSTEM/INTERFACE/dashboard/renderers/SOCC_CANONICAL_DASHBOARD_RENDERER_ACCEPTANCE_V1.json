@@ -1,0 +1,41 @@
+{
+  "accepted_rules": {
+    "dashboard_is_source_of_truth": true,
+    "may_execute_lawful_step": false,
+    "may_mutate_route": false,
+    "may_start_daemon": false,
+    "may_use_network": false,
+    "may_write_markdown_view": true,
+    "read_only": true
+  },
+  "accepted_step": "accept_socc_canonical_dashboard_renderer_v1",
+  "active_dashboard": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+  "active_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "created_at_utc": "2026-06-08T20:06:17.430456+00:00",
+  "forbidden": [
+    "execution from renderer",
+    "route mutation from renderer",
+    "daemon/background/network",
+    "creating second dashboard",
+    "silent dashboard replacement"
+  ],
+  "id": "SOCC_CANONICAL_DASHBOARD_RENDERER_ACCEPTANCE_V1",
+  "lawful_next": "socc_canonical_dashboard_renderer_accepted_v1",
+  "meaning": "Canonical dashboard renderer is accepted as the official read-only renderer for SOCC canonical dashboard.",
+  "render_script": "SYSTEM/INTERFACE/dashboard/renderers/render_socc_dashboard_v1.py",
+  "renderer": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.json",
+  "renderer_md": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.md",
+  "renderer_state": "ACCEPTED_READ_ONLY_RENDERER",
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "status": "PASS",
+  "truth_boundary": "Accept read-only dashboard renderer only. Renderer may only write markdown view.",
+  "view": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_DASHBOARD_VIEW_V1.md"
+}

@@ -1,0 +1,38 @@
+{
+  "active_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/build_canonical_operator_dashboard_20260608T193247Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/build_canonical_operator_dashboard_20260608T193247Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/build_canonical_operator_dashboard_20260608T193247Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_route_flags": [],
+  "changed": [
+    "MIGRATION/audits/SOCC_OLD_OPERATOR_PANEL_DASHBOARD_FORENSIC_V1.json",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_LAW_V1.json",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_STYLE_V1.json",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.md",
+    "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:33:07.442436+00:00",
+  "current_before": "socc_operator_handoff_start_protocol_accepted_v1",
+  "daemon_running": false,
+  "dashboard": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+  "dashboard_law": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_LAW_V1.json",
+  "dashboard_md": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.md",
+  "dashboard_style": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_STYLE_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_CANONICAL_OPERATOR_DASHBOARD_V1_PROOF",
+  "network_used": false,
+  "next_after_build": "validate_socc_canonical_operator_dashboard_v1",
+  "observe_pass": true,
+  "old_candidates_count": 80,
+  "old_panel_dashboard_forensic": "MIGRATION/audits/SOCC_OLD_OPERATOR_PANEL_DASHBOARD_FORENSIC_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Build canonical dashboard only. No daemon/background/network.",
+  "warnings": []
+}

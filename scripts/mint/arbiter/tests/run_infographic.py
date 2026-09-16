@@ -474,6 +474,88 @@ def t23_palette_audit_generic():
     return gen[0] and only_cyan, f"generic={gen[1] or 'чисто'} families={sorted((gen[2] or {}).keys())}"
 
 
+def t24_geometry_bar_clear_of_hero():
+    """ГЕОМЕТРИЯ (пиксели, чистая белая база без фото): cyan-бар НЕ наезжает на героя. Дефект-2026-09-02:
+    старая формула int(size*0.45) занижала низ героя → бар ложился на глифы. Фикс считает ink через
+    textbbox (_draw_block). Здесь ЭМПИРИЧЕСКИ: между последней чернильной строкой героя и верхом бара
+    обязана быть белая полоса ≥12px. Плюс контейнмент: ничего не выходит за внешнее кольцо 4px."""
+    if not ig._HAVE_PIL:
+        return _no_pil_skip("geometry_bar_clear")
+    from PIL import Image
+    base = Image.new("RGB", (ig.CANVAS_W, ig.CANVAS_H), ig.BRAND["bg"])
+    W, H = base.size
+    accent = tuple(ig.BRAND["accent"])
+
+    def near(c, t, tol=44):
+        return all(abs(a - b) <= tol for a, b in zip(c[:3], t[:3]))
+
+    def nonwhite(c):
+        return not all(ch >= 235 for ch in c[:3])
+
+    cases = [  # (метка, факты) — покрытие макросов box/film/lean + многострочные/длинные герои
+        ("box_std",    {"вид": "Короб гофрокартонный", "размер": "600×400×400 мм", "назначение": "переезд и хранение"}),
+        ("box_plum2",  {"вид": "Короб усиленный для переезда вещей и хранения", "размер": "600×400×400 мм", "материал": "гофрокартон"}),
+        ("box_premium",{"вид": "Коробка премиум для переезда", "размер": "60×40×40 см", "материал": "картон"}),
+        ("film_weak",  {"вид": "Плёнка пузырьковая", "плотность_г_м2": 40, "ширина_см": 50}),
+        ("film_prem",  {"вид": "Плёнка премиум пузырьковая", "длина_м": 100}),
+        ("film_hyph",  {"вид": "Пузырьково-перфорированная плёнка трёхслойная", "плотность_г_м2": 130}),
+        ("lean_cups",  {"вид": "Набор чашек", "количество": "6 шт", "цвет": "белый"}),
+    ]
+    reports = []    # только ПРОВАЛЫ
+    ok_msgs = []    # диагностика успешных кейсов (зазоры)
+    for label, facts in cases:
+        cv = ig.render(base, facts=facts, zoom=False)
+        if cv is None:
+            return False, f"{label}: render=None"
+        px = cv.load()
+        # контейнмент: кольцо 4px чистое
+        bleed = []
+        for y in range(H):
+            for x in list(range(4)) + list(range(W - 4, W)):
+                if nonwhite(px[x, y]):
+                    bleed.append((x, y)); break
+        for x in range(W):
+            for y in list(range(4)) + list(range(H - 4, H)):
+                if nonwhite(px[x, y]):
+                    bleed.append((x, y)); break
+        if bleed:
+            reports.append(f"{label}: вылет за кольцо {bleed[:1]}")
+            continue
+        # бар: accent-строки в левой зоне x∈[76,226)
+        rows = [y for y in range(H) if sum(1 for x in range(76, 226) if near(px[x, y], accent)) >= 45]
+        ybar = None
+        if rows:
+            run, prev = [rows[0]], rows[0]
+            for yy in rows[1:]:
+                if yy - prev <= 2:
+                    run.append(yy)
+                elif len(run) >= 4:
+                    break
+                else:
+                    run = [yy]
+                prev = yy
+            if len(run) >= 4:
+                ybar = run[0]
+        if ybar is None:
+            reports.append(f"{label}: бар не найден")
+            continue
+        # зазор: самая нижняя чернильная строка ВЫШЕ бара
+        deepest = None
+        for y in range(ybar - 1, 0, -1):
+            if any(nonwhite(px[x, y]) for x in range(76, 226)):
+                deepest = y
+                break
+        if deepest is not None:
+            gap = ybar - deepest - 1
+            if gap < 12:
+                reports.append(f"{label}: зазор {gap}px < 12 (бар на герое)")
+                continue
+            ok_msgs.append(f"{label}:{gap}px")
+    ok = not reports
+    return ok, (", ".join(reports) if reports else
+               "бар ниже героя во всех макросах (" + ", ".join(ok_msgs) + ")")
+
+
 TESTS = [
     ("G1  socc_absent", t1_socc_absent),
     ("G2  decision_order_box", t2_decision_order_box),
@@ -498,6 +580,7 @@ TESTS = [
     ("G21 palette_audit_box", t21_palette_audit_box),
     ("G22 palette_audit_film", t22_palette_audit_film),
     ("G23 palette_audit_generic", t23_palette_audit_generic),
+    ("G24 geometry_bar_clear_of_hero", t24_geometry_bar_clear_of_hero),
 ]
 
 

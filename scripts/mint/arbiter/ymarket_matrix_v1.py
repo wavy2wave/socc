@@ -21,6 +21,13 @@
      ступень 4 цикла); откат вниз только с причиной (note).
   M5 fail-soft + атомарно: битый файл → бланк; запись tmp+os.replace.
   M6 связь с заданием: каждая строка несёт task_id (задание→категория→партия→точка).
+  M7 связь с ДОНОРОМ (директива оператора 10.09): строка несёт donor_pid/donor_article/
+     donor_url/donor_store — «связь сразу с донором», а не только след в provider.
+     article строки — КЛЮЧ (у набора свой f"{артикул}-{N}x"), donor_article — артикул донора 1-в-1.
+  M8 размер-ось (директива оператора 10.09): строка несёт структурный size
+     {w_mm,l_m,um,pack} там, где сборщик его ЗНАЕТ; размер сравним (size_cmp: какой больше/
+     меньше по осям покупателя) и раскладывается в решётку семьи (size_lattice). Нет размера —
+     не выдумываем: строка живёт без size, сравнение с ней → None.
 """
 from __future__ import annotations
 
@@ -40,7 +47,8 @@ _DEDUP_KEYS = ("article", "ean", "norm")
 
 # Поля строки матрицы.
 _FIELDS = ("name", "size_hint", "offer_id", "provider", "source_url", "category",
-           "status", "task_id", "note", "sources")
+           "status", "task_id", "note", "sources",
+           "donor_pid", "donor_article", "donor_url", "donor_store", "size")
 
 _SRC_DELIM = "|"
 
@@ -84,6 +92,195 @@ def norm_key(name, size_hint=None):
     if not words:
         return None
     return "::".join([" ".join(words), size_part])
+
+
+# ── РАЗМЕР-ОСЬ (M8): какие размеры больше, какие меньше ───────────────────────
+# Оператор 10.09: «важно чтобы понимал сам какие размеры больше какие меньше, чтобы
+# добавить если что». norm_key намеренно теряет единицы (числа-мешком: 48×150 и 150×48
+# дают один ключ) — для дедупа это верно, для ПОНИМАНИЯ размера недостаточно. Здесь
+# единицы РАЗЛИЧАЮТСЯ и оси упорядочены по значимости для покупателя ленты:
+#   ширина (мм) → намотка (м) → толщина (мкм) → штук в упаковке.
+# Источник правды — структурный row['size'] (его кладёт сборщик, который ЗНАЕТ факты);
+# для легаси-строк без него — парсер имени (fallback, честно помечен size_source).
+
+# Порядок осей = порядок сравнения. Не менять без причины: от него зависит «больше/меньше».
+_SIZE_AXES = ("w_mm", "l_m", "um", "pack")
+
+# Единицы РАЗЛИЧАЮТСЯ регэкспами: 'м' ловится только там, где это НЕ 'мм' и НЕ 'мкм'
+# (negative lookahead) — иначе '150 мкм' дала бы ложную намотку 150 м.
+_SIZE_RX = (
+    ("um", re.compile(r"(\d+(?:[.,]\d+)?)\s*мкм")),
+    ("w_mm", re.compile(r"(\d+(?:[.,]\d+)?)\s*мм")),
+    ("l_m", re.compile(r"(\d+(?:[.,]\d+)?)\s*м(?![мк])")),
+    ("pack", re.compile(r"(\d+)\s*шт")),
+)
+
+
+def parse_size(name=None, size_hint=None):
+    """Имя+подсказка → {ось: число} (чего не нашли — ключа нет; размер не выдумываем).
+
+    Честный парсер имён («Скотч упаковочный 48 мм × 150 м, 40 мкм, прозрачный. — 2 шт»
+    → {um:40, w_mm:48, l_m:150, pack:2}). Частичный размер — норма: у плёнки артикул
+    часто несёт только намотку. Пусто → {} (строка остаётся без размера, M8).
+    """
+    blob = f"{name or ''} {size_hint or ''}"
+    out = {}
+    for field, rx in _SIZE_RX:
+        m = rx.search(blob)
+        if not m:
+            continue
+        try:
+            v = float(m.group(1).replace(",", "."))
+        except ValueError:
+            continue
+        out[field] = int(v) if field == "pack" else v
+    return out
+
+
+# Ключи _spec сборщиков (лента: длина_м/ширина_мм/толщина_мкм/штук_в_упаковке; плёнка:
+# длина_м/ширина_мм/штук_в_упаковке) → оси M8. Неизвестное/пустое ключа не даёт (не выдумываем).
+_SPEC_TO_AXIS = {
+    "длина_м": "l_m", "ширина_мм": "w_mm", "толщина_мкм": "um", "штук_в_упаковке": "pack",
+}
+
+
+def spec_to_size(spec):
+    """Структурный _spec сборщика (он ЗНАЕТ факты) → {w_mm,l_m,um,pack}. Нет → {}."""
+    spec = spec or {}
+    out = {}
+    for k, ax in _SPEC_TO_AXIS.items():
+        v = spec.get(k)
+        if v is None or v == "":
+            continue
+        try:
+            f = float(str(v).replace(",", ".").replace(" шт", "").strip())
+        except (TypeError, ValueError):
+            continue
+        if not (isinstance(f, (int, float))) or f != f:  # nan-гейт
+            continue
+        out[ax] = int(f) if ax == "pack" else f
+    if out and "pack" not in out:
+        out["pack"] = 1
+    return out
+
+
+def _as_size(row_or_size):
+    """Строка матрицы | голый size | (name,size_hint) → {ось: число}. Пусто → {}.
+
+    Различаем «строку» и «сам размер» по осям: dict с осью — это уже размер, dict с
+    'size'/'name' — строка. ШТУК ПО УМОЛЧАНИЮ = 1 (продаём рулонами: одиночка — упаковка
+    из одного): без этого набор «2 шт» и одиночка сравнятся как РАВНЫЕ (ось pack не общая),
+    а покупателю комплект из двух рулонов НЕ равен одному.
+    """
+    if isinstance(row_or_size, dict):
+        if any(ax in row_or_size for ax in _SIZE_AXES):
+            s = row_or_size                          # это сам размер, не строка
+        else:
+            s = row_or_size.get("size")
+            if not isinstance(s, dict) or not s:
+                s = parse_size(row_or_size.get("name"), row_or_size.get("size_hint"))
+    elif isinstance(row_or_size, tuple):
+        s = parse_size(*row_or_size[:2])
+    else:
+        return {}
+    out = {ax: s[ax] for ax in _SIZE_AXES
+           if isinstance(s.get(ax), (int, float)) and not isinstance(s.get(ax), bool)}
+    if out and "pack" not in out:
+        out["pack"] = 1
+    return out
+
+
+def raw_size(row):
+    """row['size'] как есть (структурный факт сборщика) или None — без парсинга имени."""
+    s = (row or {}).get("size") if isinstance(row, dict) else None
+    return s if isinstance(s, dict) and s else None
+
+
+def row_size(row):
+    """Эффективный размер строки: структурный size, иначе парсер имени. {} → нет размера."""
+    return _as_size(row)
+
+
+def size_cmp(a, b):
+    """Какой размер БОЛЬШЕ: -1 (a<b) · 0 (равны) · None (сравнить нечем — не выдумываем).
+
+    Сравниваем по общим осям в порядке покупателя (ширина→намотка→толщина→штук).
+    Общих осей нет (одна строка без размера / разные семейства осей) → None, а НЕ
+    «равны»: молчаливый 0 склеил бы несравнимое.
+    """
+    sa, sb = _as_size(a), _as_size(b)
+    shared = [ax for ax in _SIZE_AXES if ax in sa and ax in sb]
+    if not shared:
+        return None
+    for ax in shared:
+        if sa[ax] != sb[ax]:
+            return 1 if sa[ax] > sb[ax] else -1
+    return 0
+
+
+def size_label(row_or_size):
+    """Человекочитаемо: '48 мм × 150 м · 40 мкм · ×2 шт' (чего нет — того нет; «×1 шт» не шумим)."""
+    s = _as_size(row_or_size)
+    if not s:
+        return "—"
+    parts = []
+    for ax, unit in (("w_mm", "мм"), ("l_m", "м"), ("um", "мкм"), ("pack", "шт")):
+        v = s.get(ax)
+        if v is None or (ax == "pack" and v == 1):
+            continue
+        parts.append(f"×{v:g} {unit}" if ax == "pack" else f"{v:g} {unit}")
+    return " · ".join(parts) if parts else "—"
+
+
+def size_sort_key(row):
+    """Ключ сортировки «от меньшего к большему»; строки без размера — в конец."""
+    s = _as_size(row)
+    if not s:
+        return (1, ())
+    return (0, tuple(s.get(ax, 0) for ax in _SIZE_AXES))
+
+
+def family_of(row):
+    """Семья строки = словесная часть norm-ключа (размер в неё не входит) — база решётки."""
+    nk = (row or {}).get("norm") if isinstance(row, dict) else None
+    if not nk and isinstance(row, dict):
+        nk = norm_key(row.get("name"), row.get("size_hint"))
+    return nk.split("::")[0] if nk else None
+
+
+def size_lattice(doc, family=None):
+    """РЕШЁТКА РАЗМЕРОВ семьи: что у нас есть, от меньшего к большему + значения по осям.
+
+    family=None → все строки, сгруппированные по семейству (family_of). Иначе — только
+    строки этой семьи. Возвращает {family: {'rows':[…сортировано…], 'axes':{…}, 'n':N}},
+    либо для одной семьи — её блок. «Добавить если что»: новая строка встаёт на своё
+    место по size_cmp, а axes показывает, каких значений оси в семье ещё нет.
+    """
+    rows = [r for r in (doc.get("rows") or {}).values() if isinstance(r, dict)]
+    fams = {}
+    for r in rows:
+        f = family_of(r) or "(без-семьи)"
+        if family is not None and f != family:
+            continue
+        fams.setdefault(f, []).append(r)
+    out = {}
+    for f, rs in fams.items():
+        rs = sorted(rs, key=size_sort_key)
+        axes = {}
+        for ax in _SIZE_AXES:
+            vals = set()
+            for r in rs:
+                s = _as_size(r)
+                if ax in s:
+                    vals.add(s[ax])
+            if vals:
+                axes[ax] = sorted(vals)
+        out[f] = {"n": len(rs), "axes": axes,
+                  "rows": [{"key": r.get("key"), "name": r.get("name"),
+                            "offer_id": r.get("offer_id"), "status": r.get("status"),
+                            "donor_pid": r.get("donor_pid"), "size": _as_size(r),
+                            "size_label": size_label(r)} for r in rs]}
+    return out if family is None else out.get(family, {"n": 0, "axes": {}, "rows": []})
 
 
 # ── стор (fail-soft, атомарно) ────────────────────────────────────────────────
@@ -148,16 +345,24 @@ def _find_dup(doc, article=None, ean=None, name=None, size_hint=None):
 
 
 def ensure(doc, name=None, article=None, ean=None, size_hint=None, provider=None,
-           source_url=None, category=None, task_id=None):
+           source_url=None, category=None, task_id=None, donor_pid=None,
+           donor_article=None, donor_url=None, donor_store=None, size=None):
     """Дедuп-вход добычи (M2): кандидат → строка матрицы (новая ИЛИ обновлённая).
 
     Без имени и без article/EAN → ValueError (M1, не выдумываем ключ). При совпадении по любому
     из трёх ключей обновляем существующую строку: добавляем источник в provider (sources[]),
     не плодим дубль. Возвращает (key, row, created:bool).
+
+    M7: donor_* — durable связь с донором (pid/артикул/url/магазин). article строки — КЛЮЧ
+    (у набора свой f"{артикул}-{N}x"), donor_article — артикул донора 1-в-1: не путать.
+    M8: size — структурный размер {w_mm,l_m,um,pack}, если вызывающий его ЗНАЕТ; не dict /
+    пустой → поле не трогаем (не выдумываем размер).
     """
     if not name and not article and not ean:
         raise ValueError("матрица: нет ни имени, ни article, ни EAN — не к чему привязать (M1)")
     nk = norm_key(name, size_hint)
+    if isinstance(size, dict) and not size:
+        size = None                              # пустой размер = отсутствие размера (M8)
 
     key, row = _find_dup(doc, article=article, ean=ean, name=name, size_hint=size_hint)
     rows = doc.setdefault("rows", {})
@@ -167,6 +372,8 @@ def ensure(doc, name=None, article=None, ean=None, size_hint=None, provider=None
                "name": name, "size_hint": size_hint, "offer_id": None,
                "provider": None, "source_url": None, "category": category,
                "status": "кандидат", "task_id": task_id, "note": None,
+               "donor_pid": donor_pid, "donor_article": donor_article,
+               "donor_url": donor_url, "donor_store": donor_store, "size": size,
                "sources": [], "first_seen": _now()}
         rows[key] = row
         created = True
@@ -175,14 +382,21 @@ def ensure(doc, name=None, article=None, ean=None, size_hint=None, provider=None
 
     for f, val in (("name", name), ("size_hint", size_hint), ("article", article),
                    ("ean", ean), ("provider", provider), ("source_url", source_url),
-                   ("category", category), ("task_id", task_id)):
+                   ("category", category), ("task_id", task_id),
+                   ("donor_pid", donor_pid), ("donor_article", donor_article),
+                   ("donor_url", donor_url), ("donor_store", donor_store)):
         if val is not None and str(val) != "":
             row[f] = val
+    if size is not None:
+        row["size"] = size
     if provider:
         srcs = row.setdefault("sources", [])
         if provider not in srcs:
             srcs.append(provider)
-    if row.get("norm") is None and nk:
+    # norm — ПРОИЗВОДНОЕ от текущего имени/подсказки (M2/M8): имя обновилось (напр. сборщик
+    # убрал старый суффикс) → norm обязан следовать, иначе строка выпадает из решётки своей
+    # семьи и дедуп по норм-ключу перестаёт её видеть. Ключ строки (dict-key) стабилен.
+    if nk:
         row["norm"] = nk
     row["updated_at"] = _now()
     return key, row, created

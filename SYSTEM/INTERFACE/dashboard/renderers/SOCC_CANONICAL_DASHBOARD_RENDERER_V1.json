@@ -1,0 +1,33 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_ACCEPTANCE_V1.json",
+  "active_dashboard": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+  "active_dashboard_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "created_at_utc": "2026-06-08T19:42:16.735222+00:00",
+  "current_step": "socc_canonical_operator_dashboard_accepted_v1",
+  "id": "SOCC_CANONICAL_DASHBOARD_RENDERER_V1",
+  "lawful_next": "socc_canonical_dashboard_renderer_accepted_v1",
+  "may_execute_lawful_step": false,
+  "may_mutate_route": false,
+  "may_read": true,
+  "may_render": true,
+  "may_start_daemon": false,
+  "may_use_network": false,
+  "may_write_view": true,
+  "purpose": "Render the accepted canonical dashboard state for operator visibility.",
+  "read_sources": [
+    "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "render_script": "SYSTEM/INTERFACE/dashboard/renderers/render_socc_dashboard_v1.py",
+  "renderer_state": "ACCEPTED_READ_ONLY_RENDERER",
+  "renderer_type": "terminal_and_markdown_read_only_renderer",
+  "status": "PASS",
+  "truth_boundary": "Renderer is read-only except writing markdown view. No route mutation. No execution.",
+  "view_output": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_DASHBOARD_VIEW_V1.md",
+  "write_targets": [
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_DASHBOARD_VIEW_V1.md"
+  ]
+}

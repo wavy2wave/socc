@@ -1,0 +1,1 @@
+{"claims": [{"text": "Validation confirms creator dialogue view is read-only and non-executing. It does not execute language, mutate route, start daemon/background, use network, or create MW route.", "line": 10, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Daemon": 1}}

@@ -1,0 +1,23 @@
+{
+ "schema": "ymarket.categorist.readiness.kartonnye-tubusy.v1",
+ "purpose": "Живой сухой скан (0₽ GET) ПОСЛЕ снятия T3-маппинг-гейта органом (64642256 «Тубусы для чертежей», конфирмация 04.09 wf_0986cace-2ad): need_mapping 0, но ready 0. Вердикт по счётчикам первоисточника: needs_data. категория донора tubusy: кандидаты есть, ОВХ-покрытие высокое (dims у большинства), склад-источник не конвертит.",
+ "run": {
+  "grid_main": 19,
+  "grid_related": 11,
+  "selected": 0,
+  "needs_data": 22,
+  "parcel_dims": 21,
+  "rejected": 8,
+  "ready": 0,
+  "errors": 0,
+  "topfill": 0,
+  "need_mapping": 0,
+  "no_pictures": 0,
+  "with_specs": 0,
+  "avg_emitted": 0,
+  "source": "live"
+ },
+ "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+ "rubicon": "не пересечён: 0₽ GET донора; запись локального канона.",
+ "generated": "2026-09-04"
+}

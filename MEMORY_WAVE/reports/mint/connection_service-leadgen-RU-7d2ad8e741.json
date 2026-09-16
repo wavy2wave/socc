@@ -1,0 +1,21 @@
+{
+  "id": "service-leadgen-RU-7d2ad8e741",
+  "ts": "2026-06-30T15:08:15.316792+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price_from_formula": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": false
+  },
+  "hard_failures": [
+    "t4_verify_money"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-7d2ad8e741_repair_required",
+  "truth_boundary": "t4: bank_statement_ip: нет идентификатора-следа (operation_id/receipt_id/deal_id) → нечем подтвердить (Φ(t4))",
+  "proof_hash": "01d81d8a915b5064"
+}

@@ -69,6 +69,18 @@ try:
     import ymarket_cycle_day_v1 as cyc_day  # ЦИКЛ-ДНЯ (планёрка заданий / форма / диспетчер, read)
 except Exception as _e:
     cyc_day = None
+try:
+    import ymarket_plannerka_v1 as _day_plan  # ПЛАН ДНЯ (утро): build_plan+render_plan, read 0₽
+except Exception as _e:
+    _day_plan = None
+try:
+    import ymarket_sovet_v1 as _sovet  # СОВЕТ ДИРЕКТОРОВ (лицо ПЛАНА ДНЯ): протокол даты, read 0₽
+except Exception as _e:
+    _sovet = None
+try:
+    import ymarket_sovet_spory_v1 as _spory  # СПОРЫ ОРГАНОВ (слой 2 СОВЕТА): позиции+прения, read 0₽
+except Exception as _e:
+    _spory = None
 
 # ключи/конфиг — ТОЛЬКО env (mint/.env, socc_mint_env_v1). Значения в код/контекст не пишем.
 MINT_DIR = ARB.parent
@@ -172,6 +184,22 @@ ACTIONS = {
         "role": "read",
         "help": "пульс/планёрка магазина (последний прогон). args: --store <slug>",
     },
+    "day_plan": {
+        "role": "read",
+        "help": ("ПЛАН ДНЯ (планёрка утро): контекст + решения что берём и почему из реальных сторов, "
+                 "0₽. args: --store <slug>"),
+    },
+    "sovet": {
+        "role": "read",
+        "help": ("СОВЕТ ДИРЕКТОРОВ (лицо ПЛАНА ДНЯ): протокол даты — голоса органов из сторов, "
+                 "пропиздоны по факту, зеркало решений плана. 0₽, совет сам заданий не создаёт."),
+    },
+    "spory": {
+        "role": "read",
+        "help": ("СПОРЫ ОРГАНОВ (слой 2 СОВЕТА): позиции органов + прения, когда данные тянут врозь. "
+                 "Снимок даты есть → его; иначе детерминированная производная сейчас (0 LLM, 0₽). "
+                 "Споры ничего не пишут и заданий не создают (VL10)."),
+    },
     "self": {
         "role": "read",
         "help": "самоосознание управляющего (карточки/индекс/следующий законный шаг).",
@@ -200,6 +228,9 @@ ALIASES = {
     "реестр": "registry", "registry": "registry",
     "само": "self", "self": "self",
     "пульс": "plannerka", "планёрка": "plannerka",
+    "пландня": "day_plan", "утро": "day_plan", "план": "day_plan",
+    "совет": "sovet", "совет_директоров": "sovet", "sovet": "sovet",
+    "споры": "spory", "спор": "spory", "прения": "spory", "spory": "spory",
     "цикл": "cycle_dry", "cycle": "cycle_dry",
     # пульс-1/цикл-1 = ПРОГОН цикла по конкретному магазину (узлы и правила) → cycle_dry
     "пульс-1": "cycle_dry", "пульс1": "cycle_dry",
@@ -645,6 +676,51 @@ def _h_plannerka(args):
                      f"  по узлам вчера: {p.get('by_node') or {}}")
 
 
+def _h_day_plan(args):
+    """ПЛАН ДНЯ (планёрка утро): контекст + решения что берём и почему из реальных сторов, 0₽."""
+    if _day_plan is None:
+        return "ПЛАН", "движок планёрки недоступен (import)"
+    try:
+        plan = _day_plan.build_plan(store=_pick_store(args))
+        return "ПЛАН", "\n".join(_day_plan.render_plan(plan))
+    except Exception as e:
+        return "ПЛАН", f"{type(e).__name__}: {e}"
+
+
+def _h_sovet(args):
+    """СОВЕТ (лицо ПЛАНА ДНЯ): протокол даты — голоса из сторов + пропиздоны + зеркало решений, 0₽.
+    Совет сам новых заданий не создаёт (VL7) — строго read: читаем только sovet/<дата>.json."""
+    if _sovet is None:
+        return "СОВЕТ", "движок совета недоступен (import)"
+    try:
+        proto, lerr = _sovet.load_protocol()
+        if lerr:
+            return "СОВЕТ", "протокол битый: %s" % (lerr.get("load_error") or lerr)
+        return "СОВЕТ", "\n".join(_sovet.render_sovet(proto))
+    except Exception as e:
+        return "СОВЕТ", f"{type(e).__name__}: {e}"
+
+
+def _h_spory(args):
+    """СПОРЫ (слой 2 СОВЕТА): позиции органов + прения, когда данные тянут врозь. 0₽, read (VL10).
+    Снимок даты сохранён (resolve_spory_daily --commit) → рендерим его как есть; иначе собираем
+    детерминированный doc в памяти (compose_spory gate="off": 0 LLM, без сети) и рендерим — строго
+    ничего не пишем, заданий не создаём."""
+    if _spory is None:
+        return "СПОРЫ", "движок споров недоступен (import)"
+    try:
+        doc, lerr = _spory.load_spory()
+        if lerr:
+            return "СПОРЫ", "стор споров битый: %s" % (lerr.get("load_error") or lerr)
+        if doc is None:
+            doc = _spory.compose_spory(gate="off")
+        if not (doc.get("positions") or doc.get("disputes")):
+            return "СПОРЫ", "\n".join(_spory.render_spory(None))
+        return "СПОРЫ", "\n".join(_spory.render_spory(doc))
+    except Exception as e:
+        return "СПОРЫ", f"{type(e).__name__}: {e}"
+
+
 def _h_self(args):
     if self_org is None:
         return "САМО", "самоосознание недоступно (import)"
@@ -712,6 +788,9 @@ _HANDLERS = {
     "cycle_dry": lambda a: _h_cycle(a, dry=True),
     "cycle_live": lambda a: _h_cycle(a, dry=False),
     "plannerka": _h_plannerka,
+    "day_plan": _h_day_plan,
+    "sovet": _h_sovet,
+    "spory": _h_spory,
     "self": _h_self,
     "registry": _h_registry,
     "tasks": _h_tasks,
@@ -830,6 +909,9 @@ SOCC-ЯМ · УПРАВЛЯЮЩИЙ-МОЗГ над MINT (чат + меню).
   /мама · /реестр   реестр циклов: кто от какой мамы наследует кабинет (read)
   /пульс [store]    планёрка магазина (read; по умолчанию мать-цикл)
   /пульс-1 [store]  ПРОГОН ЦИКЛА-1 по магазину (узлы+правила), сухо-авто 0₽
+  /план-дня         ПЛАН ДНЯ (планёрка утро): решения из реальных сторов (read, 0₽)
+  /совет            СОВЕТ ДИРЕКТОРОВ: голоса органов · пропиздоны · зеркало плана (read, 0₽)
+  /споры            СПОРЫ ОРГАНОВ: позиции органов · прения, когда данные тянут врозь (read, 0₽)
   /задания [--form] [--dispatch]   ЦИКЛ-ДНЯ: открытые задания по важности + владелец (read)
                      --form: что сформируется из наблюдений · --form --commit: записать реестр
                      (файл — спрошу) · --dispatch: разбор «кто исполнит» (read)
@@ -1030,6 +1112,8 @@ def _show_menu(out, nav):
             ("4", "АРТЕФАКТЫ — матрица · библиотека · точки"),
             ("5", "АВТОПИЛОТ — хвост"),
             ("6", "ДЕЛО одним листом (всё выше)"),
+            ("7", "СОВЕТ — голоса органов · пропиздоны (протокол даты)"),
+            ("8", "СПОРЫ — позиции органов · прения (слой 2 СОВЕТА)"),
             ("0", "назад к циклам"),
         ])
     else:  # lvl 1 — внутри цикла
@@ -1199,8 +1283,12 @@ def _menu_action(out, stdin, nav, num):
                     text = console.autopilot_tail(out=out)
                 elif num == "6":
                     text = console.deal_text(out=out)
+                elif num == "7":
+                    text = console.sovet_text(out=out)
+                elif num == "8":
+                    text = console.spory_text(out=out)
                 else:
-                    print(_dim(out, f"  нет пункта «{num}» (1–6)"), file=out)
+                    print(_dim(out, f"  нет пункта «{num}» (1–8)"), file=out)
                     return
             except Exception as _e:
                 text = f"(отчёт упал: {_e})"
@@ -1319,6 +1407,25 @@ def _handle(line, out, stdin, history):
     if low.startswith("/пульс"):
         args = _cmd_args(line, low)
         label, text = run_action("plannerka", {"store": args.get("store") or STORE_DEFAULT})
+        _print_result(label, text, out)
+        return True
+
+    # /план-дня — ПЛАН ДНЯ (планёрка утро): контекст + решения из реальных сторов (read, 0₽)
+    if low.startswith("/план-дня") or low.startswith("/пландня") or low.startswith("/утро"):
+        label, text = run_action("day_plan", {})
+        _print_result(label, text, out)
+        return True
+
+    # /совет — СОВЕТ ДИРЕКТОРОВ (протокол даты): голоса органов + пропиздоны + зеркало плана (read, 0₽)
+    if low.startswith("/совет") or low.startswith("/sovet"):
+        label, text = run_action("sovet", {})
+        _print_result(label, text, out)
+        return True
+
+    # /споры — СПОРЫ ОРГАНОВ (слой 2 СОВЕТА): позиции органов + прения (read, 0₽, VL10)
+    if low.startswith("/споры") or low.startswith("/спор") or low.startswith("/прения") \
+            or low.startswith("/spory"):
+        label, text = run_action("spory", {})
         _print_result(label, text, out)
         return True
 

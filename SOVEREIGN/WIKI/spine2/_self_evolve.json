@@ -1,0 +1,50 @@
+{
+  "built_at": "2026-08-17T21:06:44.382643+00:00",
+  "next_step": {
+    "kind": "REVIVE_BRAIN",
+    "topic": "anna",
+    "severity": "critical",
+    "score": 10000,
+    "why": "Маршрут: anna_mvp_sealed=true, но anna_live=false — автономия встала на мёртвом LLM-мозге (401/402). Это блокирует ВСЮ цепочку к деньгам.",
+    "action": "Восстановить LLM-мозг (рабочий ключ/гейтвей/кредиты) → перезапустить anna_autonomy + Telegram → подтвердить живые циклы.",
+    "lawful": "Внешний ресурс (ключ) + перезапуск runtime. Не церемония маршрута."
+  },
+  "backlog": [
+    {
+      "kind": "REVIVE_BRAIN",
+      "topic": "anna",
+      "severity": "critical",
+      "score": 10000,
+      "why": "Маршрут: anna_mvp_sealed=true, но anna_live=false — автономия встала на мёртвом LLM-мозге (401/402). Это блокирует ВСЮ цепочку к деньгам.",
+      "action": "Восстановить LLM-мозг (рабочий ключ/гейтвей/кредиты) → перезапустить anna_autonomy + Telegram → подтвердить живые циклы.",
+      "lawful": "Внешний ресурс (ключ) + перезапуск runtime. Не церемония маршрута."
+    },
+    {
+      "kind": "UNRESOLVED_FORKS",
+      "topic": "anna",
+      "severity": "high",
+      "score": 170,
+      "why": "Тема «ANNA — продукт (ИИ-администратор стоматологий)» несёт 34 нерешённых развилок — система противоречит себе. Без разрешения основная линия не острая.",
+      "action": "Разобрать топ-развилки на странице pages/anna.md, зафиксировать решение в main_lines/anna.md (newest-wins + обоснование).",
+      "lawful": "Авторское решение развилки. Сырьё и хронология сохраняются."
+    },
+    {
+      "kind": "ROUTE_RECONCILE",
+      "topic": "self_construction",
+      "severity": "medium",
+      "score": 300,
+      "why": "Флаги маршрута стоят на 'sealed/ship', но честный фронтир (живой мозг + пилот) не закрыт — риск самообмана.",
+      "action": "Зафиксировать в route authority честный lawful_next (revive_brain → relaunch → first_clinic_pilot) через observe→next→reconcile.",
+      "lawful": "Reconcile маршрута по закону (atomic commit), без нового execution."
+    },
+    {
+      "kind": "UNRESOLVED_FORKS",
+      "topic": "law_proof",
+      "severity": "medium",
+      "score": 50,
+      "why": "Тема «Закон и доказательство — Proof, гейты Codex/Hermes» несёт 10 нерешённых развилок — система противоречит себе. Без разрешения основная линия не острая.",
+      "action": "Разобрать топ-развилки на странице pages/law_proof.md, зафиксировать решение в main_lines/law_proof.md (newest-wins + обоснование).",
+      "lawful": "Авторское решение развилки. Сырьё и хронология сохраняются."
+    }
+  ]
+}

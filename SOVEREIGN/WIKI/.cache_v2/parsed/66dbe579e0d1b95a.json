@@ -1,0 +1,1 @@
+{"claims": [{"text": "Validation confirms read-only dashboard-language binding. It does not execute language, mutate route outside transition, start daemon/background, use network, or create MW route.", "line": 10, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Daemon": 1}}

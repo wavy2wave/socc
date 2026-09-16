@@ -1,0 +1,16 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+KNOWLEDGE SUBSTRATE — STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS::PASS
+SOURCES::129   INGESTED::122
+ARTICLE::entity_substrate
+  current::49  conflicting::598  historical::929  deprecated::2
+PROOF CHAIN:
+  scan::PASS
+  ingest::PASS
+  article::PASS
+  validation::PASS
+  review::PASS
+POINTER::SEALED_PILOT -> knowledge_substrate_sealed_idle
+HARD_FAILURES::[]
+DAEMON::False  NETWORK::False  LLM::False  ENTITY_BIRTH::False  ANNA_BIRTH::False

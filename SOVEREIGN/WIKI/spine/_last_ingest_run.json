@@ -1,0 +1,118 @@
+{
+  "built_at": "2026-06-29T15:14:50.229698+00:00",
+  "claims_added": 0,
+  "counts": {
+    "changed": 0,
+    "new": 1,
+    "total": 174,
+    "unchanged": 173
+  },
+  "deltas": [
+    {
+      "current": 175,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 287,
+      "topic": "ANNA"
+    },
+    {
+      "current": 111,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 210,
+      "topic": "Codex"
+    },
+    {
+      "current": 65,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 228,
+      "topic": "SOCC"
+    },
+    {
+      "current": 58,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 286,
+      "topic": "Proof"
+    },
+    {
+      "current": 54,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 179,
+      "topic": "Daemon"
+    },
+    {
+      "current": 50,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 121,
+      "topic": "Entity Substrate"
+    },
+    {
+      "current": 37,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 127,
+      "topic": "Hermes"
+    },
+    {
+      "current": 36,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 199,
+      "topic": "Memory Wave"
+    },
+    {
+      "current": 26,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 160,
+      "topic": "Booking"
+    },
+    {
+      "current": 21,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 201,
+      "topic": "Persona"
+    },
+    {
+      "current": 20,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 145,
+      "topic": "Telegram"
+    },
+    {
+      "current": 19,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 88,
+      "topic": "Autopilot"
+    },
+    {
+      "current": 7,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 71,
+      "topic": "Supramental"
+    },
+    {
+      "current": 2,
+      "d_current": 0,
+      "d_sources": 0,
+      "sources": 1,
+      "topic": "Knowledge Substrate"
+    }
+  ],
+  "new_files": [
+    {
+      "connector": "CONNECTOR_INBOX_V1",
+      "file": "2026-06-29_upload_smoke.md",
+      "provenance": "canon_document",
+      "status": "new"
+    }
+  ]
+}

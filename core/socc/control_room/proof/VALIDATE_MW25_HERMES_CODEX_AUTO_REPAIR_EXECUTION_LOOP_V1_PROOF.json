@@ -1,0 +1,22 @@
+{
+  "status": "PASS",
+  "validator": "VALIDATE_MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_V1",
+  "ts": "2026-04-28T10:37:57.125335+00:00",
+  "checks": {
+    "intake_captured": true,
+    "decision_ready": true,
+    "trace_ready": true,
+    "plan_ready": true,
+    "contract_ready": true,
+    "execution_ready": true,
+    "rerun_ready": true,
+    "brain_pass": true,
+    "ui_score_scale_patched": true,
+    "ui_horizon_rendered": true,
+    "score_128": true,
+    "live_mw26": true
+  },
+  "failures": [],
+  "truth": "PASS validates auto-repair execution loop: fail intake, decision, bounded plan, Codex contract, safe execution trace, UI repair, and validator rerun path.",
+  "lawful_next": "MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1"
+}

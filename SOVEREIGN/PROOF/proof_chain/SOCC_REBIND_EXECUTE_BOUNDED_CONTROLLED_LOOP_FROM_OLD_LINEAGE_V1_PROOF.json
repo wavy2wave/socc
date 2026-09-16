@@ -1,0 +1,24 @@
+{
+  "background_loop_enabled": false,
+  "backups": [],
+  "bad_route_flags": [],
+  "changed": [],
+  "created_at_utc": "2026-06-08T19:34:42.413690+00:00",
+  "current_before": "validate_socc_canonical_operator_dashboard_v1",
+  "daemon_running": false,
+  "execution": "core/socc/controlled_loop/bounded_execution_run/rebind/SOCC_EXECUTE_BOUNDED_CONTROLLED_LOOP_V1_OLD_LINEAGE_REBIND.json",
+  "hard_failures": [
+    "CURRENT_NEXT_NOT_EXECUTE_BOUNDED_CONTROLLED_LOOP_V1"
+  ],
+  "id": "SOCC_REBIND_EXECUTE_BOUNDED_CONTROLLED_LOOP_FROM_OLD_LINEAGE_V1_PROOF",
+  "network_used": false,
+  "next_after_rebind": "validate_bounded_controlled_loop_execution_v1",
+  "observe_pass": false,
+  "old_iteration_pass_count": 3,
+  "old_main_pass": true,
+  "old_second_repeatability_pass_count": 3,
+  "raw_loop_executed_now": false,
+  "status": "REVIEW_REQUIRED",
+  "truth_boundary": "Old lineage bounded loop execution rebind only. No raw loop execution now.",
+  "warnings": []
+}

@@ -1,0 +1,177 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/codex_hermes_governance_adoption_20260608T184552Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/codex_hermes_governance_adoption_20260608T184552Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/codex_hermes_governance_adoption_20260608T184552Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "core/socc/repair_engine/proof/HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json",
+    "core/socc/control_room/proof/VALIDATE_MW19_HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json",
+    "core/socc/hermes_codex_combo/state/HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json",
+    "core/socc/hermes_codex_combo/proof/VALIDATE_HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json",
+    "core/socc/repair_engine/proof/MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_PROOF.json",
+    "core/socc/control_room/proof/VALIDATE_MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_V1_PROOF.json",
+    "core/socc/hermes_repair/proof/CONTROLLED_FAIL_REPAIRED_PASS_V1.json",
+    "core/socc/hermes_repair/proof/VALIDATE_FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json",
+    "core/socc/hermes_repair/state/FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json",
+    "core/socc/codex/bounded_repair_lane/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_V1.json",
+    "core/socc/codex/bounded_repair_lane_probe/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PROBE_V1.json",
+    "core/socc/codex/bounded_repair_lane_productive_use/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_V1.json",
+    "core/socc/codex/productive_use_gate/proof/CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_GATE_V1_PROOF.json",
+    "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_REPAIR_LOOP_SAFE_FAIL_V1.json",
+    "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_SAFE_FAIL_TARGET_REPAIR_V1.json",
+    "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_CONTRACT_V1.json",
+    "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_ADOPTION_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "codex_required_pass_count": 10,
+  "copy_results": {
+    "core/socc/codex/bounded_repair_lane/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_V1.json": "COPIED",
+    "core/socc/codex/bounded_repair_lane_probe/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PROBE_V1.json": "COPIED",
+    "core/socc/codex/bounded_repair_lane_productive_use/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_V1.json": "COPIED",
+    "core/socc/codex/productive_use_gate/proof/CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_GATE_V1_PROOF.json": "COPIED",
+    "core/socc/control_room/proof/VALIDATE_MW19_HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json": "COPIED",
+    "core/socc/control_room/proof/VALIDATE_MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_V1_PROOF.json": "COPIED",
+    "core/socc/hermes_codex_combo/proof/VALIDATE_HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json": "COPIED",
+    "core/socc/hermes_codex_combo/state/HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json": "COPIED",
+    "core/socc/hermes_repair/proof/CONTROLLED_FAIL_REPAIRED_PASS_V1.json": "COPIED",
+    "core/socc/hermes_repair/proof/VALIDATE_FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json": "COPIED",
+    "core/socc/hermes_repair/state/FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json": "COPIED",
+    "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_REPAIR_LOOP_SAFE_FAIL_V1.json": "COPIED",
+    "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_SAFE_FAIL_TARGET_REPAIR_V1.json": "COPIED",
+    "core/socc/repair_engine/proof/HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json": "COPIED",
+    "core/socc/repair_engine/proof/MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_PROOF.json": "COPIED"
+  },
+  "created_at_utc": "2026-06-08T18:45:53.312848+00:00",
+  "current_before": "build_codex_hermes_governance_adoption_v1",
+  "daemon_running": false,
+  "evidence": [
+    {
+      "exists": true,
+      "next": "HERMES_CODEX_REPAIR_ENGINE_READY",
+      "pass": true,
+      "rel": "core/socc/repair_engine/proof/HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "HERMES_CODEX_REPAIR_ENGINE_VALIDATED",
+      "pass": true,
+      "rel": "core/socc/control_room/proof/VALIDATE_MW19_HERMES_CODEX_REPAIR_PACKET_ENGINE_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": true,
+      "rel": "core/socc/hermes_codex_combo/state/HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "integrate_PI_inspector_as_hard_gate_after_combo_proof",
+      "pass": true,
+      "rel": "core/socc/hermes_codex_combo/proof/VALIDATE_HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1",
+      "pass": true,
+      "rel": "core/socc/repair_engine/proof/MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1",
+      "pass": true,
+      "rel": "core/socc/control_room/proof/VALIDATE_MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": true,
+      "rel": "core/socc/hermes_repair/proof/CONTROLLED_FAIL_REPAIRED_PASS_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "run_controlled_fail_repair_repeatability_3_cases",
+      "pass": true,
+      "rel": "core/socc/hermes_repair/proof/VALIDATE_FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": true,
+      "rel": "core/socc/hermes_repair/state/FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "run_codex_bounded_repair_lane_probe_v1",
+      "pass": true,
+      "rel": "core/socc/codex/bounded_repair_lane/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_codex_bounded_repair_lane_review_gate_v1",
+      "pass": true,
+      "rel": "core/socc/codex/bounded_repair_lane_probe/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PROBE_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_codex_productive_use_review_gate_v1",
+      "pass": true,
+      "rel": "core/socc/codex/bounded_repair_lane_productive_use/proof/VALIDATE_CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "run_codex_bounded_repair_lane_productive_use_v1_completed_in_same_megawave",
+      "pass": true,
+      "rel": "core/socc/codex/productive_use_gate/proof/CODEX_BOUNDED_REPAIR_LANE_PRODUCTIVE_USE_GATE_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "prove_pi_hard_gate_and_codex_bounded_execution_v1",
+      "pass": true,
+      "rel": "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_REPAIR_LOOP_SAFE_FAIL_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": null,
+      "pass": true,
+      "rel": "core/socc/hermes_repair_loop/proof/VALIDATE_HERMES_SAFE_FAIL_TARGET_REPAIR_V1.json",
+      "status": "PASS"
+    }
+  ],
+  "forensic_counts": {
+    "candidate_count": 5536,
+    "codex_pass_count": 878,
+    "hermes_pass_count": 765,
+    "law_governance_pass_count": 209,
+    "pass_count": 1982,
+    "repair_pass_count": 849
+  },
+  "forensic_status": "PASS",
+  "hard_failures": [],
+  "hermes_required_pass_count": 11,
+  "id": "SOCC_ADOPT_CODEX_HERMES_GOVERNANCE_V1_PROOF",
+  "network_used": false,
+  "next_after_adoption": "validate_codex_hermes_governance_adoption_v1",
+  "observe_pass": true,
+  "repair_required_pass_count": 15,
+  "status": "PASS",
+  "truth_boundary": "Codex/Hermes governance adoption only. No daemon/background/network.",
+  "warnings": []
+}

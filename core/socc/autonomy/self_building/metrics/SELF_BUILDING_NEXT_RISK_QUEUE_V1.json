@@ -1,0 +1,38 @@
+{
+  "created_at_msk": "2026-06-16T18:04:01+03:00",
+  "created_at_utc": "2026-06-16T15:04:01.388397+00:00",
+  "id": "SELF_BUILDING_NEXT_RISK_QUEUE_V1",
+  "items": [
+    {
+      "evidence": "Several passed build/validation steps required pulse/panel/progress write-back repair after CURRENT_ROUTE_AUTHORITY changed.",
+      "lawful_next_candidate": "build_route_authority_atomic_commit_helper_v1",
+      "recommended_control": "Introduce route-authority atomic commit helper: update route, pulse, panel, progress in one transaction-like function.",
+      "risk": "writeback_order_drift",
+      "severity": "high"
+    },
+    {
+      "evidence": "Panel still shows SELF_BUILDING_CYCLE_COUNT::1 while Cycle 2 is closed.",
+      "lawful_next_candidate": "build_self_building_cycle_count_panel_sync_v1",
+      "recommended_control": "Update status panel to derive cycle_count from validated closure metrics.",
+      "risk": "cycle_count_stale_display",
+      "severity": "medium"
+    },
+    {
+      "evidence": "Progress metrics are being built now and still need validation/review.",
+      "lawful_next_candidate": "validate_self_building_progress_metrics_v1",
+      "recommended_control": "Validate metrics against route/proofs/panel/progress before using them for selection.",
+      "risk": "metrics_not_validated_yet",
+      "severity": "medium"
+    }
+  ],
+  "recommended_next_target": "build_route_authority_atomic_commit_helper_v1",
+  "status": "BUILT",
+  "top_risk": {
+    "evidence": "Several passed build/validation steps required pulse/panel/progress write-back repair after CURRENT_ROUTE_AUTHORITY changed.",
+    "lawful_next_candidate": "build_route_authority_atomic_commit_helper_v1",
+    "recommended_control": "Introduce route-authority atomic commit helper: update route, pulse, panel, progress in one transaction-like function.",
+    "risk": "writeback_order_drift",
+    "severity": "high"
+  },
+  "truth_boundary": "Self-building progress metrics build only. This builds measurable progress state for bounded self-building: closed cycles, closed targets, pass rate, drift repair count, maturity score, and next-risk queue. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

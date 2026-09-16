@@ -1,0 +1,63 @@
+{
+  "anna_born": false,
+  "born": false,
+  "capability": "DOMAIN_GATE_REFUSES_INCOMPLETE_AND_ACCEPTS_COMPLETE_SAME_CODE",
+  "checks": {
+    "barbershop_structure_pass": true,
+    "dental_structure_pass": true,
+    "incomplete_domain_refused": true,
+    "incomplete_nothing_born": true,
+    "no_birth_anywhere": true,
+    "no_network": true,
+    "same_code_zero_changes": true
+  },
+  "created_at_msk": "2026-06-30T13:26:21+03:00",
+  "created_at_utc": "2026-06-30T10:26:21.090096+00:00",
+  "does_not_prove": [
+    "full FG-T3 (mint + smoke-test in real calendar) — needs operator fire, stays RED",
+    "any live capability — no entity born, no integration touched"
+  ],
+  "domains": [
+    "entity_substrate/domains/_incomplete_demo.json",
+    "entity_substrate/domains/dental_msk_01.json",
+    "entity_substrate/domains/barbershop_msk_01.json"
+  ],
+  "entity_born": false,
+  "evidence": {
+    "barbershop": {
+      "id": "barbershop_msk_01",
+      "verdict": "DOMAIN_COMPLETE_STRUCTURE_OK"
+    },
+    "dental": {
+      "id": "dental_msk_01",
+      "verdict": "DOMAIN_COMPLETE_STRUCTURE_OK"
+    },
+    "incomplete": {
+      "missing": [
+        "persona",
+        "vocabulary",
+        "sources",
+        "integration",
+        "icp_signals",
+        "pricing"
+      ],
+      "verdict": "DOMAIN_INCOMPLETE_BIRTH_REFUSED"
+    }
+  },
+  "hard_failures": [],
+  "id": "SOCC_R0_FG_T1_FAIL_CLOSED_BIRTH_PROOF",
+  "network_used": false,
+  "proof_hash": "bc2da64a3f989354",
+  "proves": [
+    "FG-T1: incomplete domain → birth refused at the gate (no half-ANNA)",
+    "FG-T3 structural half: barbershop validates with zero code changes (functor input contract)"
+  ],
+  "rung": "R0",
+  "status": "PASS",
+  "tests": [
+    "FG-T1 (fail-closed birth)",
+    "FG-T3 structural half (domain-as-parameter)"
+  ],
+  "truth_boundary": "R0 internal verification. Proves the domain INPUT-CONTRACT gate is fail-closed and domain-invariant in form. Births nothing, no network, no live system. Full functor (mint+smoke) and all market execution remain gated behind the operator's fire.",
+  "validator": "scripts/socc/domain_validator_v1.py"
+}

@@ -1,0 +1,30 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/final_accept_socc_working_base_20260608T191902Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/final_accept_socc_working_base_20260608T191902Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/final_accept_socc_working_base_20260608T191902Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_required": [],
+  "bad_route_flags": [],
+  "changed": [
+    "FOUNDATION/SOCC_WORKING_BASE_V1.json",
+    "FOUNDATION/SOCC_WORKING_BASE_V1.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:19:02.523436+00:00",
+  "current_before": "final_accept_socc_working_base_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_FINAL_ACCEPT_WORKING_BASE_V1_PROOF",
+  "missing_required": [],
+  "network_used": false,
+  "next_after_final_acceptance": "socc_working_base_accepted_v1",
+  "observe_pass": true,
+  "status": "PASS",
+  "truth_boundary": "SOCC working base final acceptance. No daemon/background/network.",
+  "warnings": [],
+  "working_base": "FOUNDATION/SOCC_WORKING_BASE_V1.json"
+}

@@ -1,0 +1,73 @@
+{
+  "id": "BRAND_FORGE_F2_VISUAL_CORE_V1",
+  "schema": "socc.brand.visual_core.v1",
+  "phase": "P2",
+  "covers_frontiers": ["F2.2 logo", "F2.3 color", "F2.4 typography"],
+  "direction": "D3 — Спокойная забота / Calm Care",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "upstream": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_1_MOODBOARD_V1.json",
+
+  "F2_2_logo": {
+    "concept": "Тихий строчный wordmark «анна» + знак из двух вложенных дуг (укрытие + человеческое тепло) и спокойной точки. Дуга = забота/дыхание, не улыбка-клише.",
+    "assets": {
+      "primary": "SYSTEM/BRAND_FORGE/frontiers/assets/anna-logo-primary.svg",
+      "mark": "SYSTEM/BRAND_FORGE/frontiers/assets/anna-mark.svg"
+    },
+    "construction": {
+      "clearspace": "минимум = высота знака / 2 со всех сторон",
+      "min_size": "знак от 16px (favicon/аватар Telegram), логотип от 120px ширины",
+      "wordmark_case": "строчные «анна» (тёплая, человеческая подача)"
+    },
+    "misuse": ["не растягивать", "не менять цвета вне токенов", "не добавлять тени/градиенты/блики (premium killers)", "не ставить на пёстрый фон без подложки"],
+    "variants_todo": ["монохром (1 цвет)", "инверсия для тёмного фона", "горизонт/вертикаль lockup"],
+    "gate": {"HER": "SVG рендерится 16px..512px", "GRD": "self-pass: дуга-метафора на стратегии (забота), не клише"}
+  },
+
+  "F2_3_color_tokens": {
+    "note": "Single source of truth для D3. Контрасты посчитаны по WCAG 2.1 (sRGB). AA = 4.5:1 текст / 3:1 крупный.",
+    "tokens": {
+      "bg":          {"hex": "#F5F3EE", "role": "фон (тёплый off-white)"},
+      "surface":     {"hex": "#FFFFFF", "role": "карточки"},
+      "surface_2":   {"hex": "#EDEAE3", "role": "вторичные плашки"},
+      "ink":         {"hex": "#2E3D34", "role": "основной текст"},
+      "muted":       {"hex": "#6E7B71", "role": "вторичный/крупный текст"},
+      "primary":     {"hex": "#54705C", "role": "первичный (кнопки, ссылки) — шалфей"},
+      "primary_soft":{"hex": "#8AA897", "role": "мягкие заливки, иллюстрация"},
+      "accent":      {"hex": "#D9A679", "role": "тёплый акцент — песок/глина"},
+      "accent_deep": {"hex": "#B5824F", "role": "акцентный текст на светлом"},
+      "success":     {"hex": "#4F8A5B", "role": "успех (приглушённый, в тон)"},
+      "warning":     {"hex": "#C8923E", "role": "внимание"},
+      "danger":      {"hex": "#C0533B", "role": "ошибка (мягкая, не кричит)"}
+    },
+    "contrast_proof": [
+      {"pair": "ink #2E3D34 on bg #F5F3EE", "ratio": "10.3:1", "verdict": "AAA"},
+      {"pair": "white on primary #54705C", "ratio": "5.47:1", "verdict": "AA"},
+      {"pair": "ink on accent #D9A679", "ratio": "5.28:1", "verdict": "AA"},
+      {"pair": "muted #6E7B71 on bg", "ratio": "≈4.0:1", "verdict": "AA-large only (не для body)"}
+    ],
+    "law": "trust-база сине-зелёная (шалфей) + РОВНО один тёплый акцент (песок ≠ терракота Claude). 2 активных цвета, остальное нейтраль.",
+    "gate": {"SCI": "контрасты измерены", "HER": "валидный JSON токенов"}
+  },
+
+  "F2_4_typography": {
+    "pairing": {
+      "primary": "Inter (гуманистический sans, тёплый, отличная кириллица, free)",
+      "accent_optional": "Lora (тёплый засечный) — только для крупных цитат/заголовков-акцентов",
+      "mono_state": "ui-monospace (только для внутренних state/proof, не для пациента)"
+    },
+    "scale_1_25_major_third": {"xs": "13px", "sm": "14px", "base": "16px", "lg": "20px", "xl": "25px", "2xl": "31px", "3xl": "39px", "4xl": "49px"},
+    "weights": {"regular": 400, "medium": 500, "bold": 700},
+    "rules": ["body 16px минимум", "заголовки tight letter-spacing (-1 до -2)", "межстрочный 1.5 для текста", "никогда не растягивать/сжимать вручную"],
+    "gate": {"HER": "системные фоллбэки заданы", "GRD": "гуманистический, не холодный гротеск"}
+  },
+
+  "guardian_self_critique": {
+    "weaknesses": ["логотип — стартовая итерация, нужен монохром+инверсия", "аватар (стелс-режим: лицо «человека») ещё не решён — арка-знак для бренда, но пациент-аватар = отдельный вопрос", "шрифт пока стоковый Inter — для премиума позже кастом/лицензия"],
+    "must_fix_before_seal": ["добить варианты логотипа", "решить пациент-аватар под стелс (стилизованное фото/инициалы человека, НЕ робот)", "проверить контраст вживую в Hermes"],
+    "overall_verdict": "SURVIVES_WITH_FIXES — ядро визуала достаточно, чтобы собрать токены (P3) и применить (P4)"
+  },
+
+  "render": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_VISUAL_CORE_V1.html",
+  "truth_boundary": "Visual core (logo+color+type) для D3 в REVIEW. Логотип — стартовая итерация; контрасты посчитаны, не прогнаны инструментом; пациент-аватар под стелс не решён. Не запечатано. Не публикует, без сети/выручки/AGI."
+}

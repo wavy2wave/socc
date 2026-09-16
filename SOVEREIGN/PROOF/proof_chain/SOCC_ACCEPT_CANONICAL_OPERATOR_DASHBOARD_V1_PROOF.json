@@ -1,0 +1,31 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_ACCEPTANCE_V1.json",
+  "active_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/accept_canonical_operator_dashboard_20260608T193701Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/accept_canonical_operator_dashboard_20260608T193701Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/accept_canonical_operator_dashboard_20260608T193701Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "MIGRATION/rebind_backups/accept_canonical_operator_dashboard_20260608T193701Z/SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json"
+  ],
+  "bad_route_flags": [],
+  "changed": [
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_ACCEPTANCE_V1.json",
+    "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:37:01.814127+00:00",
+  "current_before": "accept_socc_canonical_operator_dashboard_v1",
+  "daemon_running": false,
+  "dashboard": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_CANONICAL_OPERATOR_DASHBOARD_V1_PROOF",
+  "network_used": false,
+  "next_after_acceptance": "socc_canonical_operator_dashboard_accepted_v1",
+  "observe_pass": true,
+  "status": "PASS",
+  "truth_boundary": "Accept canonical dashboard only. No daemon/background/network."
+}

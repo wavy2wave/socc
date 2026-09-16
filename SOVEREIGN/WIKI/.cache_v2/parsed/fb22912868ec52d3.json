@@ -1,0 +1,1 @@
+{"claims": [{"text": "- every session must prove authority/proof/memory/stop", "line": 10, "entities": ["Proof"], "intent": "requirement", "polarity": "assert"}], "dates": [], "entity_counts": {"Proof": 1, "Daemon": 2}}

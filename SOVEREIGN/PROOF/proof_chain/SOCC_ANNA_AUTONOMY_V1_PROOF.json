@@ -1,0 +1,16 @@
+{
+  "id": "SOCC_ANNA_AUTONOMY_V1_PROOF",
+  "created_at_utc": "2026-06-30T16:14:10.333113+00:00",
+  "status": "RUNNING",
+  "cycles": 15,
+  "rolling_avg": 3.61,
+  "started_at": null,
+  "last_cycle_at": "2026-06-25T11:00:01.048780+00:00",
+  "entity_born": false,
+  "anna_born": false,
+  "no_daemon_beyond_this_bounded_trainer": true,
+  "no_network_beyond_brain": true,
+  "operator_killswitch": "/Users/wavysexy/SOCC/SYSTEM/ANNA_MVP/autonomy/STOP",
+  "truth_boundary": "Bounded continuous ANNA training loop. Evaluates dialogues and accumulates lessons; does NOT rewrite ANNA's prompt, birth anything, or act outside the brain gateway. Operator can stop via STOP file.",
+  "proof_hash": "cdc7636c6bb66ba9"
+}

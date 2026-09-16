@@ -1,0 +1,51 @@
+{
+  "created_at_utc": "2026-06-08T18:45:52.815468+00:00",
+  "id": "CODEX_HERMES_GOVERNANCE_CONTRACT_V1",
+  "lawful_next": "validate_codex_hermes_governance_adoption_v1",
+  "roles": {
+    "codex": {
+      "must_have": [
+        "lawful_next",
+        "proof_output",
+        "bounded_scope",
+        "review_gate"
+      ],
+      "must_not": [
+        "unbounded rewrite",
+        "daemon start",
+        "queue widening without route authority"
+      ],
+      "purpose": "bounded code/repair builder under explicit lawful target"
+    },
+    "governance": {
+      "must_have": [
+        "route_authority",
+        "idempotent_guard",
+        "operator_panel",
+        "proof_chain"
+      ],
+      "must_not": [
+        "chaotic self-patching",
+        "AGI claim",
+        "entity birth"
+      ],
+      "purpose": "turn failures into lawful repair/review/execute sequence"
+    },
+    "hermes": {
+      "must_have": [
+        "failure_evidence",
+        "repair_packet",
+        "validation",
+        "review"
+      ],
+      "must_not": [
+        "silent repair",
+        "background mutation",
+        "claim success without proof"
+      ],
+      "purpose": "repair packet engine and safe-fail recovery under proof-chain"
+    }
+  },
+  "status": "PASS",
+  "truth_boundary": "Governance contract only. No daemon/background/network."
+}

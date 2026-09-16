@@ -1,0 +1,33 @@
+{
+  "active_view": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+  "capability": "SOCC_CREATOR_DIALOGUE_VIEW_READ_ONLY_VALIDATED",
+  "created_at_utc": "2026-06-09T10:27:01.959475+00:00",
+  "id": "SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_VALIDATION_V1",
+  "next_required_step": "review_socc_read_only_creator_dialogue_view_v1",
+  "status": "PASS",
+  "truth_boundary": "Validation confirms creator dialogue view is read-only and non-executing. It does not execute language, mutate route, start daemon/background, use network, or create MW route.",
+  "validated_view": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.json",
+  "validation_checks": {
+    "active_view_candidate": true,
+    "binding_accept_proof_pass": true,
+    "build_proof_exists": true,
+    "build_proof_not_fail": true,
+    "capability_mentions_creator_dialogue": true,
+    "forbidden_background": true,
+    "forbidden_creator_intent_execution": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "language_accept_proof_pass": true,
+    "next_required_validation_matches": true,
+    "view_status_built_candidate": true,
+    "view_type_read_only": true,
+    "visible_boundaries": true,
+    "visible_current_lawful_next": true,
+    "visible_proof_chain": true
+  },
+  "validation_verdict": "READ_ONLY_CREATOR_DIALOGUE_VIEW_VALIDATED_READY_FOR_REVIEW",
+  "view_md": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.md"
+}

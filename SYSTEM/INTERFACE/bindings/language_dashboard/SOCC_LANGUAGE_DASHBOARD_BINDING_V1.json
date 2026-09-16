@@ -1,0 +1,45 @@
+{
+  "active_language_pointer": "SYSTEM/INTERFACE/language/ACTIVE_SOVEREIGN_CORE_LANGUAGE_LAYER.json",
+  "allowed": [
+    "read active language layer pointer",
+    "read canonical dashboard pointer",
+    "read route authority current_lawful_next",
+    "read proof-chain pointers",
+    "write markdown binding view",
+    "display creator dialogue protocol",
+    "display lawful intent boundaries",
+    "display next required binding validation"
+  ],
+  "binding_surfaces": {
+    "creator_dialogue_protocol_panel": true,
+    "current_lawful_next_panel": true,
+    "execution_controls": false,
+    "language_status_panel": true,
+    "lawful_intent_protocol_panel": true,
+    "proof_chain_panel": true
+  },
+  "binding_type": "READ_ONLY_CREATOR_DIALOGUE_SURFACE_BINDING",
+  "capability": "SOCC_CAN_SHOW_CANONICAL_LANGUAGE_ORGAN_INSIDE_DASHBOARD_WITHOUT_EXECUTION",
+  "created_at_utc": "2026-06-09T09:16:05.348573+00:00",
+  "dashboard": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "dashboard_acceptance": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_ACCEPTANCE_V1.json",
+  "forbidden": [
+    "execute language",
+    "execute creator intent",
+    "mutate route authority",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "create second dashboard",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "id": "SOCC_LANGUAGE_DASHBOARD_BINDING_V1",
+  "language_acceptance": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_ACCEPTANCE_V1.json",
+  "language_layer": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_V1.json",
+  "renderer_acceptance": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_ACCEPTANCE_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This binding only connects accepted language artifacts to canonical dashboard visibility. It does not execute language and does not authorize actions.",
+  "validation_required_next": "validate_socc_language_dashboard_binding_v1"
+}

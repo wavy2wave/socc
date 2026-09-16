@@ -1,0 +1,53 @@
+{
+  "allowed": [
+    "read accepted lawful intent proposal packet",
+    "read current_lawful_next",
+    "form finite bounded plan proposal",
+    "name expected effect",
+    "name proof requirements",
+    "name validation requirements",
+    "mark review requirement",
+    "stop for validation"
+  ],
+  "capability": "SOCC_CAN_FORM_ACCEPTED_INTENT_INTO_BOUNDED_NON_EXECUTING_PLAN_PROPOSAL",
+  "created_at_utc": "2026-06-09T10:37:17.251323+00:00",
+  "forbidden": [
+    "execute plan",
+    "execute code",
+    "execute language",
+    "execute creator intent",
+    "mutate route authority outside lawful transition",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "id": "SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_V1",
+  "next_required_step": "validate_socc_bounded_plan_proposal_surface_v1",
+  "outputs": {
+    "plan_schema": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SCHEMA_V1.json",
+    "plan_template": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_TEMPLATE_V1.json",
+    "surface_md": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_V1.md"
+  },
+  "plan_lifecycle": [
+    "observe_current_lawful_next",
+    "read_accepted_intent_packet",
+    "form_bounded_goal",
+    "create_finite_steps",
+    "attach_expected_effect",
+    "attach_proof_requirements",
+    "attach_validation_requirements",
+    "stop_for_validation"
+  ],
+  "status": "BUILT_CANDIDATE",
+  "surface_type": "BOUNDED_PLAN_PROPOSAL_ONLY",
+  "truth_boundary": "This surface creates bounded plan proposals only. It cannot execute plans, mutate route outside lawful transition, start daemon/background, use network, or launch autonomy.",
+  "upstream": {
+    "active_accepted_intent_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/ACTIVE_ACCEPTED_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET.json",
+    "intent_accept_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF.json",
+    "intent_acceptance": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_ACCEPTANCE_V1.json",
+    "intent_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.json"
+  }
+}

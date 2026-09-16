@@ -1,0 +1,32 @@
+{
+  "id": "BRAND_SKINS_V1",
+  "schema": "socc.brand_skins.v1",
+  "status": "ACTIVE",
+  "purpose": "The factory's data layer: per-entity palettes for the product design system. Same components (canon/anna_canon_html.py — brand-agnostic, token-driven via color-mix), swap a SKIN -> a new brand in one pass. Adding an entity = adding a palette here.",
+  "palette_keys": ["bg", "surface", "surface_2", "ink", "muted", "primary", "primary_soft", "accent", "accent_deep", "success", "warning", "danger"],
+  "skins": {
+    "anna": {
+      "label": "Анна — стоматология",
+      "direction": "D3 «Спокойная забота» · sage + warm sand",
+      "landing": "runtime/ANNA_LANDING_V1.html",
+      "palette": {
+        "bg": "#F5F3EE", "surface": "#FFFFFF", "surface_2": "#EDEAE3", "ink": "#2E3D34",
+        "muted": "#6E7B71", "primary": "#54705C", "primary_soft": "#8AA897",
+        "accent": "#D9A679", "accent_deep": "#B5824F",
+        "success": "#4F8A5B", "warning": "#C8923E", "danger": "#C0533B"
+      }
+    },
+    "mark": {
+      "label": "Марк — барбершоп",
+      "direction": "мужской груминг · espresso + copper",
+      "landing": "runtime/MARK_LANDING_V1.html",
+      "palette": {
+        "bg": "#F3EEE7", "surface": "#FFFFFF", "surface_2": "#E9E1D7", "ink": "#221E1A",
+        "muted": "#7A6E62", "primary": "#2E2A25", "primary_soft": "#8C837A",
+        "accent": "#C77F4E", "accent_deep": "#9A5C33",
+        "success": "#4F8A5B", "warning": "#C8923E", "danger": "#C0533B"
+      }
+    }
+  },
+  "truth_boundary": "Palette registry only. Declares brand skins consumed by the shared renderer. Adding a skin adds a brand; it forges no page by itself and makes no external claim."
+}

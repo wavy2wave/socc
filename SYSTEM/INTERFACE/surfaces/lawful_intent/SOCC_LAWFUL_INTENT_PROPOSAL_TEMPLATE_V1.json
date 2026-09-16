@@ -1,0 +1,25 @@
+{
+  "bounded_patch_summary": null,
+  "created_at_utc": "2026-06-09T10:30:28.201763+00:00",
+  "creator_intent": null,
+  "expected_effect": null,
+  "forbidden_actions": [
+    "execute language",
+    "execute creator intent",
+    "mutate route authority outside lawful transition",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "lawful_next_alignment": "MUST_BE_CHECKED",
+  "may_execute": false,
+  "observed_current_lawful_next": "build_socc_lawful_intent_proposal_surface_v1",
+  "proposal_id": "UNFILLED_PROPOSAL_TEMPLATE_V1",
+  "required_proof": null,
+  "requires_review": true,
+  "risk_class": "REVIEW_REQUIRED",
+  "truth_boundary": "Template for lawful intent proposals only. Not executable."
+}

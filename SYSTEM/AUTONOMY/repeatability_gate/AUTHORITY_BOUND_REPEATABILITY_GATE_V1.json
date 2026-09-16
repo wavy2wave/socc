@@ -1,0 +1,75 @@
+{
+  "autonomy_distance": {
+    "continuous_foreground_autonomy": "requires repeatability session plan + bounded sessions + validation/review/accept",
+    "daemon_or_24_7_autonomy": "not_authorized",
+    "first_foreground_tick": "done_pending_validation",
+    "repeatability_gate": "built_candidate_pending_review"
+  },
+  "created_at_utc": "2026-06-09T14:25:55.834117+00:00",
+  "current_execution_line": "fresh_SOCC_route_authority",
+  "current_expected": "build_authority_bound_repeatability_gate_v1",
+  "future_run_lane_requirements": [
+    "read route authority before every tick/session",
+    "require exact current_lawful_next before running any repeatability session",
+    "materialize before/decision/boundary/action/result/proof/next/stop per tick/session",
+    "write proof chain artifact for every tick/session",
+    "write memory artifact for every tick/session",
+    "stop after bounded session",
+    "advance route only through validate/review/accept",
+    "show operator-visible summary after every session"
+  ],
+  "gate_type": "FRESH_SOCC_AUTHORITY_BOUND_FOREGROUND_REPEATABILITY_GATE",
+  "id": "AUTHORITY_BOUND_REPEATABILITY_GATE_V1",
+  "next_gate_after_review_acceptance": "build_first_authority_bound_repeatability_session_plan_v1",
+  "next_required_step": "review_authority_bound_repeatability_gate_v1",
+  "old_evidence_role": "lineage_only_not_current_route",
+  "pass_definition": {
+    "not_pass_if": [
+      "PASS appears only as text without proof",
+      "route differs across authority files",
+      "tick/session runs outside accepted gate",
+      "old route is used as current",
+      "daemon/background/network starts",
+      "no stop condition is proven"
+    ],
+    "repeatability_is_pass_only_if": [
+      "all authority files agree before run",
+      "every tick/session has PASS proof",
+      "every tick/session has memory",
+      "no daemon/background/network was used",
+      "no old route was resumed",
+      "route advances through validation/review/accept only",
+      "bounded stop is observed"
+    ]
+  },
+  "purpose": "Define the fresh lawful repeatability gate that can prove continuous foreground autonomy without resuming old route and without daemon/background/network.",
+  "repeatability_contract": {
+    "agi_claim_allowed": false,
+    "background_allowed": false,
+    "daemon_allowed": false,
+    "fresh_route_only": true,
+    "l3_claim_allowed": false,
+    "maximum_ticks_per_session_before_later_expansion": 3,
+    "memory_required_after_each_tick": true,
+    "minimum_future_sessions_for_gate_pass": 2,
+    "minimum_ticks_per_session": 1,
+    "must_stop_after_each_session": true,
+    "mw_route_allowed": false,
+    "network_allowed": false,
+    "old_route_resume_allowed": false,
+    "proof_required_after_each_tick": true,
+    "review_accept_required_before_claiming_repeatability": true,
+    "route_authority_required_before_each_tick": true,
+    "validation_required_after_each_tick_or_session": true
+  },
+  "source_evidence": {
+    "accepted_status_surface": "SYSTEM/STATUS/FRESH_SOCC_AUTONOMY_STATUS_SURFACE_ACCEPTANCE_V1.json",
+    "accepted_status_surface_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FRESH_SOCC_AUTONOMY_STATUS_SURFACE_V1_PROOF.json",
+    "first_foreground_tick_memory": "MEMORY_WAVE/reports/foreground_tick/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1_MEMORY.json",
+    "first_foreground_tick_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_FOREGROUND_CONTROLLED_TICK_V1_PROOF.json",
+    "first_foreground_tick_run": "SYSTEM/CYCLE/foreground_tick_run/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1.json",
+    "lineage_pointer": "core/socc/lineage/OLD_AUTONOMY_LINEAGE_ACCEPTED_POINTER_V1.json"
+  },
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This is a gate contract only. It does not run sessions, does not resume old route, does not start daemon/background/network, and does not claim L3."
+}

@@ -1,0 +1,12 @@
+{
+  "bounded_repair": true,
+  "continuous_loop_enabled": false,
+  "created_at_utc": "2026-06-16T14:33:47.509190+00:00",
+  "daemon_running": false,
+  "fail_proof": "core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_VALIDATION_V1_PROOF.json",
+  "id": "HERMES_REPAIR_TRUTH_BOUNDARY_PANEL_SYNC_V1",
+  "network_used": false,
+  "packet_hash": "4b07349bf5f0229de27520ba",
+  "repair_action": "sync_pulse_panel_lawful_next_and_truth_boundary_to_route",
+  "source_route": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+}

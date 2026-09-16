@@ -1,0 +1,33 @@
+{
+  "audit": {
+    "evidence": {
+      "changed_artifacts_hashes": {
+        "core/socc/autonomy/self_building/effect_auditor/enforced_lane/SELF_BUILDING_EFFECT_AUDITOR_ENFORCED_LANE_POLICY_V1.json": "624fbb8257f2d2f9316b5466",
+        "scripts/socc/socc_self_building_effect_auditor_enforced_lane_v1.py": "5fec4b2edfd7eecd84c8af50"
+      },
+      "expected_after_ok": true,
+      "expected_before_ok": true,
+      "forbidden_false_after": true,
+      "lawful_next_after": "validate_self_building_effect_auditor_enforced_lane_v1",
+      "lawful_next_before": "build_self_building_effect_auditor_enforced_lane_v1",
+      "material_claims_count": 4,
+      "memory_exists": true,
+      "required_artifacts": {
+        "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_REVIEW_V1_PROOF.json": true,
+        "core/socc/autonomy/self_building/effect_auditor/enforced_lane/SELF_BUILDING_EFFECT_AUDITOR_ENFORCED_LANE_POLICY_V1.json": true,
+        "scripts/socc/socc_self_building_effect_auditor_v1.py": true
+      },
+      "route_changed": true,
+      "upstream_ok": true
+    },
+    "hard_failures": [],
+    "material_effect_proven": true,
+    "semantic_null_pass_blocked": false,
+    "status": "PASS"
+  },
+  "effect_auditor_enforced": true,
+  "hard_failures": [],
+  "material_effect_required": true,
+  "semantic_null_pass_blocked": false,
+  "status": "PASS"
+}

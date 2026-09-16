@@ -1,0 +1,31 @@
+{
+  "id": "SOCC_BRAND_FORGE_SEAL_V1_PROOF",
+  "capability": "SOCC_BRAND_FORGE_HAS_SEALED_ANNA_BRAND_CANON_APPLY_ELIGIBLE",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "stage": "brand_forge_seal_v1",
+  "artifact": "SYSTEM/BRAND_FORGE/BRAND_FORGE_SEAL_V1.json",
+  "upstream_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BRAND_FORGE_F2_F3_VISUAL_AND_CANON_V1_PROOF.json",
+  "checks": {
+    "p0_genesis_sealed": true,
+    "p1_strategy_accepted": true,
+    "p1_research_must_fix_cleared": true,
+    "p2_visual_hardened": true,
+    "p3_canon_and_tokens_present": true,
+    "p4_landing_and_touchpoints_present": true,
+    "dual_identity_law": true,
+    "no_fabricated_proof": true,
+    "no_fake_pass": true,
+    "committed_to_git_branch": true,
+    "open_stealth_risk_disclosed_not_hidden": true,
+    "brand_not_live": true,
+    "no_network": true,
+    "no_revenue_claim": true,
+    "no_agi_claim": true,
+    "truth_boundary_present": true
+  },
+  "gate_verdict": "ANNA_BRAND_CANON_SEALED_APPLY_ELIGIBLE",
+  "status": "PASS",
+  "current": "brand_forge_seal_v1",
+  "next": "apply_live (publish landing / wire Telegram) OR brand next entity through the forge",
+  "truth_boundary": "Seal proof. Verifies the full Brand Forge chain and seals the ANNA brand canon as apply-eligible. Brand is NOT live/published; the full-stealth risk is creator-accepted and logged open. No network, no revenue, no AGI."
+}

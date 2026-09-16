@@ -68,7 +68,9 @@
     OH9  render_ovh_line          — отчёт оператору: строка «габариты посылки из карточки донора: N (ОВХ-слой, 0₽)»
     OH10 max_cost_mirror          — потолок закупки 700₽ зеркалит КАТЕГОРИЙЩИК (C4 не тратит патроны донора)
     OH11 ovh_module_stdlib        — ОВХ-слой в свежем питоне тянет только stdlib (не уронит сутки чужими импортами)
-    OH12 enrich_pred_weight_honest— только url+dims_raw обогащаются; веса без «Вес» НЕ выдумываем (закон L3)
+    OH12 enrich_pred_weight_honest— обогащаем по ЖИВОМУ url (dims_raw НЕ нужен: имя стрейча «500 мм…» им
+                                   не даёт его; директива 04.09); веса без источника НЕ выдумываем (L3),
+                                   вес из НАЗВАНИЯ («…, 2 кг») — легальный фолбэк с провенансом
     OH13 defaults_exposed         — dims/stock_deadline по умолч. ==360/300 (ЖИВОЙ ЗАМЕР 2026-09-01: 45 карточек
                                    ≈296с, 18 наличие ≈168с; бюджет ниже реальности = гонка → нечестный selected=0),
                                    enrich_fn=None (default = ОВХ+наличие)
@@ -685,23 +687,31 @@ def oh11_ovh_module_stdlib():
 
 
 def oh12_enrich_pred_and_weight_honest():
-    """ОВХ на модульном уровне: (а) позиция БЕЗ url ИЛИ dims_raw не трогается (pred — патроны не тратим);
-    (б) НЕТ колонки «Вес» → вес НЕ выдумывается (закон L3): карточка честно останется без веса (T5),
-    а не «1 кг на глаз»."""
+    """ОВХ на модульном уровне: (а) обогащаем по ЖИВОМУ url — dims_raw НЕ нужен (у стрейча имя
+    «500 мм, 20 мкм…» регексом «50*0.3 м» его не даёт, а габариты даёт карточка; директива 04.09);
+    без url — не трогаем (патроны не тратим), бюджет сам режет. (б) НЕТ источника веса (ни колонки
+    «Вес», ни «кг» в названии) → вес НЕ выдумывается (закон L3): честно без веса (T5); а «…, 2 кг» в
+    названии — легальный фолбэк веса с провенансом 'донор:название' (габариты при этом честно ждут)."""
     import ymarket_ovh_dims_v1 as ovh                    # noqa: E402
     rows = [{"url": "", "dims_raw": "0.3*100 м"},         # нет url → не трогаем
-            {"url": "x"},                                  # нет dims_raw → не трогаем
-            {"url": "y", "dims_raw": "0.3*100 м"}]         # есть оба → обогащаем
+            {"url": "x", "name": "Плёнка без кг"},         # url есть, dims_raw нет → ТРОГАЕМ (фикс дефекта а)
+            {"url": "y", "dims_raw": "0.3*100 м"}]         # url есть → обогащаем
     seen = []
     def fake_fetch(url):
         seen.append(url)
         return ""
-    ovh.enrich_products(rows, budget=5, fetch=fake_fetch)
-    ok = seen == ["y"] and "dims_source" not in rows[0] and "dims_source" not in rows[1]
-    prod = {"url": "z"}
+    ovh.enrich_products(rows, budget=5, fetch=fake_fetch, cache_path=None)
+    ok = seen == ["x", "y"] and "dims_source" not in rows[0]
+    prod = {"url": "z", "name": "Плёнка пузырчатая"}
     ovh.enrich(prod, {"Размер упаковки Д*Ш*В, см": "50*35*50"})
     ok = ok and "weight" not in prod and "weight_source" not in prod and prod["dims_source"] == "card"
-    return ok, f"fetch×{len(seen)} url={seen} (тронута только 'y'); weight при отсутствии «Вес»: {'weight' in prod} (ждём False)"
+    wname = {"url": "w", "name": "Стрейч плёнка, 500 мм, 20 мкм, 2 кг, 1 сорт"}
+    ovh.enrich(wname, {})
+    ok = ok and wname.get("weight") == 2.0 and wname.get("weight_source") == "донор:название" \
+        and not wname.get("length")
+    return ok, (f"fetch×{len(seen)} url={seen} (url-only: 'x' и 'y' тронуты, '' — нет); "
+                f"вес без источника: {'weight' in prod} (ждём False); "
+                f"вес из названия: {wname.get('weight')} {wname.get('weight_source')}")
 
 
 def oh13_defaults_exposed():

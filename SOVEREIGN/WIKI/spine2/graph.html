@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOCC — карта знания</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* — дисциплина студии: типографика первой, цвет по делу, ничего лишнего — */
+  :root{
+    --bg:#10160F; --bg2:#161E15; --ink:#EFece1; --muted:#9aa79b; --line:#2a352a;
+    --socc:#8AA897; --es:#D9A679; --anna:#E0907D; --law:#9DB4C0;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow:hidden}
+  #cv{display:block;position:fixed;inset:0;cursor:grab}
+  #cv.drag{cursor:grabbing}
+  /* шапка — честная, без воды */
+  header{position:fixed;left:28px;top:22px;z-index:5;pointer-events:none}
+  header .t{font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  header h1{margin:4px 0 0;font-size:30px;letter-spacing:-1.2px;font-weight:800}
+  header .s{margin-top:4px;color:var(--muted);font-size:13.5px;max-width:360px;line-height:1.5}
+  /* легенда тем */
+  .legend{position:fixed;left:28px;bottom:24px;z-index:5;display:flex;flex-direction:column;gap:9px}
+  .lg{display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--ink);cursor:pointer;user-select:none;opacity:.95}
+  .lg .d{width:11px;height:11px;border-radius:50%}
+  .lg.off{opacity:.32}
+  .lg .c{color:var(--muted);font-size:12px;margin-left:2px}
+  /* панель узла — «кат»: только суть */
+  #panel{position:fixed;right:0;top:0;height:100%;width:340px;background:var(--bg2);
+    border-left:1px solid var(--line);transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);
+    z-index:6;padding:30px 26px;overflow:auto}
+  #panel.open{transform:none}
+  #panel .k{font-size:12px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+  #panel h2{margin:8px 0 2px;font-size:25px;letter-spacing:-.6px;line-height:1.1}
+  #panel .st{display:inline-block;margin-top:10px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;background:#23301f}
+  #panel .desc{margin-top:18px;color:#d7d4c8;font-size:15px;line-height:1.6}
+  #panel .meta{margin-top:20px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12.5px;line-height:1.7}
+  #panel .x{position:absolute;right:18px;top:16px;color:var(--muted);font-size:22px;cursor:pointer;line-height:1}
+  /* подсказки управления */
+  .hint{position:fixed;right:22px;bottom:18px;z-index:5;color:var(--muted);font-size:12px;text-align:right;line-height:1.7}
+  kbd{background:#23301f;border:1px solid var(--line);border-radius:5px;padding:1px 6px;font:600 11px Inter;color:var(--ink)}
+  /* палитра команд (2026: command palette) */
+  #cmd{position:fixed;inset:0;z-index:9;display:none;align-items:flex-start;justify-content:center;background:rgba(8,11,8,.55)}
+  #cmd.open{display:flex}
+  #cmd .box{margin-top:14vh;width:min(520px,92vw);background:var(--bg2);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  #cmd input{width:100%;border:0;background:transparent;color:var(--ink);font:500 17px Inter;padding:18px 20px;outline:none}
+  #cmd .res{max-height:46vh;overflow:auto;border-top:1px solid var(--line)}
+  #cmd .r{padding:11px 20px;display:flex;gap:10px;align-items:center;cursor:pointer;font-size:14.5px}
+  #cmd .r.sel,#cmd .r:hover{background:#22301f}
+  #cmd .r .d{width:9px;height:9px;border-radius:50%;flex:none}
+</style></head>
+<body>
+<canvas id="cv"></canvas>
+
+<header>
+  <div class="t">SOCC · карта знания</div>
+  <h1>Как устроена система</h1>
+  <div class="s">Тяни шар мышью. Кликни — откроется суть. Колесо — масштаб. <kbd>/</kbd> — поиск.</div>
+</header>
+
+<div class="legend" id="legend"></div>
+
+<aside id="panel">
+  <div class="x" id="px">×</div>
+  <div class="k" id="pk"></div>
+  <h2 id="ph"></h2>
+  <div class="st" id="pst"></div>
+  <div class="desc" id="pd"></div>
+  <div class="meta" id="pm"></div>
+</aside>
+
+<div class="hint">
+  <div><kbd>тяни</kbd> шар (останется на месте) · <kbd>клик</kbd> суть · <kbd>колесо</kbd> зум</div>
+  <div><kbd>2× клик</kbd> отпустить узел · <kbd>/</kbd> поиск · <kbd>esc</kbd> сброс</div>
+</div>
+
+<div id="cmd"><div class="box">
+  <input id="cmdi" placeholder="Найти узел или тему…" autocomplete="off">
+  <div class="res" id="cmdr"></div>
+</div></div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────
+//  ДАННЫЕ — только реальное (никаких пустых слов). 4 темы = законные линии.
+// ─────────────────────────────────────────────────────────────────────────
+const THEMES = {
+  socc: {name:"SOCC — ядро",     color:"#8AA897", line:"Суверенное самостроящееся ядро. Запечатано. Двигается законными шагами через proof."},
+  es:   {name:"Entity Substrate", color:"#D9A679", line:"Орган рождения сущностей. 10 поверхностей, 3 ворот, запечатан. На нём рождается ANNA."},
+  anna: {name:"ANNA — продукт",  color:"#E0907D", line:"Живой ИИ-администратор клиник. Telegram-бот, память, запись, автообучение. Бренд «Спокойная забота»."},
+  law:  {name:"Закон / Proof",   color:"#9DB4C0", line:"Дисциплина, что связывает всё: no fake pass, gates Codex/Hermes, enforcer, proof-chain."},
+};
+// узлы: t=тема (крупный), иначе реальный артефакт
+const N = [
+  {id:"socc", t:1, th:"socc", label:"SOCC", st:"ЗАПЕЧАТАН",
+    d:"Суверенное ядро. Само себя строит по одному законному шагу: observe → proof → enforcer → стоп. Не демон, не AGI-заявка."},
+  {id:"engine", th:"socc", label:"Lawful-step engine", st:"РАБОТАЕТ",
+    d:"Переиспользуемый движок законного шага: реальные проверки → proof → атомарный переход. Один раз построен — годится для сотен агентов."},
+  {id:"observe", th:"socc", label:"Observe", st:"РАБОТАЕТ",
+    d:"Источник правды о маршруте: текущий lawful_next, статус, hard_failures. Я сверяюсь с ним перед каждым шагом."},
+  {id:"dash", th:"socc", label:"Дашборд создателя", st:"РАБОТАЕТ",
+    d:"Реальные цифры: фронтир, уровни, число proof'ов, статус ANNA. Терминальный; HTML — в roadmap."},
+
+  {id:"es", t:1, th:"es", label:"Entity Substrate", st:"ЗАПЕЧАТАН",
+    d:"Способность рождать сущности. Подготавливает идентичность, состояние, память, происхождение, привязку к продукту — как данные, без рождения вживую."},
+  {id:"gates", th:"es", label:"3 ворот: Sci·Hermes·Codex", st:"PASS",
+    d:"Три неповторяющих друг друга барьера качества: полнота плана (Scientific), инженерная связность (Hermes), безопасность кода/патча (Codex)."},
+  {id:"surfaces", th:"es", label:"10 поверхностей", st:"MATERIALIZED",
+    d:"Идентичность, состояние, память, происхождение, capability, lawful-action, дашборд, proof-chain, freeze/stop, привязка к ANNA. Все entity_born:false."},
+  {id:"essession", th:"es", label:"Bounded-сессия (1 тик)", st:"PASS",
+    d:"Первое реальное исполнение: один ограниченный тик материализовал 10 поверхностей. Без сети, без демона, стоп после шага."},
+
+  {id:"anna", t:1, th:"anna", label:"ANNA", st:"ЖИВАЯ",
+    d:"Вертикальный агент: личность одна, профиль клиники — навык. Тёплый администратор: ответить, понять боль, записать, запомнить. Цель — выручка для клиник."},
+  {id:"brain", th:"anna", label:"Мозг (Claude, free)", st:"РАБОТАЕТ",
+    d:"Живой мозг через Claude-шлюз, бесплатно. Ротация ключей + fallback для устойчивости. Отвечает по-человечески."},
+  {id:"tg", th:"anna", label:"Telegram @anna_dent_bot", st:"LIVE",
+    d:"Живой бот: индикатор «печатает», человеческий ритм, лёгкие опечатки, память по чату, реальная запись на приём."},
+  {id:"persona", th:"anna", label:"Личность + safety-guard", st:"ОБУЧЕНА",
+    d:"Неотличима от живого админа, но не диагностирует и не врёт про запись (детерминированный guard ловит без LLM). Тренирована на архетипах."},
+  {id:"autonomy", th:"anna", label:"Автономия (15 циклов)", st:"2.25→4.5",
+    d:"Петля самообучения: сценарий → ответ → судья → урок. 15 циклов, оценки выросли с 2.25 до 4.5. Учится во времени."},
+  {id:"brand", th:"anna", label:"Бренд «Спокойная забота»", st:"REVIEW",
+    d:"D3: шалфей + песок. Лендинг V2 (правки из ревью: рабочий CTA, пилот-пруф, ROI, передача живому, как-это-работает). Ждёт SEAL."},
+
+  {id:"law", t:1, th:"law", label:"Закон / Proof", st:"ОСНОВА",
+    d:"Дисциплина, на которой держится всё. Каждый шаг доказывается из реального состояния файлов. Никаких фейковых PASS."},
+  {id:"nofake", th:"law", label:"No fake pass", st:"ЗАКОН",
+    d:"Нельзя писать PASS без реальной проверки. Когда я однажды попытался — система меня остановила. Это и есть прочность."},
+  {id:"ledger", th:"law", label:"Token-ledger", st:"РАБОТАЕТ",
+    d:"Учёт токенов на каждый вызов + бюджет-гейт «дешевле прошлого». Экономия стала законом, доказуемым по PASS."},
+  {id:"proofchain", th:"law", label:"Proof-chain (214)", st:"214 PROOF",
+    d:"Цепочка доказательств: 214 proof'ов. Каждый запечатанный шаг — звено. Это память системы о том, что реально сделано."},
+];
+// рёбра: цель-цепочка + закон связывает + артефакты к темам
+const E = [
+  ["socc","es"], ["es","anna"],            // главная цель-цепочка
+  ["law","socc"], ["law","es"], ["law","anna"], // закон связывает всё
+  ["socc","engine"],["socc","observe"],["socc","dash"],
+  ["es","gates"],["es","surfaces"],["es","essession"],
+  ["anna","brain"],["anna","tg"],["anna","persona"],["anna","autonomy"],["anna","brand"],
+  ["law","nofake"],["law","ledger"],["law","proofchain"],
+  ["gates","nofake"],["proofchain","essession"],["persona","nofake"],
+];
+
+// ─────────────────────────────────────────────────────────────────────────
+//  ФИЗИКА — сила-направленная раскладка, перетаскивание, зум, фокус
+// ─────────────────────────────────────────────────────────────────────────
+const cv=document.getElementById('cv'), ctx=cv.getContext('2d');
+let W,H,DPR; function resize(){DPR=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);}
+addEventListener('resize',resize); resize();
+
+const byId={}; N.forEach(n=>byId[n.id]=n);
+const adj={}; N.forEach(n=>adj[n.id]=new Set());
+E.forEach(([a,b])=>{adj[a].add(b);adj[b].add(a);});
+// тематические якоря по кругу
+const order=["socc","es","anna","law"];
+order.forEach((th,i)=>{const a=(i/order.length)*Math.PI*2-Math.PI/2; THEMES[th].ax=Math.cos(a); THEMES[th].ay=Math.sin(a);});
+N.forEach((n,i)=>{const T=THEMES[n.th]; n.x=W/2+T.ax*180+(Math.random()*60-30); n.y=H/2+T.ay*180+(Math.random()*60-30);
+  n.vx=0;n.vy=0; n.r=n.t?26:8.5;});
+
+let view={x:0,y:0,k:1}, hover=null, sel=null, drag=null, dragMoved=false, themeOff={}, settleBoost=1;
+function sx(n){return (n.x-W/2)*view.k + W/2 + view.x;}
+function sy(n){return (n.y-H/2)*view.k + H/2 + view.y;}
+function toWorld(px,py){return {x:(px-W/2-view.x)/view.k+W/2, y:(py-H/2-view.y)/view.k+H/2};}
+
+function step(){
+  const REP=settleBoost*9000, SPR=0.018, LEN=92, GRAV=0.015, ANCH=0.012, DAMP=0.86;
+  for(let i=0;i<N.length;i++){const a=N[i];
+    for(let j=i+1;j<N.length;j++){const b=N[j];
+      let dx=a.x-b.x,dy=a.y-b.y,d2=dx*dx+dy*dy+0.01,d=Math.sqrt(d2);
+      const f=REP/d2; const ux=dx/d,uy=dy/d;
+      a.vx+=ux*f*0.5;a.vy+=uy*f*0.5;b.vx-=ux*f*0.5;b.vy-=uy*f*0.5;}}
+  E.forEach(([ia,ib])=>{const a=byId[ia],b=byId[ib];let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy)||1;
+    const f=SPR*(d-LEN);const ux=dx/d,uy=dy/d; a.vx+=ux*f;a.vy+=uy*f;b.vx-=ux*f;b.vy-=uy*f;});
+  N.forEach(n=>{const T=THEMES[n.th];
+    n.vx+=((W/2+T.ax*(n.t?150:230))-n.x)*ANCH;
+    n.vy+=((H/2+T.ay*(n.t?150:230))-n.y)*ANCH;
+    n.vx+=((W/2)-n.x)*GRAV*0.05; n.vy+=((H/2)-n.y)*GRAV*0.05;
+    if(drag===n)return;
+    if(n.pinned){n.vx=0;n.vy=0;return;}   // полный контроль: закреплённый стоит где брошен
+    n.vx*=DAMP;n.vy*=DAMP; n.x+=n.vx;n.y+=n.vy;});
+  if(settleBoost>1) settleBoost*=0.992;
+}
+
+function draw(){
+  ctx.clearRect(0,0,W,H);
+  // лёгкая виньетка-сетка студии
+  ctx.fillStyle="#10160F"; ctx.fillRect(0,0,W,H);
+  // рёбра
+  E.forEach(([ia,ib])=>{const a=byId[ia],b=byId[ib];
+    const dim = sel && !(sel.id===ia||sel.id===ib||adj[sel.id].has(ia)&&adj[sel.id].has(ib));
+    const act = sel && (sel.id===ia||sel.id===ib);
+    const main = (ia==="socc"&&ib==="es")||(ia==="es"&&ib==="anna");
+    ctx.beginPath(); ctx.moveTo(sx(a),sy(a)); ctx.lineTo(sx(b),sy(b));
+    ctx.strokeStyle = act?"#cfe0d4":(main?"rgba(217,166,121,.5)":"rgba(255,255,255,.10)");
+    ctx.lineWidth = (main?2.4:1.1)*view.k * (themeOff[a.th]||themeOff[b.th]?0.15:1) * (sel&&!act?0.35:1);
+    ctx.stroke();});
+  // узлы
+  N.forEach(n=>{const T=THEMES[n.th]; const off=themeOff[n.th];
+    const X=sx(n),Y=sy(n),R=n.r*view.k;
+    const focusDim = sel && sel.id!==n.id && !adj[sel.id].has(n.id);
+    ctx.globalAlpha = off?0.16:(focusDim?0.28:1);
+    // ореол
+    if(n.t||hover===n||sel===n){const g=ctx.createRadialGradient(X,Y,0,X,Y,R*2.6);
+      g.addColorStop(0,T.color+"55");g.addColorStop(1,T.color+"00");ctx.fillStyle=g;
+      ctx.beginPath();ctx.arc(X,Y,R*2.6,0,7);ctx.fill();}
+    ctx.beginPath();ctx.arc(X,Y,R,0,7);
+    ctx.fillStyle = (sel===n||hover===n)?"#fff":T.color; ctx.fill();
+    if(n.t){ctx.lineWidth=2;ctx.strokeStyle=T.color;ctx.stroke();}
+    if(n.pinned){ctx.lineWidth=1.5;ctx.strokeStyle="rgba(255,255,255,.55)";ctx.beginPath();ctx.arc(X,Y,R+4.5,0,7);ctx.stroke();}
+    // подпись — типографика первой; semantic zoom: мелкие прячем при отдалении
+    const showLabel = n.t || view.k>0.85 || hover===n || sel===n;
+    if(showLabel && !off){
+      ctx.globalAlpha = off?0.16:(focusDim?0.4:1);
+      ctx.font = (n.t?"700 ":"500 ")+(n.t?16:12.5)+"px Inter";
+      ctx.textAlign="center"; ctx.textBaseline="top";
+      ctx.fillStyle = n.t? "#fff":"#d7d4c8";
+      ctx.shadowColor="#0c110b"; ctx.shadowBlur=6;
+      ctx.fillText(n.label, X, Y+R+5); ctx.shadowBlur=0;
+    }
+    ctx.globalAlpha=1;});
+}
+function loop(){step();draw();requestAnimationFrame(loop);} loop();
+
+// ── взаимодействие ──
+function pick(px,py){let best=null,bd=1e9; N.forEach(n=>{const dx=px-sx(n),dy=py-sy(n),d=Math.hypot(dx,dy);
+  if(d<Math.max(14,n.r*view.k+6)&&d<bd){bd=d;best=n;}}); return best;}
+let downPt=null;
+cv.addEventListener('pointerdown',e=>{downPt={x:e.clientX,y:e.clientY};dragMoved=false;
+  const n=pick(e.clientX,e.clientY);
+  if(n){drag=n;cv.classList.add('drag');} else {drag='pan';}
+  cv.setPointerCapture(e.pointerId);});
+cv.addEventListener('pointermove',e=>{
+  const n=pick(e.clientX,e.clientY); hover=(drag&&drag!=='pan')?drag:n; cv.style.cursor=hover?'grab':'grab';
+  if(downPt&&Math.hypot(e.clientX-downPt.x,e.clientY-downPt.y)>4)dragMoved=true;
+  if(drag&&drag!=='pan'){const w=toWorld(e.clientX,e.clientY);drag.x=w.x;drag.y=w.y;drag.vx=0;drag.vy=0;}
+  else if(drag==='pan'&&downPt){view.x+=e.movementX;view.y+=e.movementY;}});
+cv.addEventListener('pointerup',e=>{
+  if(!dragMoved){const n=pick(e.clientX,e.clientY); n?openPanel(n):closePanel();}
+  else if(drag&&drag!=='pan'){drag.pinned=true;drag.vx=0;drag.vy=0;}  // бросил → закрепил
+  drag=null;downPt=null;cv.classList.remove('drag');});
+cv.addEventListener('dblclick',e=>{const n=pick(e.clientX,e.clientY);
+  if(n){n.pinned=false;n.vx=0;n.vy=0;}            // 2× клик по узлу — отпустить в физику
+  else {N.forEach(x=>x.pinned=false);settleBoost=6;}});  // 2× по пустому — отпустить всё + пересобрать
+cv.addEventListener('wheel',e=>{e.preventDefault();const f=e.deltaY<0?1.1:0.9;
+  view.k=Math.max(0.4,Math.min(3,view.k*f));},{passive:false});
+
+// ── панель «кат» ──
+function openPanel(n){sel=n;const T=THEMES[n.th];
+  document.getElementById('pk').textContent=T.name; document.getElementById('pk').style.color=T.color;
+  document.getElementById('ph').textContent=n.label;
+  const st=document.getElementById('pst'); st.textContent=n.st||''; st.style.color=T.color;
+  document.getElementById('pd').textContent=n.d||'';
+  const links=[...adj[n.id]].map(id=>byId[id].label).join(' · ');
+  document.getElementById('pm').innerHTML="Линия: "+T.line+"<br><br>Связи: "+links;
+  document.getElementById('panel').classList.add('open');}
+function closePanel(){sel=null;document.getElementById('panel').classList.remove('open');}
+document.getElementById('px').onclick=closePanel;
+
+// ── легенда / фильтр тем ──
+const lg=document.getElementById('legend');
+Object.entries(THEMES).forEach(([k,T])=>{const el=document.createElement('div');el.className='lg';
+  el.innerHTML='<span class="d" style="background:'+T.color+'"></span>'+T.name+' <span class="c">'+
+    N.filter(n=>n.th===k).length+'</span>';
+  el.onclick=()=>{themeOff[k]=!themeOff[k];el.classList.toggle('off',themeOff[k]);};
+  lg.appendChild(el);});
+
+// ── 2026: палитра команд ──
+const cmd=document.getElementById('cmd'),cmdi=document.getElementById('cmdi'),cmdr=document.getElementById('cmdr');
+let cmdSel=0,cmdList=[];
+function renderCmd(q){cmdList=N.filter(n=>n.label.toLowerCase().includes(q.toLowerCase())||THEMES[n.th].name.toLowerCase().includes(q.toLowerCase()));
+  cmdr.innerHTML=cmdList.map((n,i)=>'<div class="r'+(i===cmdSel?' sel':'')+'" data-i="'+i+'"><span class="d" style="background:'+THEMES[n.th].color+'"></span>'+n.label+'</div>').join('');
+  [...cmdr.children].forEach(c=>c.onclick=()=>jump(cmdList[+c.dataset.i]));}
+function jump(n){if(!n)return;view.x=-(n.x-W/2)*view.k;view.y=-(n.y-H/2)*view.k;view.k=Math.max(view.k,1.4);openPanel(n);closeCmd();}
+function openCmd(){cmd.classList.add('open');cmdi.value='';cmdSel=0;renderCmd('');cmdi.focus();}
+function closeCmd(){cmd.classList.remove('open');}
+cmdi.addEventListener('input',()=>{cmdSel=0;renderCmd(cmdi.value);});
+addEventListener('keydown',e=>{
+  if(e.key==='/'&&!cmd.classList.contains('open')){e.preventDefault();openCmd();}
+  else if(e.key==='Escape'){closeCmd();closePanel();}
+  else if(e.key===' '&&!cmd.classList.contains('open')){e.preventDefault();settleBoost=6;}
+  else if(cmd.classList.contains('open')){
+    if(e.key==='ArrowDown'){cmdSel=Math.min(cmdList.length-1,cmdSel+1);renderCmd(cmdi.value);}
+    else if(e.key==='ArrowUp'){cmdSel=Math.max(0,cmdSel-1);renderCmd(cmdi.value);}
+    else if(e.key==='Enter'){jump(cmdList[cmdSel]);}}
+});
+</script>
+</body></html>

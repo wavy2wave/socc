@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.socc.anna.supervisor</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/bash</string>
+    <string>/Users/wavysexy/SOCC/ops/anna_keepawake.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/wavysexy/SOCC</string>
+
+  <!-- стартовать при логине и держать живым -->
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <dict>
+    <!-- чистый выход по SUPERVISOR_STOP (exit 0) НЕ перезапускается; падение — перезапускается -->
+    <key>SuccessfulExit</key>
+    <false/>
+  </dict>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/wavysexy/SOCC/SYSTEM/ANNA_MVP/runtime/supervisor.launchd.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/wavysexy/SOCC/SYSTEM/ANNA_MVP/runtime/supervisor.launchd.log</string>
+</dict>
+</plist>

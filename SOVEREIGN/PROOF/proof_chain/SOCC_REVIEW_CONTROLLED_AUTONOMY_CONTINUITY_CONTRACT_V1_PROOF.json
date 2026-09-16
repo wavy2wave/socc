@@ -1,0 +1,26 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/review_controlled_autonomy_continuity_contract_20260608T190111Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/review_controlled_autonomy_continuity_contract_20260608T190111Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/review_controlled_autonomy_continuity_contract_20260608T190111Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_route_flags": [],
+  "changed": [
+    "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_REVIEW_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:01:11.898715+00:00",
+  "current_before": "review_controlled_autonomy_continuity_contract_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_V1_PROOF",
+  "network_used": false,
+  "next_after_review": "build_stable_controlled_autonomy_operating_mode_v1",
+  "observe_pass": true,
+  "status": "PASS",
+  "truth_boundary": "Controlled autonomy continuity contract review only. No daemon/background/network.",
+  "warnings": []
+}

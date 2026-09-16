@@ -1,0 +1,102 @@
+{
+  "active_run_surface": "SYSTEM/CYCLE/foreground_tick_run_surface/ACTIVE_FIRST_FOREGROUND_TICK_RUN_SURFACE.json",
+  "artifact": "SYSTEM/CYCLE/foreground_tick_run_surface/SOCC_FIRST_FOREGROUND_TICK_RUN_SURFACE_VALIDATION_V1.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_first_foreground_tick_run_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_first_foreground_tick_run_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_first_foreground_tick_run_surface_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_first_foreground_tick_run_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_first_foreground_tick_run_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_first_foreground_tick_run_surface_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_foreground_controlled_tick_run": "after_run_surface_review_acceptance"
+  },
+  "capability": "SOCC_FIRST_FOREGROUND_TICK_RUN_SURFACE_VALIDATED_NON_EXECUTING",
+  "checks": {
+    "active_accepted_tick_plan_status": true,
+    "active_surface_candidate": true,
+    "active_surface_next_matches_validate": true,
+    "active_surface_points_to_surface": true,
+    "allowed_now_definition_only": true,
+    "authority_at_current_frontier": true,
+    "build_proof_pass": true,
+    "contract_may_run_now_false": true,
+    "contract_must_stop_after_tick": true,
+    "contract_requires_acceptance": true,
+    "contract_requires_review": true,
+    "contract_requires_separate_future_run": true,
+    "contract_requires_validation": true,
+    "contract_single_tick_only": true,
+    "contract_surface_id_ok": true,
+    "contract_tick_id_ok": true,
+    "forbidden_complete": true,
+    "future_schema_complete": true,
+    "future_schema_stop_true": true,
+    "md_says_not_tick_run": true,
+    "no_agi_claim": true,
+    "no_autonomy_launch_claim": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_mw_route": true,
+    "no_network": true,
+    "obligations_include_current_lawful_next_run": true,
+    "obligations_include_proof": true,
+    "obligations_include_route_read": true,
+    "obligations_include_stop": true,
+    "run_surface_exists": true,
+    "run_surface_md_exists": true,
+    "run_surface_mode_non_executing": true,
+    "run_surface_status_built_candidate": true,
+    "run_surface_type_ok": true,
+    "surface_current_expected_matches_build": true,
+    "surface_future_run_frontier_matches": true,
+    "surface_next_required_matches_validate": true,
+    "surface_source_active_accepted_tick_plan_matches": true,
+    "surface_source_tick_plan_matches": true,
+    "tick_plan_accept_proof_pass": true,
+    "truth_boundary_non_executing": true,
+    "validation_requirements_no_daemon": true,
+    "validation_requirements_no_language": true,
+    "validation_requirements_no_mw": true,
+    "validation_requirements_non_executing": true,
+    "validation_requirements_separate_run": true
+  },
+  "created_at_utc": "2026-06-09T13:35:51.631823+00:00",
+  "current_expected": "validate_socc_first_foreground_tick_run_surface_v1",
+  "hard_failures": [],
+  "id": "SOCC_VALIDATE_FIRST_FOREGROUND_TICK_RUN_SURFACE_V1_PROOF",
+  "mode": "VALIDATE",
+  "next_after_pass": "review_socc_first_foreground_tick_run_surface_v1",
+  "next_lawful_step": "review_socc_first_foreground_tick_run_surface_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_tick_run": true,
+  "proof_hash": "d8c6a9aa5310cfbb",
+  "run_surface": "SYSTEM/CYCLE/foreground_tick_run_surface/SOCC_FIRST_FOREGROUND_TICK_RUN_SURFACE_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Validates first foreground tick run surface only. No tick execution.",
+  "warnings": []
+}

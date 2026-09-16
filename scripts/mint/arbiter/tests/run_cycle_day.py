@@ -10,7 +10,9 @@
   CD4  планёрка — ОДИН глобальный блок заданий (пульсы магазинов + блок один раз);
   CD5  диспетчер без фейк-пасс — сухой подхват ТОЛЬКО с явным --cycle-dry; без него ничего не гоняет,
        не mark_step; «исполнителя нет» у органа без исполнителя здесь — честно;
-  CD6  единственный write — локальный реестр под form --commit (файл появляется только там).
+  CD6  единственный write — локальный реестр под form --commit (файл появляется только там);
+  CD8  контроль ценника (директива 08.09): зелёный ценник (discountBase) и цена ниже эталона
+       из КОНТРОЛЬ-узла леджера → PRICER-задания; чистое evidence → 0 (артефакт, 0₽, без сети).
 
 Изоляция сканеров: CD._RUNTIME/CD.COSTS_PATH переводятся на tmp + CD.cycle1 = None (магазины/леджеры
 не читаются) → form детерминированно даёт ровно ценовые наблюдения из ФЕЙК-артефакта. Канон НЕ трогаем.
@@ -41,7 +43,9 @@ def _passed(c):
 
 
 def _fake_artifacts(d: Path):
-    """Фейковый артефакт закупки + леджер с ЗАЛИВом (2 карточки: одна ниже пола КПИ, одна ниже зоны)."""
+    """Фейковый артефакт закупки + леджер с ЖИВЫМ ЗАЛИВом (dry=False — реальная публикация).
+    2 карточки: одна ниже пола КПИ (RAISE), одна ниже зоны (SWEET). FIX-F: сухая репетиция
+    (dry=True) никогда не пишет на ЯМ — витринную цену несёт только живой ЗАЛИВ."""
     costs = d / "_card_costs.json"
     costs.write_text(json.dumps({"cards": {
         "ARB-87931769": {"cost": 65.0}, "ARB-53416854": {"cost": 170.0}}}))
@@ -50,8 +54,10 @@ def _fake_artifacts(d: Path):
     note = ("ARB-87931769 vБез бренда desc=1 сп=1 фото=1 520₽; "
             "ARB-53416854 vБез бренда desc=1 сп=1 фото=1 1360₽")
     (ledger_d / "2026-09-02.jsonl").write_text(
-        json.dumps({"verdict": "DRY", "node": "ЗАЛИВ", "note": note, "ts": "10:00:00"}) + "\n" +
-        json.dumps({"verdict": "PASS", "node": "СВЕРКА", "note": "ок", "ts": "10:00:01"}) + "\n")
+        json.dumps({"verdict": "PASS", "node": "ЗАЛИВ", "note": note, "ts": "10:00:00",
+                    "dry": False}) + "\n" +
+        json.dumps({"verdict": "PASS", "node": "СВЕРКА", "note": "ок", "ts": "10:00:01",
+                    "dry": False}) + "\n")
 
 
 def _ctx_form(tmp: Path):
@@ -113,13 +119,22 @@ def cd4_one_global_block():
 
 
 def cd2_form_dry_writes_nothing():
-    """CD2: form без commit ничего не пишет (ни реестра, ни артефактов)."""
+    """CD2: form без commit ничего не пишет (ни реестра, ни артефактов).
+
+    YM_TASKS_PATH перекрываем на tmp ОБЯЗАТЕЛЬНО (как cd1/cd3): канон-реестр материализован и
+    несёт ТЕ ЖЕ реальные T-84d7aa1a/T-9fca5843 — без песочницы fresh стал бы 0 и закон врал бы
+    про «файла нет». Герметичность: тест не зависит от состояния канона SOCC.
+    """
     with tempfile.TemporaryDirectory() as d:
         reg = Path(d) / "reg.json"
-        _ctx_form(Path(d))
-        summary, lines = CD.form(commit=False, store="atlas-express-film", date_str="2026-09-02")
-        reg_absent = not reg.exists()
-        _ctx_restore()
+        os.environ["YM_TASKS_PATH"] = str(reg)
+        try:
+            _ctx_form(Path(d))
+            summary, lines = CD.form(commit=False, store="atlas-express-film", date_str="2026-09-02")
+            reg_absent = not reg.exists()
+        finally:
+            _ctx_restore()
+            os.environ.pop("YM_TASKS_PATH", None)
     cand_new = summary.get("new")
     ok = (reg_absent and cand_new == 2 and any("RAISE" in l for l in lines)
           and any("SWEET" in l for l in lines))
@@ -182,6 +197,144 @@ def cd5b_mark_step_gate_honesty():
     return ok, f"закрытие без факта → отказ «{err}» (CD5/TZ8)"
 
 
+def cd6_dry_fill_not_vitrine():
+    """FIX-F: ТОЛЬКО сухие ЗАЛИВы (автопилот 3×/день) НЕ сеют reprice-заданий.
+
+    Сухая репетиция никогда не пишет на ЯМ — её note это ПЛАН, не факт витрины. Раньше
+    vitrina_from_ledger читала последний ЗАЛИВ без проверки dry и scan_pricing ковал
+    «витрина 1360₽ → SWEET» из фантома → ложные PRICER-задания при 0 реальных ₽."""
+    with tempfile.TemporaryDirectory() as d:
+        COSTS = Path(d) / "_card_costs.json"
+        COSTS.write_text(json.dumps({"cards": {
+            "ARB-87931769": {"cost": 65.0}, "ARB-53416854": {"cost": 170.0}}}))
+        ld = Path(d) / "atlas-express-film"
+        ld.mkdir(parents=True, exist_ok=True)
+        note = ("ARB-87931769 vБез бренда desc=1 сп=1 фото=1 520₽; "
+                "ARB-53416854 vБез бренда desc=1 сп=1 фото=1 1360₽")
+        (ld / "2026-09-02.jsonl").write_text(
+            json.dumps({"verdict": "DRY", "node": "ЗАЛИВ", "note": note, "ts": "10:00:00",
+                        "dry": True}) + "\n")
+        CD._RUNTIME = Path(d)
+        CD.COSTS_PATH = COSTS
+        CD.cycle1 = None
+        try:
+            cands = CD.scan_pricing("atlas-express-film", date_str="2026-09-02")
+        finally:
+            _ctx_restore()
+    ok = cands == []
+    return ok, f"кандидатов {len(cands)} (сухой ЗАЛИВ = план, живой витрины нет → 0)"
+
+
+def cd7_scan_ledgers_live_only():
+    """FIX-F: health-задание сеет только ЖИВОЙ ход FAIL; сухая FAIL-репетиция — НЕТ."""
+    class FakeC1:
+        def __init__(self, stores):
+            self.stores = stores
+        def list_cycles(self):
+            return {s: {"builder": "film"} for s in self.stores}
+        def plannerka_read(self, slug):
+            return {"date": "2026-09-02", "store": slug}
+    rows = [
+        # сухая репетиция автопилота, вставшая на СБОРКЕ (план ниже пола) — НЕ поломка магазина.
+        # Всталая цепь не пишет хвост: последняя строка сухого прогона = его FAIL-узел.
+        {"verdict": "PASS", "node": "ДОНОР", "dry": True, "ts": "08:00:00"},
+        {"verdict": "FAIL", "node": "СБОРКА", "note": "below_floor", "dry": True,
+         "ts": "08:00:01"},
+    ]
+    live_fail = [
+        # ЖИВОЙ ход оператора упал на ЗАЛИВЕ → магазин в недоверенном состоянии → чинить
+        {"verdict": "FAIL", "node": "ЗАЛИВ", "note": "TypeError", "dry": False,
+         "ts": "09:00:00"},
+    ]
+    def run_case(stores, extra):
+        with tempfile.TemporaryDirectory() as d:
+            led = Path(d) / "atlas-express-film"
+            led.mkdir(parents=True, exist_ok=True)
+            (led / "2026-09-02.jsonl").write_text(
+                "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in (rows + extra)))
+            CD._RUNTIME = Path(d)
+            CD.cycle1 = FakeC1(stores)
+            try:
+                return CD.scan_ledgers()
+            finally:
+                CD.cycle1 = _ORIG["cycle1"]
+                CD._RUNTIME = _ORIG["RUNTIME"]
+    dry_only = run_case(["atlas-express-film"], [])
+    with_live = run_case(["atlas-express-film"], live_fail)
+    ok = (dry_only == [] and len(with_live) == 1
+          and with_live[0].get("owner") == "CONTROLLER" and "ЗАЛИВ" in with_live[0]["what"])
+    return ok, (f"сухая FAIL-репетиция → {len(dry_only)} заданий · живой FAIL → "
+                f"{len(with_live)} (owner={with_live[0].get('owner') if with_live else '—'})")
+
+
+def cd8_price_control_green_tag_task():
+    """CD8: КОНТРОЛЬ-узел из леджера (CD2): зелёный ценник (discountBase) → PRICER-задание
+    «снять», чистое evidence → 0 заданий. Читаем АРТЕФАКТ леджера — 0₽, без сети, детерминировано."""
+    def run(evidence):
+        with tempfile.TemporaryDirectory() as d:
+            led = Path(d) / "atlas-express-film"
+            led.mkdir(parents=True, exist_ok=True)
+            (led / "2026-09-02.jsonl").write_text(json.dumps(
+                {"verdict": "PASS", "node": "КОНТРОЛЬ", "note": "зелёных ценников 1",
+                 "evidence": evidence, "ts": "08:00:00", "dry": True}) + "\n")
+            CD._RUNTIME = Path(d)
+            CD.cycle1 = None
+            try:
+                return CD.scan_price_control("atlas-express-film", "2026-09-02")
+            finally:
+                CD._RUNTIME = _ORIG["RUNTIME"]
+                CD.cycle1 = _ORIG["cycle1"]
+    green = {"9601515-1": {"value": 3390.0, "base": 4900.0}}
+    with_green = run({"green": green, "below_plan": {},
+                      "promos": {"total": 2, "participating": 0}})
+    below = run({"green": {}, "below_plan": {"ARB-87931769": {"live": 500.0, "plan": 520.0}},
+                 "promos": {"total": 2, "participating": 0}})
+    clean = run({"green": {}, "below_plan": {},
+                 "promos": {"total": 2, "participating": 0}})
+    ok = (len(with_green) == 1 and with_green[0].get("owner") == "PRICER"
+          and "9601515-1" in with_green[0]["what"]
+          and len(below) == 1 and "Поднять цену" in below[0]["what"] and clean == [])
+    return ok, (f"зелёный ценник → {len(with_green)} задание ({with_green[0].get('owner') if with_green else '—'}) · "
+                f"ниже эталона → {len(below)} · чисто → {len(clean)} (CD8)")
+
+
+def cd9_control_promo_auto_guard():
+    """CD9 (директива 08.09 вечер «товары не должны уходить в акции сами»): КОНТРОЛЬ-узел из
+    леджера → CONTROLLER-задания на РИСК автопереноса (renewal_on, участия ещё нет) и на ФАКТ
+    автодобавления (auto_added). Читаем артефакт леджера — 0₽, без сети, детерминировано."""
+    def run(evidence):
+        with tempfile.TemporaryDirectory() as d:
+            led = Path(d) / "atlas-express-film"
+            led.mkdir(parents=True, exist_ok=True)
+            (led / "2026-09-02.jsonl").write_text(json.dumps(
+                {"verdict": "PASS", "node": "КОНТРОЛЬ", "note": "акции не участвует",
+                 "evidence": evidence, "ts": "08:00:00", "dry": True}) + "\n")
+            CD._RUNTIME = Path(d)
+            CD.cycle1 = None
+            try:
+                return CD.scan_price_control("atlas-express-film", "2026-09-02")
+            finally:
+                CD._RUNTIME = _ORIG["RUNTIME"]
+                CD.cycle1 = _ORIG["cycle1"]
+    renewal_risk = run({"green": {}, "below_plan": {}, "promos": {
+        "total": 2, "participating": 0, "active": 0, "potential": 3, "auto_added": [],
+        "renewal_on": ["Бестселлеры: Начало сезона", "Супербестселлеры: Начало сезона"]}})
+    auto_fact = run({"green": {}, "below_plan": {}, "promos": {
+        "total": 2, "participating": 1, "active": 1, "potential": 3,
+        "auto_added": ["ARB-77700001"],
+        "renewal_on": ["Бестселлеры: Начало сезона"]}})
+    clean = run({"green": {}, "below_plan": {}, "promos": {
+        "total": 2, "participating": 0, "active": 0, "potential": 0,
+        "auto_added": [], "renewal_on": []}})
+    ok = (len(renewal_risk) == 1 and renewal_risk[0].get("owner") == "CONTROLLER"
+          and "автоперенос" in renewal_risk[0]["what"]
+          and len(auto_fact) == 1 and auto_fact[0].get("owner") == "CONTROLLER"
+          and "ARB-77700001" in auto_fact[0]["what"] and "автодобавлен" in auto_fact[0]["what"]
+          and clean == [])
+    return ok, (f"риск переноса → {len(renewal_risk)} · факт автодобавления → {len(auto_fact)} "
+                f"({auto_fact[0]['what'][:50] if auto_fact else '—'}) · чисто → {len(clean)} (CD9)")
+
+
 TESTS = [
     ("CD1  read-планёрка честная", cd1_plannerka_honest_read),
     ("CD4  один глобальный блок", cd4_one_global_block),
@@ -189,6 +342,10 @@ TESTS = [
     ("CD3  form commit идемпотентен", cd3_form_commit_idempotent),
     ("CD5  диспетчер без фейк-пасс", cd5_dispatch_no_fake_pass),
     ("CD5  гейт закрытия жив", cd5b_mark_step_gate_honesty),
+    ("CD6  сухой ЗАЛИВ ≠ витрина", cd6_dry_fill_not_vitrine),
+    ("CD7  health только живой ход", cd7_scan_ledgers_live_only),
+    ("CD8  контроль ценника из леджера", cd8_price_control_green_tag_task),
+    ("CD9  контроль автодобавления в акции", cd9_control_promo_auto_guard),
 ]
 
 

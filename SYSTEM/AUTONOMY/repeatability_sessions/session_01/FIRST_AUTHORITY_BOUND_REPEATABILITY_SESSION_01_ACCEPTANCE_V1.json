@@ -1,0 +1,30 @@
+{
+  "acceptance_verdict": "SESSION_01_ACCEPTED_AS_FIRST_REPEATABILITY_EVIDENCE_UNIT",
+  "accepted_as": [
+    "fresh SOCC repeatability session 01 evidence",
+    "one authority-bound local tick",
+    "proof + memory + stop unit",
+    "first half of two-session repeatability evidence"
+  ],
+  "accepted_session": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1.json",
+  "active_accepted_session": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/ACTIVE_ACCEPTED_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01.json",
+  "created_at_utc": "2026-06-09T15:14:50.474139+00:00",
+  "id": "FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_ACCEPTANCE_V1",
+  "memory": "MEMORY_WAVE/reports/repeatability_sessions/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_MEMORY.json",
+  "next_required_step": "run_first_authority_bound_repeatability_session_02_v1",
+  "not_accepted_as": [
+    "continuous autonomy claim",
+    "daemon autonomy",
+    "background loop",
+    "network autonomy",
+    "old route resume",
+    "MW route",
+    "AGI claim",
+    "L3 claim"
+  ],
+  "review": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_REVIEW_V1.json",
+  "run_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_PROOF.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Session 01 is accepted as one repeatability evidence unit. It does not claim continuous autonomy yet. Session 02 is next.",
+  "validation": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_VALIDATION_V1.json"
+}

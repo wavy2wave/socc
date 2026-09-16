@@ -1,0 +1,77 @@
+{
+  "action": {
+    "action_id": "MATERIALIZE_FIRST_FOREGROUND_CONTROLLED_TICK_RESULT_V1",
+    "action_type": "local_state_transition_and_proof_materialization",
+    "background_started": false,
+    "daemon_started": false,
+    "external_effect": "none",
+    "network_used": false,
+    "performed": [
+      "read route authority",
+      "read accepted run surface",
+      "create tick result artifact",
+      "create tick memory artifact",
+      "create proof artifact",
+      "advance authority to validation frontier",
+      "stop"
+    ]
+  },
+  "before": {
+    "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_FOREGROUND_TICK_RUN_SURFACE_V1_PROOF.json",
+    "accepted_run_surface": "SYSTEM/CYCLE/foreground_tick_run_surface/ACTIVE_ACCEPTED_FIRST_FOREGROUND_TICK_RUN_SURFACE.json",
+    "authority": {
+      "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "run_socc_first_foreground_controlled_tick_v1",
+      "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "run_socc_first_foreground_controlled_tick_v1",
+      "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "run_socc_first_foreground_controlled_tick_v1"
+    },
+    "current_lawful_next": "run_socc_first_foreground_controlled_tick_v1"
+  },
+  "boundary": {
+    "max_ticks": 1,
+    "mode": "single_local_foreground_controlled_tick",
+    "must_stop": true,
+    "no_24_7_claim": true,
+    "no_agi_claim": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_mw_route": true,
+    "no_network": true
+  },
+  "created_at_utc": "2026-06-09T13:40:34.776302+00:00",
+  "current_expected": "run_socc_first_foreground_controlled_tick_v1",
+  "decision": {
+    "decision": "perform_single_local_foreground_controlled_tick",
+    "decision_id": "FIRST_FOREGROUND_CONTROLLED_TICK_DECISION_V1",
+    "not_selected": [
+      "daemon loop",
+      "background loop",
+      "network action",
+      "MW route",
+      "AGI claim",
+      "24/7 autonomy claim",
+      "multiple ticks"
+    ],
+    "reason": "Authority is at accepted run frontier and accepted run surface authorizes one bounded foreground tick.",
+    "selected_action": "materialize_first_foreground_tick_result_and_proof"
+  },
+  "id": "SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1",
+  "next_required_step": "validate_socc_first_foreground_controlled_tick_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_FOREGROUND_CONTROLLED_TICK_V1_PROOF.json",
+  "result": {
+    "authority_next_after_run": "validate_socc_first_foreground_controlled_tick_v1",
+    "measurable_delta": [
+      "SYSTEM/CYCLE/foreground_tick_run/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1.json",
+      "SYSTEM/CYCLE/foreground_tick_run/ACTIVE_FIRST_FOREGROUND_CONTROLLED_TICK_RUN.json",
+      "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_FOREGROUND_CONTROLLED_TICK_V1_PROOF.json",
+      "MEMORY_WAVE/reports/foreground_tick/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1_MEMORY.json"
+    ],
+    "result_id": "SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_RESULT_V1",
+    "result_status": "MATERIALIZED_FOR_VALIDATION",
+    "stopped_after_tick": true,
+    "tick_count": 1
+  },
+  "status": "RUN_CANDIDATE_PASS_PENDING_VALIDATION",
+  "stop": true,
+  "tick_type": "FIRST_FOREGROUND_CONTROLLED_TICK",
+  "truth_boundary": "This is one local foreground controlled tick. It is not daemon autonomy, not background autonomy, not network autonomy, and not AGI."
+}

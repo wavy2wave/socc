@@ -7,6 +7,8 @@
 свои KPI и стремление стать больше и лучше».
 
 Это и есть цикл дня:
+  0. ПЛАНЁРКА (опционально, шаг 0 «УТРО ПРЕЖДЕ РАБОТ», planner_fn) — собрать ПЛАН ДНЯ из сторов
+     (0₽, read); OFF по умолчанию, включается вызывающим (автопилот/_plannerka или --plannerka).
   1. БРИГАДИР проводит смену — ДИСПЕТЧЕР (горящие заказы) → СКЛАДОВЩИК (остатки) → ТОВАРОВЕД
      (что берём) → ЦЕНОВИК (маржа) → КОНТРОЛЁР (индекс качества). Порядок не случайный: сначала
      горящее, потом важное, потом выгодное.
@@ -441,7 +443,8 @@ def build_heal(cabinet, kpis=None, source="none", lookup_fn=None):
 
 
 def run_day(shift_fn=None, tick_fn=None, trend_source_fn=None, head_source_fn=None, head_city=None,
-            cabinet_read_fn=None, read_cabinet=False, preflight_fn=None, target_sku=None, risk_cap_rub=None,
+            cabinet_read_fn=None, read_cabinet=False, preflight_fn=None, planner_fn=None,
+            target_sku=None, risk_cap_rub=None,
             business_id=None, campaign_id=None, dry=True, commit=False, remember=True, use_env=True,
             **shift_kw):
     """Провести день: смена ролей + тик управляющего + стратег + трендскаут + ГОЛОВА → единый отчёт.
@@ -456,6 +459,10 @@ def run_day(shift_fn=None, tick_fn=None, trend_source_fn=None, head_source_fn=No
     сухо собирает партию из донора и возвращает готовность → ready_to_publish берётся из РЕАЛЬНОГО
     «полетит», а не из памяти. Не подключён → ready_to_publish остаётся из памяти (обратная совм.), как
     у head_source_fn/cabinet_read_fn. 0₽: thunk лишь собирает карточки в памяти (publish_card dry, commit=False).
+    planner_fn — шов ПЛАНЁРКИ (ymarket_plannerka_v1.build_plan, шаг 0 «УТРО ПРЕЖДЕ РАБОТ»): thunk без
+    аргументов, строит ПЛАН ДНЯ из реальных сторов (0₽, только ЧТЕНИЕ). OFF по умолчанию (None) →
+    обратная совместимость: день ведёт себя как раньше, day['plan']=None. Здесь план только СТРОИТСЯ;
+    запись плана/интэйк заданий — за вызывающим (автопилот/__main__ под своим правилом), не run_day.
     Возвращает дневной отчёт (dict) — его печатает/шлёт ymarket_report_v1.
     """
     ts = _now()
@@ -476,6 +483,20 @@ def run_day(shift_fn=None, tick_fn=None, trend_source_fn=None, head_source_fn=No
         day["failures"].append(
             "businessId неизвестен — ДИСПЕТЧЕР и КОНТРОЛЁР слепы (нет YANDEX_BUSINESS_ID "
             "в окружении и ни в одном .env: mint/.env, SOCC/.env, arbiter/.env)")
+
+    # ── 0. ПЛАНЁРКА (УТРО) ПРЕЖДЕ РАБОТ: собрать ПЛАН ДНЯ из сторов (0₽, только read) ──
+    # planner_fn — шов ПЛАНЁРКИ (ymarket_plannerka_v1.build_plan thunk). OFF по умолчанию (None) →
+    # обратная совместимость: день ведёт себя как раньше, 'plan' пусто. Здесь ПЛАН только СТРОИТСЯ
+    # (чтение сторов, 0₽); запись плана/интэйк заданий делает вызывающий (автопилот/__main__ под
+    # своим commit-правилом), НЕ run_day. Провал планёрки не роняет день (B2): честно в failures.
+    plan = None
+    if planner_fn is not None:
+        rp = _safe("PLANNERKA", planner_fn)
+        if rp["ok"]:
+            plan = rp["result"]
+        else:
+            day["failures"].append(f"ПЛАНЁРКА упала: {rp['error']}")
+    day["plan"] = plan          # ПЛАН ДНЯ в отчёт (или None, если планёрка не подключена)
 
     # ── 1. Смена бригады (роли) ──
     shift_report = None
@@ -714,6 +735,9 @@ if __name__ == "__main__":
     ap.add_argument("--zaliv-slug", default=None, help="slug категории для сухой сборки партии (нужен с --donor-zaliv)")
     ap.add_argument("--zaliv-city", default=None, help="город для сухой сборки партии залива")
     ap.add_argument("--zaliv-limit", type=int, default=20, help="сколько строк донора собрать в партию (сухо)")
+    ap.add_argument("--plannerka", action="store_true",
+                    help="УТРО ПРЕЖДЕ РАБОТ (шаг 0): собрать ПЛАН ДНЯ из реальных сторов (0₽, read). "
+                         "С --commit дополнительно сохранить план и внести решения в реестр заданий")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 
@@ -731,11 +755,22 @@ if __name__ == "__main__":
             args.donor_zaliv, args.zaliv_slug, city=args.zaliv_city,
             limit=args.zaliv_limit)                              # thunk ленив: сборка партии — при вызове
 
+    planner_fn = None
+    if args.plannerka:
+        import ymarket_plannerka_v1 as _pk
+        # thunk ленив: план строится ВНУТРИ run_day (шаг 0) чтением реальных сторов, 0₽
+        planner_fn = lambda: _pk.build_plan()
+
     d = run_day(target_sku=args.target_sku, risk_cap_rub=args.risk_cap,
                 business_id=args.business_id, campaign_id=args.campaign_id,
                 head_source_fn=head_source_fn, head_city=args.head_city,
                 read_cabinet=args.cabinet_health, preflight_fn=preflight_fn,
+                planner_fn=planner_fn,
                 dry=not args.commit, commit=args.commit)
+    if args.commit and planner_fn is not None and (d.get("plan") or {}).get("schema"):
+        import ymarket_plannerka_v1 as _pk
+        _pk.save_plan(d["plan"], commit=True)                    # запись плана (локально, PL5)
+        _pk.seed_from_plan(d["plan"], commit=True)               # интэйк решений в реестр (PL4, локально)
     if args.json:
         print(json.dumps(d, ensure_ascii=False, indent=2))
     else:

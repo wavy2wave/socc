@@ -1,0 +1,13 @@
+{
+  "anna_born": false,
+  "created_at_utc": "2026-06-22T11:56:14.995909+00:00",
+  "current": "run_anna_mvp_codex_gate_v1",
+  "entity_born": false,
+  "hard_failures": [],
+  "id": "RUN_ANNA_MVP_CODEX_GATE_V1_PANEL_V1",
+  "next": "review_anna_mvp_plan_and_gates_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ANNA_MVP_CODEX_GATE_V1_PROOF.json",
+  "stage": "run_anna_mvp_codex_gate_v1",
+  "status": "PASS",
+  "truth_boundary": "ANNA MVP lawful chain step (document/verification only). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, no daemon/background/network, no revenue claim. ANNA birth is gated to its own bounded session behind seal."
+}

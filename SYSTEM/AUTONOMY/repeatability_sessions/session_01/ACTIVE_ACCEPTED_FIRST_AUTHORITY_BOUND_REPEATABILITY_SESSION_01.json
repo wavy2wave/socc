@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_PROOF.json",
+  "active_session": "SYSTEM/AUTONOMY/repeatability_sessions/session_01/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1.json",
+  "created_at_utc": "2026-06-09T15:14:50.474139+00:00",
+  "id": "ACTIVE_ACCEPTED_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01",
+  "next_required_step": "run_first_authority_bound_repeatability_session_02_v1",
+  "session_index": 1,
+  "status": "ACTIVE_ACCEPTED",
+  "tick_count": 1,
+  "truth_boundary": "Session 01 is accepted as one repeatability evidence unit. It does not claim continuous autonomy yet. Session 02 is next."
+}

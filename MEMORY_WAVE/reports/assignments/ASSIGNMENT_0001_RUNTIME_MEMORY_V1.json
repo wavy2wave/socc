@@ -1,0 +1,16 @@
+{
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:41:04.649702+00:00",
+  "current_before": "run_assignment_bounded_execution_session_v1",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "id": "ASSIGNMENT_0001_RUNTIME_MEMORY_V1",
+  "memory_event": "SOCC ran first bounded assignment execution session for dashboard-visible assignment autonomy loop and stopped.",
+  "next_after": "validate_assignment_bounded_execution_session_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+  "runtime_dashboard": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_RUNTIME_PANEL_V1.json",
+  "runtime_state": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/RUNTIME/ASSIGNMENT_RUNTIME_STATE_V1.json",
+  "status": "RECORDED",
+  "stopped_after_run": true,
+  "tick_count": 1,
+  "truth_boundary": "One bounded foreground assignment execution session ran and stopped. This proves a local assignment-loop runtime artifact, not daemon/24-7/L3 autonomy."
+}

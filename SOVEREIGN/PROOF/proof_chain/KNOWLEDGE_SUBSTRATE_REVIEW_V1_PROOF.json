@@ -1,0 +1,42 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "capability": "memory_continuity",
+  "checks": {
+    "article_has_current_authority": true,
+    "article_has_source_links": true,
+    "article_truth_present": true,
+    "global_route_untouched": true,
+    "validation_proof_pass": true,
+    "whole_chain_discipline_clean": true,
+    "whole_chain_pass": true
+  },
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-17T14:57:26+03:00",
+  "created_at_utc": "2026-06-17T11:57:26.660099+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "final_canon_approval_allowed": false,
+  "hard_failures": [],
+  "id": "KNOWLEDGE_SUBSTRATE_REVIEW_V1_PROOF",
+  "knowledge_substrate_pilot_sealed": true,
+  "llm_used": false,
+  "network_used": false,
+  "no_background": true,
+  "no_daemon": true,
+  "no_network": true,
+  "proof_hash": "31062728e88e2fc106ebf397",
+  "queue_widening_allowed": false,
+  "real_next": "knowledge_substrate_sealed_idle",
+  "scheduler_installed": false,
+  "sealed_chain": [
+    "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_SUBSTRATE_SOURCE_SCAN_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_SUBSTRATE_INGEST_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/WIKI_ARTICLE_ENTITY_SUBSTRATE_V1_PROOF.json",
+    "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_SUBSTRATE_VALIDATION_V1_PROOF.json"
+  ],
+  "status": "PASS",
+  "step": "review_knowledge_substrate_v1",
+  "truth_boundary": "Knowledge Substrate review/seal only. Confirms the pilot organ run is proof-backed and discipline-clean. Entity Substrate itself is NOT built; ANNA is NOT born. Global route authority untouched. No daemon/background/network/LLM."
+}

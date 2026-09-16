@@ -1,0 +1,741 @@
+{
+ "schema": "ymarket.sovet.spory.v1",
+ "date": "2026-09-15",
+ "store": "",
+ "generated_at": "2026-09-15T08:18:46+0300",
+ "mode": "off",
+ "positions": [
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "stance": "партия «karton-i-gofrokarton» готова к заливу (1 SKU); живой залив = акт наружу — жду слово оператора / Фото-узла",
+   "facts": [
+    {
+     "text": "«karton-i-gofrokarton»: 1 SKU, verdict=ready_shortlist",
+     "source": "досье категорий · karton-i-gofrokarton · readiness/verdict"
+    }
+   ],
+   "proposal": "оператору: слово на живой залив «karton-i-gofrokarton» либо сухой шаг CATEGORIST до Фото-узла",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "stance": "партия «klejkaya-lenta» готова к заливу (5 SKU); живой залив = акт наружу — жду слово оператора / Фото-узла",
+   "facts": [
+    {
+     "text": "«klejkaya-lenta»: 5 SKU, verdict=ready_shortlist",
+     "source": "досье категорий · klejkaya-lenta · readiness/verdict"
+    }
+   ],
+   "proposal": "оператору: слово на живой залив «klejkaya-lenta» либо сухой шаг CATEGORIST до Фото-узла",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "stance": "партия «streich-plenka» готова к заливу (10 SKU); живой залив = акт наружу — жду слово оператора / Фото-узла",
+   "facts": [
+    {
+     "text": "«streich-plenka»: 10 SKU, verdict=ready_shortlist",
+     "source": "досье категорий · streich-plenka · readiness/verdict"
+    }
+   ],
+   "proposal": "оператору: слово на живой залив «streich-plenka» либо сухой шаг CATEGORIST до Фото-узла",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "stance": "партия «upakovochnaya-bumaga» готова к заливу (4 SKU); живой залив = акт наружу — жду слово оператора / Фото-узла",
+   "facts": [
+    {
+     "text": "«upakovochnaya-bumaga»: 4 SKU, verdict=ready_shortlist",
+     "source": "досье категорий · upakovochnaya-bumaga · readiness/verdict"
+    }
+   ],
+   "proposal": "оператору: слово на живой залив «upakovochnaya-bumaga» либо сухой шаг CATEGORIST до Фото-узла",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "stance": "партия «vozdushno-puzyrkovaya-plenka» готова к заливу (4 SKU); живой залив = акт наружу — жду слово оператора / Фото-узла",
+   "facts": [
+    {
+     "text": "«vozdushno-puzyrkovaya-plenka»: 4 SKU, verdict=ready_shortlist",
+     "source": "досье категорий · vozdushno-puzyrkovaya-plenka · readiness/verdict"
+    }
+   ],
+   "proposal": "оператору: слово на живой залив «vozdushno-puzyrkovaya-plenka» либо сухой шаг CATEGORIST до Фото-узла",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "stance": "жду слова оператора на подтверждение профиля ЯМ-категории (маппинг решает человек): meshki, polyetilenovaya-plenka, upakovochnaya-setka, upakovochnie-lentj",
+   "facts": [
+    {
+     "text": "«meshki»: need_mapping=true, market_category_id нет",
+     "source": "досье категорий · meshki · mapping"
+    },
+    {
+     "text": "«polyetilenovaya-plenka»: need_mapping=true, market_category_id нет",
+     "source": "досье категорий · polyetilenovaya-plenka · mapping"
+    },
+    {
+     "text": "«upakovochnaya-setka»: need_mapping=true, market_category_id нет",
+     "source": "досье категорий · upakovochnaya-setka · mapping"
+    },
+    {
+     "text": "«upakovochnie-lentj»: need_mapping=true, market_category_id нет",
+     "source": "досье категорий · upakovochnie-lentj · mapping"
+    }
+   ],
+   "proposal": "оператору: подтвердить профили ЯМ-категорий (CATEGORIST-орган маппинг не решает)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "ЦИКЛ-1",
+   "stance": "в витрине доказанно живых 41 (klejkaya-lenta×13, vozdushno-puzyrkovaya-plenka×28) — по этим карточкам и судим о заливе",
+   "facts": [
+    {
+     "text": "доказанно живых 41 (klejkaya-lenta×13, vozdushno-puzyrkovaya-plenka×28)",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    }
+   ],
+   "proposal": "оператору: если ждёшь категорию в витрине, а её нет — спор W1 в прениях ниже про это (karton-i-gofrokarton, streich-plenka, upakovochnaya-bumaga: партия готова, карточек нет)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "ДИСПЕТЧЕР",
+   "stance": "горящих заказов на диске нет — стою в наблюдении (честный 0, PL6)",
+   "facts": [
+    {
+     "text": "журнал 2026-09-14: urgent_orders=0",
+     "source": "day_journal 2026-09-14"
+    }
+   ],
+   "proposal": "без действия — наблюдаю (живой срез при исполнении дня)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "PRICER",
+   "stance": "«Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽» — живая переценка цены наружу, по слову оператора (RUBICON)",
+   "facts": [
+    {
+     "text": "открыто задание T-2edf9be8 · Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽",
+     "source": "ymarket_tasks.json · PRICER"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить сухой расчёт-рекомендацию под потолок glasses",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "PRICER",
+   "stance": "«Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽» — живая переценка цены наружу, по слову оператора (RUBICON)",
+   "facts": [
+    {
+     "text": "открыто задание T-84d7aa1a · Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽",
+     "source": "ymarket_tasks.json · PRICER"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить сухой расчёт-рекомендацию под потолок glasses",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "PRICER",
+   "stance": "«Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽» — живая переценка цены наружу, по слову оператора (RUBICON)",
+   "facts": [
+    {
+     "text": "открыто задание T-9fca5843 · Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽",
+     "source": "ymarket_tasks.json · PRICER"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить сухой расчёт-рекомендацию под потолок glasses",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "PRICER",
+   "stance": "«Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽» — живая переценка цены наружу, по слову оператора (RUBICON)",
+   "facts": [
+    {
+     "text": "открыто задание T-c9f8b45b · Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽",
+     "source": "ymarket_tasks.json · PRICER"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить сухой расчёт-рекомендацию под потолок glasses",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "УПРАВЛЯЮЩИЙ-МОЗГ",
+   "stance": "просрочено 7: требую план и крайний срок от владельца",
+   "facts": [
+    {
+     "text": "CONTROLLER: «Чинить узел «СВЕРКА» магазина atlas-express-film (последний ЖИВОЙ ход FAIL)» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CONTROLLER не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-0ca6fa22"
+    },
+    {
+     "text": "CONTROLLER: «Чинить узел «СВЕРКА» магазина atlas-express-tape (последний ЖИВОЙ ход FAIL)» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CONTROLLER не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-110a33e0"
+    },
+    {
+     "text": "CONTROLLER: «Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CONTROLLER не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-7ab6c3d1"
+    },
+    {
+     "text": "OZON_ZALIV: «Следующий залив ВПП-рулонов из остатка файла (знание артефакта P-f7ea1dc1 подтверждено)» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — OZON_ZALIV не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-abe0682c"
+    },
+    {
+     "text": "CATEGORIST: «Парсинг донора: мешки (meshki) → шорт-лист под Экспресс» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-08851483"
+    },
+    {
+     "text": "CATEGORIST: «Парсинг донора: упаковочная сетка (upakovochnaya-setka) → шорт-лист под Экспресс» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-53183869"
+    },
+    {
+     "text": "CATEGORIST: «Парсинг донора: упаковочные ленты (upakovochnie-lentj) → шорт-лист под Экспресс» — carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-e2a8bce0"
+    }
+   ],
+   "proposal": "оператору: подтвердить план-дедлайн владельцу либо закрыть/переприоритетить задание",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "organ": "УПРАВЛЯЮЩИЙ-МОЗГ",
+   "stance": "ждёт слова оператора 4 — сам приоритет не назначаю",
+   "facts": [
+    {
+     "text": "подтвердить профиль ЯМ-категории для «polyetilenovaya-plenka» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-polyetilenovaya-plenka"
+    },
+    {
+     "text": "подтвердить профиль ЯМ-категории для «meshki» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-meshki"
+    },
+    {
+     "text": "подтвердить профиль ЯМ-категории для «upakovochnaya-setka» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-upakovochnaya-setka"
+    },
+    {
+     "text": "подтвердить профиль ЯМ-категории для «upakovochnie-lentj» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-upakovochnie-lentj"
+    }
+   ],
+   "proposal": "оператору: слово по списку ждущих (см. W4, если их больше одного)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  }
+ ],
+ "disputes": [
+  {
+   "id": "W1-2026-09-15-karton-i-gofrokarton",
+   "kind": "conflict",
+   "between": [
+    "КАТЕГОРИЙЩИК",
+    "ЦИКЛ-1"
+   ],
+   "summary": "партия «karton-i-gofrokarton» готова к заливу (1 SKU), а витрина (леджер, СВЕРКА PASS) карточек категории «karton-i-gofrokarton» не видит — живой залив не состоялся, хотя план ставит его целью дня",
+   "trigger": [
+    "досье · verdict/ready",
+    "goods_library · by_category",
+    "план · watch-ready-karton-i-gofrokarton"
+   ],
+   "grounding": [
+    {
+     "text": "«karton-i-gofrokarton» готово к заливу: 1 SKU, verdict=ready_shortlist",
+     "source": "досье категорий · karton-i-gofrokarton"
+    },
+    {
+     "text": "в витрине категории «karton-i-gofrokarton» нет (by_category не содержит slug)",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    },
+    {
+     "text": "план дня ставит цель watch-ready-karton-i-gofrokarton (owner КАТЕГОРИЙЩИК, mode live)",
+     "source": "plans/ymarket_plan_2026-09-15.json · решение watch-ready-karton-i-gofrokarton"
+    }
+   ],
+   "proposal": "оператору: слово на живой залив партии «karton-i-gofrokarton» (акт наружу) либо CATEGORIST сухим шагом до Фото-узла",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W2-2026-09-15-T-0ca6fa22",
+   "kind": "conflict",
+   "between": [
+    "УПРАВЛЯЮЩИЙ-МОЗГ",
+    "CONTROLLER"
+   ],
+   "summary": "«Чинить узел «СВЕРКА» магазина atlas-express-film (последний ЖИВОЙ ход FAIL)» (owner CONTROLLER) просрочено: carry в планах 2026-09-14 и 2026-09-15, пунктов закрыто 0 при сухом 0₽ пути — требую план и крайний срок",
+   "trigger": [
+    "miss-движок слоя 1 · task T-0ca6fa22",
+    "план carry 2026-09-14"
+   ],
+   "grounding": [
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CONTROLLER не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-0ca6fa22"
+    },
+    {
+     "text": "задание T-0ca6fa22 открыто (state open, пунктов done 0)",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: подтвердить план-дедлайн владельцу или закрыть/переприоритетить задание",
+   "note": "",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W2-2026-09-15-T-110a33e0",
+   "kind": "conflict",
+   "between": [
+    "УПРАВЛЯЮЩИЙ-МОЗГ",
+    "CONTROLLER"
+   ],
+   "summary": "«Чинить узел «СВЕРКА» магазина atlas-express-tape (последний ЖИВОЙ ход FAIL)» (owner CONTROLLER) просрочено: carry в планах 2026-09-14 и 2026-09-15, пунктов закрыто 0 при сухом 0₽ пути — требую план и крайний срок",
+   "trigger": [
+    "miss-движок слоя 1 · task T-110a33e0",
+    "план carry 2026-09-14"
+   ],
+   "grounding": [
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CONTROLLER не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-110a33e0"
+    },
+    {
+     "text": "задание T-110a33e0 открыто (state open, пунктов done 0)",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: подтвердить план-дедлайн владельцу или закрыть/переприоритетить задание",
+   "note": "",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W2-2026-09-15-T-7ab6c3d1",
+   "kind": "conflict",
+   "between": [
+    "УПРАВЛЯЮЩИЙ-МОЗГ",
+    "CONTROLLER"
+   ],
+   "summary": "«Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона» (owner CONTROLLER) просрочено: carry в планах 2026-09-14 и 2026-09-15, пунктов закрыто 0 при сухом 0₽ пути — требую план и крайний срок",
+   "trigger": [
+    "miss-движок слоя 1 · task T-7ab6c3d1",
+    "план carry 2026-09-14"
+   ],
+   "grounding": [
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — CONTROLLER не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-7ab6c3d1"
+    },
+    {
+     "text": "задание T-7ab6c3d1 открыто (state open, пунктов done 0)",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: подтвердить план-дедлайн владельцу или закрыть/переприоритетить задание",
+   "note": "",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W2-2026-09-15-T-abe0682c",
+   "kind": "conflict",
+   "between": [
+    "УПРАВЛЯЮЩИЙ-МОЗГ",
+    "OZON_ZALIV"
+   ],
+   "summary": "«Следующий залив ВПП-рулонов из остатка файла (знание артефакта P-f7ea1dc1 подтверждено)» (owner OZON_ZALIV) просрочено: carry в планах 2026-09-14 и 2026-09-15, пунктов закрыто 0 при сухом 0₽ пути — требую план и крайний срок",
+   "trigger": [
+    "miss-движок слоя 1 · task T-abe0682c",
+    "план carry 2026-09-14"
+   ],
+   "grounding": [
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15; пунктов закрыто 0 при сухом 0₽ пути — OZON_ZALIV не пошевелил задание за сутки",
+     "source": "miss-движок слоя 1 · task T-abe0682c"
+    },
+    {
+     "text": "задание T-abe0682c открыто (state open, пунктов done 0)",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: подтвердить план-дедлайн владельцу или закрыть/переприоритетить задание",
+   "note": "",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W3-2026-09-15-T-2edf9be8",
+   "kind": "signal",
+   "between": [
+    "PRICER",
+    "УПРАВЛЯЮЩИЙ-МОЗГ"
+   ],
+   "summary": "«Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽» (owner PRICER) в планах carry 2026-09-14 и 2026-09-15, шагов закрыто 0. PRICER: цена наружу только по слову оператора (RUBICON). Данные для сухого расчёта под потолок glasses есть (витрина живых 41) — это НЕ обвинение (VL3: PRICER вне miss-движка), это вопрос оператору: слово или сухой расчёт-рекомендация",
+   "trigger": [
+    "ymarket_tasks.json · T-2edf9be8",
+    "план carry 2026-09-14",
+    "план carry 2026-09-15",
+    "goods_library · total"
+   ],
+   "grounding": [
+    {
+     "text": "задание T-2edf9be8 открыто: Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽",
+     "source": "ymarket_tasks.json · PRICER"
+    },
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15",
+     "source": "plans · PRICER carry"
+    },
+    {
+     "text": "доказанно живых в витрине 41",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить PRICER сухой расчёт-рекомендацию под потолок glasses",
+   "note": "сигнал-внимание: PRICER на слове оператора, не лень (VL3, _NON_MISS_OWNERS)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W3-2026-09-15-T-84d7aa1a",
+   "kind": "signal",
+   "between": [
+    "PRICER",
+    "УПРАВЛЯЮЩИЙ-МОЗГ"
+   ],
+   "summary": "«Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽» (owner PRICER) в планах carry 2026-09-14 и 2026-09-15, шагов закрыто 0. PRICER: цена наружу только по слову оператора (RUBICON). Данные для сухого расчёта под потолок glasses есть (витрина живых 41) — это НЕ обвинение (VL3: PRICER вне miss-движка), это вопрос оператору: слово или сухой расчёт-рекомендация",
+   "trigger": [
+    "ymarket_tasks.json · T-84d7aa1a",
+    "план carry 2026-09-14",
+    "план carry 2026-09-15",
+    "goods_library · total"
+   ],
+   "grounding": [
+    {
+     "text": "задание T-84d7aa1a открыто: Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽",
+     "source": "ymarket_tasks.json · PRICER"
+    },
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15",
+     "source": "plans · PRICER carry"
+    },
+    {
+     "text": "доказанно живых в витрине 41",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить PRICER сухой расчёт-рекомендацию под потолок glasses",
+   "note": "сигнал-внимание: PRICER на слове оператора, не лень (VL3, _NON_MISS_OWNERS)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W3-2026-09-15-T-9fca5843",
+   "kind": "signal",
+   "between": [
+    "PRICER",
+    "УПРАВЛЯЮЩИЙ-МОЗГ"
+   ],
+   "summary": "«Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽» (owner PRICER) в планах carry 2026-09-14 и 2026-09-15, шагов закрыто 0. PRICER: цена наружу только по слову оператора (RUBICON). Данные для сухого расчёта под потолок glasses есть (витрина живых 41) — это НЕ обвинение (VL3: PRICER вне miss-движка), это вопрос оператору: слово или сухой расчёт-рекомендация",
+   "trigger": [
+    "ymarket_tasks.json · T-9fca5843",
+    "план carry 2026-09-14",
+    "план carry 2026-09-15",
+    "goods_library · total"
+   ],
+   "grounding": [
+    {
+     "text": "задание T-9fca5843 открыто: Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽",
+     "source": "ymarket_tasks.json · PRICER"
+    },
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15",
+     "source": "plans · PRICER carry"
+    },
+    {
+     "text": "доказанно живых в витрине 41",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить PRICER сухой расчёт-рекомендацию под потолок glasses",
+   "note": "сигнал-внимание: PRICER на слове оператора, не лень (VL3, _NON_MISS_OWNERS)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W3-2026-09-15-T-c9f8b45b",
+   "kind": "signal",
+   "between": [
+    "PRICER",
+    "УПРАВЛЯЮЩИЙ-МОЗГ"
+   ],
+   "summary": "«Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽» (owner PRICER) в планах carry 2026-09-14 и 2026-09-15, шагов закрыто 0. PRICER: цена наружу только по слову оператора (RUBICON). Данные для сухого расчёта под потолок glasses есть (витрина живых 41) — это НЕ обвинение (VL3: PRICER вне miss-движка), это вопрос оператору: слово или сухой расчёт-рекомендация",
+   "trigger": [
+    "ymarket_tasks.json · T-c9f8b45b",
+    "план carry 2026-09-14",
+    "план carry 2026-09-15",
+    "goods_library · total"
+   ],
+   "grounding": [
+    {
+     "text": "задание T-c9f8b45b открыто: Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽",
+     "source": "ymarket_tasks.json · PRICER"
+    },
+    {
+     "text": "carry в планах 2026-09-14 и 2026-09-15",
+     "source": "plans · PRICER carry"
+    },
+    {
+     "text": "доказанно живых в витрине 41",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    }
+   ],
+   "proposal": "оператору: слово на живую переценку либо разрешить PRICER сухой расчёт-рекомендацию под потолок glasses",
+   "note": "сигнал-внимание: PRICER на слове оператора, не лень (VL3, _NON_MISS_OWNERS)",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W4-2026-09-15-contention",
+   "kind": "signal",
+   "between": [
+    "УПРАВЛЯЮЩИЙ-МОЗГ"
+   ],
+   "summary": "одновременно ждут слова оператора 4 независимых решения — приоритет между ними назначает оператор, не совет",
+   "trigger": [
+    "план · escalation ×4"
+   ],
+   "grounding": [
+    {
+     "text": "подтвердить профиль ЯМ-категории для «polyetilenovaya-plenka» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-polyetilenovaya-plenka"
+    },
+    {
+     "text": "подтвердить профиль ЯМ-категории для «meshki» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-meshki"
+    },
+    {
+     "text": "подтвердить профиль ЯМ-категории для «upakovochnaya-setka» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-upakovochnaya-setka"
+    },
+    {
+     "text": "подтвердить профиль ЯМ-категории для «upakovochnie-lentj» (маппинг) — досье категорий · mapping.need_mapping=true",
+     "source": "план · esc-map-upakovochnie-lentj"
+    }
+   ],
+   "proposal": "оператору: задать очерёдность слов («что раньше»); УПРАВЛЯЮЩИЙ-МОЗГ сам приоритет не назначает",
+   "note": "внимание-сигнал: оба ждут слова, спора органов нет",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W5-2026-09-15-T-08851483",
+   "kind": "signal",
+   "between": [
+    "КАТЕГОРИЙЩИК"
+   ],
+   "summary": "категория «meshki»: досье числит need_mapping (ждёт слова оператора на профиль), но в реестре открыто задание T-08851483 (owner КАТЕГОРИЙЩИК) — два следа категории живут врозь; не лень, рассинхрон",
+   "trigger": [
+    "досье категорий · mapping.need_mapping",
+    "ymarket_tasks.json · T-08851483"
+   ],
+   "grounding": [
+    {
+     "text": "досье «meshki»: need_mapping=true, market_category_id нет, task_id=T-08851483",
+     "source": "досье категорий"
+    },
+    {
+     "text": "в реестре открыто задание T-08851483 · Парсинг донора: мешки (meshki) → шорт-лист под Экспресс",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: закрыть дубль либо подтвердить, что категория действительно ждёт слова (задание = сделанная работа, слово живое)",
+   "note": "сигнал-внимание: не обвинение КАТЕГОРИЙЩИКА в лени — рассинхрон двух следов",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W5-2026-09-15-T-53183869",
+   "kind": "signal",
+   "between": [
+    "КАТЕГОРИЙЩИК"
+   ],
+   "summary": "категория «upakovochnaya-setka»: досье числит need_mapping (ждёт слова оператора на профиль), но в реестре открыто задание T-53183869 (owner КАТЕГОРИЙЩИК) — два следа категории живут врозь; не лень, рассинхрон",
+   "trigger": [
+    "досье категорий · mapping.need_mapping",
+    "ymarket_tasks.json · T-53183869"
+   ],
+   "grounding": [
+    {
+     "text": "досье «upakovochnaya-setka»: need_mapping=true, market_category_id нет, task_id=T-53183869",
+     "source": "досье категорий"
+    },
+    {
+     "text": "в реестре открыто задание T-53183869 · Парсинг донора: упаковочная сетка (upakovochnaya-setka) → шорт-лист под Экспресс",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: закрыть дубль либо подтвердить, что категория действительно ждёт слова (задание = сделанная работа, слово живое)",
+   "note": "сигнал-внимание: не обвинение КАТЕГОРИЙЩИКА в лени — рассинхрон двух следов",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  },
+  {
+   "id": "W5-2026-09-15-T-e2a8bce0",
+   "kind": "signal",
+   "between": [
+    "КАТЕГОРИЙЩИК"
+   ],
+   "summary": "категория «upakovochnie-lentj»: досье числит need_mapping (ждёт слова оператора на профиль), но в реестре открыто задание T-e2a8bce0 (owner КАТЕГОРИЙЩИК) — два следа категории живут врозь; не лень, рассинхрон",
+   "trigger": [
+    "досье категорий · mapping.need_mapping",
+    "ymarket_tasks.json · T-e2a8bce0"
+   ],
+   "grounding": [
+    {
+     "text": "досье «upakovochnie-lentj»: need_mapping=true, market_category_id нет, task_id=T-e2a8bce0",
+     "source": "досье категорий"
+    },
+    {
+     "text": "в реестре открыто задание T-e2a8bce0 · Парсинг донора: упаковочные ленты (upakovochnie-lentj) → шорт-лист под Экспресс",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "proposal": "оператору: закрыть дубль либо подтвердить, что категория действительно ждёт слова (задание = сделанная работа, слово живое)",
+   "note": "сигнал-внимание: не обвинение КАТЕГОРИЙЩИКА в лени — рассинхрон двух следов",
+   "pr_llm": null,
+   "llm": false,
+   "screened": {
+    "fired": false,
+    "stripped": []
+   }
+  }
+ ],
+ "plan_date": "2026-09-15",
+ "plan_file": true,
+ "sources": {
+  "registry_open": 15,
+  "vitrine_live": 41,
+  "dossiers": 13,
+  "journal": "2026-09-14",
+  "prev_plan": "2026-09-14"
+ },
+ "voice_note": "детерминированный слой (0 LLM)"
+}

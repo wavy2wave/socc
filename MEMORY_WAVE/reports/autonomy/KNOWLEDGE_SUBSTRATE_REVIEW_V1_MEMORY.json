@@ -1,0 +1,9 @@
+{
+  "created_at_utc": "2026-06-17T11:57:26.660339+00:00",
+  "id": "KNOWLEDGE_SUBSTRATE_REVIEW_V1_MEMORY",
+  "memory_effect": "Knowledge Substrate organ pilot sealed: living wiki article for entity_substrate is proof-backed, source-linked, discipline-clean. memory_continuity capability now has a working organ.",
+  "proof": "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_SUBSTRATE_REVIEW_V1_PROOF.json",
+  "real_next": "knowledge_substrate_sealed_idle",
+  "status": "PASS",
+  "truth_boundary": "Knowledge Substrate review/seal only. Confirms the pilot organ run is proof-backed and discipline-clean. Entity Substrate itself is NOT built; ANNA is NOT born. Global route authority untouched. No daemon/background/network/LLM."
+}

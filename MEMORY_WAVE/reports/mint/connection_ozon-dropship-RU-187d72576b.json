@@ -1,0 +1,19 @@
+{
+  "id": "ozon-dropship-RU-187d72576b",
+  "ts": "2026-06-30T00:56:10.147148+00:00",
+  "organ": "MINT",
+  "status": "PASS",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price_from_formula": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": true
+  },
+  "hard_failures": [],
+  "next_after_pass": "t6_emit_verified_tx",
+  "next_lawful_step": "emit",
+  "truth_boundary": "dry-run: verified из симуляции (песочница)",
+  "proof_hash": "a0e4f8419421f979"
+}

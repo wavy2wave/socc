@@ -1,0 +1,1 @@
+{"claims": [{"text": "This is one local foreground controlled tick. It is not daemon autonomy, not background autonomy, not network autonomy, and not AGI.", "line": 25, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Daemon": 2}}

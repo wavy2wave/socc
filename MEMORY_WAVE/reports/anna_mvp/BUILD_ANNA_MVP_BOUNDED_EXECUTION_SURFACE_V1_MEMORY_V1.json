@@ -1,0 +1,14 @@
+{
+  "anna_born": false,
+  "created_at_utc": "2026-06-22T11:56:15.015823+00:00",
+  "entity_born": false,
+  "hard_failures": [],
+  "id": "BUILD_ANNA_MVP_BOUNDED_EXECUTION_SURFACE_V1_MEMORY_V1",
+  "next": "review_anna_mvp_bounded_execution_surface_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_ANNA_MVP_BOUNDED_EXECUTION_SURFACE_V1_PROOF.json",
+  "status": "RECORDED",
+  "step": "build_anna_mvp_bounded_execution_surface_v1",
+  "step_status": "PASS",
+  "stopped_after_step": true,
+  "truth_boundary": "ANNA MVP lawful chain step (document/verification only). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, no daemon/background/network, no revenue claim. ANNA birth is gated to its own bounded session behind seal."
+}

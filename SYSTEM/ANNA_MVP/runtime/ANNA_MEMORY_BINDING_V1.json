@@ -1,0 +1,15 @@
+{
+  "anna_live": false,
+  "continuity": "Anna remembers each client across contacts",
+  "created_at_utc": "2026-06-22T12:08:40.219876+00:00",
+  "id": "ANNA_MEMORY_BINDING_V1",
+  "per_client_memory": {
+    "history": "list",
+    "profile_summary": "str",
+    "recent_messages": "list"
+  },
+  "reuses": "wavecore-bot/anna MemoryStore concepts (profile + recent messages)",
+  "session_id": "ANNA_MVP_BOUNDED_SESSION_20260622T120840216104Z",
+  "status": "INSTANTIATED_BOUNDED_CANDIDATE",
+  "truth_boundary": "ANNA MVP bounded execution session only. Runs ONE bounded foreground tick that instantiates exactly one ANNA (dental administrator persona) as declarative runtime artifacts (identity, booking skill, memory binding, Telegram channel binding NOT connected, runtime panel). It is a bounded instantiation candidate, NOT a live deploy: anna_live=False, network_used=False, revenue=False, deployed=False. No daemon/background/scheduler/network, no AGI/L3 claim, no second instance. Stops after one tick. The bot token value never enters this proof or any canon artifact."
+}

@@ -1,0 +1,36 @@
+{
+  "audit": {
+    "evidence": {
+      "changed_artifacts_hashes": {
+        "core/socc/autonomy/self_building/cycle_under_effect_auditor_lane/review/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_PROOF_DRAFT_BEFORE_EFFECT_AUDIT_V1.json": "81ecab49158a1daa98cafd38",
+        "core/socc/autonomy/self_building/cycle_under_effect_auditor_lane/review/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_REVIEW_DRAFT_BEFORE_EFFECT_AUDIT_V1.json": "d8b5f5556cf79fda9cf1f4df"
+      },
+      "expected_after_ok": true,
+      "expected_before_ok": true,
+      "forbidden_false_after": true,
+      "lawful_next_after": "build_idempotent_step_guard_v1",
+      "lawful_next_before": "review_next_self_building_cycle_under_effect_auditor_lane_v1",
+      "material_claims_count": 6,
+      "memory_exists": true,
+      "required_artifacts": {
+        "MEMORY_WAVE/reports/autonomy/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_VALIDATION_V1_MEMORY.json": true,
+        "core/socc/approved_autonomy_lane_runner/proof/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_VALIDATION_V1_PROOF.json": true,
+        "core/socc/autonomy/self_building/cycle_under_effect_auditor_lane/NEXT_SELF_BUILDING_CYCLE_EVIDENCE_MAP_UNDER_EFFECT_AUDITOR_LANE_V1.json": true,
+        "core/socc/autonomy/self_building/cycle_under_effect_auditor_lane/NEXT_SELF_BUILDING_CYCLE_TASK_SPEC_UNDER_EFFECT_AUDITOR_LANE_V1.json": true,
+        "core/socc/autonomy/self_building/cycle_under_effect_auditor_lane/validation/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_VALIDATION_EFFECT_AUDIT_V1.json": true,
+        "core/socc/autonomy/self_building/cycle_under_effect_auditor_lane/validation/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_VALIDATION_V1.json": true
+      },
+      "route_changed": true,
+      "upstream_ok": true
+    },
+    "hard_failures": [],
+    "material_effect_proven": true,
+    "semantic_null_pass_blocked": false,
+    "status": "PASS"
+  },
+  "effect_auditor_enforced": true,
+  "hard_failures": [],
+  "material_effect_required": true,
+  "semantic_null_pass_blocked": false,
+  "status": "PASS"
+}

@@ -1,0 +1,85 @@
+{
+  "id": "ANNA_DESIGN_CANON_V1",
+  "schema": "socc.design_canon.v1",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "purpose": "Single source of brand/style truth for ANNA (the customer-facing product brand). Mirrors SOCC_DESIGN_CANON_V1 structure. Every ANNA surface (Telegram persona styling, landing, owner dashboard, any future channel) renders through this canon. Forged by Brand Forge from strategy core + D3 direction.",
+  "principle": "one_warm_human_style_for_anna_everywhere",
+  "relation_to_socc": "ANNA = product/FACE brand. SOCC = house/BRAINS brand (matrix-minimalism, internal). They are deliberately different — different audiences. ANNA inherits SOCC's VOICE-LAW discipline (honest, calm, no hype) but NOT its terminal aesthetic.",
+  "direction": "D3 — Спокойная забота / Calm Care",
+  "archetype": {"primary": "Caregiver", "secondary": "Sage", "traits": ["тёплая","точная","спокойная","внимательная","успокаивающая","надёжная","деликатная"]},
+
+  "web_palette_hex": {
+    "bg": "#F5F3EE",
+    "surface": "#FFFFFF",
+    "surface_2": "#EDEAE3",
+    "ink": "#2E3D34",
+    "muted": "#6E7B71",
+    "primary": "#54705C",
+    "primary_soft": "#8AA897",
+    "accent": "#D9A679",
+    "accent_deep": "#B5824F",
+    "success": "#4F8A5B",
+    "warning": "#C8923E",
+    "danger": "#C0533B",
+    "note": "Light-first, warm. Sage trust-base + ONE warm sand accent. NOT terracotta."
+  },
+  "semantic_colors": {
+    "background": "bg",
+    "text": "ink",
+    "text_muted": "muted",
+    "primary_action": "primary",
+    "accent": "accent",
+    "success": "success",
+    "warning": "warning",
+    "danger": "danger"
+  },
+  "contrast_proof_wcag": {
+    "ink_on_bg": "10.3:1 (AAA)",
+    "white_on_primary": "5.47:1 (AA)",
+    "ink_on_accent": "5.28:1 (AA)",
+    "muted_on_bg": "≈4.0:1 (AA large only)"
+  },
+  "typography": {
+    "ui": "Inter, system-ui, sans-serif",
+    "accent_serif": "Lora, Georgia, serif (large quotes/headlines only)",
+    "scale": {"xs":"13px","sm":"14px","base":"16px","lg":"20px","xl":"25px","2xl":"31px","3xl":"39px","4xl":"49px"},
+    "weights": {"regular":400,"medium":500,"bold":700},
+    "note": "Humanist, warm. Body 16px min, line-height 1.5, tight tracking on headings."
+  },
+  "logo": {
+    "primary": "SYSTEM/BRAND_FORGE/frontiers/assets/anna-logo-primary.svg",
+    "mark": "SYSTEM/BRAND_FORGE/frontiers/assets/anna-mark.svg",
+    "wordmark": "строчные «анна»",
+    "mark_meaning": "две вложенные дуги = укрытие + человеческое тепло + спокойная точка"
+  },
+  "components": {
+    "button_primary": "bg=primary, text=white, radius=12px",
+    "button_accent": "bg=accent, text=ink, radius=12px",
+    "button_ghost": "border=primary_soft, text=primary",
+    "card": "bg=bg/surface, border 1px ink@8%, radius=14px",
+    "badge_booked": "bg pale-green, ● dot",
+    "badge_pending": "bg pale-sand, ○ dot",
+    "chat_bubble_anna": "bg=primary_soft, dark text, bottom-left tight",
+    "input": "border primary_soft, radius=12px"
+  },
+  "voice": {
+    "inherits": "SOCC_DESIGN_CANON_V1.voice (honest, calm, precise, no hype)",
+    "anna_specific": {
+      "tone": "warm, human, never robotic; care first, then task",
+      "stealth": "ANNA presents as a human administrator; never self-discloses as a bot (creator ruling A); quality is the shield + graceful human handoff",
+      "rules": ["короткие живые фразы","имя пациента","мягкость к боли/тревоге","без канцелярита/дисклеймеров/давления/капса","русский для пациента"]
+    }
+  },
+  "adoption_rule": {
+    "external_solutions": "готовые UI/шаблоны можно брать",
+    "but": "переодеваются в ANNA-канон (палитра D3/типографика/тон/стелс) → только потом в продукт",
+    "never": "ship raw external UI or any robotic/bot phrasing to patients"
+  },
+  "binds": {
+    "css_tokens": "SYSTEM/BRAND_FORGE/canon/anna-tokens.css",
+    "brand_sheet": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_VISUAL_CORE_V1.html",
+    "anna_entity": "future ANNA channels import this canon for all patient/owner surfaces"
+  },
+  "truth_boundary": "ANNA design canon in REVIEW. Declares single brand/style law for ANNA (D3). Logo is an early iteration; patient-avatar under stealth unresolved; contrasts computed not tool-verified. Not sealed. No network, no revenue, no AGI."
+}

@@ -47,6 +47,49 @@ LEVER_WEIGHTS = {"own_barcode": 55, "photos_transformed": 20, "unique_title": 12
 CLEAN_LEVERS = ("own_barcode", "photos_transformed", "unique_title", "distinct_brand_house")
 RISK_LEVERS = ("spoof_manufacturer",)  # выдать чужого реального производителя — риск
 
+# Чужая платформа/маркетплейс в имени товара (04.09). Наличие = ФЛАГ для оператора: имя поедет на
+# витрину дословно (имя 1-в-1 неприкосновенно, чистим ТОЛЬКО флагом, не рерайтом). Донор МОЖЕТ честно
+# продавать «для упаковки заказов Ozon» — это факт для решения, не ошибка канала. ДВА КЛАССА ГРАНИЦЫ
+# (аудит 04.09, #9): хим.-томографы vs однозначные бренды МП.
+#   STRICT (озон/ozon — хомограф хим. газа) — ТОЛЬКО отдельное слово (перед И после не буква/цифра):
+#     «Озоновый генератор»/«озонированная» (хим.) — НЕ флаг. «на озоне» (сленг-склонение) без флага —
+#     редкая форма в именах товаров, переплачивать ложными срабатываниями хим. лексики нельзя.
+#   PREFIX (однозначные бренды МП) — срабатывают по НАЧАЛУ токена (перед не буква/цифра): ловят
+#     склонения «маркетплейсов/на алиэкспрессе/у вайлдберриз» без хим.-ложных (у них нет хомографа).
+# БЕЗ коротких «wb/вб» (ложные срабатывания в русском тексте). Совпадение — по границе, см. режимы выше.
+PLATFORM_RESIDUE_STRICT = ("ozon", "озон")
+PLATFORM_RESIDUE_PREFIX = ("wildberries", "вайлдберриз", "маркетплейс", "marketplace",
+                           "aliexpress", "алиэкспресс", "alibaba", "avito", "авито")
+
+
+def platform_residue(name):
+    """Упомянут чужой маркетплейс в имени → вернуть найденный токен (str) или None. FLAG ONLY.
+
+    «для OZON»/«Ozon.ru»/«на ОЗОН»/«для маркетплейсов»/«на алиэкспрессе» → флаг; «Озоновый генератор»,
+    «плёнка озонированная», «Генератор озона» — хим. озон, НЕ флаг. Сравнение по нижнему регистру,
+    ё→е. STRICT-токены — отдельное слово; PREFIX-токены — по началу токена (склонения ловим).
+    """
+    n = " " + str(name or "").lower().replace("ё", "е") + " "
+
+    def _scan(toks, prefix_only):
+        for tok in toks:
+            start = 0
+            while True:
+                i = n.find(tok, start)
+                if i < 0:
+                    break
+                before = n[i - 1] if i > 0 else " "
+                after = n[i + len(tok)] if i + len(tok) < len(n) else " "
+                word_start = not before.isalnum()
+                word_end = not after.isalnum()
+                if word_start and (word_end or prefix_only):
+                    return tok
+                start = i + 1
+        return None
+
+    hit = _scan(PLATFORM_RESIDUE_STRICT, prefix_only=False)
+    return hit if hit else _scan(PLATFORM_RESIDUE_PREFIX, prefix_only=True)
+
 
 def gen_ean13(seed):
     """Детерминированный валидный EAN-13 с префиксом «2» (внутреннее/ограниченное обращение).

@@ -1,0 +1,55 @@
+{
+  "id": "BRAND_FORGE_ROLES_V1",
+  "schema": "socc.cell.roles.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-29T00:00:00+00:00",
+  "purpose": "Executable role specs. Each role is an agent brief used when the Forge fans out to produce a frontier. These are the prompts the team is instantiated from.",
+  "roles": {
+    "STRATEGIST": {
+      "mission": "Decide WHO the brand is for, WHY it exists, and the single position it owns in the mind. Output is verbal and falsifiable.",
+      "deliverables": ["positioning statement", "audience priority", "archetype choice with justification", "brand platform"],
+      "must": ["tie every claim to research or an explicit assumption flagged as assumption", "never let a visual idea drive strategy"]
+    },
+    "SCOUT": {
+      "mission": "Gather real-world evidence: who competes for the CIS clinic-automation buyer, how they look/talk, what the buyer fears, what references feel premium.",
+      "deliverables": ["competitor teardown table", "reference evidence with sources", "category visual conventions (what to follow / break)"],
+      "must": ["cite sources", "separate observed fact from inference"]
+    },
+    "WORDSMITH": {
+      "mission": "Own all words: name validation, tagline, tone of voice, message matrix per audience.",
+      "deliverables": ["tagline options", "tone-of-voice rules with do/don't examples", "messaging matrix"],
+      "must": ["match the SOCC voice (calm, precise, no hype)", "write in Russian for customer-facing copy"]
+    },
+    "ART_DIRECTOR": {
+      "mission": "Translate strategy into a coherent visual world; guard aesthetic coherence across all visual frontiers.",
+      "deliverables": ["3 distinct moodboard directions (described + sample tokens)", "chosen-direction rationale"],
+      "must": ["each direction must trace to the archetype", "no decorative noise"]
+    },
+    "MARK_MAKER": {
+      "mission": "Design logotype + logomark; deliver as clean SVG with construction rules, safe zone, don'ts.",
+      "deliverables": ["primary logo SVG", "monochrome + favicon variants", "construction & misuse rules"],
+      "must": ["render legibly at 16px and 512px", "no raster, vector only"]
+    },
+    "SYSTEMATIST": {
+      "mission": "Define palette + type scale as design tokens; prove accessibility.",
+      "deliverables": ["color tokens (hex + semantic roles)", "type scale tokens", "WCAG contrast table"],
+      "must": [">=4.5:1 body text contrast", "mirror the SOCC token structure"]
+    },
+    "UI_ENGINEER": {
+      "mission": "Bind tokens to renderable components; prove it works in real HTML/CSS.",
+      "deliverables": ["token->CSS variables", "core components (button/card/badge/input)", "renderable preview HTML"],
+      "must": ["it must actually open in a browser", "components consume tokens, no hardcoded values"]
+    },
+    "GUARDIAN": {
+      "mission": "Adversarially refute every frontier before acceptance. Default to skeptical.",
+      "deliverables": ["refutation attempts per decision", "verdict: survives / fails with reason"],
+      "must": ["try to break it", "flag any fake PASS, off-strategy choice, or accessibility miss"]
+    },
+    "SCRIBE": {
+      "mission": "Write every accepted frontier as a SOCC canon artifact and keep the LINE + registry + proof current.",
+      "deliverables": ["frontier JSON in SOCC format", "updated state/registry/proof", "dashboard panel"],
+      "must": ["honest truth_boundary on every artifact", "english canon keys, russian operator prose"]
+    }
+  },
+  "truth_boundary": "Role brief definitions only. Instantiates no agent by itself; these briefs are consumed when a frontier is forged."
+}

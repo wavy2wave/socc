@@ -1,0 +1,68 @@
+{
+  "authority_snapshot": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "copied": [],
+  "copy_errors": [],
+  "created_at_utc": "2026-06-09T11:45:24.673769+00:00",
+  "current_expected_preserved": "validate_socc_first_bounded_plan_proposal_packet_v1",
+  "hard_failures": [],
+  "id": "SOCC_IMPORT_OLD_PROJECT_PASSED_PROGRESS_EVIDENCE_V1",
+  "import_policy": {
+    "do_not_mark_new_stage_pass_from_old_without_adoption_review": true,
+    "do_not_mutate_route": true,
+    "do_not_overwrite_new_canonical": true,
+    "if_old_has_pass_accept_review": "copy as evidence into MIGRATION/imported_old_progress"
+  },
+  "new_root": "/Users/wavysexy/SOCC",
+  "next_lawful_step_preserved": "validate_socc_first_bounded_plan_proposal_packet_v1",
+  "old_root": "/Users/wavysexy/supramental-agent",
+  "proof_hash": "f793b551d8b7cf4a",
+  "stages": {
+    "bounded_plan_proposal_surface": {
+      "all_hit_count": 0,
+      "all_hits_preview": [],
+      "good_hit_count": 0,
+      "good_hits": [],
+      "imported_count": 0,
+      "old_pass_accept_review_found": false
+    },
+    "creator_dialogue_view": {
+      "all_hit_count": 0,
+      "all_hits_preview": [],
+      "good_hit_count": 0,
+      "good_hits": [],
+      "imported_count": 0,
+      "old_pass_accept_review_found": false
+    },
+    "first_bounded_plan_proposal_packet": {
+      "all_hit_count": 0,
+      "all_hits_preview": [],
+      "good_hit_count": 0,
+      "good_hits": [],
+      "imported_count": 0,
+      "old_pass_accept_review_found": false
+    },
+    "first_lawful_intent_proposal_packet": {
+      "all_hit_count": 0,
+      "all_hits_preview": [],
+      "good_hit_count": 0,
+      "good_hits": [],
+      "imported_count": 0,
+      "old_pass_accept_review_found": false
+    },
+    "lawful_intent_proposal_surface": {
+      "all_hit_count": 0,
+      "all_hits_preview": [],
+      "good_hit_count": 0,
+      "good_hits": [],
+      "imported_count": 0,
+      "old_pass_accept_review_found": false
+    }
+  },
+  "status": "PASS",
+  "truth_boundary": "This patch imports old project PASS/ACCEPT/REVIEW evidence into the new SOCC project as lineage evidence only. It does not overwrite canonical artifacts and does not mutate route.",
+  "warnings": []
+}

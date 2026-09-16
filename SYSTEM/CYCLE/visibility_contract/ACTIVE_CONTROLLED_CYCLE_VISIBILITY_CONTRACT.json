@@ -1,0 +1,12 @@
+{
+  "active_contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1_PROOF.json",
+  "contract_md": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.md",
+  "contract_schema": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1.json",
+  "created_at_utc": "2026-06-09T12:06:41.512496+00:00",
+  "id": "ACTIVE_CONTROLLED_CYCLE_VISIBILITY_CONTRACT",
+  "mode": "VISIBILITY_CONTRACT_ONLY_NON_EXECUTING",
+  "next_required_step": "validate_socc_controlled_cycle_visibility_contract_v1",
+  "status": "ACTIVE_CANDIDATE_FOR_VALIDATION",
+  "truth_boundary": "Active visibility contract is candidate until validation. Non-executing."
+}

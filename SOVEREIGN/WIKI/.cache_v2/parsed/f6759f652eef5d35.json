@@ -1,0 +1,1 @@
+{"claims": [{"text": "Plan was built by foreground autonomy runner. Entity/Substrate is started but not sealed. No daemon/background/network.", "line": 44, "entities": ["Entity Substrate", "Daemon"], "intent": "status_pass", "polarity": "negate"}], "dates": [], "entity_counts": {"Entity Substrate": 3, "SOCC": 1, "Self-construction": 1, "ANNA": 1, "Proof": 1, "Daemon": 1}}

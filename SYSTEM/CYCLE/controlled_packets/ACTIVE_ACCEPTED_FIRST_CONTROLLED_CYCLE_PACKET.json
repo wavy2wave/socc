@@ -1,0 +1,13 @@
+{
+  "acceptance": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "active_cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "created_at_utc": "2026-06-09T13:23:34.480439+00:00",
+  "cycle_packet_md": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.md",
+  "id": "ACTIVE_ACCEPTED_FIRST_CONTROLLED_CYCLE_PACKET",
+  "mode": "CANONICAL_FOREGROUND_CONTROLLED_PACKET_NON_EXECUTING",
+  "next_required_step": "build_socc_first_foreground_tick_plan_v1",
+  "repair_finalize_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_FINALIZE_ACCEPT_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted first controlled cycle packet is non-executing and feeds first foreground tick plan."
+}

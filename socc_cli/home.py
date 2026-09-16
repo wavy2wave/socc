@@ -346,8 +346,10 @@ def home_text(out=None):
         ("socc home", "весь ДОМ (этот экран)"),
         ("socc ym [дело|планёрка|задания|штаб|день|kpi|артефакты|авто|мозг]", "ЯМ-ЦИКЛ глубоко"),
         ("socc ozon", "OZON-менеджер (read-сводка)"),
+        ("socc библиотека", "ХРАНИТЕЛЬ+МОЗГ: полки · магазины · ходы · ЗДОРОВЬЕ · ЦЕЛОСТНОСТЬ · ЭВОЛЮЦИЯ · вопрос"),
         ("socc substrate", "ENTITY SUBSTRATE"),
         ("socc anna", "ANNA · дашборд · вход"),
+        ("socc задания", "ЗАДАНИЯ — весь реестр систем (топливо ДОМА)"),
         ("socc migrate", "MIGRATION · LINE_MIGRATOR · переноска кода (GitHub/VPS)"),
         ("CYCLE = socc home · CYCLE YM = socc ym", "тождественный алиас"),
     ]
@@ -368,6 +370,9 @@ def _ym_usage(out):
             "  socc ym <витрина>    — экран магазина (пульс · цикл · активные задания)\n"
             "  socc ym дело         — ДЕЛО одним блоком\n"
             "  socc ym планёрка     — магазины + ЗАДАНИЯ\n"
+            "  socc ym план         — ПЛАН ДНЯ (утро): что берём и почему\n"
+            "  socc ym совет        — СОВЕТ ДИРЕКТОРОВ (голоса органов · пропиздоны)\n"
+            "  socc ym споры        — СПОРЫ ОРГАНОВ (позиции · прения, слой 2 СОВЕТА)\n"
             "  socc ym задания      — реестр заданий\n"
             "  socc ym штаб         — 13 ролей листом\n"
             "  socc ym день|kpi|артефакты|авто\n"
@@ -375,6 +380,8 @@ def _ym_usage(out):
 
 
 _SUBCMDS = {"дело", "deal", "delo", "планёрка", "plannerka", "planerka",
+            "план", "пландня", "утро", "plan", "dayplan", "совет", "sovet",
+            "споры", "spory", "прения",
             "задания", "zadaniya", "tasks", "штаб", "shtab", "staff",
             "день", "den", "day", "kpi", "kpis", "артефакты", "artefakty",
             "artifacts", "авто", "avto", "autopilot", "мозг", "brain",
@@ -465,6 +472,35 @@ def _ym_face(out, sub, args):
         return console.artifacts_text(out=out)
     if sub in ("авто", "avto", "autopilot"):
         return console.autopilot_tail(out=out)
+    if sub in ("план", "пландня", "утро", "plan", "dayplan"):
+        # ПЛАН ДНЯ (утро): читаем durable план планёрки (read 0₽). Если консоль ещё не
+        # вшила block (в полёте) — честная деградация, не пустой экран.
+        if not hasattr(console, "plan_day_text"):
+            return ("ПЛАН ДНЯ ещё не вшит в консоль (plan_day_text) — "
+                    "см. socc ym дело / планёрка")
+        try:
+            return console.plan_day_text(out=out)
+        except Exception as e:
+            return f"ПЛАН ДНЯ упало: {e}"
+    if sub in ("совет", "sovet"):
+        # СОВЕТ ДИРЕКТОРОВ (протокол даты): голоса органов из сторов + пропиздоны + зеркало
+        # плана (read 0₽, VL7: совет сам заданий не создаёт). hasattr-guard как у плана.
+        if not hasattr(console, "sovet_text"):
+            return ("СОВЕТ ещё не вшит в консоль (sovet_text) — см. socc ym дело / планёрка")
+        try:
+            return console.sovet_text(out=out)
+        except Exception as e:
+            return f"СОВЕТ упало: {e}"
+    if sub in ("споры", "spory", "прения"):
+        # СПОРЫ ОРГАНОВ (слой 2 СОВЕТА): позиции органов + прения по данным даты.
+        # read 0₽ · VL10: споры наружу не пишут и заданий не создают — только слово
+        # оператору. hasattr-guard как у совета (новая грань, вшивается лениво).
+        if not hasattr(console, "spory_text"):
+            return ("СПОРЫ ещё не вшиты в консоль (spory_text) — см. socc ym дело / планёрка")
+        try:
+            return console.spory_text(out=out)
+        except Exception as e:
+            return f"СПОРЫ упало: {e}"
     return _ym_usage(out)
 
 
@@ -476,6 +512,51 @@ def _ozon_face(out, args):
     L.append(_seal(out, "ВХОД"))
     L.append("  dry-сводка (0₽):  socc ozon    ·    живые партии — по слову оператора (RUBICON)")
     return "\n".join(L)
+
+
+def _keeper_face(out, args):
+    """ХРАНИТЕЛЬ + МОЗГ БИБЛИОТЕКАРЯ: системная библиотека одним лицом — 0₽ read.
+
+    Проводник: слова мозга (мозг/вопрос/спроси/здоровье/целостность/эволюция/сводка/
+    тур) → напрямую в keeper_brain_v1; неизвестная команда ХРАНИТЕЛЯ (rc=2) →
+    свободная фраза для мозга (ask). Остальное — родной keeper_v1.
+    """
+    sys.path.insert(0, str(SOCC_ROOT / "scripts/mint/arbiter"))
+    args = list(args)
+    # слова явного входа в мозг — из ЕДИНСТВЕННОГО источника BRAIN_KEYS (не дублируем список;
+    # каждое слово там обработано cmd(): «всё», «мозг», «лицо», «пульс» — тоже)
+    try:
+        import keeper_brain_v1 as brain
+    except Exception as e:
+        out.write(f"МОЗГ не импортировался: {e}\n")
+        return 1
+    if args and args[0].lstrip("-").lower() in brain.BRAIN_KEYS:
+        try:
+            text, rc = brain.cmd(args)
+        except Exception as e:
+            out.write(f"МОЗГ упал: {e}\n")
+            return 1
+        out.write(text if text.endswith("\n") else text + "\n")
+        return rc
+    try:
+        import keeper_v1 as keeper
+    except Exception as e:
+        out.write(f"ХРАНИТЕЛЬ не импортировался: {e}\n")
+        return 1
+    try:
+        text, rc = keeper.cmd(args)
+    except Exception as e:
+        out.write(f"ХРАНИТЕЛЬ упал: {e}\n")
+        return 1
+    if rc == 2 and args:
+        # свободная фраза → мозг (KB5: библиотекарь отвечает всегда)
+        try:
+            import keeper_brain_v1 as brain
+            text, rc = brain.cmd(args)
+        except Exception:
+            pass
+    out.write(text if text.endswith("\n") else text + "\n")
+    return rc
 
 
 def _substrate_face(out, args):
@@ -581,6 +662,11 @@ _HOME_HELP = """SOCC · ДОМ — единый read-хаб системы (0₽
   socc home                меню ДОМА / в пайпе — дашборд органов
   socc ym  [дело|планёрка|задания|штаб|день|kpi|артефакты|авто|мозг]
   socc ozon                OZON-менеджер (read-сводка)
+  socc библиотека          ХРАНИТЕЛЬ ДАННЫХ — системная библиотека (0₽ read)
+                           полки · магазины [slug] · типы <slug> · ходы · ход PID · экспорт
+                           МОЗГ БИБЛИОТЕКАРЯ: здоровье · целостность · эволюция · сводка ·
+                           тур «всё» · вопрос «свободная фраза» (или прямо фразой)
+  socc задания             ЗАДАНИЯ — весь реестр систем (топливо ДОМА, 0₽)
   socc substrate           ENTITY SUBSTRATE
   socc anna                ANNA · дашборд · вход
   socc kernel              КЕРНЕЛЬ · route authority
@@ -672,6 +758,16 @@ def dispatch(argv=None, out=None, inp=None):
     if cmd in ("migrate", "migration", "миграция", "line-migrator"):
         out.write(_migrate_face(out, rest) + "\n")
         return 0
+    if cmd in ("задания", "zadaniya", "tasks"):
+        # ЗАДАНИЯ · лицо ДОМА (топливо): tty → меню-реестр, пайп/--text → планёрка.
+        from socc_cli import tasks as _tasks
+        if _live():
+            return _rc0(_tasks.run_tasks(out, inp))
+        out.write(_tasks.tasks_text(out) + "\n")
+        return 0
+    if cmd in ("библиотека", "хранитель", "keeper", "lib", "биб", "хран"):
+        # ХРАНИТЕЛЬ ДАННЫХ (библиотекарь): системная библиотека одним лицом, 0₽ read.
+        return _keeper_face(out, rest)
     out.write(f"SOCC·ДОМ: неизвестный орган «{cmd}»\n\n" + _HOME_HELP)
     return 1
 

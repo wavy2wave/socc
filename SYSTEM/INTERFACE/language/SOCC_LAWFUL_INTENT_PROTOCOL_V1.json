@@ -1,0 +1,23 @@
+{
+  "forbidden": [
+    "no chaotic patching",
+    "no route mutation without guard",
+    "no direct execution from language layer",
+    "no daemon",
+    "no background loop",
+    "no network autonomy",
+    "no agi claim"
+  ],
+  "id": "SOCC_LAWFUL_INTENT_PROTOCOL_V1",
+  "intent_protocol": {
+    "form_bounded_patch": true,
+    "observe": true,
+    "require_proof": true,
+    "require_review_when_frontier_changes": true,
+    "resolve_current_lawful_next": true,
+    "route_pulse_control_alignment_required": true,
+    "stop_after_patch": true
+  },
+  "status": "BUILT_FOR_VALIDATION",
+  "truth_boundary": "Lawful intent is a proposal layer bound to current_lawful_next and proof-chain, not an executor."
+}

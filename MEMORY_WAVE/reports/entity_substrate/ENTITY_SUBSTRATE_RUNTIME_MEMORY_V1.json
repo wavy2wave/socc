@@ -1,0 +1,28 @@
+{
+  "anna_born": false,
+  "created_at_utc": "2026-06-22T11:00:27.840283+00:00",
+  "entity_born": false,
+  "event": "Bounded execution session ran one tick and materialized the ten Entity/Substrate surfaces + runtime panel as declarative artifacts; no Entity/Anna birth; advanced to validate.",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_RUNTIME_MEMORY_V1",
+  "materialized_artifacts": [
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_IDENTITY_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_STATE_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_MEMORY_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_LINEAGE_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_CAPABILITY_BINDING_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_LAWFUL_ACTION_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_DASHBOARD_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PROOF_CHAIN_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_FREEZE_REVIEW_STOP_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PRODUCT_BINDING_SURFACE_FOR_ANNA_MVP_V1.json",
+    "SYSTEM/DASHBOARD/ENTITY_SUBSTRATE_RUNTIME_PANEL_V1.json"
+  ],
+  "next": "validate_entity_substrate_bounded_execution_session_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+  "run_status": "PASS",
+  "session_id": "ENTITY_SUBSTRATE_BOUNDED_SESSION_20260622T110027840117Z",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "Entity/Substrate bounded execution session only. Runs exactly one bounded foreground tick that materializes the ten substrate surfaces + runtime panel as declarative data artifacts. Births no Entity, births no Anna, runs no daemon/background/network/scheduler, does not widen the queue, does not resume the old route, does not approve final canon, and does not claim AGI/L3. Stops after one tick."
+}

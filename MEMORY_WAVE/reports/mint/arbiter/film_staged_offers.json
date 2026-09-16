@@ -1,0 +1,1037 @@
+{
+  "schema": "ymarket.film.staged_offers.v1",
+  "donor": "cargo_avto",
+  "slug": "vozdushno-puzyrkovaya-plenka",
+  "counts": {
+    "film_total": 18,
+    "green": 17,
+    "red": 1
+  },
+  "reds": [
+    {
+      "sku": "9600155-1",
+      "name": "Плёнка воздушно-пузырьковая, 0.4×5 м (для надёжной упаковки и переезда), 2 слоя, плотность 55 г/м²",
+      "why": "цена 1040₽ = ×14.86 закупки > потолка ×8 — рынок столько не даст"
+    }
+  ],
+  "offers": [
+    {
+      "sku": "9602037-1",
+      "name": "Плёнка воздушно-пузырьковая 0.3×50 м. 3 слоя, плотность 60 г/м². Амортизирующая упаковка для посылок и маркетплейсов",
+      "barcode": "2514444917254",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 680.0,
+      "sell_rub": 2280.0,
+      "profit_rub": 301.08,
+      "margin_pct": 13.2,
+      "offer_full": {
+        "offerId": "9602037-1",
+        "name": "Плёнка воздушно-пузырьковая 0.3×50 м. 3 слоя, плотность 60 г/м². Амортизирующая упаковка для посылок и маркетплейсов",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2640,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2514444917254"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.3×50 м. Размер полотна — 0.3 м в ширину и 50 м в длину, общая площадь 15 м².</p><p>Характеристики материала: 3-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 60 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.3 м</li><li>Длина намотки: 50 м</li><li>Плотность: 60 г/м²</li><li>Количество слоёв: 3</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 15 м²</li><li>Вес: 1.438 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/iblock/343/bexjw1yhf84nqdf1suph9awcupdx43at/9602037.jpg"
+        ],
+        "weightDimensions": {
+          "length": 50,
+          "width": 35,
+          "height": 50,
+          "weight": 1.438
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9602037-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9603273-1",
+      "name": "Плёнка воздушно-пузырьковая 1.2×5 м. 2 слоя, плотность 55 г/м². Амортизирующая упаковка для посылок и маркетплейсов",
+      "barcode": "2607742416816",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 210.0,
+      "sell_rub": 1330.0,
+      "profit_rub": 303.96,
+      "margin_pct": 22.9,
+      "offer_full": {
+        "offerId": "9603273-1",
+        "name": "Плёнка воздушно-пузырьковая 1.2×5 м. 2 слоя, плотность 55 г/м². Амортизирующая упаковка для посылок и маркетплейсов",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 1850,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2607742416816"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 1.2×5 м. Размер полотна — 1.2 м в ширину и 5 м в длину, общая площадь 6 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 55 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 1.2 м</li><li>Длина намотки: 5 м</li><li>Плотность: 55 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 6 м²</li><li>Вес: 0.33 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9603273__bf54db52e350d4e97c2c9ceb5f572a04.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9603273__e1188319f90b919dcf276c34a4f6f2c7.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9603273__326608ab3c81a5af73df981dc8a8c359.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9603273__26f32607b5f3f67828ca2c87fa991aa4.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9603273__3a04db2ff929f781641a45e64903bbdf.webp"
+        ],
+        "weightDimensions": {
+          "length": 120,
+          "width": 11.5,
+          "height": 11.5,
+          "weight": 0.33
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9603273-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9601515-1",
+      "name": "Плёнка воздушно-пузырьковая 0.3×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "barcode": "2125295465674",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 460.0,
+      "sell_rub": 1840.0,
+      "profit_rub": 304.73,
+      "margin_pct": 16.6,
+      "offer_full": {
+        "offerId": "9601515-1",
+        "name": "Плёнка воздушно-пузырьковая 0.3×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2270,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2125295465674"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.3×50 м. Размер полотна — 0.3 м в ширину и 50 м в длину, общая площадь 15 м².</p><p>Характеристики материала: 3-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 60 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.3 м</li><li>Длина намотки: 50 м</li><li>Плотность: 60 г/м²</li><li>Количество слоёв: 3</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 15 м²</li><li>Вес: 0.9 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601515__4da95ee2d78598a397de6da4fab1c6c1.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601515__85c1624f2169a5757b526bd109c4ac88.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601515__5b3c3d192d1e7283c1f6fb659a9dcbd8.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601515__d8360fafb6ed9c793667b62fd51caca2.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601515__6525c93dfec17464ea82b9c8dbce77b3.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601515__155c47348ff2270d0e02f48c940ef50f.webp"
+        ],
+        "weightDimensions": {
+          "length": 30,
+          "width": 50,
+          "height": 50,
+          "weight": 0.9
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9601515-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9601516-1",
+      "name": "Плёнка воздушно-пузырьковая 0.3×100 м, 3 слоя, плотность 60 г/м², защита хрупких товаров при доставке",
+      "barcode": "2784592716232",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 890.0,
+      "sell_rub": 3120.0,
+      "profit_rub": 504.1,
+      "margin_pct": 16.2,
+      "offer_full": {
+        "offerId": "9601516-1",
+        "name": "Плёнка воздушно-пузырьковая 0.3×100 м, 3 слоя, плотность 60 г/м², защита хрупких товаров при доставке",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2990,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2784592716232"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.3×100 м. Размер полотна — 0.3 м в ширину и 100 м в длину, общая площадь 30 м².</p><p>Характеристики материала: 3-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 60 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.3 м</li><li>Длина намотки: 100 м</li><li>Плотность: 60 г/м²</li><li>Количество слоёв: 3</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 30 м²</li><li>Вес: 1.8 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601516__386b0d223a6bdc7028fa527dcc16a09b.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601516__a640a192b8312397fd4f0721e643f793.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601516__9d72d7f0a9886f24b447c3b44f6dc348.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601516__cc48cfb01da53d001f326669ae71a25b.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601516__a012d90de51a323494dd76c638d6687a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601516__67404b8599557e814afcfe7ad4c56349.webp"
+        ],
+        "weightDimensions": {
+          "length": 30,
+          "width": 67,
+          "height": 67,
+          "weight": 1.8
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9601516-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9604033-1",
+      "name": "Амортизирующая упаковка для посылок и маркетплейсов: Плёнка воздушно-пузырьковая, 0.5×50 м, 2 слоя, плотность 40 г/м²",
+      "barcode": "2605361596117",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 485.0,
+      "sell_rub": 1890.0,
+      "profit_rub": 304.31,
+      "margin_pct": 16.1,
+      "offer_full": {
+        "offerId": "9604033-1",
+        "name": "Амортизирующая упаковка для посылок и маркетплейсов: Плёнка воздушно-пузырьковая, 0.5×50 м, 2 слоя, плотность 40 г/м²",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2310,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2605361596117"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.5×50 м. Размер полотна — 0.5 м в ширину и 50 м в длину, общая площадь 25 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.5 м</li><li>Длина намотки: 50 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 25 м²</li><li>Вес: 1 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604033__b2d8313e3bd014dc4b0f159b01ec3162.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604033__82662e06059e9d30f4aaedf206cfb3fb.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604033__3d7697c6de361a89e21d58a7d3f7ac55.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604033__c09bb0ed6c22f5e144e7c2faa98f2496.webp"
+        ],
+        "weightDimensions": {
+          "length": 50,
+          "width": 48,
+          "height": 48,
+          "weight": 1
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9604033-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9604035-1",
+      "name": "Плёнка воздушно-пузырьковая 0.5×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "barcode": "2180563906396",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 690.0,
+      "sell_rub": 2300.0,
+      "profit_rub": 300.91,
+      "margin_pct": 13.1,
+      "offer_full": {
+        "offerId": "9604035-1",
+        "name": "Плёнка воздушно-пузырьковая 0.5×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2650,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2180563906396"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.5×50 м. Размер полотна — 0.5 м в ширину и 50 м в длину, общая площадь 25 м².</p><p>Характеристики материала: 3-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 60 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.5 м</li><li>Длина намотки: 50 м</li><li>Плотность: 60 г/м²</li><li>Количество слоёв: 3</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 25 м²</li><li>Вес: 1.5 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604035__79ff64da146abd7cac2513fae77d374f.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604035__916efb6c5d83cc8bc6b98338eaae5472.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604035__c49c89f4d96bde345d4296a5ddf6516d.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604035__d956abf9bdc9394b56345122821061a2.webp"
+        ],
+        "weightDimensions": {
+          "length": 50,
+          "width": 50,
+          "height": 50,
+          "weight": 1.5
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9604035-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9604036-1",
+      "name": "Плёнка воздушно-пузырьковая 0.5×100 м, 3 слоя, плотность 60 г/м², защита хрупких товаров при доставке",
+      "barcode": "2744491636413",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 1500.0,
+      "sell_rub": 4360.0,
+      "profit_rub": 503.81,
+      "margin_pct": 11.6,
+      "offer_full": {
+        "offerId": "9604036-1",
+        "name": "Плёнка воздушно-пузырьковая 0.5×100 м, 3 слоя, плотность 60 г/м², защита хрупких товаров при доставке",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 4000,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2744491636413"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.5×100 м. Размер полотна — 0.5 м в ширину и 100 м в длину, общая площадь 50 м².</p><p>Характеристики материала: 3-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 60 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.5 м</li><li>Длина намотки: 100 м</li><li>Плотность: 60 г/м²</li><li>Количество слоёв: 3</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 50 м²</li><li>Вес: 3 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604036__70a72ff51daa822a50a690c2131a2074.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604036__9bbc71f15f4d854d2ea445853a8078c0.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604036__f4d7dd896f62907dd61d478d884583f9.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604036__c5ad4f695cfa05226934d21f21969fd3.webp"
+        ],
+        "weightDimensions": {
+          "length": 50,
+          "width": 67,
+          "height": 67,
+          "weight": 3
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9604036-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9602468-1",
+      "name": "Плёнка воздушно-пузырьковая 0.5×100 м| 2 слоя, плотность 40 г/м²| защита хрупких товаров при доставке",
+      "barcode": "2377633770050",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 950.0,
+      "sell_rub": 3240.0,
+      "profit_rub": 503.11,
+      "margin_pct": 15.5,
+      "offer_full": {
+        "offerId": "9602468-1",
+        "name": "Плёнка воздушно-пузырьковая 0.5×100 м| 2 слоя, плотность 40 г/м²| защита хрупких товаров при доставке",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 3090,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2377633770050"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.5×100 м. Размер полотна — 0.5 м в ширину и 100 м в длину, общая площадь 50 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.5 м</li><li>Длина намотки: 100 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 50 м²</li><li>Вес: 2 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602468__6e1ed2f1fea7fab143b7d697af4e2546.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602468__c11f73f6dea74b6d25f5124f72f95d5d.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602468__77b32d2210c6e59fc31a569d73f2b573.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602468__ce19f29d992ce19e4fbe3eb9b531d800.webp"
+        ],
+        "weightDimensions": {
+          "length": 50,
+          "width": 68,
+          "height": 68,
+          "weight": 2
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9602468-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9604815-1",
+      "name": "Плёнка воздушно-пузырьковая 0.3×20 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+      "barcode": "2403573203546",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 165.0,
+      "sell_rub": 1240.0,
+      "profit_rub": 304.71,
+      "margin_pct": 24.6,
+      "offer_full": {
+        "offerId": "9604815-1",
+        "name": "Плёнка воздушно-пузырьковая 0.3×20 м. 2 слоя, плотность 40 г/м². Для надёжной упаковки и переезда",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 1780,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2403573203546"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.3×20 м. Размер полотна — 0.3 м в ширину и 20 м в длину, общая площадь 6 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.3 м</li><li>Длина намотки: 20 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 6 м²</li><li>Вес: 0.24 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604815__420fb9edf0d750ec7b04dd9a4470b1e8.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604815__7f07738570c04ed5aee68f3dee32bfb6.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604815__27555a5b4f4aa804f58e8dfed2efe685.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604815__c241c2061797a1dfc8a64ad2321c9a58.webp"
+        ],
+        "weightDimensions": {
+          "length": 30,
+          "width": 26,
+          "height": 26,
+          "weight": 0.24
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9604815-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9605336-1",
+      "name": "Плёнка воздушно-пузырьковая 0.5×20 м| 2 слоя, плотность 40 г/м²| защита хрупких товаров при доставке",
+      "barcode": "2257053706535",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 300.0,
+      "sell_rub": 1510.0,
+      "profit_rub": 302.47,
+      "margin_pct": 20.0,
+      "offer_full": {
+        "offerId": "9605336-1",
+        "name": "Плёнка воздушно-пузырьковая 0.5×20 м| 2 слоя, плотность 40 г/м²| защита хрупких товаров при доставке",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2000,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2257053706535"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.5×20 м. Размер полотна — 0.5 м в ширину и 20 м в длину, общая площадь 10 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.5 м</li><li>Длина намотки: 20 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 10 м²</li><li>Вес: 0.4 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605336__0044ccf91897653a2144b8cf4a9d4bf5.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605336__54f9b13ba520fe04c76d08a0e1027621.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605336__09b7e3b79d4ce6d53a7fbaf3a6059de1.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605336__324d0f25f659a2570188956955d1a436.webp"
+        ],
+        "weightDimensions": {
+          "length": 50,
+          "width": 26,
+          "height": 26,
+          "weight": 0.4
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9605336-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9601512-1",
+      "name": "Плёнка воздушно-пузырьковая, 0.3×50 м — защита хрупких товаров при доставке, 2 слоя, плотность 40 г/м²",
+      "barcode": "2429079700174",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 340.0,
+      "sell_rub": 1590.0,
+      "profit_rub": 301.8,
+      "margin_pct": 19.0,
+      "offer_full": {
+        "offerId": "9601512-1",
+        "name": "Плёнка воздушно-пузырьковая, 0.3×50 м — защита хрупких товаров при доставке, 2 слоя, плотность 40 г/м²",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2070,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2429079700174"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.3×50 м. Размер полотна — 0.3 м в ширину и 50 м в длину, общая площадь 15 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.3 м</li><li>Длина намотки: 50 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 15 м²</li><li>Вес: 0.54 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601512__6a0ce98113b0f92ba5a06e5239d89aab.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601512__3621a9fe948fa1175d5c4bfb618fed9a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601512__13513c13e3e2db60147c42eb77bfc99e.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601512__87fc142fa98f49483b13ee594948c013.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601512__adf80f38f7feef944bbda07e08625426.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601512__12365233db18521016f752f093d6c33c.webp"
+        ],
+        "weightDimensions": {
+          "length": 30,
+          "width": 48,
+          "height": 48,
+          "weight": 0.54
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9601512-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9601513-1",
+      "name": "Амортизирующая упаковка для посылок и маркетплейсов: Плёнка воздушно-пузырьковая, 0.3×100 м, 2 слоя, плотность 40 г/м²",
+      "barcode": "2354001891548",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 660.0,
+      "sell_rub": 2240.0,
+      "profit_rub": 301.41,
+      "margin_pct": 13.5,
+      "offer_full": {
+        "offerId": "9601513-1",
+        "name": "Амортизирующая упаковка для посылок и маркетплейсов: Плёнка воздушно-пузырьковая, 0.3×100 м, 2 слоя, плотность 40 г/м²",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2600,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2354001891548"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.3×100 м. Размер полотна — 0.3 м в ширину и 100 м в длину, общая площадь 30 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.3 м</li><li>Длина намотки: 100 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 30 м²</li><li>Вес: 1.04 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601513__2b6331f72eb81f173804f8cbc1e6ce4a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601513__3ff5b073a2d0fdd8bd8e183a911267a7.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601513__220e971fb910ee6eee2a91c54f939983.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601513__ef66fdd4981b8cf3970d68edf959e74e.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601513__78c02555e5f37057d2e77c3558e60656.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9601513__19f8f328eb90e9808df676098918f97f.webp"
+        ],
+        "weightDimensions": {
+          "length": 30,
+          "width": 68,
+          "height": 68,
+          "weight": 1.04
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9601513-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9605392-1",
+      "name": "Плёнка воздушно-пузырьковая 0.75×100 м, 2 слоя, плотность 25 г/м², защита хрупких товаров при доставке",
+      "barcode": "2229136042861",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 740.0,
+      "sell_rub": 2810.0,
+      "profit_rub": 501.68,
+      "margin_pct": 17.9,
+      "offer_full": {
+        "offerId": "9605392-1",
+        "name": "Плёнка воздушно-пузырьковая 0.75×100 м, 2 слоя, плотность 25 г/м², защита хрупких товаров при доставке",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2740,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2229136042861"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 0.75×100 м. Размер полотна — 0.75 м в ширину и 100 м в длину, общая площадь 75 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 5 мм, плотность 25 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 0.75 м</li><li>Длина намотки: 100 м</li><li>Плотность: 25 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 5 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 75 м²</li><li>Вес: 1.86 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__81a587e3b09fa653e1e592f209f04f18.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__4174a18284a37d661e4ce8b3a8ded0cc.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__36c7b27af2d1f3e6243190328bc7ef48.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__3812677f976c099d309dcf1ffccdf203.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__060bc665a001f1d68eda993e3ec11389.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__0be79b3b8a520468ff39aca325b88223.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__6e45793fd92bc9d028b676d0f839ae73.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__c1a64892f70d51f9b68ef00b685c160e.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__33be357ddf01d99b9b29e86fb319ac7c.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__3ee544c956a4c04f04d908656b7d3da7.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__7b7567465861a5aad6791df713099871.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__737134700153efdaf187be90af9da9f1.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__0ed7de06c9f771b2ef958389c9bc42cf.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__21486eaa24605d44dc4c198e80a2047a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__0d471a9d8d5db348b070cd7e4a2b0227.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__cd8b5c886e89c35c393175e267f6bc60.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__6856bbbc7955a9fa2899cbb7f42597ce.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__2bb42ff1c473d38fd8b0ffbb43aed05a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__f37687c8e410d8617227e87d9ad46f99.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__be5889829b84f740ad64cf3485a12529.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__b62b0f8a84e7ed62ef460665b2f48990.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__500502d111aff9cc2e1237116caf9f12.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__92236c53b6334a9be3e653a981e6b169.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__ead08242e9d3ba259fc5b53f92627427.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__db727b942417575b63cea23b8a0554ce.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9605392__b5a01282adf1768a9994836a63c14d53.webp"
+        ],
+        "weightDimensions": {
+          "length": 75,
+          "width": 38,
+          "height": 38,
+          "weight": 1.86
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9605392-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9604816-1",
+      "name": "Плёнка воздушно-пузырьковая 1.2×20 м, 2 слоя, плотность 40 г/м², защита хрупких товаров при доставке",
+      "barcode": "2257673058267",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 520.0,
+      "sell_rub": 1960.0,
+      "profit_rub": 303.73,
+      "margin_pct": 15.5,
+      "offer_full": {
+        "offerId": "9604816-1",
+        "name": "Плёнка воздушно-пузырьковая 1.2×20 м, 2 слоя, плотность 40 г/м², защита хрупких товаров при доставке",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2370,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2257673058267"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 1.2×20 м. Размер полотна — 1.2 м в ширину и 20 м в длину, общая площадь 24 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 1.2 м</li><li>Длина намотки: 20 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 24 м²</li><li>Вес: 0.96 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__2a2fd963405238b7a4662a04bbda6eb0.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__a39ae1ca92f99ac153c7bf90d8dd2afc.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__59f0247c061f83538d1ad75c95c09a6b.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__1e9bb5bf82d2ad2188654ebeb5d0fbe4.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__eec9e0eace94b20587b333fb8738727a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__6f14bb1dd7ade4cca4c0795e7eca5a07.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9604816__641bf3d39e5075d1e194bf2327b5120c.webp"
+        ],
+        "weightDimensions": {
+          "length": 120,
+          "width": 26,
+          "height": 26,
+          "weight": 0.96
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9604816-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9602489-1",
+      "name": "Плёнка воздушно-пузырьковая, 1.2×50 м (амортизирующая упаковка для посылок и маркетплейсов), 2 слоя, плотность 30 г/м²",
+      "barcode": "2211705792710",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 860.0,
+      "sell_rub": 3060.0,
+      "profit_rub": 504.6,
+      "margin_pct": 16.5,
+      "offer_full": {
+        "offerId": "9602489-1",
+        "name": "Плёнка воздушно-пузырьковая, 1.2×50 м (амортизирующая упаковка для посылок и маркетплейсов), 2 слоя, плотность 30 г/м²",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 2940,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2211705792710"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 1.2×50 м. Размер полотна — 1.2 м в ширину и 50 м в длину, общая площадь 60 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 30 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 1.2 м</li><li>Длина намотки: 50 м</li><li>Плотность: 30 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 60 м²</li><li>Вес: 1.8 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602489__5998b2803d2fddc18ab984b6fda7b96f.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602489__b7076e02c1a4c2ba97c9576947c176ed.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602489__1a08fb2d850a2cd615e505814cdf6a79.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9602489__d01bc758fe95b91e68c9ed92ae9cf738.webp"
+        ],
+        "weightDimensions": {
+          "length": 120,
+          "width": 43,
+          "height": 43,
+          "weight": 1.8
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9602489-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9600239-1",
+      "name": "Плёнка воздушно-пузырьковая, 1.2×100 м (для надёжной упаковки и переезда), 2 слоя, плотность 40 г/м²",
+      "barcode": "2165505381929",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 2080.0,
+      "sell_rub": 6150.0,
+      "profit_rub": 803.95,
+      "margin_pct": 13.1,
+      "offer_full": {
+        "offerId": "9600239-1",
+        "name": "Плёнка воздушно-пузырьковая, 1.2×100 м (для надёжной упаковки и переезда), 2 слоя, плотность 40 г/м²",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 4970,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2165505381929"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 1.2×100 м. Размер полотна — 1.2 м в ширину и 100 м в длину, общая площадь 120 м².</p><p>Характеристики материала: 2-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 40 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 1.2 м</li><li>Длина намотки: 100 м</li><li>Плотность: 40 г/м²</li><li>Количество слоёв: 2</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 120 м²</li><li>Вес: 4.15 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9600239__6c29434010d80d05e372d04b46efb5a9.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9600239__9aadeb3e732a5fc4313a80aae089c54a.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9600239__17f47052d1c25ee21f7e9cb21bf55ddf.webp",
+          "https://sp.cargo-avto.ru/upload/cache/resized/watermark/9600239__5220b8361284ff2eacbd666582a4d271.webp"
+        ],
+        "weightDimensions": {
+          "length": 120,
+          "width": 68,
+          "height": 68,
+          "weight": 4.15
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9600239-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    },
+    {
+      "sku": "9600879-1",
+      "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+      "barcode": "2770731210624",
+      "category_id": 76346336,
+      "vendor": "Без бренда",
+      "cost_rub": 1450.0,
+      "sell_rub": 4260.0,
+      "profit_rub": 504.64,
+      "margin_pct": 11.8,
+      "offer_full": {
+        "offerId": "9600879-1",
+        "name": "Плёнка воздушно-пузырьковая 1.2×50 м. 3 слоя, плотность 60 г/м². Для надёжной упаковки и переезда",
+        "type": "DEFAULT",
+        "boxCount": 1,
+        "basicPrice": {
+          "value": 3920,
+          "currencyId": "RUR"
+        },
+        "marketCategoryId": 76346336,
+        "vendor": "Без бренда",
+        "barcodes": [
+          "2770731210624"
+        ],
+        "description": "<p>Плёнка воздушно-пузырьковая, 1.2×50 м. Размер полотна — 1.2 м в ширину и 50 м в длину, общая площадь 60 м².</p><p>Характеристики материала: 3-слойная структура, воздушные пузырьки диаметром 10 мм, плотность 60 г/м², материал — полиэтилен. Пузырьки гасят удары и вибрацию при транспортировке, защищая содержимое от повреждений.</p><p>Подходит для упаковки товаров при отправке в маркетплейсы, почтовых пересылок, переездов и хранения. Используется для обёртывания хрупких предметов, заполнения пустот в коробках и защиты поверхностей от царапин.</p><p>Технические характеристики:</p><ul><li>Ширина рулона: 1.2 м</li><li>Длина намотки: 50 м</li><li>Плотность: 60 г/м²</li><li>Количество слоёв: 3</li><li>Диаметр пузырька: 10 мм</li><li>Материал: Полиэтилен</li><li>Площадь рулона: 60 м²</li><li>Вес: 3.02 кг</li><li>Цвет: Прозрачный</li><li>Страна производства: Россия</li></ul>",
+        "pictures": [
+          "https://basket-43.wbbasket.ru/vol11893/part1189394/1189394766/images/big/1.webp",
+          "https://basket-43.wbbasket.ru/vol11893/part1189394/1189394766/images/big/2.webp",
+          "https://basket-43.wbbasket.ru/vol11893/part1189394/1189394766/images/big/3.webp",
+          "https://basket-43.wbbasket.ru/vol11893/part1189394/1189394766/images/big/4.webp",
+          "https://basket-43.wbbasket.ru/vol11893/part1189394/1189394766/images/big/5.webp"
+        ],
+        "weightDimensions": {
+          "length": 120,
+          "width": 50,
+          "height": 50,
+          "weight": 3.02
+        },
+        "manufacturerCountries": [
+          "Россия"
+        ]
+      },
+      "meta": {
+        "offerId": "9600879-1",
+        "slug": "vozdushno-puzyrkovaya-plenka",
+        "category_id": 76346336,
+        "category_source": "rule",
+        "category_leaf": "Упаковочные плёнки",
+        "need_mapping": false,
+        "missing_pictures": false,
+        "price_ok": true,
+        "has_vendor": true,
+        "has_barcode": true,
+        "has_description": true,
+        "weight_dimensions": true,
+        "name_source": "verbatim_fallback",
+        "original_name": null
+      }
+    }
+  ]
+}

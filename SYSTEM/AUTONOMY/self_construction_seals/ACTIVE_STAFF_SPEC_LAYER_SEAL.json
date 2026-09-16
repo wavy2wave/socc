@@ -1,0 +1,10 @@
+{
+  "advances_sovereign_route": false,
+  "capability_proven": false,
+  "created_at_utc": "2026-06-30T00:06:44.051452+00:00",
+  "id": "ACTIVE_STAFF_SPEC_LAYER_SEAL",
+  "seal": "SYSTEM/AUTONOMY/self_construction_seals/STAFF_SPEC_LAYER_SEAL_V1.json",
+  "seal_hash": "c0309ebcd5c86658",
+  "seal_kind": "design_canon",
+  "truth_boundary": "Staff spec layer DESIGN-CANON seal. Pins TFS-1, PXS-1, the 8-role roster specs, the index, and B0 positioning as the canonical DESIGN OF RECORD, version-locked by per-doc content hash. It verifies only that the design is complete, cross-linked and grounded in the real lawful step-engine. It explicitly does NOT claim the capability is proven: every acceptance test in these specs is RED (declared, not demonstrated). Births no entity, no ANNA; enables no birth; makes no AGI/L3/revenue/completeness claim; runs no daemon/background/network; and DOES NOT advance the sovereign route authority. Execution and canon-completeness stay gated beyond this seal — they are the operator's to fire."
+}

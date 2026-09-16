@@ -1,0 +1,13 @@
+SOCC OLD PROJECT PREFLIGHT
+==========================
+
+STATUS::PASS
+CURRENT_LAWFUL_NEXT::review_entity_substrate_direction_v1
+OLD_PROJECT::/Users/wavysexy/supramental-agent
+OLD_PROJECT_EXISTS::True
+DECISION::ADOPT_OR_RECONCILE_FIRST
+
+PREFLIGHT_MD::MIGRATION/audits/SOCC_OLD_PROJECT_PREFLIGHT_FOR_CURRENT_LAWFUL_NEXT_V1.md
+PREFLIGHT_JSON::MIGRATION/audits/SOCC_OLD_PROJECT_PREFLIGHT_FOR_CURRENT_LAWFUL_NEXT_V1.json
+
+RULE::before every next step, check old project first

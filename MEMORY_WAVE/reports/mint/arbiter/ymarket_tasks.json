@@ -1,0 +1,1046 @@
+{
+ "schema": "ymarket.tasks.v1",
+ "updated_at": "2026-09-15T08:35:38+0300",
+ "tasks": {
+  "T-84d7aa1a": {
+   "id": "T-84d7aa1a",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "pricing",
+   "store": "atlas-express-film",
+   "owner": "PRICER",
+   "urgency": "high",
+   "priority": 10,
+   "what": "Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽",
+   "body": "ЦЕНОВИК·ПЛАН: карточка ARB-87931769 за пределами зоны/пола КПИ. План готовит pricing_plan_v1; цены движок сам не трогает — ждёт слова оператора.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-02T18:19:29+0300",
+   "updated_at": "2026-09-02T18:19:29+0300",
+   "refs": {
+    "evidence": "закупка 65₽ (_card_costs) · витрина 520₽ (леджер ЗАЛИВ) · вердикт RAISE · текущая 520₽ ниже пола 900₽ (net 177₽ < 500₽) — поднять минимум до 900₽ (проект: доставка/комиссия не подтверждены)"
+   }
+  },
+  "T-9fca5843": {
+   "id": "T-9fca5843",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "pricing",
+   "store": "atlas-express-film",
+   "owner": "PRICER",
+   "urgency": "normal",
+   "priority": 20,
+   "what": "Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽",
+   "body": "ЦЕНОВИК·ПЛАН: карточка ARB-53416854 за пределами зоны/пола КПИ. План готовит pricing_plan_v1; цены движок сам не трогает — ждёт слова оператора.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-02T18:19:29+0300",
+   "updated_at": "2026-09-02T18:19:29+0300",
+   "refs": {
+    "evidence": "закупка 170₽ (_card_costs) · витрина 1360₽ (леджер ЗАЛИВ) · вердикт SWEET · текущая 1360₽ даёт КПИ, но ниже зоны 1400–1700₽ сладкой зоны фирменного товара — поднять до 1600₽ (дизайн-профит) (проект: доставка/комиссия не подтверждены)"
+   }
+  },
+  "T-0b6e8545": {
+   "id": "T-0b6e8545",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "high",
+   "priority": 30,
+   "what": "Парсинг донора: воздушно-пузырьковая плёнка (vozdushno-puzyrkovaya-plenka) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «vozdushno-puzyrkovaya-plenka» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: puzyrkovaya-plenka. Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории vozdushno-puzyrkovaya-plenka (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой прогон 0₽ dry (scan→cost≤700→ОВХ→наличие→шорт-лист→dry-preflight): артефакт ymarket_runner_categorist_live_vozdushno-plenka_2026-09-04_00-18-11.json | скан донора 82 (71+11), реальные цены-лестница ступень-от-1",
+     "done_at": "2026-09-04T00:19:11+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой прогон 0₽ dry (scan→cost≤700→ОВХ→наличие→шорт-лист→dry-preflight): артефакт ymarket_runner_categorist_live_vozdushno-plenka_2026-09-04_00-18-11.json | split 4 выбр/17 needs_data/30 отбой · ОВХ посылки 18 · 4 с полными dims+barcode",
+     "done_at": "2026-09-04T00:19:11+0300"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (puzyrkovaya-plenka)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой прогон 0₽ dry (scan→cost≤700→ОВХ→наличие→шорт-лист→dry-preflight): артефакт ymarket_runner_categorist_live_vozdushno-plenka_2026-09-04_00-18-11.json | маппинг puzyrkovaya-plenka→76346336 решён (need_mapping 0) · no_pictures 4 (Фото отложен)",
+     "done_at": "2026-09-04T00:19:11+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T00:19:11+0300",
+   "refs": {
+    "donor_category": "vozdushno-puzyrkovaya-plenka",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": "puzyrkovaya-plenka",
+    "need_mapping": false,
+    "method": "CargoAvtoAdapter.scan(category='vozdushno-puzyrkovaya-plenka')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-818e04e9": {
+   "id": "T-818e04e9",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "high",
+   "priority": 30,
+   "what": "Парсинг донора: полиэтиленовая плёнка (polyetilenovaya-plenka) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «polyetilenovaya-plenka» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории polyetilenovaya-plenka (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой скан 0₽ GET (CargoAvtoAdapter.scan category=polyetilenovaya-plenka): 94 позиции (84 main + 10 related), донор-категория жива",
+     "done_at": "2026-09-04T00:30:40+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "фильтр C4 ≤700₽: 80 rejected (рулоны 1490–8400₽, медиана ~2990₽ — не бьётся с поштучным выкупом); 14 ≤700₽ → needs_data (ОВХ-слой 0 габаритов — зона #10); плёночный остров = мини ПВД-рукав 6 SKU 330–620₽",
+     "done_at": "2026-09-04T00:30:40+0300"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "артефакт ymarket_runner_categorist_live_polyetilenovaya-plenka_2026-09-04_00-30-40.json/.md: шорт-лист ПУСТ + вердикт need_mapping=true (профиль не решён, None≠0); 14 needs_data перечислены",
+     "done_at": "2026-09-04T00:30:40+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T00:30:40+0300",
+   "refs": {
+    "donor_category": "polyetilenovaya-plenka",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='polyetilenovaya-plenka')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-cf6839cf": {
+   "id": "T-cf6839cf",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "high",
+   "priority": 40,
+   "what": "Парсинг донора: стрейч-плёнка (streich-plenka) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «streich-plenka» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории streich-plenka (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой скан категории (0₽ GET) сделан: артефакт ymarket_runner_categorist_live_streich-plenka_2026-09-04_01-22-41.json; вердикт needs_data — категория БОГАТА стрейчем (21 рулон 165–545₽ + 2 диспенсера), но ОВХ-габаритов 0 → s2/s3 не закрываю",
+     "done_at": "2026-09-04T01:26:32+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "ОВХ-фильтр под Экспресс отработал ЖИВЬЁМ (ре-скан 04.09 13:19, 0₽ GET): ОВХ-фикс #50/#51 (рулон-цилиндр physics + ширина/вес из названия) дал габариты посылки 24 кандидатам (21 рулон + 3 не-плёнки с физ-габаритами, отсеются профилем); cost-потолок ≤700 режет 9 (rejected); ready 0 — НЕ из-за фильтра: блокируют ВНЕШНИЕ гейты T3-маппинг (slug 'streich-plenka' НЕ в ymarket_cats_v1, None≠0) + T4-склад sp (источник наличия у 11/23 проб; пищевая Extra 300мм/цветные коллекции = HTTP 404 на sp-витрине). Артефакт ymarket_runner_categorist_live_streich-plenka_2026-09-04_13-19-49.json. Проекция маппинг→76346336 (RULES-кандидат, НЕ подтверждён руками) = 10 готовых — ждёт слова оператора по профилю ЯМ-категории.",
+     "done_at": "2026-09-04T13:21:04+0300"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 04.09 (директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): маппинг-гейт СНЯТ органом — профиль 76346336 «Упаковочные плёнки» (Тип=стрейч-пленка 40487523) подтверждён живым GET 0₽ + адверсариал wf_93f908ad-5d1 4/4 CONFIRMED (канон ymarket_mapping_confirmed_2026-09-04). Живой сухой ре-прогон канон-канала (дефолтные бюджеты 360/300) = ready 10 / need_mapping 0 / errors 0 / selected 10 (9 рулонов + диспенсер-ручка 2227175) — артефакт ymarket_categorist_readiness_streich_2026-09-04. Шорт-лист готов. ОГОВОРКИ не-скоупа: no_pictures 10 (фото-гейт #9), topfill 0 (#11 полнота).",
+     "done_at": "2026-09-04T15:29:09+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T15:29:09+0300",
+   "refs": {
+    "donor_category": "streich-plenka",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": 76346336,
+    "need_mapping": false,
+    "method": "CargoAvtoAdapter.scan(category='streich-plenka')",
+    "approved": "operator 03.09 (13 упаковочных)",
+    "ovh_dims": 24,
+    "readiness_rescan": "needs_data 29 / rejected 9 / ready 0 / parcel_dims 24 (было 0)",
+    "ready_if_mapped": {
+     "count": 10,
+     "note": "сухая проекция (в памяти, 0₽): инъекция маппинга 76346336",
+     "skus": [
+      "5246",
+      "10155",
+      "19946",
+      "20994",
+      "5263",
+      "5484",
+      "5303",
+      "8576",
+      "267897",
+      "2227175"
+     ]
+    },
+    "artifacts_rescan": [
+     "ymarket_runner_categorist_live_streich-plenka_2026-09-04_13-19-49.json",
+     "ymarket_runner_categorist_live_streich-plenka_2026-09-04_13-19-49.md"
+    ],
+    "mapping_confirmed": "CATEGORIST 04.09 (директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): живой categories_tree + category_parameters 0₽ GET + адверсариал-верификация wf_93f908ad-5d1 4/4 CONFIRMED свежими живыми чтениями. Канон ymarket_mapping_confirmed_2026-09-04.",
+    "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+    "cats_key": "streich-plenka"
+   }
+  },
+  "T-05294283": {
+   "id": "T-05294283",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "high",
+   "priority": 40,
+   "what": "Парсинг донора: вспененный полиэтилен (vspenennii-polietilen) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «vspenennii-polietilen» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории vspenennii-polietilen (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 04.09: живой сухой скан канон-канала ПОСЛЕ снятия T3-маппинг-гейта органом (76377452 «Листовой вспененный полиэтилен», конфирмация wf_0986cace-2ad): grid 11+11, ready 0, need_mapping 0 (маппинг СНЯТ — узкое место НЕ маппинг), needs_data 6 (ОВХ дал dims 5), rejected 16 (строительный кросс-селл/закупка>700₽), no_pictures 0. Вердикт needs_data — НЕ негатив: 6 кандидатов ≤700₽ существуют, данные-слой (#10 ОВХ/склад) не конвертит. Первоисточник: ymarket_categorist_readiness_vspenennii-polietilen_2026-09-04.json/.md + досье записаны (validate OK).",
+     "done_at": "2026-09-04T16:59:47+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "in_progress",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T16:59:47+0300",
+   "refs": {
+    "donor_category": "vspenennii-polietilen",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='vspenennii-polietilen')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-0f1fac3c": {
+   "id": "T-0f1fac3c",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Парсинг донора: картонные тубусы (kartonnye-tubusy) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «kartonnye-tubusy» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории kartonnye-tubusy (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 04.09: живой сухой скан канон-канала ПОСЛЕ снятия T3-гейта органом (64642256 «Картонные тубусы (тубы с крышками)»): grid 19+11, ready 0, need_mapping 0, needs_data 22, parcel_dims 21, rejected 8. Вердикт needs_data — из счётчиков первоисточника, не из головы. Первоисточник: ymarket_categorist_readiness_kartonnye-tubusy_2026-09-04.json/.md + досье записаны (validate OK).",
+     "done_at": "2026-09-04T17:01:03+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "in_progress",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T17:01:03+0300",
+   "refs": {
+    "donor_category": "kartonnye-tubusy",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='kartonnye-tubusy')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-8ba5d3e9": {
+   "id": "T-8ba5d3e9",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Парсинг донора: картон и гофрокартон (karton-i-gofrokarton) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «karton-i-gofrokarton» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории karton-i-gofrokarton (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой скан донор-категории (0₽ GET): вердикт ready_shortlist из счётчиков первоисточника — CATEGORIST 04.09: живой сухой скан ПОСЛЕ снятия T3-гейта органом (76280526 «Картон и гофрокартон (гофролисты)»): grid 20+10, ready 1, need_mapping 0, needs_data 13, no_pictures 1, rejected 16. Первоисточник: ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04.json/.md + досье (validate OK).",
+     "done_at": "2026-09-04T17:18:52+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "фильтр под Экспресс (cost≤700→ОВХ→cid): шорт-лист ready 1 SKU собрался в preflight (dry): CATEGORIST 04.09: живой сухой скан ПОСЛЕ снятия T3-гейта органом (76280526 «Картон и гофрокартон (гофролисты)»): grid 20+10, ready 1, need_mapping 0, needs_data 13, no_pictures 1, rejected 16. Первоисточник: ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04.json/.md + досье (validate OK).",
+     "done_at": "2026-09-04T17:18:52+0300"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "артефакт+вердикт маппинга ЯМ: маппинг 76280526 «Картон и гофрокартон (гофролисты)» СНЯТ органом и ПОДТВЕРЖДЁН сканом (need_mapping 0, ready 1): CATEGORIST 04.09: живой сухой скан ПОСЛЕ снятия T3-гейта органом (76280526 «Картон и гофрокартон (гофролисты)»): grid 20+10, ready 1, need_mapping 0, needs_data 13, no_pictures 1, rejected 16. Первоисточник: ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04.json/.md + досье (validate OK).",
+     "done_at": "2026-09-04T17:18:52+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T17:18:52+0300",
+   "refs": {
+    "donor_category": "karton-i-gofrokarton",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='karton-i-gofrokarton')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-d558ebe1": {
+   "id": "T-d558ebe1",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 50,
+   "what": "Парсинг донора: клейкая лента (klejkaya-lenta) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «klejkaya-lenta» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории klejkaya-lenta (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 04.09: живой сухой скан канон-канала после снятия T3-гейта органом (90741 «Скотч», конфирмация ymarket_mapping_confirmed_2026-09-04) = ready 5 / need_mapping 0 / errors 0 — шорт-лист: 6178 132м×625, 5242 66м×550, 5460 72мм×535, 1951 коричневая×375, 5249 прозрачная×365 (SKU/basicPrice verbatim из dry-payload, артефакт ymarket_categorist_readiness_klejkaya-lenta_2026-09-04). Оговорки не-скоупа: no_pictures 5 (фото #9), topfill 0 (полнота #11), needs_data 60.",
+     "done_at": "2026-09-04T16:02:53+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 04.09: живой сухой скан канон-канала после снятия T3-гейта органом (90741 «Скотч», конфирмация ymarket_mapping_confirmed_2026-09-04) = ready 5 / need_mapping 0 / errors 0 — шорт-лист: 6178 132м×625, 5242 66м×550, 5460 72мм×535, 1951 коричневая×375, 5249 прозрачная×365 (SKU/basicPrice verbatim из dry-payload, артефакт ymarket_categorist_readiness_klejkaya-lenta_2026-09-04). Оговорки не-скоупа: no_pictures 5 (фото #9), topfill 0 (полнота #11), needs_data 60.",
+     "done_at": "2026-09-04T16:02:53+0300"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 04.09: живой сухой скан канон-канала после снятия T3-гейта органом (90741 «Скотч», конфирмация ymarket_mapping_confirmed_2026-09-04) = ready 5 / need_mapping 0 / errors 0 — шорт-лист: 6178 132м×625, 5242 66м×550, 5460 72мм×535, 1951 коричневая×375, 5249 прозрачная×365 (SKU/basicPrice verbatim из dry-payload, артефакт ymarket_categorist_readiness_klejkaya-lenta_2026-09-04). Оговорки не-скоупа: no_pictures 5 (фото #9), topfill 0 (полнота #11), needs_data 60.",
+     "done_at": "2026-09-04T16:02:53+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T16:02:53+0300",
+   "refs": {
+    "donor_category": "klejkaya-lenta",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": 90741,
+    "need_mapping": false,
+    "method": "CargoAvtoAdapter.scan(category='klejkaya-lenta')",
+    "approved": "operator 03.09 (13 упаковочных)",
+    "mapping_confirmed": "CATEGORIST 04.09 (директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): живой categories_tree + category_parameters 0₽ GET + адверсариал-верификация wf_93f908ad-5d1 4/4 CONFIRMED свежими живыми чтениями. Канон ymarket_mapping_confirmed_2026-09-04.",
+    "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+    "cats_key": "klejkaya-lenta"
+   }
+  },
+  "T-08851483": {
+   "id": "T-08851483",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 50,
+   "what": "Парсинг донора: мешки (meshki) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «meshki» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории meshki (0₽ GET)",
+     "state": "open"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-03T20:04:30+0300",
+   "refs": {
+    "donor_category": "meshki",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='meshki')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-1236914c": {
+   "id": "T-1236914c",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 50,
+   "what": "Парсинг донора: пакеты (paketi) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «paketi» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории paketi (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "Живой сухой скан 0₽ (grid 60+11): ready 0, need_mapping 0 (маппинг 76323239 СНЯТ органом), needs_data 53, ОВХ дал dims 16 (но склад-источник T4 не дал готовых — только in_stock считает), rejected 18. Вердикт needs_data — НЕ негатив, НЕ закрытие: ждёт данных #10/СКЛАДОВЩИК.",
+     "done_at": "2026-09-04T16:02:53+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "in_progress",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T16:02:53+0300",
+   "refs": {
+    "donor_category": "paketi",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": 76323239,
+    "need_mapping": false,
+    "method": "CargoAvtoAdapter.scan(category='paketi')",
+    "approved": "operator 03.09 (13 упаковочных)",
+    "mapping_confirmed": "CATEGORIST 04.09 (директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): живой categories_tree + category_parameters 0₽ GET + адверсариал-верификация wf_93f908ad-5d1 4/4 CONFIRMED свежими живыми чтениями. Канон ymarket_mapping_confirmed_2026-09-04.",
+    "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+    "cats_key": "paketi"
+   }
+  },
+  "T-17536f4e": {
+   "id": "T-17536f4e",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 50,
+   "what": "Парсинг донора: упаковочная бумага (upakovochnaya-bumaga) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «upakovochnaya-bumaga» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории upakovochnaya-bumaga (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "живой скан донор-категории (0₽ GET): вердикт ready_shortlist из счётчиков первоисточника — CATEGORIST 04.09: живой сухой скан ПОСЛЕ снятия T3-гейта органом (76346336 «Бумага упаковочная (крафт/обёрточная/тишью)»): grid 20+11, ready 4, need_mapping 0, needs_data 11, no_pictures 4, rejected 16. Первоисточник: ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04.json/.md + досье (validate OK).",
+     "done_at": "2026-09-04T17:18:52+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "фильтр под Экспресс (cost≤700→ОВХ→cid): шорт-лист ready 4 SKU собрался в preflight (dry): CATEGORIST 04.09: живой сухой скан ПОСЛЕ снятия T3-гейта органом (76346336 «Бумага упаковочная (крафт/обёрточная/тишью)»): grid 20+11, ready 4, need_mapping 0, needs_data 11, no_pictures 4, rejected 16. Первоисточник: ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04.json/.md + досье (validate OK).",
+     "done_at": "2026-09-04T17:18:52+0300"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "артефакт+вердикт маппинга ЯМ: маппинг 76346336 «Бумага упаковочная (крафт/обёрточная/тишью)» СНЯТ органом и ПОДТВЕРЖДЁН сканом (need_mapping 0, ready 4): CATEGORIST 04.09: живой сухой скан ПОСЛЕ снятия T3-гейта органом (76346336 «Бумага упаковочная (крафт/обёрточная/тишью)»): grid 20+11, ready 4, need_mapping 0, needs_data 11, no_pictures 4, rejected 16. Первоисточник: ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04.json/.md + досье (validate OK).",
+     "done_at": "2026-09-04T17:18:52+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T17:18:52+0300",
+   "refs": {
+    "donor_category": "upakovochnaya-bumaga",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='upakovochnaya-bumaga')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-6b8743bb": {
+   "id": "T-6b8743bb",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 50,
+   "what": "Парсинг донора: наполнители (napolniteli) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «napolniteli» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории napolniteli (0₽ GET)",
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "Живой сухой скан 0₽ (grid 32+9): ready 0, need_mapping 0 (маппинг 76300038 СНЯТ органом — узкое место НЕ маппинг), needs_data 21 кандидатов ≤700₽, ОВХ дал dims 3 → T5-разрыв данных (насыпной товар без габаритов на карте/не выводимы из имени), rejected 20. Вердикт needs_data — НЕ негатив, НЕ закрытие: ждёт данных #10/склад.",
+     "done_at": "2026-09-04T16:02:53+0300"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "in_progress",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-04T16:02:53+0300",
+   "refs": {
+    "donor_category": "napolniteli",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": 76300038,
+    "need_mapping": false,
+    "method": "CargoAvtoAdapter.scan(category='napolniteli')",
+    "approved": "operator 03.09 (13 упаковочных)",
+    "mapping_confirmed": "CATEGORIST 04.09 (директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): живой categories_tree + category_parameters 0₽ GET + адверсариал-верификация wf_93f908ad-5d1 4/4 CONFIRMED свежими живыми чтениями. Канон ymarket_mapping_confirmed_2026-09-04.",
+    "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+    "cats_key": "napolniteli"
+   }
+  },
+  "T-53183869": {
+   "id": "T-53183869",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 60,
+   "what": "Парсинг донора: упаковочная сетка (upakovochnaya-setka) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «upakovochnaya-setka» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории upakovochnaya-setka (0₽ GET)",
+     "state": "open"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-03T20:04:30+0300",
+   "refs": {
+    "donor_category": "upakovochnaya-setka",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='upakovochnaya-setka')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-e2a8bce0": {
+   "id": "T-e2a8bce0",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "categories",
+   "store": "atlas-express-film",
+   "owner": "CATEGORIST",
+   "urgency": "normal",
+   "priority": 60,
+   "what": "Парсинг донора: упаковочные ленты (upakovochnie-lentj) → шорт-лист под Экспресс",
+   "body": "Задание на живой парсинг донор-категории «upakovochnie-lentj» с shop.cargo-avto.ru (1С-Битрикс). Исполнитель — КАТЕГОРИЙЩИК (ymarket_role_categorist_v1): скан → нормализация → фильтр под Экспресс (закупка×markup ≤ потолок, габариты под ОВХ) → артефакт-шорт-лист кандидатов. Маппинг категории ЯМ: НЕТ — need_mapping: решить профиль категории ДО карточки (None ≠ 0). Стоимость: 0₽ (только GET донора).",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Живой скан донор-категории upakovochnie-lentj (0₽ GET)",
+     "state": "open"
+    },
+    {
+     "id": "s2",
+     "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
+     "state": "open"
+    },
+    {
+     "id": "s3",
+     "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-03T20:04:30+0300",
+   "refs": {
+    "donor_category": "upakovochnie-lentj",
+    "donor_site": "shop.cargo-avto.ru",
+    "market_cat": null,
+    "need_mapping": true,
+    "method": "CargoAvtoAdapter.scan(category='upakovochnie-lentj')",
+    "approved": "operator 03.09 (13 упаковочных)"
+   }
+  },
+  "T-cc9d92ff": {
+   "id": "T-cc9d92ff",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-film устарел (2026-09-03) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-film устарел (2026-09-03) — прогнать сухо сегодня",
+     "state": "done",
+     "done_by": "ЦИКЛ-1 пульс (автопилот)",
+     "evidence": "пульс atlas-express-film продвинут до 2026-09-05 (сухой прогон автопилота)",
+     "done_at": "2026-09-05T08:45:55+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-04T12:21:42+0300",
+   "updated_at": "2026-09-05T08:45:55+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-film: дата 2026-09-03 ≠ сегодня 2026-09-04"
+   }
+  },
+  "T-f57856ef": {
+   "id": "T-f57856ef",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-film устарел (2026-09-05) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-film устарел (2026-09-05) — прогнать сухо сегодня",
+     "state": "done",
+     "done_by": "ЦИКЛ-1 пульс (автопилот)",
+     "evidence": "пульс atlas-express-film продвинут до 2026-09-07 (сухой прогон автопилота)",
+     "done_at": "2026-09-07T13:42:15+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-06T08:44:15+0300",
+   "updated_at": "2026-09-07T13:42:15+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-film: дата 2026-09-05 ≠ сегодня 2026-09-06"
+   }
+  },
+  "T-0ca6fa22": {
+   "id": "T-0ca6fa22",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "CONTROLLER",
+   "urgency": "high",
+   "priority": 15,
+   "what": "Чинить узел «СВЕРКА» магазина atlas-express-film (последний ЖИВОЙ ход FAIL)",
+   "body": "Правило без фейк-пасс: живой прогон упал — магазин мог остаться в недоверенном состоянии, не перескакиваем, чиним узел. (Сухие репетиции автопилота заданий не сеют.)",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Чинить узел «СВЕРКА» магазина atlas-express-film (последний ЖИВОЙ ход FAIL)",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-08T14:19:31+0300",
+   "updated_at": "2026-09-08T14:19:31+0300",
+   "refs": {
+    "evidence": "леджер atlas-express-film/2026-09-08: последний живой ход FAIL на «СВЕРКА» 13:06:39: НЕ на витрине: {'ARB-16214506': 'витрина {}', 'ARB-17739462': \"витрина {'available': True, 'status': 'NO_STOCKS', 'price"
+   }
+  },
+  "T-2edf9be8": {
+   "id": "T-2edf9be8",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "pricing",
+   "store": "atlas-express-film",
+   "owner": "PRICER",
+   "urgency": "high",
+   "priority": 15,
+   "what": "Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽",
+   "body": "Директива 08.09: зачёркнутой цены на витрине быть не должно (клиент платит полную профитную цену). Очистка = живой ЦИКЛ-1 --commit по слову оператора (RUBICON): КОНТРОЛЬ перезальёт offer-prices БЕЗ discountBase (цена не меняется, карантина нет). Сухой прогон — только отчёт.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-08T20:50:05+0300",
+   "updated_at": "2026-09-08T20:50:05+0300",
+   "refs": {
+    "evidence": "КОНТРОЛЬ (зелёных ценников 9601515-1: 3390₽/зачёркнуто 4900₽ · акции не участвует (2)): discountBase на 9601515-1 — зелёный ценник"
+   }
+  },
+  "T-110a33e0": {
+   "id": "T-110a33e0",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-tape",
+   "owner": "CONTROLLER",
+   "urgency": "high",
+   "priority": 15,
+   "what": "Чинить узел «СВЕРКА» магазина atlas-express-tape (последний ЖИВОЙ ход FAIL)",
+   "body": "Правило без фейк-пасс: живой прогон упал — магазин мог остаться в недоверенном состоянии, не перескакиваем, чиним узел. (Сухие репетиции автопилота заданий не сеют.)",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Чинить узел «СВЕРКА» магазина atlas-express-tape (последний ЖИВОЙ ход FAIL)",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-09T09:53:01+0300",
+   "updated_at": "2026-09-09T09:53:01+0300",
+   "refs": {
+    "evidence": "леджер atlas-express-tape/2026-09-09: последний живой ход FAIL на «СВЕРКА» 01:11:44: НЕ на витрине: {'ARB-73446218': \"витрина {'available': True, 'status': 'DISABLED_BY_PARTNER', 'price': 202.0}\", 'ARB-388"
+   }
+  },
+  "T-7ab6c3d1": {
+   "id": "T-7ab6c3d1",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "CONTROLLER",
+   "urgency": "normal",
+   "priority": 20,
+   "what": "Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона",
+   "body": "Директива 08.09 вечер: «товары при заливке не должны идти в акции». API-запрета на товаре нет — сейчас участия нет, но включён автоперенос волн «Бестселлеров» (renewalEnabled): Яндекс сам перенесёт ассортимент в следующую волну. Выключить в кабинете: Продвижение → Акции → «Переносить товары между бестселлерами» → выключить (и отказаться от участия в текущих волнах).",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-09T09:53:01+0300",
+   "updated_at": "2026-09-09T09:53:01+0300",
+   "refs": {
+    "evidence": "КОНТРОЛЬ: renewalEnabled на Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона (participating=0), потенциальных кандидатов 6"
+   }
+  },
+  "T-abe0682c": {
+   "id": "T-abe0682c",
+   "market": "ozon",
+   "cycle": "cycle_day",
+   "category": "products",
+   "store": "",
+   "owner": "OZON_ZALIV",
+   "urgency": "high",
+   "priority": 25,
+   "what": "Следующий залив ВПП-рулонов из остатка файла (знание артефакта P-f7ea1dc1 подтверждено)",
+   "body": "После знания закреплённого артефактом №1 (dci 17027937/tid 97503, топ-размеры, цена 4460-14250₽, донор-карта 9600155 и др., shelf «одобрена, но скрыта»). Ре-артикуляция 434 отменена — схемы VPP-… только для новых карточек. Dry-first: волна показывается оператору перед живым заливом; залив = не dry AND commit + слово оператора.",
+   "source": "operator",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Следующий залив ВПП-рулонов из остатка файла (знание артефакта P-f7ea1dc1 подтверждено)",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-09T11:20:07+0300",
+   "updated_at": "2026-09-09T11:20:07+0300",
+   "refs": {
+    "artifact": "P-f7ea1dc1",
+    "pour_library": "file-pour-library.json"
+   }
+  },
+  "T-38872d45": {
+   "id": "T-38872d45",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-film устарел (2026-09-09) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-film устарел (2026-09-09) — прогнать сухо сегодня",
+     "state": "done",
+     "done_by": "ЦИКЛ-1 пульс (автопилот)",
+     "evidence": "пульс atlas-express-film продвинут до 2026-09-14 (сухой прогон автопилота)",
+     "done_at": "2026-09-14T09:42:33+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-10T08:32:35+0300",
+   "updated_at": "2026-09-14T09:42:33+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-film: дата 2026-09-09 ≠ сегодня 2026-09-10"
+   }
+  },
+  "T-3eb8e79e": {
+   "id": "T-3eb8e79e",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-tape",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-tape устарел (2026-09-09) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-tape устарел (2026-09-09) — прогнать сухо сегодня",
+     "state": "done",
+     "done_by": "ЦИКЛ-1 пульс (автопилот)",
+     "evidence": "пульс atlas-express-tape продвинут до 2026-09-11 (сухой прогон автопилота)",
+     "done_at": "2026-09-11T15:50:12+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-10T08:32:35+0300",
+   "updated_at": "2026-09-11T15:50:12+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-tape: дата 2026-09-09 ≠ сегодня 2026-09-10"
+   }
+  },
+  "T-144ecfc4": {
+   "id": "T-144ecfc4",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-tape",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-tape устарел (2026-09-11) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-tape устарел (2026-09-11) — прогнать сухо сегодня",
+     "state": "done",
+     "done_by": "ЦИКЛ-1 пульс (автопилот)",
+     "evidence": "пульс atlas-express-tape продвинут до 2026-09-13 (сухой прогон автопилота)",
+     "done_at": "2026-09-13T01:01:57+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-12T08:21:46+0300",
+   "updated_at": "2026-09-13T01:01:57+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-tape: дата 2026-09-11 ≠ сегодня 2026-09-12"
+   }
+  },
+  "T-c9f8b45b": {
+   "id": "T-c9f8b45b",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "pricing",
+   "store": "atlas-express-film",
+   "owner": "PRICER",
+   "urgency": "high",
+   "priority": 15,
+   "what": "Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽",
+   "body": "Директива 08.09: зачёркнутой цены на витрине быть не должно (клиент платит полную профитную цену). Очистка = живой ЦИКЛ-1 --commit по слову оператора (RUBICON): КОНТРОЛЬ перезальёт offer-prices БЕЗ discountBase (цена не меняется, карантина нет). Сухой прогон — только отчёт.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-14T09:42:33+0300",
+   "updated_at": "2026-09-14T09:42:33+0300",
+   "refs": {
+    "evidence": "КОНТРОЛЬ (зелёных ценников ARB2-76781511: 6600₽/зачёркнуто 7800₽ · акции не участвует (2, активных 0 из 10 потенциальных) · автоперенос волн ВКЛЮЧЁН: ): discountBase на ARB2-76781511 — зелёный ценник"
+   }
+  },
+  "T-81cbbdaf": {
+   "id": "T-81cbbdaf",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "CONTROLLER",
+   "urgency": "normal",
+   "priority": 20,
+   "what": "Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона, Бестселлеры: Новая единая акция",
+   "body": "Директива 08.09 вечер: «товары при заливке не должны идти в акции». API-запрета на товаре нет — сейчас участия нет, но включён автоперенос волн «Бестселлеров» (renewalEnabled): Яндекс сам перенесёт ассортимент в следующую волну. Выключить в кабинете: Продвижение → Акции → «Переносить товары между бестселлерами» → выключить (и отказаться от участия в текущих волнах).",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона, Бестселлеры: Новая единая акция",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-15T08:35:38+0300",
+   "updated_at": "2026-09-15T08:35:38+0300",
+   "refs": {
+    "evidence": "КОНТРОЛЬ: renewalEnabled на Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона, Бестселлеры: Новая единая акция (participating=0), потенциальных кандидатов 15"
+   }
+  }
+ }
+}

@@ -1,0 +1,601 @@
+{
+  "created_at_utc": "2026-06-16T19:01:03.830754+00:00",
+  "events": [
+    {
+      "date": "2026-01-06",
+      "event": "ChatGPT-Статус проекта SOCC (1).txt: 6/1/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (1).txt:4",
+        "sha16": "0daf4e2f1da2e7fe"
+      }
+    },
+    {
+      "date": "2026-02-06",
+      "event": "ChatGPT-Qwen анализ и выводы (1).txt: 6/2/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Qwen анализ и выводы (1).txt:4",
+        "sha16": "a0ab0f7499b23b47"
+      }
+    },
+    {
+      "date": "2026-03-04",
+      "event": "Автономный строительный цикл SOCC.txt: 4  mark",
+      "source": {
+        "line": 748,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Автономный строительный цикл SOCC.txt:748",
+        "sha16": "3452ffab5c2c53b2"
+      }
+    },
+    {
+      "date": "2026-03-06",
+      "event": "ChatGPT-Статус проекта SOCC (2).txt: 6/3/2026",
+      "source": {
+        "line": 5,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (2).txt:5",
+        "sha16": "3eba47c97af84d47"
+      }
+    },
+    {
+      "date": "2026-04-01",
+      "event": "ChatGPT-Автономия и ANNA (1).txt: April 1",
+      "source": {
+        "line": 72706,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Автономия и ANNA (1).txt:72706",
+        "sha16": "7ef74cb5d86d85b8"
+      }
+    },
+    {
+      "date": "2026-04-05",
+      "event": "ChatGPT-SOCC проектная линия.txt: 5/4/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC проектная линия.txt:4",
+        "sha16": "2db9d5d059fba080"
+      }
+    },
+    {
+      "date": "2026-04-06",
+      "event": "ChatGPT-Анализ файлов (1).txt: 6/4/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ файлов (1).txt:4",
+        "sha16": "7ca130367d6b1e56"
+      }
+    },
+    {
+      "date": "2026-04-24",
+      "event": "Мегаволна и автопилот.txt: Apr 24",
+      "source": {
+        "line": 1005,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/Мегаволна и автопилот.txt:1005",
+        "sha16": "0f529179c998e6a8"
+      }
+    },
+    {
+      "date": "2026-04-25",
+      "event": "Мегаволна и автопилот.txt: Apr 25",
+      "source": {
+        "line": 1827,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/Мегаволна и автопилот.txt:1827",
+        "sha16": "0f529179c998e6a8"
+      }
+    },
+    {
+      "date": "2026-04-28",
+      "event": "Память в SOCC.txt: 2026-04-28",
+      "source": {
+        "line": 389,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Память в SOCC.txt:389",
+        "sha16": "5cce6b6e653620b4"
+      }
+    },
+    {
+      "date": "2026-04-29",
+      "event": "Проблемы с автономией SOCC (7).txt: 2026-04-29",
+      "source": {
+        "line": 514,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Проблемы с автономией SOCC (7).txt:514",
+        "sha16": "50491fab5853cbf0"
+      }
+    },
+    {
+      "date": "2026-04-30",
+      "event": "SOCC Профессиональная Инженерная Система.txt: 2026-04-30",
+      "source": {
+        "line": 608,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/SOCC Профессиональная Инженерная Система.txt:608",
+        "sha16": "728e8914f0e26bbb"
+      }
+    },
+    {
+      "date": "2026-05-01",
+      "event": "Путь к AGI (2).txt: 2026-05-01",
+      "source": {
+        "line": 3593,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Путь к AGI (2).txt:3593",
+        "sha16": "8c2900a322268140"
+      }
+    },
+    {
+      "date": "2026-05-02",
+      "event": "Автономия и живость системы (1).txt: May  2",
+      "source": {
+        "line": 12718,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Автономия и живость системы (1).txt:12718",
+        "sha16": "5e93a76fc7011c69"
+      }
+    },
+    {
+      "date": "2026-05-03",
+      "event": "SOCC проектная линия (2).txt: May  3",
+      "source": {
+        "line": 1467,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/SOCC проектная линия (2).txt:1467",
+        "sha16": "6b8a8be78488f86f"
+      }
+    },
+    {
+      "date": "2026-05-04",
+      "event": "ChatGPT-SOCC проектная линия.txt: 04.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC проектная линия.txt:10",
+        "sha16": "2db9d5d059fba080"
+      }
+    },
+    {
+      "date": "2026-05-05",
+      "event": "ChatGPT-Анализ кода и review.txt: 5/5/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ кода и review.txt:4",
+        "sha16": "7061e93d0c54f2d3"
+      }
+    },
+    {
+      "date": "2026-05-06",
+      "event": "ChatGPT-Что такое SOCC (1).txt: 6/5/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:4",
+        "sha16": "1a369f0a220666da"
+      }
+    },
+    {
+      "date": "2026-05-07",
+      "event": "ChatGPT-Оценка развития и автономии.txt: 07.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Оценка развития и автономии.txt:10",
+        "sha16": "cdb02f8c9ff5cdf3"
+      }
+    },
+    {
+      "date": "2026-05-08",
+      "event": "ChatGPT-Оценка развития и автономии.txt: 08.05.2026",
+      "source": {
+        "line": 3105,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Оценка развития и автономии.txt:3105",
+        "sha16": "cdb02f8c9ff5cdf3"
+      }
+    },
+    {
+      "date": "2026-05-09",
+      "event": "Скрипт для задачи (1).txt: 2026-05-09",
+      "source": {
+        "line": 25417,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Скрипт для задачи (1).txt:25417",
+        "sha16": "28fe0408c9b0167e"
+      }
+    },
+    {
+      "date": "2026-05-10",
+      "event": "Автономная система развития.txt: 10 мая",
+      "source": {
+        "line": 553,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Автономная система развития.txt:553",
+        "sha16": "4224c706d57246c6"
+      }
+    },
+    {
+      "date": "2026-05-12",
+      "event": "ChatGPT-Слушаю внимательно.txt: 12.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Слушаю внимательно.txt:10",
+        "sha16": "0e19d0cfd58f6972"
+      }
+    },
+    {
+      "date": "2026-05-13",
+      "event": "ChatGPT-Устойчивые решения и паттерны.txt: 13.05.2026",
+      "source": {
+        "line": 21039,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Устойчивые решения и паттерны.txt:21039",
+        "sha16": "225514fbdf4e193f"
+      }
+    },
+    {
+      "date": "2026-05-14",
+      "event": "ChatGPT-Устойчивые решения и паттерны.txt: 14.05.2026",
+      "source": {
+        "line": 44171,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Устойчивые решения и паттерны.txt:44171",
+        "sha16": "225514fbdf4e193f"
+      }
+    },
+    {
+      "date": "2026-05-15",
+      "event": "ChatGPT-Устойчивые решения и паттерны.txt: 15.05.2026",
+      "source": {
+        "line": 55438,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Устойчивые решения и паттерны.txt:55438",
+        "sha16": "225514fbdf4e193f"
+      }
+    },
+    {
+      "date": "2026-05-18",
+      "event": "ChatGPT-Сообщение обрезалось.txt: 18.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Сообщение обрезалось.txt:10",
+        "sha16": "2813c1a07ec1f3ef"
+      }
+    },
+    {
+      "date": "2026-05-19",
+      "event": "ChatGPT-Код ломался решение (1).txt: 19.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (1).txt:10",
+        "sha16": "220bad1cc726ac06"
+      }
+    },
+    {
+      "date": "2026-05-21",
+      "event": "ChatGPT-Код ломался решение (1).txt: 21.05.2026",
+      "source": {
+        "line": 33263,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (1).txt:33263",
+        "sha16": "220bad1cc726ac06"
+      }
+    },
+    {
+      "date": "2026-05-22",
+      "event": "ChatGPT-Код ломался решение (1).txt: 22.05.2026",
+      "source": {
+        "line": 37875,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (1).txt:37875",
+        "sha16": "220bad1cc726ac06"
+      }
+    },
+    {
+      "date": "2026-05-23",
+      "event": "ChatGPT-Код ломался решение (1).txt: 23.05.2026",
+      "source": {
+        "line": 43165,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (1).txt:43165",
+        "sha16": "220bad1cc726ac06"
+      }
+    },
+    {
+      "date": "2026-05-25",
+      "event": "ChatGPT-Код ломался решение (1).txt: 25.05.2026",
+      "source": {
+        "line": 48789,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (1).txt:48789",
+        "sha16": "220bad1cc726ac06"
+      }
+    },
+    {
+      "date": "2026-05-26",
+      "event": "ChatGPT-Автономия и ANNA (1).txt: 26.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Автономия и ANNA (1).txt:10",
+        "sha16": "7ef74cb5d86d85b8"
+      }
+    },
+    {
+      "date": "2026-05-27",
+      "event": "ChatGPT-Маршрут и автономия (1).txt: 27.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Маршрут и автономия (1).txt:10",
+        "sha16": "2434e41a34883c7a"
+      }
+    },
+    {
+      "date": "2026-05-28",
+      "event": "ChatGPT-Анализ файлов (1).txt: 2026-05-28",
+      "source": {
+        "line": 16647,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ файлов (1).txt:16647",
+        "sha16": "7ca130367d6b1e56"
+      }
+    },
+    {
+      "date": "2026-05-29",
+      "event": "ChatGPT-Controlled Tick Validation (1).txt: 29.05.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Controlled Tick Validation (1).txt:10",
+        "sha16": "5ed9284dbfe55c3e"
+      }
+    },
+    {
+      "date": "2026-05-30",
+      "event": "ChatGPT-Controlled Tick Validation (1).txt: 30.05.2026",
+      "source": {
+        "line": 2884,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Controlled Tick Validation (1).txt:2884",
+        "sha16": "5ed9284dbfe55c3e"
+      }
+    },
+    {
+      "date": "2026-05-31",
+      "event": "ChatGPT-Controlled Tick Validation (1).txt: 31.05.2026",
+      "source": {
+        "line": 40348,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Controlled Tick Validation (1).txt:40348",
+        "sha16": "5ed9284dbfe55c3e"
+      }
+    },
+    {
+      "date": "2026-06-01",
+      "event": "ChatGPT-Статус проекта SOCC (1).txt: 01.06.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (1).txt:10",
+        "sha16": "0daf4e2f1da2e7fe"
+      }
+    },
+    {
+      "date": "2026-06-02",
+      "event": "ChatGPT-Qwen анализ и выводы (1).txt: 02.06.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Qwen анализ и выводы (1).txt:10",
+        "sha16": "a0ab0f7499b23b47"
+      }
+    },
+    {
+      "date": "2026-06-03",
+      "event": "ChatGPT-Анализ файлов (1).txt: 3 июня",
+      "source": {
+        "line": 16739,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ файлов (1).txt:16739",
+        "sha16": "7ca130367d6b1e56"
+      }
+    },
+    {
+      "date": "2026-06-04",
+      "event": "ChatGPT-Анализ файлов (1).txt: 04.06.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ файлов (1).txt:10",
+        "sha16": "7ca130367d6b1e56"
+      }
+    },
+    {
+      "date": "2026-06-05",
+      "event": "ChatGPT-Разработка автономной системы.txt: 5/6/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Разработка автономной системы.txt:4",
+        "sha16": "68432598a7531d85"
+      }
+    },
+    {
+      "date": "2026-06-06",
+      "event": "ChatGPT-Что такое SOCC (1).txt: 06.06.2026",
+      "source": {
+        "line": 1860,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:1860",
+        "sha16": "1a369f0a220666da"
+      }
+    },
+    {
+      "date": "2026-06-07",
+      "event": "ChatGPT-Что такое SOCC (1).txt: 07.06.2026",
+      "source": {
+        "line": 2650,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:2650",
+        "sha16": "1a369f0a220666da"
+      }
+    },
+    {
+      "date": "2026-06-08",
+      "event": "ChatGPT-Законность и автономия SOCC.txt: 08.06.2026",
+      "source": {
+        "line": 10,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Законность и автономия SOCC.txt:10",
+        "sha16": "6f9b1b3d9beb86da"
+      }
+    },
+    {
+      "date": "2026-06-09",
+      "event": "ENTITY_SUBSTRATE_DIRECTION_V1.json: 2026-06-09",
+      "source": {
+        "line": 2,
+        "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.json:2",
+        "sha16": "0871bb939da804e7"
+      }
+    },
+    {
+      "date": "2026-06-10",
+      "event": "ENTITY_SUBSTRATE_SCIENTIFIC_QUALITY_GATE_V1.json: 2026-06-10",
+      "source": {
+        "line": 26,
+        "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_SCIENTIFIC_QUALITY_GATE_V1.json:26",
+        "sha16": "aaf733d14a2c7e59"
+      }
+    },
+    {
+      "date": "2026-06-11",
+      "event": "ChatGPT-SOCC patch plan.txt: 11.06.2026",
+      "source": {
+        "line": 31224,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan.txt:31224",
+        "sha16": "1ba0dba01cded6b5"
+      }
+    },
+    {
+      "date": "2026-07-05",
+      "event": "ChatGPT-Оценка развития и автономии.txt: 5/7/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Оценка развития и автономии.txt:4",
+        "sha16": "cdb02f8c9ff5cdf3"
+      }
+    },
+    {
+      "date": "2026-07-06",
+      "event": "ChatGPT-Что такое SOCC (1).txt: 6/7/2026",
+      "source": {
+        "line": 5,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:5",
+        "sha16": "1a369f0a220666da"
+      }
+    },
+    {
+      "date": "2026-08-06",
+      "event": "ChatGPT-Законность и автономия SOCC.txt: 6/8/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Законность и автономия SOCC.txt:4",
+        "sha16": "6f9b1b3d9beb86da"
+      }
+    },
+    {
+      "date": "2026-09-06",
+      "event": "ChatGPT-SOCC patch plan.txt: 6/9/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan.txt:4",
+        "sha16": "1ba0dba01cded6b5"
+      }
+    },
+    {
+      "date": "2026-10-05",
+      "event": "ChatGPT-Оценка развития и автономии.txt: 5/10/2026",
+      "source": {
+        "line": 5,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Оценка развития и автономии.txt:5",
+        "sha16": "cdb02f8c9ff5cdf3"
+      }
+    },
+    {
+      "date": "2026-11-06",
+      "event": "ChatGPT-SOCC patch plan.txt: 6/11/2026",
+      "source": {
+        "line": 5,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan.txt:5",
+        "sha16": "1ba0dba01cded6b5"
+      }
+    },
+    {
+      "date": "2026-12-01",
+      "event": "Движ продолжается.txt: 1 DECOMPOSE",
+      "source": {
+        "line": 5938,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Движ продолжается.txt:5938",
+        "sha16": "07e67c02f11e835e"
+      }
+    },
+    {
+      "date": "2026-12-02",
+      "event": "Автоматизация - 2.txt: 2 decisions",
+      "source": {
+        "line": 9526,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Автоматизация - 2.txt:9526",
+        "sha16": "4a910ebd904bca19"
+      }
+    },
+    {
+      "date": "2026-12-03",
+      "event": "Автономный строительный цикл SOCC.txt: 3  DECISION",
+      "source": {
+        "line": 821,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Автономный строительный цикл SOCC.txt:821",
+        "sha16": "3452ffab5c2c53b2"
+      }
+    },
+    {
+      "date": "2026-12-05",
+      "event": "ChatGPT-Слушаю внимательно.txt: 5/12/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Слушаю внимательно.txt:4",
+        "sha16": "0e19d0cfd58f6972"
+      }
+    },
+    {
+      "date": "2026-15-05",
+      "event": "ChatGPT-Устойчивые решения и паттерны.txt: 5/15/2026",
+      "source": {
+        "line": 5,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Устойчивые решения и паттерны.txt:5",
+        "sha16": "225514fbdf4e193f"
+      }
+    },
+    {
+      "date": "2026-18-05",
+      "event": "ChatGPT-Сообщение обрезалось.txt: 5/18/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Сообщение обрезалось.txt:4",
+        "sha16": "2813c1a07ec1f3ef"
+      }
+    },
+    {
+      "date": "2026-19-05",
+      "event": "ChatGPT-Код ломался решение (1).txt: 5/19/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (1).txt:4",
+        "sha16": "220bad1cc726ac06"
+      }
+    },
+    {
+      "date": "2026-26-05",
+      "event": "ChatGPT-Автономия и ANNA (1).txt: 5/26/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Автономия и ANNA (1).txt:4",
+        "sha16": "7ef74cb5d86d85b8"
+      }
+    },
+    {
+      "date": "2026-27-05",
+      "event": "ChatGPT-Маршрут и автономия (1).txt: 5/27/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Маршрут и автономия (1).txt:4",
+        "sha16": "2434e41a34883c7a"
+      }
+    },
+    {
+      "date": "2026-28-05",
+      "event": "ChatGPT-Маршрут и автономия (1).txt: 5/28/2026",
+      "source": {
+        "line": 5,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Маршрут и автономия (1).txt:5",
+        "sha16": "2434e41a34883c7a"
+      }
+    },
+    {
+      "date": "2026-29-05",
+      "event": "ChatGPT-Controlled Tick Validation (1).txt: 5/29/2026",
+      "source": {
+        "line": 4,
+        "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Controlled Tick Validation (1).txt:4",
+        "sha16": "5ed9284dbfe55c3e"
+      }
+    }
+  ],
+  "id": "ENTITY_SUBSTRATE_TIMELINE_V1",
+  "topic": "entity_substrate"
+}

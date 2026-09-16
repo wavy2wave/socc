@@ -1,0 +1,1 @@
+{"claims": [{"text": "One bounded foreground assignment execution session ran and stopped. This proves a local assignment-loop runtime artifact, not daemon/24-7/L3 autonomy.", "line": 19, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"Proof": 1, "Daemon": 1}}

@@ -1,0 +1,12 @@
+{
+  "created_at_msk": "2026-06-17T10:46:04+03:00",
+  "created_at_utc": "2026-06-17T07:46:04.702500+00:00",
+  "id": "ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_REVIEW_V1_MEMORY",
+  "memory_effect": "Review-sealed bounded next-target selector. Next lawful target is build_self_building_effect_auditor_v1.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_REVIEW_V1_PROOF.json",
+  "real_next": "repair_enforced_self_building_next_target_selector_review_v1",
+  "review": "core/socc/autonomy/self_building/target_selector/review/ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_REVIEW_V1.json",
+  "selected_next_target": null,
+  "status": "FAIL",
+  "truth_boundary": "Enforced self-building next-target selector review only. This review-seals deterministic bounded selection and accepts build_self_building_effect_auditor_v1 as the next lawful self-building target. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

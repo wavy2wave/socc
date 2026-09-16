@@ -1,0 +1,11 @@
+{
+  "created_at_msk": "2026-06-06T02:09:09+03:00",
+  "created_at_utc": "2026-06-05T23:09:09.152292+00:00",
+  "id": "SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_V1_MEMORY",
+  "memory_effect": "SOCC built a local refresh command for the creator-visible self-building pulse. The creator can re-render the autonomy status panel on demand without daemon/scheduler/background loop.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_V1_PROOF.json",
+  "real_next": "validate_self_building_status_panel_refresh_command_v1",
+  "refresh": "core/socc/autonomy/self_building/status_panel/refresh/SELF_BUILDING_STATUS_PANEL_REFRESH_COMMAND_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Refresh command build only. This creates a local command to re-render the accepted self-building pulse/status panel on demand. It reads local JSON/Markdown proof artifacts only. It does not enable persistent self-building mode, launch runtime, start daemon/scheduler/background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

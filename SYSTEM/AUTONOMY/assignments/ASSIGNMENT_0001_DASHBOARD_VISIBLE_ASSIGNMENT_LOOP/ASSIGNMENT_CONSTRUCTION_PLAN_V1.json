@@ -1,0 +1,148 @@
+{
+  "Codex_gate_contract": {
+    "inputs_required": [
+      "proposed patch",
+      "target files",
+      "allowed files",
+      "stop conditions",
+      "validation checks"
+    ],
+    "must_pass_before_execution_if_code_or_patch": true,
+    "purpose": "Review code/patch quality, idempotence, filesystem safety and validation plan if any code/patch is involved.",
+    "status": "REQUIRED_NOT_RUN_YET"
+  },
+  "Hermes_gate_contract": {
+    "inputs_required": [
+      "assignment intake",
+      "direction",
+      "construction plan",
+      "risk boundary",
+      "dashboard state"
+    ],
+    "must_pass_before_execution": true,
+    "purpose": "Review lawful scope, reasoning quality, risk boundary and operator clarity.",
+    "status": "REQUIRED_NOT_RUN_YET"
+  },
+  "acceptance_criteria": {
+    "Codex_gate_pass_required_if_code_or_patch": true,
+    "Hermes_gate_pass_required": true,
+    "assignment_direction_plan_linked": true,
+    "bounded_stop_required": true,
+    "dashboard_visible": true,
+    "memory_required": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_l3_claim": true,
+    "no_network_without_explicit_scope": true,
+    "no_old_route_resume": true,
+    "proof_chain_required": true,
+    "review_accept_required_before_execution": true,
+    "scientific_quality_gate_pass_required": true
+  },
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "construction_steps": [
+    {
+      "execution_now": false,
+      "goal": "Define assignment dashboard schema and canonical panel fields.",
+      "outputs": [
+        "assignment_id",
+        "direction_id",
+        "current_stage",
+        "lawful_next",
+        "gates_status",
+        "proof_artifacts",
+        "memory_artifacts",
+        "blocked_reason",
+        "operator_visible_summary"
+      ],
+      "step_id": "PLAN_STEP_01_DASHBOARD_SCHEMA"
+    },
+    {
+      "execution_now": false,
+      "goal": "Define gate state model for scientific, Hermes and Codex gates.",
+      "outputs": [
+        "gate_id",
+        "gate_status",
+        "gate_checks",
+        "pass_fail_reason",
+        "proof_path",
+        "next_lawful_step"
+      ],
+      "step_id": "PLAN_STEP_02_GATE_STATE_MODEL"
+    },
+    {
+      "execution_now": false,
+      "goal": "Define proof, memory and bounded stop artifacts for future execution sessions.",
+      "outputs": [
+        "proof_chain_target",
+        "memory_record_target",
+        "stop_condition",
+        "bounded_run_surface"
+      ],
+      "step_id": "PLAN_STEP_03_PROOF_MEMORY_STOP_MODEL"
+    },
+    {
+      "execution_now": false,
+      "goal": "Prepare contracts for Hermes and Codex gates before any code/patch execution.",
+      "outputs": [
+        "Hermes lawful reasoning review contract",
+        "Codex patch quality review contract",
+        "idempotence and filesystem safety checklist"
+      ],
+      "step_id": "PLAN_STEP_04_HERMES_CODEX_GATE_CONTRACTS"
+    },
+    {
+      "execution_now": false,
+      "goal": "After gates pass, build a bounded execution surface for the assignment loop.",
+      "outputs": [
+        "execution_scope",
+        "allowed_files",
+        "forbidden_actions",
+        "rollback_or_stop",
+        "dashboard_update_after_run"
+      ],
+      "step_id": "PLAN_STEP_05_BOUNDED_EXECUTION_SURFACE"
+    }
+  ],
+  "created_at_utc": "2026-06-09T15:33:33.696278+00:00",
+  "current_expected": "build_assignment_construction_plan_v1",
+  "dashboard_plan_state": {
+    "current_stage": "construction_plan_built_pending_review",
+    "lawful_next": "review_assignment_construction_plan_v1",
+    "operator_visible_summary": "Construction plan exists. Scientific/Hermes/Codex gates are required before execution.",
+    "panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_CONSTRUCTION_PLAN_PANEL_POINTER_V1.json"
+  },
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "future_frontiers": [
+    "review_assignment_construction_plan_v1",
+    "run_assignment_scientific_quality_gate_v1",
+    "run_assignment_hermes_gate_v1",
+    "run_assignment_codex_gate_v1",
+    "review_assignment_build_plan_and_gates_v1",
+    "accept_assignment_build_plan_and_gates_v1",
+    "build_assignment_bounded_execution_surface_v1",
+    "review_assignment_bounded_execution_surface_v1",
+    "accept_assignment_bounded_execution_surface_v1",
+    "run_assignment_bounded_execution_session_v1"
+  ],
+  "id": "ASSIGNMENT_CONSTRUCTION_PLAN_V1",
+  "mission": "Build a visible assignment autonomy loop where SOCC can show task intake, direction, construction plan, scientific/Hermes/Codex gates, proof-chain, memory, stop conditions, and bounded execution readiness in dashboard state.",
+  "next_required_step": "review_assignment_construction_plan_v1",
+  "plan_type": "DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP_CONSTRUCTION_PLAN",
+  "scientific_quality_criteria": {
+    "evidence_chain": "Every stage writes JSON proof and dashboard status.",
+    "failure_modes": [
+      "missing authority agreement",
+      "missing proof",
+      "missing dashboard pointer",
+      "Hermes/Codex gate not available or not passed",
+      "attempted execution before acceptance"
+    ],
+    "falsifiability": "Each PASS must have explicit FAIL conditions.",
+    "measurability": "Each step must output paths, statuses, hashes or gate results.",
+    "minimal_scope": "Only assignment loop surfaces and dashboard pointers are in scope before execution.",
+    "testability": "Every proposed build artifact must have a deterministic read/check proof."
+  },
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Construction plan build only. No assignment build execution, patch execution, daemon/background/network, old route resume, or L3 claim."
+}

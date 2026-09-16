@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Марк · Brand Sheet — барбершоп</title>
+<style>
+  :root{--bg:#1E1B19;--surface:#2A2724;--ink:#EFE7DC;--muted:#9A8E80;--primary:#C77F4E;--primary-soft:#8A6A52;--accent:#E0B25A;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.55}
+  .wrap{max-width:900px;margin:0 auto;padding:46px 24px 80px}
+  .crumb{font-family:ui-monospace,Menlo,monospace;color:var(--muted);font-size:12px;margin-bottom:22px}
+  a.back{color:var(--accent);text-decoration:none;font-size:13px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:44px 0 16px;font-weight:600}
+  section{background:var(--surface);border:1px solid #3a352f;border-radius:18px;padding:28px}
+  .logo-row{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  .logo{font-size:34px;font-weight:800;letter-spacing:-1px}
+  .pal{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+  .sw{border-radius:12px;overflow:hidden;border:1px solid #00000044;width:130px}
+  .sw .c{height:54px}.sw .l{padding:7px 10px;font-size:12px;background:#211e1c}
+  .sw .h{font-family:ui-monospace,Menlo,monospace;color:var(--muted)}
+  .btn{border:none;border-radius:12px;padding:13px 22px;font:600 15px Inter;cursor:pointer;margin:0 8px 8px 0}
+  .bp{background:var(--primary);color:#1E1B19}.ba{background:var(--accent);color:#1E1B19}.bg{background:transparent;border:1.5px solid var(--primary-soft);color:var(--accent)}
+  .chat{max-width:380px}
+  .who{font-size:11px;color:var(--muted);margin:12px 0 -2px}
+  .av{width:42px;height:42px;border-radius:50%;vertical-align:middle;margin-right:8px}
+  .bub{padding:11px 15px;border-radius:16px;margin:8px 0;font-size:14.5px;max-width:82%}
+  .bm{background:#3a332c;border-bottom-left-radius:5px}
+  .bc{background:#15120f;margin-left:auto;border-bottom-right-radius:5px}
+  .note{font-size:13px;color:var(--muted);margin-top:12px}
+</style></head>
+<body><div class="wrap">
+<div class="crumb">SOCC ▸ BRAND FORGE ▸ FACE ▸ МАРК (барбершоп) ▸ PROOF OF FACTORY · <a class="back" href="../BRAND_ARCHITECTURE_MAP_V1.html">← карта дома</a></div>
+<h1 style="font-size:25px;margin:0 0 4px">Марк — администратор барбершопа</h1>
+<p style="color:var(--muted);margin:0 0 6px">Свой + Герой · ре-скин ДНК Анны · доказательство фабрики</p>
+
+<h2>Логотип и знак</h2>
+<section><div class="logo-row">
+  <span class="logo">марк<span style="color:var(--accent)">|</span></span>
+  <svg viewBox="0 0 120 120" width="72"><rect width="120" height="120" rx="28" fill="#2A2724"/><line x1="44" y1="34" x2="44" y2="86" stroke="#EFE7DC" stroke-width="8" stroke-linecap="round"/><line x1="60" y1="34" x2="60" y2="86" stroke="#C77F4E" stroke-width="8" stroke-linecap="round"/><line x1="76" y1="34" x2="76" y2="86" stroke="#EFE7DC" stroke-width="8" stroke-linecap="round"/></svg>
+  <svg viewBox="0 0 120 120" width="40"><circle cx="60" cy="60" r="60" fill="#3A352F"/><text x="60" y="60" font-family="Inter" font-size="54" font-weight="600" fill="#EFE7DC" text-anchor="middle" dominant-baseline="central">М</text></svg>
+</div><p class="note">Мотив — три линии стрижки / зубцы расчёски (вместо дуги-заботы Анны). Та же rounded-tile система, другой смысл.</p></section>
+
+<h2>Палитра — медь + графит</h2>
+<section><div class="pal">
+  <div class="sw"><div class="c" style="background:#1E1B19"></div><div class="l">bg<br><span class="h">#1E1B19</span></div></div>
+  <div class="sw"><div class="c" style="background:#EFE7DC"></div><div class="l">ink<br><span class="h">#EFE7DC</span></div></div>
+  <div class="sw"><div class="c" style="background:#C77F4E"></div><div class="l">primary<br><span class="h">#C77F4E</span></div></div>
+  <div class="sw"><div class="c" style="background:#E0B25A"></div><div class="l">accent<br><span class="h">#E0B25A</span></div></div>
+</div></section>
+
+<h2>Компоненты + голос (уверенный, короткий)</h2>
+<section>
+  <button class="btn bp">Записаться</button><button class="btn ba">Выбрать мастера</button><button class="btn bg">Перенести</button>
+  <div class="chat" style="margin-top:16px">
+    <div class="who"><svg class="av" viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="#3A352F"/><text x="60" y="60" font-family="Inter" font-size="54" font-weight="600" fill="#EFE7DC" text-anchor="middle" dominant-baseline="central">М</text></svg>Марк · админ</div>
+    <div class="bub bm">Привет! Запишу за минуту. К какому мастеру — есть любимый?</div>
+    <div class="bub bc">К Артёму, на фейд</div>
+    <div class="bub bm">Артём свободен сегодня в 19:00 и завтра в 13:30. Какое берём?</div>
+  </div>
+  <p class="note">Тот же стелс-человеческий голос, что у Анны — но мужской, чёткий, без сюсюканья. ДНК одна, регистр другой.</p>
+</section>
+
+</div></body></html>

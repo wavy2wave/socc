@@ -1,0 +1,46 @@
+{
+  "created_at_utc": "2026-06-30T00:13:16.344063+00:00",
+  "id": "INTENT_20260630T001316_что_такое_автономное_строительство",
+  "intent": {
+    "entities": [],
+    "intent_kind": "explain",
+    "request": "что такое автономное строительство",
+    "topic": null
+  },
+  "knowledge": {
+    "article_md": null,
+    "context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/spine2/CONTEXT_PACK.md",
+    "has_article": false,
+    "has_context_pack": true,
+    "known_topics": [
+      "anna",
+      "entity_substrate",
+      "law_proof",
+      "memory",
+      "self_construction",
+      "socc",
+      "vision"
+    ],
+    "level": "UNKNOWN",
+    "topic": null
+  },
+  "llm_used": false,
+  "network_used": false,
+  "outcome": "KNOWLEDGE_GAP",
+  "readiness": {
+    "blockers": [
+      "intent_resolved",
+      "knowledge_present"
+    ],
+    "criteria": {
+      "discipline_clean": true,
+      "intent_resolved": false,
+      "knowledge_known_for_build": true,
+      "knowledge_present": false,
+      "route_lawful_next_present": true,
+      "route_status_pass": true
+    },
+    "ready": false
+  },
+  "request": "что такое автономное строительство"
+}

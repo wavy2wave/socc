@@ -1,0 +1,244 @@
+{
+  "created_at_utc": "2026-06-17T11:23:12.342840+00:00",
+  "executor_ladder": [
+    {
+      "executor": "claude_code",
+      "required": false,
+      "role": "jeweler precision (optional power-add)"
+    },
+    {
+      "executor": "codex",
+      "required": false,
+      "role": "patch/brick quality gate"
+    },
+    {
+      "executor": "hermes",
+      "required": true,
+      "role": "in-repo repair/build agent (always present)"
+    },
+    {
+      "executor": "socc_self",
+      "required": true,
+      "role": "deterministic self-build (works offline, last resort)"
+    }
+  ],
+  "id": "TICKET_20260617T112312_построй_способность_рождения_сущности_entity_sub",
+  "intent": {
+    "entities": [
+      "Entity Substrate",
+      "ANNA"
+    ],
+    "intent_kind": "build",
+    "request": "построй способность рождения сущности Entity Substrate чтобы потом родить ассистента ANNA для стоматологий",
+    "topic": "entity_substrate"
+  },
+  "knowledge": {
+    "context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/context_packs/entity_substrate_context_pack_v1.md",
+    "coverage_estimate": 0.031,
+    "coverage_met": true,
+    "coverage_target": 0.8,
+    "level": "KNOWN",
+    "raw_source_anchors": [
+      {
+        "ref": null,
+        "sha16": "457129f80b8dc589"
+      },
+      {
+        "ref": null,
+        "sha16": "7061e93d0c54f2d3"
+      },
+      {
+        "ref": null,
+        "sha16": "2db9d5d059fba080"
+      },
+      {
+        "ref": null,
+        "sha16": "6b8a8be78488f86f"
+      },
+      {
+        "ref": null,
+        "sha16": "aa681562f8639cd2"
+      },
+      {
+        "ref": null,
+        "sha16": "ced78e32b1ed8533"
+      },
+      {
+        "ref": null,
+        "sha16": "481187671b564a7c"
+      },
+      {
+        "ref": null,
+        "sha16": "f9f9164c39a6dfac"
+      },
+      {
+        "ref": null,
+        "sha16": "7ef74cb5d86d85b8"
+      },
+      {
+        "ref": null,
+        "sha16": "b8e2d5ff7d0cd032"
+      },
+      {
+        "ref": null,
+        "sha16": "fe9e583208f0f525"
+      },
+      {
+        "ref": null,
+        "sha16": "b641627759444200"
+      },
+      {
+        "ref": null,
+        "sha16": "28fe0408c9b0167e"
+      },
+      {
+        "ref": null,
+        "sha16": "1ba0dba01cded6b5"
+      },
+      {
+        "ref": null,
+        "sha16": "ff1e417ad7271736"
+      },
+      {
+        "ref": null,
+        "sha16": "3eba47c97af84d47"
+      },
+      {
+        "ref": null,
+        "sha16": "7e186bbd432e724f"
+      },
+      {
+        "ref": null,
+        "sha16": "0daf4e2f1da2e7fe"
+      },
+      {
+        "ref": null,
+        "sha16": "c5a848b2c4311123"
+      },
+      {
+        "ref": null,
+        "sha16": "225514fbdf4e193f"
+      },
+      {
+        "ref": null,
+        "sha16": "8788df0fc895c7bb"
+      },
+      {
+        "ref": null,
+        "sha16": "68432598a7531d85"
+      },
+      {
+        "ref": null,
+        "sha16": "7ca130367d6b1e56"
+      },
+      {
+        "ref": null,
+        "sha16": "9b989327d595cdf6"
+      },
+      {
+        "ref": null,
+        "sha16": "50491fab5853cbf0"
+      }
+    ],
+    "topic": "entity_substrate",
+    "wiki_article": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/pages/entity_substrate.md"
+  },
+  "lawful_plan": [
+    {
+      "node": 1,
+      "proof_required": true,
+      "stage": "direction"
+    },
+    {
+      "node": 2,
+      "proof_required": true,
+      "stage": "construction_plan"
+    },
+    {
+      "node": 3,
+      "proof_required": true,
+      "stage": "scientific_gate"
+    },
+    {
+      "node": 4,
+      "proof_required": true,
+      "stage": "hermes_gate"
+    },
+    {
+      "node": 5,
+      "proof_required": true,
+      "stage": "codex_gate"
+    },
+    {
+      "node": 6,
+      "proof_required": true,
+      "stage": "bounded_execution_surface"
+    },
+    {
+      "node": 7,
+      "proof_required": true,
+      "stage": "bounded_execution_session"
+    },
+    {
+      "node": 8,
+      "proof_required": true,
+      "stage": "validation"
+    },
+    {
+      "node": 9,
+      "proof_required": true,
+      "stage": "review"
+    },
+    {
+      "node": 10,
+      "proof_required": true,
+      "stage": "seal"
+    }
+  ],
+  "llm_used": false,
+  "network_used": false,
+  "no_fake_pass": true,
+  "operator_sources": [],
+  "product_framing": {
+    "is_product": true,
+    "note": "If this births a sellable entity (e.g. ANNA), plan must include product surfaces: site, payment, CRM hook, self-marketing skill."
+  },
+  "readiness_gate": {
+    "blockers": [],
+    "criteria": {
+      "discipline_clean": true,
+      "intent_resolved": true,
+      "knowledge_known_for_build": true,
+      "knowledge_present": true,
+      "route_lawful_next_present": true,
+      "route_status_pass": true
+    },
+    "ready": true
+  },
+  "request": "построй способность рождения сущности Entity Substrate чтобы потом родить ассистента ANNA для стоматологий",
+  "schema": "socc.ticket.v1",
+  "status": "DRAFT",
+  "ticket_hash": "7f60784a09bbb90307e72e84",
+  "token_budget": {
+    "estimate_high": 192000,
+    "estimate_low": 84000,
+    "honest_band": true,
+    "speed": "normal",
+    "speed_multiplier": 1.0,
+    "start_requires_budget_or_root_override": true
+  },
+  "truth_boundary": "Ticket is a lawful build permit only. It does not execute a build, spend tokens, call network/LLM, or birth any entity. Two validator slots remain pending until externally reviewed.",
+  "validation_rule": "ticket starts ONLY after >=1 validator APPROVES; both legible recommended; no fake PASS",
+  "validators": [
+    {
+      "role": "adversarial reviewer #1",
+      "slot": "claude_code",
+      "verdict": "pending"
+    },
+    {
+      "role": "adversarial reviewer #2",
+      "slot": "chatgpt_latest",
+      "verdict": "pending"
+    }
+  ]
+}

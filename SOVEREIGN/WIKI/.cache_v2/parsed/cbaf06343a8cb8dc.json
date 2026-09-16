@@ -1,0 +1,1 @@
+{"claims": [{"text": "- Do not launch old daemon.", "line": 14, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"Supramental": 1, "Daemon": 2}}

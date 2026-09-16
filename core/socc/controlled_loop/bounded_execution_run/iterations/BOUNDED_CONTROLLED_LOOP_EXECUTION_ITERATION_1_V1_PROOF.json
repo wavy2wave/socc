@@ -1,0 +1,41 @@
+{
+  "atomic_commit_result": "DEFERRED_UNTIL_FINAL_ITERATION",
+  "bypass_detector_result": "NO_BYPASS_DETECTED",
+  "created_at_msk": "2026-05-30T19:02:42+03:00",
+  "created_at_utc": "2026-05-30T16:02:42.701070+00:00",
+  "effect_audit_result": "PASS_MATERIAL_ITERATION_PROOF_WRITTEN",
+  "expected_lawful_next": "execute_bounded_controlled_loop_v1",
+  "hard_failures": [],
+  "id": "BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_1_V1",
+  "iteration_hash": "a1c38652c052126f44ba9e30",
+  "iteration_index": 1,
+  "material_delta": {
+    "bounded_run_id": "BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_V1",
+    "created_iteration_proof": true,
+    "iteration_index": 1,
+    "material_effect_kind": "bounded_loop_iteration_proof_written"
+  },
+  "material_route_effect_result": "NO_ROUTE_TRANSITION_THIS_ITERATION",
+  "max_iterations": 3,
+  "memory_report": "MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_V1_MEMORY.json",
+  "observed_lawful_next_after": "execute_bounded_controlled_loop_v1",
+  "observed_lawful_next_before": "execute_bounded_controlled_loop_v1",
+  "panel_pulse_progress_coherence": true,
+  "real_next": "execute_bounded_controlled_loop_v1",
+  "status": "PASS",
+  "stop_condition_result": "CONTINUE",
+  "truth_boundary": "Bounded execution only. This executes exactly one bounded controlled loop run with max_iterations=3. It is not daemon, not scheduler, not background autonomy, not 24/7 autonomy, not network autonomy, does not widen queue, does not birth Entity/ANNA, does not approve final canon, and does not claim AGI.",
+  "truth_boundary_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "bounded_loop_execution_iteration_executed": true,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "queue_widening_allowed": false,
+    "scheduler_installed": false
+  },
+  "upstream_proof_before": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_STEP_REVIEW_V1_PROOF.json",
+  "wrapper_decision": "ACCEPT_BOUNDED_ITERATION_NO_DIRECT_ROUTE_WRITE"
+}

@@ -1,0 +1,35 @@
+{
+  "active_dashboard_rule": {
+    "active_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+    "canonical_dashboard": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+    "competing_dashboards_allowed": false,
+    "dashboard_is_not_executor": true,
+    "dashboard_is_operator_organ": true,
+    "old_dashboards_status": "lineage_or_archive_only",
+    "one_active_dashboard_only": true
+  },
+  "created_at_utc": "2026-06-08T19:33:06.888646+00:00",
+  "evolution_rule": {
+    "dashboard_can_evolve": true,
+    "evolution_requires": [
+      "current_lawful_next",
+      "versioned proposal",
+      "proof-chain",
+      "validation",
+      "review",
+      "active pointer update",
+      "old version archived as lineage"
+    ],
+    "forbidden": [
+      "silent dashboard replacement",
+      "parallel active dashboard",
+      "UI patch outside lawful_next",
+      "daemon/background/network activation",
+      "executor hidden inside dashboard"
+    ]
+  },
+  "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_LAW_V1",
+  "lawful_next": "validate_socc_canonical_operator_dashboard_v1",
+  "status": "PASS",
+  "truth_boundary": "Dashboard law only. No daemon/background/network."
+}

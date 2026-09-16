@@ -1,0 +1,9 @@
+{
+  "article_md": "SOVEREIGN/WIKI/pages/anna.md",
+  "created_at_utc": "2026-06-17T12:03:51.355385+00:00",
+  "id": "WIKI_ARTICLE_ANNA_V1_MEMORY",
+  "memory_effect": "Built living wiki article 'anna': 100 current, 802 conflicting, 118 timeline events, 112 sources.",
+  "proof": "SOVEREIGN/PROOF/proof_chain/WIKI_ARTICLE_ANNA_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "Knowledge Substrate ANNA wiki article build only. Deterministic synthesis from ingested records; source hyperlinks preserved. No LLM. Global route untouched."
+}

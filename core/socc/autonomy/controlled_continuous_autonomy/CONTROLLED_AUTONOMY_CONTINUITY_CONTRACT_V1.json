@@ -1,0 +1,69 @@
+{
+  "continuity_rules": {
+    "entrypoint": "current_lawful_next_only",
+    "if_fail": [
+      "stop",
+      "write failure proof",
+      "route to Codex/Hermes bounded repair if lawful",
+      "require validation and review before re-execution"
+    ],
+    "must_do": [
+      "read current_lawful_next",
+      "verify route/pulse/control alignment",
+      "verify upstream proof",
+      "execute at most one lawful step unless separately authorized",
+      "write proof",
+      "update route/pulse/control atomically",
+      "stop after bounded step"
+    ],
+    "must_not_do": [
+      "start daemon",
+      "start background loop",
+      "widen queue without route authority",
+      "repeat already passed step",
+      "patch outside current_lawful_next",
+      "claim AGI/entity status",
+      "use network autonomy"
+    ],
+    "state_source": [
+      "CURRENT_ROUTE_AUTHORITY.json",
+      "AUTONOMY_PULSE_V1.json",
+      "CONTROL_PANEL_STATE_V1.json",
+      "proof_chain",
+      "operator_panel"
+    ]
+  },
+  "continuity_type": "controlled_autonomy_no_loss_no_duplicate_no_daemon",
+  "created_at_utc": "2026-06-08T18:57:34.609233+00:00",
+  "current_step": "build_controlled_autonomy_continuity_contract_v1",
+  "id": "CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_V1",
+  "lawful_next": "validate_controlled_autonomy_continuity_contract_v1",
+  "proven_state": {
+    "codex_hermes_governance": "PASS",
+    "controlled_autonomy_path": "PROVEN",
+    "first_lawful_controlled_run": "EXECUTED_VALIDATED_REVIEWED",
+    "operator_panel": "PASS",
+    "proof_chain": "PASS",
+    "route_pulse_control_alignment": "PASS"
+  },
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "source_artifacts": {
+    "codex_hermes": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_CONTRACT_V1.json",
+    "execution": "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_V1.json",
+    "execution_review": "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_REVIEW_V1.json",
+    "execution_review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_V1_PROOF.json",
+    "execution_validation": "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_VALIDATION_V1.json",
+    "panel": "SYSTEM/INTERFACE/panel/SOCC_RUNTIME_OPERATOR_PANEL_V1.md",
+    "seal": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1.json"
+  },
+  "status": "PASS",
+  "truth_boundary": "Continuity contract only. Does not start daemon/background/network."
+}

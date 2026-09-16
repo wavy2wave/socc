@@ -1,0 +1,21 @@
+{
+  "ts": "2026-04-30T01:45:19.576513+00:00",
+  "status": "PASS",
+  "validator": "VALIDATE_HERMES_SAFE_FAIL_TARGET_REPAIR_V1",
+  "checks": {
+    "target_exists": true,
+    "packet_exists": true,
+    "rollback_exists": true,
+    "target_status_repaired": true,
+    "required_field_present": true,
+    "repair_source_matches_packet": true,
+    "bounded_scope_single_target": true,
+    "validator_ref_present": true,
+    "truth_boundary_present": true
+  },
+  "target": "core/socc/hermes_repair_loop/safe_fail/HERMES_SAFE_FAIL_TARGET_V1.json",
+  "packet": "core/socc/hermes_repair_loop/packets/HERMES_REPAIR_PACKET_SAFE_FAIL_V1.json",
+  "rollback": "core/socc/hermes_repair_loop/rollback/HERMES_SAFE_FAIL_TARGET_V1_BEFORE_REPAIR.json",
+  "truth_boundary": "PASS means the artificial safe-fail target was repaired through bounded Hermes packet.",
+  "proof_hash": "3e25c070cdf77c1c"
+}

@@ -1,0 +1,21 @@
+{
+  "note": "Сервисы ANNA под надзором. cmd — список аргументов; health_cmd (опц.) — проба, ненулевой код = перезапуск. enabled=false снимает с надзора. Включено 2026-06-30 (L1 ранг 3): ANNA живёт на ноуте под супервизором. Telegram стартует в SAFE-MODE (без записей/CRM) пока ANNA_LIVE=1 не задан явно.",
+  "services": [
+    {
+      "name": "telegram",
+      "enabled": true,
+      "cmd": ["python3", "scripts/anna_telegram_v1.py"],
+      "cwd": "/Users/wavysexy/SOCC",
+      "health_cmd": ["python3", "scripts/anna_runtime_v1.py", "--health"],
+      "health_fail_limit": 2
+    },
+    {
+      "name": "autonomy",
+      "enabled": true,
+      "cmd": ["python3", "scripts/anna_autonomy_v1.py"],
+      "cwd": "/Users/wavysexy/SOCC",
+      "health_cmd": null,
+      "health_fail_limit": 3
+    }
+  ]
+}

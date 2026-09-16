@@ -1,0 +1,11 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/repeatability_session_plan/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN_V1_PROOF.json",
+  "active_plan": "SYSTEM/AUTONOMY/repeatability_session_plan/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN_V1.json",
+  "created_at_utc": "2026-06-09T14:31:43.142968+00:00",
+  "id": "ACTIVE_ACCEPTED_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN",
+  "next_required_step": "run_first_authority_bound_repeatability_session_01_v1",
+  "session_run": "authorized_only_at_next_frontier",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Accepted session plan authorizes the next lawful frontier to run session 01 only. It does not itself run a session or claim continuous autonomy."
+}

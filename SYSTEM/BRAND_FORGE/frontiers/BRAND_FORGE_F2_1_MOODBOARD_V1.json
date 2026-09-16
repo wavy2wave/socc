@@ -1,0 +1,64 @@
+{
+  "id": "BRAND_FORGE_F2_1_MOODBOARD_V1",
+  "schema": "socc.brand.moodboard.v1",
+  "phase": "P2",
+  "frontier": "F2.1",
+  "status": "AWAITING_CREATOR_PICK",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "upstream": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F1_STRATEGY_CORE_V1.json",
+  "shared_law_from_research": [
+    "anchor in a trust base (blue/teal/green family) + exactly ONE warm accent (NOT terracotta — that reads as Claude)",
+    "premium = restraint: 2-3 muted hues, generous whitespace, refined type, works in one colour",
+    "avatar must be STYLIZED, never hyper-realistic (uncanny valley erodes trust)",
+    "humanist type (warm, not techy/geometric-cold)",
+    "every choice reinforces human warmth (mandatory under the full-stealth ruling)"
+  ],
+  "directions": [
+    {
+      "key": "D1",
+      "name": "Тёплая клиника / Warm Clinic",
+      "concept": "Friendly, approachable, human-first. The clinic that feels like a caring person. Leans CAREGIVER.",
+      "palette": {"base": "#0E7C7B", "base_light": "#14B8A6", "accent_warm": "#FF8A65", "ink": "#13343B", "bg": "#F7FBFB", "text": "#13343B"},
+      "accent_name": "тёплый коралл-персик",
+      "typography": {"display": "rounded humanist sans (e.g. Onest / Nunito Sans)", "text": "humanist sans"},
+      "logo_direction": "мягкий wordmark «Анна» строчными, с тёплой точкой/дугой; знак — округлая капля заботы",
+      "avatar": "мягкая иллюстрированная женщина, тёплая, не фотореализм",
+      "imagery": "светлые тёплые фото живых людей, улыбки без стока-фальши",
+      "feel": "забота, человечность, спокойствие",
+      "wins_when": "хотим максимум тепла и доступности, нижний порог тревоги пациента",
+      "risk": "может читаться чуть по-детски/консьюмерски, если переборщить с округлостью"
+    },
+    {
+      "key": "D2",
+      "name": "Премиум-доверие / Premium Trust",
+      "concept": "Дорогая, солидная клиника высшего класса. Доверие через статус и сдержанность. Леан SAGE. Уровень FLORENSSTOM.",
+      "palette": {"base": "#0E2A47", "ink": "#0A1A2F", "accent_warm": "#C8A24B", "accent_light": "#E0B354", "bg": "#F6F1E7", "text": "#11243B"},
+      "accent_name": "тёплое золото-амбер",
+      "typography": {"display": "элегантный засечный (e.g. Lora / Playfair restrained)", "text": "чистый гуманистический sans"},
+      "logo_direction": "wordmark «ANNA» с тонкой золотой деталью; монограмма A с засечкой; много воздуха",
+      "avatar": "минималистичный лайн-портрет, благородный, сдержанный",
+      "imagery": "тёмные премиум-кадры, золотой свет, фактура",
+      "feel": "статус, надёжность, «лучшая клиника города»",
+      "wins_when": "целимся в премиум-клиники, эстетику, высокий чек",
+      "risk": "тёмный премиум может читаться холоднее — золото обязано греть; сложнее в Telegram-UI"
+    },
+    {
+      "key": "D3",
+      "name": "Спокойная забота / Calm Care",
+      "concept": "Современная тишина и серенити. Снимает тревогу. Много воздуха, мягкость. Чистый CAREGIVER, но взрослее D1.",
+      "palette": {"base": "#6E8B74", "base_soft": "#8AA897", "accent_warm": "#D9A679", "deep": "#2E3D34", "bg": "#F5F3EE", "text": "#2E3D34"},
+      "accent_name": "тёплый песок-глина",
+      "typography": {"display": "спокойный гуманистический sans (e.g. Inter / General Sans)", "text": "тот же, светлые начертания"},
+      "logo_direction": "тихий wordmark «анна», знак — мягкий лист/дуга заботы; минимум деталей",
+      "avatar": "очень простой тёплый знак-аватар, почти абстракция",
+      "imagery": "природный свет, спокойные пастельные кадры, дыхание",
+      "feel": "безопасность, серенити, anti-anxiety",
+      "wins_when": "пациенты тревожны (стоматология!), ценим спокойствие и взрослую сдержанность",
+      "risk": "слишком тихо — нужен сильный акцент, чтобы не стать незаметным/дженерик-wellness"
+    }
+  ],
+  "recommendation": "D3 (Спокойная забота) как ведущее — лучше всех снимает тревогу стоматологического пациента и звучит взросло-премиально без холода; D2 — если приоритет премиум-чек. Финальный выбор за создателем.",
+  "render": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_1_MOODBOARD_V1.html",
+  "gate": {"HER": "renders as HTML swatch board", "GRD": "self-pass: all 3 trace to archetype + research; pick narrows to one before logo/colour lock"},
+  "truth_boundary": "Moodboard only: 3 visual directions as colour/type/concept specs + renderable HTML. No logo locked, no final palette sealed. Awaits creator pick of ONE direction before F2.2 (logo) opens. No network, no revenue, no AGI."
+}

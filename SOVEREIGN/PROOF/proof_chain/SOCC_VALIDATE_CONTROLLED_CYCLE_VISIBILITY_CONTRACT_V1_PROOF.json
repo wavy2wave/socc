@@ -1,0 +1,88 @@
+{
+  "active_contract": "SYSTEM/CYCLE/visibility_contract/ACTIVE_CONTROLLED_CYCLE_VISIBILITY_CONTRACT.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_controlled_cycle_visibility_contract_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_controlled_cycle_visibility_contract_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_controlled_cycle_packet": "near",
+    "to_first_foreground_tick": "approximately_3_to_6_lawful_steps_after_acceptance"
+  },
+  "capability": "SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_VALIDATED",
+  "contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "contract_schema": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1.json",
+  "created_at_utc": "2026-06-09T12:07:39.063173+00:00",
+  "current_expected": "validate_socc_controlled_cycle_visibility_contract_v1",
+  "hard_failures": [],
+  "id": "SOCC_VALIDATE_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1_PROOF",
+  "next_after_pass": "review_socc_controlled_cycle_visibility_contract_v1",
+  "next_lawful_step": "review_socc_controlled_cycle_visibility_contract_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_import": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_old_project_scan": true,
+  "proof_hash": "91b1ae3092c0c1c6",
+  "status": "PASS",
+  "truth_boundary": "Validates controlled cycle visibility contract only. No execution, no daemon/background/network, no MW route.",
+  "validation_artifact": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_VALIDATION_V1.json",
+  "validation_checks": {
+    "active_contract_candidate": true,
+    "active_contract_next_matches": true,
+    "active_plan_accepted": true,
+    "allowed_is_definition_only": true,
+    "authority_at_validate_frontier": true,
+    "build_proof_pass": true,
+    "continuous_daemon_not_authorized": true,
+    "contract_next_matches_validation": true,
+    "contract_status_built_candidate": true,
+    "contract_type_visibility_only": true,
+    "distance_to_foreground_tick_present": true,
+    "forbidden_background": true,
+    "forbidden_complete": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_code": true,
+    "forbidden_execute_cycle": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "plan_accept_proof_pass": true,
+    "plan_acceptance_accepted": true,
+    "plan_packet_may_execute_false": true,
+    "schema_decision_reason_rule": true,
+    "schema_has_all_required_visible_fields": true,
+    "schema_operator_status_rule": true,
+    "schema_status_built_candidate": true,
+    "truth_boundary_non_executing": true,
+    "visibility_obligations_complete": true,
+    "visibility_obligations_nonempty": true
+  },
+  "validation_md": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_VALIDATION_V1.md",
+  "warnings": []
+}

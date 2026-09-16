@@ -1,0 +1,30 @@
+# --- inherited from .gitignore ---
+.env
+**/.env
+!**/.env.example
+**/ledger.json
+__pycache__/
+*.pyc
+*.egg-info/
+.DS_Store
+
+# --- quarantine / migration cruft: keep out of project memory entirely ---
+MIGRATION/
+graphify-out/
+
+# --- media needing image/AV LLM passes (skip to save usage) ---
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.pdf
+*.docx
+*.xlsx
+*.mp4
+*.mov
+*.mp3
+*.wav
+
+# NOTE: text docs (*.md/*.txt/*.rst/*.yaml/*.html) are now INCLUDED and
+# extracted via: graphify extract . --backend claude-cli

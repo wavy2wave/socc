@@ -1,0 +1,41 @@
+{
+  "active_cycle_packet": "SYSTEM/CYCLE/controlled_packets/ACTIVE_FIRST_CONTROLLED_CYCLE_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "created_at_utc": "2026-06-09T12:18:00.469620+00:00",
+  "current_expected": "build_socc_first_controlled_cycle_packet_v1",
+  "cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF",
+  "next_after_pass": "validate_socc_first_controlled_cycle_packet_v1",
+  "next_lawful_step": "validate_socc_first_controlled_cycle_packet_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "2d5475f2bfdb6f2d",
+  "status": "PASS"
+}

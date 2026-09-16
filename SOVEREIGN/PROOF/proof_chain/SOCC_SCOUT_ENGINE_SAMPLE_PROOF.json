@@ -1,0 +1,33 @@
+{
+  "born": false,
+  "capability": "SCOUT_ENGINE_FINDS_AND_PROVES_PAIN_ON_SAMPLE",
+  "checks": {
+    "all_targets_have_evidence": true,
+    "fail_closed_skipped_painless": true,
+    "no_live_scrape": true,
+    "no_network": true,
+    "points_to_hermes": true,
+    "produced_targets": true,
+    "ranked_desc": true
+  },
+  "created_at_msk": "2026-06-30T15:22:41+03:00",
+  "created_at_utc": "2026-06-30T12:22:41.520794+00:00",
+  "does_not_prove": [
+    "live sourcing (2GIS/Instagram scrape) — gated fire step",
+    "HERMES outreach — separate role, approve-gated"
+  ],
+  "engine": "scripts/socc/scout_engine_v1.py",
+  "feed": "entity_substrate/domains/_scout_feed_sample.json",
+  "hard_failures": [],
+  "id": "SOCC_SCOUT_ENGINE_SAMPLE_PROOF",
+  "in_list": 3,
+  "network_used": false,
+  "proof_hash": "52b51ca165eba871",
+  "proves": [
+    "SCOUT logic: extract→detect_pain→score→rank→emit on sample feed",
+    "SC1 fail-closed: clinics without pain evidence excluded (not bothered)"
+  ],
+  "skipped_no_pain": 2,
+  "status": "PASS",
+  "truth_boundary": "SCOUT engine proven on SAMPLE feed. No live scrape, no network, nothing born. Live adapters = operator fire."
+}

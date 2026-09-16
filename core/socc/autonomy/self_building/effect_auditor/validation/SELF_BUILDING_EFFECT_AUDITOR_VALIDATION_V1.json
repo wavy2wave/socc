@@ -1,0 +1,21 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "capability": "SELF_BUILDING_EFFECT_AUDITOR_VALIDATED_SEMANTIC_NULL_BLOCKED",
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-18T12:49:17+03:00",
+  "created_at_utc": "2026-06-18T09:49:17.405982+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "final_canon_approval_allowed": false,
+  "id": "SELF_BUILDING_EFFECT_AUDITOR_VALIDATION_V1",
+  "network_used": false,
+  "null_probe": "core/socc/autonomy/self_building/effect_auditor/validation/SELF_BUILDING_EFFECT_AUDITOR_VALIDATION_NULL_PROBE_V1.json",
+  "positive_replay": "core/socc/autonomy/self_building/effect_auditor/validation/SELF_BUILDING_EFFECT_AUDITOR_VALIDATION_REPLAY_V1.json",
+  "queue_widening_allowed": false,
+  "scheduler_installed": false,
+  "status": "VALIDATED",
+  "tick_executed_now": false,
+  "truth_boundary": "Self-building effect auditor validation only. Exercises the auditor against a real positive material-effect control and a semantic-null control, then routes next to review. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

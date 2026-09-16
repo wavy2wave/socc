@@ -1,0 +1,19 @@
+{
+  "bad_route_flags": [],
+  "bad_run_flags": [],
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_LAWFUL_CONTROLLED_AUTONOMY_RUN_V1_PROOF.json",
+  "created_at_utc": "2026-06-08T18:53:17.970896+00:00",
+  "current_step": "validate_first_lawful_controlled_autonomy_run_v1",
+  "id": "FIRST_LAWFUL_CONTROLLED_AUTONOMY_RUN_VALIDATION_V1",
+  "lawful_next": "review_first_lawful_controlled_autonomy_run_v1",
+  "missing_requires": [],
+  "missing_shape": [],
+  "required_gates_ok": true,
+  "route_safety_flags_ok": true,
+  "run": "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_RUN_V1.json",
+  "run_safety_flags_ok": true,
+  "shape_ok": true,
+  "status": "PASS",
+  "truth_boundary": "Validation only. First lawful controlled run is not executed here. No daemon/background/network.",
+  "validated_step": "build_first_lawful_controlled_autonomy_run_v1"
+}

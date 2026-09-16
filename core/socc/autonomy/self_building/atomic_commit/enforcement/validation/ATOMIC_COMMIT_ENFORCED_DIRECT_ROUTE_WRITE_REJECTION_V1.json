@@ -1,0 +1,6 @@
+{
+  "allowed": false,
+  "reason": "validate_atomic_commit_enforced_self_building_lane_v1_direct_write_probe",
+  "required_method": "enforce_atomic_commit_transition",
+  "status": "BLOCKED"
+}

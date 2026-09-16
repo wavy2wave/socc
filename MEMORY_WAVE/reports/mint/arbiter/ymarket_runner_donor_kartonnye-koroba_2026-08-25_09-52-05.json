@@ -1,0 +1,351 @@
+{
+  "schema": "ymarket.runner.report.v1",
+  "source": "donor",
+  "ts": "2026-08-25T09:50:42.377311+00:00",
+  "xlsx": "/Users/wavysexy/Downloads/shop.cargo-avto.ru_Архивные_короба_Коробки_для_пе_15-09-25.xlsx",
+  "sheet": "Sheet",
+  "slug": "kartonnye-koroba",
+  "category_id": 76296786,
+  "need_mapping_category": false,
+  "colmap": {
+    "cost": "Цена",
+    "sku": "Артикул",
+    "name": "Заголовок",
+    "cat2": "Категория 2",
+    "cat1": "Категория 1",
+    "availability": "Наличие",
+    "length_mm": "Длина, мм",
+    "width_mm": "Ширина, мм",
+    "height_mm": "Высота, мм",
+    "weight_g": "Вес, г",
+    "weight_kg": "Вес, кг",
+    "pictures": "Изображения",
+    "link": "Ссылка на товар",
+    "description": "Описание",
+    "tip_kartona": "Тип картона",
+    "material_col": "Материал",
+    "marka": "Марка картона",
+    "forma": "Форма коробки",
+    "kolvo": "Кол-во в упаковке, шт.",
+    "obem": "Полезный объем, л",
+    "ruchki": "Наличие ручек"
+  },
+  "donor_blocker": null,
+  "dropship": {
+    "max_cost": 700.0,
+    "markup_range": [
+      5.0,
+      10.0
+    ],
+    "note": "донорская «Цена»=закупка; цена продажи предложена (×наценка), не из файла"
+  },
+  "categorist_agg": {
+    "rows_read": 210,
+    "rows_skipped": 0,
+    "selected": 72,
+    "needs_data": 24,
+    "rejected": 114,
+    "avg_profit_low_end": 197.67,
+    "total_profit_low_end": 14232.0
+  },
+  "counts": {
+    "rows_selected": 5,
+    "needs_data": 24,
+    "rejected": 114
+  },
+  "preflight": {
+    "total": 5,
+    "ok": 5,
+    "need_mapping": 0,
+    "no_pictures": 0,
+    "build_error": 0,
+    "with_specs": 5,
+    "topfill": 5,
+    "min_emitted": 7,
+    "sum_emitted": 38,
+    "avg_emitted": 7.6
+  },
+  "preflight_rows": [
+    {
+      "sku": "9601551",
+      "name": "Самосборный короб, с язычком, 70×70×60 мм, 50 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 27,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "7",
+        "7",
+        "6",
+        "0.85",
+        "50",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 7.0,
+        "width": 7.0,
+        "height": 6.0,
+        "weight": 0.85,
+        "материал": "гофрокартон",
+        "штук_в_упаковке": 50
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601591",
+      "name": "Коробка, 150×150×150 мм, 25 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 18,
+      "n_specs": 7,
+      "n_emitted": 8,
+      "emitted": [
+        "упаковочные работы",
+        "15",
+        "15",
+        "15",
+        "1.225",
+        "25",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 15.0,
+        "width": 15.0,
+        "height": 15.0,
+        "weight": 1.225,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный",
+        "штук_в_упаковке": 25
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600167",
+      "name": "Короб для вещей (объемный), 800*550*550 мм, Т-24 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "80",
+        "55",
+        "55",
+        "1.304",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 80.0,
+        "width": 55.0,
+        "height": 55.0,
+        "weight": 1.304,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601575",
+      "name": "Короб, 100×100×100 мм, Т-23 В, 25 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 35,
+      "n_specs": 7,
+      "n_emitted": 8,
+      "emitted": [
+        "упаковочные работы",
+        "10",
+        "10",
+        "10",
+        "0.681",
+        "25",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.681,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный",
+        "штук_в_упаковке": 25
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601478",
+      "name": "Картонный короб СДЭК тип «XS»,170×120×90 мм,Т-21 В,25 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 21,
+      "n_specs": 7,
+      "n_emitted": 8,
+      "emitted": [
+        "упаковочные работы",
+        "17",
+        "12",
+        "9",
+        "0.85",
+        "25",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 17.0,
+        "width": 12.0,
+        "height": 9.0,
+        "weight": 0.85,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный",
+        "штук_в_упаковке": 25
+      },
+      "errors": [],
+      "stage": "publish_card"
+    }
+  ],
+  "creds_present": true,
+  "committed": true,
+  "commit": {
+    "total": 5,
+    "published": 0,
+    "need_content": 0,
+    "errors": 0,
+    "need_mapping": 0
+  },
+  "commit_rows": [
+    {
+      "sku": "9601551",
+      "ok": true,
+      "published": false,
+      "status": "DISABLED_AUTOMATICALLY",
+      "need_mapping": false,
+      "errors": [],
+      "warnings": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601591",
+      "ok": true,
+      "published": false,
+      "status": "DISABLED_AUTOMATICALLY",
+      "need_mapping": false,
+      "errors": [],
+      "warnings": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600167",
+      "ok": true,
+      "published": false,
+      "status": "DISABLED_AUTOMATICALLY",
+      "need_mapping": false,
+      "errors": [],
+      "warnings": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601575",
+      "ok": true,
+      "published": false,
+      "status": "DISABLED_AUTOMATICALLY",
+      "need_mapping": false,
+      "errors": [],
+      "warnings": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601478",
+      "ok": true,
+      "published": false,
+      "status": "DISABLED_AUTOMATICALLY",
+      "need_mapping": false,
+      "errors": [],
+      "warnings": [],
+      "stage": "publish_card"
+    }
+  ],
+  "track": {
+    "ok": true,
+    "dry": false,
+    "cards": [
+      {
+        "offerId": "9600167",
+        "contentRating": null,
+        "averageContentRating": null,
+        "cardStatus": "NO_CARD_ERRORS",
+        "mapping": {
+          "marketCategoryId": 76296786,
+          "marketCategoryName": "Коробки для товаров"
+        },
+        "recommendations": [],
+        "can_not_fill": []
+      },
+      {
+        "offerId": "9601478",
+        "contentRating": null,
+        "averageContentRating": null,
+        "cardStatus": "NO_CARD_ERRORS",
+        "mapping": {
+          "marketCategoryId": 76296786,
+          "marketCategoryName": "Коробки для товаров"
+        },
+        "recommendations": [],
+        "can_not_fill": []
+      },
+      {
+        "offerId": "9601551",
+        "contentRating": null,
+        "averageContentRating": null,
+        "cardStatus": "NO_CARD_ERRORS",
+        "mapping": {
+          "marketCategoryId": 76296786,
+          "marketCategoryName": "Коробки для товаров"
+        },
+        "recommendations": [],
+        "can_not_fill": []
+      },
+      {
+        "offerId": "9601575",
+        "contentRating": null,
+        "averageContentRating": null,
+        "cardStatus": "NO_CARD_ERRORS",
+        "mapping": {
+          "marketCategoryId": 76296786,
+          "marketCategoryName": "Коробки для товаров"
+        },
+        "recommendations": [],
+        "can_not_fill": []
+      },
+      {
+        "offerId": "9601591",
+        "contentRating": null,
+        "averageContentRating": null,
+        "cardStatus": "NO_CARD_ERRORS",
+        "mapping": {
+          "marketCategoryId": 76296786,
+          "marketCategoryName": "Коробки для товаров"
+        },
+        "recommendations": [],
+        "can_not_fill": []
+      }
+    ],
+    "count": 5,
+    "avg_content_rating": null
+  },
+  "elapsed_sec": 142.74
+}

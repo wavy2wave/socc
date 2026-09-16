@@ -1,0 +1,11 @@
+{
+  "contract": "core/socc/autonomy/self_building/status_panel/contract/SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1.json",
+  "created_at_msk": "2026-06-06T01:58:06+03:00",
+  "created_at_utc": "2026-06-05T22:58:06.942830+00:00",
+  "id": "SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1_MEMORY",
+  "memory_effect": "SOCC built the contract for a creator-visible runtime/status panel. Next is building the panel itself so the autonomy pulse becomes visible.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1_PROOF.json",
+  "real_next": "build_self_building_runtime_status_panel_v1",
+  "status": "PASS",
+  "truth_boundary": "Runtime/status panel contract only. This defines creator-visible autonomy pulse/status panel requirements, local data sources, rendering, and validator contract. It does not enable self-building mode, launch runtime, start daemon/scheduler/background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

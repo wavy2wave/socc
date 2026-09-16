@@ -1,0 +1,40 @@
+{
+  "status": "PASS",
+  "task": "MW25_HERMES_CODEX_AUTO_REPAIR_EXECUTION_LOOP_V1",
+  "ts": "2026-04-28T10:37:57.074609+00:00",
+  "score_before": 118,
+  "score_after_pass": 128,
+  "local_target": 150,
+  "horizon_score": 400,
+  "failures": [],
+  "checks": {
+    "mw24_proof_pass": true,
+    "mw24_decision_ready": true,
+    "fail_intake_created": true,
+    "repair_decision_created": true,
+    "repair_plan_created": true,
+    "codex_repair_contract_created": true,
+    "safe_execution_trace_created": true,
+    "validator_rerun_trace_created": true,
+    "before_after_visible": true,
+    "who_worked_visible": true,
+    "bounded_targets_only": true,
+    "no_secret_touch": true,
+    "no_fake_world_claim": true
+  },
+  "artifacts": {
+    "fail_intake": "core/socc/repair_engine/intake/REPAIR_FAIL_INTAKE_MW25_DEMO_ROUTER_GAP.json",
+    "repair_decision": "core/socc/decision_journal/records/DECISION_MW25_AUTO_REPAIR_EXECUTION_LOOP_V1.json",
+    "repair_trace": "core/socc/decision_journal/causal_traces/CAUSAL_TRACE_MW25_AUTO_REPAIR_EXECUTION_LOOP_V1.json",
+    "repair_plan": "core/socc/repair_engine/plans/MW25_BOUNDED_REPAIR_PLAN_V1.json",
+    "repair_contract": "core/codex/contracts/MW25_UI_SCORE_SCALE_REPAIR_CODEX_CONTRACT.json",
+    "execution": "core/socc/repair_engine/execution/MW25_SAFE_REPAIR_EXECUTION_TRACE_V1.json",
+    "rerun": "core/socc/repair_engine/execution/MW25_VALIDATOR_RERUN_TRACE_V1.json",
+    "next_pi_graph": "core/pi_agent/task_graphs/MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1.pi_task_graph.json",
+    "hermes_task": "core/hermes/queue/MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1.task.json",
+    "codex_contract": "core/codex/contracts/MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1_CODEX_CONTRACT.json",
+    "brain_slice": "core/socc/brain_slice/snapshots/MW25_HERMES_CODEX_AUTO_REPAIR_BRAIN_SLICE.json"
+  },
+  "truth": "Hermes/Codex auto-repair execution loop created fail intake, repair decision, bounded contract, safe execution trace, and validator rerun path.",
+  "lawful_next": "MW26_ENTITY_ECONOMY_AND_SLEEP_WAKE_REGISTRY_V1"
+}

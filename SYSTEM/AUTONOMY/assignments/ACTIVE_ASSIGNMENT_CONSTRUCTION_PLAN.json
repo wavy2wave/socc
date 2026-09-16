@@ -1,0 +1,12 @@
+{
+  "active_plan": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_CONSTRUCTION_PLAN_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:33:33.696278+00:00",
+  "current_stage": "construction_plan_built_pending_review",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_CONSTRUCTION_PLAN_PANEL_POINTER_V1.json",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "id": "ACTIVE_ASSIGNMENT_CONSTRUCTION_PLAN",
+  "next_required_step": "review_assignment_construction_plan_v1",
+  "status": "ACTIVE_CANDIDATE_FOR_REVIEW",
+  "truth_boundary": "Construction plan build only. No assignment build execution, patch execution, daemon/background/network, old route resume, or L3 claim."
+}

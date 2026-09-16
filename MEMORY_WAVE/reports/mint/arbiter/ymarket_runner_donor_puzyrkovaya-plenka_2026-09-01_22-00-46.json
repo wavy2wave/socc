@@ -1,0 +1,164 @@
+{
+  "schema": "ymarket.runner.report.v1",
+  "source": "donor",
+  "ts": "2026-09-01T22:00:46.456422+00:00",
+  "xlsx": "/tmp/cargo_party_enriched_v1.xlsx",
+  "sheet": "donor",
+  "slug": "puzyrkovaya-plenka",
+  "category_id": 76346336,
+  "need_mapping_category": false,
+  "colmap": {
+    "cost": "цена",
+    "sku": "артикул",
+    "name": "название",
+    "availability": "наличие",
+    "length_mm": "длина",
+    "width_mm": "ширина",
+    "height_mm": "высота",
+    "weight_kg": "вес, кг",
+    "link": "ссылка"
+  },
+  "donor_blocker": null,
+  "dropship": {
+    "max_cost": 700.0,
+    "markup_range": [
+      5.0,
+      10.0
+    ],
+    "note": "донорская «Цена»=закупка; цена продажи предложена (×наценка), не из файла"
+  },
+  "categorist_agg": {
+    "rows_read": 71,
+    "rows_skipped": 0,
+    "selected": 4,
+    "needs_data": 44,
+    "rejected": 23,
+    "avg_profit_low_end": 1355.0,
+    "total_profit_low_end": 5420.0
+  },
+  "counts": {
+    "rows_selected": 4,
+    "needs_data": 44,
+    "rejected": 23
+  },
+  "skus_requested": [
+    "9600155-1",
+    "9601512-1",
+    "9602037-1",
+    "9605392-1"
+  ],
+  "skus_missing": [],
+  "preflight": {
+    "total": 4,
+    "ok": 4,
+    "need_mapping": 0,
+    "no_pictures": 4,
+    "build_error": 0,
+    "with_specs": 4,
+    "topfill": 0,
+    "min_emitted": 4,
+    "sum_emitted": 16,
+    "avg_emitted": 4.0
+  },
+  "preflight_rows": [
+    {
+      "sku": "9605392-1",
+      "name": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": true,
+      "n_pictures": 0,
+      "n_specs": 4,
+      "n_emitted": 4,
+      "emitted": [
+        "пленка",
+        "воздушно-пузырьковая",
+        "рулон",
+        "упаковочные работы"
+      ],
+      "specs": {
+        "length": 75.0,
+        "width": 38.0,
+        "height": 38.0,
+        "weight": 1.86
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9602037-1",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": true,
+      "n_pictures": 0,
+      "n_specs": 4,
+      "n_emitted": 4,
+      "emitted": [
+        "пленка",
+        "воздушно-пузырьковая",
+        "рулон",
+        "упаковочные работы"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 35.0,
+        "height": 50.0,
+        "weight": 1.438
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601512-1",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": true,
+      "n_pictures": 0,
+      "n_specs": 4,
+      "n_emitted": 4,
+      "emitted": [
+        "пленка",
+        "воздушно-пузырьковая",
+        "рулон",
+        "упаковочные работы"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 48.0,
+        "height": 48.0,
+        "weight": 0.54
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600155-1",
+      "name": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": true,
+      "n_pictures": 0,
+      "n_specs": 4,
+      "n_emitted": 4,
+      "emitted": [
+        "пленка",
+        "воздушно-пузырьковая",
+        "рулон",
+        "упаковочные работы"
+      ],
+      "specs": {
+        "length": 40.0,
+        "width": 11.5,
+        "height": 11.5,
+        "weight": 0.122
+      },
+      "errors": [],
+      "stage": "publish_card"
+    }
+  ],
+  "creds_present": true,
+  "committed": false,
+  "elapsed_sec": 0.09
+}

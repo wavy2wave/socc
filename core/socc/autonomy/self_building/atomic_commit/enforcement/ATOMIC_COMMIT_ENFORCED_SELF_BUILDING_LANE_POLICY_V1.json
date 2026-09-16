@@ -1,0 +1,30 @@
+{
+  "atomic_commit_required_for_route_transitions": true,
+  "created_at_msk": "2026-06-16T19:07:57+03:00",
+  "created_at_utc": "2026-06-16T16:07:57.413533+00:00",
+  "direct_route_write_forbidden": true,
+  "enforced_surfaces": [
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+    "core/socc/autonomy/self_building/status_panel/runtime/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+    "core/socc/autonomy/self_building/loop/SELF_BUILDING_VISIBLE_PROGRESS_V1.json"
+  ],
+  "id": "ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_POLICY_V1",
+  "required_enforcer": "scripts/socc/socc_self_building_atomic_commit_enforcer_v1.py",
+  "required_helper": "scripts/socc/socc_route_atomic_commit_helper_v1.py",
+  "required_invariants": [
+    "pulse.lawful_next == route.lawful_next",
+    "panel.lawful_next == route.lawful_next",
+    "progress.lawful_next == route.lawful_next",
+    "pulse.truth_boundary == route.truth_boundary",
+    "panel.truth_boundary == route.truth_boundary",
+    "progress.truth_boundary == route.truth_boundary",
+    "pulse.route_authority_upstream_proof == route.upstream_proof",
+    "panel.route_authority_upstream_proof == route.upstream_proof",
+    "progress.route_authority_upstream_proof == route.upstream_proof",
+    "forbidden escalation flags remain false"
+  ],
+  "source_atomic_review_proof": "core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_ATOMIC_COMMIT_HELPER_REVIEW_V1_PROOF.json",
+  "status": "ENFORCED",
+  "truth_boundary": "Atomic-commit enforced self-building lane build only. This builds a lane policy/enforcer requiring future bounded self-building route transitions to use the validated route-authority atomic commit helper. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

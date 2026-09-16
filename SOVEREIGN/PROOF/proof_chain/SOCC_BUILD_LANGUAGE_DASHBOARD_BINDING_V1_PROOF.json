@@ -1,0 +1,70 @@
+{
+  "active_binding_pointer": "SYSTEM/INTERFACE/bindings/language_dashboard/ACTIVE_LANGUAGE_DASHBOARD_BINDING.json",
+  "active_dashboard": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "active_language": "SYSTEM/INTERFACE/language/ACTIVE_SOVEREIGN_CORE_LANGUAGE_LAYER.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_language_dashboard_binding_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_language_dashboard_binding_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_language_dashboard_binding_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_language_dashboard_binding_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_language_dashboard_binding_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_language_dashboard_binding_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "binding_artifact": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_V1.json",
+  "binding_checks": {
+    "active_language_active": true,
+    "binding_is_read_only": true,
+    "binding_may_execute": false,
+    "binding_may_mutate_route": false,
+    "binding_may_start_daemon": false,
+    "binding_may_use_network": false,
+    "binding_may_write_view": true,
+    "dashboard_acceptance_exists": true,
+    "dashboard_active_exists": true,
+    "dashboard_is_not_executor": true,
+    "language_acceptance_accepted": true,
+    "language_acceptance_proof_pass": true,
+    "language_is_not_executor": true,
+    "no_mw_route": true,
+    "renderer_acceptance_exists": true
+  },
+  "binding_md": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_V1.md",
+  "capability": "SOCC_CAN_SHOW_CANONICAL_LANGUAGE_ORGAN_INSIDE_DASHBOARD_WITHOUT_EXECUTION",
+  "created_at_utc": "2026-06-09T09:16:05.351660+00:00",
+  "current_expected": "build_socc_language_dashboard_binding_v1",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_LANGUAGE_DASHBOARD_BINDING_V1_PROOF",
+  "language_dashboard_view": "SYSTEM/INTERFACE/dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_VIEW_V1.md",
+  "language_layer": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_V1.json",
+  "next_after_pass": "validate_socc_language_dashboard_binding_v1",
+  "next_lawful_step": "validate_socc_language_dashboard_binding_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "78b5fbb23a744fc9",
+  "status": "PASS",
+  "truth_boundary": "Builds a read-only binding between accepted language layer and canonical dashboard. Does not execute language, mutate route outside authority transition, start daemon/background/network, or create MW route.",
+  "warnings": []
+}

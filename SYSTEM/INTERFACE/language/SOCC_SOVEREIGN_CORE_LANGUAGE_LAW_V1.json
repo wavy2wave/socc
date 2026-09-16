@@ -1,0 +1,32 @@
+{
+  "forbidden": [
+    "no execution",
+    "no daemon",
+    "no background",
+    "no network",
+    "no direct route mutation outside proofed lawful transition",
+    "no fake validation",
+    "no second dashboard",
+    "no mw route"
+  ],
+  "id": "SOCC_SOVEREIGN_CORE_LANGUAGE_LAW_V1",
+  "law": {
+    "current_lawful_next_only": true,
+    "dashboard_connected": true,
+    "intent_interpreter_only": true,
+    "language_layer_is_not_executor": true,
+    "law_bound": true,
+    "not_executor": true,
+    "proof_chain_aware": true,
+    "route_authority_required": true
+  },
+  "layer": "SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER",
+  "required": [
+    "read current_lawful_next",
+    "preserve proof-chain",
+    "produce lawful intent proposal only",
+    "wait for gate/review/execute surface before action"
+  ],
+  "status": "BUILT_FOR_VALIDATION",
+  "truth_boundary": "Language law defines a non-executing, law-bound intent interface. It is not runtime and not autonomy."
+}

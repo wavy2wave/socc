@@ -1,0 +1,147 @@
+{
+ "schema": "ymarket.sovet.v1",
+ "date": "2026-09-05",
+ "store": "",
+ "generated_at": "2026-09-05T08:14:06+0300",
+ "mode": "dry",
+ "chair": {
+  "mode": "svod",
+  "by": "УПРАВЛЯЮЩИЙ-МОЗГ",
+  "text": "заслушаны доклады органов (данные из сторов, каждая фраза с источником):\n  · ЦИКЛ-1: доказанно живых 4 (vozdushno-puzyrkovaya-plenka×4)\n  · КАТЕГОРИЙЩИК: в очереди 13 категорий · готово к заливу 5 (24 SKU)\n  · ДИСПЕТЧЕР: журнал 2026-09-04: горящих заказов 0 · burning 2 · движение ASSORTMENT_WIDEN\n  · РЕЕСТР: открыто заданий 10 · владельцы: CATEGORIST=3, PRICER=2, DISPATCHER=1\nпропиздоны (по факту miss-движка, не мнение):\n  · DISPATCHER: «Пульс atlas-express-film устарел (2026-09-03) — прогнать сухо сегодня» — carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — DISPATCHER не пошевелил задание за сутки\n  · CATEGORIST: «Парсинг донора: мешки (meshki) → шорт-лист под Экспресс» — carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки\n  · CATEGORIST: «Парсинг донора: упаковочная сетка (upakovochnaya-setka) → шорт-лист под Экспресс» — carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки\n  · CATEGORIST: «Парсинг донора: упаковочные ленты (upakovochnie-lentj) → шорт-лист под Экспресс» — carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки\nждёт слова оператора:\n  · подтвердить профиль ЯМ-категории для «polyetilenovaya-plenka» (маппинг) — досье категорий · mapping.need_mapping=true\n  · подтвердить профиль ЯМ-категории для «meshki» (маппинг) — досье категорий · mapping.need_mapping=true\n  · подтвердить профиль ЯМ-категории для «upakovochnaya-setka» (маппинг) — досье категорий · mapping.need_mapping=true\n  · подтвердить профиль ЯМ-категории для «upakovochnie-lentj» (маппинг) — досье категорий · mapping.need_mapping=true\nрешения плана дня (совет зеркалит, новых заданий сам не создаёт): carry 10 · new 0 · на слове 4 · watch 6",
+  "validated": true
+ },
+ "voices": [
+  {
+   "organ": "ЦИКЛ-1",
+   "facts": [
+    {
+     "text": "доказанно живых 4 (vozdushno-puzyrkovaya-plenka×4)",
+     "source": "goods_library · СВЕРКА PASS (proof_cross)"
+    }
+   ],
+   "nuzhno_slovo": []
+  },
+  {
+   "organ": "КАТЕГОРИЙЩИК",
+   "facts": [
+    {
+     "text": "в очереди 13 категорий · готово к заливу 5 (24 SKU)",
+     "source": "categorist_dossiers"
+    }
+   ],
+   "nuzhno_slovo": [
+    {
+     "what": "подтвердить профиль ЯМ-категории для «polyetilenovaya-plenka»",
+     "why": "без market_category_id карточку не поставить — маппинг решает человек",
+     "source": "categorist_dossiers · mapping.need_mapping"
+    },
+    {
+     "what": "подтвердить профиль ЯМ-категории для «meshki»",
+     "why": "без market_category_id карточку не поставить — маппинг решает человек",
+     "source": "categorist_dossiers · mapping.need_mapping"
+    },
+    {
+     "what": "подтвердить профиль ЯМ-категории для «upakovochnaya-setka»",
+     "why": "без market_category_id карточку не поставить — маппинг решает человек",
+     "source": "categorist_dossiers · mapping.need_mapping"
+    },
+    {
+     "what": "подтвердить профиль ЯМ-категории для «upakovochnie-lentj»",
+     "why": "без market_category_id карточку не поставить — маппинг решает человек",
+     "source": "categorist_dossiers · mapping.need_mapping"
+    }
+   ]
+  },
+  {
+   "organ": "ДИСПЕТЧЕР",
+   "facts": [
+    {
+     "text": "журнал 2026-09-04: горящих заказов 0 · burning 2 · движение ASSORTMENT_WIDEN",
+     "source": "day_journal 2026-09-04"
+    }
+   ],
+   "nuzhno_slovo": []
+  },
+  {
+   "organ": "РЕЕСТР",
+   "facts": [
+    {
+     "text": "открыто заданий 10 · владельцы: CATEGORIST=3, PRICER=2, DISPATCHER=1",
+     "source": "ymarket_tasks.json"
+    }
+   ],
+   "nuzhno_slovo": []
+  }
+ ],
+ "misses": [
+  {
+   "organ": "DISPATCHER",
+   "what": "Пульс atlas-express-film устарел (2026-09-03) — прогнать сухо сегодня",
+   "task_id": "T-cc9d92ff",
+   "since": "2026-09-04",
+   "evidence": "carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — DISPATCHER не пошевелил задание за сутки"
+  },
+  {
+   "organ": "CATEGORIST",
+   "what": "Парсинг донора: мешки (meshki) → шорт-лист под Экспресс",
+   "task_id": "T-08851483",
+   "since": "2026-09-04",
+   "evidence": "carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки"
+  },
+  {
+   "organ": "CATEGORIST",
+   "what": "Парсинг донора: упаковочная сетка (upakovochnaya-setka) → шорт-лист под Экспресс",
+   "task_id": "T-53183869",
+   "since": "2026-09-04",
+   "evidence": "carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки"
+  },
+  {
+   "organ": "CATEGORIST",
+   "what": "Парсинг донора: упаковочные ленты (upakovochnie-lentj) → шорт-лист под Экспресс",
+   "task_id": "T-e2a8bce0",
+   "since": "2026-09-04",
+   "evidence": "carry в планах 2026-09-04 и 2026-09-05; пунктов закрыто 0 при сухом 0₽ пути — CATEGORIST не пошевелил задание за сутки"
+  }
+ ],
+ "waiting_operator": [
+  {
+   "what": "подтвердить профиль ЯМ-категории для «polyetilenovaya-plenka» (маппинг)",
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "source": "досье категорий · mapping.need_mapping=true",
+   "ref": "esc-map-polyetilenovaya-plenka"
+  },
+  {
+   "what": "подтвердить профиль ЯМ-категории для «meshki» (маппинг)",
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "source": "досье категорий · mapping.need_mapping=true",
+   "ref": "esc-map-meshki"
+  },
+  {
+   "what": "подтвердить профиль ЯМ-категории для «upakovochnaya-setka» (маппинг)",
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "source": "досье категорий · mapping.need_mapping=true",
+   "ref": "esc-map-upakovochnaya-setka"
+  },
+  {
+   "what": "подтвердить профиль ЯМ-категории для «upakovochnie-lentj» (маппинг)",
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "source": "досье категорий · mapping.need_mapping=true",
+   "ref": "esc-map-upakovochnie-lentj"
+  }
+ ],
+ "plan": {
+  "date": "2026-09-05",
+  "decisions": 20,
+  "carry": 10,
+  "new": 0,
+  "escalation": 4,
+  "watch": 6
+ },
+ "sources": {
+  "registry_open": 10,
+  "vitrine_live": 4,
+  "dossiers": 13,
+  "journal": "2026-09-04",
+  "prev_plan": "2026-09-04"
+ }
+}

@@ -1,0 +1,56 @@
+{
+  "id": "BRAND_FORGE_F2_2_LOGO_VARIANTS_AND_AVATAR_V1",
+  "schema": "socc.brand.logo_variants.v1",
+  "phase": "P2",
+  "frontier": "F2.2 (hardening)",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "upstream": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_VISUAL_CORE_V1.json",
+
+  "logo_variants": {
+    "primary": "assets/anna-logo-primary.svg",
+    "mark": "assets/anna-mark.svg",
+    "mono": "assets/anna-logo-mono.svg (one colour — stamps, fax, engraving, single-colour print)",
+    "inverse": "assets/anna-logo-inverse.svg (dark backgrounds)",
+    "all_render_16_to_512": true
+  },
+
+  "dual_identity_law": {
+    "principle": "ANNA has TWO faces, and they must never be confused.",
+    "BRAND_mark": {
+      "what": "the nested-arc mark + «анна» wordmark",
+      "used_for": "company-facing surfaces: landing, owner dashboard, presentations, invoices, social",
+      "audience": "clinic OWNER (knows ANNA is AI)"
+    },
+    "PATIENT_identity": {
+      "what": "a human administrator named Анна — avatar = warm monogram «А» on a soft circle (Telegram-style), OR a real licensed human photo",
+      "used_for": "the patient chat surface in Telegram",
+      "audience": "PATIENT (full-stealth: must read as a real person)",
+      "must": [
+        "look like an ordinary human admin's avatar (monogram is what Telegram auto-makes for real users without a photo)",
+        "NEVER the abstract brand mark (signals 'system/bot')",
+        "NEVER an AI-generated face (uncanny-valley + detection + legal risk)",
+        "if a photo is used: a REAL licensed human with consent, never synthetic"
+      ],
+      "chosen": "monogram «А» avatar (assets/anna-avatar-patient.svg) — safest stealth cover"
+    }
+  },
+
+  "contrast_verification": {
+    "tool": "WCAG 2.1 relative-luminance calc (python)",
+    "results": {
+      "ink/bg": "10.33:1 AAA",
+      "white/primary": "5.46:1 AA",
+      "ink/accent": "5.28:1 AA",
+      "primary/bg": "4.92:1 AA",
+      "ink/primary-soft (chat)": "5.63:1 AA",
+      "muted/bg": "4.00:1 AA-large only",
+      "accent-deep/bg": "3.02:1 AA-large only"
+    },
+    "verdict": "all roles pass at their intended use; muted & accent-deep restricted to large text"
+  },
+
+  "remaining_open": ["vertical lockup", "motion (F2.6)", "real-photo avatar option needs a consenting human + licence"],
+  "render": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F2_2_LOGO_VARIANTS_AND_AVATAR_V1.html",
+  "truth_boundary": "Logo variants (mono/inverse) + the brand-vs-patient dual-identity law + tool-verified contrast. Patient avatar resolved to a monogram under the full-stealth ruling. REVIEW status; vertical lockup and motion still open. No network/revenue/AGI."
+}

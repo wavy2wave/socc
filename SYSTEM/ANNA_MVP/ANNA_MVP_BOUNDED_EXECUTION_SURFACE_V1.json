@@ -1,0 +1,80 @@
+{
+  "allowed_writes": [
+    "SYSTEM/ANNA_MVP/runtime/ANNA_IDENTITY_V1.json",
+    "SYSTEM/ANNA_MVP/runtime/ANNA_SKILL_BOOKING_V1.json",
+    "SYSTEM/ANNA_MVP/runtime/ANNA_MEMORY_BINDING_V1.json",
+    "SYSTEM/ANNA_MVP/runtime/ANNA_CHANNEL_TELEGRAM_V1.json",
+    "SYSTEM/DASHBOARD/ANNA_MVP_RUNTIME_PANEL_V1.json",
+    "MEMORY_WAVE/reports/anna_mvp/ANNA_MVP_RUNTIME_MEMORY_V1.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ANNA_MVP_BOUNDED_EXECUTION_SESSION_V1_PROOF.json"
+  ],
+  "checks": {
+    "authority_at_current": true,
+    "enforcer_exists": true,
+    "no_agent_spawn": true,
+    "no_agi_claim": true,
+    "no_anna_birth": true,
+    "no_anna_instantiation": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_entity_birth": true,
+    "no_l3_claim": true,
+    "no_mw_route": true,
+    "no_network": true,
+    "no_old_route_resume": true,
+    "no_revenue_claim": true,
+    "no_scheduler": true,
+    "predecessor_points_to_current": true,
+    "predecessor_proof_exists": true,
+    "predecessor_proof_pass": true
+  },
+  "created_at_utc": "2026-06-22T11:56:15.015823+00:00",
+  "execution_purpose": "Run ONE bounded foreground session instantiating one ANNA (dental) with a single booking skill + per-client memory over Telegram — the thin vertical slice. Bounded, 1 tick, no daemon/network, no revenue.",
+  "execution_scope": {
+    "agi_claim_allowed": false,
+    "anna_instances_max": 1,
+    "anna_instantiation_allowed": true,
+    "background_allowed": false,
+    "daemon_allowed": false,
+    "max_sessions": 1,
+    "max_ticks": 1,
+    "mode": "single_foreground_bounded_anna_instantiation",
+    "must_stop_after_run": true,
+    "network_allowed": false,
+    "operator_foreground_only": true,
+    "revenue_allowed": false,
+    "scheduler_allowed": false
+  },
+  "hard_failures": [],
+  "id": "ANNA_MVP_BOUNDED_EXECUTION_SURFACE_V1",
+  "pass_definition": {
+    "fail_if": [
+      "more than one ANNA instance",
+      "any daemon/background/network action",
+      "execution exceeds one tick",
+      "any revenue claim",
+      "proof/memory missing"
+    ],
+    "pass_only_if": [
+      "route authority equals run_anna_mvp_bounded_execution_session_v1",
+      "exactly one bounded foreground session runs",
+      "exactly one ANNA instance is instantiated (bounded)",
+      "the booking skill + memory binding + channel + panel artifacts are written",
+      "proof + memory written",
+      "stop observed",
+      "no daemon/background/network/scheduler",
+      "no revenue claim"
+    ]
+  },
+  "runtime_artifacts_to_build": [
+    "anna_identity (dental vertical agent, bound to sealed product_binding surface)",
+    "anna_skill_booking (booking intent -> appointment record)",
+    "anna_memory_binding (per-client profile + history)",
+    "anna_channel_telegram (channel binding stub)",
+    "anna_runtime_panel (operator-visible)"
+  ],
+  "status": "PASS",
+  "surface_state": "BUILT_CANDIDATE",
+  "surface_type": "BOUNDED_ANNA_MVP_EXECUTION_SURFACE",
+  "truth_boundary": "ANNA MVP lawful chain step (document/verification only). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, no daemon/background/network, no revenue claim. ANNA birth is gated to its own bounded session behind seal."
+}

@@ -1,0 +1,46 @@
+{
+  "created_at_utc": "2026-06-30T00:25:12.936434+00:00",
+  "id": "INTENT_20260630T002512_расскажи_про_память_системы",
+  "intent": {
+    "entities": [
+      "Память — Memory Wave + живая вики (знание системы)"
+    ],
+    "intent_kind": "explain",
+    "request": "расскажи про память системы",
+    "topic": "memory"
+  },
+  "knowledge": {
+    "article_md": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/spine2/pages/memory.md",
+    "context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/spine2/CONTEXT_PACK.md",
+    "has_article": true,
+    "has_context_pack": true,
+    "known_topics": [
+      "anna",
+      "entity_substrate",
+      "law_proof",
+      "memory",
+      "self_construction",
+      "socc",
+      "vision"
+    ],
+    "level": "KNOWN",
+    "topic": "memory"
+  },
+  "llm_used": false,
+  "network_used": false,
+  "outcome": "READY",
+  "plan": "/Users/wavysexy/SOCC/SYSTEM/COGNITION/intent/20260630T002512_расскажи_про_память_системы_PLAN_SKELETON.json",
+  "readiness": {
+    "blockers": [],
+    "criteria": {
+      "discipline_clean": true,
+      "intent_resolved": true,
+      "knowledge_known_for_build": true,
+      "knowledge_present": true,
+      "route_lawful_next_present": true,
+      "route_status_pass": true
+    },
+    "ready": true
+  },
+  "request": "расскажи про память системы"
+}

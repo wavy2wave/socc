@@ -1,0 +1,27 @@
+{
+  "acceptance_verdict": "FIRST_FOREGROUND_TICK_PLAN_ACCEPTED_AS_CANONICAL_NON_EXECUTING_RUN_SURFACE_INPUT",
+  "accepted_as": [
+    "canonical first foreground tick plan",
+    "non-executing run-surface input",
+    "proof-bound current/decision/boundary/proof/result/next carrier"
+  ],
+  "accepted_tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/SOCC_FIRST_FOREGROUND_TICK_PLAN_V1.json",
+  "active_accepted_tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/ACTIVE_ACCEPTED_FIRST_FOREGROUND_TICK_PLAN.json",
+  "capability": "SOCC_HAS_ACCEPTED_FIRST_FOREGROUND_TICK_PLAN",
+  "created_at_utc": "2026-06-09T13:32:06.482415+00:00",
+  "id": "SOCC_FIRST_FOREGROUND_TICK_PLAN_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_first_foreground_tick_run_surface_v1",
+  "not_accepted_as": [
+    "foreground tick execution",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "review": "SYSTEM/CYCLE/foreground_tick_plan/SOCC_FIRST_FOREGROUND_TICK_PLAN_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted first foreground tick plan authorizes building the run surface only. It does not run the tick.",
+  "validation": "SYSTEM/CYCLE/foreground_tick_plan/SOCC_FIRST_FOREGROUND_TICK_PLAN_VALIDATION_V1.json"
+}

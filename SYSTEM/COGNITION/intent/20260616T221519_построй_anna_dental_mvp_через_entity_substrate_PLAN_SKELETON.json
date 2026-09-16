@@ -1,0 +1,21 @@
+{
+  "capability_target": "entity_substrate",
+  "consult_context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/context_packs/entity_substrate_context_pack_v1.md",
+  "created_at_utc": "2026-06-16T22:15:19.044419+00:00",
+  "hand_to": "lawful self-building runner (socc run) — node by node",
+  "id": "PLAN_SKELETON_20260616T221519_построй_anna_dental_mvp_через_entity_substrate",
+  "lawful_chain": [
+    "direction",
+    "construction_plan",
+    "scientific_gate",
+    "hermes_gate",
+    "codex_gate_if_code",
+    "bounded_execution",
+    "validation",
+    "review",
+    "seal"
+  ],
+  "plan_hash": "5608efabd1615de34b3822f1",
+  "topic": "entity_substrate",
+  "truth_boundary": "Plan skeleton only. No build executed here. No global route change."
+}

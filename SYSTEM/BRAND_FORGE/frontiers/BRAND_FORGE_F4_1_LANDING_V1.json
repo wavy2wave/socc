@@ -1,0 +1,26 @@
+{
+  "id": "BRAND_FORGE_F4_1_LANDING_V1",
+  "schema": "socc.brand.application.v1",
+  "phase": "P4",
+  "frontier": "F4.1",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "upstream": "SYSTEM/BRAND_FORGE/canon/ANNA_DESIGN_CANON_V1.json",
+  "what": "First applied surface: B2B sell landing for clinic owners, rendering the full ANNA D3 canon (logo, palette, type, voice, positioning, messaging matrix).",
+  "render": "SYSTEM/BRAND_FORGE/frontiers/BRAND_FORGE_F4_1_LANDING_V1.html",
+  "sections": ["hero (positioning + live chat)", "pains (night/no-shows/burnout)", "solution (4 features)", "why-not-a-bot (warmth+precision)", "verticals (dental now)", "CTA band", "footer"],
+  "canon_applied": {
+    "logo": "brand mark used (owner-facing surface — correct per dual-identity law)",
+    "patient_avatar": "monogram «А» used inside the chat demo (stealth-safe)",
+    "palette": "D3 tokens",
+    "voice": "messaging matrix + sample lines from F1.6",
+    "tagline": "Тёплый администратор вашей клиники. 24/7."
+  },
+  "honesty": {
+    "no_fake_proof": "no invented stats, testimonials, or clinic logos — placeholders are explicitly marked (.ph)",
+    "placeholders": ["lead form / contact", "demo CTA target", "not a public/published page"]
+  },
+  "gate": {"HER": "renders as responsive HTML", "GRD": "self-pass: on-brand, on-voice, no hype, no fabricated proof"},
+  "remaining_for_seal": ["real lead form + backend", "legal footer", "re-run market scouts to sharpen copy claims", "owner-facing copy review", "publish decision (currently NOT published)"],
+  "truth_boundary": "Applied landing (demo) in REVIEW. Renders the ANNA D3 canon end-to-end for clinic owners. Contains NO fabricated social proof (placeholders marked). Not published, no network, no backend, no revenue, no AGI."
+}

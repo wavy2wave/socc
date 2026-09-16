@@ -1,0 +1,165 @@
+{
+  "anna_born": false,
+  "created_at_msk": "2026-06-22T14:49:25+03:00",
+  "created_at_utc": "2026-06-22T11:49:25.724173+00:00",
+  "current_expected": "build_anna_mvp_direction_v1",
+  "dashboard_state": {
+    "operator_visible": true,
+    "stage": "anna_mvp_direction"
+  },
+  "definition": {
+    "not_a_plain_chatbot": true,
+    "not_agi_claim": true,
+    "not_born_yet": true,
+    "not_daemon": true,
+    "not_unbounded_loop": true,
+    "plain": "ANNA is a vertical agent (a sellable product) instantiated by the sealed Entity/Substrate birth capability. ANNA = the persistent personality; the dental clinic role = a skill. The MVP starts as a THIN VERTICAL SLICE: one ANNA, one booking skill, one channel (Telegram), per-client memory — proving birth and product together at minimal token cost. Built only through the same lawful self-construction chain, with an honest readiness ledger.",
+    "role": "bridge from the sealed Entity/Substrate to a real revenue product"
+  },
+  "depends_on": {
+    "entity_substrate_seal": "SOVEREIGN/PROOF/proof_chain/SOCC_SEAL_ENTITY_SUBSTRATE_V1_PROOF.json",
+    "product_binding_surface": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PRODUCT_BINDING_SURFACE_FOR_ANNA_MVP_V1.json"
+  },
+  "direction_hash": "6ac1d22fc3a636dd",
+  "direction_id": "DIRECTION_ANNA_MVP_V1",
+  "direction_name": "ANNA MVP vertical agent, born by the sealed Entity/Substrate birth capability",
+  "entity_born": false,
+  "first_frontier_target": {
+    "explicitly_out_of_scope_until_later_frontiers": [
+      "self-marketing module",
+      "voice calls / SMS / Max",
+      "payments / subscriptions",
+      "CRM integration",
+      "multi-clinic scale",
+      "vertical-agent template factory",
+      "unbounded autonomy / daemon / background loops"
+    ],
+    "goal": "Birth exactly ONE ANNA instance from the sealed entity substrate with a single booking skill over Telegram + per-client memory. Proves BOTH the birth capability and a sellable product slice together, at minimal token cost.",
+    "in_scope": [
+      "thin entity instantiation engine (reads substrate surfaces -> 1 live ANNA object)",
+      "ANNA vertical-agent identity (dental) bound to the sealed product_binding surface",
+      "single skill: booking intent -> real appointment record (local store first)",
+      "per-client memory (profile + history) reused from wavecore-bot/anna",
+      "one channel: Telegram",
+      "token budget declared and metered for the slice"
+    ],
+    "name": "anna_mvp_thin_vertical_slice"
+  },
+  "future_frontiers": [
+    "review_anna_mvp_direction_v1",
+    "accept_anna_mvp_direction_v1",
+    "build_anna_mvp_construction_plan_v1",
+    "review_anna_mvp_construction_plan_v1",
+    "run_anna_mvp_scientific_quality_gate_v1",
+    "run_anna_mvp_hermes_gate_v1",
+    "run_anna_mvp_codex_gate_v1",
+    "review_anna_mvp_plan_and_gates_v1",
+    "accept_anna_mvp_plan_and_gates_v1",
+    "build_anna_mvp_bounded_execution_surface_v1",
+    "review_anna_mvp_bounded_execution_surface_v1",
+    "accept_anna_mvp_bounded_execution_surface_v1",
+    "run_anna_mvp_bounded_execution_session_v1",
+    "validate_anna_mvp_bounded_execution_session_v1",
+    "review_anna_mvp_bounded_execution_session_v1",
+    "accept_anna_mvp_bounded_execution_session_v1",
+    "seal_anna_mvp_v1",
+    "ship_anna_mvp_to_first_clinic_v1"
+  ],
+  "id": "ANNA_MVP_DIRECTION_V1",
+  "mandatory_gates": {
+    "dashboard_visibility_required": true,
+    "memory_required": true,
+    "multi_model_fallback_required_for_unkillable_runtime": true,
+    "no_agi_claim": true,
+    "no_background": true,
+    "no_birth_without_seal_and_proof": true,
+    "no_daemon": true,
+    "no_direct_handwave_build": true,
+    "no_fake_pass": true,
+    "no_l3_claim": true,
+    "no_network_without_explicit_scope": true,
+    "no_old_route_resume": true,
+    "proof_chain_required": true,
+    "real_product_evidence_required_before_revenue_claim": true,
+    "same_required_chain": true,
+    "self_construction_seal_required": true,
+    "thin_vertical_slice_first": true,
+    "token_budget_required_per_frontier": true
+  },
+  "next_required_step": "review_anna_mvp_direction_v1",
+  "readiness_ledger": {
+    "anna_product": {
+      "have": "Telegram bot, rule-based triage, shallow per-client memory (wavecore-bot/anna)",
+      "missing": "real booking, CRM, calls/SMS/Max multichannel, payments, unkillable runtime",
+      "state": "PARTIAL"
+    },
+    "entity_birth_engine": {
+      "have": "sealed declarative entity substrate (10 surfaces, proofs, seal)",
+      "missing": "instantiation engine that reads surfaces and creates a live vertical agent",
+      "state": "PARTIAL"
+    },
+    "internal_living_wiki": {
+      "have": "knowledge_substrate/wiki.py builder; wavecore-bot vault (~100 files)",
+      "missing": "programmatic READ loop that feeds task-building; populated articles",
+      "state": "PARTIAL"
+    },
+    "multi_model_fallback": {
+      "have": "real Hermes + Codex gates (serial); claude-proxy HTTP passthrough",
+      "missing": "fallback orchestrator Cloud->Codex->Hermes (if one fails, next takes over)",
+      "state": "PARTIAL"
+    },
+    "quality_gates_atom_to_whole": {
+      "have": "scientific/hermes/codex gates, proof+enforcer, no-fake-pass, atomic transitions",
+      "missing": "general gate factory (currently per-domain scripts)",
+      "state": "HAVE"
+    },
+    "ticket_system": {
+      "have": "task_spec JSON with pass_conditions/target (cycle_2)",
+      "missing": "token budget field, agent list, MW-key, auto-generation from live request",
+      "state": "PARTIAL"
+    },
+    "token_budgeting": {
+      "have": "tick budget only (iteration counter)",
+      "missing": "token ledger, balance, est-vs-actual, budget-gate before work",
+      "state": "ABSENT"
+    }
+  },
+  "roadmap_beyond_mvp": [
+    "token_accounting_ledger (meter + budget-gate every frontier)",
+    "multi_model_fallback_orchestrator (Cloud Code -> Codex -> Hermes, never deadlocks)",
+    "wiki_read_loop (task-building reads internal living wiki as primary source)",
+    "entity_instantiation_engine_full (general birth of any vertical agent from template)",
+    "anna_booking_and_crm_integration",
+    "anna_multichannel (Max / SMS / voice calls, cheap + resilient)",
+    "anna_self_marketing_module (50+ methods, ad-budget aware, ROI-reported)",
+    "vertical_agent_template_factory (barbershop, clinic, etc. from one caracass)",
+    "html_operator_dashboard (alongside canonical terminal)"
+  ],
+  "rule": {
+    "anna_must_be_built_by_lawful_self_construction": true,
+    "no_direct_handwave_build": true,
+    "no_live_or_revenue_claim_before_runtime_evidence": true,
+    "same_required_chain": [
+      "direction",
+      "construction_plan",
+      "scientific_gate",
+      "Hermes_gate",
+      "Codex_gate_if_code_or_patch",
+      "bounded_execution_surface",
+      "bounded_execution_session",
+      "validation",
+      "review",
+      "acceptance",
+      "seal"
+    ],
+    "thin_vertical_slice_before_breadth": true,
+    "token_economy_is_first_class": true
+  },
+  "source": "operator live request 2026-06-22 + verified codebase readiness assessment",
+  "status": "BUILT_CANDIDATE",
+  "token_economy": {
+    "principle": "every frontier declares an estimated token budget; work is metered; the evolutionary aim is each repeat of a process costs less than the last",
+    "token_ledger_status": "ABSENT_TO_BE_BUILT (roadmap item 1)"
+  },
+  "truth_boundary": "ANNA MVP direction build only. Writes a declarative direction document (lawful sub-chain, honest readiness ledger, thin-vertical-slice frontier, token gates, roadmap). Births no entity, instantiates no ANNA, runs nothing, spawns no agent, uses no network/daemon/background/scheduler, claims no AGI/L3, approves no canon, and makes no revenue claim. ANNA birth stays gated behind its own lawful chain."
+}

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="ANNA mark">
+  <title>ANNA — care mark</title>
+  <rect width="120" height="120" rx="28" fill="#5E7A66"/>
+  <!-- protective outer arc (shelter / care) -->
+  <path d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/>
+  <!-- warm inner arc (the human touch) -->
+  <path d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/>
+  <!-- calm base dot -->
+  <circle cx="60" cy="86" r="4.5" fill="#F1E9DD"/>
+</svg>

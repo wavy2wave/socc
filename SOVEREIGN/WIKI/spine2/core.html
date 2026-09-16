@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SOCC · ядро</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0E140D;--ink:#F0EDE2;--muted:#94A395;--sand:#D9A679}
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);overflow:hidden;
+    font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  #cv{position:fixed;inset:0;display:block;cursor:grab}#cv.drag{cursor:grabbing}
+  .meter{position:fixed;left:32px;top:26px;z-index:5;pointer-events:none}
+  .meter .l{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .meter .n{font-size:66px;line-height:.92;font-weight:900;letter-spacing:-3.5px;margin-top:2px}
+  .meter .sub{color:var(--muted);font-size:13px;margin-top:6px}
+  .feed{position:fixed;left:50%;bottom:32px;transform:translateX(-50%);z-index:5;text-align:center;pointer-events:none}
+  .feed .big{font-size:17px;font-weight:600}.feed .sm{color:var(--muted);font-size:12.5px;margin-top:3px}
+  .flash{position:fixed;left:50%;top:46%;transform:translate(-50%,-50%);z-index:6;text-align:center;pointer-events:none;opacity:0;transition:opacity .35s}
+  .flash.on{opacity:1}.flash .g{font-size:54px;font-weight:900;letter-spacing:-2px}.flash .t{margin-top:4px;font-size:16px}
+  .opened{position:fixed;right:30px;bottom:30px;z-index:6;max-width:330px;background:#161E15;border:1px solid #2a352a;
+    border-left:3px solid var(--sand);border-radius:14px;padding:17px 20px;transform:translateY(20px);opacity:0;transition:.4s}
+  .opened.on{transform:none;opacity:1}
+  .opened .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--sand);font-weight:700}
+  .opened .v{margin-top:7px;font-size:14.5px;line-height:1.45}
+  /* «кат» темы */
+  #panel{position:fixed;right:0;top:0;height:100%;width:330px;background:#131A12;border-left:1px solid #2a352a;
+    transform:translateX(100%);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:7;padding:32px 26px}
+  #panel.on{transform:none}
+  #panel .x{position:absolute;right:18px;top:14px;color:var(--muted);font-size:22px;cursor:pointer}
+  #panel .k{font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+  #panel h2{margin:9px 0 0;font-size:26px;letter-spacing:-.6px;line-height:1.08}
+  #panel .big{margin-top:14px;font-size:40px;font-weight:900;letter-spacing:-2px}
+  #panel .big small{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
+  #panel .m{margin-top:16px;color:#d7d4c8;font-size:15px;line-height:1.6}
+  #panel .src{margin-top:18px;border-top:1px solid #2a352a;padding-top:14px;color:var(--muted);font-size:12.5px}
+  .busy{position:fixed;left:50%;top:54%;transform:translate(-50%,-50%);z-index:6;color:var(--sand);font-size:15px;font-weight:600;opacity:0;transition:.3s}.busy.on{opacity:1}
+  .drop{position:fixed;inset:0;z-index:8;display:none;align-items:center;justify-content:center;background:rgba(14,20,13,.8);backdrop-filter:blur(3px)}
+  .drop.on{display:flex}.drop .r{width:170px;height:170px;border-radius:50%;border:2px dashed var(--sand);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--sand);font-weight:700}
+  .hint{position:fixed;left:32px;bottom:26px;z-index:5;color:var(--muted);font-size:12px;line-height:1.7;pointer-events:none}
+  kbd{background:#1c2a1b;border:1px solid #2a352a;border-radius:5px;padding:1px 6px;font:600 11px Inter;color:var(--ink)}
+</style></head>
+<body>
+<canvas id="cv"></canvas>
+<div class="meter"><div class="l">Осознание</div><div class="n" id="num">—</div><div class="sub" id="sub">живая вики</div></div>
+<div class="feed"><div class="big">Брось файл — ядро вырастет</div><div class="sm">.txt · .md · .json · дубли не в счёт</div></div>
+<div class="hint"><div><kbd>тяни</kbd> тему — останется на месте</div><div><kbd>клик</kbd> — суть · <kbd>2× клик</kbd> — отпустить</div></div>
+<div class="flash" id="flash"><div class="g" id="fg"></div><div class="t" id="ft"></div></div>
+<div class="opened" id="opened"><div class="k">Что открылось</div><div class="v" id="ov"></div></div>
+<div class="busy" id="busy">ем…</div>
+<aside id="panel"><div class="x" id="px">×</div><div class="k" id="pk"></div><h2 id="ph"></h2>
+  <div class="big" id="pb"></div><div class="m" id="pm"></div><div class="src" id="psrc"></div></aside>
+<div class="drop" id="drop"><div class="r">отпусти</div></div>
+<script>
+const C={anna:'#E0907D',entity_substrate:'#D9A679',socc:'#8AA897',self_construction:'#B6C28F',memory:'#9DB4C0',law_proof:'#C9A6C0',vision:'#C0B68A'};
+const SHORT={anna:'ANNA',entity_substrate:'Entity Substrate',socc:'SOCC',self_construction:'Автостройка',memory:'Память',law_proof:'Закон · Proof',vision:'Видение'};
+const LINE={ // каноничная суть — без обмана
+ anna:'Живой ИИ-администратор клиник. Telegram, память, запись, автообучение. Первая рождённая сущность.',
+ entity_substrate:'Орган рождения сущностей. 10 поверхностей, 3 ворот. Запечатан. На нём рождена ANNA.',
+ socc:'Суверенное самостроящееся ядро. Движется законными шагами через proof. Не демон, не AGI-заявка.',
+ self_construction:'Самостройка SOCC: что строить, как, запуск, контроль. Растёт по одному законному шагу.',
+ memory:'Memory Wave + живая вики. Именно это ты сейчас кормишь файлами — отсюда осознание.',
+ law_proof:'Закон и доказательство: proof-chain, гейты Codex/Hermes, enforcer. No fake pass — основа прочности.',
+ vision:'Supramental / AGI-направление. Куда система метит расти. Locked-capability через proof-гейты.'};
+const cv=document.getElementById('cv'),ctx=cv.getContext('2d');let W,H,DPR;
+function rs(){DPR=devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*DPR;cv.height=H*DPR;ctx.setTransform(DPR,0,0,DPR,0,0);place();}
+addEventListener('resize',rs);
+let nodes=[],drag=null,down=null,moved=false,t=0,ripples=[],sel=null;
+function place(){const cx=W/2,cy=H/2,R=Math.min(W,H)*0.30;
+  nodes.forEach((n,i)=>{const a=(i/nodes.length)*Math.PI*2-Math.PI/2;n.hx=cx+Math.cos(a)*R;n.hy=cy+Math.sin(a)*R;
+    if(n.x==null){n.x=n.hx;n.y=n.hy;}});}
+function rad(f){return 15+Math.sqrt(Math.max(f,1))*3.1;}
+function setState(s){const T=s.topics||{};const ex={};nodes.forEach(n=>ex[n.id]=n);
+  nodes=Object.keys(T).map(k=>{const o=ex[k]||{};return{id:k,title:SHORT[k]||k,full:T[k].title,
+    f:T[k].facts,src:T[k].sources,r:rad(T[k].facts),x:o.x,y:o.y,pin:o.pin,sat:o.sat||[],glow:o.glow||0};});
+  place();tweenNum(s.facts||0);document.getElementById('sub').textContent='живая вики · '+nodes.length+' тем · '+(s.sources||0)+' источников';}
+let curN=0;function tweenNum(to){const f=curN,d=to-f,t0=performance.now();
+  (function st(t){const k=Math.min(1,(t-t0)/800);curN=Math.round(f+d*(1-Math.pow(1-k,3)));
+   document.getElementById('num').textContent=curN.toLocaleString('ru');if(k<1)requestAnimationFrame(st);})(t0);}
+function draw(){t+=0.016;ctx.clearRect(0,0,W,H);const cx=W/2,cy=H/2;
+  const br=1+Math.sin(t*1.1)*0.045;const g=ctx.createRadialGradient(cx,cy,0,cx,cy,Math.min(W,H)*0.44*br);
+  g.addColorStop(0,'rgba(217,166,121,.055)');g.addColorStop(1,'rgba(14,20,13,0)');ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+  nodes.forEach(n=>{const dim=sel&&sel!==n;ctx.globalAlpha=dim?.4:1;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(n.x,n.y);ctx.strokeStyle='rgba(255,255,255,.06)';ctx.lineWidth=1;ctx.stroke();});
+  ctx.globalAlpha=1;
+  ripples=ripples.filter(r=>r.a>0);ripples.forEach(r=>{r.rad+=3.6;r.a-=0.011;
+    ctx.beginPath();ctx.arc(r.x,r.y,r.rad,0,7);ctx.strokeStyle='rgba(217,166,121,'+r.a+')';ctx.lineWidth=2;ctx.stroke();});
+  nodes.forEach(n=>{const dim=sel&&sel!==n;ctx.globalAlpha=dim?.32:1;
+    if(drag!==n){const tx=n.pin?n.px:n.hx,ty=n.pin?n.py:n.hy;n.x+=(tx-n.x)*0.06;n.y+=(ty-n.y)*0.06;}
+    n.sat.forEach(s=>{s.a+=s.sp;const sx=n.x+Math.cos(s.a)*(n.r+10+s.o),sy=n.y+Math.sin(s.a)*(n.r+10+s.o);
+      ctx.beginPath();ctx.arc(sx,sy,2,0,7);ctx.fillStyle=C[n.id]+'cc';ctx.fill();});
+    const pulse=n.glow?1+Math.sin(t*6)*0.11*n.glow:1;n.glow*=0.965;
+    const gr=ctx.createRadialGradient(n.x,n.y,0,n.x,n.y,n.r*2.5);gr.addColorStop(0,C[n.id]+'70');gr.addColorStop(1,C[n.id]+'00');
+    ctx.fillStyle=gr;ctx.beginPath();ctx.arc(n.x,n.y,n.r*2.5,0,7);ctx.fill();
+    ctx.beginPath();ctx.arc(n.x,n.y,n.r*pulse,0,7);ctx.fillStyle=(sel===n)?'#fff':C[n.id];ctx.fill();
+    if(n.pin){ctx.lineWidth=1.5;ctx.strokeStyle='rgba(255,255,255,.55)';ctx.beginPath();ctx.arc(n.x,n.y,n.r*pulse+5,0,7);ctx.stroke();}
+    ctx.font='700 13.5px Inter';ctx.textAlign='center';ctx.textBaseline='top';ctx.fillStyle='#EFece2';
+    ctx.shadowColor='#0c110b';ctx.shadowBlur=6;ctx.fillText(n.title,n.x,n.y+n.r*pulse+7);
+    ctx.font='600 11px Inter';ctx.fillStyle=C[n.id];ctx.fillText(n.f+' фактов',n.x,n.y+n.r*pulse+23);ctx.shadowBlur=0;
+    ctx.globalAlpha=1;});
+  requestAnimationFrame(draw);}
+rs();draw();
+function pick(x,y){let b=null,bd=1e9;nodes.forEach(n=>{const d=Math.hypot(x-n.x,y-n.y);if(d<n.r+12&&d<bd){bd=d;b=n;}});return b;}
+cv.addEventListener('pointerdown',e=>{down={x:e.clientX,y:e.clientY};moved=false;const n=pick(e.clientX,e.clientY);if(n){drag=n;cv.classList.add('drag');}});
+cv.addEventListener('pointermove',e=>{if(down&&Math.hypot(e.clientX-down.x,e.clientY-down.y)>4)moved=true;
+  if(drag&&moved){drag.x=e.clientX;drag.y=e.clientY;drag.pin=true;drag.px=e.clientX;drag.py=e.clientY;}});
+addEventListener('pointerup',e=>{cv.classList.remove('drag');
+  if(drag&&!moved){sel===drag?closePanel():openPanel(drag);}
+  drag=null;down=null;});
+cv.addEventListener('dblclick',e=>{const n=pick(e.clientX,e.clientY);
+  if(n){n.pin=false;}else{nodes.forEach(x=>x.pin=false);}});
+function openPanel(n){sel=n;document.getElementById('pk').textContent=n.full.split('—')[0].trim();
+  document.getElementById('pk').style.color=C[n.id];document.getElementById('ph').textContent=n.title;
+  document.getElementById('pb').innerHTML=n.f+' <small>фактов</small>';
+  document.getElementById('pm').textContent=LINE[n.id]||'';
+  document.getElementById('psrc').textContent=n.src+' источников · авторская линия';
+  document.getElementById('panel').classList.add('on');}
+function closePanel(){sel=null;document.getElementById('panel').classList.remove('on');}
+document.getElementById('px').onclick=closePanel;
+function grow(res){const f=document.getElementById('flash');
+  if(res.duplicate){document.getElementById('fg').textContent='уже знаю';document.getElementById('ft').textContent='это не новое — ядро не выросло';
+    f.classList.add('on');setTimeout(()=>f.classList.remove('on'),2600);return;}
+  setState(res.after);
+  Object.keys(res.grown||{}).forEach(k=>{const n=nodes.find(x=>x.id===k);if(!n)return;n.glow=2.4;ripples.push({x:n.x,y:n.y,rad:n.r,a:.75});
+    const add=Math.max(1,Math.min(16,(res.grown[k].facts||0)+Math.ceil((res.grown[k].timeline||0)/3)));
+    for(let i=0;i<add;i++)n.sat.push({a:Math.random()*7,sp:.018+Math.random()*.02,o:Math.random()*16});});
+  const d=res.delta;document.getElementById('fg').textContent='+'+(d.facts||d.timeline||d.sources);
+  const top=Object.values(res.grown||{}).sort((a,b)=>(b.facts+b.timeline)-(a.facts+a.timeline))[0];
+  document.getElementById('ft').textContent='ядро выросло'+(top?' · «'+top.title.split('—')[0].trim()+'»':'');
+  f.classList.add('on');setTimeout(()=>f.classList.remove('on'),3200);
+  if(res.next_step){const o=document.getElementById('opened');document.getElementById('ov').textContent=res.next_step;o.classList.add('on');}}
+async function feed(file){document.getElementById('drop').classList.remove('on');document.getElementById('busy').classList.add('on');
+  try{const buf=await file.arrayBuffer();const r=await fetch('/upload',{method:'POST',headers:{'X-Filename':encodeURIComponent(file.name)},body:buf});
+    const j=await r.json();document.getElementById('busy').classList.remove('on');j.ok?grow(j):alert('не вышло: '+(j.error||'?'));}
+  catch(e){document.getElementById('busy').classList.remove('on');alert('сервер не запущен: python3 scripts/socc/socc_memory_server_v2.py');}}
+addEventListener('dragover',e=>{e.preventDefault();document.getElementById('drop').classList.add('on');});
+addEventListener('dragleave',e=>{if(e.clientX<=0||e.clientY<=0)document.getElementById('drop').classList.remove('on');});
+addEventListener('drop',e=>{e.preventDefault();const f=e.dataTransfer.files[0];if(f)feed(f);});
+fetch('/state').then(r=>r.json()).then(j=>{if(j.ok)setState(j.state);}).catch(()=>{document.getElementById('num').textContent='220';document.getElementById('sub').textContent='открой через сервер, чтобы кормить ядро';});
+</script>
+</body></html>

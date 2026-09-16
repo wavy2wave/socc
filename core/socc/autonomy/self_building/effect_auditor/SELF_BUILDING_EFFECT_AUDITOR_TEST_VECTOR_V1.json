@@ -1,0 +1,57 @@
+{
+  "created_at_msk": "2026-06-18T01:31:16+03:00",
+  "created_at_utc": "2026-06-17T22:31:16.735210+00:00",
+  "id": "SELF_BUILDING_EFFECT_AUDITOR_TEST_VECTOR_V1",
+  "negative_case_semantic_null": {
+    "after": {
+      "changed_artifacts": [],
+      "expected_lawful_next_after": "y",
+      "expected_lawful_next_before": "x",
+      "expected_memory": "MEMORY_WAVE/reports/autonomy/SELF_BUILDING_EFFECT_AUDITOR_V1_MEMORY.json",
+      "expected_upstream_proof_after": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_V1_PROOF.json",
+      "material_claims": [],
+      "required_artifacts": [],
+      "route_after": {
+        "lawful_next": "x",
+        "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_V1_PROOF.json"
+      }
+    },
+    "before": {
+      "route_before": {
+        "lawful_next": "x"
+      }
+    }
+  },
+  "positive_case": {
+    "after": {
+      "changed_artifacts": [
+        "scripts/socc/socc_self_building_effect_auditor_v1.py"
+      ],
+      "expected_lawful_next_after": "y",
+      "expected_lawful_next_before": "x",
+      "expected_memory": null,
+      "expected_upstream_proof_after": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_V1_PROOF.json",
+      "material_claims": [
+        "auditor file built",
+        "spec built",
+        "route transition planned"
+      ],
+      "required_artifacts": [
+        "core/socc/autonomy/self_building/effect_auditor/SELF_BUILDING_EFFECT_AUDITOR_SPEC_V1.json"
+      ],
+      "route_after": {
+        "continuous_loop_enabled": false,
+        "daemon_running": false,
+        "lawful_next": "y",
+        "scheduler_installed": false,
+        "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_V1_PROOF.json"
+      }
+    },
+    "before": {
+      "route_before": {
+        "lawful_next": "x"
+      }
+    }
+  },
+  "status": "BUILT"
+}

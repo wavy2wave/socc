@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-06-09T21:06:10.953152+00:00",
+  "current": "run_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_FOREGROUND_RUNNER_LIVE_PANEL_V1",
+  "lifecycle": [
+    "SELECTED::build_entity_substrate_construction_plan_v1",
+    "LOCAL_LINEAGE_CHECK::PASS::old_project_ingest_bundle",
+    "DOING::write_entity_substrate_construction_plan",
+    "DONE::entity_substrate_construction_plan_written",
+    "CLOSED::runner_step_closed",
+    "NEXT::review_entity_substrate_construction_plan_v1"
+  ],
+  "next": "review_entity_substrate_construction_plan_v1",
+  "plan": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "stage": "CLOSED_NEXT",
+  "status": "PASS",
+  "truth_boundary": "Foreground runner panel. No daemon/background/network."
+}

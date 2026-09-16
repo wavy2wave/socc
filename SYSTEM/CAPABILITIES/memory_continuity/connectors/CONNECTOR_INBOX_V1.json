@@ -1,0 +1,14 @@
+{
+  "id": "CONNECTOR_INBOX_V1",
+  "kind": "external_source_folder",
+  "source_root": "/Users/wavysexy/SOCC/SOVEREIGN/MEMORY/inbox",
+  "recurse": true,
+  "include_suffixes": [".txt", ".md", ".eml", ".json"],
+  "exclude_globs": ["*.DS_Store", "**/.DS_Store"],
+  "read_only": true,
+  "no_copy": true,
+  "no_move": true,
+  "no_network": true,
+  "note": "Drop-folder inbox. Pour new chat exports / notes here (or sync a Google Drive folder to this path). One ingest run folds them into the wiki.",
+  "truth_boundary": "Read-only inbox. Knowledge Substrate registers metadata + line anchors only; files are never moved or copied."
+}

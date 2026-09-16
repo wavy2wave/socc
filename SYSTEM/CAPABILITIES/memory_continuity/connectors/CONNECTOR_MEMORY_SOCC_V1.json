@@ -1,0 +1,14 @@
+{
+  "id": "CONNECTOR_MEMORY_SOCC_V1",
+  "kind": "external_source_folder",
+  "source_root": "/Users/wavysexy/Downloads/MEMORY SOCC",
+  "recurse": true,
+  "include_suffixes": [".txt", ".md", ".eml", ".json"],
+  "exclude_globs": ["*.DS_Store", "**/.DS_Store"],
+  "read_only": true,
+  "no_copy": true,
+  "no_move": true,
+  "no_network": true,
+  "note": "External raw-content folder. A friend deploying SOCC sets source_root to their own folder. Files are never moved or copied; only metadata is registered.",
+  "truth_boundary": "Read-only external source root. Knowledge Substrate registers metadata + line anchors only; original files are untouched."
+}

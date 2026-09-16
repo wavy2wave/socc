@@ -1,0 +1,1 @@
+{"claims": [{"text": "- Not daemon", "line": 16, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Daemon": 1, "Proof": 1}}

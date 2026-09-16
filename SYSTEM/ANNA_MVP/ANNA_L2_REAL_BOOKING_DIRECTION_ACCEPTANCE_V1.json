@@ -1,0 +1,15 @@
+{
+  "artifact": "ANNA_L2_REAL_BOOKING_DIRECTION_ACCEPTANCE_V1",
+  "accepts": "ANNA_L2_REAL_BOOKING_DIRECTION_V1",
+  "status": "ACCEPTED",
+  "accepted_by": "operator",
+  "accepted_at_utc": "2026-06-30",
+  "operator_signal": "accept L2",
+  "accepted_scope": "Thin vertical slice = manual confirmation loop (backend 'manual'): structured lead -> reception confirms -> ANNA confirms to patient + reminder. Pluggable booking-spine so _book routes to a backend by clinic config. Google Calendar is the next frontier; YClients/Dikidi gated behind real partnership/creds (UNVERIFIED).",
+  "next": "build_anna_l2_construction_plan_v1 (booking-spine + manual loop)",
+  "boundaries_carried": [
+    "No connection to any clinic system without its explicit creds + consent.",
+    "Stealth: confirmation/reminder sound like a live admin, never 'a bot booked you'.",
+    "No revenue claim (that is L3). True unkillable needs always-on host (open operator decision)."
+  ]
+}

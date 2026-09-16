@@ -1,0 +1,78 @@
+{
+  "id": "TOPIC_MAP_V1",
+  "purpose": "Smyslovaya taksonomiya tem zhivoy viki SOCC. Temy delyatsya PO SMYSLU (chelovecheskie temy), a NE po chastote upominaniy. Kazhdaya tema sobiraet pod sebya neskolko leksikon-sushchnostey parsera. Eto chinit 'temy po upominaniyam'.",
+  "authored_at": "2026-06-29",
+  "assignment_rule": "Kazhdyy claim privyazyvaetsya k ODNOY pervichnoy teme po samoy spetsifichnoy sushchnosti na stroke (rank: men'she = spetsifichnee, naznachaem tuda). Boilerplate-granitsy (does-not-birth/daemon/AGI...) detektiruyutsya i skhlopyvayutsya, a ne plodyatsya.",
+  "topics": [
+    {
+      "id": "anna",
+      "title": "ANNA — продукт (ИИ-администратор стоматологий)",
+      "rank": 0,
+      "summary": "Вертикальный AI-агент: персона администратора стоматологической клиники, неотличимая от человека. Первый продукт-сущность SOCC. Triage боли → запись → память по клиенту, 24/7. Цель — подписка 1000+ клиник.",
+      "members": ["ANNA", "Administrator", "Dental Clinic", "Booking", "Persona", "Vertical Agent", "Subscription", "Telegram"],
+      "keywords": ["анна", "администратор клиники", "запис", "стоматолог", "клиник", "первый контакт", "first-contact"],
+      "main_line": "anna",
+      "goal_chain": "ANNA MVP (конец цепочки — продукт, который зарабатывает)"
+    },
+    {
+      "id": "entity_substrate",
+      "title": "Entity Substrate — орган рождения сущностей",
+      "rank": 1,
+      "summary": "Законный слой-субстрат SOCC, который готовит всё для рождения сущностей под ключ (identity/state/memory/lineage/capability/lawful_action/dashboard/proof/freeze-stop/product-binding). ANNA рождается только после его seal.",
+      "members": ["Entity Substrate"],
+      "keywords": ["субстрат", "рождени", "поверхност", "surface", "lineage", "родослов"],
+      "main_line": "entity_substrate",
+      "goal_chain": "Entity Substrate (орган рождения — середина цепочки)"
+    },
+    {
+      "id": "socc",
+      "title": "SOCC — суверенное ядро (кто такая система)",
+      "rank": 6,
+      "summary": "Sovereign Cognitive Operating Core — суверенное когнитивное ядро, идентичность системы: кто она, чем НЕ является (не бот, не daemon, не AGI без proof), её органы и границы автономии. Способность строить себя вынесена в отдельную тему «Автономное строительство».",
+      "members": ["SOCC"],
+      "keywords": ["socc", "ядро", "суверен", "sovereign", "идентичн", "кто она", "route authority"],
+      "main_line": "socc",
+      "goal_chain": "SOCC core (начало цепочки — sealed)"
+    },
+    {
+      "id": "self_construction",
+      "title": "Автономное строительство — самостройка SOCC",
+      "rank": 2,
+      "summary": "Способность SOCC строить самого себя по закону: один bounded-шаг → все гейты PASS → материальный эффект → proof → стоп. Базовый цикл memory→…→updated self-model. Доказано: 2 цикла, 2 тика, repeatability, первый шаг SEALED. Не daemon, не 24/7, не AGI без proof.",
+      "members": ["Self-construction", "Autopilot", "Daemon", "PI Agent"],
+      "keywords": ["самостройк", "self-build", "self-construct", "автоном", "autonom", "bounded", "tick", "тик", "controlled loop", "автопилот", "gate", "гейт", "reconcile"],
+      "main_line": "self_construction",
+      "goal_chain": "SOCC self-construction (двигатель самоэволюции — sealed)"
+    },
+    {
+      "id": "memory",
+      "title": "Память — Memory Wave + живая вики (знание системы)",
+      "rank": 3,
+      "summary": "Единая память SOCC: одна Memory Wave (опыт/proof/граф) + живая Википедия как знание-перед-стройкой. Сущности получают surface, отдельного корня памяти не создают. Эта вики — память самой системы.",
+      "members": ["Memory Wave", "Knowledge Substrate", "Wikipedia"],
+      "keywords": ["памят", "memory", "вики", "wiki", "знани", "context pack", "letopis", "летопис"],
+      "main_line": "memory_wave",
+      "goal_chain": "Память — фундамент понимания перед любой стройкой"
+    },
+    {
+      "id": "law_proof",
+      "title": "Закон и доказательство — Proof, гейты Codex/Hermes",
+      "rank": 4,
+      "summary": "Метод-закон SOCC: ничего не исполняется без proof и PASS всех гейтов. Proof-chain, Codex (код), Hermes (ревью/научный гейт). Это дисциплина против фантом-ОК.",
+      "members": ["Proof", "Codex", "Hermes"],
+      "keywords": ["proof", "доказательств", "гейт", "gate", "PASS", "review", "ревью", "закон"],
+      "main_line": "law_proof",
+      "goal_chain": "Закон — рельсы, по которым едет вся цепочка"
+    },
+    {
+      "id": "vision",
+      "title": "Видение — Supramental / AGI-направление",
+      "rank": 5,
+      "summary": "Долгосрочное направление (10 лет, AGI): самопознающий организм знания, который сам находит пробелы/конфликты и растёт по proof. Включает родственные сущности (Тамагуру).",
+      "members": ["Supramental", "Tamaguru"],
+      "keywords": ["supramental", "супраментал", "agi", "сознани", "тамагуру", "tamaguru", "видени"],
+      "main_line": "vision",
+      "goal_chain": "Видение — куда всё это растёт"
+    }
+  ]
+}

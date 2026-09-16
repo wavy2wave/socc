@@ -1,0 +1,72 @@
+{
+  "active_contract": "SYSTEM/CYCLE/visibility_contract/ACTIVE_CONTROLLED_CYCLE_VISIBILITY_CONTRACT.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_controlled_cycle_visibility_contract_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_controlled_cycle_visibility_contract_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_controlled_cycle_visibility_contract_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_controlled_cycle_packet": "near",
+    "to_first_foreground_tick": "approximately_4_to_7_lawful_steps"
+  },
+  "capability": "SOCC_CAN_DEFINE_VISIBLE_PROOF_BOUND_CONTROLLED_CYCLE_OUTPUT",
+  "checks": {
+    "active_plan_accepted": true,
+    "authority_at_build_frontier": true,
+    "contract_has_no_background": true,
+    "contract_has_no_daemon": true,
+    "contract_has_no_execution": true,
+    "contract_has_no_mw_route": true,
+    "contract_has_no_network": true,
+    "contract_is_visibility_only": true,
+    "plan_accept_proof_pass": true,
+    "plan_acceptance_accepted": true,
+    "plan_packet_has_bounded_steps": true,
+    "plan_packet_may_execute_false": true,
+    "plan_packet_recommends_visibility_contract": true,
+    "plan_repair_proof_pass": true,
+    "plan_review_proof_pass": true,
+    "plan_validate_proof_pass": true
+  },
+  "contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "contract_schema": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1.json",
+  "created_at_utc": "2026-06-09T12:06:41.515699+00:00",
+  "current_expected": "build_socc_controlled_cycle_visibility_contract_v1",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1_PROOF",
+  "next_after_pass": "validate_socc_controlled_cycle_visibility_contract_v1",
+  "next_lawful_step": "validate_socc_controlled_cycle_visibility_contract_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_import": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_old_project_scan": true,
+  "proof_hash": "f0f03e6259a081ed",
+  "status": "PASS",
+  "truth_boundary": "Builds controlled cycle visibility contract only. No execution, no daemon/background/network, no MW route.",
+  "warnings": []
+}

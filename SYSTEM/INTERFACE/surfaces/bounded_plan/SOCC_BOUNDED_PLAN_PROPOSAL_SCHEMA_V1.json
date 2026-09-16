@@ -1,0 +1,30 @@
+{
+  "created_at_utc": "2026-06-09T10:37:17.251323+00:00",
+  "field_rules": {
+    "bounded_steps": "must_be_finite_list",
+    "expected_effect": "must_be_measurable_before_after_or_artifact_delta",
+    "lawful_next_alignment": "must_match_route_authority_current_lawful_next",
+    "may_execute": "must_be_false_in_v1",
+    "proof_requirements": "must_name_expected_proof_artifacts",
+    "requires_review": "must_be_true"
+  },
+  "id": "SOCC_BOUNDED_PLAN_PROPOSAL_SCHEMA_V1",
+  "required_fields": [
+    "plan_id",
+    "created_at_utc",
+    "source_intent_packet",
+    "observed_current_lawful_next",
+    "lawful_next_alignment",
+    "bounded_goal",
+    "bounded_steps",
+    "expected_effect",
+    "proof_requirements",
+    "validation_requirements",
+    "risk_class",
+    "requires_review",
+    "may_execute",
+    "forbidden_actions"
+  ],
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "Schema defines bounded plan proposals only. It does not execute plans."
+}

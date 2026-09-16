@@ -1,0 +1,17 @@
+{
+  "id": "service-leadgen-RU-2fd5c08168",
+  "ts": "2026-06-30T17:13:54.069818+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": false
+  },
+  "hard_failures": [
+    "warden_gate"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-2fd5c08168_repair_required",
+  "truth_boundary": "WARDEN: RL3: связка выдаёт ИИ за конкретного живого человека",
+  "proof_hash": "2baf695d71faa294"
+}

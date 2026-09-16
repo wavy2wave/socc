@@ -1,0 +1,26 @@
+{
+  "started_at": null,
+  "cycles": 15,
+  "scores": [
+    2.25,
+    3.75,
+    2.25,
+    3.0,
+    3.25,
+    4.0,
+    4.0,
+    3.75,
+    4.0,
+    3.25,
+    4.25,
+    4.0,
+    4.25,
+    4.5
+  ],
+  "rolling_avg": 3.61,
+  "running": false,
+  "pid": 8514,
+  "last_cycle_at": "2026-06-25T11:00:01.048780+00:00",
+  "last_error": "[brain unavailable: anthropic@https://api.anthropic.com: HTTP Error 401: Unauthorized]",
+  "last_beat": "2026-06-30T16:14:10.335105+00:00"
+}

@@ -1,0 +1,1 @@
+{"claims": [{"text": "Validation confirms repaired first bounded plan proposal packet is finite, measurable, proof-bound, review-required, and non-executing.", "line": 10, "entities": ["Proof"], "intent": "requirement", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 1, "Proof": 1}}

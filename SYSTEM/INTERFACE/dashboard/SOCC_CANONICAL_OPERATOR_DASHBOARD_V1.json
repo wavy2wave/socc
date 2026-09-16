@@ -1,0 +1,77 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_ACCEPTANCE_V1.json",
+  "active_pointer": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+  "created_at_utc": "2026-06-08T19:33:06.888668+00:00",
+  "dashboard_state": "ACCEPTED_ACTIVE_CANONICAL_DASHBOARD",
+  "evolution": {
+    "allowed": true,
+    "next_versions": "V2,V3,...",
+    "old_versions": "archive/lineage only",
+    "rule": "Dashboard evolves only by lawful versioned proposal, validation, review, and active pointer update."
+  },
+  "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_V1",
+  "law": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_LAW_V1.json",
+  "lawful_next": "socc_canonical_operator_dashboard_accepted_v1",
+  "meaning": "A visible control surface for SOCC state, pulse, lawful next, proof-chain, lineage, safety, and bounded continuity.",
+  "must_not_do": [
+    "execute step",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "change route without proof",
+    "hide hard failures",
+    "claim AGI/entity status",
+    "create competing active dashboard"
+  ],
+  "must_show": [
+    "active_root",
+    "route_status",
+    "current_lawful_next",
+    "last_committed_step",
+    "pulse_status",
+    "control_status",
+    "upstream_proof",
+    "proof_count",
+    "memory_count",
+    "self_building_count",
+    "daemon_running",
+    "scheduler_installed",
+    "background_loop_enabled",
+    "network_used",
+    "entity_birth_allowed",
+    "anna_birth_allowed",
+    "agi_claim_allowed",
+    "working_base_state",
+    "operator_handoff_state",
+    "next_lawful_action",
+    "truth_boundary"
+  ],
+  "not_meaning": [
+    "not executor",
+    "not daemon",
+    "not background loop",
+    "not second parallel panel",
+    "not replacement of route authority"
+  ],
+  "purpose": "The single canonical operator dashboard organ for SOCC.",
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "source_of_truth": {
+    "control": "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "handoff": "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.json",
+    "old_panel_dashboard_forensic": "MIGRATION/audits/SOCC_OLD_OPERATOR_PANEL_DASHBOARD_FORENSIC_V1.json",
+    "pulse": "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "route": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "working_base": "FOUNDATION/SOCC_WORKING_BASE_V1.json"
+  },
+  "status": "PASS",
+  "style": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_STYLE_V1.json",
+  "truth_boundary": "Canonical dashboard artifact only. No daemon/background/network."
+}

@@ -1,0 +1,84 @@
+{
+  "acceptance_artifact": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_ACCEPTANCE_V1.json",
+  "acceptance_checks": {
+    "active_intent_accepted": true,
+    "active_surface_candidate": true,
+    "build_proof_pass": true,
+    "forbidden_background": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_code": true,
+    "forbidden_execute_plan": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "intent_accept_proof_pass": true,
+    "intent_acceptance_accepted": true,
+    "next_first_bounded_plan_packet": true,
+    "review_artifact_pass": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "reviewed_capability_ok": true,
+    "schema_has_finite_steps_rule": true,
+    "schema_has_may_execute_rule": true,
+    "schema_has_measurable_effect_rule": true,
+    "surface_status_built_candidate": true,
+    "surface_type_bounded_plan_only": true,
+    "template_may_execute_false": true,
+    "template_not_executable": true,
+    "template_requires_review_true": true,
+    "template_risk_review_required": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true
+  },
+  "acceptance_md": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_ACCEPTANCE_V1.md",
+  "active_accepted_surface": "SYSTEM/INTERFACE/surfaces/bounded_plan/ACTIVE_ACCEPTED_BOUNDED_PLAN_PROPOSAL_SURFACE.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_bounded_plan_proposal_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_bounded_plan_proposal_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_bounded_plan_proposal_surface_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_HAS_CANONICAL_BOUNDED_PLAN_PROPOSAL_SURFACE",
+  "created_at_utc": "2026-06-09T11:38:21.590296+00:00",
+  "current_expected": "accept_socc_bounded_plan_proposal_surface_v1",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF",
+  "next_after_pass": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "next_lawful_step": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "plan_schema": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SCHEMA_V1.json",
+  "plan_template": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_TEMPLATE_V1.json",
+  "proof_hash": "73b337ef397e07ce",
+  "status": "PASS",
+  "surface_artifact": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_V1.json",
+  "truth_boundary": "Accepts bounded plan proposal surface only. No execution, no daemon/background/network, no MW route.",
+  "warnings": []
+}

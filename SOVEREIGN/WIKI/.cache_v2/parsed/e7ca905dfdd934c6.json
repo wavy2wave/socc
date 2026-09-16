@@ -1,0 +1,1 @@
+{"claims": [{"text": "Review confirms dashboard-language binding is read-only, non-executing, non-daemon, non-network, and ready for acceptance.", "line": 11, "entities": ["Daemon"], "intent": "definition", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 1, "Daemon": 1}}

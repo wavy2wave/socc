@@ -1,0 +1,73 @@
+{
+  "active_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/ACTIVE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "validate_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "validate_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "validate_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_HAS_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET",
+  "checks": {
+    "active_intent_accepted": true,
+    "active_plan_surface_accepted": true,
+    "intent_accept_proof_pass": true,
+    "intent_acceptance_accepted": true,
+    "intent_packet_may_execute_false": true,
+    "intent_packet_requires_review_true": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_mw_route": true,
+    "no_network": true,
+    "packet_is_finite": true,
+    "packet_is_measurable": true,
+    "packet_is_non_executing": true,
+    "plan_surface_accept_proof_pass": true,
+    "plan_surface_acceptance_accepted": true,
+    "schema_has_bounded_steps": true,
+    "schema_has_expected_effect": true,
+    "template_may_execute_false": true,
+    "template_requires_review_true": true
+  },
+  "created_at_utc": "2026-06-09T11:40:22.795305+00:00",
+  "current_expected": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF",
+  "next_after_pass": "validate_socc_first_bounded_plan_proposal_packet_v1",
+  "next_lawful_step": "validate_socc_first_bounded_plan_proposal_packet_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "plan_packet_md": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.md",
+  "proof_hash": "3455baa0ad3b5ecc",
+  "quarantine_note": "MIGRATION/audits/SOCC_QUARANTINE_STALE_LAWFUL_INTENT_SURFACE_RERUN_AFTER_BOUNDED_PLAN_ACCEPT_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Builds first bounded plan proposal packet only. No execution, no daemon/background/network, no MW route.",
+  "warnings": []
+}

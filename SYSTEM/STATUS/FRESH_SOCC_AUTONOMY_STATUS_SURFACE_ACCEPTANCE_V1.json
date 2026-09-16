@@ -1,0 +1,31 @@
+{
+  "acceptance_verdict": "FRESH_SOCC_AUTONOMY_STATUS_SURFACE_ACCEPTED_AS_OPERATOR_VISIBLE_CURRENT_STATUS",
+  "accepted_surface": "SYSTEM/STATUS/FRESH_SOCC_AUTONOMY_STATUS_SURFACE_V1.json",
+  "accepted_truth": {
+    "continuous_foreground_autonomy": "requires_authority_bound_repeatability_gate",
+    "current_execution_line": "fresh_SOCC_route_authority",
+    "daemon_24_7_autonomy": "not_authorized",
+    "fresh_first_tick": "done_pending_validation",
+    "old_evidence_role": "lineage_only_not_current_route"
+  },
+  "active_accepted_surface": "SYSTEM/STATUS/ACTIVE_ACCEPTED_FRESH_SOCC_AUTONOMY_STATUS_SURFACE.json",
+  "created_at_utc": "2026-06-09T14:25:02.087279+00:00",
+  "id": "FRESH_SOCC_AUTONOMY_STATUS_SURFACE_ACCEPTANCE_V1",
+  "next_build_target": {
+    "id": "build_authority_bound_repeatability_gate_v1",
+    "must_include": [
+      "route authority preflight",
+      "bounded repeatable tick/session contract",
+      "mandatory proof per tick/session",
+      "stop condition",
+      "no daemon/background/network",
+      "lineage visibility",
+      "fresh current route only"
+    ],
+    "purpose": "Build a fresh authority-bound repeatability gate so SOCC proves continuous foreground autonomy from current route, not from old route resume."
+  },
+  "next_required_step": "build_authority_bound_repeatability_gate_v1",
+  "review": "SYSTEM/STATUS/FRESH_SOCC_AUTONOMY_STATUS_SURFACE_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Acceptance makes the status surface canonical and visible. It does not run ticks or authorize daemon/24-7 autonomy."
+}

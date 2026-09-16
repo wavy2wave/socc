@@ -1,0 +1,28 @@
+{
+  "agi_claim_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/review_codex_hermes_governance_20260608T184729Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/review_codex_hermes_governance_20260608T184729Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/review_codex_hermes_governance_20260608T184729Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_REVIEW_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T18:47:30.256029+00:00",
+  "current_before": "review_codex_hermes_governance_adoption_v1",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_CODEX_HERMES_GOVERNANCE_ADOPTION_V1_PROOF",
+  "network_used": false,
+  "next_after_review": "build_controlled_continuous_autonomy_seal_v1",
+  "observe_pass": true,
+  "selected_old_governance_lineage_count": 15,
+  "status": "PASS",
+  "truth_boundary": "Codex/Hermes governance review only. No daemon/background/network.",
+  "warnings": []
+}

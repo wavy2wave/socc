@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "validate_next_self_building_cycle_under_effect_auditor_lane_v1",
+  "panel_hash": "0240c3b214554f7383dd774b",
+  "progress_hash": "139e73591428c6d54fe24ce3",
+  "pulse_hash": "1c6903cc1892a44a9ed4d4ce",
+  "route_hash": "1ef5451fe549389f2cf3b0c9",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260618T102637226891Z",
+  "status": "PASS",
+  "truth_boundary": "Next bounded self-building cycle under effect-auditor lane build only. This prepares the first cycle after lane-law activation and selects an idempotent step guard as the next bounded target, because the last defect class was out-of-phase validation rerun overwriting proof artifacts. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_V1_PROOF.json"
+}

@@ -1,0 +1,175 @@
+{
+  "assignment_lifecycle": [
+    {
+      "description": "Operator submits a task as a lawful assignment object.",
+      "may_execute_build": false,
+      "required_outputs": [
+        "assignment_id",
+        "operator_intent",
+        "scope",
+        "non_goals",
+        "risk_boundary",
+        "expected_deliverable",
+        "evidence_requirements"
+      ],
+      "stage": "assignment_intake"
+    },
+    {
+      "description": "SOCC creates a direction/research-build lane from the assignment.",
+      "may_execute_build": false,
+      "required_outputs": [
+        "direction_id",
+        "direction_name",
+        "reason",
+        "lawful_next",
+        "dependencies",
+        "dashboard_pointer"
+      ],
+      "stage": "direction_creation"
+    },
+    {
+      "description": "SOCC generates a construction plan before any execution.",
+      "may_execute_build": false,
+      "required_outputs": [
+        "plan_id",
+        "steps",
+        "acceptance_criteria",
+        "proof_chain_targets",
+        "rollback_or_stop_conditions",
+        "operator_visible_summary"
+      ],
+      "stage": "build_plan_generation"
+    },
+    {
+      "description": "Plan must pass scientific/engineering quality criteria before build.",
+      "may_execute_build": false,
+      "required_outputs": [
+        "testability",
+        "measurability",
+        "falsifiability",
+        "minimal_scope",
+        "failure_modes",
+        "evidence_chain"
+      ],
+      "stage": "scientific_quality_gate"
+    },
+    {
+      "description": "Hermes quality/law/reasoning review must approve the plan where Hermes capability is available.",
+      "may_execute_build": false,
+      "required_outputs": [
+        "hermes_review_status",
+        "lawful_scope_check",
+        "risk_review",
+        "operator_safety_boundary"
+      ],
+      "stage": "hermes_gate"
+    },
+    {
+      "description": "Codex/code-quality review must approve patches/scripts where code is involved.",
+      "may_execute_build": false,
+      "required_outputs": [
+        "codex_review_status",
+        "patch_quality",
+        "idempotence_check",
+        "filesystem_safety_check",
+        "test_or_validation_plan"
+      ],
+      "stage": "codex_gate"
+    },
+    {
+      "description": "Only after build plan, scientific gate, Hermes gate, Codex gate, review and acceptance may SOCC run a bounded assignment build session.",
+      "may_execute_build": "only_after_separate_execute_frontier",
+      "required_outputs": [
+        "review_proof",
+        "acceptance_proof",
+        "bounded_run_surface",
+        "dashboard_trace"
+      ],
+      "stage": "review_accept_execute"
+    }
+  ],
+  "created_at_utc": "2026-06-09T15:25:48.859255+00:00",
+  "current_expected": "build_assignment_direction_autonomy_surface_v1",
+  "dashboard_visibility_contract": {
+    "assignment_panel_pointer": "SYSTEM/DASHBOARD/ACTIVE_ASSIGNMENT_DIRECTION_PANEL_POINTER_V1.json",
+    "dashboard_root": "SYSTEM/DASHBOARD",
+    "must_show": [
+      "assignment_id",
+      "direction_id",
+      "current_stage",
+      "lawful_next",
+      "blocked_reason_if_any",
+      "gates_status",
+      "Hermes status",
+      "Codex status",
+      "proof artifacts",
+      "memory artifacts",
+      "what changed",
+      "what remains",
+      "operator-visible next action"
+    ]
+  },
+  "first_assignment_template": {
+    "assignment_id": "ASSIGNMENT_TEMPLATE_V1",
+    "assignment_text": "To be supplied as lawful assignment object.",
+    "initial_allowed_next": "build_assignment_intake_object_v1",
+    "not_allowed_yet": [
+      "execute assignment build",
+      "start daemon",
+      "background loop",
+      "network autonomy",
+      "skip Hermes/Codex gates",
+      "skip dashboard visibility"
+    ],
+    "operator": "wavy"
+  },
+  "future_frontiers": [
+    "review_assignment_direction_autonomy_surface_v1",
+    "accept_assignment_direction_autonomy_surface_v1",
+    "build_assignment_intake_object_v1",
+    "review_assignment_intake_object_v1",
+    "accept_assignment_intake_object_v1",
+    "build_assignment_direction_v1",
+    "review_assignment_direction_v1",
+    "accept_assignment_direction_v1",
+    "build_assignment_construction_plan_v1",
+    "run_assignment_scientific_quality_gate_v1",
+    "run_assignment_hermes_gate_v1",
+    "run_assignment_codex_gate_v1",
+    "review_assignment_build_plan_and_gates_v1",
+    "accept_assignment_build_plan_and_gates_v1",
+    "build_assignment_bounded_execution_surface_v1"
+  ],
+  "id": "ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_V1",
+  "mandatory_filters_before_any_assignment_build": {
+    "assignment_object_required": true,
+    "bounded_stop_required": true,
+    "build_plan_required": true,
+    "codex_gate_required_if_code_or_patch_present": true,
+    "direction_required": true,
+    "hermes_gate_required_if_capability_present": true,
+    "memory_required": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_l3_claim": true,
+    "no_network_without_explicit_lawful_scope": true,
+    "no_old_route_resume": true,
+    "operator_dashboard_visibility_required": true,
+    "proof_chain_required": true,
+    "review_accept_required_before_execution": true,
+    "route_authority_preflight": true,
+    "scientific_quality_gate_required": true
+  },
+  "next_required_step": "review_assignment_direction_autonomy_surface_v1",
+  "purpose": "Allow SOCC to accept an operator assignment as a lawful object, create a direction, derive a build plan, pass mandatory gates, and expose execution through dashboard-visible state.",
+  "source_authority": {
+    "daemon_24_7_autonomy": "not_authorized",
+    "fresh_authority_bound_repeatability": "SEALED",
+    "old_route_resume": false,
+    "repeatability_seal": "SYSTEM/AUTONOMY/repeatability_evidence/FIRST_AUTHORITY_BOUND_REPEATABILITY_EVIDENCE_SEAL_V1.json",
+    "repeatability_seal_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_SEAL_FIRST_AUTHORITY_BOUND_REPEATABILITY_EVIDENCE_V1_PROOF.json"
+  },
+  "status": "BUILT_CANDIDATE",
+  "surface_type": "FRESH_SOCC_ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE",
+  "truth_boundary": "This surface enables assignment-direction autonomy as a lawful control surface. It does not run an assignment, execute patches, start daemon/background/network, or claim L3."
+}

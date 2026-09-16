@@ -1,0 +1,125 @@
+{
+ "schema": "ymarket.zaliv.live.readiness.v1",
+ "ts": "2026-09-03T21:18:11.835828+00:00",
+ "task": "T-0b6e8545",
+ "store": "atlas-express-film",
+ "owner": "CATEGORIST",
+ "category": "categories",
+ "donor": "vozdushno-puzyrkovaya-plenka (shop.cargo-avto.ru)",
+ "slug": "puzyrkovaya-plenka",
+ "marketCategoryId": 76346336,
+ "readiness": {
+  "configured": true,
+  "slug": "puzyrkovaya-plenka",
+  "file": "live:vozdushno-puzyrkovaya-plenka",
+  "sheet": null,
+  "donor_blocker": null,
+  "selected": 4,
+  "needs_data": 17,
+  "parcel_dims": 18,
+  "rejected": 30,
+  "grid_main": 40,
+  "grid_related": 11,
+  "total": 4,
+  "ready": 4,
+  "errors": 0,
+  "topfill": 4,
+  "need_mapping": 0,
+  "no_pictures": 4,
+  "photos": null,
+  "with_specs": 4,
+  "avg_emitted": 12.0,
+  "min_emitted": 12,
+  "source": "live",
+  "error_skus": [],
+  "agg": {
+   "total": 4,
+   "ok": 4,
+   "need_mapping": 0,
+   "no_pictures": 4,
+   "build_error": 0,
+   "with_specs": 4,
+   "topfill": 4,
+   "min_emitted": 12,
+   "sum_emitted": 48,
+   "avg_emitted": 12.0
+  }
+ },
+ "shortlist_selected": [
+  {
+   "offerId": "1588731",
+   "name": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+   "proposed_sell_rub": 3500,
+   "marketCategoryId": 76346336,
+   "vendor": "Без бренда",
+   "barcodes": [
+    "2063678699509"
+   ],
+   "parcel_dims_cm_kg": {
+    "length": 75,
+    "width": 38,
+    "height": 38,
+    "weight": 1.86
+   }
+  },
+  {
+   "offerId": "9048",
+   "name": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+   "proposed_sell_rub": 3000,
+   "marketCategoryId": 76346336,
+   "vendor": "Без бренда",
+   "barcodes": [
+    "2003502239051"
+   ],
+   "parcel_dims_cm_kg": {
+    "length": 50,
+    "width": 35,
+    "height": 50,
+    "weight": 1.438
+   }
+  },
+  {
+   "offerId": "6335",
+   "name": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+   "proposed_sell_rub": 850,
+   "marketCategoryId": 76346336,
+   "vendor": "Без бренда",
+   "barcodes": [
+    "2253271926083"
+   ],
+   "parcel_dims_cm_kg": {
+    "length": 30,
+    "width": 48,
+    "height": 48,
+    "weight": 0.54
+   }
+  },
+  {
+   "offerId": "2050",
+   "name": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+   "proposed_sell_rub": 325,
+   "marketCategoryId": 76346336,
+   "vendor": "Без бренда",
+   "barcodes": [
+    "2696297010501"
+   ],
+   "parcel_dims_cm_kg": {
+    "length": 40,
+    "width": 11.5,
+    "height": 11.5,
+    "weight": 0.122
+   }
+  }
+ ],
+ "mapping_verdict": {
+  "donor_category": "vozdushno-puzyrkovaya-plenka",
+  "ym_slug": "puzyrkovaya-plenka",
+  "marketCategoryId": 76346336,
+  "need_mapping": false,
+  "note": "профиль решён (живой магазин atlas-express-film, плёнка 76346336); вердикт: карточки в категорию идут без маппинг-работы"
+ },
+ "coverage_note": "Покрытие скана в этом проходе --limit 40: 40 main + 11 related из 71 main + 11 rel полного скана (82, CargoAvtoAdapter limit=500). 31 main-позиция не прошла cost-фильтр/ОВХ-свип в этом прогоне. needs_data 17 = габариты/наличие не успели под бюджетом dims/stock ИЛИ не прошли C3 — следующая итерация цикла пересканирует для полного парса категории.",
+ "dry": true,
+ "rubicom": "не пересёк: все payload'ы помечены (dry), НИЧЕГО не отправлено; 0₽; только GET донора",
+ "photos": "off (--photos off) — no_pictures 4 честно: Фото-узел #9/YC_* отложен оператором"
+}

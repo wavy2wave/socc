@@ -1,0 +1,58 @@
+{
+  "bounded_patch_summary": "Build a first non-executing lawful intent proposal packet that converts creator goal into a proof-bound next step toward visible, result-producing SOCC cycles.",
+  "created_at_utc": "2026-06-09T10:34:07.028697+00:00",
+  "creator_intent": "Make SOCC fully alive through lawful visible cycles: creator intent -> lawful proposal -> bounded plan -> proof requirements -> review gate -> later execution surface, with measurable results shown to operator, without daemon/background/network/MW route.",
+  "expected_effect": [
+    "SOCC has first canonical lawful intent proposal packet",
+    "proposal references accepted proposal surface",
+    "proposal is aligned to current_lawful_next",
+    "proposal identifies next proof requirements",
+    "proposal remains non-executing and review-required"
+  ],
+  "forbidden_actions": [
+    "execute proposal",
+    "execute language",
+    "execute creator intent",
+    "mutate route authority outside lawful transition",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "lawful_next_alignment": "PASS_CURRENT_FRONTIER_MATCHED_ALL_AUTHORITY_FILES",
+  "may_execute": false,
+  "observed_authority": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_first_lawful_intent_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_first_lawful_intent_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_first_lawful_intent_proposal_packet_v1"
+  },
+  "observed_current_lawful_next": "build_socc_first_lawful_intent_proposal_packet_v1",
+  "proposal_id": "SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1",
+  "proposal_type": "FIRST_LAWFUL_INTENT_PROPOSAL_PACKET",
+  "recommended_next_after_acceptance": "build_socc_bounded_plan_proposal_surface_v1",
+  "required_proof": {
+    "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF.json",
+    "must_validate": [
+      "creator intent present",
+      "current_lawful_next alignment",
+      "may_execute false",
+      "requires_review true",
+      "forbidden actions complete",
+      "proof-chain references present"
+    ],
+    "validation_required_next": "validate_socc_first_lawful_intent_proposal_packet_v1"
+  },
+  "requires_review": true,
+  "risk_class": "REVIEW_REQUIRED",
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This is a lawful intent proposal packet only. It cannot execute, approve, mutate route outside lawful transition, start daemon/background, use network, create MW route, or claim autonomy launch.",
+  "upstream": {
+    "active_accepted_surface": "SYSTEM/INTERFACE/surfaces/lawful_intent/ACTIVE_ACCEPTED_LAWFUL_INTENT_PROPOSAL_SURFACE.json",
+    "active_creator_dialogue_view": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_ACCEPTED_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+    "proposal_schema": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SCHEMA_V1.json",
+    "proposal_template": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_TEMPLATE_V1.json",
+    "surface_acceptance": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_ACCEPTANCE_V1.json"
+  }
+}

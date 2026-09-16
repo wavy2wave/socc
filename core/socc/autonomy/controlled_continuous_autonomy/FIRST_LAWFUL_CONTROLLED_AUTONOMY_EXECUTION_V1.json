@@ -1,0 +1,41 @@
+{
+  "bounded_by": {
+    "codex_hermes_governance": true,
+    "current_lawful_next": "execute_first_lawful_controlled_autonomy_run_v1",
+    "idempotent_guard": true,
+    "max_steps": 1,
+    "must_stop_after_step": true,
+    "operator_panel": true,
+    "proof_chain": true
+  },
+  "created_at_utc": "2026-06-08T18:55:17.445769+00:00",
+  "executed_step": "execute_first_lawful_controlled_autonomy_run_v1",
+  "execution_type": "single_explicit_controlled_autonomy_run",
+  "id": "FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_V1",
+  "lawful_next": "validate_first_lawful_controlled_autonomy_execution_v1",
+  "operator_visible": true,
+  "proof_written": true,
+  "route_update_performed": true,
+  "route_update_required": true,
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "status": "PASS",
+  "steps_executed": 1,
+  "stopped_after_step": true,
+  "truth_boundary": "This is one explicit controlled execution. It does not start daemon/background/network.",
+  "what_happened": [
+    "verified route/pulse/control alignment",
+    "verified first lawful controlled run build/validation/review",
+    "verified daemon/background/network disabled",
+    "committed one explicit controlled autonomy execution proof",
+    "advanced route to validation of execution",
+    "stopped"
+  ]
+}

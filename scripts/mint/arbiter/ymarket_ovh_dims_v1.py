@@ -11,19 +11,34 @@
 ИЕРАРХИЯ ЧЕСТНОСТИ (не выдумываем, закон L3):
   1. card.dims   — готовый «Размер упаковки Д*Ш*В, см» → [Д,Ш,В] СМ напрямую (лучший источник; живой
      пример 9602037: «50*35*50» = коробка-диспенсер, НЕ рулон).
-  2. card.weight — «Вес, кг» → вес. Вес НЕ оцениваем: нет колонки → нет веса (честно останется T5).
-  3. physics     — «Размер упаковки» нет → оценка коробки рулона как цилиндра: длина = ширина рулона,
-     ширина = высота = диаметр. Диаметр: транспортный объём (V = Ш×Д²) → площадь×толщина (геометрия
-     полотна; та же математика, что _derive_dims в [[ymarket_from_xlsx_v1]]). Ни одного источника →
-     None (карточка честно останется без габаритов, не врём).
-Провенанс: dims_source='card'|'physics', weight_source='донор:карточка'. Всё насквозь (row → сводка →
-отчёт): карточка никогда не уедет в залив на «наверное влезет».
+  2. card.weight — «Вес, кг» карточки → вес. Нет колонки → вес ИЗ НАЗВАНИЯ товара («…, 2 кг, …» — донор
+     сам пишет вес рулона в названии; провенанс 'донор:название'). Ни там, ни там → вес НЕ оцениваем
+     (честно останется T5).
+  3. physics     — «Размер упаковки» нет → посылка БЕЗ КОРОБКИ (решение оператора 04.09: рулон в
+     сложенном виде = сам цилиндр, не коробка): длина = ширина рулона, ширина = высота = ДИАМЕТР
+     цилиндра. Ширина — из карточки «Ширина, мм» (единица-осознанно) ИЛИ ИЗ НАЗВАНИЯ («…, 500 мм, …» —
+     директива оператора «ширина в названии»). Диаметр = √(4V/(πL)) из «Транспортировочный объем, м³»
+     (объём САМОГО рулона); нет объёма → площадь×толщина полотна (рыхлость 0.75), круг та же формула.
+     Ни одного источника → None (карточка честно останется без габаритов, не врём).
+  4. cache       — СБОЙНЫЙ GET (сеть/донор легли, '' вместо HTML) → последние-известные габариты ТОЙ ЖЕ
+     карточки (реальные, прочитаны ранее с донора, runtime/ovh_dims_cache.json). Это НЕ выдумка — ровно
+     то, что донор сам отдавал; провенанс dims_source сохранён, продукт помечен dims_cached+ts (видно
+     «кэш», а не свежий факт). TTL 14 суток → не вечный сталь: первый успешный живой GET перезаписывает.
+     Живой пример-флап 2026-09-03: у atlas-express-film СБОРКА сухо упала на ARB-53416854 («карточки
+     БЕЗ ОВХ-габаритов») из-за одноразового пустого ответа донора, следующий прогон через 3 мин — PASS.
+     Кэш закрывает ровно это: сухой цикл не умирает на транзиентном чтении донора (решение оператора:
+     «чтобы карточка прошла, запомним, потом поменяет» — TTL и есть «потом»).
+Провенанс: dims_source='card'|'physics', weight_source='донор:карточка'|'донор:название'; dims_cached=True — значение из
+кэша. Всё насквозь (row → сводка → отчёт): карточка никогда не уедет в залив на «наверное влезет».
 
 ГЕРМЕТИЧНОСТЬ: stdlib-only (re/time/urllib). parse/dims-функции — чистые; сеть только в fetch_card
 (fail-soft: любая беда → '' → свойств нет → позиция честно остаётся needs_data, не краш). Бюджет
 enrich_products: обогащаем, пока не выйдет budget секунд — не успевшие честно ждут следующего дня
-(донор не держит сутки). Свой слой: source-файлы донора (cargo_avto/donor_stock) НЕ редактируем.
+(донор не держит сутки). Кэш пишем атомарно (tmp→replace), любой сбой чтения/записи кэша fail-soft
+(слой не падает из-за файла). Свой слой: source-файлы донора (cargo_avto/donor_stock) НЕ редактируем.
 """
+import json
+import pathlib
 import re
 import time
 import urllib.request
@@ -67,6 +82,39 @@ def _find(props, *needles):
         if any(x in ln for x in needles):
             return n, v
     return None, None
+
+
+# ── Ширина и вес ИЗ НАЗВАНИЯ товара (директива оператора 04.09 «ширина в названии») ────────────────
+# У плёночных рулонов донор пишет в названии «…, 500 мм, 20 мкм, 2 кг, 1 сорт»: первый токен «N мм» —
+# ШИРИНА рулона, «N кг» — вес рулона. Это официальные данные донора (второй источник после карточки,
+# НЕ выдумка; провенанс помечается 'донор:название'). «мкм» не ловится (там нет подстроки «мм»), толщину
+# вроде «0.02 мм» lookbehind/разрядность не пускают, «кг/м²»-плотность — lookahead.
+_NAME_W_MM_RE = re.compile(r"(?<![\d.,])(\d{2,4}(?:[.,]\d+)?)\s*мм")       # «500 мм»
+_NAME_KG_RE = re.compile(r"(?<![\d.,])(\d+(?:[.,]\d+)?)\s*кг(?![\/\w])")    # «2 кг» (не «2 кг/м²»)
+_NAME_W_MIN_MM, _NAME_W_MAX_MM = 50, 3000          # правдоподобная ширина рулона, иначе не рулон
+
+
+def width_m_from_name(name):
+    """Ширина рулона ИЗ НАЗВАНИЯ («…, 500 мм, …») → метры | None."""
+    if not name:
+        return None
+    m = _NAME_W_MM_RE.search(name)
+    if not m:
+        return None
+    mm = float(m.group(1).replace(",", "."))
+    if not (_NAME_W_MIN_MM <= mm <= _NAME_W_MAX_MM):
+        return None
+    return round(mm / 1000.0, 4)
+
+
+def weight_kg_from_name(name):
+    """Вес ИЗ НАЗВАНИЯ («…, 2 кг, …») → кг | None. Фолбэк к «Вес, кг» карточки."""
+    if not name:
+        return None
+    m = _NAME_KG_RE.search(name)
+    if not m:
+        return None
+    return round(float(m.group(1).replace(",", ".")), 4)
 
 
 def parse_card_properties(html):
@@ -131,9 +179,20 @@ def spec_from_card(props):
         nums = _nums(val)
         return nums[0] if nums else None
 
-    w = n1("ширина рулона")
-    if w:
-        spec["ширина_м"] = round(w, 3)
+    # Ширина рулона. Донор пишет «Ширина, мм = 500» (живой стрейч 9600231/9602475/9603835) — единица В
+    # ИМЕНИ свойства (изредка в значении «500 мм»). Многозначные свойства («Д 500 × Ш 300») пропускаем:
+    # это не одиночная ширина. Нет «мм»/«см» в контексте → число как есть (м — прежнее поведение).
+    w_name, w_val = _find(props, "ширина")
+    if w_val and not re.search(r"[×xх*/]", w_val):
+        w_nums = _nums(w_val)
+        if w_nums:
+            w_m = w_nums[0]
+            w_ctx = f"{w_name} {w_val}".lower()
+            if "мм" in w_ctx and "см" not in w_ctx:
+                w_m = w_m / 1000.0             # «500 мм» → 0.5 м (иначе 500 м — ложь ×1000)
+            elif "см" in w_ctx and "мм" not in w_ctx:
+                w_m = w_m / 100.0              # «50 см» → 0.5 м
+            spec["ширина_м"] = round(w_m, 4)
     l = n1("намотка", "длина намотки")
     if l:
         spec["длина_м"] = round(l, 3)
@@ -162,7 +221,8 @@ def spec_from_card(props):
         spec["площадь_м2"] = round(area, 3)
     vol = n1("транспортировочный объем", "транспортный объем")
     if vol:
-        spec["транспортный_объем_м3"] = round(vol, 4)
+        # 4 знаков МАЛО: донор пишет «0.001066» → round(…,4)=0.0011 (+3% к объёму → ~1.5% к диаметру).
+        spec["транспортный_объем_м3"] = round(vol, 6)
     kg, _ = weight_from_card(props)
     if kg:
         spec["вес_кг"] = kg
@@ -170,25 +230,27 @@ def spec_from_card(props):
 
 
 def dims_from_physics(spec):
-    """Оценка коробки рулона из физики, когда готового «Размер упаковки» нет. Зеркало _derive_dims.
+    """Посылка рулона БЕЗ КОРОБКИ — сам рулон-цилиндр (решение оператора 04.09: «коробки нет, там в
+    сложенном виде другие размеры»). Длина = ширина рулона (см); ширина = высота = ДИАМЕТР цилиндра.
 
-    Длина коробки = ширина рулона (см); ширина = высота = диаметр. Диаметр: транспортный объём
-    (V = Ш×Д²) → площадь×толщина (полотно, рыхлость 0.75). Нет ни одного источника → None (не выдумываем).
-    Провенанс dims_source='physics' — оператор видит, что это ОЦЕНКА, а не факт карточки.
+    Диаметр: «Транспортировочный объем, м³» карточки — это объём САМОГО рулона: V = π·(D/2)²·L →
+    D = √(4V/(πL)) (проверено на живых карточках: стрейч 500 мм V=0.004253 → 50×10.4×10.4 см / 2 кг).
+    Нет объёма → геометрия полотна площадь×толщина (рыхлость намотки 0.75), круг та же формула.
+    Ни одного источника → None (не выдумываем).
+    Провенанс dims_source='physics' — оператор видит, что это ОЦЕНКА формы товара, а не факт карточки.
     """
     w_m = spec.get("ширина_м")
     if not w_m or w_m <= 0:
         return None
-    d_m = spec.get("диаметр_рулона_м")
-    if not d_m or d_m <= 0:
-        vol = spec.get("транспортный_объем_м3")
-        if vol and vol > 0:
-            d_m = (vol / w_m) ** 0.5
+    d_m = None
+    vol = spec.get("транспортный_объем_м3")
+    if vol and vol > 0:
+        d_m = (4.0 * vol / (3.14159 * w_m)) ** 0.5       # круговой цилиндр, коробки НЕТ
     if not d_m or d_m <= 0:
         area, th_mm = spec.get("площадь_м2"), spec.get("толщина_мм")
         if area and th_mm and area > 0 and th_mm > 0:
-            v_film = area * (th_mm / 1000.0)
-            d_m = ((v_film / 0.75) / w_m * 4 / 3.14159) ** 0.5
+            v_film = area * (th_mm / 1000.0)             # полотно, рыхлость 0.75
+            d_m = (4.0 * (v_film / 0.75) / (3.14159 * w_m)) ** 0.5
     if not d_m or d_m <= 0:
         return None
     L = round(w_m * 100, 1)
@@ -201,19 +263,27 @@ def dims_from_physics(spec):
 def enrich(product, props):
     """Проставить продукту flat-габариты/вес/_spec из карточки. Меняет product, возвращает его.
 
-    Правило честности: карточка не выдумывает. Нет свойства → нет ключа → ТОВАРОВЕД честно оставит
-    needs_data (T5), а не «наверное влезет». dims_source говорит, ФАКТ или ОЦЕНКА.
+    Правило честности: источник не выдумывает. Карточка → факт; ширина/вес в НАЗВАНИИ товара — тоже
+    данные донора (провенанс 'донор:название'), берём как ФОЛБЭК, когда карточка молчит. Нет источника
+    → нет ключа → ТОВАРОВЕД честно оставит needs_data (T5), а не «наверное влезет». dims_source говорит,
+    ФАКТ или ОЦЕНКА.
     """
     dims = dims_from_card(props)
     source = "card" if dims else None
     if dims is None:
         spec = spec_from_card(props)
+        if not spec.get("ширина_м"):                # карточка без ширины → ширина В НАЗВАНИИ (04.09)
+            wm = width_m_from_name(product.get("name"))
+            if wm:
+                spec["ширина_м"] = wm
         dims = dims_from_physics(spec)
         source = "physics" if dims else None
     if dims:
         product["length"], product["width"], product["height"] = dims
         product["dims_source"] = source
     kg, ws = weight_from_card(props)
+    if not kg:                                       # карточка без «Вес» → донор пишет вес в названии
+        kg, ws = weight_kg_from_name(product.get("name")), "донор:название"
     if kg:
         product["weight"] = kg
         product["weight_source"] = ws
@@ -234,24 +304,119 @@ def fetch_card(url, timeout=20):
         return ""
 
 
-def enrich_products(products, budget=120, fetch=None, only_where=None):
+# ── Last-known-good кэш габаритов (реальные, читаны с донора ранее; НЕ выдумываем) ──────────────
+_ARB_DIR = pathlib.Path(__file__).resolve().parent
+DIMS_CACHE_DEFAULT = _ARB_DIR / "runtime" / "ovh_dims_cache.json"
+_DIMS_CACHE_TTL = 14 * 86400               # 14 суток: кэш — пластырь на транзиентный флап, не вечный сталь
+_DIM_FLAT = ("length", "width", "height")
+
+
+def _cache_load(path):
+    """Кэш → dict {url: snapshot}. Любой сбой файла → {} (fail-soft: слой не падает из-за кэша)."""
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except Exception:                    # noqa: BLE001
+        return {}
+
+
+def _cache_save(path, cache):
+    """dict → файл атомарно (tmp→replace). Любой сбой → молча (fail-soft)."""
+    try:
+        p = pathlib.Path(path)
+        p.parent.mkdir(parents=True, exist_ok=True)
+        tmp = p.with_suffix(p.suffix + ".tmp")
+        tmp.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
+        tmp.replace(p)
+    except Exception:                    # noqa: BLE001
+        pass
+
+
+def _dims_snapshot(p):
+    """Продукт после ЖИВОГО чтения карточки → снапшот для кэша | None (нет реальных габаритов).
+
+    Кэшируем только проверенное: все 4 габарита на месте + dims_source факт/оценка (card|physics).
+    Пусто/мусор → None — в кэш не пишем, что не читали (не выдумываем даже в кэше).
+    """
+    if not all(p.get(k) for k in _DIM_FLAT) or p.get("dims_source") not in ("card", "physics"):
+        return None
+    snap = {k: p[k] for k in _DIM_FLAT}
+    snap["dims_source"] = p.get("dims_source")
+    snap["ts"] = time.time()
+    if p.get("weight"):
+        snap["weight"] = p["weight"]
+        snap["weight_source"] = p.get("weight_source")
+    return snap
+
+
+def _cache_put(cache, p, url):
+    snap = _dims_snapshot(p)
+    if snap and url:
+        cache[str(url)] = snap
+
+
+def _cache_apply(cache, p, url):
+    """Продукту БЕЗ габаритов → последние-известные ТОЙ ЖЕ карточки (реальные, TTL-свежие).
+
+    Прозрачность: провенанс dims_source сохранён, продукт помечен dims_cached=True + ts — оператор
+    видит «кэш», а не свежий факт. Неизвестный url / протух / пусто → продукт как был (честно без
+    габаритов — ничего не сочиняем про карточку, которую ни разу не читали).
+    """
+    if not url:
+        return p
+    ent = cache.get(str(url))
+    if not ent:
+        return p
+    age = time.time() - ent.get("ts", 0)
+    if not (0 <= age <= _DIMS_CACHE_TTL):
+        return p
+    for k in _DIM_FLAT:
+        p[k] = ent[k]
+    p["dims_source"] = ent.get("dims_source", "card")
+    if ent.get("weight"):
+        p["weight"] = ent["weight"]
+        p["weight_source"] = ent.get("weight_source", "донор:карточка")
+    p["dims_cached"] = True
+    p["dims_cached_ts"] = ent.get("ts")
+    return p
+
+
+def enrich_products(products, budget=120, fetch=None, only_where=None, cache_path=DIMS_CACHE_DEFAULT):
     """Обогатить партию карточками донора: габариты посылки/вес/_spec (GET, 0₽, бюджет seconds).
 
     fetch   — шов для тестов (по умолчанию fetch_card, fail-soft).
-    only_where — предикат «обогащать ли продукт» (по умолчанию: есть живой url и dims_raw).
-    Бюджет — ВРЕМЯ, а не штуки: медленный донор не держит сутки; не успевшие остаются как есть
-    (честно ждут следующего дня). Никогда не бросает исключение (беду не проглатываем: сеть сама
-    fail-soft, остальное честно всплывёт в _safe суточного цикла).
+    only_where — предикат «обогащать ли продукт» (по умолчанию: есть живой url; dims_raw НЕ нужен —
+    у стрейча имя «500 мм, 20 мкм…» регексом «50*0.3 м» не даёт dims_raw, а габариты даёт карточка).
+    бюджет сам режет.
+    cache_path — куда кэш (None = кэш выключен, для герметичных тестов; по умолчанию runtime).
+    Бюджет — ВРЕМЯ, а не штуки: медленный донор не держит сутки; не успевшие остаются как есть.
+    Кэш (last-known-good): каждый УСПЕШНЫЙ живой GET записывает реальные габариты карточки в
+    runtime/ovh_dims_cache.json; продукты, оставшиеся БЕЗ габаритов (сбойный GET-флап донора →
+    '', бюджет вытек, строки не по предикату) → честно берут последние-известные ТОЙ ЖЕ карточки
+    (dims_cached=True). Это закрывает живой флап 2026-09-03: СБОРКА не умирает на одноразовом
+    пустом ответе донора. Первый раз / неизвестный url → честно без габаритов (не выдумываем).
+    Никогда не бросает исключение (беду не проглатываем: сеть сама fail-soft, кэш fail-soft,
+    остальное честно всплывёт в _safe суточного цикла).
     """
     fetch = fetch if fetch is not None else fetch_card
-    pred = only_where or (lambda p: bool(p.get("url") and p.get("dims_raw")))
+    pred = only_where or (lambda p: bool(p.get("url")))
+    cache = _cache_load(cache_path) if cache_path else {}
     t0 = time.monotonic()
+    dirty = False
     for p in products:
         if not pred(p):
             continue
         if time.monotonic() - t0 > budget:
             break
         enrich(p, parse_card_properties(fetch(p["url"])))
+        if _dims_snapshot(p):
+            _cache_put(cache, p, p.get("url"))
+            dirty = True
+    # Фолбэк: сбойный/не успевший GET → последние-известные реальные габариты (не выдумываем).
+    for p in products:
+        if not all(p.get(k) for k in _DIM_FLAT):
+            _cache_apply(cache, p, p.get("url"))
+    if dirty:
+        _cache_save(cache_path, cache)
     return products
 
 

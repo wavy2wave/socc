@@ -1,0 +1,738 @@
+{
+  "schema": "ymarket.categorist.dossiers.v1",
+  "purpose": "Канон-досье донор-категорий КАТЕГОРИЙЩИКА — свёрнутый переиспользуемый слой 'сделанной работы' поверх immutable-артефактов прогонов. Каждая категория очереди: статус маппинга ЯМ (см. ymarket_cats_v1.json), вердикт живой скане (если прогонялась), шорт-лист/остров, вопросы оператору. Любой орган/лицо/будущий прогон читает сюда вместо повторного парсинга или пере-открытия разбросанных файлов.",
+  "discipline": "ЗАКОН ЧЕСТНОСТИ: ничего не выдумываем. market_category_id подтверждается ТОЛЬКО руками (categories_tree/category_parameters) в маппинг-каноне ymarket_cats_v1.json — досье НЕ заменяет его, только ссылается. Нет подтверждения → need_mapping=true, market_category_id=null (None ≠ 0). Вердикты/цифры/шорт-листы — только из артефактов прогонов (файлы-первоисточники в scan.artifacts). Категория без прогона честно scan:null.",
+  "owner_role": "CATEGORIST",
+  "store": "atlas-express-film",
+  "queue": {
+    "n_categories": 13,
+    "approved": "оператор 03.09 (13 упаковочных)",
+    "scope": "каждая категория = задача owner CATEGORIST в реестре ЗАДАНИЯ (ymarket_tasks.json), канал CargoAvtoAdapter.scan(donor_category) → cost≤700₽ → ОВХ-посылки → живое наличие → шорт-лист → dry-preflight (0₽ GET, RUBICON цел до слова оператора)",
+    "rule": "поштучный выкуп у донора ТОЛЬКО после оплаченного заказа (доктрина исполнения)"
+  },
+  "donor": {
+    "site": "shop.cargo-avto.ru",
+    "host": "https://shop.cargo-avto.ru",
+    "catalog_url_template": "https://shop.cargo-avto.ru/catalog/<donor_category>/",
+    "catalog_verified": {
+      "when": "2026-09-04",
+      "n_sections_total": 232,
+      "all_queue_slugs_live_top_level": true,
+      "finding": "перечислен каталог донора — все 13 слогов очереди = живые top-level секции; донор парсится на всю очередь (не только на подтверждённые категории)"
+    },
+    "grid_note": "scan отдаёт grid main/related; в сетке возможен кросс-селл (см. lessons.cross-sell)"
+  },
+  "known_mapping_outside_queue": {
+    "_note": "Подтверждённые маппинги вне этой очереди — чтобы не путать с ней.",
+    "kartonnye-koroba": {
+      "leaf_id": 76296786,
+      "leaf": "Коробки для товаров",
+      "confirmed": "2026-08-19 live categories_tree + category_parameters",
+      "relation_to_queue": "в очереди 13 нет секции коробов: картонная задача = karton-i-gofrokarton (листы/рулоны картона, донор-секция иная) — НЕ маппить слепо на 76296786"
+    }
+  },
+  "lessons": [
+    {
+      "id": "cross-sell",
+      "finding": "cargo-avto подмешивает в выдачу секции кросс-селл чужих категорий (хвост дешёвой сетки).",
+      "evidence": "polyetilenovaya-plenka 04.09: 8 из 14 позиций ≤700₽ в хвосте = НЕ плёнка (песок, поддон деревянный б/у, курьер-пакеты, гофролист, наполнители).",
+      "rule": "хвосту сетки не доверять: кандидат в шорт-лист — только если ИМЯ предметно принадлежит категории; сетка донора = источник скан-пространства, не истина принадлежности."
+    },
+    {
+      "id": "offline-xlsx-false-reject",
+      "finding": "parsed_data/cargo-avto_*.xlsx — Ozon SKU-расчётные листы (производные, шапка «Цена продажи»), НЕ сырой экспорт донора.",
+      "evidence": "categorist offline по этим XLSX ложно режет (закупку читает как цену продажи).",
+      "rule": "канон парсинга донора = ЖИВОЙ скан 0₽ GET (CargoAvtoAdapter.scan); offline по XLSX-производным запрещён как источник закупки."
+    },
+    {
+      "id": "roll-film-cost-viability",
+      "finding": "крупные рулоны плёнки на доноре дорогие: ПВД-рукав 1490–8400₽, медиана ~2990₽.",
+      "evidence": "polyetilenovaya-plenka 04.09: 80/94 отбито C4 (закупка >700₽).",
+      "rule": "в рулонных категориях под правило ≤700₽ выживают мини-форматы/малые намотки (остров), не крупные рулоны; поштучный выкуп = честный канал."
+    },
+    {
+      "id": "dims-gap-is-ovh-organ",
+      "finding": "кандидаты ≤700₽ без габаритов посылки уходят в needs_data, а не в отбой.",
+      "evidence": "polyetilenovaya-plenka 04.09: ОВХ-слой дал 0 габаритов на 14 дешёвых; kartonnye-tubusy и пр. без ОВХ-профиля аналогично.",
+      "rule": "верификация/добыча габаритов посылки = зона ОВХ-органа (#10, отложен оператором), НЕ дефект парсера; needs_data = честный статус, не фейк-отбой."
+    },
+    {
+      "id": "partial-scan-coverage",
+      "finding": "проход с --limit неполон относительно полного скана.",
+      "evidence": "vozdushno-puzyrkovaya-plenka 04.09: проход --limit 40 (40 main + 11 rel) из 82 полного скана (limit=500); 31 main-позиция не вошла (cost/ОВХ-свип в прогоне).",
+      "rule": "полный парс категории = перескан без --limit в следующей итерации цикла; вердикт 'короткого' прохода помечать coverage-оговоркой."
+    },
+    {
+      "id": "mapping-is-bottleneck",
+      "finding": "узкое место очереди — профиль ЯМ-категории: 11 из 13 не подтверждены (need_mapping).",
+      "evidence": "реестр 04.09: у всех неотработанных задач refs.market_cat=null, need_mapping=true.",
+      "rule": "до подтверждения профиля оператором вердикты категорий короткие/пустые (шорт-лист не полон без листа дерева Маркета); id НЕ выдумываем (None ≠ 0). Метод подтверждения как у 76346336/76296786: categories_tree → category_parameters → запись в ymarket_cats_v1.json."
+    }
+  ],
+  "crossrefs": {
+    "registry": "ymarket_tasks.json (этот же каталог) — статусы/evidence задач",
+    "mapping_canon": "ymarket_cats_v1.json — ЕДИНСТВЕННЫЙ канон market_category_id (подтверждается руками)",
+    "run_artifacts_pattern": "ymarket_runner_categorist_live_<label>_<ts>.json/.md — immutable-первоисточники прогонов",
+    "decision_material": {
+      "artifact": "ymarket_mapping_decision_v1_2026-09-04.json / .md",
+      "what": "READ-ONLY материал решения маппинга: по каждой need_mapping категории — кандидаты ЯМ-листа (id/имя/путь), RULES-риски, до/после скана. Решает оператор.",
+      "generated": "2026-09-04",
+      "discipline": "кандидаты по ИМЕНИ из кэша дерева (2026-08-06), НЕ подтверждены руками; cats-канон не тронут"
+    },
+    "gate_ledger": {
+      "artifact": "ymarket_gate_ledger_ready24_2026-09-04.json / .md (MEMORY_WAVE/reports/mint/arbiter)",
+      "what": "КРОСС-СЕТ-верификация момента «давай зальем»: 24 ready-SKU (5 done-категорий) разобраны побайтно (leaf-honesty/name-residue/vendor-brand/price-floor/logistics-dims/data-gate) детерм-чекером + адверсариал-Workflow (12 агентов × refute). Per-SKU гейты: 10 ФОРМАЛЬНО-ГОТОВ, 4 puzyr ДУБЛЬ-РИСК (twin живых ARB ×8), 9 streich БЛОК-ШТРИХКОД (EAN-источник), 2227175 ИСКЛЮЧИТЬ (не-плёнка, лист 75355556). 0₽, RUBICON цел.",
+      "generated": "2026-09-04",
+      "task": "T-консолидация (работай, автономный аудит #61)",
+      "not_autonomous": [
+        "EAN-источник streich",
+        "решение puzyr×4 (twin)",
+        "Unibob®×5 (бренд-политика)"
+      ]
+    }
+  },
+  "categories": {
+    "vozdushno-puzyrkovaya-plenka": {
+      "title_ru": "Воздушно-пузырьковая плёнка",
+      "task_id": "T-0b6e8545",
+      "state": "done",
+      "priority": 30,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "puzyrkovaya-plenka",
+        "market_category_id": 76346336,
+        "confirmed": "2026-08-05 live categories_tree + category_parameters (в ymarket_cats_v1.json есть полный профиль: spec_units/param_constants/enum_maps)"
+      },
+      "scan": {
+        "when": "2026-09-04 00:18:11",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET)",
+        "channel": "CargoAvtoAdapter.scan(vozdushno-puzyrkovaya-plenka) → cost≤700₽ → ОВХ-посылки → живое наличие → score_item/rank → dry-preflight",
+        "artifacts": [
+          "ymarket_runner_categorist_live_vozdushno-plenka_2026-09-04_00-18-11.json",
+          "ymarket_runner_categorist_live_vozdushno-plenka_2026-09-04_00-18-11.md"
+        ],
+        "coverage": {
+          "full_scan": 82,
+          "pass_limit": 40,
+          "note": "проход --limit 40 (40 main + 11 related); 31 main не прошёл cost/ОВХ-свип в этом прогоне; needs_data 17 — не успели под бюджетом dims/stock ИЛИ C3; полный парс = перескан без лимита"
+        },
+        "readiness": {
+          "grid_main": 40,
+          "grid_related": 11,
+          "selected": 4,
+          "needs_data": 17,
+          "parcel_dims": 18,
+          "rejected": 30,
+          "ready": 4,
+          "errors": 0,
+          "topfill": 4,
+          "need_mapping": 0,
+          "no_pictures": 4,
+          "with_specs": 4,
+          "avg_emitted": 12,
+          "min_emitted": 12,
+          "source": "live"
+        },
+        "verdict": "ready_shortlist",
+        "verdict_text": "шорт-лист 4 SKU (цена=закупка×5, ОВХ посылки, barcode); маппинг решён 76346336; партия preflight ready 4/4 errors 0; ФОТО: 4/4 без изображений — карточка уйдёт с низким index, ждёт Фото-узла (#9).",
+        "shortlist": [
+          {
+            "sku": "1588731",
+            "title": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+            "sell_rub": 3500,
+            "parcel_cm": "75×38×38",
+            "kg": 1.86,
+            "barcode": "2063678699509"
+          },
+          {
+            "sku": "9048",
+            "title": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+            "sell_rub": 3000,
+            "parcel_cm": "50×35×50",
+            "kg": 1.438,
+            "barcode": "2003502239051"
+          },
+          {
+            "sku": "6335",
+            "title": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+            "sell_rub": 850,
+            "parcel_cm": "30×48×48",
+            "kg": 0.54,
+            "barcode": "2253271926083"
+          },
+          {
+            "sku": "2050",
+            "title": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+            "sell_rub": 325,
+            "parcel_cm": "40×11.5×11.5",
+            "kg": 0.122,
+            "barcode": "2696297010501"
+          }
+        ]
+      },
+      "open_operator_decision": "нет по маппингу (решён); залив шорт-листа — по слову оператора, после Фото-узла #9 (4/4 без картинок)."
+    },
+    "polyetilenovaya-plenka": {
+      "title_ru": "Полиэтиленовая плёнка",
+      "task_id": "T-818e04e9",
+      "state": "done",
+      "priority": 30,
+      "mapping": {
+        "need_mapping": true,
+        "cats_key": null,
+        "market_category_id": null,
+        "hint_rules": "кандидаты по имени → 76346336 «Упаковочные плёнки» (RULES category_map), НЕ подтверждено руками для этой категории"
+      },
+      "scan": {
+        "when": "2026-09-04 00:30:40",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET)",
+        "channel": "CargoAvtoAdapter.scan(polyetilenovaya-plenka) → cost≤700₽ → ОВХ → наличие → шорт-лист (полный проход, категория жива)",
+        "artifacts": [
+          "ymarket_runner_categorist_live_polyetilenovaya-plenka_2026-09-04_00-30-40.json",
+          "ymarket_runner_categorist_live_polyetilenovaya-plenka_2026-09-04_00-30-40.md"
+        ],
+        "readiness": {
+          "scanned": 94,
+          "grid_main": 84,
+          "grid_related": 10,
+          "selected": 0,
+          "needs_data": 14,
+          "parcel_dims": 0,
+          "rejected": 80,
+          "ready": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 0,
+          "errors": 0,
+          "source": "live"
+        },
+        "verdict": "empty_negative",
+        "verdict_text": "ЧЕСТНЫЙ НЕГАТИВ: шорт-лист ПУСТ под правилом ≤700₽. 80/94 отбито C4 (закупка >700₽). Категория сейчас НЕ даёт партии. Единственный реальный плёночный сигнал — остров мини ПВД-рукав. Остальное ≤700₽ — кросс-селл чужих категорий (гигиена, см. lessons.cross-sell).",
+        "cost_structure": "крупные рулоны ПВД-рукав 1490–8400₽, медиана ~2990₽ — не бьётся с поштучным выкупом",
+        "rejected_why": "80 × C4 закупка > 700₽",
+        "island": {
+          "title": "мини ПВД-рукав 1.5×10м — 6 SKU 330–620₽",
+          "skus": [
+            9377,
+            9378,
+            9382,
+            9383,
+            9384,
+            9385
+          ],
+          "gate": "ждут ОВХ-профиля (#10) + решения профиля ЯМ-категории оператором",
+          "note": "это единственная плёночная выжившая группа; при подтверждении профиля — кандидаты на шорт-лист"
+        }
+      },
+      "open_operator_decision": "профиль ЯМ-категории для плёнки-рукава (подтвердить 76346336 «Упаковочные плёнки» руками) + решить: тянем ли мини-рукав (330–620₽) при появлении ОВХ #10."
+    },
+    "streich-plenka": {
+      "title_ru": "Стрейч-плёнка",
+      "task_id": "T-cf6839cf",
+      "state": "done",
+      "priority": 40,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "streich-plenka",
+        "market_category_id": 76346336,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает).",
+        "hint_rules": "профиль 76346336 «Упаковочные плёнки» подтверждён живым категорийщиком; тип рулона — константа cats-профиля «Тип пленки: стрейч-пленка» (valueId 40487523), НЕ копировать пузырьковую «воздушно-пузырьковая»; диспенсер-ручка → лист 75355556, НЕ сюда; пищевая Extra → 62775507 если попадёт в шорт-лист."
+      },
+      "scan": {
+        "when": "2026-09-04 15:28:06",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-маппинг-гейта ОРГАНОМ (CATEGORIST 04.09): cats отдаёт 76346336 → CargoAvtoAdapter.scan → cost≤700 → ОВХ (24 dims) → _market_cid(cats) → preflight (dry). Бюджеты дефолтные 360/300 (реальный темп донора) — не зажатые.",
+        "artifacts": [
+          "ymarket_categorist_readiness_streich_2026-09-04.json",
+          "ymarket_categorist_readiness_streich_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "первый прогон с зажатыми бюджетами (--stock-deadline 180) дал selected 0 = гонка склад-потока (канон предупреждает); чистый прогон с дефолтными бюджетами: ready 10, need_mapping 0, needs_data 19 (было 29), rejected 9, errors 0, no_pictures 10, topfill 0 (avg_emitted 4.0). Шорт-лист = 9 рулонов + диспенсер-ручка (как сухая проекция).",
+        "readiness": {
+          "grid_main": 27,
+          "grid_related": 11,
+          "selected": 10,
+          "needs_data": 19,
+          "parcel_dims": 24,
+          "rejected": 9,
+          "ready": 10,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 10,
+          "with_specs": 10,
+          "avg_emitted": 4.0,
+          "source": "live"
+        },
+        "verdict": "ready_shortlist",
+        "verdict_text": "T3-маппинг-гейт СНЯТ ОРГАНОМ (конфирмация 76346336, директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): _market_cid(cats) отдаёт id, ready 0 → 10 (9 рулонов стрейча + диспенсер-ручка), need_mapping 0. ОГОВОРКИ (не скоуп КАТЕГОРИЙЩИКА): no_pictures 10 → бренд-замок отсечёт при РЕАЛЬНОМ заливе (фото-гейт #9); topfill 0 — полнота карточки #11; 2227175 диспенсеру по паутине лист 75355556 (per-card); rejected 9 не изменились, needs_data 19 ждут дня."
+      },
+      "open_operator_decision": "решено 04.09: маппинг подтвердил ОРГАН (CATEGORIST, 76346336) → ready 10; НЕ автономно далее: фото #9 + полнота карточки #11 (см. ymarket_categorist_readiness_streich_2026-09-04).",
+      "scan_history": [
+        {
+          "when": "2026-09-04 01:22:41",
+          "dry": true,
+          "rubicon": "не пересечён (0₽ GET донора; наружу ничего не писалось)",
+          "channel": "CargoAvtoAdapter.scan(streich-plenka) → cost≤700 → ОВХ (габариты 0) → КАТЕГОРИЙЩИК → preflight (dry)",
+          "artifacts": [
+            "ymarket_runner_categorist_live_streich-plenka_2026-09-04_01-22-41.json",
+            "ymarket_runner_categorist_live_streich-plenka_2026-09-04_01-22-41.md"
+          ],
+          "coverage": "скан живьём 04.09: категория парсится целиком (38 поз.: main 27 + related 11); гигиена: 8 хвоста ≤700₽ = related-кросс-селл, не плёнка",
+          "readiness": {
+            "grid_main": 27,
+            "grid_related": 11,
+            "selected": 0,
+            "needs_data": 31,
+            "parcel_dims": 0,
+            "rejected": 7,
+            "ready": 0,
+            "topfill": 0,
+            "need_mapping": 0,
+            "no_pictures": 0,
+            "errors": 0,
+            "source": "live"
+          },
+          "verdict": "needs_data",
+          "verdict_text": "НЕ негатив: категория БОГАТА дешёвым стрейчем (23 main-товара ниши ≤700₽ = 21 рулон 165–545₽ + 2 диспенсера 60/150₽), НО ОВХ-слой дал 0 габаритов посылки → готовых SKU 0, шорт-лист не собрался (T5); маппинг ЯМ не решён. Задача остаётся open — кандидаты ждут ОВХ (#10) + слово оператора по профилю.",
+          "island": {
+            "title": "21 рулон стрейча ≤700₽ (165–545₽) + 2 диспенсера (60/150₽)",
+            "skus": [
+              "5246",
+              "10155",
+              "19946",
+              "9156",
+              "5263",
+              "19938",
+              "5303",
+              "5484",
+              "1167105",
+              "267897",
+              "8576",
+              "8851",
+              "20994",
+              "12845",
+              "12846",
+              "12847",
+              "343087",
+              "1800944",
+              "1800961",
+              "1800976",
+              "1800978",
+              "2227125",
+              "2227175"
+            ],
+            "gate": "ждут ОВХ-габаритов посылки (#10) + решения профиля ЯМ-категории оператором",
+            "note": "main-grid 23: прозрачная 500мм×20мкм 1.05–2.2кг (255–545₽), белая/чёрная/серая 2сорт, пищевая Extra 300мм 7мкм (165–215₽), цветная коллекция 405₽, мини 125мм 175₽; кросс-селл related не входит"
+          },
+          "shortlist": []
+        },
+        {
+          "when": "2026-09-04 13:19:49",
+          "dry": true,
+          "rubicon": "не пересечён (0₽ GET донора: карточки shop. + склад sp.; наружу ничего не писалось)",
+          "channel": "CargoAvtoAdapter.scan(streich-plenka) → cost≤700 → ОВХ (габариты 24: рулон-цилиндр physics, фикс #50/#51) → КАТЕГОРИЙЩИК → preflight (dry) — РЕ-СКАН после ОВХ-фикса",
+          "artifacts": [
+            "ymarket_runner_categorist_live_streich-plenka_2026-09-04_13-19-49.json",
+            "ymarket_runner_categorist_live_streich-plenka_2026-09-04_13-19-49.md"
+          ],
+          "coverage": "ре-скан живьём 04.09 (13:19) после ОВХ-фикса #50/#51: категория парсится целиком (38 поз.: main 27 + related 11); ОВХ-гейт ЗАКРЫТ живьём — parcel_dims 24 (21 рулон стрейча physics-цилиндр + вес); готовых всё ещё 0: needs_data 29 по T3-маппинг (slug не в cats) + T4-склад sp (источник наличия у 11/23 проб; пищевая Extra 300мм и цветные коллекции = HTTP 404 на sp)",
+          "readiness": {
+            "grid_main": 27,
+            "grid_related": 11,
+            "selected": 0,
+            "needs_data": 29,
+            "parcel_dims": 24,
+            "rejected": 9,
+            "ready": 0,
+            "topfill": 0,
+            "need_mapping": 0,
+            "no_pictures": 0,
+            "errors": 0,
+            "source": "live"
+          },
+          "verdict": "needs_data",
+          "verdict_text": "ОВХ-фикс #50/#51 подтверждён ЖИВЬЁМ: габариты посылки 0→24 (21 рулон стрейча physics-цилиндр, коробки НЕТ, ширина/вес из карточки/названия). НО готовых SKU всё ещё 0 — причина ИЗМЕНИЛАСЬ: разрыв ОВХ закрыт, остались T3 (маппинг slug 'streich-plenka' НЕ в cats → нет ЯМ-категории) + T4 (живой склад sp: источник наличия у 11/23 проб; Extra 300мм и цветные коллекции sp-404). Проекция маппинг→76346336 (RULES-кандидат по имени, НЕ подтверждён руками) открывает 10 (9 рулонов 500мм/125мм + диспенсер-ручка; no_pictures 10 = гейт фото #9). Профиль ЯМ-категории (id + константы) утверждает оператор ДО карточки.",
+          "island": {
+            "title": "21 рулон стрейча ≤700₽ (165–545₽) + 2 диспенсера (60/150₽)",
+            "skus": [
+              "5246",
+              "10155",
+              "19946",
+              "9156",
+              "5263",
+              "19938",
+              "5303",
+              "5484",
+              "1167105",
+              "267897",
+              "8576",
+              "8851",
+              "20994",
+              "12845",
+              "12846",
+              "12847",
+              "343087",
+              "1800944",
+              "1800961",
+              "1800976",
+              "1800978",
+              "2227125",
+              "2227175"
+            ],
+            "gate": "ОВХ-габариты ДАНЫ (24). Готовы после: (T3) решения профиля ЯМ-категории оператором — проекция маппинг→76346336 = 10 (9 рулонов + диспенсер-ручка 2227175); (T4) живого склада sp по каждому SKU (в наличии 11/23 проб; Extra 300мм/цветные sp-404).",
+            "note": "ре-скан 04.09 13:19: dims 0→24, ready 0 (было needs_data из-за ОВХ — теперь из-за маппинга T3 + склада T4)"
+          },
+          "shortlist": []
+        }
+      ]
+    },
+    "vspenennii-polietilen": {
+      "title_ru": "Вспененный полиэтилен",
+      "task_id": "T-05294283",
+      "state": "open",
+      "priority": 40,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "vspenennii-polietilen",
+        "market_category_id": 76377452,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09).",
+        "hint_rules": "профиль 76377452 «Листовой вспененный полиэтилен» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон vspenennii-polietilen, need_mapping false); путь: Строительство и ремонт / Материалы / Строительные материалы / Изоляционные материалы / Теплоизоляционные материалы / Вспененный полиэтилен / Листовой вспененный полиэтилен. Константы карточки: Форма=рулон (p27141511 v28706548); Вид полиэтилена=несшитый (НПЭ) (p32828190 v44409696). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (76377452, category_parameters 04.09): ENUM Форма=рулон/плита, Вид полиэтилена=НПЭ/ППЭ. НЕ ставить «Назначение»: в ЭТОМ листе он ENUM строительный (кровля/перекрытия/стены/пол/фасады/фундамент) — введёт в заблуждение про упаковочный рулон; он опционален (required=0). enum_map: Если скан выявит сшитые ППЭ SKU → Вид=44409654 (сшитый ППЭ), лист тот же. СЕСТРА 76377756 (Теплоизоляционные из ВП) — близнец, 76377452 точнее по «листовой НПЭ рулон»."
+      },
+      "scan": {
+        "when": "2026-09-04 16:36",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-маппинг-гейта ОРГАНОМ (76377452 «Листовой вспененный полиэтилен», конфирмация 04.09): CargoAvtoAdapter.scan('vspenennii-polietilen') → cost≤700 → ОВХ → _market_cid(cats) 76377452 → preflight (dry). Бюджеты дефолтные.",
+        "artifacts": [
+          "ymarket_categorist_readiness_vspenennii-polietilen_2026-09-04.json",
+          "ymarket_categorist_readiness_vspenennii-polietilen_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 0, need_mapping 0 (маппинг СНЯТ органом — узкое место НЕ маппинг), needs_data 6, parcel_dims 5, rejected 16, grid 11+11 (категория мала: ВП-лист донора узкий, много строительного кросс-селла в rejected), no_pictures 0.",
+        "readiness": {
+          "grid_main": 11,
+          "grid_related": 11,
+          "selected": 0,
+          "needs_data": 6,
+          "parcel_dims": 5,
+          "rejected": 16,
+          "ready": 0,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 0,
+          "with_specs": 0,
+          "avg_emitted": 0,
+          "source": "live"
+        },
+        "verdict": "needs_data",
+        "verdict_text": "ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: 6 кандидатов ≤700₽ существуют (ОВХ дал dims 5), но данные-слой (склад-источник наличия/полнота габаритов) не конвертит в готовые. Категория мала (grid 11+11): NPE-рулоны донора узкие; rejected 16 — строительный кросс-селл/закупка>700₽. Задача open/in_progress до данных (разрыв #10/СКЛАДОВЩИК)."
+      },
+      "open_operator_decision": "НЕ автономно далее: данные-слой (ОВХ dims/склад-источник, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг 76377452 уже снят органом. Категория мала (grid 11+11)."
+    },
+    "kartonnye-tubusy": {
+      "title_ru": "Картонные тубусы",
+      "task_id": "T-0f1fac3c",
+      "state": "open",
+      "priority": 40,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "kartonnye-tubusy",
+        "market_category_id": 64642256,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09).",
+        "hint_rules": "профиль 64642256 «Тубусы для чертежей» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон kartonnye-tubusy, need_mapping false); путь: Детские товары / Товары для школы / Пеналы и письменные принадлежности / Чертежные инструменты / Тубусы для чертежей. Константы карточки: Материал=картон (p17352854 v17352864). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (64642256, category_parameters 04.09): Материал — фильтр-ENUM (group 17352854), картон присутствует. Материал = тело тубуса; крышка жестяная/картонная/без — не влияет на константу. enum_map: required=0; Материал проставляется как фильтр (поднимает contentRating), НЕ обязателен."
+      },
+      "scan": {
+        "when": "2026-09-04 (сухой скан Wave-2)",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-маппинг-гейта ОРГАНОМ (64642256 «Тубусы для чертежей», конфирмация 04.09 wf_0986cace-2ad): CargoAvtoAdapter.scan('kartonnye-tubusy') → cost≤700 → ОВХ → _market_cid(cats) 64642256 → preflight (dry). Бюджеты дефолтные 360/300.",
+        "artifacts": [
+          "ymarket_categorist_readiness_kartonnye-tubusy_2026-09-04.json",
+          "ymarket_categorist_readiness_kartonnye-tubusy_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 0, need_mapping 0 (маппинг СНЯТ органом), needs_data 22, parcel_dims 21, rejected 8, grid 19+11. категория донора tubusy: кандидаты есть, ОВХ-покрытие высокое (dims у большинства), склад-источник не конвертит.",
+        "readiness": {
+          "grid_main": 19,
+          "grid_related": 11,
+          "selected": 0,
+          "needs_data": 22,
+          "parcel_dims": 21,
+          "rejected": 8,
+          "ready": 0,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 0,
+          "with_specs": 0,
+          "avg_emitted": 0,
+          "source": "live"
+        },
+        "verdict": "needs_data",
+        "verdict_text": "ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: счётчики первоисточника kartonnye-tubusy → ready 0; 22 кандидатов ждут склад-источника/полных габаритов (разрыв #10/СКЛАДОВЩИК, не скоуп КАТЕГОРИЙЩИКА). Маппинг 64642256 уже снят органом."
+      },
+      "open_operator_decision": "НЕ автономно далее: данные-слой (ОВХ dims/склад-источник, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг уже снят органом. Категория ждёт данных (needs_data, НЕ негатив)."
+    },
+    "karton-i-gofrokarton": {
+      "title_ru": "Картон и гофрокартон",
+      "task_id": "T-8ba5d3e9",
+      "state": "done",
+      "priority": 40,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "karton-i-gofrokarton",
+        "market_category_id": 76280526,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09).",
+        "hint_rules": "профиль 76280526 «Гофролисты» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон karton-i-gofrokarton, need_mapping false); путь: Оборудование / Промышленное производство / Упаковочные материалы / Гофролисты. Константы карточки: Тип=картон (p21194330 v34060209); Материал=гофрированный картон (p17352854 v36092446). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (76280526, category_parameters 04.09). ЛИСТ-СБОРНИК: несёт и картонные, и плёночные поля (Тип пленки 39979950 = пузырьковая/стрейч/термо) — но НИ ОДНО не required, карточка картона просто не заполняет плёнку. Форма выпуска per-товар: лист 28706601 (доминанта) / рулон 28706548 (Д-21). Количество слоёв картона (27144213): Т-3сл=3, П-32=5сл=5, Д-21=2сл=2. enum_map: Переплётный картон (плотный ЦЕЛЬНЫЙ): Материал=прессованный картон 36091429 (есть в листе). Тип=подложка/Материал=капрон — НЕ наш товар."
+      },
+      "scan": {
+        "when": "2026-09-04 17:08:29",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-маппинг-гейта ОРГАНОМ (76280526 «Гофролисты», конфирмация 04.09 wf_0986cace-2ad): CargoAvtoAdapter.scan('karton-i-gofrokarton') → cost≤700 → ОВХ → _market_cid(cats) 76280526 → preflight (dry). Бюджеты дефолтные 360/300.",
+        "artifacts": [
+          "ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04.json",
+          "ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 1 — КАТЕГОРИЯ КОНВЕРТИТ после снятия гейта; need_mapping 0; needs_data 13; rejected 16; grid 20+10; no_pictures 1. профиль 76280526 «Гофролисты» ПОДТВЕРЖДЁН сканом: лист/рулон картона уходит с Тип=картон 34060209 + Материал=гофрированный картон 36092446 (плёночные поля листа НЕ заполняем).",
+        "readiness": {
+          "grid_main": 20,
+          "grid_related": 10,
+          "selected": 1,
+          "needs_data": 13,
+          "parcel_dims": 21,
+          "rejected": 16,
+          "ready": 1,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 1,
+          "with_specs": 1,
+          "avg_emitted": 2.0
+        },
+        "verdict": "ready_shortlist",
+        "verdict_text": "T3-маппинг-гейт СНЯТ ОРГАНОМ (конфирмация 76280526, директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): _market_cid(cats) отдаёт id, ready 1, need_mapping 0. ОГОВОРКИ (не скоуп КАТЕГОРИЙЩИКА): no_pictures 1 → бренд-замок отсечёт при РЕАЛЬНОМ заливе (фото-гейт #9); topfill 0 — полнота карточки #11; needs_data 13 честно ждут дня/данных. Шорт-лист из первоисточника preflight (dry), 1 SKU."
+      },
+      "open_operator_decision": "маппинг подтвердил ОРГАН (CATEGORIST, 76280526) → ready 1; НЕ автономно далее: фото #9 + полнота карточки #11 (см. ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04)."
+    },
+    "klejkaya-lenta": {
+      "title_ru": "Клейкая лента",
+      "task_id": "T-d558ebe1",
+      "state": "done",
+      "priority": 50,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "klejkaya-lenta",
+        "market_category_id": 90741,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает).",
+        "hint_rules": "90741 «Скотч» подтверждён живьём (канцтоварная ветка — единственный общий лист, упаковочного листа на дереве нет); констант НЕТ: одно/двусторонний + вид ленты решает карточка из донор-поля; строительный 15140556 (армированный/малярный) — НЕ наша база."
+      },
+      "scan": {
+        "when": "2026-09-04 15:54:20",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора; payload «точный, НЕ отправлен»)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-гейта ОРГАНОМ (90741 «Скотч», конфирмация 04.09): CargoAvtoAdapter.scan('klejkaya-lenta') → cost≤700 → ОВХ (16 dims) → _market_cid(cats) отдаёт 90741 → preflight (dry). Бюджеты дефолтные 360/300.",
+        "artifacts": [
+          "ymarket_categorist_readiness_klejkaya-lenta_2026-09-04.json",
+          "ymarket_categorist_readiness_klejkaya-lenta_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 5 (первый готовый после снятия гейта: скотч Unibob 48/72мм 66-132м), need_mapping 0, needs_data 60, parcel_dims 16, rejected 6, no_pictures 5, topfill 0 (parameterValues пусто). SKU verbatim в артефакте.",
+        "readiness": {
+          "grid_main": 60,
+          "grid_related": 11,
+          "selected": 5,
+          "needs_data": 60,
+          "parcel_dims": 16,
+          "rejected": 6,
+          "ready": 5,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 5,
+          "with_specs": 5,
+          "avg_emitted": 0.0,
+          "source": "live"
+        },
+        "verdict": "ready_shortlist",
+        "verdict_text": "Шорт-лист 5 готовых (90741 «Скотч» подтверждён органом, need_mapping 0). Оговорки не-скоупа: no_pictures 5 → фото-гейт #9; topfill 0/avg_emitted 0.0 → полнота #11 (у 90741 констант нет); needs_data 60 ждут dims/склад-источника; rejected 6 >700₽."
+      },
+      "open_operator_decision": "решено 04.09: маппинг 90741 подтвердил ОРГАН (CATEGORIST) → ready 5; далее НЕ автономно: фото #9 + полнота карточки #11 (см. ymarket_categorist_readiness_klejkaya-lenta_2026-09-04)."
+    },
+    "meshki": {
+      "title_ru": "Мешки",
+      "task_id": "T-08851483",
+      "state": "open",
+      "priority": 50,
+      "mapping": {
+        "need_mapping": true,
+        "cats_key": null,
+        "market_category_id": null,
+        "hint_rules": "мешки для мусора → 6943877 (RULES category_map, any: «мешк для мусора»), НЕ подтверждено руками; мешки ПП/строительные — другой лист, решать по факту скана"
+      },
+      "scan": null,
+      "open_operator_decision": "Волна-2 НЕ маппит: meshki ГЕТЕРОГЕННА (адверсариал wf_0986cace-2ad) — 5 под-групп, максимальная доля ~40% <80%, один cid на донор-slug БЫЛ БЫ НЕЧЕСТНЫМ. Расклад: мусорные(12-15)→6943877 «Мешки для мусора», ПП(9)+крафт(3)→76323239 «Упаковочные пакеты», биг-бэг(7)+джут/лён(3)→листа НЕТ/AUTO. РЕШЕНИЕ ОПЕРАТОРА (модельное, НЕ автономно): (а) разделить донор-slug meshki на под-лайн мешков И лентами НЕ маппить, или (б) AUTO per-ряд по правилам имени в залив-канале. Маппинг остаётся need_mapping."
+    },
+    "paketi": {
+      "title_ru": "Пакеты",
+      "task_id": "T-1236914c",
+      "state": "open",
+      "priority": 50,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "paketi",
+        "market_category_id": 76323239,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает).",
+        "hint_rules": "76323239 «Упаковочные пакеты» подтверждён живьём (базовая ПВД-фасовка; 0 обязательных); константа cats-профиля Назначение=упаковочные работы (40461331). Под-листья per-card, если скан выведет: майки → 78647969, курьерские → 64151014, мусорные → 6943877."
+      },
+      "scan": {
+        "when": "2026-09-04 15:54:40",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-гейта ОРГАНОМ (76323239 «Упаковочные пакеты»): CargoAvtoAdapter.scan('paketi') → cost≤700 → ОВХ → _market_cid(cats) 76323239 → preflight (dry). Бюджеты дефолтные.",
+        "artifacts": [
+          "ymarket_categorist_readiness_paketi_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 0, need_mapping 0 (гейт СНЯТ органом — узкое место НЕ маппинг), needs_data 53 из 60-main сетки, ОВХ дал dims 16 → у 16 dims есть, но склад-источник наличия (T4) не дал готовых (только in_stock считает), rejected 18. Категория НЕ пуста: десятки кандидатов, данные-слой не конвертит.",
+        "readiness": {
+          "grid_main": 60,
+          "grid_related": 11,
+          "selected": 0,
+          "needs_data": 53,
+          "parcel_dims": 16,
+          "rejected": 18,
+          "ready": 0,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 0,
+          "avg_emitted": 0.0,
+          "source": "live"
+        },
+        "verdict": "needs_data",
+        "verdict_text": "ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: 53 кандидата (16 уже с dims) ждут склад-источника/полных габаритов (T4/T5, разрыв данных #10/СКЛАДОВЩИК). Задача open/in_progress; шорт-лист пуст по данным, не по пустоте категории."
+      },
+      "open_operator_decision": "НЕ автономно далее: данные-слой (ОВХ dims/склад-источник T4/T5, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг уже снят органом."
+    },
+    "upakovochnaya-bumaga": {
+      "title_ru": "Упаковочная бумага",
+      "task_id": "T-17536f4e",
+      "state": "done",
+      "priority": 50,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "upakovochnaya-bumaga",
+        "market_category_id": 76346336,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09).",
+        "hint_rules": "профиль 76346336 «Упаковочные плёнки» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон upakovochnaya-bumaga, need_mapping false); путь: Оборудование / Промышленное производство / Упаковочные материалы / Упаковочные плёнки. Константы карточки: Тип=бумага (p21194330 v34061629); Назначение=упаковочные работы (p27143691 v40461331). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (76346336, category_parameters 04.09): тот же лист, что streich/пузырьковая (76346336) — но для бумаги ставим Тип=бумага (НЕ «Тип пленки»). Материал и Форма выпуска per-карточка из донор-поля (крафт 36091484 / бумага 17352859 / целлюлоза 36091389; рулон 28706548 / лист 28706601). enum_map: Пищевой пергамент «Горница»-типа (для выпечки) → 62769236 «Бумага пищевая» (решается на карточке). Подарочная/декор тишью → 61472847 «Подарочная упаковка» (на карточке)."
+      },
+      "scan": {
+        "when": "2026-09-04 17:14:23",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-маппинг-гейта ОРГАНОМ (76346336 «Упаковочные плёнки», конфирмация 04.09 wf_0986cace-2ad): CargoAvtoAdapter.scan('upakovochnaya-bumaga') → cost≤700 → ОВХ → _market_cid(cats) 76346336 → preflight (dry). Бюджеты дефолтные 360/300.",
+        "artifacts": [
+          "ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04.json",
+          "ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 4 — КАТЕГОРИЯ КОНВЕРТИТ после снятия гейта; need_mapping 0; needs_data 11; rejected 16; grid 20+11; no_pictures 4. профиль 76346336 «Упаковочные плёнки» ПОДТВЕРЖДЁН сканом: лист НАЗВАН «плёнки», НО схема ЯВНО приняла бумагу — 4 крафт-рулона ушли с Тип=бумага 34061629 + Назначение=упаковочные работы 40461331. Пергамент→62769236/декор-тишью→61472847 остаются per-card (не в шорт-листе).",
+        "readiness": {
+          "grid_main": 20,
+          "grid_related": 11,
+          "selected": 4,
+          "needs_data": 11,
+          "parcel_dims": 11,
+          "rejected": 16,
+          "ready": 4,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 4,
+          "with_specs": 4,
+          "avg_emitted": 2.0
+        },
+        "verdict": "ready_shortlist",
+        "verdict_text": "T3-маппинг-гейт СНЯТ ОРГАНОМ (конфирмация 76346336, директива «пусть подтверждает ОРГАН КОТОРОГО ЭТО КОМПЕТЕНЦИЯ»): _market_cid(cats) отдаёт id, ready 4, need_mapping 0. ОГОВОРКИ (не скоуп КАТЕГОРИЙЩИКА): no_pictures 4 → бренд-замок отсечёт при РЕАЛЬНОМ заливе (фото-гейт #9); topfill 0 — полнота карточки #11; needs_data 11 честно ждут дня/данных. Шорт-лист из первоисточника preflight (dry), 4 SKU."
+      },
+      "open_operator_decision": "маппинг подтвердил ОРГАН (CATEGORIST, 76346336) → ready 4; НЕ автономно далее: фото #9 + полнота карточки #11 (см. ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04)."
+    },
+    "napolniteli": {
+      "title_ru": "Наполнители",
+      "task_id": "T-6b8743bb",
+      "state": "open",
+      "priority": 50,
+      "mapping": {
+        "need_mapping": false,
+        "cats_key": "napolniteli",
+        "market_category_id": 76300038,
+        "confirmed": "CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает).",
+        "hint_rules": "76300038 «Упаковочные наполнители» подтверждён живьём; Тип=наполнитель (34060776); силикагель = тот же лист, Тип 43545650 (не отдельная категория); Материал/Форма выпуска по товару (крафт-стружка/бумага/пенопласт/полиэтилен)."
+      },
+      "scan": {
+        "when": "2026-09-04 15:51:10",
+        "dry": true,
+        "rubicon": "не пересечён (0₽ GET донора)",
+        "channel": "zaliv-канал ПОСЛЕ снятия T3-гейта ОРГАНОМ (76300038 «Упаковочные наполнители»): CargoAvtoAdapter.scan('napolniteli') → cost≤700 → ОВХ → _market_cid(cats) 76300038 → preflight (dry). Бюджеты дефолтные.",
+        "artifacts": [
+          "ymarket_categorist_readiness_napolniteli_2026-09-04.md",
+          "ymarket_mapping_confirmed_2026-09-04.json"
+        ],
+        "coverage": "ready 0, need_mapping 0 (гейт СНЯТ органом — узкое место НЕ маппинг), needs_data 21 кандидатов ≤700₽, но ОВХ дал dims только 3 → T5 (нет габаритов на донор-карте/не выводимы из имени — насыпной товар), rejected 20 (закупка>700₽/маржа). Категория НЕ пуста: 21 кандидат есть, но данные-слой не конвертит.",
+        "readiness": {
+          "grid_main": 32,
+          "grid_related": 9,
+          "selected": 0,
+          "needs_data": 21,
+          "parcel_dims": 3,
+          "rejected": 20,
+          "ready": 0,
+          "errors": 0,
+          "topfill": 0,
+          "need_mapping": 0,
+          "no_pictures": 0,
+          "avg_emitted": 0.0,
+          "source": "live"
+        },
+        "verdict": "needs_data",
+        "verdict_text": "ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: 21 кандидат ≤700₽ существует, но ОВХ/склад не дали готовых (dims 3/21 — разрыв данных #10/склад, насыпной товар без габаритов на карте). Задача остаётся open/in_progress до данных; шорт-лист пуст по ПРАВИЛУ отсутствия dims/стока, не по пустоте категории."
+      },
+      "open_operator_decision": "НЕ автономно далее: данные-слой (ОВХ dims/склад-источник T4/T5, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг уже снят органом."
+    },
+    "upakovochnaya-setka": {
+      "title_ru": "Упаковочная сетка",
+      "task_id": "T-53183869",
+      "state": "open",
+      "priority": 60,
+      "mapping": {
+        "need_mapping": true,
+        "cats_key": null,
+        "market_category_id": null,
+        "hint_rules": "подтверждённого id нет; решать по факту скана"
+      },
+      "scan": null,
+      "open_operator_decision": "Волна-2 НЕ маппит: NO_LEAF ПОДТВЕРЖДЁН (wf_0986cace-2ad, перечислены ВСЕ 24 узла «сетк» в живом дереве) — упаковочной защитной сетки (рулон/полотно для пересылки) в таксономии ЯМ НЕТ. cid не выдумываем (D1). РЕШЕНИЕ ОПЕРАТОРА: не лить сетку в смежные листы (пакеты/плёнки введут в заблуждение) либо искать другой сбыт. Маппинг остаётся need_mapping (честно)."
+    },
+    "upakovochnie-lentj": {
+      "title_ru": "Упаковочные ленты",
+      "task_id": "T-e2a8bce0",
+      "state": "open",
+      "priority": 60,
+      "mapping": {
+        "need_mapping": true,
+        "cats_key": null,
+        "market_category_id": null,
+        "hint_rules": "обвязочная/ПЭТ-лента — подтверждённого id нет; НЕ путать с клейкой лентой (90741), решать по факту скана"
+      },
+      "scan": null,
+      "open_operator_decision": "Волна-2 НЕ маппит: COST-WALL — все 43 SKU ленты донора ≥769₽ (пол) > правила ≤700₽ → шорт-лист НЕВОЗМОЖЕН, маппинг мут (нечего публиковать в бюджете). РЕШЕНИЕ ОПЕРАТОРА: держать ленту до лучшей закупки/дня либо поднять порог категории (НЕ автономно). Маппинг остаётся need_mapping."
+    }
+  }
+}

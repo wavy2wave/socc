@@ -27,6 +27,9 @@
   BR13 короткий_ответ          — показ-версия режет длинный ответ, но [ДЕЙСТВИЕ]-строку сохраняет
   BR14 спиннер_молчит_в_тесте  — _with_spinner на не-tty выходе не пишет мусор, значение возвращает
   BR15 лог_не_на_диске_в_тесте — repl с заданным stdin не пишет сессия-лог на диск (runtime чист)
+  BR23 план_дня_шов              — /пландня (алиас day_plan): read-лицо ПЛАНА ДНЯ поверх ymarket_
+                                  plannerka_v1 (build_plan+render_plan на герметичных фикстурах);
+                                  save/seed-commit не званы, write-границы нет, 0₽
 """
 import io
 import json
@@ -803,6 +806,286 @@ def br22_l13_manifest_gate():
                 f"обязательные-поля-в-stdout={fields}")
 
 
+def br23_plan_dnya_shov():
+    """ПЛАН ДНЯ в мозге (шов day_plan): /пландня — read-лицо планёрки (build_plan+render_plan) на
+    ГЕРМЕТИЧНЫХ фикстурах (реестр через tasks.new_task, леджер last_verified PASS/FAIL, досье doc,
+    журнал-строки). save/seed-commit НЕ званы; write-границы нет; 0₽. Реальный диск не трогаем."""
+    import ymarket_tasks_v1 as T_
+    import ymarket_plannerka_v1 as real_dp
+
+    def _task(what, owner, category, **kw):
+        t, err = T_.new_task(what=what, owner=owner, category=category, **kw)
+        assert err is None, f"new_task вернул ошибку: {err}"
+        return t
+
+    def _goods(oid, slug, cat, verdict="PASS"):
+        return {"offer_id": oid, "article": oid, "store_slug": slug, "category_slug": cat,
+                "last_verified": {"verdict": verdict, "ts": "2026-09-04T06:00:00+00:00"}}
+
+    def _dossier(slug, *, need_mapping=False, market_category_id=None, scan=None):
+        e = {"title_ru": slug, "state": "open", "priority": 50,
+             "mapping": {"need_mapping": need_mapping,
+                         "market_category_id": market_category_id},
+             "open_operator_decision": "", "task_id": f"T-{slug[:6]}"}
+        if scan is not None:
+            e["scan"] = scan
+        return e
+
+    def _ready_scan(ready=4):
+        return {"when": "2026-09-03T13:00:00+00:00", "dry": True, "rubicon": "ok",
+                "verdict": "ready_shortlist", "verdict_text": "шорт-лист собран",
+                "readiness": {"ready": ready, "scanned": ready, "island": False},
+                "shortlist": [{"sku": f"SKU-{i}", "title": "x", "sell_rub": 900}
+                              for i in range(ready)]}
+
+    # герметичные фикстуры (все входы build_plan; реальный диск не читается — см. run_plannerka)
+    reg = [_task("Поднять цену ARB-87931769 до пола КПИ (тест)", "PRICER", "pricing",
+                 urgency="high", priority=20),
+           _task("Спарсить категорию стрейч-плёнка на доноре (тест)", "CATEGORIST", "categories",
+                 priority=40)]
+    lib = {"goods": {"a": _goods("ARB-1", "atlas-express-film", "vozdushno-puzyrkovaya-plenka"),
+                     "b": _goods("ARB-2", "atlas-express-film", "vozdushno-puzyrkovaya-plenka", "FAIL"),
+                     "c": _goods("ARB-3", "atlas-express-film", "drugaya", "PASS")}}
+    doss = {"categories": {"vozdushno-puzyrkovaya-plenka": _dossier(
+        "vozdushno-puzyrkovaya-plenka", need_mapping=False, market_category_id="76346336",
+        scan=_ready_scan(2))}}
+    jrn = [{"ts": "2026-09-04T06:00:00+00:00", "date": "2026-09-04",
+            "kpis": {"urgent_orders": 0}, "burning": 2, "top_move": "ASSORTMENT_WIDEN"}]
+
+    calls = {"save": 0, "seed": 0}
+
+    class _FakeDayPlan:
+        """Обёртка на месте атрибута-модуля brain._day_plan: build_plan инъецирует герметичные
+        фикстуры; render_plan делегирует на реальный движок; save/seed на месте (ловит вызовы,
+        если какой-то путь кода их сделает — commit не зван в принципе)."""
+
+        def build_plan(self, *, store=None):
+            return real_dp.build_plan(date_str="2026-09-04", store=store,
+                                      registry=reg, dossiers=doss, vitrine=lib, journal=jrn)
+
+        def render_plan(self, plan):
+            return real_dp.render_plan(plan)
+
+        def save_plan(self, plan, *, commit=False, path=None):
+            calls["save"] += 1
+            return real_dp.save_plan(plan, commit=commit, path=path)
+
+        def seed_from_plan(self, plan, *, commit=False, save_path=None, existing=None):
+            calls["seed"] += 1
+            return real_dp.seed_from_plan(plan, commit=commit, save_path=save_path,
+                                          existing=existing)
+
+    old_dp, old_ask = brain._day_plan, brain._ask
+    brain._day_plan = _FakeDayPlan()
+    brain._ask = lambda text, history=None: {"ok": True, "text": ""}
+    txt_all = ""
+    try:
+        out = io.StringIO()
+        brain.repl(stdin=io.StringIO("/пландня\n"), stdout=out)
+        txt = out.getvalue()
+        txt_all += txt
+        # алиас «пландня» → день_план → карточка ПЛАН (метка) + тело render_plan (read)
+        title = "ПЛАН ДНЯ" in txt and "▶" in txt and "ПЛАН" in txt
+        decisions = "РЕШЕНИЯ" in txt and "carry" in txt
+        vitrine = "доказанно живых 2" in txt           # PASS-счёт по фикстуре леджера (PL2)
+        no_write = calls["save"] == 0 and calls["seed"] == 0
+    finally:
+        brain._day_plan = old_dp
+        brain._ask = old_ask
+    clean = "Traceback" not in txt_all
+    ok = all([title, decisions, vitrine, no_write, clean])
+    return ok, (f"ПЛАН-ДНЯ-рендер={title} РЕШЕНИЯ={decisions} витрина-2={vitrine} "
+                f"write-не_зван={no_write} чист={clean}")
+
+
+def br24_sovet_shov():
+    """СОВЕТ в мозге (шов sovet): /совет — read-лицо протокола даты (голоса из сторов +
+    пропиздоны + зеркало решений плана) на ГЕРМЕТИЧНОМ сторе (env YM_SOVET_DIR → tmp). Читаем
+    sovet/<дата>.json как есть; save/resolve-commit НЕ званы (VL7 — совет сам не пишет/не создаёт);
+    0₽. Файла даты нет → честно «совет не собирался» (VL5-лицо), без пустого листа."""
+    import ymarket_sovet_v1 as real_sv
+    calls = {"save": 0, "resolve": 0}
+
+    class _FakeSovet:
+        """Обёртка на месте атрибута-модуля brain._sovet: load/render делегируют на реальный
+        движок (сторе = env YM_SOVET_DIR, герметичный tmp); save/resolve на месте — ловит
+        вызовы, если какой-то путь кода захочет писать/создавать (здесь не зван в принципе)."""
+
+        def load_protocol(self, date_str=None, path=None):
+            return real_sv.load_protocol(date_str=date_str, path=path)
+
+        def render_sovet(self, protocol, date_str=None):
+            return real_sv.render_sovet(protocol, date_str)
+
+        def save_protocol(self, protocol, *, commit=False, path=None):
+            calls["save"] += 1
+            return real_sv.save_protocol(protocol, commit=commit, path=path)
+
+        def resolve_daily(self, *a, **kw):
+            calls["resolve"] += 1
+            return real_sv.resolve_daily(*a, **kw)
+
+    # протокол, какой реально пишет resolve_daily(commit) — читаем его же схему
+    proto = {"schema": "ymarket.sovet.v1", "date": "2026-09-04", "store": "atlas-express-film",
+             "generated_at": "2026-09-04T08:07:00+00:00", "mode": "svod",
+             "chair": {"mode": "svod", "by": "УПРАВЛЯЮЩИЙ-МОЗГ",
+                       "text": "заслушаны доклады органов; упёрлись в слово оператора",
+                       "validated": True},
+             "voices": [
+                 {"organ": "КАТЕГОРИЙЩИК",
+                  "facts": [{"text": "в очереди 1 категорий · готово к заливу 0",
+                             "source": "досье categories"}], "nuzhno_slovo": []},
+                 {"organ": "ЦИКЛ-1",
+                  "facts": [{"text": "доказанно живых 1 (vozdushno-puzyrkovaya-plenka×1)",
+                             "source": "goods_library · СВЕРКА PASS"}], "nuzhno_slovo": []}],
+             "misses": [{"organ": "CATEGORIST", "what": "Спарсить streich на доноре",
+                         "since": "2026-09-03",
+                         "evidence": "carry вчера→сегодня, закрытых пунктов 0", "task_id": "T-x"}],
+             "waiting_operator": [], "plan": {"date": "2026-09-04", "decisions": 3,
+                                              "carry": 2, "new": 0, "escalation": 0, "watch": 1},
+             "sources": {}}
+
+    def _run():
+        out = io.StringIO()
+        brain.repl(stdin=io.StringIO("/совет\n"), stdout=out)
+        return out.getvalue()
+
+    old_sv, old_ask = brain._sovet, brain._ask
+    brain._sovet = _FakeSovet()
+    brain._ask = lambda text, history=None: {"ok": True, "text": ""}
+    txt_all = ""
+    try:
+        # (а) файла даты нет → честно «совет не собирался» (VL5), не выдумка и не пустой лист
+        with tempfile.TemporaryDirectory() as td:
+            os.environ["YM_SOVET_DIR"] = td
+            try:
+                txt_absent = _run()
+                txt_all += txt_absent
+                absent_ok = ("совет не собирался" in txt_absent
+                             and "нечего решать" in txt_absent)
+            finally:
+                os.environ.pop("YM_SOVET_DIR", None)
+        # (б) протокол на месте → /совет рендерит голоса+пропиздоны+зеркало плана, read-only
+        with tempfile.TemporaryDirectory() as td:
+            os.environ["YM_SOVET_DIR"] = td
+            try:
+                p = real_sv.sovet_path()            # env уже в tmp → файл сегодняшней даты
+                Path(p).write_text(json.dumps(proto, ensure_ascii=False), encoding="utf-8")
+                txt = _run()
+                txt_all += txt
+                title = "СОВЕТ ДИРЕКТОРОВ" in txt and "УПРАВЛЯЮЩИЙ-МОЗГ" in txt
+                voices = "КАТЕГОРИЙЩИК" in txt and "в очереди 1" in txt
+                propizdon = "ПРОПИЗДОНЫ" in txt and "CATEGORIST" in txt
+                plan = "carry 2" in txt and "watch 1" in txt
+                # в сторе (кроме уже лежащего протокола) ничего нового
+                only = sorted(x.name for x in Path(td).iterdir())
+                writes = [n for n in only if n != Path(p).name]
+            finally:
+                os.environ.pop("YM_SOVET_DIR", None)
+    finally:
+        brain._sovet = old_sv
+        brain._ask = old_ask
+    no_write = calls["save"] == 0 and calls["resolve"] == 0 and not writes
+    clean = "Traceback" not in txt_all
+    ok = all([absent_ok, title, voices, propizdon, plan, no_write, clean])
+    return ok, (f"нет-файла-честно={absent_ok} рендер-голоса={voices} пропиздон={propizdon} "
+                f"зеркало-плана={plan} write-не_зван={no_write} "
+                f"новое-в-сторе: {writes or '—'} чист={clean}")
+
+
+def br25_spory_shov():
+    """СПОРЫ в мозге (слой 2 СОВЕТА): /споры — read-лицо позиций органов + прений на ГЕРМЕТИЧНОМ
+    сторе (env YM_SPORY_DIR → tmp). Снимок даты есть → рендер его; нет и мир пуст → честно
+    «прений не было» (VL5-лицо). save/resolve/композа не званы в write-виде — споры не пишут и
+    заданий не создают (VL10); 0₽."""
+    import ymarket_sovet_spory_v1 as real_sp
+    calls = {"save": 0, "resolve": 0}
+
+    class _FakeSpory:
+        """Обёртка на месте атрибута-модуля brain._spory: load/render делегируют на реальный движок
+        (сторе = env YM_SPORY_DIR); compose на месте — детерминированная пустая производная;
+        save/resolve ловят вызовы (здесь не зван в принципе)."""
+
+        def load_spory(self, date_str=None, path=None):
+            return real_sp.load_spory(date_str=date_str, path=path)
+
+        def render_spory(self, doc, date_str=None):
+            return real_sp.render_spory(doc, date_str)
+
+        def compose_spory(self, **kw):
+            return {"schema": "ymarket.sovet.spory.v1", "date": kw.get("date_str") or real_sp._today(),
+                    "store": "", "mode": "off", "positions": [], "disputes": [], "sources": {}}
+
+        def save_spory(self, doc, *, commit=False, path=None):
+            calls["save"] += 1
+            return real_sp.save_spory(doc, commit=commit, path=path)
+
+        def resolve_spory_daily(self, *a, **kw):
+            calls["resolve"] += 1
+            return real_sp.resolve_spory_daily(*a, **kw)
+
+    def _run():
+        out = io.StringIO()
+        brain.repl(stdin=io.StringIO("/споры\n"), stdout=out)
+        return out.getvalue()
+
+    # снимок споров, какой реально пишет resolve_spory_daily(commit)
+    snap = {"schema": "ymarket.sovet.spory.v1", "date": real_sp._today(), "store": "atlas-express-film",
+            "mode": "off",
+            "positions": [{"organ": "КАТЕГОРИЙЩИК",
+                           "stance": "партия «streich-plenka» готова к заливу (10 SKU)",
+                           "facts": [{"text": "«streich-plenka»: 10 SKU, verdict=ready_shortlist",
+                                      "source": "досье категорий · streich-plenka"}],
+                           "proposal": "оператору: слово на живой залив"}],
+            "disputes": [{"id": f"W1-{real_sp._today()}-streich-plenka", "kind": "conflict",
+                          "between": ["КАТЕГОРИЙЩИК", "ЦИКЛ-1"],
+                          "summary": "партия готова, а витрина карточек не видит",
+                          "grounding": [{"text": "готово 10 SKU", "source": "досье"}],
+                          "proposal": "оператору: слово на залив"}],
+            "sources": {}}
+
+    old_sp, old_ask = brain._spory, brain._ask
+    brain._spory = _FakeSpory()
+    brain._ask = lambda text, history=None: {"ok": True, "text": ""}
+    txt_all = ""
+    try:
+        # (а) снимка нет, сторы пусты → честно «прений не было» (VL5), не выдумка, не пустой лист
+        with tempfile.TemporaryDirectory() as td:
+            os.environ["YM_SPORY_DIR"] = td
+            try:
+                txt_absent = _run()
+                txt_all += txt_absent
+                absent_ok = ("прений не было" in txt_absent
+                             and "битый" not in txt_absent
+                             and "не импортировался" not in txt_absent)
+            finally:
+                os.environ.pop("YM_SPORY_DIR", None)
+        # (б) снимок на месте → /споры рендерит позиции+прения, read-only, ничего нового в сторе
+        with tempfile.TemporaryDirectory() as td:
+            os.environ["YM_SPORY_DIR"] = td
+            try:
+                p = real_sp.spory_path()          # env уже в tmp → файл сегодняшней даты
+                Path(p).write_text(json.dumps(snap, ensure_ascii=False), encoding="utf-8")
+                txt = _run()
+                txt_all += txt
+                title = "СПОРЫ ОРГАНОВ" in txt and "КАТЕГОРИЙЩИК" in txt
+                prenia = "ПРЕНИЯ" in txt and f"W1-{real_sp._today()}" in txt
+                mode = "режим off" in txt and "детерминированный" not in txt
+                only = sorted(x.name for x in Path(td).iterdir())
+                writes = [n for n in only if n != Path(p).name]
+            finally:
+                os.environ.pop("YM_SPORY_DIR", None)
+    finally:
+        brain._spory = old_sp
+        brain._ask = old_ask
+    no_write = calls["save"] == 0 and calls["resolve"] == 0 and not writes
+    clean = "Traceback" not in txt_all
+    ok = all([absent_ok, title, prenia, mode, no_write, clean])
+    return ok, (f"нет-снимка-честно={absent_ok} рендер-позиции={title} прения={prenia} "
+                f"режим-снимка={mode} write-не_зван={no_write} "
+                f"новое-в-сторе: {writes or '—'} чист={clean}")
+
+
 TESTS = [
     ("BR1  write_по_слову", br1_write_po_slovu),
     ("BR2  allowlist_строг", br2_allowlist_strog),
@@ -826,6 +1109,9 @@ TESTS = [
     ("BR20 L6_рубикон_движок", br20_l6_rubicon_engine_dry),
     ("BR21 L12_фейк-пасс_рубит", br21_l12_fail_halts_write),
     ("BR22 L13_манифест_вход", br22_l13_manifest_gate),
+    ("BR23 план_дня_шов", br23_plan_dnya_shov),
+    ("BR24 совет_шов", br24_sovet_shov),
+    ("BR25 споры_шов", br25_spory_shov),
 ]
 
 

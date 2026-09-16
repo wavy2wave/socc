@@ -1,0 +1,7 @@
+{
+  "id": "ACTIVE_LAWFUL_INTENT_PROPOSAL_SURFACE",
+  "next_required_step": "validate_socc_lawful_intent_proposal_surface_v1",
+  "status": "ACTIVE_CANDIDATE_FOR_VALIDATION",
+  "surface_artifact": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_V1.json",
+  "truth_boundary": "Active lawful intent proposal surface. Non-executing until validated."
+}

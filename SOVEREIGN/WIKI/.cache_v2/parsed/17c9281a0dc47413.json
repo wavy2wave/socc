@@ -1,0 +1,1 @@
+{"claims": [{"text": "The new SOCC root is accepted as the stable controlled-autonomy foundation.", "line": 11, "entities": ["SOCC"], "intent": "status_pass", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 2, "Proof": 2, "Supramental": 1, "Hermes": 2, "Codex": 2, "Daemon": 1}}

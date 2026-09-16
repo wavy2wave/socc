@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "review_atomic_commit_enforced_self_building_lane_v1",
+  "panel_hash": "7accaebb79695084b34a9568",
+  "progress_hash": "3723ca930b4601a231b542e8",
+  "pulse_hash": "6a3a3d44cb47fb9432c8609e",
+  "route_hash": "61b6e793fff503576934226e",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260616T220204085403Z",
+  "status": "PASS",
+  "truth_boundary": "Atomic-commit enforced self-building lane validation only. This runs the enforcer live: it proves that direct route writes are blocked and that a route transition succeeds only through enforce_atomic_commit_transition, with coherent route/pulse/panel/progress and a rollback snapshot. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/ATOMIC_COMMIT_ENFORCED_SELF_BUILDING_LANE_VALIDATION_V1_PROOF.json"
+}

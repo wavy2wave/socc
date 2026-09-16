@@ -1,0 +1,20 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "capability": "PRE_EFFECT_AUDIT_DRAFT_FOR_NEXT_CYCLE_REVIEW",
+  "continuous_loop_enabled": false,
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "expected_final_proof": "core/socc/approved_autonomy_lane_runner/proof/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_REVIEW_V1_PROOF.json",
+  "expected_real_next": "build_idempotent_step_guard_v1",
+  "final_canon_approval_allowed": false,
+  "id": "NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_PROOF_DRAFT_BEFORE_EFFECT_AUDIT_V1",
+  "network_used": false,
+  "queue_widening_allowed": false,
+  "scheduler_installed": false,
+  "source_validation_proof": "core/socc/approved_autonomy_lane_runner/proof/NEXT_SELF_BUILDING_CYCLE_UNDER_EFFECT_AUDITOR_LANE_VALIDATION_V1_PROOF.json",
+  "status": "DRAFT_BEFORE_EFFECT_AUDIT",
+  "tick_executed_now": false,
+  "truth_boundary": "Next bounded self-building cycle under effect-auditor lane review only. This review-seals the cycle that selected build_idempotent_step_guard_v1 as the next bounded target under active material-effect lane law. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

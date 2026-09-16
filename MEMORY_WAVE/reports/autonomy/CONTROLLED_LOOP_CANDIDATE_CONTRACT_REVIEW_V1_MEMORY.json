@@ -1,0 +1,11 @@
+{
+  "created_at_msk": "2026-05-30T18:22:34+03:00",
+  "created_at_utc": "2026-05-30T15:22:34.946550+00:00",
+  "id": "CONTROLLED_LOOP_CANDIDATE_CONTRACT_REVIEW_V1_MEMORY",
+  "memory_effect": "Review-sealed controlled loop candidate contract. Ready to build single controlled tick execution step. No tick executed.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/CONTROLLED_LOOP_CANDIDATE_CONTRACT_REVIEW_V1_PROOF.json",
+  "real_next": "repair_review_controlled_loop_candidate_contract_v1",
+  "review": "core/socc/autonomy/self_building/controlled_loop_candidate/review/CONTROLLED_LOOP_CANDIDATE_CONTRACT_REVIEW_V1.json",
+  "status": "FAIL",
+  "truth_boundary": "Review of controlled loop candidate contract. This review-seals the candidate contract, candidate plan, risk gate, and no-execution guard for a future single controlled tick. It does not execute a tick, does not start a loop, does not enable daemon, scheduler, background execution, 24/7 autonomy, network use, queue widening, Entity/ANNA birth, final canon approval, or AGI claim."
+}

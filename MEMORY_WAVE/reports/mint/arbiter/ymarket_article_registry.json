@@ -1,0 +1,95 @@
+{
+  "schema": "ymarket.article.registry.v1",
+  "created_at": "2026-08-25T09:50:56.056130+00:00",
+  "updated_at": "2026-09-01T22:01:35.409705+00:00",
+  "articles": {
+    "9601551": {
+      "offerId": "9601551",
+      "first_seen": "2026-08-25T09:50:56.056231+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9601551",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9601551/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9605496/",
+      "supplier": null,
+      "updated_at": "2026-08-25T10:47:50.867172+00:00"
+    },
+    "9601591": {
+      "offerId": "9601591",
+      "first_seen": "2026-08-25T09:51:09.257382+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9601591",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9601591/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9605381/",
+      "supplier": null,
+      "updated_at": "2026-08-25T10:47:53.228878+00:00"
+    },
+    "9600167": {
+      "offerId": "9600167",
+      "first_seen": "2026-08-25T09:51:31.811920+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9600167",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9600167/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9600167/",
+      "supplier": null,
+      "updated_at": "2026-08-25T09:51:31.811950+00:00"
+    },
+    "9601575": {
+      "offerId": "9601575",
+      "first_seen": "2026-08-25T09:51:42.026784+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9601575",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9601575/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9605382/",
+      "supplier": null,
+      "updated_at": "2026-08-25T10:47:55.304894+00:00"
+    },
+    "9601478": {
+      "offerId": "9601478",
+      "first_seen": "2026-08-25T09:52:02.044327+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9601478",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9601478/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9605380/",
+      "supplier": null,
+      "updated_at": "2026-08-25T10:47:57.652053+00:00"
+    },
+    "9605392-1": {
+      "offerId": "9605392-1",
+      "first_seen": "2026-09-01T22:01:33.053634+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9605392",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9605392/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9605392/",
+      "supplier": null,
+      "updated_at": "2026-09-01T22:01:33.053659+00:00"
+    },
+    "9601512-1": {
+      "offerId": "9601512-1",
+      "first_seen": "2026-09-01T22:01:34.311462+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9601512",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9601512/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9601512/",
+      "supplier": null,
+      "updated_at": "2026-09-01T22:01:34.311471+00:00"
+    },
+    "9600155-1": {
+      "offerId": "9600155-1",
+      "first_seen": "2026-09-01T22:01:35.409683+00:00",
+      "marketSku": null,
+      "shopSku": null,
+      "donor_pid": "9600155",
+      "donor_url": "https://sp.cargo-avto.ru/catalog/9600155/",
+      "source_url": "https://shop.cargo-avto.ru/catalog/9600155/",
+      "supplier": null,
+      "updated_at": "2026-09-01T22:01:35.409693+00:00"
+    }
+  }
+}

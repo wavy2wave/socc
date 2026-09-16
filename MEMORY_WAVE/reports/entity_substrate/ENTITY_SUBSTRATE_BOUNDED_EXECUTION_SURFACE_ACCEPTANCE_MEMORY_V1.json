@@ -1,0 +1,12 @@
+{
+  "acceptance_status": "PASS",
+  "created_at_utc": "2026-06-22T10:50:04.269940+00:00",
+  "event": "Bounded execution surface accepted; one bounded foreground session authorized as next lawful step.",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SURFACE_ACCEPTANCE_MEMORY_V1",
+  "next": "run_entity_substrate_bounded_execution_session_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SURFACE_V1_PROOF.json",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "Entity/Substrate bounded execution surface acceptance only. Authorizes exactly one bounded foreground session (1 tick, stop, no birth) as the next lawful step. Does NOT run the session, execute, birth Entity/ANNA, or enable daemon/background/network."
+}

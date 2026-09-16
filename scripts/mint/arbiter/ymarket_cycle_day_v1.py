@@ -85,10 +85,14 @@ _RUB = re.compile(r"(\d+)\s*₽")
 
 
 def vitrina_from_ledger(store, date_str=None):
-    """{offer_id: цена} с ПОСЛЕДНЕГО ЗАЛИВА за дату (витринные цены карточек партии).
+    """{offer_id: цена} с ПОСЛЕДНЕГО ЖИВОГО ЗАЛИВА за дату (витринные цены карточек партии).
 
     Леджер — факт прогона (ЗАЛИВ несёт контент: «ARB-… vБез бренда desc=… 5600₽»). Читаем
-    ТОЛЬКО строки node=ЗАЛИВ и берём последний. Нет леджера/нет заливов → {} (честно).
+    ТОЛЬКО строки node=ЗАЛИВ c dry=False (прогон РЕАЛЬНО опубликовал, не сухая репетиция
+    автопилота: сухой ЗАЛИВ никогда не пишет на ЯМ — его note это ПЛАН, не факт витрины).
+    Берём последний такой. Строки без dry-флага (легаси) НЕ считаем живым фактом (строже:
+    без доказательства публикации витрину не утверждаем). Нет леджера/нет живых заливов →
+    {} (честно: живой витрины в этом окне не было, задач из фантома не сеем).
     """
     date_str = date_str or _now_date()
     p = _RUNTIME / store / f"{date_str}.jsonl"
@@ -98,7 +102,7 @@ def vitrina_from_ledger(store, date_str=None):
     try:
         for ln in p.read_text().splitlines():
             d = json.loads(ln)
-            if d.get("node") == "ЗАЛИВ" and d.get("note"):
+            if d.get("node") == "ЗАЛИВ" and d.get("dry") is False and d.get("note"):
                 last_note = d["note"]
     except Exception:
         return {}
@@ -198,11 +202,15 @@ def scan_pricing(store=None, date_str=None):
 
 
 def scan_ledgers():
-    """Последний ход леджера каждого магазина: если ОН FAIL → здоровье-задание (CD2).
+    """Последний ЖИВОЙ ход леджера каждого магазина: если ОН FAIL → здоровье-задание (CD2).
 
-    Якорь НА ПОСЛЕДНЕЙ строке (последний прогон дня), не на любом FAIL днём: стейл-фейл
-    после зелёных прогонов задания не порождает (честно по последнему вердикту — правило
-    «не сеем СТОКМЕН из устаревшего FAIL», 2026-09-02 verify-гейт)."""
+    Якорь НА ПОСЛЕДНЕЙ строке ЖИВОГО прогона (dry=False), не на любой FAIL днём: стейл-фейл
+    после зелёных прогонов задания не порождает (правило «не сеем СТОКМЕН из устаревшего
+    FAIL», 2026-09-02 verify-гейт). Сухой прогон (автопилот, dry=True) — РЕПЕТИЦИЯ: он
+    ничего не пишет на ЯМ, его FAIL (план вне зоны, чтение, фейк-write) — совет, а не
+    поломка живого магазина → health-задание НЕ сеем (FIX-F 2026-09-03). Сработать может
+    только ход, который РЕАЛЬНО касался витрины (живой --commit оператора): его FAIL =
+    магазин в недоверенном состоянии → чинить."""
     out = []
     if cycle1 is None:
         return out
@@ -217,22 +225,117 @@ def scan_ledgers():
         ledger = _RUNTIME / slug / f"{date_str}.jsonl"
         if not ledger.exists():
             continue
-        last = None
+        last_live = None
         try:
             for ln in ledger.read_text().splitlines():
-                last = json.loads(ln)
+                d = json.loads(ln)
+                if d.get("dry") is False:
+                    last_live = d
         except Exception:
-            last = None
-        if last and last.get("verdict") == "FAIL":
-            node = last.get("node")
-            note = str(last.get("note", ""))[:120]
+            last_live = None
+        if last_live and last_live.get("verdict") == "FAIL":
+            node = last_live.get("node")
+            note = str(last_live.get("note", ""))[:120]
             out.append(_obs_task(
-                f"Чинить узел «{node}» магазина {slug} (последний ход FAIL)",
+                f"Чинить узел «{node}» магазина {slug} (последний ЖИВОЙ ход FAIL)",
                 "CONTROLLER", "health", priority=15, urgency="high", store=slug,
                 cycle="cycle1",
-                evidence=f"леджер {slug}/{date_str}: последняя строка FAIL на «{node}» "
-                         f"{last.get('ts')}: {note}",
-                body="Правило без фейк-пасс: последний ход FAIL — не перескакиваем, чиним узел."))
+                evidence=f"леджер {slug}/{date_str}: последний живой ход FAIL на «{node}» "
+                         f"{last_live.get('ts')}: {note}",
+                body="Правило без фейк-пасс: живой прогон упал — магазин мог остаться в "
+                     "недоверенном состоянии, не перескакиваем, чиним узел. (Сухие репетиции "
+                     "автопилота заданий не сеют.)"))
+    return [o for o in out if o]
+
+
+def scan_price_control(store=None, date_str=None):
+    """Контроль ценника — КОНТРОЛЬ-узел ЦИКЛА-1 из ЛЕДЖЕРА (CD2, 0₽, без сети).
+
+    Директива оператора 08.09: «клиент платит сумму выгодную мне» — на витрине НЕ должно быть
+    зачёркнутой цены (discountBase = зелёный ценник) и участия в акциях (баллы/скидки не нужны).
+    Читает ПОСЛЕДНЮЮ строку node=КОНТРОЛЬ за дату (артефакт леджера — живой факт прогона):
+      evidence.green (discountBase на витрине) → PRICER-задание «снять зелёный ценник» —
+        очистка = живой ЦИКЛ-1 --commit (RUBICON, только оператор), сухой прогон — отчёт;
+      evidence.below_plan (живая < закупка×markup) → PRICER-задание «поднять цену»;
+      evidence.promos.participating > 0 ИЛИ promos.auto_added (наши SKU реально в акции) →
+        CONTROLLER-задание «вывести из акции / отписаться» (кабинет, выключить перенос);
+      evidence.promos.renewal_on (перенос волн ВКЛЮЧЁН, участия ещё нет) → CONTROLLER-задание
+        «выключить автоперенос» — товары не должны уходить в акции сами (директива 08.09 вечер).
+    """
+    out = []
+    store = store or STORE_DEFAULT
+    date_str = date_str or _now_date()
+    p = _RUNTIME / store / f"{date_str}.jsonl"
+    if not p.exists():
+        return out
+    last = None
+    try:
+        for ln in p.read_text().splitlines():
+            d = json.loads(ln)
+            if d.get("node") == "КОНТРОЛЬ":
+                last = d
+    except Exception:
+        return out
+    if not last:
+        return out
+    ev = last.get("evidence") or {}
+    note0 = str(last.get("note", ""))[:140]
+    for oid, g in (ev.get("green") or {}).items():
+        val = g.get("value")
+        base = g.get("base")
+        out.append(_obs_task(
+            f"Снять зелёный ценник {oid}: витрина {val:g}₽, зачёркнуто {base:g}₽",
+            "PRICER", "pricing", priority=15, urgency="high", store=store,
+            cycle="cycle1",
+            evidence=f"КОНТРОЛЬ ({note0}): discountBase на {oid} — зелёный ценник",
+            body="Директива 08.09: зачёркнутой цены на витрине быть не должно (клиент платит "
+                 "полную профитную цену). Очистка = живой ЦИКЛ-1 --commit по слову оператора "
+                 "(RUBICON): КОНТРОЛЬ перезальёт offer-prices БЕЗ discountBase (цена не "
+                 "меняется, карантина нет). Сухой прогон — только отчёт."))
+    for oid, d in (ev.get("below_plan") or {}).items():
+        live = d.get("live")
+        plan = d.get("plan")
+        out.append(_obs_task(
+            f"Поднять цену {oid}: витрина {live:g}₽ < эталон {plan:g}₽ (закупка×markup)",
+            "PRICER", "pricing", priority=20, urgency="normal", store=store,
+            cycle="cycle1",
+            evidence=f"КОНТРОЛЬ: {oid} живьём {live:g}₽ ниже эталона {plan:g}₽ (библиотека)",
+            body="Клиент платит меньше выгодной суммы — эталон закупка×markup из библиотеки. "
+                 "ЦЕНОВИК·ПЛАН готовит план (read); цены движок сам не трогает — только по слову "
+                 "оператора."))
+    promos = ev.get("promos") or {}
+    in_act = promos.get("auto_added") or []
+    participating = promos.get("participating") or 0
+    if participating or in_act:
+        names = ", ".join(promos.get("names") or [])
+        auto_txt = f"; автодобавлены в акцию: {', '.join(in_act)}" if in_act else ""
+        what = (f"Вывести из акции и отписаться: {names}{auto_txt} "
+                "(участие = скидка/баллы, не нужно)"
+                if participating else
+                f"Вывести из акции автодобавленные: {', '.join(in_act)} "
+                "(участие = скидка/баллы, не нужно)")
+        out.append(_obs_task(
+            what, "CONTROLLER", "health", priority=25, urgency="high", store=store,
+            cycle="cycle1",
+            evidence=f"КОНТРОЛЬ: promos participating={participating} из {promos.get('total')}"
+                     f" активных={promos.get('active')} авто={in_act}",
+            body="Директива 08.09: баллы за продажу не нужны, клиент платит полную цену. Товары "
+                 "ушли в акцию (в т.ч. сами, автопереносом волн «Бестселлеров»). В партнёрском "
+                 "API тумблера участия НЕТ — вывести из акции и выключить «Переносить товары "
+                 "между бестселлерами» в кабинете Маркета (Продвижение → Акции)."))
+    elif promos.get("renewal_on"):
+        rn = ", ".join(promos.get("renewal_on") or [])
+        out.append(_obs_task(
+            f"Выключить автоперенос волн (товары не должны уходить в акции сами): {rn}",
+            "CONTROLLER", "health", priority=20, urgency="normal", store=store,
+            cycle="cycle1",
+            evidence=f"КОНТРОЛЬ: renewalEnabled на {rn} (participating={participating}), "
+                     f"потенциальных кандидатов {promos.get('potential')}",
+            body="Директива 08.09 вечер: «товары при заливке не должны идти в акции». API-запрета "
+                 "на товаре нет — сейчас участия нет, но включён автоперенос волн "
+                 "«Бестселлеров» (renewalEnabled): Яндекс сам перенесёт ассортимент в следующую "
+                 "волну. Выключить в кабинете: Продвижение → Акции → «Переносить товары между "
+                 "бестселлерами» → выключить (и отказаться от участия в текущих волнах)."))
     return [o for o in out if o]
 
 
@@ -330,7 +433,8 @@ def form(*, commit=False, store=None, date_str=None, save_path=None, verbose=Fal
     existing, _ = _load_tasks()
     existing_ids = {t.get("id") for t in existing if t.get("id")}
     cands = []
-    for s in (scan_stores(), scan_pricing(store, date_str), scan_ledgers()):
+    for s in (scan_stores(), scan_pricing(store, date_str), scan_ledgers(),
+              scan_price_control(store, date_str)):
         cands.extend(s or [])
     # дедуп внутри прогона: один и тот же id из двух сканеров не создаём дважды
     seen = set()

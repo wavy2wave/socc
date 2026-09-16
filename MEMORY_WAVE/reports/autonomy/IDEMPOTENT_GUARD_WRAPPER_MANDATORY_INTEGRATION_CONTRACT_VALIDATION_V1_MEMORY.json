@@ -1,0 +1,11 @@
+{
+  "created_at_msk": "2026-05-28T01:46:12+03:00",
+  "created_at_utc": "2026-05-27T22:46:12.062221+00:00",
+  "id": "IDEMPOTENT_GUARD_WRAPPER_MANDATORY_INTEGRATION_CONTRACT_VALIDATION_V1_MEMORY",
+  "memory_effect": "Validated mandatory integration contract; future bounded scripts must use wrapper before writes.",
+  "proof": "core/socc/approved_autonomy_lane_runner/proof/IDEMPOTENT_GUARD_WRAPPER_MANDATORY_INTEGRATION_CONTRACT_VALIDATION_V1_PROOF.json",
+  "real_next": "review_idempotent_guard_wrapper_mandatory_integration_contract_v1",
+  "status": "PASS",
+  "truth_boundary": "Mandatory integration contract validation only. This validates that the built contract requires future bounded build/validate/review scripts to call the review-sealed before-write wrapper before proof/report/memory writes. It does not patch scripts yet, execute a tick, enable runtime, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "validation": "core/socc/autonomy/self_building/idempotent_guard_wrapper_mandatory_integration_contract/validation/IDEMPOTENT_GUARD_WRAPPER_MANDATORY_INTEGRATION_CONTRACT_VALIDATION_V1.json"
+}

@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "review_route_authority_atomic_commit_helper_v1",
+  "panel_hash": "063f2a5e92a1836f66c137eb",
+  "progress_hash": "2d2903e21fd79d6722678242",
+  "pulse_hash": "6b2bda12dbc9a89215018b43",
+  "route_hash": "eb3a40b1e6bf06109fee41e8",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260616T160757332330Z",
+  "status": "PASS",
+  "truth_boundary": "Route-authority atomic commit helper validation only. This runs the atomic commit helper as a live test to verify writeback correctness, coherence, rollback snapshot, forbidden-guard enforcement, and all invariants. Does not execute tick, enable daemon, use network, birth entity/ANNA, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_ATOMIC_COMMIT_HELPER_VALIDATION_V1_PROOF.json"
+}

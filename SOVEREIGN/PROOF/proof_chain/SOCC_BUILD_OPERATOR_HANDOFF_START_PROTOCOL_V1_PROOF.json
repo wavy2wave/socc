@@ -1,0 +1,30 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/build_operator_handoff_start_protocol_20260608T192300Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/build_operator_handoff_start_protocol_20260608T192300Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/build_operator_handoff_start_protocol_20260608T192300Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_route_flags": [],
+  "changed": [
+    "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.json",
+    "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.md",
+    "START_HERE_SOCC.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:23:00.658917+00:00",
+  "current_before": "socc_working_base_accepted_v1",
+  "daemon_running": false,
+  "handoff": "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_BUILD_OPERATOR_HANDOFF_START_PROTOCOL_V1_PROOF",
+  "network_used": false,
+  "next_after_build": "validate_socc_operator_handoff_start_protocol_v1",
+  "observe_pass": true,
+  "start_here": "START_HERE_SOCC.md",
+  "status": "PASS",
+  "truth_boundary": "SOCC operator handoff start protocol build only. No daemon background network.",
+  "warnings": []
+}

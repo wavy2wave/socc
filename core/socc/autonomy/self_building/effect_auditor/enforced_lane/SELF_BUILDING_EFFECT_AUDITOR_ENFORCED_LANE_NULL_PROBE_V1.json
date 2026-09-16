@@ -1,0 +1,58 @@
+{
+  "audit": {
+    "evidence": {
+      "changed_artifacts_hashes": {},
+      "expected_after_ok": false,
+      "expected_before_ok": true,
+      "forbidden_false_after": true,
+      "lawful_next_after": "same",
+      "lawful_next_before": "same",
+      "material_claims_count": 0,
+      "memory_exists": true,
+      "required_artifacts": {},
+      "route_changed": false,
+      "upstream_ok": true
+    },
+    "hard_failures": [
+      {
+        "actual": false,
+        "check": "route_changed",
+        "code": "SEMANTIC_NULL"
+      },
+      {
+        "actual": "same",
+        "check": "expected_after_ok",
+        "code": "EXPECTATION_FAIL"
+      },
+      {
+        "actual": 0,
+        "check": "material_claims_count",
+        "code": "NO_MATERIAL_CLAIMS"
+      }
+    ],
+    "material_effect_proven": false,
+    "semantic_null_pass_blocked": true,
+    "status": "FAIL"
+  },
+  "effect_auditor_enforced": true,
+  "hard_failures": [
+    {
+      "actual": false,
+      "check": "route_changed",
+      "code": "SEMANTIC_NULL"
+    },
+    {
+      "actual": "same",
+      "check": "expected_after_ok",
+      "code": "EXPECTATION_FAIL"
+    },
+    {
+      "actual": 0,
+      "check": "material_claims_count",
+      "code": "NO_MATERIAL_CLAIMS"
+    }
+  ],
+  "material_effect_required": true,
+  "semantic_null_pass_blocked": true,
+  "status": "FAIL"
+}

@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1_PROOF.json",
+  "active_contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "contract_schema": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_SCHEMA_V1.json",
+  "created_at_utc": "2026-06-09T12:12:56.130640+00:00",
+  "id": "ACTIVE_ACCEPTED_CONTROLLED_CYCLE_VISIBILITY_CONTRACT",
+  "mode": "CANONICAL_VISIBILITY_CONTRACT_NON_EXECUTING",
+  "next_required_step": "build_socc_first_controlled_cycle_packet_v1",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted visibility contract is non-executing and feeds first controlled cycle packet."
+}

@@ -1,0 +1,16 @@
+{
+  "id": "resale-avito-RU-3caff2f8c1",
+  "ts": "2026-06-30T17:13:54.202643+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": false
+  },
+  "hard_failures": [
+    "t0_discover_falsifiable"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_resale-avito-RU-3caff2f8c1_repair_required",
+  "truth_boundary": "t0: лот не прошёл фальсиф. тест/примитив",
+  "proof_hash": "7e3e1fe2de831860"
+}

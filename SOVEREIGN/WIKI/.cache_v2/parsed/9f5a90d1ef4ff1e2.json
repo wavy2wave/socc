@@ -1,0 +1,1 @@
+{"claims": [{"text": "This seal proves fresh authority-bound repeatability for two bounded foreground sessions. It does not claim daemon/24-7/L3 autonomy.", "line": 23, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"Daemon": 2}}

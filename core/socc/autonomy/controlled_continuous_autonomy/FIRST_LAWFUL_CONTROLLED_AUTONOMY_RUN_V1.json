@@ -1,0 +1,50 @@
+{
+  "allowed_execution_shape": {
+    "entry": "current_lawful_next_only",
+    "max_steps": 1,
+    "mode": "single_explicit_controlled_run",
+    "must_remain_operator_visible": true,
+    "must_stop_after_step": true,
+    "must_update_route": true,
+    "must_write_proof": true,
+    "requires": [
+      "route_pulse_control_alignment",
+      "controlled_continuous_autonomy_seal_PASS",
+      "operator_panel_visible",
+      "codex_hermes_governance_PASS",
+      "proof_chain_output",
+      "idempotent_guard"
+    ]
+  },
+  "created_at_utc": "2026-06-08T18:52:29.173548+00:00",
+  "current_step": "build_first_lawful_controlled_autonomy_run_v1",
+  "id": "FIRST_LAWFUL_CONTROLLED_AUTONOMY_RUN_V1",
+  "lawful_next": "validate_first_lawful_controlled_autonomy_run_v1",
+  "run_type": "explicit_bounded_controlled_autonomy_run_plan",
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "source_layers": {
+    "codex_hermes_contract": "core/socc/governance/codex_hermes/CODEX_HERMES_GOVERNANCE_CONTRACT_V1.json",
+    "operator_panel": "SYSTEM/INTERFACE/panel/SOCC_RUNTIME_OPERATOR_PANEL_V1.md",
+    "seal": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1.json",
+    "seal_review": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_REVIEW_V1.json",
+    "seal_validation": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_VALIDATION_V1.json"
+  },
+  "status": "PASS",
+  "truth_boundary": "Builds the first lawful controlled autonomy run plan. Does not execute daemon/background/network.",
+  "what_this_is": "First lawful controlled autonomy run plan after seal build/validation/review.",
+  "what_this_is_not": [
+    "not daemon",
+    "not background loop",
+    "not network autonomy",
+    "not unbounded self-modification",
+    "not AGI/entity claim"
+  ]
+}

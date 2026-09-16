@@ -1,0 +1,25 @@
+{
+  "created_at_utc": "2026-06-08T18:46:42.252809+00:00",
+  "current_step": "validate_codex_hermes_governance_adoption_v1",
+  "daemon_background_network_guard_ok": true,
+  "forbidden_capabilities_declared": true,
+  "forensic_counts": {
+    "candidate_count": 5536,
+    "codex_pass_count": 878,
+    "hermes_pass_count": 765,
+    "law_governance_pass_count": 209,
+    "pass_count": 1982,
+    "repair_pass_count": 849
+  },
+  "id": "CODEX_HERMES_GOVERNANCE_VALIDATION_V1",
+  "lawful_next": "review_codex_hermes_governance_adoption_v1",
+  "missing_forbidden_capabilities": [],
+  "missing_guards": [],
+  "missing_roles": [],
+  "required_guards_present": true,
+  "required_roles_present": true,
+  "selected_old_governance_lineage_count": 15,
+  "status": "PASS",
+  "truth_boundary": "Codex/Hermes governance validation only. No daemon/background/network.",
+  "validated_step": "build_codex_hermes_governance_adoption_v1"
+}

@@ -1,0 +1,29 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/validate_runtime_operator_panel_20260608T184114Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/validate_runtime_operator_panel_20260608T184114Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/validate_runtime_operator_panel_20260608T184114Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "SYSTEM/INTERFACE/panel/RUNTIME_OPERATOR_PANEL_ADOPTION_VALIDATION_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T18:41:14.952730+00:00",
+  "current_before": "validate_runtime_operator_panel_adoption_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_VALIDATE_RUNTIME_OPERATOR_PANEL_ADOPTION_V1_PROOF",
+  "missing_not_do": [],
+  "missing_panel_text": [],
+  "missing_show": [],
+  "network_used": false,
+  "next_after_validation": "review_runtime_operator_panel_adoption_v1",
+  "observe_pass": true,
+  "selected_old_panel_lineage_count": 30,
+  "status": "PASS",
+  "truth_boundary": "Runtime operator panel validation only. No daemon/background/network.",
+  "warnings": []
+}

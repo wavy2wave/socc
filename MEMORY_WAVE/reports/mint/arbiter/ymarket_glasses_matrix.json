@@ -1,0 +1,5092 @@
+{
+  "schema": "ymarket.glasses.matrix.v1",
+  "donor": "cargo_avto",
+  "category": "vozdushno-puzyrkovaya-plenka",
+  "config_snapshot": {
+    "commission_pct": 0.15,
+    "delivery_rub": 0.0,
+    "overhead_rub": 20.0,
+    "overhead_pct": 0.03,
+    "tiers": [
+      [
+        700.0,
+        300.0
+      ],
+      [
+        1500.0,
+        500.0
+      ],
+      [
+        null,
+        800.0
+      ]
+    ],
+    "max_sell_mult": 8.0,
+    "round_to": 10.0,
+    "min_margin_pct": 5.0
+  },
+  "summary": {
+    "total": 70,
+    "green": 47,
+    "red": 23,
+    "avg_green_profit": 465.74,
+    "profit_10_orders": 4657.4
+  },
+  "green_pipeline": [
+    {
+      "organ": "ИМЯ ymarket_card_v1.to_offer",
+      "does": "имя донора 1-в-1 + суффикс + свой EAN-13 (НЕ unique_title)"
+    },
+    {
+      "organ": "ФОТО photo_pipeline_v1.forge_card",
+      "does": "свои пиксели, белый фон 4:5 (canon), venv-python"
+    },
+    {
+      "organ": "КАРТОЧКА ymarket_write_v1.create_card",
+      "does": "4-шаг публикация offer-mappings→…→PUBLISHED (0₽)"
+    }
+  ],
+  "rows": [
+    {
+      "sku": "9048",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+      "cost": 600.0,
+      "target_profit": 300.0,
+      "sell": 1130.0,
+      "profit": 306.6,
+      "margin_pct": 27.1,
+      "mult": 1.88,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 600₽ → продажа 1130₽ (×1.88) → +307₽ чистыми (27.1%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "9048",
+            "cost": 600.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1130.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 223.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 306.6,
+            "margin_pct": 27.1
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.88,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "10774",
+      "name": "Воздушно пузырьковая пленка, 2*0.4 м «МалышОК», 55 г/м², двухслойная",
+      "cost": 35.0,
+      "target_profit": 300.0,
+      "sell": 440.0,
+      "profit": 305.8,
+      "margin_pct": 69.5,
+      "mult": 12.57,
+      "green": false,
+      "grid": "main",
+      "why": "цена 440₽ = ×12.57 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "10774",
+            "cost": 35.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 440.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 99.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 305.8,
+            "margin_pct": 69.5
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 12.57,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2050",
+      "name": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+      "cost": 65.0,
+      "target_profit": 300.0,
+      "sell": 470.0,
+      "profit": 300.4,
+      "margin_pct": 63.9,
+      "mult": 7.23,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 65₽ → продажа 470₽ (×7.23) → +300₽ чистыми (63.9%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2050",
+            "cost": 65.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 470.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 104.6
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.4,
+            "margin_pct": 63.9
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 7.23,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "15557",
+      "name": "Воздушно пузырьковая пленка, 5*1.2 м «Стандарт», 55 г/м², двухслойная",
+      "cost": 190.0,
+      "target_profit": 300.0,
+      "sell": 630.0,
+      "profit": 306.6,
+      "margin_pct": 48.7,
+      "mult": 3.32,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 190₽ → продажа 630₽ (×3.32) → +307₽ чистыми (48.7%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "15557",
+            "cost": 190.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 630.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 133.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 306.6,
+            "margin_pct": 48.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 3.32,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "6339",
+      "name": "Воздушно пузырьковая пленка, 100*0.3 м «Компакт Плюс», 60 г/м², трёхслойная",
+      "cost": 610.0,
+      "target_profit": 300.0,
+      "sell": 1140.0,
+      "profit": 304.8,
+      "margin_pct": 26.7,
+      "mult": 1.87,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 610₽ → продажа 1140₽ (×1.87) → +305₽ чистыми (26.7%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "6339",
+            "cost": 610.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1140.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 225.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 304.8,
+            "margin_pct": 26.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.87,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "190676",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 50*0.5 м «Perforation», 40 г/м², двухслойная",
+      "cost": 360.0,
+      "target_profit": 300.0,
+      "sell": 830.0,
+      "profit": 300.6,
+      "margin_pct": 36.2,
+      "mult": 2.31,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 360₽ → продажа 830₽ (×2.31) → +301₽ чистыми (36.2%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "190676",
+            "cost": 360.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 830.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 169.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.6,
+            "margin_pct": 36.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.31,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "190745",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 50*0.5 м «Perforation», 60 г/м², трёхслойная",
+      "cost": 540.0,
+      "target_profit": 300.0,
+      "sell": 1050.0,
+      "profit": 301.0,
+      "margin_pct": 28.7,
+      "mult": 1.94,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 540₽ → продажа 1050₽ (×1.94) → +301₽ чистыми (28.7%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "190745",
+            "cost": 540.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1050.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 209.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 301.0,
+            "margin_pct": 28.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.94,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1975",
+      "name": "Воздушно пузырьковая пленка, 10*1.2 м «Стандарт», 55 г/м², двухслойная",
+      "cost": 370.0,
+      "target_profit": 300.0,
+      "sell": 850.0,
+      "profit": 307.0,
+      "margin_pct": 36.1,
+      "mult": 2.3,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 370₽ → продажа 850₽ (×2.3) → +307₽ чистыми (36.1%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1975",
+            "cost": 370.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 850.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 173.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 307.0,
+            "margin_pct": 36.1
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.3,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "6335",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+      "cost": 210.0,
+      "target_profit": 300.0,
+      "sell": 650.0,
+      "profit": 303.0,
+      "margin_pct": 46.6,
+      "mult": 3.1,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 210₽ → продажа 650₽ (×3.1) → +303₽ чистыми (46.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "6335",
+            "cost": 210.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 650.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 137.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.0,
+            "margin_pct": 46.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 3.1,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5910",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Компакт Плюс», 60 г/м², трёхслойная",
+      "cost": 610.0,
+      "target_profit": 300.0,
+      "sell": 1140.0,
+      "profit": 304.8,
+      "margin_pct": 26.7,
+      "mult": 1.87,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 610₽ → продажа 1140₽ (×1.87) → +305₽ чистыми (26.7%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5910",
+            "cost": 610.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1140.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 225.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 304.8,
+            "margin_pct": 26.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.87,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5904",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Компакт», 40 г/м², двухслойная",
+      "cost": 430.0,
+      "target_profit": 300.0,
+      "sell": 920.0,
+      "profit": 304.4,
+      "margin_pct": 33.1,
+      "mult": 2.14,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 430₽ → продажа 920₽ (×2.14) → +304₽ чистыми (33.1%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5904",
+            "cost": 430.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 920.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 185.6
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 304.4,
+            "margin_pct": 33.1
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.14,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "6336",
+      "name": "Воздушно пузырьковая пленка, 100*0.3 м «Компакт», 40 г/м², двухслойная",
+      "cost": 420.0,
+      "target_profit": 300.0,
+      "sell": 910.0,
+      "profit": 306.2,
+      "margin_pct": 33.6,
+      "mult": 2.17,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 420₽ → продажа 910₽ (×2.17) → +306₽ чистыми (33.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "6336",
+            "cost": 420.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 910.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 183.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 306.2,
+            "margin_pct": 33.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.17,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "20007",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Black bubble», 40 г/м², чёрная, двухслойная",
+      "cost": 500.0,
+      "target_profit": 300.0,
+      "sell": 1010.0,
+      "profit": 308.2,
+      "margin_pct": 30.5,
+      "mult": 2.02,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 500₽ → продажа 1010₽ (×2.02) → +308₽ чистыми (30.5%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "20007",
+            "cost": 500.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1010.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 201.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 308.2,
+            "margin_pct": 30.5
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.02,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1598444",
+      "name": "Воздушно пузырьковая пленка, 100*0.3 м «МиниБабл», 25 г/м², двухслойная",
+      "cost": 300.0,
+      "target_profit": 300.0,
+      "sell": 760.0,
+      "profit": 303.2,
+      "margin_pct": 39.9,
+      "mult": 2.53,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 300₽ → продажа 760₽ (×2.53) → +303₽ чистыми (39.9%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1598444",
+            "cost": 300.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 760.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 156.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.2,
+            "margin_pct": 39.9
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.53,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "375635",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Black bubble», 60 г/м², чёрная, трёхслойная",
+      "cost": 710.0,
+      "target_profit": 500.0,
+      "sell": 1500.0,
+      "profit": 500.0,
+      "margin_pct": 33.3,
+      "mult": 2.11,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 710₽ → продажа 1500₽ (×2.11) → +500₽ чистыми (33.3%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "375635",
+            "cost": 710.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1500.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 290.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 500.0,
+            "margin_pct": 33.3
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.11,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1598457",
+      "name": "Воздушно пузырьковая пленка, 100*0.5 м «МиниБабл», 25 г/м², двухслойная",
+      "cost": 490.0,
+      "target_profit": 300.0,
+      "sell": 990.0,
+      "profit": 301.8,
+      "margin_pct": 30.5,
+      "mult": 2.02,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 490₽ → продажа 990₽ (×2.02) → +302₽ чистыми (30.5%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1598457",
+            "cost": 490.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 990.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 198.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 301.8,
+            "margin_pct": 30.5
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.02,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1588731",
+      "name": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+      "cost": 700.0,
+      "target_profit": 300.0,
+      "sell": 1250.0,
+      "profit": 305.0,
+      "margin_pct": 24.4,
+      "mult": 1.79,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 700₽ → продажа 1250₽ (×1.79) → +305₽ чистыми (24.4%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1588731",
+            "cost": 700.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1250.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 245.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 305.0,
+            "margin_pct": 24.4
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.79,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1598469",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «МиниБабл», 25 г/м², двухслойная",
+      "cost": 1350.0,
+      "target_profit": 500.0,
+      "sell": 2290.0,
+      "profit": 507.8,
+      "margin_pct": 22.2,
+      "mult": 1.7,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1350₽ → продажа 2290₽ (×1.7) → +508₽ чистыми (22.2%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1598469",
+            "cost": 1350.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2290.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 432.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 507.8,
+            "margin_pct": 22.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.7,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5905",
+      "name": "Воздушно пузырьковая пленка, 100*0.6 м «Компакт», 40 г/м², двухслойная",
+      "cost": 850.0,
+      "target_profit": 500.0,
+      "sell": 1680.0,
+      "profit": 507.6,
+      "margin_pct": 30.2,
+      "mult": 1.98,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 850₽ → продажа 1680₽ (×1.98) → +508₽ чистыми (30.2%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5905",
+            "cost": 850.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1680.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 322.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 507.6,
+            "margin_pct": 30.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.98,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5911",
+      "name": "Воздушно пузырьковая пленка, 100*0.6 м «Компакт Плюс», 60 г/м², трёхслойная",
+      "cost": 1190.0,
+      "target_profit": 500.0,
+      "sell": 2090.0,
+      "profit": 503.8,
+      "margin_pct": 24.1,
+      "mult": 1.76,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1190₽ → продажа 2090₽ (×1.76) → +504₽ чистыми (24.1%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5911",
+            "cost": 1190.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2090.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 396.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 503.8,
+            "margin_pct": 24.1
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.76,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "295082",
+      "name": "Воздушно пузырьковая пленка, 20*1.2 м «Стандарт», 40 г/м², двухслойная, без втулки",
+      "cost": 450.0,
+      "target_profit": 300.0,
+      "sell": 940.0,
+      "profit": 300.8,
+      "margin_pct": 32.0,
+      "mult": 2.09,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 450₽ → продажа 940₽ (×2.09) → +301₽ чистыми (32.0%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "295082",
+            "cost": 450.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 940.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 189.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.8,
+            "margin_pct": 32.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.09,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2187",
+      "name": "Биг бабл, 25*1.2 м, 90 г/м², двухслойный",
+      "cost": 1400.0,
+      "target_profit": 500.0,
+      "sell": 2350.0,
+      "profit": 507.0,
+      "margin_pct": 21.6,
+      "mult": 1.68,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1400₽ → продажа 2350₽ (×1.68) → +507₽ чистыми (21.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2187",
+            "cost": 1400.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2350.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 443.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 507.0,
+            "margin_pct": 21.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.68,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "6169",
+      "name": "Биг бабл, 25*1.5 м, 90 г/м², двухслойный",
+      "cost": 1700.0,
+      "target_profit": 800.0,
+      "sell": 3080.0,
+      "profit": 805.6,
+      "margin_pct": 26.2,
+      "mult": 1.81,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1700₽ → продажа 3080₽ (×1.81) → +806₽ чистыми (26.2%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "6169",
+            "cost": 1700.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 3080.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 574.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 805.6,
+            "margin_pct": 26.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.81,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2043",
+      "name": "Биг бабл, 25*1.2 м, 130 г/м², трёхслойный",
+      "cost": 2000.0,
+      "target_profit": 800.0,
+      "sell": 3440.0,
+      "profit": 800.8,
+      "margin_pct": 23.3,
+      "mult": 1.72,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 2000₽ → продажа 3440₽ (×1.72) → +801₽ чистыми (23.3%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2043",
+            "cost": 2000.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 3440.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 639.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 800.8,
+            "margin_pct": 23.3
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.72,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2334",
+      "name": "Воздушно пузырьковая пленка, 50*1.2 м «Стандарт», 40 г/м², двухслойная",
+      "cost": 780.0,
+      "target_profit": 500.0,
+      "sell": 1590.0,
+      "profit": 503.8,
+      "margin_pct": 31.7,
+      "mult": 2.04,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 780₽ → продажа 1590₽ (×2.04) → +504₽ чистыми (31.7%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2334",
+            "cost": 780.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1590.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 306.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 503.8,
+            "margin_pct": 31.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.04,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "10212",
+      "name": "Воздушно пузырьковая пленка, 50*1.2 м «Бизнес», 30 г/м², двухслойная",
+      "cost": 620.0,
+      "target_profit": 300.0,
+      "sell": 1150.0,
+      "profit": 303.0,
+      "margin_pct": 26.3,
+      "mult": 1.85,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 620₽ → продажа 1150₽ (×1.85) → +303₽ чистыми (26.3%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "10212",
+            "cost": 620.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1150.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 227.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.0,
+            "margin_pct": 26.3
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.85,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1955",
+      "name": "Воздушно пузырьковая пленка, 50*1.5 м «Стандарт», 40 г/м², двухслойная",
+      "cost": 990.0,
+      "target_profit": 500.0,
+      "sell": 1850.0,
+      "profit": 507.0,
+      "margin_pct": 27.4,
+      "mult": 1.87,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 990₽ → продажа 1850₽ (×1.87) → +507₽ чистыми (27.4%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1955",
+            "cost": 990.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1850.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 353.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 507.0,
+            "margin_pct": 27.4
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.87,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2833",
+      "name": "Биг бабл, 25*1.5 м, 130 г/м², трёхслойный",
+      "cost": 2500.0,
+      "target_profit": 800.0,
+      "sell": 4050.0,
+      "profit": 801.0,
+      "margin_pct": 19.8,
+      "mult": 1.62,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 2500₽ → продажа 4050₽ (×1.62) → +801₽ чистыми (19.8%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2833",
+            "cost": 2500.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 4050.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 749.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 801.0,
+            "margin_pct": 19.8
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.62,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "10143",
+      "name": "Воздушно пузырьковая пленка, 50*1.5 м «Бизнес», 30 г/м², двухслойная",
+      "cost": 770.0,
+      "target_profit": 500.0,
+      "sell": 1580.0,
+      "profit": 505.6,
+      "margin_pct": 32.0,
+      "mult": 2.05,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 770₽ → продажа 1580₽ (×2.05) → +506₽ чистыми (32.0%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "10143",
+            "cost": 770.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1580.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 304.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 505.6,
+            "margin_pct": 32.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.05,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2113",
+      "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт», 40 г/м², двухслойная",
+      "cost": 1620.0,
+      "target_profit": 800.0,
+      "sell": 2980.0,
+      "profit": 803.6,
+      "margin_pct": 27.0,
+      "mult": 1.84,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1620₽ → продажа 2980₽ (×1.84) → +804₽ чистыми (27.0%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2113",
+            "cost": 1620.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2980.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 556.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 803.6,
+            "margin_pct": 27.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.84,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2862",
+      "name": "Воздушно пузырьковая пленка, 50*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "cost": 1500.0,
+      "target_profit": 500.0,
+      "sell": 2470.0,
+      "profit": 505.4,
+      "margin_pct": 20.5,
+      "mult": 1.65,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1500₽ → продажа 2470₽ (×1.65) → +505₽ чистыми (20.5%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2862",
+            "cost": 1500.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2470.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 464.6
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 505.4,
+            "margin_pct": 20.5
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.65,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5813",
+      "name": "Воздушно пузырьковая пленка, 50*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "cost": 1200.0,
+      "target_profit": 500.0,
+      "sell": 2100.0,
+      "profit": 502.0,
+      "margin_pct": 23.9,
+      "mult": 1.75,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1200₽ → продажа 2100₽ (×1.75) → +502₽ чистыми (23.9%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5813",
+            "cost": 1200.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2100.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 398.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 502.0,
+            "margin_pct": 23.9
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.75,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "10213",
+      "name": "Воздушно пузырьковая пленка, 100*1.2 м «Бизнес», 30 г/м², двухслойная",
+      "cost": 1230.0,
+      "target_profit": 500.0,
+      "sell": 2140.0,
+      "profit": 504.8,
+      "margin_pct": 23.6,
+      "mult": 1.74,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1230₽ → продажа 2140₽ (×1.74) → +505₽ чистыми (23.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "10213",
+            "cost": 1230.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2140.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 405.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 504.8,
+            "margin_pct": 23.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.74,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1971",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт», 40 г/м², двухслойная",
+      "cost": 2050.0,
+      "target_profit": 800.0,
+      "sell": 3500.0,
+      "profit": 800.0,
+      "margin_pct": 22.9,
+      "mult": 1.71,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 2050₽ → продажа 3500₽ (×1.71) → +800₽ чистыми (22.9%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1971",
+            "cost": 2050.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 3500.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 650.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 800.0,
+            "margin_pct": 22.9
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.71,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "190775",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 40 г/м², двухслойная",
+      "cost": 2200.0,
+      "target_profit": 800.0,
+      "sell": 3690.0,
+      "profit": 805.8,
+      "margin_pct": 21.8,
+      "mult": 1.68,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 2200₽ → продажа 3690₽ (×1.68) → +806₽ чистыми (21.8%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "190775",
+            "cost": 2200.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 3690.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 684.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 805.8,
+            "margin_pct": 21.8
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.68,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5653",
+      "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "cost": 2380.0,
+      "target_profit": 800.0,
+      "sell": 3910.0,
+      "profit": 806.2,
+      "margin_pct": 20.6,
+      "mult": 1.64,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 2380₽ → продажа 3910₽ (×1.64) → +806₽ чистыми (20.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5653",
+            "cost": 2380.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 3910.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 723.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 806.2,
+            "margin_pct": 20.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.64,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "10144",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «Бизнес», 30 г/м², двухслойная",
+      "cost": 1580.0,
+      "target_profit": 800.0,
+      "sell": 2930.0,
+      "profit": 802.6,
+      "margin_pct": 27.4,
+      "mult": 1.85,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1580₽ → продажа 2930₽ (×1.85) → +803₽ чистыми (27.4%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "10144",
+            "cost": 1580.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2930.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 547.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 802.6,
+            "margin_pct": 27.4
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.85,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5827",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "cost": 2980.0,
+      "target_profit": 800.0,
+      "sell": 4640.0,
+      "profit": 804.8,
+      "margin_pct": 17.3,
+      "mult": 1.56,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 2980₽ → продажа 4640₽ (×1.56) → +805₽ чистыми (17.3%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5827",
+            "cost": 2980.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 4640.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 855.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 804.8,
+            "margin_pct": 17.3
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.56,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "190807",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 60 г/м², трёхслойная",
+      "cost": 3300.0,
+      "target_profit": 800.0,
+      "sell": 5030.0,
+      "profit": 804.6,
+      "margin_pct": 16.0,
+      "mult": 1.52,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 3300₽ → продажа 5030₽ (×1.52) → +805₽ чистыми (16.0%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "190807",
+            "cost": 3300.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 800.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 5030.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 925.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 804.6,
+            "margin_pct": 16.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.52,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1594991",
+      "name": "Пакет ВПП «МиниБабл», двухслойный, 10*10 см, 300 шт.",
+      "cost": 450.0,
+      "target_profit": 300.0,
+      "sell": 940.0,
+      "profit": 300.8,
+      "margin_pct": 32.0,
+      "mult": 2.09,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 450₽ → продажа 940₽ (×2.09) → +301₽ чистыми (32.0%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1594991",
+            "cost": 450.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 940.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 189.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.8,
+            "margin_pct": 32.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.09,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1583242",
+      "name": "Пакет ВПП, трёхслойный, 10*10 см, 100 шт.",
+      "cost": 240.0,
+      "target_profit": 300.0,
+      "sell": 690.0,
+      "profit": 305.8,
+      "margin_pct": 44.3,
+      "mult": 2.88,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 240₽ → продажа 690₽ (×2.88) → +306₽ чистыми (44.3%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1583242",
+            "cost": 240.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 690.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 144.2
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 305.8,
+            "margin_pct": 44.3
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.88,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1595013",
+      "name": "Пакет ВПП «МиниБабл», двухслойный, 10*15 см, 300 шт.",
+      "cost": 680.0,
+      "target_profit": 300.0,
+      "sell": 1220.0,
+      "profit": 300.4,
+      "margin_pct": 24.6,
+      "mult": 1.79,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 680₽ → продажа 1220₽ (×1.79) → +300₽ чистыми (24.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1595013",
+            "cost": 680.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1220.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 239.6
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.4,
+            "margin_pct": 24.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.79,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "530728",
+      "name": "Пакет ВПП, трёхслойный, 10*15 см",
+      "cost": 2.7,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 305.3,
+      "margin_pct": 76.3,
+      "mult": 148.15,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×148.15 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "530728",
+            "cost": 2.7
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 305.3,
+            "margin_pct": 76.3
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 148.15,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1583262",
+      "name": "Пакет ВПП, трёхслойный, 15*15 см, 100 шт.",
+      "cost": 360.0,
+      "target_profit": 300.0,
+      "sell": 830.0,
+      "profit": 300.6,
+      "margin_pct": 36.2,
+      "mult": 2.31,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 360₽ → продажа 830₽ (×2.31) → +301₽ чистыми (36.2%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1583262",
+            "cost": 360.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 830.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 169.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.6,
+            "margin_pct": 36.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.31,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1834836",
+      "name": "Пакет ВПП «МиниБабл», двухслойный, 15*15 см, 300 шт.",
+      "cost": 980.0,
+      "target_profit": 500.0,
+      "sell": 1830.0,
+      "profit": 500.6,
+      "margin_pct": 27.4,
+      "mult": 1.87,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 980₽ → продажа 1830₽ (×1.87) → +501₽ чистыми (27.4%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1834836",
+            "cost": 980.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1830.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 349.4
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 500.6,
+            "margin_pct": 27.4
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.87,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1834849",
+      "name": "Пакет ВПП «МиниБабл», двухслойный, 20*20 см, 300 шт.",
+      "cost": 1400.0,
+      "target_profit": 500.0,
+      "sell": 2350.0,
+      "profit": 507.0,
+      "margin_pct": 21.6,
+      "mult": 1.68,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 1400₽ → продажа 2350₽ (×1.68) → +507₽ чистыми (21.6%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1834849",
+            "cost": 1400.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 500.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 2350.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 443.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 507.0,
+            "margin_pct": 21.6
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 1.68,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5380",
+      "name": "Пакет ВПП, трёхслойный, 30*30 см",
+      "cost": 7.6,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 300.4,
+      "margin_pct": 75.1,
+      "mult": 52.63,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×52.63 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5380",
+            "cost": 7.6
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.4,
+            "margin_pct": 75.1
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 52.63,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5381",
+      "name": "Пакет ВПП, трёхслойный, 40*40 см",
+      "cost": 12.0,
+      "target_profit": 300.0,
+      "sell": 410.0,
+      "profit": 304.2,
+      "margin_pct": 74.2,
+      "mult": 34.17,
+      "green": false,
+      "grid": "main",
+      "why": "цена 410₽ = ×34.17 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5381",
+            "cost": 12.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 410.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 93.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 304.2,
+            "margin_pct": 74.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 34.17,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "660618",
+      "name": "Пакет ВПП, трёхслойный, 30*40 см",
+      "cost": 11.0,
+      "target_profit": 300.0,
+      "sell": 410.0,
+      "profit": 305.2,
+      "margin_pct": 74.4,
+      "mult": 37.27,
+      "green": false,
+      "grid": "main",
+      "why": "цена 410₽ = ×37.27 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "660618",
+            "cost": 11.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 410.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 93.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 305.2,
+            "margin_pct": 74.4
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 37.27,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5382",
+      "name": "Пакет ВПП, трёхслойный, 50*50 см",
+      "cost": 17.0,
+      "target_profit": 300.0,
+      "sell": 420.0,
+      "profit": 307.4,
+      "margin_pct": 73.2,
+      "mult": 24.71,
+      "green": false,
+      "grid": "main",
+      "why": "цена 420₽ = ×24.71 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5382",
+            "cost": 17.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 420.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 95.6
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 307.4,
+            "margin_pct": 73.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 24.71,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "5384",
+      "name": "Пакет ВПП, трёхслойный, 60*50 см",
+      "cost": 21.0,
+      "target_profit": 300.0,
+      "sell": 420.0,
+      "profit": 303.4,
+      "margin_pct": 72.2,
+      "mult": 20.0,
+      "green": false,
+      "grid": "main",
+      "why": "цена 420₽ = ×20.0 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "5384",
+            "cost": 21.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 420.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 95.6
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.4,
+            "margin_pct": 72.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 20.0,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290156",
+      "name": "Пакет ВПП, трёхслойный, 15*20 см",
+      "cost": 4.2,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 303.8,
+      "margin_pct": 76.0,
+      "mult": 95.24,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×95.24 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290156",
+            "cost": 4.2
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.8,
+            "margin_pct": 76.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 95.24,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290158",
+      "name": "Пакет ВПП, трёхслойный, 15*25 см",
+      "cost": 4.3,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 303.7,
+      "margin_pct": 75.9,
+      "mult": 93.02,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×93.02 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290158",
+            "cost": 4.3
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.7,
+            "margin_pct": 75.9
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 93.02,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290162",
+      "name": "Пакет ВПП, трёхслойный, 15*30 см",
+      "cost": 4.9,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 303.1,
+      "margin_pct": 75.8,
+      "mult": 81.63,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×81.63 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290162",
+            "cost": 4.9
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.1,
+            "margin_pct": 75.8
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 81.63,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290165",
+      "name": "Пакет ВПП, трёхслойный, 15*35 см",
+      "cost": 5.2,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 302.8,
+      "margin_pct": 75.7,
+      "mult": 76.92,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×76.92 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290165",
+            "cost": 5.2
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 302.8,
+            "margin_pct": 75.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 76.92,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290172",
+      "name": "Пакет ВПП, трёхслойный, 18*20 см",
+      "cost": 4.5,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 303.5,
+      "margin_pct": 75.9,
+      "mult": 88.89,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×88.89 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290172",
+            "cost": 4.5
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.5,
+            "margin_pct": 75.9
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 88.89,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290175",
+      "name": "Пакет ВПП, трёхслойный, 18*25 см",
+      "cost": 5.1,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 302.9,
+      "margin_pct": 75.7,
+      "mult": 78.43,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×78.43 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290175",
+            "cost": 5.1
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 302.9,
+            "margin_pct": 75.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 78.43,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290185",
+      "name": "Пакет ВПП, трёхслойный, 18*30 см",
+      "cost": 5.2,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 302.8,
+      "margin_pct": 75.7,
+      "mult": 76.92,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×76.92 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290185",
+            "cost": 5.2
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 302.8,
+            "margin_pct": 75.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 76.92,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "290188",
+      "name": "Пакет ВПП, трёхслойный, 18*35 см",
+      "cost": 5.3,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 302.7,
+      "margin_pct": 75.7,
+      "mult": 75.47,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×75.47 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "290188",
+            "cost": 5.3
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 302.7,
+            "margin_pct": 75.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 75.47,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "330410",
+      "name": "Пакет ВПП с клеевым клапаном, трёхслойный, 10*10+5 см",
+      "cost": 3.2,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 304.8,
+      "margin_pct": 76.2,
+      "mult": 125.0,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×125.0 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "330410",
+            "cost": 3.2
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 304.8,
+            "margin_pct": 76.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 125.0,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1946554",
+      "name": "Пакет ВПП с клеевым клапаном, трёхслойный, 10*15+5 см",
+      "cost": 3.8,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 304.2,
+      "margin_pct": 76.0,
+      "mult": 105.26,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×105.26 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1946554",
+            "cost": 3.8
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 304.2,
+            "margin_pct": 76.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 105.26,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "330429",
+      "name": "Пакет ВПП с клеевым клапаном, трёхслойный, 15*15+5 см",
+      "cost": 4.6,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 303.4,
+      "margin_pct": 75.8,
+      "mult": 86.96,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×86.96 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "330429",
+            "cost": 4.6
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.4,
+            "margin_pct": 75.8
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 86.96,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "330438",
+      "name": "Пакет ВПП с клеевым клапаном, трёхслойный, 20*20+5 см",
+      "cost": 6.3,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 301.7,
+      "margin_pct": 75.4,
+      "mult": 63.49,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×63.49 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "330438",
+            "cost": 6.3
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 301.7,
+            "margin_pct": 75.4
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 63.49,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2478748",
+      "name": "Пакет ВПП «Эконом» с клеевым клапаном, трёхслойный, 38*50+5 см",
+      "cost": 7.8,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 300.2,
+      "margin_pct": 75.0,
+      "mult": 51.28,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×51.28 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2478748",
+            "cost": 7.8
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.2,
+            "margin_pct": 75.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 51.28,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "2478753",
+      "name": "Пакет ВПП «Эконом» с клеевым клапаном, трёхслойный, 30*38+4 см",
+      "cost": 5.2,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 302.8,
+      "margin_pct": 75.7,
+      "mult": 76.92,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×76.92 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "2478753",
+            "cost": 5.2
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 302.8,
+            "margin_pct": 75.7
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 76.92,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1713490",
+      "name": "Пакет ВПП, трёхслойный, 20*20 см, 100 шт.",
+      "cost": 505.0,
+      "target_profit": 300.0,
+      "sell": 1010.0,
+      "profit": 303.2,
+      "margin_pct": 30.0,
+      "mult": 2.0,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 505₽ → продажа 1010₽ (×2.0) → +303₽ чистыми (30.0%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1713490",
+            "cost": 505.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1010.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 201.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 303.2,
+            "margin_pct": 30.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.0,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1583269",
+      "name": "Лист ВПП, трёхслойный, 20*20 см, 100 шт.",
+      "cost": 330.0,
+      "target_profit": 300.0,
+      "sell": 800.0,
+      "profit": 306.0,
+      "margin_pct": 38.2,
+      "mult": 2.42,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 330₽ → продажа 800₽ (×2.42) → +306₽ чистыми (38.2%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1583269",
+            "cost": 330.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 800.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 164.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 306.0,
+            "margin_pct": 38.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.42,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "1583280",
+      "name": "Лист ВПП, трёхслойный, 30*30 см, 100 шт.",
+      "cost": 500.0,
+      "target_profit": 300.0,
+      "sell": 1010.0,
+      "profit": 308.2,
+      "margin_pct": 30.5,
+      "mult": 2.02,
+      "green": true,
+      "grid": "main",
+      "why": "закупка 500₽ → продажа 1010₽ (×2.02) → +308₽ чистыми (30.5%)",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "1583280",
+            "cost": 500.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 1010.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 201.8
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 308.2,
+            "margin_pct": 30.5
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 2.02,
+            "green": true
+          }
+        }
+      ]
+    },
+    {
+      "sku": "8631",
+      "name": "Лист ВПП, трёхслойный, 40*40 см",
+      "cost": 7.9,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 300.1,
+      "margin_pct": 75.0,
+      "mult": 50.63,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×50.63 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "8631",
+            "cost": 7.9
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 300.1,
+            "margin_pct": 75.0
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 50.63,
+            "green": false
+          }
+        }
+      ]
+    },
+    {
+      "sku": "8632",
+      "name": "Лист ВПП, трёхслойный, 50*50 см",
+      "cost": 7.0,
+      "target_profit": 300.0,
+      "sell": 400.0,
+      "profit": 301.0,
+      "margin_pct": 75.2,
+      "mult": 57.14,
+      "green": false,
+      "grid": "main",
+      "why": "цена 400₽ = ×57.14 закупки > потолка ×8 — рынок столько не даст",
+      "chain": [
+        {
+          "n": 1,
+          "organ": "ПРИСОСКА suppliers/*",
+          "name": "закупка",
+          "formula": "cost = itemprop price (розница донора = наша цена выкупа при заказе)",
+          "out": {
+            "sku": "8632",
+            "cost": 7.0
+          }
+        },
+        {
+          "n": 2,
+          "organ": "ОЧКИ tier_profit",
+          "name": "целевой profit (тир)",
+          "formula": "P = tier(cost): ≤700→+300 · ≤1500→+500 · >1500→+800",
+          "out": {
+            "target_profit": 300.0
+          }
+        },
+        {
+          "n": 3,
+          "organ": "ОЧКИ see (реверс ЦЕНОВИКА)",
+          "name": "цена продажи",
+          "formula": "S = ceil((cost+0+20+P)/(1−0.15−0.03)/10)·10",
+          "out": {
+            "sell": 400.0
+          }
+        },
+        {
+          "n": 4,
+          "organ": "ЭКОНОМ (позже calc_tariffs)",
+          "name": "сборы Маркета",
+          "formula": "fees = S·0.15 + 0 + 20 + S·0.03",
+          "out": {
+            "fees": 92.0
+          }
+        },
+        {
+          "n": 5,
+          "organ": "ЭКОНОМ sku_margin",
+          "name": "чистый profit / маржа",
+          "formula": "profit = S − cost − fees ; margin% = profit/S·100",
+          "out": {
+            "profit": 301.0,
+            "margin_pct": 75.2
+          }
+        },
+        {
+          "n": 6,
+          "organ": "ОЧКИ + ЦЕНОВИК floor",
+          "name": "вердикт",
+          "formula": "🟢 ⟺ mult ≤ ×8 И margin ≥ 5%",
+          "out": {
+            "mult": 57.14,
+            "green": false
+          }
+        }
+      ]
+    }
+  ],
+  "updated_at": "2026-08-26T15:52:05.121112+00:00"
+}

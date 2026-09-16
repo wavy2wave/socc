@@ -1,0 +1,61 @@
+{
+  "id": "KNOWLEDGE_SUBSTRATE_DIRECTION_V1",
+  "direction_id": "DIRECTION_KNOWLEDGE_SUBSTRATE_V1",
+  "direction_name": "Knowledge Substrate — living wiki/memory organ built by bounded self-construction",
+  "capability": "memory_continuity",
+  "status": "BUILT_CANDIDATE",
+  "next_required_step": "scan_knowledge_sources_v1",
+  "definition": {
+    "plain": "Knowledge Substrate turns a folder of raw files into a living per-topic wiki for the system itself: connector points at an external source folder; each file is registered and deterministically parsed (dates, entities, claims, patterns, intent, with source line anchors); articles are synthesized with definition, current-authority main line, timeline, idea branches, conflicting/open, historical, deprecated, and hyperlinks back to raw files. Newest source wins.",
+    "role": "SOCC memory organ so models read the wiki, not raw files; jump to original line only when needed",
+    "not_agi_claim": true,
+    "not_chatbot": true,
+    "not_daemon": true,
+    "not_llm_at_mvp": true,
+    "not_unbounded_loop": true,
+    "read_only_over_sources": true
+  },
+  "required_surfaces": [
+    "knowledge_source_connector_surface",
+    "knowledge_source_registry_surface",
+    "knowledge_ingest_surface",
+    "knowledge_governance_surface",
+    "knowledge_wiki_article_surface",
+    "knowledge_timeline_surface",
+    "knowledge_index_surface",
+    "knowledge_dashboard_surface",
+    "knowledge_proof_chain_surface",
+    "knowledge_freeze_review_stop_surface"
+  ],
+  "organ_local_chain": [
+    "scan_knowledge_sources_v1",
+    "ingest_knowledge_sources_v1",
+    "build_wiki_article_entity_substrate_v1",
+    "validate_knowledge_substrate_v1",
+    "review_knowledge_substrate_v1"
+  ],
+  "mandatory_rules": {
+    "read_only_source_ingest": true,
+    "no_copy_no_move_of_sources": true,
+    "deterministic_no_llm_at_mvp": true,
+    "source_line_anchors_required": true,
+    "freshness_newest_wins": true,
+    "dashboard_visibility_required": true,
+    "proof_chain_required": true,
+    "memory_required": true,
+    "bounded_stop_required": true,
+    "idempotent_rerun_required": true,
+    "does_not_modify_global_route_authority": true,
+    "no_daemon": true,
+    "no_background": true,
+    "no_network": true,
+    "no_agi_claim": true,
+    "no_entity_birth": true,
+    "no_anna_birth": true
+  },
+  "pilot": {
+    "topic": "entity_substrate",
+    "goal": "one reference wiki article giving the system a complete representation of Entity Substrate, with worked-out main line and hyperlinks to every source"
+  },
+  "truth_boundary": "Organ build + pilot article only. Read-only over external sources. Global route authority is not modified. No daemon/background/network/LLM/entity-birth/AGI claim."
+}

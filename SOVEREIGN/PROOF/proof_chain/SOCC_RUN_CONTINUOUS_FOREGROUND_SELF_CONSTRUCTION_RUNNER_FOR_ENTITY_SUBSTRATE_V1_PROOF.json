@@ -1,0 +1,36 @@
+{
+  "capability": "SOCC_FOREGROUND_AUTONOMY_RUNNER_STARTED_ENTITY_SUBSTRATE",
+  "created_at_utc": "2026-06-09T21:06:10.929070+00:00",
+  "current_expected": "run_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "hard_failures": [],
+  "id": "SOCC_RUN_CONTINUOUS_FOREGROUND_SELF_CONSTRUCTION_RUNNER_FOR_ENTITY_SUBSTRATE_V1_PROOF",
+  "lifecycle": [
+    "SELECTED::build_entity_substrate_construction_plan_v1",
+    "LOCAL_LINEAGE_CHECK::PASS::old_project_ingest_bundle",
+    "DOING::write_entity_substrate_construction_plan",
+    "DONE::entity_substrate_construction_plan_written",
+    "CLOSED",
+    "NEXT::review_entity_substrate_construction_plan_v1"
+  ],
+  "memory": "MEMORY_WAVE/reports/entity_substrate/ENTITY_SUBSTRATE_FOREGROUND_RUNNER_MEMORY_V1.json",
+  "next_after_pass": "review_entity_substrate_construction_plan_v1",
+  "next_lawful_step": "review_entity_substrate_construction_plan_v1",
+  "no_agi_claim": true,
+  "no_background": true,
+  "no_daemon": true,
+  "no_l3_claim": true,
+  "no_network": true,
+  "no_old_route_resume": true,
+  "plan": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "plan_dashboard": "SYSTEM/DASHBOARD/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_PANEL_V1.json",
+  "proof_hash": "d63c5a1db733e12f",
+  "runner_panel": "SYSTEM/DASHBOARD/ENTITY_SUBSTRATE_FOREGROUND_RUNNER_LIVE_PANEL_V1.txt",
+  "sha16": {
+    "dashboard": "60bbd0b3317a7b31",
+    "memory": "78e1da332eff0fc3",
+    "plan": "568388837d7d5a46"
+  },
+  "status": "PASS",
+  "stopped_after_step": true,
+  "truth_boundary": "Plan was built by foreground autonomy runner. Entity/Substrate is started but not sealed. No daemon/background/network."
+}

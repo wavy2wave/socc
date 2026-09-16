@@ -1,0 +1,37 @@
+{
+  "acceptance_verdict": "BOUNDED_PLAN_PROPOSAL_SURFACE_ACCEPTED_AS_CANONICAL_NON_EXECUTING_PLAN_PROPOSAL_ORGAN",
+  "accepted_as": [
+    "accepted intent to bounded plan proposal surface",
+    "finite non-executing plan proposal organ",
+    "measurable effect planning surface",
+    "proof requirement planning surface",
+    "review-required pre-execution planning surface"
+  ],
+  "accepted_surface": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_V1.json",
+  "active_accepted_surface": "SYSTEM/INTERFACE/surfaces/bounded_plan/ACTIVE_ACCEPTED_BOUNDED_PLAN_PROPOSAL_SURFACE.json",
+  "capability": "SOCC_HAS_CANONICAL_BOUNDED_PLAN_PROPOSAL_SURFACE",
+  "created_at_utc": "2026-06-09T11:38:21.587575+00:00",
+  "id": "SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "not_accepted_as": [
+    "executor",
+    "code runner",
+    "route mutator",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "plan_schema": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SCHEMA_V1.json",
+  "plan_template": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_TEMPLATE_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted bounded plan proposal surface can form finite non-executing bounded plan proposals only. It cannot execute plans, run code, mutate route outside lawful transition, start daemon/background, use network, create MW route, or launch autonomy.",
+  "upstream_proofs": {
+    "build": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF.json",
+    "intent_accept": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF.json",
+    "review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF.json",
+    "validate": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF.json"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "active_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/ACTIVE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET.json",
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_HAS_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET",
+  "current_expected": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "id": "SOCC_BUILD_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF",
+  "next_after_pass": "validate_socc_first_bounded_plan_proposal_packet_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "proof_hash": "35287297ac7c8968",
+  "status": "PASS"
+}

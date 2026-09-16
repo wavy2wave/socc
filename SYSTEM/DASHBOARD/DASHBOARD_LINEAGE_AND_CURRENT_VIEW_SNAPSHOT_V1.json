@@ -1,0 +1,286 @@
+{
+  "authority": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_entity_substrate_direction_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_entity_substrate_direction_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_entity_substrate_direction_v1"
+  },
+  "checks": {
+    "active_operator_dashboard_exists": true,
+    "canonical_dashboard_acceptance_exists": true,
+    "canonical_dashboard_exists": true,
+    "canonical_dashboard_view_exists": true,
+    "no_execution": true,
+    "no_route_mutation": true,
+    "operator_autonomy_dashboard_exists": true,
+    "renderer_exists": true,
+    "renderer_script_exists": true,
+    "single_authority_next_observed": true
+  },
+  "created_at_utc": "2026-06-09T16:24:08.602526+00:00",
+  "dashboard_lineage": {
+    "canonical_dashboard": "accepted single dashboard organ",
+    "language_dashboard_binding": "read-only bridge between accepted language organ and dashboard, if present",
+    "operator_autonomy_dashboard": "operator-readable evidence view over bounded self-construction/autonomy artifacts",
+    "renderer": "accepted read-only renderer, not executor"
+  },
+  "hard_failures": [],
+  "id": "DASHBOARD_LINEAGE_AND_CURRENT_VIEW_SNAPSHOT_V1",
+  "items": {
+    "active_language_dashboard_binding": {
+      "exists": true,
+      "first_line": null,
+      "id": "ACTIVE_LANGUAGE_DASHBOARD_BINDING",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/bindings/language_dashboard/ACTIVE_LANGUAGE_DASHBOARD_BINDING.json",
+      "sha16": "40f17f94017221f3",
+      "size": 653,
+      "status": "ACTIVE_CANDIDATE_FOR_VALIDATION"
+    },
+    "active_operator_dashboard": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_ACTIVE_OPERATOR_DASHBOARD_POINTER_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/ACTIVE_OPERATOR_DASHBOARD.json",
+      "sha16": "bd28b4627e5ca58b",
+      "size": 698,
+      "status": "PASS"
+    },
+    "canonical_dashboard": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.json",
+      "sha16": "bf6be1e1e12e160c",
+      "size": 2839,
+      "status": "PASS"
+    },
+    "canonical_dashboard_accept_proof": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_ACCEPT_CANONICAL_OPERATOR_DASHBOARD_V1_PROOF",
+      "is_markdown_or_text": false,
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_CANONICAL_OPERATOR_DASHBOARD_V1_PROOF.json",
+      "sha16": "d8468436ccd0aa39",
+      "size": 1875,
+      "status": "PASS"
+    },
+    "canonical_dashboard_acceptance": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_ACCEPTANCE_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_ACCEPTANCE_V1.json",
+      "sha16": "e63e771403269d0e",
+      "size": 2320,
+      "status": "PASS"
+    },
+    "canonical_dashboard_law": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_LAW_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_LAW_V1.json",
+      "sha16": "3142e42f5a946119",
+      "size": 1197,
+      "status": "PASS"
+    },
+    "canonical_dashboard_md": {
+      "exists": true,
+      "first_line": "# SOCC CANONICAL OPERATOR DASHBOARD V1",
+      "id": null,
+      "is_markdown_or_text": true,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_V1.md",
+      "sha16": "0f91f46aee83966d",
+      "size": 1661,
+      "status": null
+    },
+    "canonical_dashboard_style": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_CANONICAL_OPERATOR_DASHBOARD_STYLE_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_OPERATOR_DASHBOARD_STYLE_V1.json",
+      "sha16": "869e8728e8f7ab97",
+      "size": 844,
+      "status": "PASS"
+    },
+    "canonical_dashboard_view": {
+      "exists": true,
+      "first_line": "# SOCC CANONICAL DASHBOARD VIEW V1",
+      "id": null,
+      "is_markdown_or_text": true,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_DASHBOARD_VIEW_V1.md",
+      "sha16": "cefe575153d7c9a3",
+      "size": 1793,
+      "status": null
+    },
+    "language_dashboard_binding": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_LANGUAGE_DASHBOARD_BINDING_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_V1.json",
+      "sha16": "f126c257240962b6",
+      "size": 2009,
+      "status": "BUILT_CANDIDATE"
+    },
+    "language_dashboard_binding_accept_proof": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_ACCEPT_LANGUAGE_DASHBOARD_BINDING_V1_PROOF",
+      "is_markdown_or_text": false,
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+      "sha16": "f9ec161fdc6eb634",
+      "size": 4251,
+      "status": "PASS"
+    },
+    "language_dashboard_binding_build_proof": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_BUILD_LANGUAGE_DASHBOARD_BINDING_V1_PROOF",
+      "is_markdown_or_text": false,
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+      "sha16": "8f9946aec2b11f2f",
+      "size": 3599,
+      "status": "PASS"
+    },
+    "language_dashboard_binding_review_proof": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_REVIEW_LANGUAGE_DASHBOARD_BINDING_V1_PROOF",
+      "is_markdown_or_text": false,
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+      "sha16": "d7d8a51cfa238310",
+      "size": 3871,
+      "status": "PASS"
+    },
+    "language_dashboard_binding_validate_proof": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_VALIDATE_LANGUAGE_DASHBOARD_BINDING_V1_PROOF",
+      "is_markdown_or_text": false,
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+      "sha16": "5dffe587c90f2634",
+      "size": 3510,
+      "status": "PASS"
+    },
+    "language_dashboard_binding_view": {
+      "exists": true,
+      "first_line": "# SOCC Language Dashboard Binding View V1",
+      "id": null,
+      "is_markdown_or_text": true,
+      "path": "SYSTEM/INTERFACE/dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_VIEW_V1.md",
+      "sha16": "ac01bebdecdd42a1",
+      "size": 1512,
+      "status": null
+    },
+    "operator_autonomy_dashboard_json": {
+      "exists": true,
+      "first_line": null,
+      "id": "OPERATOR_AUTONOMY_DASHBOARD_VIEW_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/DASHBOARD/OPERATOR_AUTONOMY_DASHBOARD_VIEW_V1.json",
+      "sha16": "ffaccc6c7303e47f",
+      "size": 2293,
+      "status": "PASS"
+    },
+    "operator_autonomy_dashboard_md": {
+      "exists": true,
+      "first_line": "# SOCC Operator Autonomy Dashboard View V1",
+      "id": null,
+      "is_markdown_or_text": true,
+      "path": "SYSTEM/DASHBOARD/OPERATOR_AUTONOMY_DASHBOARD_VIEW_V1.md",
+      "sha16": "b770dcf3bb75243e",
+      "size": 1903,
+      "status": null
+    },
+    "operator_autonomy_dashboard_txt": {
+      "exists": true,
+      "first_line": "SOCC AUTONOMY DASHBOARD",
+      "id": null,
+      "is_markdown_or_text": true,
+      "path": "SYSTEM/DASHBOARD/OPEN_THIS_AUTONOMY_DASHBOARD.txt",
+      "sha16": "cb93cc66a072a72c",
+      "size": 894,
+      "status": null
+    },
+    "renderer": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_CANONICAL_DASHBOARD_RENDERER_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.json",
+      "sha16": "91cdcc80952605ed",
+      "size": 1696,
+      "status": "PASS"
+    },
+    "renderer_accept_proof": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_ACCEPT_CANONICAL_DASHBOARD_RENDERER_V1_PROOF",
+      "is_markdown_or_text": false,
+      "path": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_CANONICAL_DASHBOARD_RENDERER_V1_PROOF.json",
+      "sha16": "f0fd69ee7c95a191",
+      "size": 1849,
+      "status": "PASS"
+    },
+    "renderer_acceptance": {
+      "exists": true,
+      "first_line": null,
+      "id": "SOCC_CANONICAL_DASHBOARD_RENDERER_ACCEPTANCE_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_ACCEPTANCE_V1.json",
+      "sha16": "016f0424de12defe",
+      "size": 1768,
+      "status": "PASS"
+    },
+    "renderer_md": {
+      "exists": true,
+      "first_line": "# SOCC CANONICAL DASHBOARD RENDERER V1",
+      "id": null,
+      "is_markdown_or_text": true,
+      "path": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.md",
+      "sha16": "b4cc6bf9a783f65d",
+      "size": 553,
+      "status": null
+    },
+    "renderer_script": {
+      "exists": true,
+      "first_line": null,
+      "id": null,
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/INTERFACE/dashboard/renderers/render_socc_dashboard_v1.py",
+      "sha16": "3e9cc5fde59a421d",
+      "size": 3855,
+      "status": null
+    },
+    "runtime_dashboard": {
+      "exists": true,
+      "first_line": null,
+      "id": "ASSIGNMENT_0001_RUNTIME_PANEL_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_RUNTIME_PANEL_V1.json",
+      "sha16": "2d0b67c637383d92",
+      "size": 2040,
+      "status": "RUNTIME_ACTIVE_PENDING_VALIDATION"
+    },
+    "seal_dashboard": {
+      "exists": true,
+      "first_line": null,
+      "id": "ASSIGNMENT_0001_SELF_CONSTRUCTION_SEAL_PANEL_POINTER_V1",
+      "is_markdown_or_text": false,
+      "path": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_SELF_CONSTRUCTION_SEAL_PANEL_POINTER_V1.json",
+      "sha16": "c702589b2ca1e059",
+      "size": 1346,
+      "status": "ACTIVE_SEALED"
+    }
+  },
+  "observed_current_lawful_next": [
+    "build_entity_substrate_direction_v1"
+  ],
+  "status": "PASS",
+  "truth_boundary": "Read-only dashboard lineage snapshot. It does not mutate route, execute language, start daemon/background, use network, or create another dashboard.",
+  "warnings": []
+}

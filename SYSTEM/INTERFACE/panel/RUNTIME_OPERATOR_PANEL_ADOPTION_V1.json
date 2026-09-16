@@ -1,0 +1,61 @@
+{
+  "created_at_utc": "2026-06-08T18:38:49.233204+00:00",
+  "id": "RUNTIME_OPERATOR_PANEL_ADOPTION_V1",
+  "lawful_next": "validate_runtime_operator_panel_adoption_v1",
+  "new_step": "build_runtime_operator_panel_adoption_v1",
+  "old_panel_candidates_total": 1406,
+  "old_panel_pass_candidates": 854,
+  "operator_surface_contract": {
+    "must_not_do": [
+      "execute_daemon",
+      "start_background_loop",
+      "widen_queue_without_lawful_next",
+      "claim_agi"
+    ],
+    "must_show": [
+      "current_lawful_next",
+      "last_committed_step",
+      "route_status",
+      "pulse_status",
+      "control_status",
+      "proof_chain_pointer",
+      "autonomy_distance",
+      "daemon_background_network_flags",
+      "codex_hermes_governance_status"
+    ]
+  },
+  "selected_old_panel_lineage": [
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_PROOF_V1.json",
+    "core/continuity/MEMORY_WAVE/reports/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_MEMORY.json",
+    "proofs/socc/build_controlled_autonomy_visible_status_panel_v1.proof.json",
+    "proofs/socc/review_controlled_autonomy_visible_status_panel_v1.proof.json",
+    "proofs/socc/validate_controlled_autonomy_visible_status_panel_v1.proof.json",
+    "route_authority/proof/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json",
+    "route_authority/proof/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json",
+    "route_authority/proof/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_PROOF.json",
+    "route_authority/proof/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_PROOF.json",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_REVIEW_V1.json",
+    "route_authority/self_construction_autonomy/REVIEW_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_CONTRACT_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_PROOF.json",
+    "memory_waves/socc/review_controlled_autonomy_visible_status_panel_v1.memory.json",
+    "reports/socc/review_controlled_autonomy_visible_status_panel_v1.report.json",
+    "dashboards/socc/controlled_autonomy_visible_status_panel_v1.json",
+    "route_authority/self_construction_autonomy/BUILD_PERSISTENT_RUNTIME_OPERATOR_PANEL_AND_CONTROL_LOOP_V1_REPORT.json",
+    "route_authority/self_construction_autonomy/EXECUTE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json",
+    "route_authority/self_construction_autonomy/PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_EXECUTION_V1.json",
+    "route_authority/self_construction_autonomy/PROVE_PERSISTENT_RUNTIME_OPERATOR_PANEL_CONTROL_LOOP_PROBE_V1_REPORT.json",
+    "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1_MEMORY.json",
+    "core/socc/autonomy/self_building/status_panel/validation/SELF_BUILDING_RUNTIME_STATUS_PANEL_VALIDATION_V1.json",
+    "core/continuity/MEMORY_WAVE/reports/autonomy/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1_MEMORY.json",
+    "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.json",
+    "core/socc/autonomy/self_building/status_panel/review/SELF_BUILDING_RUNTIME_STATUS_PANEL_REVIEW_V1.md",
+    "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+    "reports/socc/build_controlled_autonomy_visible_status_panel_v1.report.json",
+    "reports/socc/validate_controlled_autonomy_visible_status_panel_v1.report.json"
+  ],
+  "status": "PASS",
+  "truth_boundary": "Runtime/operator panel adoption from old lineage. This does not start daemon/background/network."
+}

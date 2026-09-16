@@ -1,0 +1,1 @@
+{"claims": [{"text": "Read-only dashboard lineage snapshot. It does not mutate route, execute language, start daemon/background, use network, or create another dashboard.", "line": 52, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 1, "Proof": 6, "Daemon": 1}}

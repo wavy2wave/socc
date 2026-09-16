@@ -1,0 +1,18 @@
+{
+  "auditor": "scripts/socc/socc_self_building_effect_auditor_v1.py",
+  "created_at_msk": "2026-06-18T01:31:16+03:00",
+  "created_at_utc": "2026-06-17T22:31:16.735040+00:00",
+  "id": "SELF_BUILDING_EFFECT_AUDITOR_SPEC_V1",
+  "purpose": "Detect and block semantic-null PASS by requiring material state/artifact effects.",
+  "required_effect_classes": [
+    "route_lawful_next_changed",
+    "upstream_proof_changed",
+    "proof_artifact_exists",
+    "memory_artifact_exists",
+    "required_artifacts_exist",
+    "changed_artifacts_hashable",
+    "forbidden_flags_remain_false"
+  ],
+  "status": "BUILT",
+  "truth_boundary": "Self-building effect auditor build only. This builds a bounded auditor for detecting semantic-null PASS by checking material effects: artifact deltas, proof/report/memory creation, route transition, atomic commit coherence, and forbidden escalation guards. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

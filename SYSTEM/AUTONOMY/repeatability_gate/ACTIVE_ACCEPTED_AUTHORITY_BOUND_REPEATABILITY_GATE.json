@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/repeatability_gate/AUTHORITY_BOUND_REPEATABILITY_GATE_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_AUTHORITY_BOUND_REPEATABILITY_GATE_V1_PROOF.json",
+  "active_gate": "SYSTEM/AUTONOMY/repeatability_gate/AUTHORITY_BOUND_REPEATABILITY_GATE_V1.json",
+  "created_at_utc": "2026-06-09T14:28:22.525315+00:00",
+  "current_execution_line": "fresh_SOCC_route_authority",
+  "id": "ACTIVE_ACCEPTED_AUTHORITY_BOUND_REPEATABILITY_GATE",
+  "next_required_step": "build_first_authority_bound_repeatability_session_plan_v1",
+  "old_evidence_role": "lineage_only_not_current_route",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Accepted repeatability gate authorizes building the first repeatability session plan only. It does not run sessions or claim continuous autonomy yet."
+}

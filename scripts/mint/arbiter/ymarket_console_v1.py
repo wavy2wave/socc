@@ -13,7 +13,13 @@ One-shot CLI (по полной-команде-конвенции):
     python3 ymarket_console_v1.py --штаб
     python3 ymarket_console_v1.py --роль ТОВАРОВЕД
     python3 ymarket_console_v1.py --табель [--роль X] [--все]
-    python3 ymarket_console_v1.py --день | --kpi | --артефакты | --задания | --авто | --дело
+    python3 ymarket_console_v1.py --день | --kpi | --артефакты | --задания | --план | --совет | --споры
+          | --авто | --дело
+    python3 ymarket_console_v1.py --доказано          — честная СВЕРКА-ЖИВЫХ (леждер ЦИКЛ-1)
+
+ДЕНЬ/KPI на реальном пути дописывают блок СВЕРКА-ЖИВЫХ: «сверено 0» суточного журнала —
+это само-модель СВОЕГО кабинета, а «доказанно живых» (леждер ЦИКЛ-1, СВЕРКА PASS) —
+кабинетное число; панель не врёт «0 доказанно живых», когда леджер уже доказывает.
 """
 from __future__ import annotations
 
@@ -56,6 +62,22 @@ try:
     import ymarket_tasks_v1 as tasks_reg    # реестр заданий ЯМ-ЦИКЛА (открыто/важность/владельцы)
 except Exception:
     tasks_reg = None
+try:
+    import ymarket_proof_cross_v1 as cross  # честный блок «доказанно живых» (леждер ЦИКЛ-1)
+except Exception:
+    cross = None
+try:
+    import ymarket_plannerka_v1 as _plannerka  # durable ПЛАН ДНЯ (утро), read 0₽
+except Exception:
+    _plannerka = None
+try:
+    import ymarket_sovet_v1 as _sovet_mod      # СОВЕТ (лицо ПЛАНА ДНЯ), read 0₽
+except Exception:
+    _sovet_mod = None
+try:
+    import ymarket_sovet_spory_v1 as _spory_mod   # СПОРЫ ОРГАНОВ (слой 2 СОВЕТА), read 0₽
+except Exception:
+    _spory_mod = None
 
 # ── цвета (SOCC-канон через socc_cli.style, out-aware) ────────────────────────
 try:
@@ -414,8 +436,31 @@ def tabel_today_text(*, out=None, tabel_rows=None, now=None):
 
 
 # ── ДЕЛО ──────────────────────────────────────────────────────────────────────
+def live_cross_text(*, out=None, journal_rows=None, library_doc=None):
+    """Честный блок «доказанно живых»: леджер ЦИКЛ-1 по кабинетам (только СВЕРКА PASS) +,
+    когда суточный журнал рисует «0», разграничитель (это само-модель СВОЕГО кабинета,
+    не леджер; числа не складываются). Реальный путь (None) читает диск; инъекция —
+    герметично. Закон оператора «сделай чтобы система законно не врала»: панель не должна
+    показывать «0 доказанно живых» как общесистемную правду, когда леджер уже доказывает."""
+    out = out or sys.stdout
+    if cross is None:
+        return "%s · %s" % (_b(out, "СВЕРКА-ЖИВЫХ"),
+                            _dim(out, "ymarket_proof_cross_v1 не импортировался"))
+    try:
+        txt = cross.render(journal_rows=journal_rows, library_doc=library_doc)
+    except Exception as e:
+        return "%s · %s" % (_b(out, "СВЕРКА-ЖИВЫХ"), _dim(out, "рендер упал: %s" % e))
+    if not txt:
+        return None
+    head = "%s · %s" % (_b(out, "СВЕРКА-ЖИВЫХ"),
+                        _dim(out, "леджер ЦИКЛ-1 (СВЕРКА PASS) vs суточный журнал"))
+    return head + "\n" + "\n".join("  " + ln for ln in txt.splitlines())
+
+
 def day_card(*, out=None, journal_rows=None):
-    """Последний снимок дня из журнала суточного цикла: дата/горящее/топ-ход/kpi."""
+    """Последний снимок дня из журнала суточного цикла: дата/горящее/топ-ход/kpi.
+    На реальном пути (journal_rows is None) дописывает честный блок «доказанно живых»
+    по леджеру ЦИКЛ-1 — «сверено 0» суточного больше не читается как общесистемная правда."""
     out = out or sys.stdout
     rows = journal_rows if journal_rows is not None else (
         kpi._read_rows() if kpi else [])
@@ -443,19 +488,29 @@ def day_card(*, out=None, journal_rows=None):
         lines.append("  горит: %s" % _dim(out, _snip(last.get("burning"), 120)))
     if last.get("top_move"):
         lines.append("  топ-ход: %s" % _dim(out, _snip(last.get("top_move"), 120)))
+    if journal_rows is None:                      # реальный путь (CLI/ДОМ) → честная СВЕРКА-ЖИВЫХ
+        xl = live_cross_text(out=out)
+        if xl:
+            lines.append(xl)
     return "\n".join(lines)
 
 
 def kpi_text(*, out=None, journal_rows=None, today=None):
-    """Свёртки KPI DAY/WEEK/MONTH (kpi.render_all, injectable rows)."""
+    """Свёртки KPI DAY/WEEK/MONTH (kpi.render_all, injectable rows). На реальном пути
+    (journal_rows is None) дописывает честный блок «доказанно живых» по леджеру ЦИКЛ-1."""
     out = out or sys.stdout
     if not kpi:
         return "%s недоступен: ymarket_kpi_v1 не импортировался." % _b(out, "KPI")
     rows = journal_rows if journal_rows is not None else None
     try:
-        return kpi.render_all(rows=rows, today=today)
+        txt = kpi.render_all(rows=rows, today=today)
     except Exception as e:
         return "%s · рендер упал: %s" % (_b(out, "KPI"), e)
+    if journal_rows is None:                      # реальный путь (CLI/ДОМ) → честная СВЕРКА-ЖИВЫХ
+        xl = live_cross_text(out=out)
+        if xl:
+            txt = txt.rstrip("\n") + "\n" + xl
+    return txt
 
 
 def artifacts_text(*, out=None, matrix_doc=None, library_doc=None, points_doc=None):
@@ -544,6 +599,9 @@ def deal_text(*, out=None, tabel_rows=None, journal_rows=None, today=None, path=
                        today=today),
               artifacts_text(out=out),
               tasks_text(out=out, now=today),
+              plan_day_text(out=out, date_str=_iso_now(today)),
+              sovet_text(out=out, date_str=_iso_now(today)),
+              spory_text(out=out, date_str=_iso_now(today)),
               autopilot_tail(out=out, path=path, n=6)]
     return "\n".join(blocks)
 
@@ -612,6 +670,134 @@ def _registry_status():
     return "ok", None
 
 
+# ── ПЛАН ДНЯ (read-блок: durable планёрки (утро)) ─────────────────────────────
+def _reconcile_esc_plan(plan, dossier_rows):
+    """Снять со «ждёт слова» esc-map-{slug}, чьё досье УЖЕ подтверждено ОРГАНОМ (display-only).
+
+    ПЛАН ДНЯ — утренний снимок (М3); досье за день законно уезжают: маппинг подтверждается
+    КАТЕГОРИЙЩИКОМ (need_mapping→false + id дан; 04.09 живьём так ушло 8 из 12). Read-лица,
+    читающие durable план, показывали бы устаревшее «нужно слово N» против досье в тот же миг.
+    Зеркало _reconcile_waiting споров (тот же предикат): esc-map-{slug}, чьё досье уже
+    подтверждено → слово оператора больше не нужно → из эскалаций убираем; всё ещё need_mapping
+    / досье в списке нет → остаётся (ничего не выдумываем и не теряем). НЕ-esc-map эскалации
+    не трогаем. Возвращает (kept, resolved_slugs, total_esc_map); план-док НЕ мутирует."""
+    by_slug = {r.get("slug"): r for r in dossier_rows or [] if r.get("slug")}
+    kept, resolved, total_esc = [], [], 0
+    for x in plan.get("decisions", []):
+        rid = x.get("id")
+        if x.get("kind") == "escalation" and isinstance(rid, str) and rid.startswith("esc-map-"):
+            total_esc += 1
+            rec = by_slug.get(rid[len("esc-map-"):])
+            if rec is not None and not rec.get("need_mapping") \
+                    and rec.get("market_category_id") is not None:
+                resolved.append(rid[len("esc-map-"):])   # маппинг подтверждён — слово не нужно
+                continue
+        kept.append(x)
+    return kept, resolved, total_esc
+
+
+def plan_day_text(*, out=None, plan=None, dossiers=None, date_str=None):
+    """ПЛАН ДНЯ (утро) одним блоком: контекст дня + решения (планёрка, durable стор).
+
+    plan/dossiers инъекция — герметичный тест не трогает диск (CC-паттерн). Без инъекции
+    читает планёрку (load_plan по date_str/сегодня) И досье в тот же миг (read_dossiers):
+    esc-map эскалации, чьё досье за день уже подтверждено органом, снимаются со «ждёт слова»
+    (display-only реконсилят — план-файл/реестр/совет-заморозку НЕ трогаем; рендер сверяет с
+    текущим досье, нота называет слоги). План инъекцией БЕЗ досье → рендер как есть (истины
+    нет). Чистый read: НИЧЕГО не пишет. Различает «движок не импортировался» / «план битый»
+    / «плана нет» (стиль _registry_status): «плана нет» ≠ «план пуст» — планёрка (утро)
+    собирает durable ПЛАН ДНЯ ПРЕЖДЕ работ дня."""
+    out = out or sys.stdout
+    today = _iso_now(date_str)
+    if _plannerka is None:
+        return "%s · %s" % (_b(out, "ПЛАН ДНЯ"),
+                            _dim(out, "ymarket_plannerka_v1 не импортировался (деградация честная)"))
+    injected = plan is not None
+    if plan is None:
+        doc, lerr = _plannerka.load_plan(today)
+        if lerr:
+            return "%s · %s" % (_b(out, "ПЛАН ДНЯ"),
+                                _dim(out, "план битый: %s" % (lerr.get("load_error") or lerr)))
+        if doc is None:
+            return "%s · %s" % (_b(out, "ПЛАН ДНЯ"),
+                                _dim(out, "плана нет — планёрка (утро) ещё не собрала"))
+        plan = doc
+    render_doc, note = plan, ""
+    if dossiers is not None or not injected:        # досье даны ИЛИ план пришёл с реального диска
+        dr = dossiers
+        if dr is None:
+            try:
+                dr = _plannerka.read_dossiers(None)[0]
+            except Exception:
+                dr = None
+        if dr is not None:
+            kept, resolved, total_esc = _reconcile_esc_plan(plan, dr)
+            if resolved:
+                render_doc = dict(plan)
+                render_doc["decisions"] = kept
+                note = ("план-файл числил esc-map %d; %d уже подтверждены КАТЕГОРИЙЩИКОМ по "
+                        "досье — сняты со «ждёт слова»: %s"
+                        % (total_esc, len(resolved), ", ".join(sorted(resolved))))
+    lines = ["%s · %s" % (_b(out, "ПЛАН ДНЯ"), _dim(out, "%s · планёрка (утро)" % today))]
+    for ln in _plannerka.render_plan(render_doc)[1:]:   # первую строку рендера не дублируем
+        lines.append("  " + ln)
+    if note:
+        lines.append("  " + _dim(out, note))
+    return "\n".join(lines)
+
+
+# ── СОВЕТ ДИРЕКТОРОВ (read-блок: лицо ПЛАНА ДНЯ, 0₽, ничего не пишет) ──────────
+def sovet_text(*, out=None, date_str=None):
+    """СОВЕТ одним блоком: протокол даты (голоса из сторов + пропиздоны + зеркало решений плана).
+
+    Чистый read: только load_protocol/render_sovet из ymarket_sovet_v1 (0₽, VL4-гейт). По
+    отсутствию файла даты честно «совет не собирался» (VL5), а не пустой лист. СОВЕТ сам новых
+    заданий не создаёт (VL7) — лицо поэтому строго read-only и ничего не пишет на диск."""
+    out = out or sys.stdout
+    today = _iso_now(date_str)
+    if _sovet_mod is None:
+        return "%s · %s" % (_b(out, "СОВЕТ"),
+                            _dim(out, "ymarket_sovet_v1 не импортировался (деградация честная)"))
+    proto, lerr = _sovet_mod.load_protocol(today)
+    if lerr:
+        return "%s · %s" % (_b(out, "СОВЕТ"),
+                            _dim(out, "протокол битый: %s" % (lerr.get("load_error") or lerr)))
+    lines = _sovet_mod.render_sovet(proto, today)
+    return "\n".join(lines)
+
+
+# ── СПОРЫ ОРГАНОВ (read-блок: слой 2 СОВЕТА «Голоса-споры», 0₽, ничего не пишет) ─
+def spory_text(*, out=None, date_str=None):
+    """ПРЕНИЯ органов одним блоком: позиции + споры по данным даты.
+
+    Чистый read: снимок даты (VL6, с живой озвучкой если была) уже сохранён → рендерит его;
+    иначе собирает детерминированный doc в памяти (compose_spory gate="off": 0 LLM, 0₽, без сети)
+    и рендерит. Лицо строго ничего не пишет (VL10); по отсутствию повода честно «прений не было»
+    (VL5), а не пустой лист. Движок не импортировался → честно (стиль CC9/CC10/CC11)."""
+    out = out or sys.stdout
+    today = _iso_now(date_str)
+    if _spory_mod is None:
+        return "%s · %s" % (_b(out, "СПОРЫ"),
+                            _dim(out, "ymarket_sovet_spory_v1 не импортировался (деградация честная)"))
+    doc, lerr = _spory_mod.load_spory(today)
+    if lerr:
+        return "%s · %s" % (_b(out, "СПОРЫ"),
+                            _dim(out, "стор споров битый: %s" % (lerr.get("load_error") or lerr)))
+    if doc is None:
+        # снимка даты нет (автопилот споры по умолчанию не пишет) — производная сейчас, 0₽
+        try:
+            doc = _spory_mod.compose_spory(date_str=today, gate="off")
+        except Exception as e:
+            return "%s · %s" % (_b(out, "СПОРЫ"),
+                                _dim(out, "сбор споров упал: %s" % e))
+    if not (doc.get("positions") or doc.get("disputes")):
+        # собрано, но противопоставить нечего — честное «прений не было» (VL5), как resolve-слой
+        lines = _spory_mod.render_spory(None, today)
+    else:
+        lines = _spory_mod.render_spory(doc, today)
+    return "\n".join(lines)
+
+
 # ── One-shot CLI (чистая печать, ничего не пишет) ─────────────────────────────
 def _usage():
     return (
@@ -621,8 +807,13 @@ def _usage():
         "  python3 ymarket_console_v1.py --табель [--роль X] [--все]  — табель (сегодня/всё)\n"
         "  python3 ymarket_console_v1.py --день               — последний снимок дня\n"
         "  python3 ymarket_console_v1.py --kpi                — свёртки DAY/WEEK/MONTH\n"
+        "  python3 ymarket_console_v1.py --доказано            — честная СВЕРКА-ЖИВЫХ: леджер ЦИКЛ-1\n"
+        "        по кабинетам (СВЕРКА PASS) + журнал суточного (само-модель своего кабинета)\n"
         "  python3 ymarket_console_v1.py --артефакты          — матрица · библиотека · точки\n"
         "  python3 ymarket_console_v1.py --задания             — реестр ЗАДАНИЙ (открытые по важности)\n"
+        "  python3 ymarket_console_v1.py --план                — ПЛАН ДНЯ (durable планёрки, утро)\n"
+        "  python3 ymarket_console_v1.py --совет               — СОВЕТ ДИРЕКТОРОВ (протокол даты)\n"
+        "  python3 ymarket_console_v1.py --споры               — СПОРЫ ОРГАНОВ (позиции + прения)\n"
         "  python3 ymarket_console_v1.py --авто               — хвост автопилота\n"
         "  python3 ymarket_console_v1.py --дело               — всё ДЕЛО одним листом")
 
@@ -651,8 +842,16 @@ def _main(argv=None):
             cmd = cmd or "artifacts"
         elif a in ("--задания", "--zadaniya", "--tasks"):
             cmd = cmd or "tasks"
+        elif a in ("--план", "--plannerka", "--plan"):
+            cmd = cmd or "plan"
+        elif a in ("--совет", "--sovet", "--sovet_direktorov"):
+            cmd = cmd or "sovet"
+        elif a in ("--споры", "--spory", "--preniya", "--prenia"):
+            cmd = cmd or "spory"
         elif a in ("--авто", "--avto", "--autopilot"):
             cmd = cmd or "autopilot"
+        elif a in ("--доказано", "--cross", "--zhivykh"):
+            cmd = cmd or "cross"
         elif a in ("--дело", "--delo", "--deal"):
             cmd = cmd or "deal"
         elif a in ("--роль", "--rol", "--role"):
@@ -680,10 +879,18 @@ def _main(argv=None):
         print(artifacts_text(out=out))
     elif cmd == "tasks":
         print(tasks_text(out=out))
+    elif cmd == "plan":
+        print(plan_day_text(out=out))
+    elif cmd == "sovet":
+        print(sovet_text(out=out))
+    elif cmd == "spory":
+        print(spory_text(out=out))
     elif cmd == "autopilot":
         print(autopilot_tail(out=out))
     elif cmd == "deal":
         print(deal_text(out=out))
+    elif cmd == "cross":
+        print(live_cross_text(out=out))
     return 0
 
 

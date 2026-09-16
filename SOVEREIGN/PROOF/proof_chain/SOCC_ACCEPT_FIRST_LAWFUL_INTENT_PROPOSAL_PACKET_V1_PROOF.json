@@ -1,0 +1,87 @@
+{
+  "acceptance_artifact": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_ACCEPTANCE_V1.json",
+  "acceptance_checks": {
+    "active_proposal_candidate": true,
+    "active_surface_accepted": true,
+    "build_proof_pass": true,
+    "creator_intent_present": true,
+    "creator_intent_targets_alive_cycles": true,
+    "expected_effect_present": true,
+    "forbidden_agi_claim": true,
+    "forbidden_autonomy_launch": true,
+    "forbidden_background": true,
+    "forbidden_creator_intent": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_language": true,
+    "forbidden_execute_proposal": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "lawful_alignment_pass": true,
+    "may_execute_false": true,
+    "next_bounded_plan_surface": true,
+    "proposal_id_ok": true,
+    "proposal_status_built_candidate": true,
+    "recommended_next_bounded_plan_surface": true,
+    "required_proof_present": true,
+    "requires_review_true": true,
+    "review_artifact_pass": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "risk_review_required": true,
+    "surface_accept_proof_pass": true,
+    "surface_acceptance_accepted": true,
+    "truth_boundary_non_executing": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true
+  },
+  "acceptance_md": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_ACCEPTANCE_V1.md",
+  "active_accepted_proposal_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/ACTIVE_ACCEPTED_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_bounded_plan_proposal_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_bounded_plan_proposal_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_bounded_plan_proposal_surface_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_lawful_intent_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_lawful_intent_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_lawful_intent_proposal_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_HAS_ACCEPTED_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET",
+  "created_at_utc": "2026-06-09T10:36:27.797345+00:00",
+  "current_expected": "accept_socc_first_lawful_intent_proposal_packet_v1",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF",
+  "next_after_pass": "build_socc_bounded_plan_proposal_surface_v1",
+  "next_lawful_step": "build_socc_bounded_plan_proposal_surface_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "dd676f882fe8be2a",
+  "proposal_md": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.md",
+  "proposal_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Accepts first lawful intent proposal packet only. No execution, no daemon/background/network, no MW route.",
+  "warnings": []
+}

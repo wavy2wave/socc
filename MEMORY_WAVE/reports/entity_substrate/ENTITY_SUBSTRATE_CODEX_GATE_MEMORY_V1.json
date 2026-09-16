@@ -1,0 +1,12 @@
+{
+  "created_at_utc": "2026-06-20T22:34:56.061995+00:00",
+  "event": "Entity/Substrate Codex gate passed: bounded-code/patch safety contract validated; advanced to plan-and-gates review.",
+  "gate_status": "PASS",
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_CODEX_GATE_MEMORY_V1",
+  "next": "review_entity_substrate_plan_and_gates_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ENTITY_SUBSTRATE_CODEX_GATE_V1_PROOF.json",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "Entity/Substrate Codex gate only. Validates the bounded-code/patch safety contract (bounded scope, idempotence, filesystem safety, proof output, review gate) before any execution surface. Does not build Entity/Substrate, write patches, execute code, run a tick, enable loop/daemon/scheduler/background, use network, widen queue, birth Entity/ANNA, approve canon, or claim AGI."
+}

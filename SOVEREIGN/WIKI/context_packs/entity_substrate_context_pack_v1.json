@@ -1,0 +1,138 @@
+{
+  "created_at_msk": "2026-06-16T22:47:58+03:00",
+  "created_at_utc": "2026-06-16T19:47:58.341748+00:00",
+  "current_authority": [
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.json:7",
+      "text": "\"operator_visible_summary\": \"Entity Substrate direction built by sealed SOCC self-construction discipline. Review is next. No substrate execution yet.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24956",
+      "text": "\"plain\": \"Entity Substrate is the next lawful substrate layer constructed by SOCC self-construction. It prepares persistent entity identity, state, memory, lineage, capability binding, dashboard visibility, lawful action boundaries, freeze/"
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.md:12",
+      "text": "Entity Substrate is the next lawful substrate layer constructed by SOCC self-construction. It prepares persistent entity identity, state, memory, lineage, capability binding, dashboard visibility, lawful action boundaries, freeze/review/sto"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:16668",
+      "text": "But it is proof-driven bounded autonomy operating on the Entity Substrate path."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:31053",
+      "text": "\"The Entity/Substrate plan is route-bound and proof-bound.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24298",
+      "text": "\"truth_boundary\": \"Live Entity Substrate. Autonomously builds its runtime surfaces, dashboard-visible, proof-chain tracked.\","
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_HERMES_GATE_V1.md:10",
+      "text": "- The Entity/Substrate plan is route-bound and proof-bound."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ кода и review.txt:33704",
+      "text": "Дай терминалу вот этот аудит без изменений файлов. Он ничего не строит, только показывает, что уже есть по Memory Wave / wiki / raw / entity substrate / ANNA:"
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_HERMES_GATE_V1.json:7",
+      "text": "\"Old daemon evidence is archived but not launched.\","
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_HERMES_GATE_V1.md:14",
+      "text": "- Old daemon evidence is archived but not launched."
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_REVIEW_V1.md:13",
+      "text": "- Old daemon evidence is archived, not launched."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:31061",
+      "text": "\"truth_boundary\": \"Hermes gate only. It reviews engineering/lawful coherence; it does not build Entity/Substrate or execute daemon/background/network.\""
+    }
+  ],
+  "definition": "Entity Substrate is the next lawful substrate layer constructed by SOCC self-construction. It prepares persistent entity identity, state, memory, lineage, capability binding, dashboard visibility, lawful action boundaries, freeze/review/stop, and proof-chain for future entities such as Anna MVP.",
+  "do_not_rebuild_deprecated": [
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/Скрипт для задачи (2).txt:648",
+      "text": "\"before_state\": \"Entity Substrate exists as Memory Wave wiki/evidence and historical partial artifacts; it is not yet selected as a current bounded backlog task from ingestion.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/SOCC состояние и шаги.txt:5069",
+      "text": "Entity Substrate as marketplace-first factory is deprecated."
+    }
+  ],
+  "drill_down_note": "Open source anchors (article current_authority refs) only when a claim must be verified in raw context.",
+  "governance_counts": {
+    "conflicting": 598,
+    "current": 49,
+    "deprecated": 2,
+    "historical": 929
+  },
+  "id": "KNOWLEDGE_CONTEXT_PACK_ENTITY_SUBSTRATE_V1",
+  "main_line": "**Что это (одной фразой).** Entity Substrate — это «матрица рождения сущностей»: законный слой SOCC,\nкоторый даёт будущим цифровым сущностям (первая — ANNA, ассистент-администратор для стоматологий)\nпостоянную идентичность, состояние, память, происхождение (lineage), привязку способностей,\nграницы законного действия, видимость в дашборде, proof-цепочку и механизм freeze/review/stop.\nЭто **мост** от доказанной авто-самосборки SOCC к конкретному продукту.\n\n**Чем НЕ является.** Не AGI-заявление, не чат-бот, не демон, не бесконечный цикл. Это инфраструктура,\nкоторую SOCC строит сам по дисциплине самосборки — без ручного «handwave», без заявлений о живости\nдо появления runtime-доказательств.\n\n**Программная цепочка (порядок строительства).**\n`SOCC autonomous self-construction (✅ запечатан)` → `Entity Substrate (в процессе)` →\n`ANNA MVP (только ПОСЛЕ печати Substrate)`. Ключевое различие, закреплённое каноном:\n**ANNA = entity/product, а НЕ орган SOCC.** SOCC — суверенное ядро, которое *рождает* сущностей;\nANNA — первая такая сущность.\n\n**Десять обязательных поверхностей (что Substrate обязан дать каждой сущности).**\nidentity · state · memory · lineage · capability_binding · lawful_action · dashboard ·\nproof_chain · freeze/review/stop · anna_mvp_product_binding.\n\n**Где мы сейчас (фактический статус цепочки на 2026-06-10).**\ndirection ✅ ACCEPTED → construction plan ✅ reviewed → scientific gate ✅ PASS →\nHermes gate ✅ PASS → **Codex gate ⏳ следующий шаг** → bounded execution surface ❌ →\nbounded execution session ❌ → seal ❌. То есть направление и план доказаны и приняты,\nдва из трёх гейтов пройдены; впереди Codex-гейт, затем ограниченное исполнение и печать.\n\n**Связь с памятью (почему это первый пилот Knowledge Substrate).** Entity Substrate был выбран\nэталонной темой именно потому, что по нему есть и строгий in-repo канон (direction/plan/gates —\nтекущая авторитетная линия), и длинная история обсуждений во внешних чатах (эволюция идеи).\nЭто идеальный тест органа памяти: канон даёт CURRENT_AUTHORITY, чаты дают timeline и ветки идей,\nа свежесть разводит «что актуально сейчас» и «что осталось историей».\n\n**Дисциплина (инварианты, которые нельзя нарушать при постройке Substrate).**\nиспользовать локальный ingest старого проекта (не дёргать его на каждом шаге), не возобновлять\nстарый маршрут, не запускать старый демон, идти строго по текущему lawful_next, всё видимо в\nдашборде, proof на каждый шаг, обязательная память, ограниченная остановка, scientific + Hermes +\nCodex гейты, без демона/фона/сети, без заявлений AGI/L3.\n\n**Следующий законный шаг для самого Substrate (отдельно от этого органа памяти):**\n`run_entity_substrate_codex_gate_v1` → построить bounded execution surface → прогнать сессию →\nвалидировать → review → `seal_entity_substrate_v1` → и только затем `build_anna_mvp_direction_v1`.",
+  "next_lawful_step_for_substrate": "build_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "open_questions_conflicting": [
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:25028",
+      "text": "\"truth_boundary\": \"Direction build only. Entity Substrate is not yet built. This creates the lawful direction by self-construction discipline; execution remains forbidden until plan/gates/surface/run.\""
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:17587",
+      "text": "\"Entity Substrate is queued as downstream workload; it is resumed/expanded only after persistent self-construction autonomy is proven \""
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:19277",
+      "text": "\"entity_substrate_policy\": \"Entity Substrate is queued as downstream workload; it is resumed only after persistent self-construction autonomy is proven or selected by future route authority.\""
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:20409",
+      "text": "\"queued_workloads_summary\": \"Entity Substrate queued downstream; self-construction autonomy is primary.\","
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.md:8",
+      "text": "Entity Substrate must be built by autonomous self-construction discipline."
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.md:45",
+      "text": "Direction build only. Entity Substrate is not yet built. This creates the lawful direction by self-construction discipline; execution remains forbidden until plan/gates/surface/run."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:21986",
+      "text": "\"operator_visible_summary\": \"First bounded assignment execution session accepted. Next lawful step is seal autonomous self-construction step, then Entity Substrate direction.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:22458",
+      "text": "\"operator_visible_summary\": \"First bounded autonomous self-construction step sealed. Next lawful step is Entity Substrate direction.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24564",
+      "text": "\"2. Entity Substrate is built by autonomous self-construction\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24634",
+      "text": "\"Next route may point to Entity Substrate, but Entity Substrate must be built by this self-construction discipline, not by a hand-waved direct patch.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24688",
+      "text": "Entity Substrate must be built by this self-construction discipline, not by a hand-waved direct patch."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24714",
+      "text": "Значит следующий lawful patch строит Entity Substrate direction, но не как “живую магию из воздуха”, а как следующее направление, рождённое sealed autonomous self-construction discipline. 🧬⚙️"
+    }
+  ],
+  "pack_hash": "d642ac2027f117451c688d93",
+  "purpose": "build brief for the self-construction organ; read this instead of raw sources",
+  "token_economy": {
+    "pack_caps_per_section": 12,
+    "principle": "read KB of pack, not MB of raw files",
+    "raw_sources_bypassed": {
+      "conflicting": 598,
+      "current": 49,
+      "deprecated": 2,
+      "historical": 929
+    }
+  },
+  "topic": "entity_substrate"
+}

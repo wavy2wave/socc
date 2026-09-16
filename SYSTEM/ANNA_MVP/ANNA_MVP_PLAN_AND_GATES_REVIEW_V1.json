@@ -1,0 +1,30 @@
+{
+  "checks": {
+    "authority_at_current": true,
+    "enforcer_exists": true,
+    "no_agent_spawn": true,
+    "no_agi_claim": true,
+    "no_anna_birth": true,
+    "no_anna_instantiation": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_entity_birth": true,
+    "no_l3_claim": true,
+    "no_mw_route": true,
+    "no_network": true,
+    "no_old_route_resume": true,
+    "no_revenue_claim": true,
+    "no_scheduler": true,
+    "predecessor_points_to_current": true,
+    "predecessor_proof_exists": true,
+    "predecessor_proof_pass": true,
+    "upstream_run_anna_mvp_codex_gate_v1_pass": true,
+    "upstream_run_anna_mvp_hermes_gate_v1_pass": true,
+    "upstream_run_anna_mvp_scientific_quality_gate_v1_pass": true
+  },
+  "created_at_utc": "2026-06-22T11:56:15.002655+00:00",
+  "hard_failures": [],
+  "id": "ANNA_MVP_PLAN_AND_GATES_REVIEW_V1",
+  "status": "PASS",
+  "verdict": "all_three_gates_pass_ready_for_acceptance"
+}

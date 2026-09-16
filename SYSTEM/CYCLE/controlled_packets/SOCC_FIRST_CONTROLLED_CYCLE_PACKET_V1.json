@@ -1,0 +1,50 @@
+{
+  "allowed_action_boundary": [
+    "build controlled cycle packet candidate",
+    "advance only to validation frontier"
+  ],
+  "created_at_utc": "2026-06-09T12:18:00.469620+00:00",
+  "cycle_id": "SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1",
+  "decision_reason": "First bounded step from accepted plan packet; visible controlled cycle candidate only.",
+  "expected_artifact_delta": [
+    "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+    "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.md",
+    "SYSTEM/CYCLE/controlled_packets/ACTIVE_FIRST_CONTROLLED_CYCLE_PACKET.json"
+  ],
+  "forbidden_actions": [
+    "claim AGI",
+    "claim autonomy launch",
+    "create MW route",
+    "execute code",
+    "execute cycle",
+    "execute language",
+    "mutate route outside lawful transition",
+    "start background loop",
+    "start daemon",
+    "use network"
+  ],
+  "hard_failures": [],
+  "may_execute": false,
+  "may_run_foreground_tick": false,
+  "may_start_daemon": false,
+  "may_use_network": false,
+  "mode": "FOREGROUND_CONTROLLED_PACKET_NON_EXECUTING",
+  "next_lawful_step_after_cycle": "validate_socc_first_controlled_cycle_packet_v1",
+  "observed_current_lawful_next": "build_socc_first_controlled_cycle_packet_v1",
+  "operator_visible_status": "BUILT_CANDIDATE_REQUIRES_VALIDATION",
+  "packet_type": "FIRST_CONTROLLED_CYCLE_PACKET",
+  "proof_required": [
+    "validate_socc_first_controlled_cycle_packet_v1 must verify visible fields, no execution, non-daemon"
+  ],
+  "requires_review": true,
+  "requires_validation": true,
+  "result_summary": "First controlled cycle packet candidate built. Non-executing.",
+  "selected_bounded_step": {
+    "may_execute": false,
+    "step_id": "observe_route_authority_v1"
+  },
+  "source_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "source_visibility_contract": "SYSTEM/CYCLE/visibility_contract/SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This first controlled cycle packet is a non-executing foreground packet candidate. It does not execute a cycle, does not run code, does not execute language, does not start daemon/background loops, does not use network, does not create MW route, does not claim AGI, and does not launch autonomy."
+}

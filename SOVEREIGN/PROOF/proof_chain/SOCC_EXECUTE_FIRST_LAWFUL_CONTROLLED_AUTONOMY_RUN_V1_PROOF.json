@@ -1,0 +1,31 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/execute_first_lawful_controlled_autonomy_run_20260608T185517Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/execute_first_lawful_controlled_autonomy_run_20260608T185517Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/execute_first_lawful_controlled_autonomy_run_20260608T185517Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_required": [],
+  "bad_route_flags": [],
+  "changed": [
+    "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_V1.json",
+    "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_V1.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T18:55:17.910967+00:00",
+  "current_before": "execute_first_lawful_controlled_autonomy_run_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_EXECUTE_FIRST_LAWFUL_CONTROLLED_AUTONOMY_RUN_V1_PROOF",
+  "missing_required": [],
+  "network_used": false,
+  "next_after_execution": "validate_first_lawful_controlled_autonomy_execution_v1",
+  "observe_pass": true,
+  "status": "PASS",
+  "steps_executed": 1,
+  "stopped_after_step": true,
+  "truth_boundary": "First lawful controlled autonomy execution only. One step. No daemon/background/network.",
+  "warnings": []
+}

@@ -1,0 +1,20 @@
+{
+  "capability": "memory_continuity",
+  "direction": "SYSTEM/CAPABILITIES/memory_continuity/KNOWLEDGE_SUBSTRATE_DIRECTION_V1.json",
+  "does_not_modify_global_route_authority": true,
+  "id": "ACTIVE_KNOWLEDGE_SUBSTRATE_DIRECTION",
+  "last_step": "review_knowledge_substrate_v1",
+  "next_required_step": "knowledge_substrate_sealed_idle",
+  "organ_local_chain": [
+    "scan_knowledge_sources_v1",
+    "ingest_knowledge_sources_v1",
+    "build_wiki_article_entity_substrate_v1",
+    "validate_knowledge_substrate_v1",
+    "review_knowledge_substrate_v1"
+  ],
+  "plan": "SYSTEM/CAPABILITIES/memory_continuity/KNOWLEDGE_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "sealed_at_utc": "2026-06-17T11:57:26.660703+00:00",
+  "status": "SEALED_PILOT",
+  "truth_boundary": "Organ-local pointer for Knowledge Substrate. Advanced only by KS scripts on PASS. Global CURRENT_ROUTE_AUTHORITY untouched.",
+  "updated_at_utc": "2026-06-17T11:57:26.660705+00:00"
+}

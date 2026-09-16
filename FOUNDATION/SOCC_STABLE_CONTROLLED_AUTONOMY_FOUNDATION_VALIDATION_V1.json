@@ -1,0 +1,21 @@
+{
+  "accept_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_V1_PROOF.json",
+  "bad_capabilities": [],
+  "bad_foundation_flags": [],
+  "bad_operating_rule": [],
+  "bad_route_flags": [],
+  "capabilities_ok": true,
+  "created_at_utc": "2026-06-08T19:17:35.660670+00:00",
+  "current_step": "validate_socc_stable_controlled_autonomy_foundation_v1",
+  "forbidden_ok": true,
+  "foundation": "FOUNDATION/SOCC_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_V1.json",
+  "foundation_safety_flags_ok": true,
+  "id": "SOCC_STABLE_CONTROLLED_AUTONOMY_FOUNDATION_VALIDATION_V1",
+  "lawful_next": "review_socc_stable_controlled_autonomy_foundation_v1",
+  "missing_forbidden": [],
+  "operating_rule_ok": true,
+  "route_safety_flags_ok": true,
+  "status": "PASS",
+  "truth_boundary": "Foundation validation only. No daemon/background/network.",
+  "validated_step": "accept_socc_stable_controlled_autonomy_foundation_v1"
+}

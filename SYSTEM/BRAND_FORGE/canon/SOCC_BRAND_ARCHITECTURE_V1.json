@@ -1,0 +1,50 @@
+{
+  "id": "SOCC_BRAND_ARCHITECTURE_V1",
+  "schema": "socc.brand.architecture.v1",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "purpose": "The relationship law for the WHOLE SOCC brand ecosystem. SOCC births many customer-facing entities; without an architecture they become chaos (inconsistent) or a liability (one tainted brand drags the rest). This decides how SOCC, ANNA, and every future entity relate.",
+
+  "the_four_models_taught": {
+    "branded_house": {"def": "one master brand, descriptive sub-brands", "examples": "Google Maps / Google Drive; FedEx Express", "pro": "efficiency, instant trust transfer", "con": "one failure taints all; forces the master name onto every audience"},
+    "house_of_brands": {"def": "independent brands, parent invisible", "examples": "P&G → Tide, Pampers, Gillette; Unilever", "pro": "each targets a distinct audience; risk isolated", "con": "expensive; no trust transfer between them"},
+    "endorsed": {"def": "independent brand + visible parent endorsement", "examples": "Courtyard by Marriott; 'X by SOCC'", "pro": "middle ground", "con": "parent must be a trust asset to the buyer"},
+    "hybrid": {"def": "mix of the above", "examples": "Amazon (Branded House + Audible/Twitch as House of Brands)"}
+  },
+
+  "soccs_reality": [
+    "buyers are non-technical, per-vertical (clinic owner, barbershop owner...) — they do NOT know or care about 'SOCC'",
+    "the stealth-human thesis means each PRODUCT is experienced as a PERSON (Анна), not software",
+    "SOCC is the BRAINS/OS — internal, matrix-aesthetic, never customer-facing",
+    "one Forge mints them all -> shared CRAFT, but each needs a distinct vertical FACE"
+  ],
+
+  "ruling": {
+    "model": "INVISIBLE HOUSE, HUMAN FACES",
+    "what_it_is": "House of Brands at the CUSTOMER layer (each entity is its own human-named persona; SOCC stays invisible) + Branded House of CRAFT/DNA internally (every face forged from one Forge, one token system, one quality bar).",
+    "why": [
+      "non-technical buyers buy a person ('Анна'), not a tech parent — exposing 'SOCC' would only confuse/cool them",
+      "stealth-human demands each product BE a believable person with a human name",
+      "risk isolation: if one persona stumbles, it doesn't taint the others (vital while young)",
+      "but the FORGE gives shared craft DNA -> consistency + speed without a visible master brand"
+    ],
+    "rejected": "Branded House ('SOCC Анна', 'SOCC Барбер') — forces the techy parent onto warmth-buyers and breaks stealth. Endorsed ('Анна by SOCC') — only works once SOCC is a trusted consumer name (it isn't, and shouldn't be)."
+  },
+
+  "the_family_concept": "SOCC runs an INVISIBLE COMPANY whose products are a STAFF of human-named AI specialists — Анна (стоматология), Марк (барбершоп), … — each a believable person, each a re-skin of the same forge DNA, all run by the unseen SOCC brain.",
+
+  "shared_DNA_locked_across_all_faces": [
+    "the same design-token STRUCTURE (bg/ink/primary/accent/semantic + type scale + radius/space)",
+    "rounded-tile mark + monogram patient-avatar system (dual-identity law)",
+    "humanist type, restraint = premium, ONE warm accent on a trust base",
+    "stealth-human voice law (warm, no robot tells, graceful human handoff)",
+    "SOCC proof-gated craft (truth_boundary, REVIEW, no fake PASS)"
+  ],
+  "per_face_skin_varies": ["human NAME (matched to vertical vibe)", "hue family + accent", "mark motif", "archetype (Caregiver/Sage for clinic; Everyman/Hero for barber...)", "copy register"],
+
+  "naming_convention": "human first names only, chosen to fit the vertical's audience; NEVER 'SOCC X'. Stealth requires a person, not a product name.",
+
+  "render": "SYSTEM/BRAND_FORGE/frontiers/BRAND_ARCHITECTURE_MAP_V1.html",
+  "proof_of_factory": "SYSTEM/BRAND_FORGE/frontiers/entity2 (Марк barbershop face minted as a re-skin to prove the forge produces a consistent-yet-distinct family)",
+  "truth_boundary": "Brand architecture ruling for the SOCC ecosystem. Strategic framework + recommendation + the shared-DNA / per-skin split + naming law. Mints one proof face (Марк). No live entity birth, no network, no revenue, no AGI."
+}

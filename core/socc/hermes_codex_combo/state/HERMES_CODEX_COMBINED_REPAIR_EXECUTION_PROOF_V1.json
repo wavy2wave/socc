@@ -1,0 +1,50 @@
+{
+  "ts": "2026-04-29T23:53:45.778530+00:00",
+  "status": "PASS",
+  "action": "HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF_V1",
+  "truth_boundary": "This proves combined repair/execution wiring on controlled sandbox only. It does not claim 24/7 autonomy.",
+  "before": {
+    "ts": "2026-04-29T23:53:45.773599+00:00",
+    "SOCC_status": "CODEX_POWER_MULTIFILE_ROLLBACK_PROVEN_NOT_24_7",
+    "current_focus": "CODEX_POWER_TEST_REPAIRED_AND_CONFIRMED",
+    "real_next": "combine_Hermes_and_Codex_on_controlled_repair_diff",
+    "next_visible_milestone": "HERMES_CODEX_COMBINED_REPAIR_EXECUTION_PROOF",
+    "hermes_repeatability_status": "PASS",
+    "codex_power_status": "PASS",
+    "codex_power_repair_status": "PASS",
+    "board_next": "combine_Hermes_and_Codex_on_controlled_repair_diff"
+  },
+  "controlled_fail": {
+    "status": "FAIL",
+    "failures": [
+      "runtime_key_not_present",
+      "runtime_state_not_repaired",
+      "runtime_state_missing_hermes_failure_class",
+      "runtime_state_missing_codex_diff_trace",
+      "authority_binding_not_present",
+      "authority_binding_not_repaired",
+      "authority_binding_missing_rollback_path"
+    ],
+    "proof": "core/socc/hermes_codex_combo/proof/COMBO_CONTROLLED_FAIL_VALIDATOR_FAIL_V1.json"
+  },
+  "hermes_packet": "core/socc/hermes_codex_combo/packets/HERMES_CODEX_COMBO_REPAIR_PACKET_V1.json",
+  "codex_execution": {
+    "diff": "core/socc/hermes_codex_combo/diff/HERMES_CODEX_COMBO_CODEX_REPAIR_DIFF_V1.diff",
+    "rollback_diff": "core/socc/hermes_codex_combo/diff/HERMES_CODEX_COMBO_CODEX_ROLLBACK_DIFF_V1.diff",
+    "backup_paths": [
+      "core/socc/hermes_codex_combo/rollback/COMBO_TARGET_RUNTIME_STATE_V1.before.json",
+      "core/socc/hermes_codex_combo/rollback/COMBO_TARGET_AUTHORITY_BINDING_V1.before.json"
+    ],
+    "final_status": "PASS",
+    "rollback_status": "PASS",
+    "reapply_status": "PASS"
+  },
+  "after": {
+    "ts": "2026-04-29T23:53:45.777721+00:00",
+    "SOCC_status": "HERMES_CODEX_COMBO_REPAIR_EXECUTION_PROVEN_NOT_24_7",
+    "current_focus": "HERMES_CODEX_COMBO_PROVEN",
+    "real_next": "integrate_PI_inspector_as_hard_gate_after_combo_proof",
+    "next_visible_milestone": "PI_INSPECTOR_HARD_GATE_REAL_EFFECT_VERDICT",
+    "delta": "Hermes created failure understanding and repair packet; Codex applied bounded multi-file repair diff with rollback and final PASS."
+  }
+}

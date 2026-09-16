@@ -1,0 +1,63 @@
+{
+  "active_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/ACTIVE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET.json",
+  "adoption_checks": {
+    "active_packet_candidate": true,
+    "authority_at_review_frontier": true,
+    "packet_has_bounded_steps": true,
+    "packet_has_expected_effect": true,
+    "packet_may_execute_false": true,
+    "packet_requires_review_true": true,
+    "packet_status_built_candidate": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true
+  },
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_first_bounded_plan_proposal_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_first_bounded_plan_proposal_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "capability": "SOCC_REVIEW_FIRST_BOUNDED_PLAN_PACKET_ADOPTED_TO_ACCEPT_FRONTIER",
+  "created_at_utc": "2026-06-09T11:50:18.552015+00:00",
+  "current_expected": "review_socc_first_bounded_plan_proposal_packet_v1",
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_ADOPT_REVIEW_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF",
+  "next_after_pass": "accept_socc_first_bounded_plan_proposal_packet_v1",
+  "next_lawful_step": "accept_socc_first_bounded_plan_proposal_packet_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_import": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_old_project_scan": true,
+  "plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "proof_hash": "634fe8634dbf08ef",
+  "review_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "Repairs authority adoption from existing PASS review proof to acceptance frontier. Does not execute, import, scan old project, or mutate route outside guarded adoption.",
+  "validate_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+  "validation_artifact": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_VALIDATION_V1.json",
+  "warnings": []
+}

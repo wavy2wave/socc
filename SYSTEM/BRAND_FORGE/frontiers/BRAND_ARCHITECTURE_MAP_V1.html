@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOCC · Архитектура дома брендов</title>
+<style>
+  :root{--bg:#0B0F14;--surface:#121821;--cyan:#22D3EE;--text:#E6EDF3;--muted:#7D8893;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+  .wrap{max-width:1040px;margin:0 auto;padding:44px 24px 90px}
+  .crumb{font-family:ui-monospace,Menlo,monospace;color:var(--muted);font-size:12px;letter-spacing:.04em;margin-bottom:8px}
+  h1{font-size:27px;letter-spacing:-.5px;margin:0 0 4px}
+  .sub{color:var(--muted);margin:0 0 34px}
+  .mono{font-family:ui-monospace,Menlo,monospace}
+  /* brain */
+  .brain{border:1px solid #1e2a36;background:linear-gradient(180deg,#101722,#0c1118);border-radius:18px;padding:24px 26px;text-align:center;position:relative}
+  .brain .tag{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:var(--cyan);letter-spacing:.1em}
+  .brain h2{margin:6px 0 4px;font-size:22px;color:#fff}
+  .brain p{margin:0;color:var(--muted);font-size:13.5px}
+  .pipe{height:30px;width:2px;background:linear-gradient(#22D3EE,#2b3a47);margin:0 auto}
+  .forge{border:1px dashed #2a3b49;border-radius:14px;padding:13px;text-align:center;color:var(--cyan);font-family:ui-monospace,Menlo,monospace;font-size:13px;letter-spacing:.08em}
+  .lbl{font-size:12px;text-transform:uppercase;letter-spacing:.14em;color:var(--muted);margin:30px 0 14px}
+  /* faces */
+  .faces{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .face{border-radius:16px;overflow:hidden;border:1px solid #1e2733;display:flex;flex-direction:column}
+  .face .hd{padding:16px;display:flex;align-items:center;gap:10px}
+  .face .av{width:40px;height:40px;border-radius:50%}
+  .face .nm{font-weight:700}.face .vt{font-size:11px;opacity:.7}
+  .face .bd{padding:0 16px 16px;font-size:12.5px;flex:1}
+  .face .tg{font-size:12px;opacity:.85;margin-bottom:8px}
+  .face .arch{font-size:11px;font-family:ui-monospace,Menlo,monospace;opacity:.7}
+  /* анна */
+  .anna{background:#F5F3EE;color:#2E3D34}
+  /* марк */
+  .mark{background:#1E1B19;color:#EFE7DC;border-color:#3a352f}
+  /* ghost */
+  .ghost{border:1px dashed #2a3b49;background:transparent;color:var(--muted);display:flex;align-items:center;justify-content:center;min-height:170px;text-align:center;font-size:13px;padding:16px}
+  /* dna */
+  .dna{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .panel{background:var(--surface);border:1px solid #1e2733;border-radius:14px;padding:20px}
+  .panel h3{margin:0 0 12px;font-size:13px;text-transform:uppercase;letter-spacing:.1em;color:var(--cyan)}
+  .panel.warn h3{color:#EAB308}
+  .panel li{font-size:13.5px;margin:6px 0;color:#cdd6df}
+  .foot{margin-top:30px;color:var(--muted);font-size:12.5px}
+  .foot b{color:var(--text)}
+  @media(max-width:820px){.faces{grid-template-columns:1fr 1fr}.dna{grid-template-columns:1fr}}
+</style></head>
+<body><div class="wrap">
+<div class="crumb">SOCC ▸ BRAND FORGE ▸ BRAND ARCHITECTURE ▸ «НЕВИДИМЫЙ ДОМ, ЧЕЛОВЕЧЕСКИЕ ЛИЦА»</div>
+<h1>Архитектура дома брендов</h1>
+<p class="sub">House of Brands снаружи · Branded House ремесла внутри · один Forge клеймит всех</p>
+
+<div class="brain">
+  <div class="tag">THE BRAINS · INVISIBLE OS</div>
+  <h2>SOCC</h2>
+  <p>Невидимый мозг. Покупатель его не видит и не должен. Matrix-эстетика — только для тебя, оператора.</p>
+</div>
+<div class="pipe"></div>
+<div class="forge">⚙ BRAND FORGE — клеймит каждое лицо из одной ДНК</div>
+
+<div class="lbl">The Faces · человеко-лица для клиентов</div>
+<div class="faces">
+
+  <div class="face anna">
+    <div class="hd">
+      <svg class="av" viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="#6E8B74"/><text x="60" y="60" font-family="Inter" font-size="56" font-weight="600" fill="#F5F3EE" text-anchor="middle" dominant-baseline="central">А</text></svg>
+      <div><div class="nm">Анна</div><div class="vt">стоматология</div></div>
+    </div>
+    <div class="bd">
+      <div class="tg">«Тёплый администратор клиники. 24/7.»</div>
+      <svg viewBox="0 0 120 120" width="34" style="margin:2px 0 8px"><rect width="120" height="120" rx="28" fill="#5E7A66"/><path d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/><path d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="86" r="4.5" fill="#F1E9DD"/></svg>
+      <div class="arch">Заботливый + Мудрец · шалфей+песок</div>
+    </div>
+  </div>
+
+  <div class="face mark">
+    <div class="hd">
+      <svg class="av" viewBox="0 0 120 120"><circle cx="60" cy="60" r="60" fill="#3A352F"/><text x="60" y="60" font-family="Inter" font-size="54" font-weight="600" fill="#EFE7DC" text-anchor="middle" dominant-baseline="central">М</text></svg>
+      <div><div class="nm">Марк</div><div class="vt">барбершоп</div></div>
+    </div>
+    <div class="bd">
+      <div class="tg">«Запишу, напомню, подберу мастера.»</div>
+      <svg viewBox="0 0 120 120" width="34" style="margin:2px 0 8px"><rect width="120" height="120" rx="28" fill="#2A2724"/><line x1="44" y1="34" x2="44" y2="86" stroke="#EFE7DC" stroke-width="8" stroke-linecap="round"/><line x1="60" y1="34" x2="60" y2="86" stroke="#C77F4E" stroke-width="8" stroke-linecap="round"/><line x1="76" y1="34" x2="76" y2="86" stroke="#EFE7DC" stroke-width="8" stroke-linecap="round"/></svg>
+      <div class="arch">Свой + Герой · медь+амбер</div>
+    </div>
+  </div>
+
+  <div class="face ghost">+ следующая сущность<br>≈ часы, не месяцы</div>
+  <div class="face ghost">+ …<br>пластика / мультипрофиль</div>
+</div>
+
+<div class="dna">
+  <div class="panel">
+    <h3>✓ Общая ДНК (Branded House ремесла)</h3>
+    <li>одна структура токенов</li>
+    <li>rounded-tile знак + монограмма-аватар</li>
+    <li>гуманистический шрифт, один тёплый акцент, сдержанность=премиум</li>
+    <li>стелс-человеческий голос + человеческий хэндофф</li>
+    <li>proof-gated ремесло (truth_boundary, без фейк-PASS)</li>
+  </div>
+  <div class="panel warn">
+    <h3>≠ Разный скин (House of Brands снаружи)</h3>
+    <li>человеческое имя под вертикаль</li>
+    <li>оттенок + акцент (свет↔тьма)</li>
+    <li>мотив знака (дуги Анны vs линии Марка)</li>
+    <li>архетип и регистр копирайта</li>
+    <li>SOCC невидим — покупатель видит человека</li>
+  </div>
+</div>
+
+<p class="foot"><b>Почему так:</b> покупатель (владелец клиники/барбершопа) покупает <b>человека</b>, не «техно-родителя». Если выставить «SOCC» — только охладишь. Невидимый дом изолирует риск (споткнётся одно лицо — не тянет остальных), а Forge даёт скорость и единое качество. <b>Это и есть AGI-рычаг: не один бренд, а фабрика лиц.</b></p>
+
+</div></body></html>

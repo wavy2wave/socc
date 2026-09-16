@@ -1,0 +1,76 @@
+{
+  "acceptance_artifact": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_ACCEPTANCE_V1.json",
+  "acceptance_checks": {
+    "active_view_candidate": true,
+    "binding_accept_proof_pass": true,
+    "build_proof_exists": true,
+    "forbidden_background": true,
+    "forbidden_creator_intent_execution": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "forbidden_route_mutation": true,
+    "language_accept_proof_pass": true,
+    "next_intent_proposal_surface": true,
+    "review_artifact_pass": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "reviewed_capability_ok": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true,
+    "view_status_built_candidate": true,
+    "view_type_read_only": true,
+    "visible_boundaries": true,
+    "visible_current_lawful_next": true,
+    "visible_proof_chain": true
+  },
+  "acceptance_md": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_ACCEPTANCE_V1.md",
+  "active_accepted_view": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_ACCEPTED_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+  "active_view_pointer": "SYSTEM/INTERFACE/views/creator_dialogue/ACTIVE_READ_ONLY_CREATOR_DIALOGUE_VIEW.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_lawful_intent_proposal_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_lawful_intent_proposal_surface_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_lawful_intent_proposal_surface_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_read_only_creator_dialogue_view_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_read_only_creator_dialogue_view_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "capability": "SOCC_HAS_CANONICAL_READ_ONLY_CREATOR_DIALOGUE_VIEW",
+  "created_at_utc": "2026-06-09T10:29:36.467519+00:00",
+  "current_expected": "accept_socc_read_only_creator_dialogue_view_v1",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF",
+  "next_after_pass": "build_socc_lawful_intent_proposal_surface_v1",
+  "next_lawful_step": "build_socc_lawful_intent_proposal_surface_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "2578f5f12a63b080",
+  "status": "PASS",
+  "truth_boundary": "Accepts read-only creator dialogue view. No execution, no daemon/background/network, no MW route.",
+  "view_artifact": "SYSTEM/INTERFACE/views/creator_dialogue/SOCC_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1.json",
+  "warnings": []
+}

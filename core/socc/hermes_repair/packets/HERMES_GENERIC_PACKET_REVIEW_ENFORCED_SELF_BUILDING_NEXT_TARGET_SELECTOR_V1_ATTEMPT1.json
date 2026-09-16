@@ -1,0 +1,9 @@
+{
+  "id": "HERMES_GENERIC_PACKET_REVIEW_ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_V1_ATTEMPT1",
+  "ts": "2026-06-17T07:46:04.707101+00:00",
+  "failed_script": "review_enforced_self_building_next_target_selector_v1",
+  "repair_script_expected": "repair_enforced_self_building_next_target_selector_review_v1",
+  "repair_script_found": false,
+  "bounded_repair": true,
+  "daemon_running": false
+}

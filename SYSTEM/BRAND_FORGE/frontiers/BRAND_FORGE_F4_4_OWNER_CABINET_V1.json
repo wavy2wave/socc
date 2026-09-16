@@ -1,0 +1,41 @@
+{
+  "id": "BRAND_FORGE_F4_4_OWNER_CABINET_V1",
+  "schema": "socc.frontier.v1",
+  "phase": "P4",
+  "frontier": "F4.4",
+  "produces": "ANNA Owner Cabinet — L4 product front (clinic-owner facing surface)",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T15:07:53+00:00",
+  "created_at_msk": "2026-06-30T18:07:53+03:00",
+  "owning_line": "FRONT/DESIGN (this line) — brand application surfaces",
+  "lane_note": "Governance / line-discipline + ANNA_REAL_PRODUCT_ROADMAP are owned by a SIBLING line (scripts/socc/socc_lines_v1.py). This frontier only renders the FRONT of that roadmap's L4 layer; it does not duplicate the backend roadmap.",
+  "surface_law": "Owner is a BUYER -> renders in ANNA PRODUCT canon D3 (warm/light/sage+sand/Inter). The operator matrix (SOCC canon) must NEVER reach a buyer. Compliant.",
+  "renders_through": "SYSTEM/BRAND_FORGE/canon/ANNA_DESIGN_CANON_V1.json + canon/anna-tokens.css (D3)",
+  "artifacts": {
+    "generator": "SYSTEM/BRAND_FORGE/anna_owner_cabinet.py",
+    "rendered": "SYSTEM/BRAND_FORGE/runtime/ANNA_OWNER_CABINET_V1.html"
+  },
+  "sections": [
+    "KPI (обращения / записи / возвращено / выручка ₽)",
+    "Диалоги пациентов + раскрытая ветка (anna-bubble стиль)",
+    "Записи (booked/pending badges)",
+    "Разметка ошибки + передача администратору",
+    "Обучение ANNA (владелец правит стиль/правила)"
+  ],
+  "data_honesty": {
+    "real_live": "ANNA status read from wavecore-bot/runtime/status/anna.json (ok + ts -> local time)",
+    "demo_labelled": "dialogs / bookings / engagement KPIs are explicitly tagged 'пример' to show product shape",
+    "no_fake_roi": "₽ returned-revenue shown as '—' with 'из LEDGER' — never invented (ANNA canon non-negotiable)",
+    "absent_wired": "real bookings = L2 (calendar/CRM sync) marked 'в разработке'; cabinet wired to where real data will land"
+  },
+  "gate": ["HER", "GRD"],
+  "gate_status": "HER: renders from real status, deterministic, no errors. GRD: pending creator review — demo data is labelled, ROI honest, stealth-consistent (no 'бот' wording to patients).",
+  "open_threads": [
+    "wire real dialogs from ANNA channel memory once it carries real patient threads",
+    "wire bookings when L2 (calendar/CRM) lands (sibling roadmap)",
+    "wire ROI ₽ strictly from a real clinic's LEDGER (sibling roadmap L3)",
+    "make 'разметить ошибку' / 'научить' actually persist a correction (needs backend)",
+    "fold into unified SOCC dashboard via shared socc_canon_html renderer (separate front frontier)"
+  ],
+  "truth_boundary": "ANNA Owner Cabinet front in REVIEW. A real, on-canon (D3) clinic-owner surface rendered deterministically by anna_owner_cabinet.py. Live ANNA status is real; dialogs/bookings/engagement numbers are clearly-labelled DEMO to show the product; the ROI ₽ figure is NOT invented (shown as '—', sourced only from a real LEDGER). No network, no daemon, no publish, no revenue claim, no AGI claim. Does not duplicate the sibling governance/product-roadmap line — it renders the front only."
+}

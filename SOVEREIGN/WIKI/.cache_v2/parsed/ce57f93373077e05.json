@@ -1,0 +1,1 @@
+{"claims": [{"text": "This is a lawful intent proposal packet only. It cannot execute, approve, mutate route outside lawful transition, start daemon/background, use network, create MW route, or claim autonomy launch.", "line": 33, "entities": ["Daemon"], "intent": "definition", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 3, "Daemon": 3, "Proof": 2}}

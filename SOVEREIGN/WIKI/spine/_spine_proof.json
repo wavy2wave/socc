@@ -1,0 +1,134 @@
+{
+  "id": "SOCC_KNOWLEDGE_SPINE_V1",
+  "built_at": "2026-06-29T15:14:48.793326+00:00",
+  "sources_scanned": 529,
+  "topics": {
+    "SOCC": {
+      "current": 65,
+      "conflicting": 1321,
+      "historical": 3620,
+      "timeline": 139,
+      "mentions": 199415,
+      "sources": 228,
+      "main_line_authored": true
+    },
+    "Entity Substrate": {
+      "current": 50,
+      "conflicting": 625,
+      "historical": 940,
+      "timeline": 85,
+      "mentions": 20894,
+      "sources": 121,
+      "main_line_authored": true
+    },
+    "ANNA": {
+      "current": 175,
+      "conflicting": 2959,
+      "historical": 2082,
+      "timeline": 156,
+      "mentions": 81785,
+      "sources": 287,
+      "main_line_authored": true
+    },
+    "Memory Wave": {
+      "current": 36,
+      "conflicting": 1423,
+      "historical": 636,
+      "timeline": 155,
+      "mentions": 64896,
+      "sources": 199,
+      "main_line_authored": false
+    },
+    "Knowledge Substrate": {
+      "current": 2,
+      "conflicting": 0,
+      "historical": 0,
+      "timeline": 21,
+      "mentions": 71,
+      "sources": 1,
+      "main_line_authored": false
+    },
+    "Proof": {
+      "current": 58,
+      "conflicting": 943,
+      "historical": 2860,
+      "timeline": 155,
+      "mentions": 158512,
+      "sources": 286,
+      "main_line_authored": false
+    },
+    "Codex": {
+      "current": 111,
+      "conflicting": 295,
+      "historical": 839,
+      "timeline": 141,
+      "mentions": 32924,
+      "sources": 210,
+      "main_line_authored": false
+    },
+    "Hermes": {
+      "current": 37,
+      "conflicting": 225,
+      "historical": 721,
+      "timeline": 72,
+      "mentions": 29793,
+      "sources": 127,
+      "main_line_authored": false
+    },
+    "Persona": {
+      "current": 21,
+      "conflicting": 221,
+      "historical": 434,
+      "timeline": 161,
+      "mentions": 27454,
+      "sources": 201,
+      "main_line_authored": false
+    },
+    "Supramental": {
+      "current": 7,
+      "conflicting": 17,
+      "historical": 61,
+      "timeline": 148,
+      "mentions": 25145,
+      "sources": 71,
+      "main_line_authored": false
+    },
+    "Daemon": {
+      "current": 54,
+      "conflicting": 738,
+      "historical": 1937,
+      "timeline": 143,
+      "mentions": 22160,
+      "sources": 179,
+      "main_line_authored": false
+    },
+    "Autopilot": {
+      "current": 19,
+      "conflicting": 105,
+      "historical": 147,
+      "timeline": 82,
+      "mentions": 18353,
+      "sources": 88,
+      "main_line_authored": false
+    },
+    "Telegram": {
+      "current": 20,
+      "conflicting": 115,
+      "historical": 352,
+      "timeline": 137,
+      "mentions": 8121,
+      "sources": 145,
+      "main_line_authored": false
+    },
+    "Booking": {
+      "current": 26,
+      "conflicting": 44,
+      "historical": 156,
+      "timeline": 169,
+      "mentions": 7421,
+      "sources": 160,
+      "main_line_authored": false
+    }
+  },
+  "truth_boundary": "Read-only spine build. Writes only under SOVEREIGN/WIKI/spine/. No route authority / proof chain / Memory Wave / Entity / ANNA / network / daemon / autonomy. Deterministic, no-LLM."
+}

@@ -1,0 +1,12 @@
+{
+  "active_surface": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_BOUNDED_EXECUTION_SURFACE_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:39:15.232912+00:00",
+  "current_stage": "bounded_execution_surface_built_pending_review",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_BOUNDED_EXECUTION_SURFACE_PANEL_POINTER_V1.json",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "id": "ACTIVE_ASSIGNMENT_BOUNDED_EXECUTION_SURFACE",
+  "next_required_step": "review_assignment_bounded_execution_surface_v1",
+  "status": "ACTIVE_CANDIDATE_FOR_REVIEW",
+  "truth_boundary": "Execution surface build only. It authorizes no execution until separate review and acceptance. No daemon/background/network/old route/MW/L3."
+}

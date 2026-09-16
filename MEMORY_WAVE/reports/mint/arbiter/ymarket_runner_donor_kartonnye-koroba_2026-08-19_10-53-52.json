@@ -1,0 +1,2143 @@
+{
+  "schema": "ymarket.runner.report.v1",
+  "source": "donor",
+  "ts": "2026-08-19T10:53:52.756742+00:00",
+  "xlsx": "/Users/wavysexy/Downloads/shop.cargo-avto.ru_Архивные_короба_Коробки_для_пе_15-09-25.xlsx",
+  "sheet": "Sheet",
+  "slug": "kartonnye-koroba",
+  "category_id": 76296786,
+  "need_mapping_category": false,
+  "colmap": {
+    "cost": "Цена",
+    "sku": "Артикул",
+    "name": "Заголовок",
+    "cat2": "Категория 2",
+    "cat1": "Категория 1",
+    "availability": "Наличие",
+    "length_mm": "Длина, мм",
+    "width_mm": "Ширина, мм",
+    "height_mm": "Высота, мм",
+    "weight_g": "Вес, г",
+    "weight_kg": "Вес, кг",
+    "pictures": "Изображения",
+    "link": "Ссылка на товар",
+    "description": "Описание",
+    "tip_kartona": "Тип картона",
+    "material_col": "Материал",
+    "marka": "Марка картона",
+    "forma": "Форма коробки",
+    "kolvo": "Кол-во в упаковке, шт.",
+    "obem": "Полезный объем, л",
+    "ruchki": "Наличие ручек"
+  },
+  "donor_blocker": null,
+  "dropship": {
+    "max_cost": 700.0,
+    "markup_range": [
+      5.0,
+      10.0
+    ],
+    "note": "донорская «Цена»=закупка; цена продажи предложена (×наценка), не из файла"
+  },
+  "categorist_agg": {
+    "rows_read": 210,
+    "rows_skipped": 0,
+    "selected": 72,
+    "needs_data": 24,
+    "rejected": 114,
+    "avg_profit_low_end": 197.67,
+    "total_profit_low_end": 14232.0
+  },
+  "counts": {
+    "rows_selected": 72,
+    "needs_data": 24,
+    "rejected": 114
+  },
+  "preflight": {
+    "total": 72,
+    "ok": 72,
+    "need_mapping": 0,
+    "no_pictures": 0,
+    "build_error": 0,
+    "with_specs": 72,
+    "topfill": 72,
+    "min_emitted": 6,
+    "sum_emitted": 495,
+    "avg_emitted": 6.9
+  },
+  "preflight_rows": [
+    {
+      "sku": "9601551",
+      "name": "Самосборный короб, с язычком, 70×70×60 мм, 50 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 27,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "7",
+        "7",
+        "6",
+        "0.85",
+        "50",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 7.0,
+        "width": 7.0,
+        "height": 6.0,
+        "weight": 0.85,
+        "материал": "гофрокартон",
+        "штук_в_упаковке": 50
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601591",
+      "name": "Коробка, 150×150×150 мм, 25 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 18,
+      "n_specs": 7,
+      "n_emitted": 8,
+      "emitted": [
+        "упаковочные работы",
+        "15",
+        "15",
+        "15",
+        "1.225",
+        "25",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 15.0,
+        "width": 15.0,
+        "height": 15.0,
+        "weight": 1.225,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный",
+        "штук_в_упаковке": 25
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600167",
+      "name": "Короб для вещей (объемный), 800*550*550 мм, Т-24 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "80",
+        "55",
+        "55",
+        "1.304",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 80.0,
+        "width": 55.0,
+        "height": 55.0,
+        "weight": 1.304,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601575",
+      "name": "Короб, 100×100×100 мм, Т-23 В, 25 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 35,
+      "n_specs": 7,
+      "n_emitted": 8,
+      "emitted": [
+        "упаковочные работы",
+        "10",
+        "10",
+        "10",
+        "0.681",
+        "25",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.681,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный",
+        "штук_в_упаковке": 25
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601478",
+      "name": "Картонный короб СДЭК тип «XS»,170×120×90 мм,Т-21 В,25 шт.",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 21,
+      "n_specs": 7,
+      "n_emitted": 8,
+      "emitted": [
+        "упаковочные работы",
+        "17",
+        "12",
+        "9",
+        "0.85",
+        "25",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 17.0,
+        "width": 12.0,
+        "height": 9.0,
+        "weight": 0.85,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный",
+        "штук_в_упаковке": 25
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600132",
+      "name": "Короб (вместительный), 700*500*500 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "70",
+        "50",
+        "50",
+        "0.991",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 70.0,
+        "width": 50.0,
+        "height": 50.0,
+        "weight": 0.991,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600152",
+      "name": "Самосборный короб, 580*350*410 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 8,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "58",
+        "35",
+        "41",
+        "0.661",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 58.0,
+        "width": 35.0,
+        "height": 41.0,
+        "weight": 0.661,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9602493",
+      "name": "Короб (пятислойный) с ручками, 600*400*400 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "60",
+        "40",
+        "40",
+        "0.846",
+        "гофрокартон",
+        "пятислойный"
+      ],
+      "specs": {
+        "length": 60.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.846,
+        "материал": "гофрокартон",
+        "слои_картона": "Пятислойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9602492",
+      "name": "Короб (пятислойный), 600*400*400 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "60",
+        "40",
+        "40",
+        "0.846",
+        "гофрокартон",
+        "пятислойный"
+      ],
+      "specs": {
+        "length": 60.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.846,
+        "материал": "гофрокартон",
+        "слои_картона": "Пятислойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600063",
+      "name": "Короб для хранения вещей (большой), 500*500*500 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "50",
+        "50",
+        "50",
+        "0.853",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 50.0,
+        "height": 50.0,
+        "weight": 0.853,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9605335",
+      "name": "Короб (архивный) с крышкой, 400*330*255 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "40",
+        "33",
+        "25.5",
+        "0.408",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 40.0,
+        "width": 33.0,
+        "height": 25.5,
+        "weight": 0.408,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601554",
+      "name": "Беленый обувной короб, 500×300×130 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "50",
+        "30",
+        "13",
+        "0.352",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 30.0,
+        "height": 13.0,
+        "weight": 0.352,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601498",
+      "name": "Почтовый короб тип «А»,445×270×380 мм,T-23 В,100% целлюлоза,для переезда",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 9,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "44.5",
+        "27",
+        "38",
+        "0.545",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 44.5,
+        "width": 27.0,
+        "height": 38.0,
+        "weight": 0.545,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601485",
+      "name": "Почтовый короб PS.505 с клеевым клапаном,260×220×130 мм,Т-23 В,для хранения",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 22,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "26",
+        "22",
+        "13",
+        "0.154",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 26.0,
+        "width": 22.0,
+        "height": 13.0,
+        "weight": 0.154,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600062",
+      "name": "Короб (архивный) А3, 480*325*295 мм, Т-24 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 9,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "48",
+        "32.5",
+        "29.5",
+        "0.57",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 48.0,
+        "width": 32.5,
+        "height": 29.5,
+        "weight": 0.57,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601555",
+      "name": "Бурая коробка для обуви, 500×300×130 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "50",
+        "30",
+        "13",
+        "0.376",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 30.0,
+        "height": 13.0,
+        "weight": 0.376,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601565",
+      "name": "Подарочная коробка «Happy New year», чёрная, 190×190×80 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "19",
+        "19",
+        "8",
+        "0.087",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 19.0,
+        "width": 19.0,
+        "height": 8.0,
+        "weight": 0.087,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601564",
+      "name": "Подарочная коробка «Happy New year», красная, 190×190×80 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "19",
+        "19",
+        "8",
+        "0.087",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 19.0,
+        "width": 19.0,
+        "height": 8.0,
+        "weight": 0.087,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601563",
+      "name": "Подарочная коробка «Happy New year», зелёная, 190×190×80 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "19",
+        "19",
+        "8",
+        "0.087",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 19.0,
+        "width": 19.0,
+        "height": 8.0,
+        "weight": 0.087,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9602494",
+      "name": "Короб (гардеробный с перекладиной), 500*500*1300 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 10,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "50",
+        "50",
+        "130",
+        "3",
+        "гофрокартон",
+        "пятислойный"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 50.0,
+        "height": 130.0,
+        "weight": 3.0,
+        "материал": "гофрокартон",
+        "слои_картона": "Пятислойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600064",
+      "name": "Короб (универсальный), 610*400*330 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 8,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "61",
+        "40",
+        "33",
+        "0.639",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 61.0,
+        "width": 40.0,
+        "height": 33.0,
+        "weight": 0.639,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600439",
+      "name": "Короб для хранения вещей (премиум) с ручками, 600*400*400 мм, Т-24 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "60",
+        "40",
+        "40",
+        "0.676",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 60.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.676,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600067",
+      "name": "Коробка для вещей (премиум), 600*400*400 мм, Т-24 В, целлюлоза",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "60",
+        "40",
+        "40",
+        "0.663",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 60.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.663,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601556",
+      "name": "Беленая коробка для обуви, 300×240×130 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "30",
+        "24",
+        "13",
+        "0.226",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 24.0,
+        "height": 13.0,
+        "weight": 0.226,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600104",
+      "name": "Короб для вещей, 550*350*350 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "55",
+        "35",
+        "35",
+        "0.55",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 55.0,
+        "width": 35.0,
+        "height": 35.0,
+        "weight": 0.55,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600438",
+      "name": "Короб (средний) с ручками, 630*320*340 мм, Т-24 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "63",
+        "32",
+        "34",
+        "0.543",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 63.0,
+        "width": 32.0,
+        "height": 34.0,
+        "weight": 0.543,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600061",
+      "name": "Короб для хранения вещей (средний), 630*320*340 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "63",
+        "32",
+        "34",
+        "0.53",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 63.0,
+        "width": 32.0,
+        "height": 34.0,
+        "weight": 0.53,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601484",
+      "name": "Почтовый короб PS.503 с клеевым клапаном,210×180×130 мм,Т-23 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 21,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "21",
+        "18",
+        "13",
+        "0.118",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 21.0,
+        "width": 18.0,
+        "height": 13.0,
+        "weight": 0.118,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601468",
+      "name": "Картонный короб Деловые Линии тип «D3»,550×330×400 мм,Т-23 В,для пересылки",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "55",
+        "33",
+        "40",
+        "0.458",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 55.0,
+        "width": 33.0,
+        "height": 40.0,
+        "weight": 0.458,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601536",
+      "name": "Коробка крышка-дно «Кубик», 250×250×250 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "25",
+        "25",
+        "25",
+        "0.19",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 25.0,
+        "width": 25.0,
+        "height": 25.0,
+        "weight": 0.19,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601522",
+      "name": "Короб с ручкой для подарков,чёрный,225×170×100 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "22.5",
+        "17",
+        "10",
+        "0.1",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 22.5,
+        "width": 17.0,
+        "height": 10.0,
+        "weight": 0.1,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600140",
+      "name": "Короб (удобный для переезда), 400*400*400 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 13,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "40",
+        "40",
+        "40",
+        "0.418",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 40.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.418,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601586",
+      "name": "Бизнес Бокс А3, 435×310×100 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "43.5",
+        "31",
+        "10",
+        "0.26",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 43.5,
+        "width": 31.0,
+        "height": 10.0,
+        "weight": 0.26,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9604030",
+      "name": "Коробка «Бизнес», 600*400*400 мм, Т-22 В, 326 г/м²",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "60",
+        "40",
+        "40",
+        "0.623",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 60.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.623,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601521",
+      "name": "Короб для хранения,300×250×110 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "30",
+        "25",
+        "11",
+        "0.22",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 25.0,
+        "height": 11.0,
+        "weight": 0.22,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601557",
+      "name": "Бурая коробка для обуви, 300×240×130 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 16,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "30",
+        "24",
+        "13",
+        "0.227",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 24.0,
+        "height": 13.0,
+        "weight": 0.227,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601497",
+      "name": "Почтовый короб тип «Б»,425×265×190 мм,T-23 В,100% целлюлоза,для хранения",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 9,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "42.5",
+        "26.5",
+        "19",
+        "0.369",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 42.5,
+        "width": 26.5,
+        "height": 19.0,
+        "weight": 0.369,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601483",
+      "name": "Почтовый короб PS.502 с клеевым клапаном,213×153×109 мм,Т-23 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 24,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "21.3",
+        "15.3",
+        "10.9",
+        "0.115",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 21.3,
+        "width": 15.3,
+        "height": 10.9,
+        "weight": 0.115,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601538",
+      "name": "Коробка крышка-дно «Кубик», чёрная, 140×140×140 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "14",
+        "14",
+        "14",
+        "0.08",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 14.0,
+        "width": 14.0,
+        "height": 14.0,
+        "weight": 0.08,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9602039",
+      "name": "Короб «Эконом», 600*400*400 мм, Т-22 В, 272 г/м²",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "60",
+        "40",
+        "40",
+        "0.484",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 60.0,
+        "width": 40.0,
+        "height": 40.0,
+        "weight": 0.484,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601326",
+      "name": "Телескопический короб, 80*80*750+750 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "8",
+        "8",
+        "150",
+        "0.285",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 8.0,
+        "width": 8.0,
+        "height": 150.0,
+        "weight": 0.285,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600059",
+      "name": "Короб для переезда (малый), 380*380*260 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 12,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "38",
+        "38",
+        "26",
+        "0.329",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 38.0,
+        "width": 38.0,
+        "height": 26.0,
+        "weight": 0.329,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601552",
+      "name": "Беленый обувной короб, 300×240×120 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "30",
+        "24",
+        "12",
+        "0.226",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 24.0,
+        "height": 12.0,
+        "weight": 0.226,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601469",
+      "name": "Картонный короб Деловые Линии тип «D2»,400×300×400 мм,Т-23 В,для пересылки",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "40",
+        "30",
+        "40",
+        "0.326",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 40.0,
+        "width": 30.0,
+        "height": 40.0,
+        "weight": 0.326,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600066",
+      "name": "Короб для переезда (стандарт), 430*290*350 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "43",
+        "29",
+        "35",
+        "0.395",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 43.0,
+        "width": 29.0,
+        "height": 35.0,
+        "weight": 0.395,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601602",
+      "name": "Короб, 480×270×50 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 5,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "48",
+        "27",
+        "5",
+        "0.274",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 48.0,
+        "width": 27.0,
+        "height": 5.0,
+        "weight": 0.274,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601587",
+      "name": "Бизнес Бокс А4, 225×300×100 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 16,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "22.5",
+        "30",
+        "10",
+        "0.201",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 22.5,
+        "width": 30.0,
+        "height": 10.0,
+        "weight": 0.201,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600068",
+      "name": "Короб для переезда (архивный) А4, 330*230*230 мм, Т-24 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 28,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "33",
+        "23",
+        "23",
+        "0.276",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 33.0,
+        "width": 23.0,
+        "height": 23.0,
+        "weight": 0.276,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601517",
+      "name": "Короб для документов,270×210×90 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "27",
+        "21",
+        "9",
+        "0.1",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 27.0,
+        "width": 21.0,
+        "height": 9.0,
+        "weight": 0.1,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601461",
+      "name": "Короб «PROБизнес»,445×270×380 мм,T-22 В,для бизнеса",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "44.5",
+        "27",
+        "38",
+        "0.3",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 44.5,
+        "width": 27.0,
+        "height": 38.0,
+        "weight": 0.3,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600138",
+      "name": "Короб(большой гардеробный), 500*600*1300 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 12,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "50",
+        "60",
+        "130",
+        "3.04",
+        "гофрокартон",
+        "пятислойный"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 60.0,
+        "height": 130.0,
+        "weight": 3.04,
+        "материал": "гофрокартон",
+        "слои_картона": "Пятислойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601584",
+      "name": "Короб, 530×190×70 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "53",
+        "19",
+        "7",
+        "0.219",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 53.0,
+        "width": 19.0,
+        "height": 7.0,
+        "weight": 0.219,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601595",
+      "name": "Коробка для переезда, 400×300×300 мм, Т-23 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "40",
+        "30",
+        "30",
+        "0.31",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 40.0,
+        "width": 30.0,
+        "height": 30.0,
+        "weight": 0.31,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601516",
+      "name": "Короб для хранения,225×175×100 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "22.5",
+        "17.5",
+        "10",
+        "0.148",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 22.5,
+        "width": 17.5,
+        "height": 10.0,
+        "weight": 0.148,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9603833",
+      "name": "Короб «Бизнес» (архивный) А4, 330*230*230 мм, T-21 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 24,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "33",
+        "23",
+        "23",
+        "0.181",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 33.0,
+        "width": 23.0,
+        "height": 23.0,
+        "weight": 0.181,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601481",
+      "name": "Почтовый короб усиленный «Большой»,МК,327×247×139 мм,T-22 В,для переезда",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 19,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "32.7",
+        "24.7",
+        "13.9",
+        "0.272",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 32.7,
+        "width": 24.7,
+        "height": 13.9,
+        "weight": 0.272,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601576",
+      "name": "Короб пятислойный, 380×225×125 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 9,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "38",
+        "22.5",
+        "12.5",
+        "0.31",
+        "гофрокартон",
+        "пятислойный"
+      ],
+      "specs": {
+        "length": 38.0,
+        "width": 22.5,
+        "height": 12.5,
+        "weight": 0.31,
+        "материал": "гофрокартон",
+        "слои_картона": "Пятислойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9604131",
+      "name": "Короб, беленый, 390*260*50 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "39",
+        "26",
+        "5",
+        "0.153",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 39.0,
+        "width": 26.0,
+        "height": 5.0,
+        "weight": 0.153,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601540",
+      "name": "Коробка крышка-дно «Кубик», чёрная, 100×100×100 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "10",
+        "10",
+        "10",
+        "0.06",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 10.0,
+        "width": 10.0,
+        "height": 10.0,
+        "weight": 0.06,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9600147",
+      "name": "Коробка для переезда, 300*300*300 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 12,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "30",
+        "30",
+        "30",
+        "0.238",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 30.0,
+        "height": 30.0,
+        "weight": 0.238,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601537",
+      "name": "Коробка крышка-дно «Кубик», 140×140×140 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 15,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "14",
+        "14",
+        "14",
+        "0.078",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 14.0,
+        "width": 14.0,
+        "height": 14.0,
+        "weight": 0.078,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601518",
+      "name": "Короб для хранения,205×205×95 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "20.5",
+        "20.5",
+        "9.5",
+        "0.12",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 20.5,
+        "width": 20.5,
+        "height": 9.5,
+        "weight": 0.12,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601598",
+      "name": "Короб, беленый, 305×210×70 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 5,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "30.5",
+        "21",
+        "7",
+        "0.191",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 30.5,
+        "width": 21.0,
+        "height": 7.0,
+        "weight": 0.191,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601553",
+      "name": "Бурая обувная коробка, 300×240×120 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "30",
+        "24",
+        "12",
+        "0.226",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 30.0,
+        "width": 24.0,
+        "height": 12.0,
+        "weight": 0.226,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601603",
+      "name": "Подарочная коробка-чемодан «Новогоднее чудо», белая, 250×200×170 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 28,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "25",
+        "20",
+        "17",
+        "0.115",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 25.0,
+        "width": 20.0,
+        "height": 17.0,
+        "weight": 0.115,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601594",
+      "name": "Коробка, 500×300×300 мм, Т-22 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "50",
+        "30",
+        "30",
+        "0.351",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 50.0,
+        "width": 30.0,
+        "height": 30.0,
+        "weight": 0.351,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601482",
+      "name": "Почтовый короб PS.501 с клеевым клапаном,160×130×70 мм,Т-23 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 24,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "16",
+        "13",
+        "7",
+        "0.064",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 16.0,
+        "width": 13.0,
+        "height": 7.0,
+        "weight": 0.064,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601472",
+      "name": "Картонный короб СДЭК тип «L»,310×260×380 мм,Т-23 В,для пересылки",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "31",
+        "26",
+        "38",
+        "0.27",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 31.0,
+        "width": 26.0,
+        "height": 38.0,
+        "weight": 0.27,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601593",
+      "name": "Коробка «Бизнес», 400×300×300 мм, Т-22 В",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 7,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "40",
+        "30",
+        "30",
+        "0.308",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 40.0,
+        "width": 30.0,
+        "height": 30.0,
+        "weight": 0.308,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601496",
+      "name": "Почтовый короб тип «В»,425×165×190 мм,T-23 В,100% целлюлоза",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 9,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "42.5",
+        "16.5",
+        "19",
+        "0.257",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 42.5,
+        "width": 16.5,
+        "height": 19.0,
+        "weight": 0.257,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601462",
+      "name": "Короб «PROБизнес»,425×265×190 мм,T-22 В,для бизнеса",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 6,
+      "n_emitted": 7,
+      "emitted": [
+        "упаковочные работы",
+        "42.5",
+        "26.5",
+        "19",
+        "0.206",
+        "гофрокартон",
+        "трехслойный"
+      ],
+      "specs": {
+        "length": 42.5,
+        "width": 26.5,
+        "height": 19.0,
+        "weight": 0.206,
+        "материал": "гофрокартон",
+        "слои_картона": "Трехслойный"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    },
+    {
+      "sku": "9601515",
+      "name": "Короб для подарков,190×190×80 мм",
+      "ok": true,
+      "need_mapping": false,
+      "missing_pictures": false,
+      "n_pictures": 6,
+      "n_specs": 5,
+      "n_emitted": 6,
+      "emitted": [
+        "упаковочные работы",
+        "19",
+        "19",
+        "8",
+        "0.087",
+        "гофрокартон"
+      ],
+      "specs": {
+        "length": 19.0,
+        "width": 19.0,
+        "height": 8.0,
+        "weight": 0.087,
+        "материал": "гофрокартон"
+      },
+      "errors": [],
+      "stage": "publish_card"
+    }
+  ],
+  "creds_present": true,
+  "committed": false,
+  "elapsed_sec": 0.11
+}

@@ -1,0 +1,35 @@
+{
+  "active_root": "/Users/wavysexy/SOCC",
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/pulse_control_alignment_20260608T175221Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/pulse_control_alignment_20260608T175221Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T17:52:21.660706+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_PULSE_CONTROL_ALIGNMENT_V1_PROOF",
+  "memory_files": 16,
+  "network_used": false,
+  "new_control_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "new_pulse_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "observe_pass": true,
+  "observe_rc": 0,
+  "old_control_next": "prove_persistent_loop_proven_from_managed_runtime_v1",
+  "old_pulse_next": "enable_self_building_mode_v1",
+  "proof_files": 61,
+  "route_authority": "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+  "route_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "self_building_files": 111,
+  "status": "PASS",
+  "tick_executed": false,
+  "truth_boundary": "Pulse/control alignment repair only. Syncs migrated pulse/control to current route authority. No tick, daemon, background, network, Entity, ANNA, or AGI claim.",
+  "warnings": []
+}

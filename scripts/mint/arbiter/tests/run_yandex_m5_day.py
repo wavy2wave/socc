@@ -25,6 +25,9 @@
     D2  delta_vs_yesterday    — дельта считается из журнала; нет вчера → пусто, не «0»
     D3  burning_first         — горящее попадает в burning с владельцем и действием
     D4  dry_by_default        — цикл сухой: наружу ничего, деньги не двигаются
+    D5  plannerka_off_by_default — planner_fn не задан → day['plan'] пусто (None), ПЛАНЁРКА не звалась
+    D6  plannerka_first       — шаг 0: план строится ДО смены бригады; day['plan'] ложится в отчёт
+    D7  plannerka_failure_survived — планёрка упала → день собран, провал в failures, ok=False (B2)
 
   ОТЧЁТ
     R1  no_creds_no_lie       — без токена sent=False и честная причина (не «отправлено»)
@@ -227,6 +230,53 @@ def d4_dry_by_default():
     return d["dry"] is True and d["commit"] is False, f"dry={d['dry']} commit={d['commit']}"
 
 
+def d5_plannerka_off_by_default():
+    """Шаг 0 OFF по умолчанию: planner_fn не задан → day['plan'] пусто/None, ПЛАНЁРКА не звалась."""
+    os.environ["YM_DAY_JOURNAL"] = _tmp_journal()
+    d = day_mod.run_day(shift_fn=False, tick_fn=False, remember=False, use_env=False)
+    plan_absent = d.get("plan") is None                     # ключ есть, значения нет — не подключена
+    no_plan_failure = not any("ПЛАНЁРКА" in f for f in d.get("failures", []))
+    return plan_absent and no_plan_failure, \
+        f"day['plan']={'есть' if d.get('plan') is not None else 'None'} · планёрка не звалась={no_plan_failure}"
+
+
+def d6_plannerka_first():
+    """Шаг 0 ПРЕЖДЕ смены: planner_fn зовётся ДО shift_fn; план ложится в day['plan'] отчёта."""
+    os.environ["YM_DAY_JOURNAL"] = _tmp_journal()
+    order = []
+
+    def plan_fn():
+        order.append("plan")
+        return {"schema": "ymarket.plan.v1", "date": "2026-09-04", "store": "atlas-express-film",
+                "context": [], "decisions": []}
+
+    def shift_stub(*a, **kw):
+        order.append("shift")
+        return {"steps": {}, "escalations": [], "errors": []}
+
+    d = day_mod.run_day(planner_fn=plan_fn, shift_fn=shift_stub, tick_fn=False,
+                        remember=False, use_env=False)
+    first_is_plan = bool(order) and order[0] == "plan"
+    in_report = isinstance(d.get("plan"), dict) and d["plan"].get("date") == "2026-09-04"
+    return first_is_plan and "shift" in order and in_report, \
+        f"порядок={order} · day['plan'] в отчёте={'да' if in_report else 'нет'}"
+
+
+def d7_plannerka_failure_survived():
+    """B2: планёрка упала → день собран, провал в failures, ok=False (не роняет день)."""
+    os.environ["YM_DAY_JOURNAL"] = _tmp_journal()
+
+    def boom(*a, **kw):
+        raise RuntimeError("планёрка упала намеренно")
+
+    d = day_mod.run_day(planner_fn=boom, shift_fn=False, tick_fn=False,
+                        remember=False, use_env=False)
+    survived = isinstance(d, dict) and "kpis" in d and d.get("plan") is None
+    visible = any("ПЛАНЁРКА" in f for f in d.get("failures", []))
+    return survived and visible and d["ok"] is False, \
+        f"день собран={survived} провал_виден={visible} ok={d.get('ok')}"
+
+
 # ─────────────────────────── ОТЧЁТ ───────────────────────────
 
 def r1_no_creds_no_lie():
@@ -272,6 +322,9 @@ TESTS = [
     ("D2  delta_vs_yesterday", d2_delta_vs_yesterday),
     ("D3  burning_first", d3_burning_first),
     ("D4  dry_by_default", d4_dry_by_default),
+    ("D5  plannerka_off_by_default", d5_plannerka_off_by_default),
+    ("D6  plannerka_first", d6_plannerka_first),
+    ("D7  plannerka_failure_survived", d7_plannerka_failure_survived),
     ("R1  no_creds_no_lie", r1_no_creds_no_lie),
     ("R2  unknown_index_loud", r2_unknown_index_loud),
     ("R3  long_report_chunked", r3_long_report_chunked),

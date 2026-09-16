@@ -1,0 +1,17 @@
+{
+  "id": "ct-89384d5096",
+  "ts": "2026-06-30T16:51:43.257353+00:00",
+  "organ": "MINT",
+  "kind": "cluster_tick",
+  "status": "PASS",
+  "checks": {
+    "bounded_single_step": true,
+    "no_daemon": true,
+    "money_untouched": true,
+    "ledger_honesty": true,
+    "self_emitted": true
+  },
+  "hard_failures": [],
+  "next_lawful_step": "ПЕРВЫЙ реальный verified ₽: провести связку D2 (услуги) до чека НПД/поступления — RUBICON оператора (даже если песочница уже зелёная, реальных денег пока 0)",
+  "proof_hash": "ec36876026377b51"
+}

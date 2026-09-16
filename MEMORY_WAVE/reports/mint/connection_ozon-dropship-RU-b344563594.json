@@ -1,0 +1,16 @@
+{
+  "id": "ozon-dropship-RU-b344563594",
+  "ts": "2026-06-30T00:43:57.973010+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": false
+  },
+  "hard_failures": [
+    "t0_discover_falsifiable"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_ozon-dropship-RU-b344563594_repair_required",
+  "truth_boundary": "t0: нет доказанной связки",
+  "proof_hash": "9d0dcebe6ccbc7a5"
+}

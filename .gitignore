@@ -56,13 +56,96 @@ proofs/
 dashboards/
 
 # ── Тяжёлые данные / вьюхи (не едут) ───────────────────────────────────
-MIGRATION/
-SOVEREIGN/
 graphify-out/
-MEMORY_WAVE/
-memory_waves/
 
 # ── OS / инструменты ────────────────────────────────────────────────────
 .DS_Store
 .idea/
 .vscode/
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ЗАКОН M5 «МАШИНА В GIT, ЖИВОЕ ВНЕ GIT» · 2026-09-16
+#   В GIT (защищено): канон, маршрут, субстрат, вики-понимание, леджеры-доказательства
+#   ВНЕ GIT (живое):  сырьё памяти, лид-базы/ПДн, археология-бэкапы, кэш, MIGRATION
+# ══════════════════════════════════════════════════════════════════════════════
+
+# ── MIGRATION: архив переезда, не канон ──
+MIGRATION/
+
+# ── SOVEREIGN: канон ВНУТРИ, сырьё СНАРУЖИ ──
+SOVEREIGN/MEMORY/inbox/
+SOVEREIGN/MEMORY/documents/
+SOVEREIGN/MEMORY/raw/
+SOVEREIGN/MEMORY/conversations/
+SOVEREIGN/MEMORY/events/
+SOVEREIGN/WIKI/graph/cache/
+SOVEREIGN/WIKI/indexes/cache/
+SOVEREIGN/PROFILE/
+SOVEREIGN/WORKLOADS/
+
+# ── MEMORY_WAVE: ЛЕДЖЕРЫ-ДОКАЗАТЕЛЬСТВА ВНУТРИ, прочий отладочный мусор снаружи ──
+MEMORY_WAVE/raw/
+memory_waves/
+
+# ── ЛИД-БАЗЫ / harvested-фиды: реальные клиники, телефоны, контакты (M2 + ПДн) ──
+#   В git живут ТОЛЬКО домен-конфиги (dental_msk_01.json, barbershop_msk_01.json).
+entity_substrate/domains/_*
+entity_substrate/entities/
+**/harvest_feed*.json
+**/*_targets.json
+**/hermes_queue*.json
+
+# ── Археология: бэкапы поколений самостройки ──
+**/*_backups/
+**/pre_repair_safety_*/
+**/lawful_step_backups/
+**/*.presync.bak
+
+# ── Obsidian / служебное ──
+.obsidian/
+**/.obsidian/
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ИСКЛЮЧЕНИЯ ИЗ M3 (blanket `reports/` и `**/runtime/` слишком грубы):
+#   ЛЕДЖЕРЫ-ДОКАЗАТЕЛЬСТВА и RUNTIME-ПОВЕРХНОСТИ СУБСТРАТА — это КАНОН, не «живое».
+# ══════════════════════════════════════════════════════════════════════════════
+
+# леджеры/журналы с хеш-чейном = доказательная цепь → В GIT
+!MEMORY_WAVE/reports/
+!MEMORY_WAVE/reports/**
+
+# 10 поверхностей Entity Substrate = матрица рождения → В GIT
+!SYSTEM/ENTITY_SUBSTRATE/runtime/
+!SYSTEM/ENTITY_SUBSTRATE/runtime/**
+
+# runtime ANNA: отчёт ред-тима — в git; РЕАЛЬНЫЕ КЛИЕНТСКИЕ ДИАЛОГИ — никогда
+!SYSTEM/ANNA_MVP/runtime/
+!SYSTEM/ANNA_MVP/runtime/redteam_report.json
+SYSTEM/ANNA_MVP/runtime/clients/
+
+# канон-дайджесты SOVEREIGN/MEMORY (решения/провалы/опыт) — это понимание, не сырьё
+!SOVEREIGN/MEMORY/decisions/
+!SOVEREIGN/MEMORY/failures/
+!SOVEREIGN/MEMORY/experience/
+
+# прочее «живое», что не должно ехать (уточнение поверх исключений)
+MEMORY_WAVE/reports/**/cache/
+MEMORY_WAVE/reports/**/*.log
+MEMORY_WAVE/reports/**/*.launchd.out
+MEMORY_WAVE/reports/**/*.launchd.err
+
+# ══════════════════════════════════════════════════════════════════════════════
+# ПДн / КОММЕРЧЕСКАЯ ТАЙНА — никогда в git (уточнение 2026-09-16):
+#   база клиник с телефонами, сырые логи переписки, живые артефакты чатов
+# ══════════════════════════════════════════════════════════════════════════════
+SOVEREIGN/LEDGER/komanda_clinics_db.json
+SOVEREIGN/LEDGER/*clinics*.json
+SOVEREIGN/LEDGER/*leads*.json
+SOVEREIGN/LEDGER/*targets*.json
+SYSTEM/ANNA_MVP/runtime/telegram_log.jsonl
+SYSTEM/ANNA_MVP/runtime/tg.out
+SYSTEM/ANNA_MVP/runtime/admin_inbox.jsonl
+SYSTEM/ANNA_MVP/runtime/reminders.jsonl
+SYSTEM/ANNA_MVP/runtime/safety_log.jsonl
+SYSTEM/ANNA_MVP/runtime/appointments/
+SYSTEM/ANNA_MVP/runtime/cards/

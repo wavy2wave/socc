@@ -3,7 +3,7 @@
 """SOCC · ДОМ · ИНТЕРАКТИВ — ПРИЁМКА (socc_cli/dom.py).
 
 Сухо, 0₽, без сети, без записи. Живой дом читает только лежащие сторы (как консоль).
-Законы DH1–DH15:
+Законы DH1–DH17:
   DH1  меню_дом      — run_home рендерит меню: 5 органов + ЖИВОЕ + Выйти; q → rc 0
   DH2  цвета_plain   — на StringIO нет ANSI ни в меню, ни в тексте витрины, ни в live
   DH3  магазинов_счёт— ym-меню честно зовёт «магазинов в манифесте N» + slug витрины
@@ -29,6 +29,8 @@
   DH16 ширина_кадра   — тело сводки/гейта/корня: каждая строка ≤78 (рендер StringIO,
                         plain, len=ширина); длинные note чистятся (_clean_note) и
                         режутся (_snip) без потери смысла — на 80×24 нет клипа
+  DH17 план_дня_в_меню— в ЯМ-меню пункт ПЛАН ДНЯ (view:план) открывает home-лицо
+                        ПЛАН ДНЯ (или честную деградацию), не падает, plain
 """
 import io
 import inspect
@@ -407,6 +409,17 @@ def dh16_shirina_kadra():
         f"строк >78: {len(long_lines)}" + (f" :: {long_lines[0][:90]}" if long_lines else " · на 80×24 нет клипа")
 
 
+def dh17_plan_dnya_v_menyu():
+    """ПЛАН ДНЯ — read-лицо в ЯМ-меню: пункт «view:план» виден в списке экранов; выбор
+    открывает home-лицо (ПЛАН ДНЯ или честная деградация), не падает, plain на StringIO."""
+    txt = home._ym_face(io.StringIO(), "план", [])
+    ok1 = isinstance(txt, str) and "Traceback" not in txt and "ПЛАН ДНЯ" in txt
+    ok2 = not ANSI.search(txt)
+    rows = dom.ym_rows({})
+    ok3 = any(r.get("action") == "view:план" for r in rows if r.get("kind") == "item")
+    return (ok1 and ok2 and ok3), f"лицо={ok1} · plain={ok2} · пункт-меню={ok3} · t={txt.strip()[:120]!r}"
+
+
 TESTS = [
     ("DH1  меню_дом", dh1_menu_dom),
     ("DH2  цвета_plain", dh2_cveta_plain),
@@ -424,6 +437,7 @@ TESTS = [
     ("DH14 гейт_не_голит", dh14_gate_ne_zapuskaet),
     ("DH15 день_жив_честно", dh15_den_zhiv_chestno),
     ("DH16 ширина_кадра", dh16_shirina_kadra),
+    ("DH17 план_дня_в_меню", dh17_plan_dnya_v_menyu),
 ]
 
 

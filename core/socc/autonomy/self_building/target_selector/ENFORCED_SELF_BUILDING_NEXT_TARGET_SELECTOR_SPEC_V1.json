@@ -1,0 +1,21 @@
+{
+  "created_at_msk": "2026-06-17T01:02:04+03:00",
+  "created_at_utc": "2026-06-16T22:02:04.174628+00:00",
+  "forbidden_target_prefixes": [
+    "launch_daemon",
+    "install_scheduler",
+    "enable_background_loop",
+    "enable_continuous_loop",
+    "widen_queue",
+    "birth_entity",
+    "birth_anna",
+    "claim_agi",
+    "approve_final_canon"
+  ],
+  "id": "ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_SPEC_V1",
+  "selected_target": "build_self_building_effect_auditor_v1",
+  "selection_rule": "highest priority candidate that is bounded, evidence-ready, and has all forbidden escalation flags false",
+  "selector": "scripts/socc/socc_enforced_self_building_next_target_selector_v1.py",
+  "status": "BUILT",
+  "truth_boundary": "Enforced self-building next-target selector build only. This builds a bounded selector that chooses the next self-building target from evidence, risk, maturity, and forbidden-escalation gates under atomic-commit enforcement. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

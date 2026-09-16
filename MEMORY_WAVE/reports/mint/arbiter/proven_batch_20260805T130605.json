@@ -1,0 +1,458 @@
+{
+  "ts": "2026-08-05T13:06:05.034381+00:00",
+  "finished_at": "2026-08-05T13:06:36.118459+00:00",
+  "city": "msk",
+  "limit_per_category": 5,
+  "delivery": 100.0,
+  "house_brand": "RAINO",
+  "categories_run": 12,
+  "scanned": 55,
+  "proven": 7,
+  "rejected": 48,
+  "categories_failed": [],
+  "categories_zero_proven": [
+    "стрейч пленка",
+    "скотч упаковочный",
+    "пакеты для мусора",
+    "бумага для выпечки",
+    "ватные диски",
+    "перчатки нитриловые"
+  ],
+  "per_category": [
+    {
+      "category": "пакеты zip lock",
+      "scanned": 5,
+      "proven": 1,
+      "rejected": 3,
+      "skipped_too_pricey": 1,
+      "market_ceiling": 672.0,
+      "winners": [
+        {
+          "category": "пакеты zip lock",
+          "name": "Упаковочные зип пакеты 7х10 см 100 штук фасовочные",
+          "sku": "909496246",
+          "url": "https://www.wildberries.ru/catalog/909496246/detail.aspx",
+          "cost_buy": 93.0,
+          "price_sell": 651.0,
+          "profit_net": 34.85,
+          "markup": 7.0,
+          "profit_per_rouble": 0.37,
+          "cost_share": 0.1429,
+          "box_zone": false,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 672.0,
+          "demand_strength": 100,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "стрейч пленка",
+      "scanned": 5,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 5,
+      "market_ceiling": 1620.0,
+      "winners": [],
+      "error": null
+    },
+    {
+      "category": "скотч упаковочный",
+      "scanned": 5,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 5,
+      "market_ceiling": 2193.0,
+      "winners": [],
+      "error": null
+    },
+    {
+      "category": "картонные коробки",
+      "scanned": 5,
+      "proven": 1,
+      "rejected": 0,
+      "skipped_too_pricey": 4,
+      "market_ceiling": 1170.0,
+      "winners": [
+        {
+          "category": "картонные коробки",
+          "name": "Коробка складная для хранения и переезда",
+          "sku": "190708312",
+          "url": "https://www.wildberries.ru/catalog/190708312/detail.aspx",
+          "cost_buy": 110.0,
+          "price_sell": 1100.0,
+          "profit_net": 175.0,
+          "markup": 10.0,
+          "profit_per_rouble": 1.59,
+          "cost_share": 0.1,
+          "box_zone": false,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 1170.0,
+          "demand_strength": 64,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "воздушно пузырчатая пленка",
+      "scanned": 5,
+      "proven": 2,
+      "rejected": 0,
+      "skipped_too_pricey": 3,
+      "market_ceiling": 1518.0,
+      "winners": [
+        {
+          "category": "воздушно пузырчатая пленка",
+          "name": "Пленка воздушно-пузырьковая 0,3*10м",
+          "sku": "1001492872",
+          "url": "https://www.wildberries.ru/catalog/1001492872/detail.aspx",
+          "cost_buy": 158.0,
+          "price_sell": 1106.0,
+          "profit_net": 129.1,
+          "markup": 7.0,
+          "profit_per_rouble": 0.82,
+          "cost_share": 0.1429,
+          "box_zone": false,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 1518.0,
+          "demand_strength": 37,
+          "collision_risk": 12
+        },
+        {
+          "category": "воздушно пузырчатая пленка",
+          "name": "Воздушно-пупырчатая пленка для упаковки 3 метра",
+          "sku": "877284540",
+          "url": "https://www.wildberries.ru/catalog/877284540/detail.aspx",
+          "cost_buy": 145.0,
+          "price_sell": 1450.0,
+          "profit_net": 262.5,
+          "markup": 10.0,
+          "profit_per_rouble": 1.81,
+          "cost_share": 0.1,
+          "box_zone": false,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 1518.0,
+          "demand_strength": 51,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "пакеты для мусора",
+      "scanned": 5,
+      "proven": 0,
+      "rejected": 4,
+      "skipped_too_pricey": 1,
+      "market_ceiling": 699.0,
+      "winners": [],
+      "error": null
+    },
+    {
+      "category": "крафт пакеты",
+      "scanned": 5,
+      "proven": 1,
+      "rejected": 0,
+      "skipped_too_pricey": 4,
+      "market_ceiling": 2445.0,
+      "winners": [
+        {
+          "category": "крафт пакеты",
+          "name": "Крафт пакеты бумажные, 18х12х29 см, 20 шт",
+          "sku": "197744545",
+          "url": "https://www.wildberries.ru/catalog/197744545/detail.aspx",
+          "cost_buy": 151.0,
+          "price_sell": 2265.0,
+          "profit_net": 541.75,
+          "markup": 15.0,
+          "profit_per_rouble": 3.59,
+          "cost_share": 0.0667,
+          "box_zone": true,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 2445.0,
+          "demand_strength": 100,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "этикетки самоклеящиеся",
+      "scanned": 5,
+      "proven": 1,
+      "rejected": 2,
+      "skipped_too_pricey": 2,
+      "market_ceiling": 759.0,
+      "winners": [
+        {
+          "category": "этикетки самоклеящиеся",
+          "name": "Термоэтикетка 58х40 1 рулон 700",
+          "sku": "876558581",
+          "url": "https://www.wildberries.ru/catalog/876558581/detail.aspx",
+          "cost_buy": 140.0,
+          "price_sell": 700.0,
+          "profit_net": 5.0,
+          "markup": 5.0,
+          "profit_per_rouble": 0.04,
+          "cost_share": 0.2,
+          "box_zone": false,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 759.0,
+          "demand_strength": 88,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "бумага для выпечки",
+      "scanned": 5,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 5,
+      "market_ceiling": 1041.0,
+      "winners": [],
+      "error": null
+    },
+    {
+      "category": "салфетки микрофибра",
+      "scanned": 5,
+      "proven": 1,
+      "rejected": 3,
+      "skipped_too_pricey": 1,
+      "market_ceiling": 744.0,
+      "winners": [
+        {
+          "category": "салфетки микрофибра",
+          "name": "Двусторонняя микрофибра для сушки авто 30х40",
+          "sku": "732904701",
+          "url": "https://www.wildberries.ru/catalog/732904701/detail.aspx",
+          "cost_buy": 105.0,
+          "price_sell": 735.0,
+          "profit_net": 52.25,
+          "markup": 7.0,
+          "profit_per_rouble": 0.5,
+          "cost_share": 0.1429,
+          "box_zone": false,
+          "strategy": "uniqueized_unlinkable",
+          "market_ceiling": 744.0,
+          "demand_strength": 100,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "ватные диски",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null
+    },
+    {
+      "category": "перчатки нитриловые",
+      "scanned": 5,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 5,
+      "market_ceiling": 1164.0,
+      "winners": [],
+      "error": null
+    }
+  ],
+  "winners": [
+    {
+      "category": "крафт пакеты",
+      "name": "Крафт пакеты бумажные, 18х12х29 см, 20 шт",
+      "sku": "197744545",
+      "url": "https://www.wildberries.ru/catalog/197744545/detail.aspx",
+      "cost_buy": 151.0,
+      "price_sell": 2265.0,
+      "profit_net": 541.75,
+      "markup": 15.0,
+      "profit_per_rouble": 3.59,
+      "cost_share": 0.0667,
+      "box_zone": true,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 2445.0,
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "воздушно пузырчатая пленка",
+      "name": "Воздушно-пупырчатая пленка для упаковки 3 метра",
+      "sku": "877284540",
+      "url": "https://www.wildberries.ru/catalog/877284540/detail.aspx",
+      "cost_buy": 145.0,
+      "price_sell": 1450.0,
+      "profit_net": 262.5,
+      "markup": 10.0,
+      "profit_per_rouble": 1.81,
+      "cost_share": 0.1,
+      "box_zone": false,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 1518.0,
+      "demand_strength": 51,
+      "collision_risk": 12
+    },
+    {
+      "category": "картонные коробки",
+      "name": "Коробка складная для хранения и переезда",
+      "sku": "190708312",
+      "url": "https://www.wildberries.ru/catalog/190708312/detail.aspx",
+      "cost_buy": 110.0,
+      "price_sell": 1100.0,
+      "profit_net": 175.0,
+      "markup": 10.0,
+      "profit_per_rouble": 1.59,
+      "cost_share": 0.1,
+      "box_zone": false,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 1170.0,
+      "demand_strength": 64,
+      "collision_risk": 12
+    },
+    {
+      "category": "воздушно пузырчатая пленка",
+      "name": "Пленка воздушно-пузырьковая 0,3*10м",
+      "sku": "1001492872",
+      "url": "https://www.wildberries.ru/catalog/1001492872/detail.aspx",
+      "cost_buy": 158.0,
+      "price_sell": 1106.0,
+      "profit_net": 129.1,
+      "markup": 7.0,
+      "profit_per_rouble": 0.82,
+      "cost_share": 0.1429,
+      "box_zone": false,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 1518.0,
+      "demand_strength": 37,
+      "collision_risk": 12
+    },
+    {
+      "category": "салфетки микрофибра",
+      "name": "Двусторонняя микрофибра для сушки авто 30х40",
+      "sku": "732904701",
+      "url": "https://www.wildberries.ru/catalog/732904701/detail.aspx",
+      "cost_buy": 105.0,
+      "price_sell": 735.0,
+      "profit_net": 52.25,
+      "markup": 7.0,
+      "profit_per_rouble": 0.5,
+      "cost_share": 0.1429,
+      "box_zone": false,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 744.0,
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "пакеты zip lock",
+      "name": "Упаковочные зип пакеты 7х10 см 100 штук фасовочные",
+      "sku": "909496246",
+      "url": "https://www.wildberries.ru/catalog/909496246/detail.aspx",
+      "cost_buy": 93.0,
+      "price_sell": 651.0,
+      "profit_net": 34.85,
+      "markup": 7.0,
+      "profit_per_rouble": 0.37,
+      "cost_share": 0.1429,
+      "box_zone": false,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 672.0,
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "этикетки самоклеящиеся",
+      "name": "Термоэтикетка 58х40 1 рулон 700",
+      "sku": "876558581",
+      "url": "https://www.wildberries.ru/catalog/876558581/detail.aspx",
+      "cost_buy": 140.0,
+      "price_sell": 700.0,
+      "profit_net": 5.0,
+      "markup": 5.0,
+      "profit_per_rouble": 0.04,
+      "cost_share": 0.2,
+      "box_zone": false,
+      "strategy": "uniqueized_unlinkable",
+      "market_ceiling": 759.0,
+      "demand_strength": 88,
+      "collision_risk": 12
+    }
+  ],
+  "honesty": "PROVEN = доказанная ГИПОТЕЗА (спрос+маржа+закон+честная цена после комиссии Озон 65% и доставки), НЕ доход. Реальный ₽ — только verified в revenue_ledger.",
+  "invalidated": {
+    "value": true,
+    "at": "2026-08-06 (фаза A ЧЕСТНОСТЬ)",
+    "reason": "Посчитано при УСТАРЕВШИХ константах: NET_COEFF=0.35 (в модели «комиссия Озон 65% общим котлом») и delivery=100.0. Дознание кабинета (ozon_truth_v1, 2026-08-05) заменило их ФАКТОМ 6 реальных продаж: NET_COEFF=0.298, DELIVERY_NET=₽325. Вердикт PROVEN здесь судился доставко-слепым profit_net (доставка вычиталась лишь в цене, но не в ЭКОН-гейте — фаза A закрыла эту дыру). Порог min_profit=₽200 применялся к неверному числу. Перепрогон под честными константами даёт другой набор победителей. Историю не стираем — помечаем.",
+    "constants_then": {
+      "net_coeff": 0.35,
+      "delivery": 100.0,
+      "commission_model": "65% общим котлом"
+    },
+    "constants_now": {
+      "net_coeff": 0.298,
+      "delivery": 325.0,
+      "commission_model": "53% + доставка отдельной строкой",
+      "source": "ozon_truth_v1 / 6 реальных продаж 2026-08-05"
+    },
+    "recompute_note": "Из 7 прежних PROVEN под честными константами порог min_profit=₽200 проходят 0. Это оценка по формуле price·0.298−cost−325, НЕ повторный прогон движка.",
+    "winners_recomputed": [
+      {
+        "sku": "197744545",
+        "name": "Крафт пакеты бумажные, 18х12х29 см, 20 шт",
+        "profit_net_old": 541.75,
+        "profit_net_honest": 198.97,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "877284540",
+        "name": "Воздушно-пупырчатая пленка для упаковки 3 метра",
+        "profit_net_old": 262.5,
+        "profit_net_honest": -37.9,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "190708312",
+        "name": "Коробка складная для хранения и переезда",
+        "profit_net_old": 175.0,
+        "profit_net_honest": -107.2,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "1001492872",
+        "name": "Пленка воздушно-пузырьковая 0,3*10м",
+        "profit_net_old": 129.1,
+        "profit_net_honest": -153.41,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "732904701",
+        "name": "Двусторонняя микрофибра для сушки авто 30х40",
+        "profit_net_old": 52.25,
+        "profit_net_honest": -210.97,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "909496246",
+        "name": "Упаковочные зип пакеты 7х10 см 100 штук фасовочн",
+        "profit_net_old": 34.85,
+        "profit_net_honest": -224.0,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "876558581",
+        "name": "Термоэтикетка 58х40 1 рулон 700",
+        "profit_net_old": 5.0,
+        "profit_net_honest": -256.4,
+        "passes_min_profit": false
+      }
+    ]
+  }
+}

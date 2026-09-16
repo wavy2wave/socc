@@ -1,0 +1,58 @@
+{
+  "id": "BRAND_FORGE_CELL_V1",
+  "schema": "socc.cell.v1",
+  "kind": "internal_studio_cell",
+  "status": "GENESIS",
+  "created_at_utc": "2026-06-29T00:00:00+00:00",
+  "purpose": "First internal SOCC cell: a multi-role brand studio that forges canonical brand/visual identity for SOCC and for every entity SOCC births (ANNA first, then any future vertical). It does not sell to customers; it produces canon that customer-facing entities render through.",
+  "principle": "do_not_build_a_brand_build_the_brand_factory",
+  "the_unique_strategy": {
+    "name": "FORGE_NOT_HANDWORK",
+    "thesis": "A normal company hires an agency once and gets one brand. SOCC can birth hundreds of entities, so a one-off brand is waste. Instead we forge a reusable BRAND FACTORY governed by SOCC's own proof-gated lifecycle. First artifact through the forge = ANNA's brand (revenue-facing). The forge then stays as a permanent capability that brands every future entity in days, not months.",
+    "agi_leverage": "Branding becomes a repeatable, gated, evidence-backed capability instead of a taste-driven one-time event. Evolution does not jump: each decision is researched, produced, adversarially refuted, then accepted before the next opens."
+  },
+  "lineage": {
+    "parent": "SOCC (Sovereign Ontological Core)",
+    "born_from": "sealed Entity/Substrate birth capability + SOCC_DESIGN_CANON_V1",
+    "inherits_voice_from": "SYSTEM/KERNEL/SOCC_DESIGN_CANON_V1.json",
+    "inherits_lifecycle_from": "SYSTEM/ENTITY_SUBSTRATE (DIRECTION->PLAN->GATES->SURFACE->SESSION->RUNTIME->SEALED)"
+  },
+  "roles": [
+    {"key": "STRATEGIST", "ru": "Стратег",      "studio_equivalent": "Brand Strategist",        "owns": "positioning, audience, archetype, brand platform (the WHY)"},
+    {"key": "SCOUT",      "ru": "Разведчик",     "studio_equivalent": "Market/Competitor Researcher", "owns": "market scan, competitor teardown, reference evidence (feeds Scientific gate)"},
+    {"key": "WORDSMITH",  "ru": "Словесник",     "studio_equivalent": "Verbal Identity / Copy",  "owns": "naming, tagline, tone of voice, messaging matrix"},
+    {"key": "ART_DIRECTOR","ru": "Арт-директор", "studio_equivalent": "Art Director",            "owns": "visual direction, moodboard, aesthetic coherence (the LOOK)"},
+    {"key": "MARK_MAKER", "ru": "Знакарь",       "studio_equivalent": "Logo/Mark Designer",      "owns": "logotype + logomark + construction rules (delivered as SVG)"},
+    {"key": "SYSTEMATIST","ru": "Системщик",     "studio_equivalent": "Color/Type/Token Designer","owns": "palette, type scale, design tokens (the bridge to code)"},
+    {"key": "UI_ENGINEER","ru": "Инженер",       "studio_equivalent": "Design System Engineer",  "owns": "components, token->code binding, renderable HTML/CSS (feeds Hermes gate)"},
+    {"key": "GUARDIAN",   "ru": "Хранитель",     "studio_equivalent": "Brand Guardian / Critic", "owns": "adversarial gate: consistency, WCAG contrast, no-fake-PASS, refutes weak decisions"},
+    {"key": "SCRIBE",     "ru": "Канонолог",     "studio_equivalent": "Brand Ops / Documentarian","owns": "writes every artifact in SOCC canon format (truth_boundary, proof, status), keeps LINE + registry"}
+  ],
+  "surfaces": {
+    "note": "Inherited from SOCC entity-surface model; a cell has the same nine surfaces an entity has.",
+    "identity": "SYSTEM/BRAND_FORGE/BRAND_FORGE_CELL_V1.json",
+    "state": "SYSTEM/BRAND_FORGE/runtime/BRAND_FORGE_STATE_V1.json",
+    "lineage": "this.lineage",
+    "capability": "forge brand canon (strategy->verbal->visual->system->application)",
+    "lawful_action": "SYSTEM/BRAND_FORGE/BRAND_FORGE_LINE_V1.json (only the current frontier is lawful)",
+    "dashboard": "SYSTEM/DASHBOARD/BRAND_FORGE_GENESIS_PANEL_V1.json",
+    "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BRAND_FORGE_GENESIS_V1_PROOF.json",
+    "memory": "frontier artifacts accumulate under SYSTEM/BRAND_FORGE/frontiers/",
+    "freeze_stop": "creator may halt at any ACCEPT gate; no frontier auto-advances past a failed gate"
+  },
+  "lawful_actions": [
+    "produce the artifact of the CURRENT frontier only",
+    "run roles in parallel to produce a frontier",
+    "submit every frontier to the Guardian + Scientific/Hermes/Codex gates",
+    "write accepted output as SOCC canon with honest truth_boundary"
+  ],
+  "forbidden": [
+    "no jumping frontiers (next opens only after current is accepted)",
+    "no shipping external/AI-borrowed assets raw — everything re-skinned into canon",
+    "no fake PASS / no taste-only decisions without evidence",
+    "no live deploy, no network publish, no revenue claim from genesis",
+    "no AGI/L3 claim"
+  ],
+  "voice": "inherit SOCC_DESIGN_CANON_V1.voice (calm, precise, honest, no hype); russian operator-facing, english for canon keys",
+  "truth_boundary": "Cell genesis definition only. Declares the Brand Forge team, its nine roles, inherited surfaces, lawful actions and forbidden actions. It forges NO brand yet, produces NO pixels, births no entity, makes no network call, claims no revenue, claims no AGI. The first real frontier (target decision) stays gated behind acceptance of this genesis."
+}

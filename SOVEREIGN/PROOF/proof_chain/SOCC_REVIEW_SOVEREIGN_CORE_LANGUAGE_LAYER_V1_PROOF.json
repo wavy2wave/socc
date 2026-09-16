@@ -1,0 +1,67 @@
+{
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_sovereign_core_language_layer_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_sovereign_core_language_layer_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_sovereign_core_language_layer_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "authority_files": [
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
+  ],
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+  "created_at_utc": "2026-06-09T09:12:58.588783+00:00",
+  "current_expected": "review_socc_sovereign_core_language_layer_v1",
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF",
+  "next_after_pass": "accept_socc_sovereign_core_language_layer_v1",
+  "next_lawful_step": "accept_socc_sovereign_core_language_layer_v1",
+  "no_background": true,
+  "no_daemon": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "proof_hash": "a894c29d0761149c",
+  "reconcile_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RECONCILE_LANGUAGE_LAYER_USING_DISCOVERED_AUTHORITY_PATHS_V1_PROOF.json",
+  "review_artifact": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_REVIEW_V1.json",
+  "review_checks": {
+    "creator_intent_boundary": true,
+    "dashboard_binding_boundary": true,
+    "language_layer_not_executor": true,
+    "lawful_next_boundary": true,
+    "no_background_boundary": true,
+    "no_daemon_boundary": true,
+    "no_execution_boundary": true,
+    "no_mw_route_boundary": true,
+    "no_network_boundary": true,
+    "no_placeholder_creator_protocol": true,
+    "no_placeholder_intent_protocol": true,
+    "no_placeholder_language_law": true,
+    "proof_chain_boundary": true,
+    "validate_next_after_pass_ok": true,
+    "validate_no_language_execution": true
+  },
+  "review_md": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_REVIEW_V1.md",
+  "status": "PASS",
+  "truth_boundary": "This review checks validation integrity and language-layer boundaries, then advances to acceptance frontier. It does not execute language, start runtime, use network, or create any MW route.",
+  "validate_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+  "warnings": []
+}

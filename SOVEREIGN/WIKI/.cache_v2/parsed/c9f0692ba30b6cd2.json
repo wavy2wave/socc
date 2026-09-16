@@ -1,0 +1,1 @@
+{"claims": [{"text": "Place the provided **`.github/workflows/devcore-autopilot.yml`** into each repo that must accept `/devcore …` comments.", "line": 294, "entities": ["Autopilot"], "intent": "requirement", "polarity": "assert"}], "dates": [], "entity_counts": {"Autopilot": 7, "Daemon": 5, "Tamaguru": 3, "Telegram": 1}}

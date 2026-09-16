@@ -1,0 +1,9 @@
+{
+  "id": "HERMES_GENERIC_PACKET_REVIEW_SELF_BUILDING_PROGRESS_METRICS_V1_ATTEMPT1",
+  "ts": "2026-06-16T15:34:57.475434+00:00",
+  "failed_script": "review_self_building_progress_metrics_v1",
+  "repair_script_expected": "repair_self_building_progress_metrics_review_v1",
+  "repair_script_found": false,
+  "bounded_repair": true,
+  "daemon_running": false
+}

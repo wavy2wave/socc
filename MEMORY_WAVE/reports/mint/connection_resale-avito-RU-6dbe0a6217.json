@@ -1,0 +1,21 @@
+{
+  "id": "resale-avito-RU-6dbe0a6217",
+  "ts": "2026-07-01T07:11:01.833780+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": false
+  },
+  "hard_failures": [
+    "t4_verify_money"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_resale-avito-RU-6dbe0a6217_repair_required",
+  "truth_boundary": "t4: sbp_inbound: сумма ≤ 0 — деньги не прочитаны из источника (не verified, LG2)",
+  "proof_hash": "8e2a4144d49a5341"
+}

@@ -1,0 +1,44 @@
+{
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "capability": "SOCC_ASSIGNMENT_SCIENTIFIC_QUALITY_GATE_PASSED",
+  "checks": {
+    "all_steps_non_executing": true,
+    "authority_at_scientific_current": true,
+    "dashboard_visible_required": true,
+    "evidence_chain_present": true,
+    "explicit_fail_conditions": true,
+    "failure_modes_count_ok": true,
+    "falsifiability_present": true,
+    "measurability_present": true,
+    "memory_required": true,
+    "minimal_scope_present": true,
+    "no_execution_boundary": true,
+    "plan_review_pass": true,
+    "plan_review_proof_pass": true,
+    "proof_required": true,
+    "stop_required": true,
+    "testability_present": true
+  },
+  "construction_plan": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_CONSTRUCTION_PLAN_V1.json",
+  "created_at_utc": "2026-06-09T15:34:27.485684+00:00",
+  "criteria_evaluated": {
+    "evidence_chain": "Every stage writes JSON proof and dashboard status.",
+    "failure_modes": [
+      "missing authority agreement",
+      "missing proof",
+      "missing dashboard pointer",
+      "Hermes/Codex gate not available or not passed",
+      "attempted execution before acceptance"
+    ],
+    "falsifiability": "Each PASS must have explicit FAIL conditions.",
+    "measurability": "Each step must output paths, statuses, hashes or gate results.",
+    "minimal_scope": "Only assignment loop surfaces and dashboard pointers are in scope before execution.",
+    "testability": "Every proposed build artifact must have a deterministic read/check proof."
+  },
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "gate_verdict": "SCIENTIFIC_QUALITY_GATE_PASS_READY_FOR_HERMES_GATE",
+  "id": "ASSIGNMENT_SCIENTIFIC_QUALITY_GATE_V1",
+  "next_required_step": "run_assignment_hermes_gate_v1",
+  "status": "PASS",
+  "truth_boundary": "Scientific quality gate only. No assignment/build/patch execution."
+}

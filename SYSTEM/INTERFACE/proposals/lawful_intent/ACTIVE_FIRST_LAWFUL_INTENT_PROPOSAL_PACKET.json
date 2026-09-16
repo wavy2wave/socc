@@ -1,0 +1,11 @@
+{
+  "active_proposal_packet": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.json",
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1_PROOF.json",
+  "created_at_utc": "2026-06-09T10:34:07.028697+00:00",
+  "id": "ACTIVE_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET",
+  "mode": "NON_EXECUTING_REVIEW_REQUIRED_PROPOSAL",
+  "next_required_step": "validate_socc_first_lawful_intent_proposal_packet_v1",
+  "proposal_md": "SYSTEM/INTERFACE/proposals/lawful_intent/SOCC_FIRST_LAWFUL_INTENT_PROPOSAL_PACKET_V1.md",
+  "status": "ACTIVE_CANDIDATE_FOR_VALIDATION",
+  "truth_boundary": "Active proposal packet is candidate until validation. Non-executing."
+}

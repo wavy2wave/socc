@@ -1,0 +1,18 @@
+{
+  "dashboard_binding_required": true,
+  "dialogue_role": "creator_to_core_language_surface",
+  "id": "SOCC_CREATOR_DIALOGUE_PROTOCOL_V1",
+  "operator": "wavy",
+  "proof_chain_required": true,
+  "protocol": {
+    "accept_creator_intent": true,
+    "never_bypass_route_authority": true,
+    "never_execute_directly": true,
+    "show_current_lawful_next": true,
+    "show_current_state": true,
+    "show_proof_requirements": true,
+    "translate_to_lawful_intent": true
+  },
+  "status": "BUILT_FOR_VALIDATION",
+  "truth_boundary": "Creator dialogue protocol turns creator language into lawful intent candidates only. It does not execute actions."
+}

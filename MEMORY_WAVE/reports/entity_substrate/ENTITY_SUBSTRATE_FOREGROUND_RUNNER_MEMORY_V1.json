@@ -1,0 +1,10 @@
+{
+  "created_at_utc": "2026-06-09T21:06:10.929070+00:00",
+  "event": "SOCC foreground autonomy runner started Entity/Substrate by building the construction plan.",
+  "id": "ENTITY_SUBSTRATE_FOREGROUND_RUNNER_MEMORY_V1",
+  "next": "review_entity_substrate_construction_plan_v1",
+  "plan": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "status": "RECORDED",
+  "stopped_after_step": true,
+  "truth_boundary": "Plan was built by foreground autonomy runner. Entity/Substrate is started but not sealed. No daemon/background/network."
+}

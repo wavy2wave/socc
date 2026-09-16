@@ -1,0 +1,28 @@
+{
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:42:50.026399+00:00",
+  "current_stage": "bounded_execution_session_accepted_self_construction_seal_next",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "gates_status": {
+    "Codex_gate": "PASS",
+    "Hermes_gate": "PASS",
+    "assignment_object": "ACCEPTED",
+    "bounded_execution_surface": "ACCEPTED",
+    "construction_plan": "ACCEPTED",
+    "direction": "ACCEPTED",
+    "execution_session": "ACCEPTED",
+    "scientific_quality_gate": "PASS",
+    "self_construction_step_seal": "next_to_build"
+  },
+  "id": "ASSIGNMENT_0001_EXECUTION_SESSION_ACCEPTED_PANEL_POINTER_V1",
+  "lawful_next": "seal_assignment_autonomous_self_construction_step_v1",
+  "operator_visible_summary": "First bounded assignment execution session accepted. Next lawful step is seal autonomous self-construction step, then Entity Substrate direction.",
+  "panel_type": "assignment_runtime_dashboard",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Acceptance only. No new execution. Authorizes seal next.",
+  "what_remains": [
+    "seal assignment autonomous self-construction step",
+    "build Entity Substrate direction",
+    "then Anna MVP line"
+  ]
+}

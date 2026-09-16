@@ -1,0 +1,1477 @@
+{
+  "schema": "ymarket.portfolio.matrix.v1",
+  "source": {
+    "library": "/Users/wavysexy/SOCC/MEMORY_WAVE/reports/mint/arbiter/ymarket_goods_library.json",
+    "library_schema": "ymarket.goods.library.v1",
+    "cards": 37,
+    "library_updated_at": "2026-09-08T14:32:21.409794+00:00"
+  },
+  "generated_at": "2026-09-08T14:32:21.409989+00:00",
+  "volume": {
+    "total": 37,
+    "by_store": {
+      "atlas-express-film": 37
+    },
+    "by_category": {
+      "vozdushno-puzyrkovaya-plenka": 37
+    },
+    "by_vendor": {
+      "Без бренда": 37
+    }
+  },
+  "money": {
+    "sum_cost": 41100.0,
+    "sum_price": 328800.0,
+    "price_count": 37,
+    "price_min": 280.0,
+    "price_max": 26400.0,
+    "price_avg": 8886.49,
+    "top10": [
+      {
+        "offer_id": "ARB-54288181",
+        "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 60 г/м², трёхслойная",
+        "price": 26400.0,
+        "cost": 3300.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-63700297",
+        "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+        "price": 23840.0,
+        "cost": 2980.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-20980160",
+        "name": "Биг бабл, 25*1.5 м, 130 г/м², трёхслойный",
+        "price": 20000.0,
+        "cost": 2500.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-47726061",
+        "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+        "price": 19040.0,
+        "cost": 2380.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-36274733",
+        "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 40 г/м², двухслойная",
+        "price": 17600.0,
+        "cost": 2200.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-26558215",
+        "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт», 40 г/м², двухслойная",
+        "price": 16400.0,
+        "cost": 2050.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-09219228",
+        "name": "Биг бабл, 25*1.2 м, 130 г/м², трёхслойный",
+        "price": 16000.0,
+        "cost": 2000.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-37280156",
+        "name": "Биг бабл, 25*1.5 м, 90 г/м², двухслойный",
+        "price": 13600.0,
+        "cost": 1700.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-86551711",
+        "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт», 40 г/м², двухслойная",
+        "price": 12960.0,
+        "cost": 1620.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      },
+      {
+        "offer_id": "ARB-17739462",
+        "name": "Воздушно пузырьковая пленка, 100*1.5 м «Бизнес», 30 г/м², двухслойная",
+        "price": 12640.0,
+        "cost": 1580.0,
+        "store_slug": "atlas-express-film",
+        "markup": 8.0
+      }
+    ]
+  },
+  "quality": {
+    "with_photo": 37,
+    "without_photo": 0,
+    "photo_share": 1.0,
+    "avg_description_len": 1126.5,
+    "avg_spec_n": 8.89,
+    "with_dims": 37,
+    "without_dims": 0,
+    "criteria": [
+      {
+        "name": "name",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "article",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "barcode",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "vendor",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "price",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "cost",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "stock",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "photos",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "description",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "spec",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "dims",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      },
+      {
+        "name": "verified",
+        "passed": 37,
+        "total": 37,
+        "share": 1.0
+      }
+    ],
+    "avg_completeness": 12.0,
+    "max_completeness": 12,
+    "full_complete": 37
+  },
+  "stock": {
+    "total_stock": 3700,
+    "by_store": {
+      "atlas-express-film": 3700
+    },
+    "by_warehouse": {
+      "2390811": 3700
+    }
+  },
+  "history": {
+    "by_cycle": {
+      "704e29228a": 33,
+      "91781dfe33": 4
+    },
+    "by_date": {
+      "2026-09-03": 4,
+      "2026-09-08": 33
+    }
+  },
+  "rows": [
+    {
+      "offer_id": "ARB-29846713",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «БаблБокс», 60 г/м², трёхслойная",
+      "article": "9602037",
+      "barcode": "2276329846713",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "9048",
+      "cycle_hash": "91781dfe33",
+      "first_seen": "2026-09-03T13:27:40.782797+00:00",
+      "cost": 600.0,
+      "price": 4800.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1238,
+      "spec_n": 8,
+      "dims": {
+        "length": 50.0,
+        "width": 35.0,
+        "height": 50.0,
+        "weight": 1.438
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.792972+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-87931769",
+      "name": "Воздушно пузырьковая пленка, 5*0.4 м «Компакт», 55 г/м², двухслойная",
+      "article": "9600155",
+      "barcode": "2376687931769",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2050",
+      "cycle_hash": "91781dfe33",
+      "first_seen": "2026-09-03T13:27:40.782890+00:00",
+      "cost": 65.0,
+      "price": 520.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1097,
+      "spec_n": 8,
+      "dims": {
+        "length": 40.0,
+        "width": 11.5,
+        "height": 11.5,
+        "weight": 0.122
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.794449+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-87309612",
+      "name": "Воздушно пузырьковая пленка, 100*0.75 м «МиниБабл», 25 г/м², двухслойная",
+      "article": "9605392",
+      "barcode": "2952287309612",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1588731",
+      "cycle_hash": "91781dfe33",
+      "first_seen": "2026-09-03T13:27:40.782950+00:00",
+      "cost": 700.0,
+      "price": 5600.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1105,
+      "spec_n": 8,
+      "dims": {
+        "length": 75.0,
+        "width": 38.0,
+        "height": 38.0,
+        "weight": 1.86
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.795722+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-53416854",
+      "name": "Воздушно пузырьковая пленка, 50*0.3 м «Компакт», 40 г/м², двухслойная",
+      "article": "9601512",
+      "barcode": "2803953416854",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "6335",
+      "cycle_hash": "91781dfe33",
+      "first_seen": "2026-09-03T13:27:40.782995+00:00",
+      "cost": 170.0,
+      "price": 1360.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1104,
+      "spec_n": 8,
+      "dims": {
+        "length": 30.0,
+        "width": 48.0,
+        "height": 48.0,
+        "weight": 0.54
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-03T13:27:40.797066+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "91781dfe33",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-16214506",
+      "name": "Воздушно пузырьковая пленка, 50*1.5 м «Бизнес», 30 г/м², двухслойная",
+      "article": "9602472",
+      "barcode": "2614816214506",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "10143",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445148+00:00",
+      "cost": 770.0,
+      "price": 6160.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 2.25
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.349128+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-17739462",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «Бизнес», 30 г/м², двухслойная",
+      "article": "9602473",
+      "barcode": "2360817739462",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "10144",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445177+00:00",
+      "cost": 1580.0,
+      "price": 12640.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 65.4,
+        "height": 65.4,
+        "weight": 4.5
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.351931+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-51627659",
+      "name": "Воздушно пузырьковая пленка, 50*1.2 м «Бизнес», 30 г/м², двухслойная",
+      "article": "9602489",
+      "barcode": "2669051627659",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "10212",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445195+00:00",
+      "cost": 620.0,
+      "price": 4960.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1122,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 1.8
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.356419+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-54145852",
+      "name": "Воздушно пузырьковая пленка, 100*1.2 м «Бизнес», 30 г/м², двухслойная",
+      "article": "9602490",
+      "barcode": "2487154145852",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "10213",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445208+00:00",
+      "cost": 1230.0,
+      "price": 9840.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 65.4,
+        "height": 65.4,
+        "weight": 3.6
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.359110+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-56925082",
+      "name": "Воздушно пузырьковая пленка, 2*0.4 м «МалышОК», 55 г/м², двухслойная",
+      "article": "9602694",
+      "barcode": "2839356925082",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "10774",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445221+00:00",
+      "cost": 35.0,
+      "price": 280.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 40.0,
+        "width": 8.1,
+        "height": 8.1,
+        "weight": 0.046
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.361760+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-20503734",
+      "name": "Воздушно пузырьковая пленка, 100*0.3 м «МиниБабл», 25 г/м², двухслойная",
+      "article": "9605412",
+      "barcode": "2426620503734",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1598444",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445234+00:00",
+      "cost": 300.0,
+      "price": 2400.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1128,
+      "spec_n": 9,
+      "dims": {
+        "length": 30.0,
+        "width": 42.9,
+        "height": 42.9,
+        "weight": 0.74
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.364329+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-33849601",
+      "name": "Воздушно пузырьковая пленка, 100*0.5 м «МиниБабл», 25 г/м², двухслойная",
+      "article": "9605413",
+      "barcode": "2181033849601",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1598457",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445246+00:00",
+      "cost": 490.0,
+      "price": 3920.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1128,
+      "spec_n": 9,
+      "dims": {
+        "length": 50.0,
+        "width": 42.9,
+        "height": 42.9,
+        "weight": 1.24
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.366917+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-63513197",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «МиниБабл», 25 г/м², двухслойная",
+      "article": "9605414",
+      "barcode": "2459363513197",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1598469",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445258+00:00",
+      "cost": 1350.0,
+      "price": 10800.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1130,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 42.9,
+        "height": 42.9,
+        "weight": 3.72
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.369445+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-49285152",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 50*0.5 м «Perforation», 40 г/м², двухслойная",
+      "article": "9604685",
+      "barcode": "2583849285152",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "190676",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445270+00:00",
+      "cost": 360.0,
+      "price": 2880.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 50.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 0.91
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.371992+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-26247053",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 50*0.5 м «Perforation», 60 г/м², трёхслойная",
+      "article": "9604686",
+      "barcode": "2451726247053",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "190745",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445282+00:00",
+      "cost": 540.0,
+      "price": 4320.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 50.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 1.26
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.374551+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-36274733",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 40 г/м², двухслойная",
+      "article": "9604687",
+      "barcode": "2040536274733",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "190775",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445293+00:00",
+      "cost": 2200.0,
+      "price": 17600.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1128,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 5.19
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.377089+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-54288181",
+      "name": "Воздушно пузырьковая пленка с перфорацией, 100*1.5 м «Perforation», 60 г/м², трёхслойная",
+      "article": "9604688",
+      "barcode": "2494254288181",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "190807",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445305+00:00",
+      "cost": 3300.0,
+      "price": 26400.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 7.3
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.379648+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-57807179",
+      "name": "Воздушно пузырьковая пленка, 50*1.5 м «Стандарт», 40 г/м², двухслойная",
+      "article": "9600073",
+      "barcode": "2261557807179",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1955",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445316+00:00",
+      "cost": 990.0,
+      "price": 7920.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 2.72
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.382361+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-26558215",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт», 40 г/м², двухслойная",
+      "article": "9600092",
+      "barcode": "2310226558215",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1971",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445332+00:00",
+      "cost": 2050.0,
+      "price": 16400.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1128,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 5.19
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.385025+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-71632066",
+      "name": "Воздушно пузырьковая пленка, 10*1.2 м «Стандарт», 55 г/м², двухслойная",
+      "article": "9600094",
+      "barcode": "2192771632066",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "1975",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445344+00:00",
+      "cost": 370.0,
+      "price": 2960.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 19.2,
+        "height": 19.2,
+        "weight": 0.66
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.387717+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-56738137",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Black bubble», 40 г/м², чёрная, двухслойная",
+      "article": "9603855",
+      "barcode": "2849756738137",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "20007",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445355+00:00",
+      "cost": 500.0,
+      "price": 4000.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1118,
+      "spec_n": 9,
+      "dims": {
+        "length": 60.0,
+        "width": 50.8,
+        "height": 50.8,
+        "weight": 1.283
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.390250+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-09219228",
+      "name": "Биг бабл, 25*1.2 м, 130 г/м², трёхслойный",
+      "article": "9600233",
+      "barcode": "2108209219228",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2043",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445368+00:00",
+      "cost": 2000.0,
+      "price": 16000.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 3.9
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.392769+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-86551711",
+      "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт», 40 г/м², двухслойная",
+      "article": "9600239",
+      "barcode": "2115586551711",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2113",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445379+00:00",
+      "cost": 1620.0,
+      "price": 12960.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1128,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 4.15
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.395310+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-12034838",
+      "name": "Биг бабл, 25*1.2 м, 90 г/м², двухслойный",
+      "article": "9601395",
+      "barcode": "2991412034838",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2187",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445391+00:00",
+      "cost": 1400.0,
+      "price": 11200.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 2.7
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.397874+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-47555504",
+      "name": "Воздушно пузырьковая пленка, 50*1.2 м «Стандарт», 40 г/м², двухслойная",
+      "article": "9600513",
+      "barcode": "2564247555504",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2334",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445402+00:00",
+      "cost": 780.0,
+      "price": 6240.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 2.17
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.400408+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-20980160",
+      "name": "Биг бабл, 25*1.5 м, 130 г/м², трёхслойный",
+      "article": "9600911",
+      "barcode": "2832520980160",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2833",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445421+00:00",
+      "cost": 2500.0,
+      "price": 20000.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1132,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 4.87
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.402917+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-96812616",
+      "name": "Воздушно пузырьковая пленка, 50*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "article": "9600940",
+      "barcode": "2226396812616",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "2862",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445433+00:00",
+      "cost": 1500.0,
+      "price": 12000.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 3.78
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.405454+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-70813041",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Black bubble», 60 г/м², чёрная, трёхслойная",
+      "article": "9604903",
+      "barcode": "2333970813041",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "375635",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445445+00:00",
+      "cost": 710.0,
+      "price": 5680.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1114,
+      "spec_n": 9,
+      "dims": {
+        "length": 60.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 1.9
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.408025+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-47726061",
+      "name": "Воздушно пузырьковая пленка, 100*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "article": "9600892",
+      "barcode": "2684147726061",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5653",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445458+00:00",
+      "cost": 2380.0,
+      "price": 19040.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1128,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 5.84
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.410596+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-15723146",
+      "name": "Воздушно пузырьковая пленка, 50*1.2 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "article": "9600879",
+      "barcode": "2566015723146",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5813",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445473+00:00",
+      "cost": 1200.0,
+      "price": 9600.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 120.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 3.02
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.413159+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-63700297",
+      "name": "Воздушно пузырьковая пленка, 100*1.5 м «Стандарт Плюс», 60 г/м², трёхслойная",
+      "article": "9600899",
+      "barcode": "2364363700297",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5827",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445485+00:00",
+      "cost": 2980.0,
+      "price": 23840.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 7.3
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.415662+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-07058684",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Компакт», 40 г/м², двухслойная",
+      "article": "9601114",
+      "barcode": "2413607058684",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5904",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445497+00:00",
+      "cost": 430.0,
+      "price": 3440.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 60.0,
+        "width": 54.2,
+        "height": 54.2,
+        "weight": 1.09
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.418650+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-04235344",
+      "name": "Воздушно пузырьковая пленка, 100*0.6 м «Компакт», 40 г/м², двухслойная",
+      "article": "9601115",
+      "barcode": "2180004235344",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5905",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445508+00:00",
+      "cost": 850.0,
+      "price": 6800.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 60.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 2.07
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.421741+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-72549324",
+      "name": "Воздушно пузырьковая пленка, 50*0.6 м «Компакт Плюс», 60 г/м², трёхслойная",
+      "article": "9601120",
+      "barcode": "2266672549324",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5910",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445520+00:00",
+      "cost": 610.0,
+      "price": 4880.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 60.0,
+        "width": 56.4,
+        "height": 56.4,
+        "weight": 1.51
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.424380+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-94366517",
+      "name": "Воздушно пузырьковая пленка, 100*0.6 м «Компакт Плюс», 60 г/м², трёхслойная",
+      "article": "9601121",
+      "barcode": "2729994366517",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "5911",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445532+00:00",
+      "cost": 1190.0,
+      "price": 9520.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 60.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 2.92
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.426900+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-37280156",
+      "name": "Биг бабл, 25*1.5 м, 90 г/м², двухслойный",
+      "article": "9600318",
+      "barcode": "2791337280156",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "6169",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445544+00:00",
+      "cost": 1700.0,
+      "price": 13600.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1130,
+      "spec_n": 9,
+      "dims": {
+        "length": 150.0,
+        "width": 48.5,
+        "height": 48.5,
+        "weight": 3.37
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.429414+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-08729795",
+      "name": "Воздушно пузырьковая пленка, 100*0.3 м «Компакт», 40 г/м², двухслойная",
+      "article": "9601513",
+      "barcode": "2185508729795",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "6336",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445556+00:00",
+      "cost": 420.0,
+      "price": 3360.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1126,
+      "spec_n": 9,
+      "dims": {
+        "length": 30.0,
+        "width": 76.7,
+        "height": 76.7,
+        "weight": 1.04
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.431971+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    },
+    {
+      "offer_id": "ARB-73557155",
+      "name": "Воздушно пузырьковая пленка, 100*0.3 м «Компакт Плюс», 60 г/м², трёхслойная",
+      "article": "9601516",
+      "barcode": "2282273557155",
+      "vendor": "Без бренда",
+      "store_slug": "atlas-express-film",
+      "category_slug": "vozdushno-puzyrkovaya-plenka",
+      "donor_pid": "6339",
+      "cycle_hash": "704e29228a",
+      "first_seen": "2026-09-08T10:06:39.445569+00:00",
+      "cost": 610.0,
+      "price": 4880.0,
+      "markup": 8.0,
+      "stock_count": 100,
+      "n_photos": 1,
+      "description_len": 1124,
+      "spec_n": 9,
+      "dims": {
+        "length": 30.0,
+        "width": 80.1,
+        "height": 80.1,
+        "weight": 1.8
+      },
+      "last_verified": {
+        "verdict": "PASS",
+        "ts": "2026-09-08T13:08:18.434472+00:00",
+        "store_slug": "atlas-express-film",
+        "cycle_hash": "704e29228a",
+        "note": "СВЕРКА: витрина PUBLISHED + остатки FIT"
+      },
+      "warehouse_id": 2390811,
+      "stock_event_count": 100
+    }
+  ]
+}

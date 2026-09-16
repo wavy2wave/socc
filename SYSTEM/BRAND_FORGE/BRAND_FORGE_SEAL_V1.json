@@ -1,0 +1,46 @@
+{
+  "id": "BRAND_FORGE_SEAL_V1",
+  "schema": "socc.brand.seal.v1",
+  "status": "SEALED",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "what_is_sealed": "The ANNA brand identity as a coherent, canonical, apply-eligible SYSTEM (strategy -> verbal -> visual -> design system -> applied surfaces). NOT a live launch.",
+  "chain_verified": {
+    "P0_genesis": "SEALED — cell constitution, LINE, gates, roles",
+    "P1_strategy_core": "ACCEPTED — target/audience/positioning/archetype(Caregiver+Sage)/platform/verbal; research must-fix CLEARED via F1.1 hardening (direct web)",
+    "P2_visual_core": "HARDENED — D3 logo x4 + mark + patient avatar (dual-identity law), type, WCAG tool-verified",
+    "P3_system_canon": "DONE — ANNA_DESIGN_CANON_V1 (single source of truth) + anna-tokens.css + brand-sheet",
+    "P4_application": "DONE — B2B landing (F4.1) + Telegram/email touchpoints (F4.2), no fabricated proof"
+  },
+  "checks": {
+    "strategy_evidence_backed": true,
+    "research_hardened_with_sources": true,
+    "visual_renders_16_to_512": true,
+    "contrast_wcag_tool_verified": true,
+    "single_source_of_truth_exists": true,
+    "tokens_bind_to_code": true,
+    "applied_surfaces_render": true,
+    "dual_identity_law_honored": true,
+    "no_fabricated_proof": true,
+    "no_fake_pass": true,
+    "committed_to_git": true,
+    "no_network_publish": true,
+    "no_revenue_claim": true,
+    "no_agi_claim": true,
+    "brand_not_live": true
+  },
+  "creator_accepted_open_risk": {
+    "disclosure": "FULL STEALTH kept by creator despite evidence favouring transparency for the booking use case; logged as an accepted, monitored open risk (NOT hidden)."
+  },
+  "deferred_not_blocking_canon_seal": [
+    "vertical logo lockup + motion (F2.6)",
+    "real lead form + backend on landing",
+    "live Telegram wiring of welcome/pinned into ANNA runtime",
+    "PMS/CRM integration + reminders (competitor table-stakes -> roadmap)",
+    "stealth-risk monitoring + non-negotiable human-handoff at launch",
+    "real ROI/pain number from a clinic's own data or ANNA LEDGER (never the web)"
+  ],
+  "forge_reusable": "Brand Forge cell remains a permanent SOCC capability: it can brand the next born entity in hours using this same gated LINE.",
+  "seal_verdict": "ANNA_BRAND_CANON_SEALED_APPLY_ELIGIBLE",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BRAND_FORGE_SEAL_V1_PROOF.json",
+  "truth_boundary": "Brand seal. Seals the ANNA brand SYSTEM as canonical and apply-eligible, with the chain verified and open items disclosed. It does NOT publish the brand, launch ANNA, wire Telegram, make revenue, or claim AGI. brand_live=False. The full-stealth disclosure risk is creator-accepted and logged open, not resolved."
+}

@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-06-09T21:06:10.889864+00:00",
+  "current_expected": "build_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "first_action": "build_entity_substrate_construction_plan_v1",
+  "id": "ENTITY_SUBSTRATE_FOREGROUND_RUNNER_CONTRACT_V1",
+  "lifecycle": [
+    "SELECTED",
+    "LOCAL_LINEAGE_CHECK",
+    "DOING",
+    "DONE",
+    "CLOSED",
+    "NEXT"
+  ],
+  "mode": "foreground_route_bound_continuous_runner",
+  "next_after_build": "run_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
+  "old_project_dependency_after_ingest": false,
+  "runner_script": "SYSTEM/AUTONOMY/continuous_self_construction/entity_substrate_runner/socc_entity_substrate_foreground_runner_v1.py",
+  "status": "BUILT",
+  "truth_boundary": "Runner contract. Foreground only. No daemon/background/network.",
+  "uses_local_ingest_bundle": "MIGRATION/old_project_ingest/supramental-agent/OLD_PROJECT_FULL_INGEST_MANIFEST_V1.json"
+}

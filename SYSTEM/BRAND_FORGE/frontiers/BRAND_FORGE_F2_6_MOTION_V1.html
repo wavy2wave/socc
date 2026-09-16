@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANNA · Motion — Спокойная забота</title>
+<style>
+  :root{--bg:#F5F3EE;--ink:#2E3D34;--muted:#6E7B71;--primary:#54705C;--primary-soft:#8AA897;--accent:#D9A679;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+  .wrap{max-width:760px;margin:0 auto;padding:46px 24px 90px}
+  .crumb{font-family:ui-monospace,Menlo,monospace;color:var(--muted);font-size:12px;margin-bottom:22px}
+  h2{font-size:13px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:42px 0 16px;font-weight:600}
+  .stage{background:#fff;border:1px solid rgba(46,61,52,.08);border-radius:18px;padding:34px;display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+  /* logo arc draw */
+  .arc-out,.arc-in{stroke-dasharray:120;stroke-dashoffset:120;animation:draw 1.1s .2s ease-out forwards}
+  .arc-in{animation-delay:.5s}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  /* online pulse */
+  .dot{display:inline-flex;align-items:center;gap:8px;font-size:14px;color:var(--primary)}
+  .dot i{width:11px;height:11px;border-radius:50%;background:#4F8A5B;animation:breath 3s ease-in-out infinite}
+  @keyframes breath{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.82)}}
+  /* button lift */
+  .btn{background:var(--primary);color:#fff;border:none;border-radius:12px;padding:13px 22px;font:600 15px Inter;cursor:pointer;transition:transform .2s cubic-bezier(.22,.61,.36,1),box-shadow .2s}
+  .btn:hover{transform:translateY(-2px);box-shadow:0 10px 22px rgba(46,61,52,.16)}
+  /* chat rise */
+  .chat{max-width:300px}
+  .bub{background:#fff;border:1px solid rgba(46,61,52,.07);border-radius:14px;border-bottom-left-radius:5px;padding:10px 14px;font-size:14px;margin:8px 0;opacity:0;transform:translateY(8px);animation:rise .7s ease-out forwards}
+  .bub:nth-child(1){animation-delay:.2s}.bub:nth-child(2){animation-delay:.9s}.bub:nth-child(3){animation-delay:1.6s}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .cap{font-size:13px;color:var(--muted);margin-top:10px}
+  .replay{background:transparent;border:1.5px solid var(--primary-soft);color:var(--primary);border-radius:10px;padding:8px 16px;font:600 13px Inter;cursor:pointer}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;opacity:1!important;transform:none!important;stroke-dashoffset:0!important}}
+</style></head>
+<body><div class="wrap" id="root">
+<div class="crumb">SOCC ▸ BRAND FORGE ▸ P2 ▸ F2.6 MOTION ▸ REVIEW</div>
+<h1 style="font-size:24px;margin:0 0 4px">Motion — спокойное дыхание</h1>
+<p style="color:var(--muted);margin:0 0 8px">Мягкие приземления, никаких прыжков. Анимация успокаивает, не дёргает.</p>
+<button class="replay" onclick="var r=document.getElementById('root');r.style.display='none';void r.offsetWidth;r.style.display=''">↻ Повторить</button>
+
+<h2>Логотип — арка рисуется</h2>
+<div class="stage">
+  <svg viewBox="0 0 120 120" width="92"><rect width="120" height="120" rx="28" fill="#5E7A66"/><path class="arc-out" d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/><path class="arc-in" d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/><circle cx="60" cy="86" r="4.5" fill="#F1E9DD"/></svg>
+  <div class="cap">stroke-dashoffset · 1.1s ease-out · как спокойный вдох</div>
+</div>
+
+<h2>Статус «онлайн» — пульс-дыхание</h2>
+<div class="stage"><span class="dot"><i></i> онлайн · 24/7</span><div class="cap">3s ease-in-out, бесконечно — живое присутствие</div></div>
+
+<h2>Кнопка — мягкий подъём</h2>
+<div class="stage"><button class="btn">Записать на приём</button><div class="cap">наведи курсор · translateY -2px + тень · 200ms</div></div>
+
+<h2>Сообщения — появляются с подъёмом</h2>
+<div class="stage"><div class="chat">
+  <div class="bub">Здравствуйте! Что вас беспокоит?</div>
+  <div class="bub">Есть сегодня в 18:40 — удобно?</div>
+  <div class="bub">Записала, кабинет 3 🌿</div>
+</div><div class="cap">fade + translateY, последовательно · диалог «дышит»</div></div>
+
+<p class="cap" style="margin-top:30px">Уважается <code>prefers-reduced-motion</code>: при системной настройке анимации отключаются.</p>
+</div></body></html>

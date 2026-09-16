@@ -1,0 +1,16 @@
+{
+  "id": "resale-avito-RU-bc1049a2bd",
+  "ts": "2026-07-01T08:18:35.324075+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": false
+  },
+  "hard_failures": [
+    "t0_discover_falsifiable"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_resale-avito-RU-bc1049a2bd_repair_required",
+  "truth_boundary": "t0: лот не прошёл фальсиф. тест/примитив",
+  "proof_hash": "9df127ec248dfc80"
+}

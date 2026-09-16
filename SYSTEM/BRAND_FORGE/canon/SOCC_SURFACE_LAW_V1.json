@@ -1,0 +1,32 @@
+{
+  "id": "SOCC_SURFACE_LAW_V1",
+  "schema": "socc.surface_law.v1",
+  "status": "ACTIVE",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "purpose": "Resolves 'which canon styles which screen'. Two tiers — operator vs product — so SOCC's canonical style is used EVERYWHERE it belongs (operator surfaces), and never bleeds onto customer surfaces (which would kill sales).",
+
+  "tier_1_operator_surfaces": {
+    "who_sees": "the creator/operator (you) — never the customer",
+    "canon": "SOCC_DESIGN_CANON_V1 (matrix-minimalism: bg #0B0F14, cyan #22D3EE, mono, header box, badges, state dots)",
+    "examples": ["Brand Forge control room", "all dashboards/panels", "proof-chain views", "the brand architecture map", "every internal tool/console"],
+    "rule": "ALWAYS render through SOCC canon. This is your cockpit. One style, everywhere here."
+  },
+
+  "tier_2_product_surfaces": {
+    "who_sees": "the customer (clinic owner, patient)",
+    "canon": "the ENTITY's own brand canon (ANNA_DESIGN_CANON = D3; Марк = copper; etc.)",
+    "examples": ["ANNA landing", "ANNA Telegram chat", "lead form", "moodboard/brand-sheet (they show the product)", "Марк's surfaces"],
+    "rule": "render through the PRODUCT's brand. The matrix/SOCC look must NEVER appear to a customer."
+  },
+
+  "what_every_tier_shares": [
+    "VOICE-law from SOCC canon (calm, precise, honest, no hype, no fake PASS)",
+    "PROOF discipline (truth_boundary, REVIEW vs SEALED, gates)",
+    "design-TOKEN structure (same token shape, different values per brand)"
+  ],
+  "what_differs": "the PALETTE + type skin + mark — operator = matrix; each product = its own warm brand",
+
+  "why_you_didnt_see_socc_style": "Operator views were emitted as JSON panels (data) but rarely RENDERED into a SOCC-canon screen; product views were (correctly) in ANNA's warm brand. Fix = a single SOCC-canon control room that renders the whole Forge.",
+  "binds": {"control_room": "SYSTEM/BRAND_FORGE/runtime/BRAND_FORGE_CONTROL_ROOM.html"},
+  "truth_boundary": "Surface law only. Declares operator-vs-product canon assignment for all SOCC surfaces. Renders nothing by itself; the control room is the operator-tier render."
+}

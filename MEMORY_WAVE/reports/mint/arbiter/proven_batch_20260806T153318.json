@@ -1,0 +1,274 @@
+{
+  "ts": "2026-08-06T15:33:18.322985+00:00",
+  "finished_at": "2026-08-06T15:36:40.233901+00:00",
+  "city": "msk",
+  "limit_per_category": 4,
+  "delivery": 325.0,
+  "house_brand": "RAINO",
+  "categories_run": 15,
+  "scanned": 8,
+  "proven": 0,
+  "rejected": 8,
+  "categories_failed": [],
+  "categories_zero_proven": [
+    "органайзер для кабелей",
+    "точилка для ножей",
+    "держатель для телефона",
+    "крючки самоклеящиеся",
+    "силиконовые формы для выпечки",
+    "сетка для стирки белья",
+    "антисептик для рук",
+    "щетка для одежды",
+    "коврик для мыши",
+    "чехол для чемодана",
+    "лента светодиодная",
+    "фильтр для воды",
+    "перчатки хозяйственные",
+    "мешки для пылесоса",
+    "стельки ортопедические"
+  ],
+  "per_category": [
+    {
+      "category": "органайзер для кабелей",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "точилка для ножей",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "держатель для телефона",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "силиконовые формы для выпечки",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "сетка для стирки белья",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "антисептик для рук",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "щетка для одежды",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "коврик для мыши",
+      "scanned": 4,
+      "proven": 0,
+      "rejected": 4,
+      "skipped_too_pricey": 0,
+      "market_ceiling": 600.0,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": 51.0,
+        "max": 200.0,
+        "ratio": 3.92,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "чехол для чемодана",
+      "scanned": 4,
+      "proven": 0,
+      "rejected": 1,
+      "skipped_too_pricey": 3,
+      "market_ceiling": 2310.0,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": 493.0,
+        "max": 770.0,
+        "ratio": 1.56,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "лента светодиодная",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "фильтр для воды",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "перчатки хозяйственные",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "мешки для пылесоса",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    },
+    {
+      "category": "стельки ортопедические",
+      "scanned": 0,
+      "proven": 0,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "market_ceiling": null,
+      "winners": [],
+      "error": null,
+      "spread": {
+        "min": null,
+        "max": null,
+        "ratio": null,
+        "spread_ok": false
+      }
+    }
+  ],
+  "winners": [],
+  "honesty": "PROVEN = доказанная ГИПОТЕЗА (спрос+маржа+закон+честная цена после комиссии Озон 65% и доставки), НЕ доход. Реальный ₽ — только verified в revenue_ledger."
+}

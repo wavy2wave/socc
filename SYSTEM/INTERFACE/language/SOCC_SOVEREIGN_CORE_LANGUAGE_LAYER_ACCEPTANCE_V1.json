@@ -1,0 +1,32 @@
+{
+  "accepted_as": [
+    "creator intent interpreter",
+    "law-bound language organ",
+    "proof-chain-aware dialogue surface",
+    "dashboard-connected future binding candidate",
+    "current_lawful_next-only proposal layer"
+  ],
+  "accepted_layer": "SYSTEM/INTERFACE/language/SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_V1.json",
+  "active_pointer": "SYSTEM/INTERFACE/language/ACTIVE_SOVEREIGN_CORE_LANGUAGE_LAYER.json",
+  "capability": "SOCC_HAS_CANONICAL_NON_EXECUTING_CORE_LANGUAGE_ORGAN",
+  "created_at_utc": "2026-06-09T09:14:28.125913+00:00",
+  "id": "SOCC_SOVEREIGN_CORE_LANGUAGE_LAYER_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_language_dashboard_binding_v1",
+  "not_accepted_as": [
+    "executor",
+    "daemon",
+    "background loop",
+    "network actor",
+    "route mutator outside guard",
+    "AGI claim",
+    "MW route"
+  ],
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted language layer is canonical but non-executing. It may be bound to dashboard next, but it cannot execute actions.",
+  "upstream_proofs": {
+    "build": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+    "reconcile": "SOVEREIGN/PROOF/proof_chain/SOCC_RECONCILE_LANGUAGE_LAYER_USING_DISCOVERED_AUTHORITY_PATHS_V1_PROOF.json",
+    "review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+    "validate": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json"
+  }
+}

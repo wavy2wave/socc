@@ -1,0 +1,38 @@
+{
+  "commit_invariants": [
+    "pulse.lawful_next == route.lawful_next",
+    "panel.lawful_next == route.lawful_next",
+    "progress.lawful_next == route.lawful_next",
+    "pulse.truth_boundary == route.truth_boundary",
+    "panel.truth_boundary == route.truth_boundary",
+    "progress.truth_boundary == route.truth_boundary",
+    "pulse.route_authority_upstream_proof == route.upstream_proof",
+    "panel.route_authority_upstream_proof == route.upstream_proof",
+    "progress.route_authority_upstream_proof == route.upstream_proof",
+    "all forbidden escalation flags remain false"
+  ],
+  "created_at_msk": "2026-06-16T18:40:48+03:00",
+  "created_at_utc": "2026-06-16T15:40:48.830781+00:00",
+  "forbidden_escalations": [
+    "continuous_loop_enabled",
+    "daemon_running",
+    "scheduler_installed",
+    "background_loop_enabled",
+    "network_used",
+    "queue_widening_allowed",
+    "entity_birth_allowed",
+    "anna_birth_allowed",
+    "agi_claim_allowed",
+    "final_canon_approval_allowed"
+  ],
+  "id": "ROUTE_AUTHORITY_ATOMIC_COMMIT_HELPER_SPEC_V1",
+  "purpose": "Eliminate writeback_order_drift by committing route/pulse/panel/progress coherently.",
+  "status": "BUILT",
+  "surfaces": [
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/autonomy/self_building/status_panel/runtime/SOCC_SELF_BUILDING_PULSE_V1.json",
+    "core/socc/autonomy/self_building/status_panel/runtime/SELF_BUILDING_RUNTIME_STATUS_PANEL_V1.json",
+    "core/socc/autonomy/self_building/loop/SELF_BUILDING_VISIBLE_PROGRESS_V1.json"
+  ],
+  "truth_boundary": "Route-authority atomic commit helper build only. This materializes a bounded helper that updates CURRENT_ROUTE_AUTHORITY, pulse, panel, and progress as one coherent commit with preflight checks, forbidden escalation guards, hashes, and rollback snapshots. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

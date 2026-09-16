@@ -1,0 +1,36 @@
+{
+  "acceptance_verdict": "LANGUAGE_DASHBOARD_BINDING_ACCEPTED_AS_CANONICAL_READ_ONLY_CREATOR_DIALOGUE_SURFACE",
+  "accepted_as": [
+    "read-only creator dialogue surface binding",
+    "language status panel source",
+    "lawful intent protocol display source",
+    "proof-chain visibility source",
+    "current_lawful_next visibility source",
+    "dashboard-connected language organ"
+  ],
+  "accepted_binding": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_V1.json",
+  "active_binding": "SYSTEM/INTERFACE/bindings/language_dashboard/ACTIVE_ACCEPTED_LANGUAGE_DASHBOARD_BINDING.json",
+  "binding_view": "SYSTEM/INTERFACE/dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_VIEW_V1.md",
+  "capability": "SOCC_HAS_CANONICAL_LANGUAGE_DASHBOARD_READ_ONLY_BINDING",
+  "created_at_utc": "2026-06-09T09:21:46.198258+00:00",
+  "id": "SOCC_LANGUAGE_DASHBOARD_BINDING_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_read_only_creator_dialogue_view_v1",
+  "not_accepted_as": [
+    "executor",
+    "route mutator",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted binding is canonical read-only dashboard-language connection. It does not execute language, execute creator intent, mutate route outside lawful transitions, start daemon/background, use network, or launch autonomy.",
+  "upstream_proofs": {
+    "build": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+    "language_acceptance": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_SOVEREIGN_CORE_LANGUAGE_LAYER_V1_PROOF.json",
+    "review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+    "validate": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json"
+  }
+}

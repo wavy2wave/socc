@@ -1,0 +1,20 @@
+{
+  "accepted_layers_ok": true,
+  "bad_required_proofs": [],
+  "bad_route_flags": [],
+  "bad_safety": [],
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1_PROOF.json",
+  "created_at_utc": "2026-06-08T18:50:59.736754+00:00",
+  "current_step": "validate_controlled_continuous_autonomy_seal_v1",
+  "id": "CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_VALIDATION_V1",
+  "lawful_next": "review_controlled_continuous_autonomy_seal_v1",
+  "missing_layers": [],
+  "required_proofs_ok": true,
+  "route_safety_flags_ok": true,
+  "safety_flags_ok": true,
+  "seal": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1.json",
+  "seal_md": "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_CONTINUOUS_AUTONOMY_SEAL_V1.md",
+  "status": "PASS",
+  "truth_boundary": "Seal validation only. No daemon/background/network.",
+  "validated_step": "build_controlled_continuous_autonomy_seal_v1"
+}

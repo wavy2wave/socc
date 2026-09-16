@@ -1,0 +1,24 @@
+{
+ "schema": "ymarket.categorist.readiness.paketi.v1",
+ "purpose": "Живой сухой скан (0₽ GET) ПОСЛЕ снятия T3-маппинг-гейта органом: need_mapping 0, но ready 0 — категория БОГАТА кандидатами, данные-слой (ОВХ dims/склад) не конвертит. Вердикт needs_data: НЕ негатив, НЕ фейк-пасс.",
+ "run": {
+  "configured": true,
+  "slug": "paketi",
+  "source": "live",
+  "grid_main": 60,
+  "grid_related": 11,
+  "selected": 0,
+  "needs_data": 53,
+  "parcel_dims": 16,
+  "rejected": 18,
+  "ready": 0,
+  "errors": 0,
+  "topfill": 0,
+  "need_mapping": 0,
+  "no_pictures": 0,
+  "avg_emitted": 0.0
+ },
+ "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+ "rubicon": "не пересечён: 0₽ GET донора; запись локального канона.",
+ "generated": "2026-09-04"
+}

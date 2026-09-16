@@ -1,0 +1,57 @@
+{
+  "id": "BRAND_FORGE_F1_1_RESEARCH_HARDENING_V1",
+  "schema": "socc.brand.research_hardening.v1",
+  "phase": "P1",
+  "frontier": "F1.1 (hardening — clears the deferred scout must-fix)",
+  "status": "REVIEW",
+  "created_at_utc": "2026-06-30T00:00:00+00:00",
+  "method": "Direct WebSearch by the orchestrator (reliable path; bypasses the workflow gateway that 403'd the original scouts).",
+  "covers": "the two failed scouts: direct competitors + buyer psychology",
+
+  "competitor_teardown": [
+    {"name": "Rondah AI", "what": "PMS-embedded dental receptionist, dental-specific intelligence (procedure types, urgency routing, insurance)", "claim": "95% fewer scheduling errors", "anna_gap": "US, voice/PMS-centric, English — NOT CIS/Telegram"},
+    {"name": "HeyGent", "what": "dental-specific, call-forward + PMS, reminders via call/text/email, DSO multi-location", "claim": "ROI 3-5x yr1; 'misses 50-100 calls/mo → ~$100k/yr loss' (VENDOR claim, not defensible for CIS — see ROI memory)", "anna_gap": "voice/PMS, English, US"},
+    {"name": "Patientdesk.ai", "what": "full front-desk: insurance verification, payment collection, 24/7, books into PMS", "claim": "'pays for itself with one implant/month'", "anna_gap": "voice, PMS API, Western"},
+    {"name": "TrueLark / Weave", "what": "human-like AI voice, unified call+text+calendar inbox; Dentrix/Eaglesoft/Open Dental", "anna_gap": "voice-first, US PMS ecosystem"},
+    {"name": "CitaFlow", "what": "all-in-one PM + AI receptionist + treatment-plan mgmt + WhatsApp notifications", "anna_gap": "full-suite PM, not Telegram-native CIS"},
+    {"name": "DentalAI Assist", "what": "scheduling optimization, no-shows -40%, waitlist auto-fill", "anna_gap": "scheduling engine, Western"}
+  ],
+  "category_table_stakes": ["deep PMS integration (Dentrix/Eaglesoft/Open Dental)", "dental-specific knowledge", "full front-desk (insurance/payment)", "24/7 call answering", "DSO/multilocation"],
+  "anna_white_space": "EVERY major player is Western, voice/PMS-centric, English. NONE is CIS/Telegram-native with indistinguishable-human RUSSIAN warmth. ANNA's lane = Telegram-first CIS + warmth + stealth-human. RISK: ANNA today lacks PMS/CRM integration + reminders that are competitor table-stakes — roadmap must add booking-system integration + reminders.",
+
+  "buyer_psychology": {
+    "central_barrier": "patient TRUST — patients hesitant about AI (only ~10% comfortable with AI diagnoses, Statista 2023)",
+    "good_news_for_anna": "administrative/booking is the HIGHEST-comfort AI use case (low stakes); some patients trust it MORE 'due to lack of judgment' — exactly ANNA's job",
+    "owner_objections": ["пациенты не примут не-человека", "данные/приватность", "ошибка ИИ → удар по репутации (кейс Tessa)", "потеря человеческого тепла", "ломка процессов/роли админа"],
+    "research_backed_trust_builders": ["ПРОЗРАЧНОСТЬ/disclosure ('this uses AI')", "человек всегда доступен", "гибрид человек+ИИ"]
+  },
+
+  "guardian_verdict_on_stealth": {
+    "evidence_challenges_full_stealth": true,
+    "why": [
+      "1) Booking is precisely the use case patients ALREADY accept from AI — so full stealth may be UNNECESSARY for adoption.",
+      "2) The research-backed trust builders are TRANSPARENCY + human-reachable + hybrid — the opposite of masking.",
+      "3) Detection risk = reputational damage (Tessa), and the owner's #1 fear is exactly a patient feeling deceived/unheard."
+    ],
+    "counterpoint_preserving_creator_choice": [
+      "In CIS/Telegram, warmth + indistinguishable Russian may still be a real differentiator vs cold Western voice bots.",
+      "The 'lack of judgment' comfort does NOT require disclosure to capture.",
+      "Stealth + flawless human handoff can still work IF quality never slips."
+    ],
+    "recommendation": "REVISIT toward a 'warm, lightly-transparent, always-human-reachable' stance (research-optimal) — OR keep stealth but treat the human-handoff + never-slip-quality mitigations as NON-negotiable launch gates. CREATOR DECISION; not overridden.",
+    "verdict": "STRATEGY SURVIVES; disclosure stance flagged as the single highest-leverage risk, now with hard evidence."
+  },
+
+  "sources": [
+    "rondah.ai/blog/ai-receptionist-solutions-for-dental-practices-in-2025",
+    "heygent.ai",
+    "patientdesk.ai",
+    "truelark.com/solutions/dental/receptionist",
+    "citaflow.com/en/booking-software/dental-clinics",
+    "dentalaiassist.com/features/ai-dental-appointment-scheduling",
+    "techtarget.com/patientengagement Patient Trust in AI Chatbots",
+    "chcf.org Patients Say Yes to AI If Doctors Stay in Charge",
+    "pmc.ncbi.nlm.nih.gov/articles/PMC11865260 (AI hybrid chatbots healthcare)"
+  ],
+  "truth_boundary": "Research hardening for F1.1 via direct web search. Clears the two failed scouts (competitors + buyer psychology) with sourced evidence. Surfaces — does not resolve — a hard challenge to the full-stealth ruling. No network publish, no revenue, no AGI."
+}

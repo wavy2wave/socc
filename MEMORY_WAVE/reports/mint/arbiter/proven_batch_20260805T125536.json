@@ -1,0 +1,338 @@
+{
+  "ts": "2026-08-05T12:55:36.072690+00:00",
+  "finished_at": "2026-08-05T12:55:38.836565+00:00",
+  "city": "msk",
+  "limit_per_category": 4,
+  "delivery": 100.0,
+  "house_brand": "RAINO",
+  "categories_run": 2,
+  "scanned": 8,
+  "proven": 8,
+  "rejected": 0,
+  "categories_failed": [],
+  "categories_zero_proven": [],
+  "per_category": [
+    {
+      "category": "точилка для ножей",
+      "scanned": 4,
+      "proven": 4,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "winners": [
+        {
+          "category": "точилка для ножей",
+          "name": "Точилка для ножей и ножниц",
+          "sku": "176035400",
+          "url": "https://www.wildberries.ru/catalog/176035400/detail.aspx",
+          "cost_buy": 398.0,
+          "price_sell": 5970.0,
+          "profit_net": 1591.5,
+          "markup": 15.0,
+          "profit_per_rouble": 4.0,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 100,
+          "collision_risk": 12
+        },
+        {
+          "category": "точилка для ножей",
+          "name": "Точильный камень точилка для ножей",
+          "sku": "495464539",
+          "url": "https://www.wildberries.ru/catalog/495464539/detail.aspx",
+          "cost_buy": 172.0,
+          "price_sell": 2580.0,
+          "profit_net": 631.0,
+          "markup": 15.0,
+          "profit_per_rouble": 3.67,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 100,
+          "collision_risk": 12
+        },
+        {
+          "category": "точилка для ножей",
+          "name": "Точилка для ножей",
+          "sku": "492296408",
+          "url": "https://www.wildberries.ru/catalog/492296408/detail.aspx",
+          "cost_buy": 204.0,
+          "price_sell": 3060.0,
+          "profit_net": 767.0,
+          "markup": 15.0,
+          "profit_per_rouble": 3.76,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 100,
+          "collision_risk": 12
+        },
+        {
+          "category": "точилка для ножей",
+          "name": "Точилка для ножей",
+          "sku": "527608963",
+          "url": "https://www.wildberries.ru/catalog/527608963/detail.aspx",
+          "cost_buy": 227.0,
+          "price_sell": 3405.0,
+          "profit_net": 864.75,
+          "markup": 15.0,
+          "profit_per_rouble": 3.81,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 100,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "scanned": 4,
+      "proven": 4,
+      "rejected": 0,
+      "skipped_too_pricey": 0,
+      "winners": [
+        {
+          "category": "крючки самоклеящиеся",
+          "name": "Крючки самоклеящиеся настенные",
+          "sku": "792630192",
+          "url": "https://www.wildberries.ru/catalog/792630192/detail.aspx",
+          "cost_buy": 86.0,
+          "price_sell": 1290.0,
+          "profit_net": 265.5,
+          "markup": 15.0,
+          "profit_per_rouble": 3.09,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 100,
+          "collision_risk": 12
+        },
+        {
+          "category": "крючки самоклеящиеся",
+          "name": "Крючки самоклеящиеся, крепление без сверления",
+          "sku": "1080498663",
+          "url": "https://www.wildberries.ru/catalog/1080498663/detail.aspx",
+          "cost_buy": 168.0,
+          "price_sell": 2520.0,
+          "profit_net": 614.0,
+          "markup": 15.0,
+          "profit_per_rouble": 3.65,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 88,
+          "collision_risk": 12
+        },
+        {
+          "category": "крючки самоклеящиеся",
+          "name": "Самоклеящиеся крючки для ванной 4 шт",
+          "sku": "933118635",
+          "url": "https://www.wildberries.ru/catalog/933118635/detail.aspx",
+          "cost_buy": 148.0,
+          "price_sell": 2220.0,
+          "profit_net": 529.0,
+          "markup": 15.0,
+          "profit_per_rouble": 3.57,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 85,
+          "collision_risk": 12
+        },
+        {
+          "category": "крючки самоклеящиеся",
+          "name": "Крючки самоклеющиеся IDEA для кухни и ванной прозрачные 8шт",
+          "sku": "211163676",
+          "url": "https://www.wildberries.ru/catalog/211163676/detail.aspx",
+          "cost_buy": 179.0,
+          "price_sell": 2685.0,
+          "profit_net": 660.75,
+          "markup": 15.0,
+          "profit_per_rouble": 3.69,
+          "strategy": "uniqueized_unlinkable",
+          "demand_strength": 100,
+          "collision_risk": 12
+        }
+      ],
+      "error": null
+    }
+  ],
+  "winners": [
+    {
+      "category": "точилка для ножей",
+      "name": "Точилка для ножей и ножниц",
+      "sku": "176035400",
+      "url": "https://www.wildberries.ru/catalog/176035400/detail.aspx",
+      "cost_buy": 398.0,
+      "price_sell": 5970.0,
+      "profit_net": 1591.5,
+      "markup": 15.0,
+      "profit_per_rouble": 4.0,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "точилка для ножей",
+      "name": "Точилка для ножей",
+      "sku": "527608963",
+      "url": "https://www.wildberries.ru/catalog/527608963/detail.aspx",
+      "cost_buy": 227.0,
+      "price_sell": 3405.0,
+      "profit_net": 864.75,
+      "markup": 15.0,
+      "profit_per_rouble": 3.81,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "точилка для ножей",
+      "name": "Точилка для ножей",
+      "sku": "492296408",
+      "url": "https://www.wildberries.ru/catalog/492296408/detail.aspx",
+      "cost_buy": 204.0,
+      "price_sell": 3060.0,
+      "profit_net": 767.0,
+      "markup": 15.0,
+      "profit_per_rouble": 3.76,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "name": "Крючки самоклеющиеся IDEA для кухни и ванной прозрачные 8шт",
+      "sku": "211163676",
+      "url": "https://www.wildberries.ru/catalog/211163676/detail.aspx",
+      "cost_buy": 179.0,
+      "price_sell": 2685.0,
+      "profit_net": 660.75,
+      "markup": 15.0,
+      "profit_per_rouble": 3.69,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "точилка для ножей",
+      "name": "Точильный камень точилка для ножей",
+      "sku": "495464539",
+      "url": "https://www.wildberries.ru/catalog/495464539/detail.aspx",
+      "cost_buy": 172.0,
+      "price_sell": 2580.0,
+      "profit_net": 631.0,
+      "markup": 15.0,
+      "profit_per_rouble": 3.67,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 100,
+      "collision_risk": 12
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "name": "Крючки самоклеящиеся, крепление без сверления",
+      "sku": "1080498663",
+      "url": "https://www.wildberries.ru/catalog/1080498663/detail.aspx",
+      "cost_buy": 168.0,
+      "price_sell": 2520.0,
+      "profit_net": 614.0,
+      "markup": 15.0,
+      "profit_per_rouble": 3.65,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 88,
+      "collision_risk": 12
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "name": "Самоклеящиеся крючки для ванной 4 шт",
+      "sku": "933118635",
+      "url": "https://www.wildberries.ru/catalog/933118635/detail.aspx",
+      "cost_buy": 148.0,
+      "price_sell": 2220.0,
+      "profit_net": 529.0,
+      "markup": 15.0,
+      "profit_per_rouble": 3.57,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 85,
+      "collision_risk": 12
+    },
+    {
+      "category": "крючки самоклеящиеся",
+      "name": "Крючки самоклеящиеся настенные",
+      "sku": "792630192",
+      "url": "https://www.wildberries.ru/catalog/792630192/detail.aspx",
+      "cost_buy": 86.0,
+      "price_sell": 1290.0,
+      "profit_net": 265.5,
+      "markup": 15.0,
+      "profit_per_rouble": 3.09,
+      "strategy": "uniqueized_unlinkable",
+      "demand_strength": 100,
+      "collision_risk": 12
+    }
+  ],
+  "honesty": "PROVEN = доказанная ГИПОТЕЗА (спрос+маржа+закон+честная цена после комиссии Озон 65% и доставки), НЕ доход. Реальный ₽ — только verified в revenue_ledger.",
+  "invalidated": {
+    "value": true,
+    "at": "2026-08-06 (фаза A ЧЕСТНОСТЬ)",
+    "reason": "Посчитано при УСТАРЕВШИХ константах: NET_COEFF=0.35 (в модели «комиссия Озон 65% общим котлом») и delivery=100.0. Дознание кабинета (ozon_truth_v1, 2026-08-05) заменило их ФАКТОМ 6 реальных продаж: NET_COEFF=0.298, DELIVERY_NET=₽325. Вердикт PROVEN здесь судился доставко-слепым profit_net (доставка вычиталась лишь в цене, но не в ЭКОН-гейте — фаза A закрыла эту дыру). Порог min_profit=₽200 применялся к неверному числу. Перепрогон под честными константами даёт другой набор победителей. Историю не стираем — помечаем.",
+    "constants_then": {
+      "net_coeff": 0.35,
+      "delivery": 100.0,
+      "commission_model": "65% общим котлом"
+    },
+    "constants_now": {
+      "net_coeff": 0.298,
+      "delivery": 325.0,
+      "commission_model": "53% + доставка отдельной строкой",
+      "source": "ozon_truth_v1 / 6 реальных продаж 2026-08-05"
+    },
+    "recompute_note": "Из 8 прежних PROVEN под честными константами порог min_profit=₽200 проходят 6. Это оценка по формуле price·0.298−cost−325, НЕ повторный прогон движка.",
+    "winners_recomputed": [
+      {
+        "sku": "176035400",
+        "name": "Точилка для ножей и ножниц",
+        "profit_net_old": 1591.5,
+        "profit_net_honest": 1056.06,
+        "passes_min_profit": true
+      },
+      {
+        "sku": "527608963",
+        "name": "Точилка для ножей",
+        "profit_net_old": 864.75,
+        "profit_net_honest": 462.69,
+        "passes_min_profit": true
+      },
+      {
+        "sku": "492296408",
+        "name": "Точилка для ножей",
+        "profit_net_old": 767.0,
+        "profit_net_honest": 382.88,
+        "passes_min_profit": true
+      },
+      {
+        "sku": "211163676",
+        "name": "Крючки самоклеющиеся IDEA для кухни и ванной про",
+        "profit_net_old": 660.75,
+        "profit_net_honest": 296.13,
+        "passes_min_profit": true
+      },
+      {
+        "sku": "495464539",
+        "name": "Точильный камень точилка для ножей",
+        "profit_net_old": 631.0,
+        "profit_net_honest": 271.84,
+        "passes_min_profit": true
+      },
+      {
+        "sku": "1080498663",
+        "name": "Крючки самоклеящиеся, крепление без сверления",
+        "profit_net_old": 614.0,
+        "profit_net_honest": 257.96,
+        "passes_min_profit": true
+      },
+      {
+        "sku": "933118635",
+        "name": "Самоклеящиеся крючки для ванной 4 шт",
+        "profit_net_old": 529.0,
+        "profit_net_honest": 188.56,
+        "passes_min_profit": false
+      },
+      {
+        "sku": "792630192",
+        "name": "Крючки самоклеящиеся настенные",
+        "profit_net_old": 265.5,
+        "profit_net_honest": -26.58,
+        "passes_min_profit": false
+      }
+    ]
+  }
+}

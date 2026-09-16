@@ -1,0 +1,171 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "capability": "SELF_BUILDING_MODE_ENABLE_BLOCKED",
+  "checks": {
+    "enable_does_not_approve_final_canon": true,
+    "enable_does_not_birth_anna": true,
+    "enable_does_not_birth_entity": true,
+    "enable_does_not_claim_agi": true,
+    "enable_does_not_enable_background_loop": true,
+    "enable_does_not_enable_continuous_loop": true,
+    "enable_does_not_install_scheduler": true,
+    "enable_does_not_launch_daemon": true,
+    "enable_does_not_run_tick_now": true,
+    "enable_does_not_use_network": true,
+    "enable_does_not_widen_queue": true,
+    "ledger_exists": true,
+    "loop_build_proof_exists": false,
+    "loop_build_status_pass": false,
+    "loop_review_proof_exists": false,
+    "loop_review_real_next_ok": false,
+    "loop_review_sealed": false,
+    "loop_review_status_pass": false,
+    "loop_validation_proof_exists": false,
+    "loop_validation_status_pass": false,
+    "observable_loop_built": false,
+    "observable_loop_validated": false,
+    "panel_review_agi_claim_allowed_false": true,
+    "panel_review_anna_birth_allowed_false": true,
+    "panel_review_background_loop_enabled_false": true,
+    "panel_review_daemon_running_false": true,
+    "panel_review_entity_birth_allowed_false": true,
+    "panel_review_exists": true,
+    "panel_review_final_canon_approval_allowed_false": true,
+    "panel_review_network_used_false": true,
+    "panel_review_pass": true,
+    "panel_review_queue_widening_allowed_false": true,
+    "panel_review_scheduler_installed_false": true,
+    "progress_exists": true,
+    "refresh_command_review_sealed": true,
+    "refresh_review_agi_claim_allowed_false": true,
+    "refresh_review_anna_birth_allowed_false": true,
+    "refresh_review_background_loop_enabled_false": true,
+    "refresh_review_daemon_running_false": true,
+    "refresh_review_entity_birth_allowed_false": true,
+    "refresh_review_exists": true,
+    "refresh_review_final_canon_approval_allowed_false": true,
+    "refresh_review_network_used_false": true,
+    "refresh_review_pass": true,
+    "refresh_review_queue_widening_allowed_false": true,
+    "refresh_review_scheduler_installed_false": true,
+    "route_agi_claim_allowed_false": true,
+    "route_anna_birth_allowed_false": true,
+    "route_authority_exists": true,
+    "route_authority_points_to_enable_mode": false,
+    "route_background_loop_enabled_false": true,
+    "route_continuous_loop_enabled_false": true,
+    "route_daemon_running_false": true,
+    "route_entity_birth_allowed_false": false,
+    "route_final_canon_approval_allowed_false": true,
+    "route_network_used_false": true,
+    "route_queue_widening_allowed_false": true,
+    "route_scheduler_installed_false": true,
+    "runtime_status_panel_review_sealed": true,
+    "smoke_executed": false,
+    "smoke_returncode_zero": false,
+    "state_exists": false,
+    "stop_file_exists": true
+  },
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-16T00:23:24+03:00",
+  "created_at_utc": "2026-06-15T21:23:24.416436+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "final_canon_approval_allowed": false,
+  "final_socc_status": "SOCC_SELF_BUILDING_MODE_ENABLE_FAIL",
+  "hard_failures": [
+    {
+      "actual": false,
+      "check": "route_authority_points_to_enable_mode",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_proof_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_sealed",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_review_real_next_ok",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_validation_proof_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_validation_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "observable_loop_validated",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "smoke_executed",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "smoke_returncode_zero",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_build_proof_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "loop_build_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "observable_loop_built",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "state_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "route_entity_birth_allowed_false",
+      "code": "CHECK_FAIL"
+    }
+  ],
+  "id": "SELF_BUILDING_MODE_ENABLED_V1_PROOF",
+  "memory": "MEMORY_WAVE/reports/autonomy/SELF_BUILDING_MODE_ENABLED_V1_MEMORY.json",
+  "mode": "core/socc/autonomy/self_building/mode_enabled/SELF_BUILDING_MODE_ENABLED_V1.json",
+  "mode_md": "core/socc/autonomy/self_building/mode_enabled/SELF_BUILDING_MODE_ENABLED_V1.md",
+  "network_used": false,
+  "proof_hash": "cf0021141816517800235b90",
+  "queue_widening_allowed": false,
+  "real_next": "repair_enable_self_building_mode_v1",
+  "review_sealed": true,
+  "scheduler_installed": false,
+  "self_building_mode_enabled": true,
+  "status": "PASS",
+  "tick_executed_now": false,
+  "truth_boundary": "Enable bounded visible self-building mode only. This sets SOCC into a creator-visible bounded self-building mode. It does not run a tick now, does not enable continuous loop, does not launch daemon, does not install scheduler, does not enable background loop, does not use network, does not widen queue, does not birth Entity/ANNA, does not approve final canon, and does not claim AGI.",
+  "updated_at_utc": "2026-06-16T09:56:29.387872+00:00",
+  "visible_bounded_mode_ready": true
+}

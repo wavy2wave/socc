@@ -1,0 +1,53 @@
+{
+  "ts": "2026-04-29T23:47:21.386998+00:00",
+  "status": "PASS",
+  "action": "FIRST_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF_V1",
+  "truth_boundary": "Controlled failure repair proof. Not 24/7 autonomy. Not AGI consciousness.",
+  "before": {
+    "ts": "2026-04-29T23:47:21.373681+00:00",
+    "SOCC_status": "THREE_BOARD_DRIVEN_PRODUCTIVE_ACTIONS_DONE_NOT_24_7",
+    "current_focus": "PREPARE_CONTROLLED_FAIL_TO_HERMES_REPAIR_PROOF",
+    "real_next": "first_controlled_fail_to_Hermes_repair_proof",
+    "next_visible_milestone": "HERMES_REPAIRS_REAL_CONTROLLED_FAIL",
+    "previous_proof": "PASS",
+    "board_next": "first_controlled_fail_to_Hermes_repair_proof"
+  },
+  "controlled_fail": {
+    "target": "core/socc/hermes_repair/sandbox/CONTROLLED_FAIL_TARGET_V1.json",
+    "fail_proof": "core/socc/hermes_repair/proof/CONTROLLED_FAIL_VALIDATOR_FAIL_V1.json",
+    "fail_status": "FAIL",
+    "failures": [
+      "missing_required_runtime_key",
+      "missing_repair_status"
+    ]
+  },
+  "hermes_repair": {
+    "packet": "core/socc/hermes_repair/packets/HERMES_REPAIR_PACKET_CONTROLLED_FAIL_V1.json",
+    "repair_state": "core/socc/hermes_repair/state/HERMES_REPAIR_APPLIED_V1.json",
+    "pass_proof": "core/socc/hermes_repair/proof/CONTROLLED_FAIL_REPAIRED_PASS_V1.json",
+    "pass_status": "PASS"
+  },
+  "memory_reads": [
+    "MEMORY_WAVE/reports/buildroom_sandbox_autopilot_v1.json",
+    "MEMORY_WAVE/reports/sandbox_quality_observer_v1.json",
+    "MEMORY_WAVE/reports/productive_runtime/THREE_BOARD_DRIVEN_PRODUCTIVE_ACTIONS_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/sandbox_evolution_engine_v1.json",
+    "MEMORY_WAVE/reports/buildroom_periodic_closeout_report_v1.json",
+    "MEMORY_WAVE/reports/productive_runtime/BOARD_DRIVEN_PRODUCTIVE_ACTION_001_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/productive_runtime/REPAIR_SYNC_NEXT_ACTION_BOARD_WITH_AUTHORITY_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/productive_runtime/SYNC_NEXT_ACTION_BOARD_WITH_AUTHORITY_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/productive_runtime/BIND_START_TO_NEXT_ACTION_BOARD_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/productive_runtime/FIRST_PRODUCTIVE_AUTHORITY_BOUND_ACTION_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/start_surface/SOCC_START_CONTROL_SURFACE_V1_MEMORY.json",
+    "MEMORY_WAVE/reports/control_snapshot/SOCC_CONTROL_SNAPSHOT_V1_MEMORY.json"
+  ],
+  "after": {
+    "ts": "2026-04-29T23:47:21.386979+00:00",
+    "SOCC_status": "HERMES_REPAIRED_CONTROLLED_FAIL_NOT_24_7",
+    "current_focus": "HERMES_REPAIR_LOOP_PROVEN_ON_CONTROLLED_FAIL",
+    "real_next": "run_controlled_fail_repair_repeatability_3_cases",
+    "next_visible_milestone": "HERMES_REPAIR_REPEATABILITY_3_CASES",
+    "delta": "SOCC produced a real controlled FAIL, created Hermes repair packet, applied bounded repair, and validated PASS."
+  },
+  "missing_required": []
+}

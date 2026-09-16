@@ -1,0 +1,1 @@
+{"claims": [{"text": "This is a gate contract only. It does not run sessions, does not resume old route, does not start daemon/background/network, and does not claim L3.", "line": 52, "entities": ["Daemon"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"Daemon": 4, "Proof": 2}}

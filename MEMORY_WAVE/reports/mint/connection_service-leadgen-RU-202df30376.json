@@ -1,0 +1,16 @@
+{
+  "id": "service-leadgen-RU-202df30376",
+  "ts": "2026-07-01T00:25:37.620955+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": false
+  },
+  "hard_failures": [
+    "t0_discover_falsifiable"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-202df30376_repair_required",
+  "truth_boundary": "t0: нет доказанного лида",
+  "proof_hash": "b6d003e3f52d4ebc"
+}

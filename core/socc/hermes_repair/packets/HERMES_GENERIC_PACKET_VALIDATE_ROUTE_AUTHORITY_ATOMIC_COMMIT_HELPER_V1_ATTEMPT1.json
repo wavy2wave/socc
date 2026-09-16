@@ -1,0 +1,9 @@
+{
+  "id": "HERMES_GENERIC_PACKET_VALIDATE_ROUTE_AUTHORITY_ATOMIC_COMMIT_HELPER_V1_ATTEMPT1",
+  "ts": "2026-06-16T16:06:39.427378+00:00",
+  "failed_script": "validate_route_authority_atomic_commit_helper_v1",
+  "repair_script_expected": "repair_route_authority_atomic_commit_helper_validation_v1",
+  "repair_script_found": false,
+  "bounded_repair": true,
+  "daemon_running": false
+}

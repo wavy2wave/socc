@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+  "active_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json",
+  "created_at_utc": "2026-06-09T12:05:30.541764+00:00",
+  "id": "ACTIVE_ACCEPTED_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET",
+  "mode": "CANONICAL_NON_EXECUTING_BOUNDED_PLAN",
+  "next_required_step": "build_socc_controlled_cycle_visibility_contract_v1",
+  "plan_packet_md": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.md",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted repaired bounded plan packet is non-executing and feeds controlled cycle visibility contract."
+}

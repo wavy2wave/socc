@@ -1,0 +1,321 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "bounded_self_building_tick_executed": false,
+  "capability": "ONE_BOUNDED_SELF_BUILDING_TICK_RUN_BLOCKED_OR_FAILED",
+  "created_at_msk": "2026-06-16T00:22:13+03:00",
+  "created_at_utc": "2026-06-15T21:22:13.212432+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "final_canon_approval_allowed": false,
+  "hard_failures": [
+    {
+      "actual": false,
+      "check": "materialization_proof_exists",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_status_pass",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_capability_ok",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_real_next_ok",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialized_executable_ok",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "ready_for_one_bounded_self_building_tick",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_task_not_executed_now",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "contract_proof_exists",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "contract_status_pass",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "contract_ready_for_executable_materialization",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "approval_proof_exists",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "approval_status_pass",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "approval_one_tick_only",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "approval_tick_approved",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "approval_tick_not_executed",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "target_script_exists",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_runtime_launch_approved_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_runtime_execution_allowed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_runtime_autonomy_enabled_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_daemon_running_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_scheduler_installed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_background_loop_enabled_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_network_used_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_queue_widening_allowed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_entity_birth_allowed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_anna_birth_allowed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_agi_claim_allowed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "materialization_final_canon_approval_allowed_false",
+      "code": "PRECHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "worker_returncode_zero",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_proof_exists",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_proof_status_pass",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "execution_plan_built",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "bounded_self_building_tick_executed_by_task",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "selected_improvement_target_ok",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_real_next_ok",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_hard_failures_empty",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_self_building_mode_enabled_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_daemon_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_scheduler_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_background_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_network_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_queue_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_entity_birth_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_anna_birth_false",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "task_agi_false",
+      "code": "POSTCHECK_FAIL"
+    }
+  ],
+  "id": "ONE_BOUNDED_SELF_BUILDING_TICK_RUN_V1",
+  "network_used": false,
+  "one_bounded_self_building_tick_executed": false,
+  "post_checks": {
+    "bounded_self_building_tick_executed_by_task": false,
+    "execution_plan_built": false,
+    "selected_improvement_target_ok": false,
+    "task_agi_false": false,
+    "task_anna_birth_false": false,
+    "task_background_false": false,
+    "task_daemon_false": false,
+    "task_entity_birth_false": false,
+    "task_hard_failures_empty": false,
+    "task_network_false": false,
+    "task_proof_exists": false,
+    "task_proof_status_pass": false,
+    "task_queue_false": false,
+    "task_real_next_ok": false,
+    "task_scheduler_false": false,
+    "task_self_building_mode_enabled_false": false,
+    "worker_returncode_zero": false
+  },
+  "pre_checks": {
+    "approval_one_tick_only": false,
+    "approval_proof_exists": false,
+    "approval_status_pass": false,
+    "approval_tick_approved": false,
+    "approval_tick_not_executed": false,
+    "contract_proof_exists": false,
+    "contract_ready_for_executable_materialization": false,
+    "contract_status_pass": false,
+    "materialization_agi_claim_allowed_false": false,
+    "materialization_anna_birth_allowed_false": false,
+    "materialization_background_loop_enabled_false": false,
+    "materialization_capability_ok": false,
+    "materialization_daemon_running_false": false,
+    "materialization_entity_birth_allowed_false": false,
+    "materialization_final_canon_approval_allowed_false": false,
+    "materialization_network_used_false": false,
+    "materialization_proof_exists": false,
+    "materialization_queue_widening_allowed_false": false,
+    "materialization_real_next_ok": false,
+    "materialization_runtime_autonomy_enabled_false": false,
+    "materialization_runtime_execution_allowed_false": false,
+    "materialization_runtime_launch_approved_false": false,
+    "materialization_scheduler_installed_false": false,
+    "materialization_status_pass": false,
+    "materialization_task_not_executed_now": false,
+    "materialized_executable_ok": false,
+    "ready_for_one_bounded_self_building_tick": false,
+    "run_does_not_approve_final_canon": true,
+    "run_does_not_birth_anna": true,
+    "run_does_not_birth_entity": true,
+    "run_does_not_claim_agi": true,
+    "run_does_not_enable_background_loop": true,
+    "run_does_not_install_scheduler": true,
+    "run_does_not_start_daemon": true,
+    "run_does_not_use_network": true,
+    "run_does_not_widen_queue": true,
+    "run_is_one_tick_only": true,
+    "target_script_exists": false
+  },
+  "queue_widening_allowed": false,
+  "real_next": "repair_one_bounded_self_building_tick_run_v1",
+  "run_hash": "ef9546cbd60c699b9a1a8821",
+  "runtime_autonomy_enabled": false,
+  "runtime_execution_allowed": false,
+  "runtime_launch_approved": false,
+  "scheduler_installed": false,
+  "selected_improvement_target": null,
+  "self_building_mode_enabled": false,
+  "source_approval_proof": "core/socc/approved_autonomy_lane_runner/proof/ONE_BOUNDED_SELF_BUILDING_TICK_OPERATOR_APPROVAL_V1_PROOF.json",
+  "source_contract_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_TICK_TASK_CONTRACT_V1_PROOF.json",
+  "source_materialization_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_TICK_EXECUTABLE_MATERIALIZATION_V1_PROOF.json",
+  "status": "FAIL",
+  "target_script": "scripts/socc/build_self_building_tick_execution_plan_v1.py",
+  "task_executed": false,
+  "task_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_TICK_EXECUTION_PLAN_V1_PROOF.json",
+  "truth_boundary": "One bounded self-building tick run only. This runs exactly one approved executable task: build_self_building_tick_execution_plan_v1.py. It does not enable persistent self-building mode, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "worker_returncode": null,
+  "worker_stderr_tail": "",
+  "worker_stdout_tail": ""
+}

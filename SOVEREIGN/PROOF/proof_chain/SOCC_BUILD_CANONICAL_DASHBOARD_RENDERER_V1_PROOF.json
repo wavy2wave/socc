@@ -1,0 +1,31 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/build_canonical_dashboard_renderer_20260608T194216Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/build_canonical_dashboard_renderer_20260608T194216Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/build_canonical_dashboard_renderer_20260608T194216Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_route_flags": [],
+  "changed": [
+    "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.json",
+    "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.md",
+    "SYSTEM/INTERFACE/dashboard/renderers/render_socc_dashboard_v1.py",
+    "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_DASHBOARD_VIEW_V1.md",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:42:17.252626+00:00",
+  "current_before": "socc_canonical_operator_dashboard_accepted_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_BUILD_CANONICAL_DASHBOARD_RENDERER_V1_PROOF",
+  "network_used": false,
+  "next_after_build": "validate_socc_canonical_dashboard_renderer_v1",
+  "observe_pass": true,
+  "render_script": "SYSTEM/INTERFACE/dashboard/renderers/render_socc_dashboard_v1.py",
+  "renderer": "SYSTEM/INTERFACE/dashboard/renderers/SOCC_CANONICAL_DASHBOARD_RENDERER_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Build read-only dashboard renderer. No execution. No route mutation by renderer.",
+  "view": "SYSTEM/INTERFACE/dashboard/SOCC_CANONICAL_DASHBOARD_VIEW_V1.md"
+}

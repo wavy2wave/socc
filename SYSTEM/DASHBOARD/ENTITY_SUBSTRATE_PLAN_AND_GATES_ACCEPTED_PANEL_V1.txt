@@ -1,0 +1,14 @@
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ENTITY/SUBSTRATE PLAN & GATES ACCEPTED V1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+STATUS::PASS
+CURRENT::accept_entity_substrate_plan_and_gates_v1
+NEXT::build_entity_substrate_bounded_execution_surface_v1
+HARD_FAILURES::[]
+
+AUTHORIZES::build_bounded_execution_surface_only
+EXECUTION_AUTHORIZED::False
+NO_ENTITY_BIRTH::True
+NO_DAEMON::True
+NO_NETWORK::True
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

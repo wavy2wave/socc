@@ -1,0 +1,50 @@
+/* ANNA Design Tokens — single source of truth (D3 "Спокойная забота")
+ * Generated from ANNA_DESIGN_CANON_V1.json by SOCC Brand Forge.
+ * Import this everywhere ANNA renders. Components must consume tokens, never hardcode.
+ */
+:root {
+  /* color */
+  --anna-bg:           #F5F3EE;
+  --anna-surface:      #FFFFFF;
+  --anna-surface-2:    #EDEAE3;
+  --anna-ink:          #2E3D34;
+  --anna-muted:        #6E7B71;
+  --anna-primary:      #54705C;
+  --anna-primary-soft: #8AA897;
+  --anna-accent:       #D9A679;
+  --anna-accent-deep:  #B5824F;
+  --anna-success:      #4F8A5B;
+  --anna-warning:      #C8923E;
+  --anna-danger:       #C0533B;
+
+  /* type */
+  --anna-font-ui: Inter, system-ui, -apple-system, sans-serif;
+  --anna-font-accent: Lora, Georgia, serif;
+  --anna-fs-xs: 13px; --anna-fs-sm: 14px; --anna-fs-base: 16px;
+  --anna-fs-lg: 20px; --anna-fs-xl: 25px; --anna-fs-2xl: 31px;
+  --anna-fs-3xl: 39px; --anna-fs-4xl: 49px;
+  --anna-fw-regular: 400; --anna-fw-medium: 500; --anna-fw-bold: 700;
+  --anna-leading: 1.5;
+
+  /* shape */
+  --anna-radius-sm: 8px; --anna-radius: 12px; --anna-radius-lg: 18px;
+  --anna-space: 8px;
+  --anna-shadow: 0 1px 0 rgba(46,61,52,.05), 0 8px 30px rgba(46,61,52,.04);
+}
+
+/* base */
+body.anna { background: var(--anna-bg); color: var(--anna-ink);
+  font-family: var(--anna-font-ui); font-size: var(--anna-fs-base); line-height: var(--anna-leading); }
+
+/* components (token-bound) */
+.anna .btn { border:none; border-radius: var(--anna-radius); padding:13px 22px;
+  font:600 15px var(--anna-font-ui); cursor:pointer; }
+.anna .btn--primary { background: var(--anna-primary); color:#fff; }
+.anna .btn--accent  { background: var(--anna-accent);  color: var(--anna-ink); }
+.anna .btn--ghost   { background:transparent; color: var(--anna-primary); border:1.5px solid var(--anna-primary-soft); }
+.anna .card { background: var(--anna-surface); border:1px solid rgba(46,61,52,.08);
+  border-radius: var(--anna-radius-lg); padding:20px; box-shadow: var(--anna-shadow); }
+.anna .input { border:1.5px solid var(--anna-surface-2); border-radius: var(--anna-radius);
+  padding:13px 15px; font:var(--anna-fs-base) var(--anna-font-ui); color: var(--anna-ink); background: var(--anna-surface); }
+.anna .bubble--anna { background: var(--anna-primary-soft); color:#1f2c24;
+  border-radius:18px; border-bottom-left-radius:5px; padding:12px 16px; }

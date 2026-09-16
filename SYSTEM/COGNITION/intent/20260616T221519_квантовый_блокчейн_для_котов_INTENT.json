@@ -1,0 +1,41 @@
+{
+  "created_at_utc": "2026-06-16T22:15:19.083518+00:00",
+  "id": "INTENT_20260616T221519_квантовый_блокчейн_для_котов",
+  "intent": {
+    "entities": [],
+    "intent_kind": "build",
+    "request": "квантовый блокчейн для котов",
+    "topic": null
+  },
+  "knowledge": {
+    "article_md": null,
+    "context_pack": null,
+    "has_article": false,
+    "has_context_pack": false,
+    "known_topics": [
+      "entity_substrate"
+    ],
+    "level": "UNKNOWN",
+    "topic": null
+  },
+  "llm_used": false,
+  "network_used": false,
+  "outcome": "KNOWLEDGE_GAP",
+  "readiness": {
+    "blockers": [
+      "intent_resolved",
+      "knowledge_present",
+      "knowledge_known_for_build"
+    ],
+    "criteria": {
+      "discipline_clean": true,
+      "intent_resolved": false,
+      "knowledge_known_for_build": false,
+      "knowledge_present": false,
+      "route_lawful_next_present": true,
+      "route_status_pass": true
+    },
+    "ready": false
+  },
+  "request": "квантовый блокчейн для котов"
+}

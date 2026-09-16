@@ -30,9 +30,10 @@
   Стиль — Лебедев-минимум: НИ ОДНОГО декоративного элемента без данных (нет кругов/градиентов/теней);
   всякий цвет несёт СМЫСЛ (класс/слои/марку/ось). Кэнон в const: сетка 1024×1280, M=76, Y-шаг 8px.
 
-ЦВЕТ-КАК-СМЫСЛ (GRADE, палитра ступеней): cyan #22D3EE — КОНСТАНТА-бар (никогда не меняется);
+ЦВЕТ-КАК-СМЫСЛ (GRADE, палитра ступеней): cyan #22D3EE — фирменный бар (по умолч. КОНСТАНТА,
+  перекрывается только явным brand.accent оператора);
   teal #0E8FA0 / indigo #1E63B5 / cherry #C2264E / plum #7F1D3A — ОДНА ступень по факту.
-  КОРОБ: plum ← «армирован/усилен/7-слой/слоёв≥6»; cherry ← премиум/слоёв≥5/марка Т-23+;
+  КОРОБ: plum ← «армирован/усилен (любой слой)/слоёв≥6»; cherry ← премиум/слоёв≥5/марка Т-23+;
   teal ← 4-слой; иначе cyan. ПЛЁНКА (ось-приоритет плотность→толщина→пузырёк→ширина): cherry ←
   премиум-слово ИЛИ ≥180г/м² ИЛИ ≥0.05мм ИЛИ пузырёк≥16; indigo ← 130-179/0.03-0.049;
   teal ← 60-129/0.02-0.029 ИЛИ ширина>0.5м; иначе cyan. СЛАБОЕ число оси (плотность 40) = ЧЕСТНО
@@ -180,6 +181,12 @@ def clean_base_score(base, text_check=True):
         return {"ok": False, "bg_white_frac": None, "ocr_words": None,
                 "text_checked": False, "text_heavy": None,
                 "why": "база не открылась (битая/не изображение)"}
+    # RGBA-ВЫРЕЗКА товара (фон уже убран маттингом): грязного фона НЕТ по построению — мы сами кладём
+    # его на белый; чужие тексты/этикетка на самом товаре = часть товара (дропшип того же SKU), их
+    # не штрафуем. Честно пропускаем гейт (иначе ни один товар с этикеткой не прошёл бы как «товар»).
+    if img.mode == "RGBA":
+        return {"ok": True, "bg_white_frac": 1.0, "ocr_words": 0, "text_checked": True,
+                "text_heavy": False, "why": "вырезка товара: фон удалён маттингом (чистая по построению)"}
     bg = _corner_white_frac_img(img)
     words = _ocr_wordcount_img(img) if text_check else None
     bg_ok = (bg is not None and bg >= CLEAN_CRIT["min_bg_white"])
@@ -209,20 +216,25 @@ def clean_base_score(base, text_check=True):
 GRADE = {
     # rgb-ступени: одна холодная семья (нарастание глубины = «крепче») + премиум-флаг обеих семей.
     "cyan":   (34, 211, 238),   # #22D3EE — ДОМ-база: cyan-бар + ярус «3-слой/стандарт/нет факта»
-    "teal":   (14, 143, 160),   # #0E8FA0 — «усиленная»: 4-слой/Т-23 (короб); средняя плотность,
-                                #            толщина 0.02-0.029, ширина>0.5м (плёнка, пром-формат)
+    "teal":   (14, 143, 160),   # #0E8FA0 — teal: 4-слой (короб, структурная середина);
+                                #            у плёнки средняя плотность 60-129 / толщина 0.02-0.029 /
+                                #            ширина>0.5м (пром-формат); Т-23 → cherry (Т-23+), НЕ teal
     "indigo": (30, 99, 181),    # #1E63B5 — «максимальная масс-маркет»: плотность 130-179 / толщина 0.03-0.049
     "plum":   (127, 29, 58),    # #7F1D3A — редчайший топ короба: слои≥6/7-слой/армирован-усилен
     "cherry": (194, 38, 78),    # #C2264E — ПРЕМИУМ-ФЛАГ: премиум-слово/люкс/vip/prime; у короба Т-24/5-слой;
                                 #            у плёнки плотность≥180/толщина≥0.05/пузырёк≥16. Тёмно-вишнёвый =
                                 #            кросс-каталоговая память SOCC «вишнёвый = топ-класс».
 }
-_BAR = BRAND["accent"]               # бренд-бар — ВСЕГДА cyan (подпись «кто» всей сети кадров)
+# cyan-бар = brand.accent (по умолч. фирменный cyan-константа; перекрывается в 1 строку оператором)
 # токены-сигналы ОСИ (смысл → цвет; категория уже scoped через detect_category)
 _PREMIUM_WORDS = ("премиум", "premium", "люкс", "luxe", "deluxe", "vip", "prime", "высший класс")
-_BOX_PLUM_WORDS = ("армирован", "усиленн", "7-слой", "семи слой", "шестислой")
+_BOX_PLUM_WORDS = ("армирован", "усиленн", "7-слой", "семи слой", "шестислой")   # любой признак топ-класса
+_BOX_ARMOR_WORDS = ("армирован", "усиленн")     # словесный КЛАСС «армирован/усилен» → plum при ЛЮБОМ
+                                                # слое; токен = класс-слово (не цифра), когда слоёв<6
 _FILM_PREMIUM_WORDS = ("премиум", "premium", "люкс", "luxe", "vip", "prime", "экстра", "extra",
-                       "профи", "profi", "профессиональн", "professional", "армир", "усиленн")
+                       "профи", "profi", "профессиональн", "professional")
+_FILM_ARMOR_WORDS = ("армир", "усиленн")     # физический КЛАСС плёнки (прочность) — НЕ маркетинг-слово:
+                                             # штампуем факт «УСИЛЕННАЯ/АРМИРОВАННАЯ», а не «ПРЕМИУМ»
 # слова числительных слоёв (для «пятислойный»/«3-слойный» → N)
 _LAYER_WORDS = (("трёх", 3), ("трех", 3), ("четырёх", 4), ("четырех", 4),
                 ("пяти", 5), ("пять", 5), ("шести", 6), ("шесть", 6),
@@ -257,6 +269,43 @@ def detect_category(facts=None):
     return None
 
 
+# ── РЕЕСТР СЕМАНТИЧЕСКИХ СЕМЕЙ (вне короба/плёнки). «Понять товар» = выбрать семью узкими словами
+# (ложных срабатываний избегаем) и взять ЕЁ контент-план: семья знает, что покупателю важно — порядок
+# схемы снимается с РЕАЛЬНЫХ карточек конкурентов/категории в момент регистрации семьи (подсказка),
+# строки кадра = пересечение схемы и НАЛИЧНЫХ фактов (пусто → строка не рисуется, закон честности).
+# Первая строка-«Объём» у семьи = гигант-число паспорта (как «Размер» у короба).
+_FAMILY_SPECS = {
+    "supplement": {                                  # БАД / жидкий концентрат (пример: хлорофилл)
+        "triggers": ("хлорофилл", "хлорелл", "спирулин", "chlorophyll"),
+        "scheme": [
+            ("объём", "Объём"), ("объем", "Объём"),
+            ("вкус", "Вкус"), ("форма_выпуска", "Форма"), ("форма", "Форма"),
+            ("страна", "Страна"), ("производитель", "Производитель"),
+        ],
+    },
+}
+
+
+def family_specs(facts, max_n=3):
+    """(specs, family): контент-план семьи из наличных фактов | ([], None) если семья не опознана."""
+    b = _blob(facts)
+    for fam, cfg in _FAMILY_SPECS.items():
+        if any(w in b for w in cfg["triggers"]):
+            out, seen = [], set()
+            for k, label in cfg["scheme"]:
+                v = (facts or {}).get(k)
+                if v in (None, "", []):
+                    continue
+                val = " ".join(str(v).split())
+                if val and label not in seen:
+                    out.append((label, val))
+                    seen.add(label)
+                if len(out) >= max_n:
+                    break
+            return out, fam
+    return [], None
+
+
 def _to_num(v):
     """Первое число из строки/числа | None («0.5», «100 м» → 100)."""
     if v is None:
@@ -267,9 +316,13 @@ def _to_num(v):
     return float(m.group()) if m else None
 
 
-def _is_t24(b):
-    """Признак премиум-марки Т-24 (в разных написаниях: т-24/т 24/т24/t-24/t24)."""
-    return any(w in b for w in ("т-24", "т 24", "т24", "t-24", "t 24", "t24"))
+def _width_key(facts):
+    """Первый ПРИСУТСТВУЮЩИЙ ключ ширины из реестра фактов | None (порядок = приоритет единицы)."""
+    for k in ("ширина_м", "ширина_см", "ширина_мм", "ширина", "width_m", "width_cm", "width"):
+        v = (facts or {}).get(k)
+        if v not in (None, "", []):
+            return k
+    return None
 
 
 def _width_m(facts):
@@ -280,14 +333,10 @@ def _width_m(facts):
     широкая плёнка останется «обычной». Голое число без единицы трактуем по величине: ≤20 → метры
     (0.5), >20 → сантиметры (120 см = 1.2 м) — типичная нотация карточек.
     """
-    raw = None
-    for k in ("ширина_м", "ширина_см", "ширина_мм", "ширина", "width_m", "width_cm", "width"):
-        v = facts.get(k)
-        if v not in (None, "", []):
-            raw, rawk = v, k
-            break
-    if raw is None:
+    rawk = _width_key(facts)
+    if rawk is None:
         return None
+    raw = (facts or {}).get(rawk)
     s = str(raw).lower().replace(",", ".").strip()
     num = _to_num(raw)
     if num is None:
@@ -308,12 +357,18 @@ def _width_m(facts):
 
 
 def _layer_count(b):
-    """Число слоёв картона из blob («5-слойный», «3 слоя», «пятислойный», «слои: 5») | None.
+    """Число слоёв картона из blob («5-слойный», «4-х слойный», «5 слоёв», «слои: 5», «пятислойный») | None.
 
-    Ищет сперва цифровой паттерн «N-слой», затем словесные числительные («пятислой»→5).
-    Только из РЕАЛЬНО пришедшего текста — закон честности (ничего не выдумываем).
+    Доноры пишут слои по-разному, категорийщик передаёт tip_kartona КАК ЕСТЬ («4-х слойный
+    гофрокартон»), поэтому цифра обязана находиться по обе стороны от слова слоя: сперва паттерн
+    «цифра ПЕРЕД слоем» (рус. суффиксы «-х/-ти/-ми» между цифрой и словом разрешены), затем «цифра
+    ПОСЛЕ слоя» («слои/слоёв: N»), затем словесные числительные («пятислой»→5). Число обязано стоять
+    ВПЛОТНУЮ к слову слоя (без «пропуска» чужих слов) — ничего не выдумываем.
     """
-    m = re.search(r"(\d{1,2})\s*-?\s*сло[йя]", b)
+    m = re.search(r"(\d{1,2})\s*(?:-|—|–)?\s*(?:[ххтими]+)?\s*-?\s*сло[йяё]в?", b)
+    if m:
+        return int(m.group(1))
+    m = re.search(r"сло[йяеёив]{1,3}\s*[:–—-]?\s*(\d{1,2})(?!\d)", b)
     if m:
         return int(m.group(1))
     for w, n in _LAYER_WORDS:
@@ -323,8 +378,12 @@ def _layer_count(b):
 
 
 def _t_grade(b):
-    """Число марки картона Т-24/Т-23 («т 24», «т-24», «т24») | None. «Т-24»→24."""
-    m = re.search(r"т[\s-]?(\d{1,2})\b", b)
+    """Число марки картона «Т-24/Т-23» («т 24», «т-24», «т24», «т-24в») | None. «Т-24»→24.
+
+    Марка — ТОЛЬКО отдельное слово «т/Т», а НЕ «т» из окончания другого слова (комплект 24 ≠ марка
+    Т-24): закон честности. Символ категории после числа (Т-24В) разрешён — это та же марка.
+    """
+    m = re.search(r"(?<![а-яёa-z0-9])[тt]\s*[-–—]?\s*(\d{1,2})(?!\d)", b)
     return int(m.group(1)) if m else None
 
 
@@ -388,38 +447,89 @@ def grade_resolve(facts=None, category=None):
         return base
     b = _blob(facts)
     layerN = _layer_count(b)
+    if layerN is None:                       # ключ «слои…» сам по себе = число слоёв (без слова «слой»)
+        for lk in ("слои_картона", "слои"):
+            v = (facts or {}).get(lk)
+            if isinstance(v, bool) or v in (None, "", []):
+                continue
+            if isinstance(v, (int, float)):
+                layerN = int(v)
+                break
+            if isinstance(v, str) and v.strip().isdigit():
+                layerN = int(v.strip())
+                break
     premium = any(w in b for w in _PREMIUM_WORDS)
     if cat == "box":
         tg = _t_grade(b)
-        armored = any(w in b for w in _BOX_PLUM_WORDS)
+        armored = any(w in b for w in _BOX_PLUM_WORDS)   # любой маркер топ-класса (слой/слово)
         has = bool(premium or armored or layerN is not None or tg is not None)
         base["has_fact"] = has
         if not has:
             return base
-        if armored or (layerN is not None and layerN >= 6):
+        # plum — редчайший топ. Словесный класс «армирован/усилен» = plum при ЛЮБОМ слое. Токен
+        # НЕ врёт цифрой: слоёв<6 → класс-слово (цвет несёт смысл), ≥6 → «N СЛОЁВ»; марку Т-…,
+        # если рядом, показываем всегда (не теряем факт). Слой ≥6/7-слой без слова тоже plum.
+        armor_word = any(w in b for w in _BOX_ARMOR_WORDS)
+        if (layerN is not None and layerN >= 6) or armor_word:
             tier = "plum"
-            token = "%d %s" % (layerN, _sklon_layer(layerN)) if layerN else "АРМИРОВАННЫЙ"
-            why = ("7-слой/армирован-усилен%s" % (" (%d слоёв)" % layerN if layerN else ""))
+            if armor_word:
+                cls = "АРМИРОВАННЫЙ" if "армир" in b else "УСИЛЕННЫЙ"
+                if tg is not None:
+                    token, why = "Т-%d" % tg, "марка Т-%d + %s" % (tg, cls.lower())
+                elif layerN is not None and layerN >= 6:
+                    token, why = "%d %s" % (layerN, _sklon_layer(layerN)), "%d-слой + %s" % (layerN, cls.lower())
+                elif layerN is not None:
+                    token, why = cls, "%s (%d-слой <6 — класс, не цифра)" % (cls, layerN)
+                else:
+                    token, why = cls, "словесный класс «%s»" % cls.lower()
+            else:
+                token = "%d %s" % (layerN, _sklon_layer(layerN))
+                why = "%d-слой (≥6) — редчайший топ короба" % layerN
         elif premium or (layerN is not None and layerN >= 5) or (tg is not None and tg >= 23):
             tier = "cherry"
-            if premium and tg is None:
-                token, why = "ПРЕМИУМ", "премиум-лексема"
-            elif tg is not None:
+            # Порог cherry по марке = Т-23+: марка ниже (Т-21/22) cherry САМА не даёт — реальный драйвер
+            # здесь премиум-слово или слои ≥5, их и показываем (токен не врёт цифрой «≥Т-23», как plum).
+            if tg is not None and tg >= 23:
                 token, why = "Т-%d" % tg, "марка Т-%d (≥Т-23)" % tg
+            elif premium:
+                token, why = "ПРЕМИУМ", ("премиум-лексема" if tg is None
+                                         else "премиум-лексема (марка Т-%d ниже порога ≥Т-23)" % tg)
+            elif layerN is not None and layerN >= 5:
+                token, why = ("%d %s" % (layerN, _sklon_layer(layerN))), \
+                             ("%d-слой (≥5)" % layerN if tg is None
+                              else "%d-слой (≥5) (марка Т-%d ниже порога ≥Т-23)" % (layerN, tg))
             else:
-                token, why = "%d %s" % (layerN, _sklon_layer(layerN)), "%d-слой (≥5)" % layerN
-        elif (layerN is not None and layerN == 4) or (tg is not None and tg == 23):
-            tier, token = "teal", "%d %s" % (layerN, _sklon_layer(layerN)) if layerN else "Т-23"
-            why = "4-слой / Т-23 (усиленная)"
+                token, why = None, "cherry (ветка недостижима)"
+        elif layerN is not None and layerN == 4:
+            tier, token = "teal", "%d %s" % (layerN, _sklon_layer(layerN))
+            why = "4-слой (структурная середина)"
         else:
             tier = "cyan"
             token = "%d %s" % (layerN, _sklon_layer(layerN)) if layerN is not None else None
             why = "стандарт (%d-слой)" % layerN if layerN is not None else "стандарт (без слоёв)"
+        # axis_key — источник ПРИЧИНЫ, показанной токеном (а не «слои всегда»): показываем марку Т-N
+        # → «марка»; токен слоёв → «слои_картона»; слово-класс/ПРЕМИУМ → «вид». Если цифровой оси нет,
+        # а единственный факт — марка ниже порога (cyan), источник всё равно «марка» (она в данных есть).
+        _tok = token or ""
+        if _tok.startswith("Т-") or (tg is not None and token is None):
+            _ak = "марка"
+        elif "СЛО" in _tok:
+            _ak = "слои_картона"
+        else:
+            _ak = "вид"
         base.update({"tier": tier, "rgb": GRADE[tier], "token": token,
-                     "axis_key": "слои_картона" if layerN is not None else ("марка" if tg is not None else "вид"),
-                     "why": why})
+                     "axis_key": _ak, "why": why})
         return base
-    # ── film: ось-приоритет плотность → толщина → пузырёк → ширина; премиум-слово = флаг-гейт ──
+    # ── film: ось-приоритет плотность → толщина → пузырёк → ширина; слово-класс = флаг-гейт ──
+    # Словесный КЛАСС прочности («усиленная/армированная») ≠ маркетинг-слово «ПРЕМИУМ»: штампуем
+    # факт-слово (как короб plum), а ПРЕМИУМ — только когда в фактах реально премиум-лексема.
+    armor_f = any(w in b for w in _FILM_ARMOR_WORDS)
+    if armor_f:
+        word = "АРМИРОВАННАЯ" if "армир" in b else "УСИЛЕННАЯ"
+        base.update({"tier": "cherry", "rgb": GRADE["cherry"], "label": word, "token": word,
+                     "axis_key": "вид", "axis_label": word, "has_fact": True,
+                     "why": "словесный класс «%s» в названии/виде/материале" % word.lower()})
+        return base
     if premium or any(w in b for w in _FILM_PREMIUM_WORDS):
         base.update({"tier": "cherry", "rgb": GRADE["cherry"], "label": "ПРЕМИУМ", "token": "ПРЕМИУМ",
                      "axis_key": "вид", "axis_label": "ПРЕМИУМ", "has_fact": True,
@@ -438,6 +548,9 @@ def grade_resolve(facts=None, category=None):
         if raw in (None, ""):
             raw = facts.get(k2)
         num = _to_num(raw)
+        if num is not None and k1 in ("толщина_мм", "толщина") and isinstance(raw, str) \
+                and any(u in raw.lower() for u in ("мкм", "µm", "μм", "микрон")):
+            num = num / 1000.0                # «25 мкм» = 0.025 мм — честно сводим к мм (не «25 мм»!)
         if num is None:
             continue
         tier = gate(num)[0]
@@ -446,10 +559,11 @@ def grade_resolve(facts=None, category=None):
                      "token": ("%s %s" % (_fmt_num(num), unit)) if tier != "cyan" else None,
                      "why": "%s %s → %s" % (lab, _fmt_num(num), tier)})
         return base
-    w = _width_m(facts)                     # ширина без силовых чисел → кодирует ФОРМАТ (честно)
+    wkey = _width_key(facts)                 # ширина без силовых чисел → кодирует ФОРМАТ (честно)
+    w = _width_m(facts) if wkey else None
     if w is not None:
         tier = "teal" if w > 0.5 else "cyan"
-        base.update({"tier": tier, "rgb": GRADE[tier], "label": "Ширина", "axis_key": "ширина_м",
+        base.update({"tier": tier, "rgb": GRADE[tier], "label": "Ширина", "axis_key": wkey,
                      "axis_label": "ШИРИНА", "unit": "м", "num": w, "has_fact": True,
                      "token": None if tier == "cyan" else "ПРОМ-ФОРМАТ",
                      "why": "ширина %s м → %s" % (_fmt_num(w), tier)})
@@ -521,6 +635,11 @@ _SPEC_KEYS = [
     ("объём", "Объём"), ("объем", "Объём"), ("цвет", "Цвет"),
     ("назначение", "Назначение"), ("мощность", "Мощность"), ("вес", "Вес"),
 ]
+# Ось-резолв может быть возбуждена ключом ВНЕ _SPEC_KEYS (ширина_см/ширина/width_*): журнал плёнки
+# тогда синтезирует строку оси из резолва (num/unit/label), чтобы ось всегда попадала в топ-3.
+_AXIS_HUMAN = {"ШИРИНА": "Ширина", "ШИРИНА_М": "Ширина", "Плотность": "Плотность",
+               "ПЛОТНОСТЬ": "Плотность", "Толщина": "Толщина", "ТОЛЩИНА": "Толщина",
+               "Пузырёк": "Пузырёк", "ПУЗЫРЁК": "Пузырёк"}
 
 
 def _load_font(size, bold=False):
@@ -565,17 +684,49 @@ def _fit_text(draw, text, font, max_w):
     return (text + ell) if text else ell
 
 
+def _hyphen_chunks(draw, tok, font, max_w):
+    """Слово с дефисом, шире max_w целиком → куски по границам дефиса, каждый ≤ max_w.
+
+    Дефис остаётся НА КОНЦЕ куска (кроме последнего) — читатель видит перенос: «воздушно-» + «пузырьковая».
+    Нет подходящей границы (дефис слишком поздно) → возвращаем токен как есть (не калечим вслепую).
+    """
+    parts = tok.split("-")
+    if len(parts) < 2:
+        return [tok]
+    out, cur = [], parts[0]
+    for p in parts[1:]:
+        trial = cur + "-" + p
+        if _text_w(draw, trial, font) <= max_w:
+            cur = trial
+        else:
+            out.append(cur + "-" if cur else p)
+            cur = p
+    if cur:
+        out.append(cur)
+    if any(_text_w(draw, o, font) > max_w for o in out):   # ни один кусок не влез — вернём как есть
+        return [tok]
+    return out
+
+
 def _wrap(draw, text, font, max_w, max_lines=2):
     """Жадный перенос строки в ≤max_lines под ширину max_w; остаток — многоточием в последней строке.
 
     Чинит «5-слойный гоф…»: продающий факт не режем в огрызок, а переносим на 2 строки целиком.
+    Одно СЛИШКОМ широкое слово с дефисом («воздушно-пузырьковая» в film-герое) переносим по дефису,
+    чтобы хвост слова не терялся даже в узкой колонке.
     """
     words = " ".join(str(text).split()).split(" ")
     if not words or words == [""]:
         return [""]
+    expanded = []
+    for w in words:                                  # пред-перенос слишком широких дефисных слов
+        if _text_w(draw, w, font) <= max_w or "-" not in w:
+            expanded.append(w)
+        else:
+            expanded.extend(_hyphen_chunks(draw, w, font, max_w))
     lines, cur, idx = [], "", 0
-    while idx < len(words) and len(lines) < max_lines:
-        w = words[idx]
+    while idx < len(expanded) and len(lines) < max_lines:
+        w = expanded[idx]
         trial = (cur + " " + w).strip()
         if not cur or _text_w(draw, trial, font) <= max_w:
             cur, idx = trial, idx + 1
@@ -585,8 +736,8 @@ def _wrap(draw, text, font, max_w, max_lines=2):
     if cur and len(lines) < max_lines:
         lines.append(cur)
         cur = ""
-    if idx < len(words):                                # остаток не влез — свернём в последнюю строку
-        leftover = " ".join(words[idx:])
+    if idx < len(expanded):                          # остаток не влез — свернём в последнюю строку
+        leftover = " ".join(expanded[idx:])
         base = (lines.pop() if lines else "")
         lines.append(_fit_text(draw, (base + " " + leftover).strip(), font, max_w))
     lines = [ln if _text_w(draw, ln, font) <= max_w else _fit_text(draw, ln, font, max_w) for ln in lines]
@@ -648,18 +799,29 @@ def _specs(facts, max_n=3):
 
 
 def _open_base(base):
-    """База (путь|bytes|PIL.Image) → RGB-изображение или None (честно, без падения)."""
+    """База (путь|bytes|PIL.Image) → RGB-изображение или None (честно, без падения).
+
+    RGBA-ВЫРЕЗКА товара (есть РЕАЛЬНАЯ прозрачность фона >2%) сохраняется как RGBA: её клеит
+    _paste_natural (контактная тень + альфа — «снято на белом, а не вырезано»), а не белой пластиной.
+    RGB / непрозрачный RGBA → RGB (старое поведение без изменений: белая пластина сливается с канвасом)."""
     if not _HAVE_PIL:
         return None
     try:
         if hasattr(base, "convert"):                 # уже PIL.Image
-            return base.convert("RGB")
-        if isinstance(base, (bytes, bytearray)):
-            return Image.open(io.BytesIO(bytes(base))).convert("RGB")
-        p = Path(str(base))
-        if not p.exists():
-            return None
-        return Image.open(p).convert("RGB")
+            im = base
+        elif isinstance(base, (bytes, bytearray)):
+            im = Image.open(io.BytesIO(bytes(base)))
+        else:
+            p = Path(str(base))
+            if not p.exists():
+                return None
+            im = Image.open(p)
+        if im.mode in ("RGBA", "LA"):
+            tot = im.size[0] * im.size[1]
+            transparent = sum(im.getchannel("A").histogram()[:250])
+            if transparent > max(24, int(tot * 0.02)):   # реальная вырезка (не белая пластина в RGBA)
+                return im.convert("RGBA")
+        return im.convert("RGB")
     except Exception:
         return None
 
@@ -674,7 +836,6 @@ def _open_base(base):
 _M = 76                                            # поле ≈7.4% ширины — воздух (арт-канон)
 _X0, _X1 = _M, CANVAS_W - _M                       # 76 / 948
 _CW = _X1 - _X0                                    # 872
-_STAMP_X = int(CANVAS_W * 0.62)                    # 634 — левая граница колонки штампа плёнки
 _HERO_MAXW = int(CANVAS_W * 0.60) - _X0            # 538 — плёночный герой не заезжает под штамп
 _BIG_LABELS = {"Размер", "Габариты", "Размеры"}    # колонка-гигант (семейство размера) в паспорте короба
 
@@ -708,24 +869,71 @@ def _wordmark(d, b, y=62):
 
 
 def _fit_val(d, val, ladder, max_w, max_lines=2, bold=True):
-    """Выбор кегля: самый крупный из ladder, где значение влезает в ≤max_lines. → (size, font, lines)."""
+    """Выбор кегля: самый крупный из ladder, где значение влезает в ≤max_lines БЕЗ обрезки «…».
+
+    Строка с многоточием = огрызок (факт теряет хвост) → такой кегль НЕ подходит, спускаемся ниже
+    (film-герой «воздушно-пузырьковая» не должен резаться в 54px, когда цел в 42). `last` страхует
+    самый мелкий кегль: если даже он режется (очень длинное значение) — отдаём его, честно с «…».
+    """
     last = None
     for size in ladder:
         f = _load_font(size, bold=bold)
         if f is None:
             continue
         lines = _wrap(d, val, f, max_w, max_lines=max_lines)
-        last = (size, f, lines)
-        if len(lines) <= max_lines:
+        if lines and all("…" not in ln for ln in lines):
             return (size, f, lines)
+        last = (size, f, lines)
     return last or (ladder[-1], _load_font(ladder[-1], bold=bold), [val])
 
 
+def _draw_block(d, lines, font, step, x, y0, fill):
+    """Рисует блок строк сверху-вниз шагом `step` и возвращает РЕАЛЬНЫЙ низ чернил (низ ink).
+
+    Эмпирика (venv-пробы): d.textbbox((x,y), строка, font)[3] == реальный низ пикселей ink + 1px,
+    учитывает descender'ы «р/у/д». Старые формулы «якорь + size×0.4/0.45» ЗАНИЖАЛИ низ (реальный ink
+    тянется ~0.9-1.09×size ниже якоря) → cyan-бар налезал на буквы героя. Бар ставится от вернувшегося
+    низа, а не от формулы-приближения. Счёт по нижней строке (max по всем — безопасно и для descender).
+    """
+    y = y0
+    bot = y0
+    for ln in lines:
+        d.text((x, y), ln, font=font, fill=fill)
+        try:
+            tb = d.textbbox((x, y), ln, font=font)
+            bot = max(bot, tb[3] - 1)
+        except Exception:
+            bot = max(bot, y + int(getattr(font, "size", 12) * 1.1))
+        y += step
+    return bot
+
+
+def _ink_h(d, s, font):
+    """Высота ink строки при якоре (0,0) = реальный низ чернил от верха якоря (textbbox-метод).
+
+    Эмпирика та же, что в _draw_block: textbbox((x,y),…)[3] == реальный низ ink + 1px. Чтобы поставить
+    строку с низом РОВНО на линию low (база паспорта B), рисуем её с top = low − _ink_h(...): так любые
+    кегли/шрифты садятся на ОДИН реальный низ, а не на приближение «cap = size×0.8/0.82» (которое
+    занижало низ на ~0.09×size — гигант паспорта уезжал на ~5-7px ниже мелких колонок).
+    """
+    try:
+        tb = d.textbbox((0, 0), s, font=font)
+        return tb[3] - 1
+    except Exception:
+        return int(getattr(font, "size", 12) * 0.9)
+
+
 def _paste_center(canvas, prod, box):
-    """Вписать фото товара в прямоугольник по центру (белый фон базы сливается с канвасом)."""
+    """Вписать фото товара в прямоугольник по центру (белый фон базы сливается с канвасом).
+
+    RGBA-ВЫРЕЗКА (прозрачный фон) → _paste_natural: товар ВСТАЁТ базой на низ зоны с мягкой
+    контактной тенью по своему следу — граница естественная («снято на белом, а не вырезано»)."""
     x0, y0, x1, y1 = box
     bw, bh = x1 - x0, y1 - y0
     if bw <= 0 or bh <= 0 or prod is None:
+        return
+    if getattr(prod, "mode", "") == "RGBA":
+        _paste_natural(canvas, prod, box)
         return
     pw, ph = prod.size
     scale = min(bw / pw, bh / ph)
@@ -734,6 +942,109 @@ def _paste_center(canvas, prod, box):
     ox = x0 + (bw - nw) // 2
     oy = y0 + (bh - nh) // 2
     canvas.paste(fitted, (ox, oy))
+
+
+def _paste_natural(canvas, prod, box):
+    """«Снято на белом, а не вырезано»: RGBA-товар ставят БАЗОЙ на низ прямоугольника + мягкая
+    контактная тень под основанием по ширине СЛЕДА предмета. Альфа сохраняется (AA-края), фон белый —
+    светлый ореол старого фона не виден. Тень почти целиком под товаром, за низ зоны почти не выходит.
+
+    prod — RGBA (уже вырезка). box — (x0,y0,x1,y1) зоны фото. Ничего не возвращает."""
+    try:
+        from PIL import ImageFilter
+    except Exception:
+        ImageFilter = None
+    x0, y0, x1, y1 = box
+    bw, bh = x1 - x0, y1 - y0
+    if bw <= 0 or bh <= 0 or prod is None:
+        return
+    pw, ph = prod.size
+    scale = min(bw / pw, bh / ph)
+    nw, nh = max(1, int(pw * scale)), max(1, int(ph * scale))
+    if nh > int(bh * 0.985):                       # не выше 98.5% зоны — тени остаётся место под базой
+        nh = int(bh * 0.985)
+        nw = max(1, int(pw * (nh / float(ph))))
+    if nw > bw:
+        nw = bw
+        nh = max(1, int(ph * (nw / float(pw))))
+    if nw < 8 or nh < 8:
+        return
+    try:
+        fitted = prod.resize((nw, nh), Image.LANCZOS)
+    except Exception:
+        fitted = prod.resize((nw, nh))
+    ox = x0 + (bw - nw) // 2
+    oy = y1 - nh                                    # база товара стоит на низу зоны («на столе»)
+    alpha = fitted.getchannel("A")
+    # ширина следа предмета: строка альфы чуть выше базы (нижние ~12%) — тень по ноге, а не на всю ширину
+    step = max(1, nw // 200)
+    lo = min(nh - 2, int(nh * 0.88))
+    xs = [x for x in range(0, nw, step) if alpha.getpixel((x, lo)) > 96]
+    base_w = (xs[-1] - xs[0] + step) if len(xs) >= 2 else nw
+    # Контактная тень — ПРОФИЛЬ, а не плоский эллипс: по вертикали пик у самой линии базы и
+    # квадратичный спад вниз (а не середина эллипса, спрятанная под товаром, что давало лишь бледный
+    # край), по горизонтали — мягкий спад к краям. Высота видимой части = реальный белый ход под
+    # базой до разделителя паспорта (замер холста), чтобы тень НИКОГДА не залезла на текст/линии.
+    rgba = canvas.convert("RGBA")
+    Cx = ox + nw // 2                                # центр товара
+    vw = max(int(base_w * 1.16), int(nw * 0.32))     # ширина тени ≈ след товара (чуть шире)
+    vw = min(vw, nw + int(bh * 0.03))
+    # видимый ход под базой: сколько рядов почти-бело, пока холст не тронут (hairline паспорта и т.п.)
+    run = 0
+    try:
+        _pxc = canvas.load()
+        _Wc, _Hc = canvas.size
+        _xxa, _xxb = max(1, Cx - nw), min(_Wc - 1, Cx + nw)
+        _yy = y1 + 1
+        while _yy < _Hc - 1:
+            _dk = 0
+            for _xx in range(_xxa, _xxb, 3):
+                _p = _pxc[_xx, _yy]
+                if (_p[0] + _p[1] + _p[2]) / 3.0 < 242:
+                    _dk += 1
+                    if _dk >= 2:
+                        break
+            if _dk >= 2:
+                break
+            run += 1
+            _yy += 1
+    except Exception:
+        run = 0
+    vis = max(0, run - 2)                            # не доезжаем до разделителя/текста
+    vis = min(vis, max(10, int(nh * 0.08)))          # кап: тень не глубже ~8% роста товара
+    if vis >= 5:
+        A0 = 92                                      # пик альфы у линии базы (контакт)
+        gcol = (9, 13, 10)                           # тень почти-чёрная, чуть в зелень (как у стола)
+        hw = max(int(vw / 2), 2)                     # горизонтальная полуось
+        sw = hw * 2 + 2
+        sh = vis + 2
+        _am = Image.new("L", (sw, sh), 0)
+        _apx = _am.load()
+        _cxA = (sw - 1) / 2.0
+        for _ry in range(sh):
+            _t = _ry / float(vis) if vis else 1.0
+            _t = max(0.0, min(1.0, _t))
+            _aY = int(A0 * (1.0 - _t) ** 1.9)        # пик у базы → мягко к 0 у низа
+            if _aY <= 0:
+                continue
+            for _rx in range(sw):
+                _dx = (_rx - _cxA) / float(hw)
+                if _dx < -1.0 or _dx > 1.0:
+                    continue
+                _a = int(_aY * (1.0 - _dx * _dx) ** 0.6)  # спад к краям тени
+                if _a > 0:
+                    _apx[_rx, _ry] = _a
+        if ImageFilter is not None:
+            _am = _am.filter(ImageFilter.GaussianBlur(max(1.0, vis / 3.0)))
+        _col = Image.new("RGB", (sw, sh), gcol)
+        spr = Image.new("RGBA", (sw, sh), (0, 0, 0, 0))
+        spr.paste(_col, (0, 0), _am)
+        rgba.alpha_composite(spr, (Cx - sw // 2, y1))
+    rgba.alpha_composite(fitted, (ox, oy))
+    try:
+        canvas.paste(rgba.convert("RGB"), (0, 0))
+    except Exception:
+        pass
 
 
 # ── BOX-ШАБЛОН «ПОСТЕР-ПАСПОРТ» ─────────────────────────────────────────────────────────────
@@ -757,19 +1068,17 @@ def _macro_box(d, canvas, prod, facts, g, b):
     hero_bottom = 150
     if hero:
         size, f, lines = _fit_val(d, hero, (88, 76, 64, 52), hero_w, max_lines=2)
-        y = 150
-        for ln in lines:
-            d.text((_X0, y), ln, font=f, fill=b["ink"])
-            y += size
-        hero_bottom = _snap8((y - size) + int(size * 0.45))
-    # ── cyan-бар под героем — ВСЕГДА константа (подпись «кто»); 140×6.
+        hero_bottom = _snap8(_draw_block(d, lines, f, size, _X0, 150, b["ink"]))
+    # ── cyan-бар под героем — brand.accent (по умолч. фирменный cyan-константа); 140×6.
     bar_y = _snap8(hero_bottom + 18)
-    d.rectangle([_X0, bar_y, _X0 + 140, bar_y + 6], fill=_BAR)
+    d.rectangle([_X0, bar_y, _X0 + 140, bar_y + 6], fill=b["accent"])
     zone_top = bar_y + 30
     if not specs:
         _paste_center(canvas, prod, (_X0, zone_top, _X1, CANVAS_H - _M - 8))
         return
-    # ── паспорт фактов прижат к низу: значения ВЫРОВНЕНЫ ПО БАЗОВОЙ B=1184, подписи-капс над ними.
+    # ── паспорт фактов прижат к низу: значения садятся РЕАЛЬНЫМ низом ink на базовую B=1184 (замером
+    # textbbox, а не формулой-приближением), подписи-капс над ними. Гигант-число, если не влезло даже
+    # на кегле 40, рисует ЧЕСТНУЮ режущую строку _fit_val («…»), а не сырой переполняющий номер.
     big = specs[0][0] in _BIG_LABELS                 # размер-семейство → ГИГАНТ-цифра + мелкая единица
     n = len(specs)
     if big:
@@ -791,17 +1100,19 @@ def _macro_box(d, canvas, prod, facts, g, b):
             number, unit = _split_val_unit(val)
             un = _load_font(20, bold=False)
             u_w = _text_w(d, unit, un) if unit else 0
-            size, f, _l = _fit_val(d, number, (56, 48, 40), cw - (u_w + 10), max_lines=1)
-            cap = int(size * 0.8)
-            cols.append({"kind": "big", "label": label, "val": number, "unit": unit, "size": size,
-                         "font": f, "unit_font": un, "unit_w": u_w, "cap": cap, "cx0": cx0, "cw": cw})
-            maxH = max(maxH, cap)
+            size, f, lines = _fit_val(d, number, (56, 48, 40), cw - (u_w + 10), max_lines=1)
+            drawn = lines[0] if lines else number    # режущая строка («…»), если номер не влез и на 40
+            vh = _ink_h(d, drawn, f)
+            cols.append({"kind": "big", "label": label, "val": drawn, "unit": unit, "font": f,
+                         "unit_font": un, "unit_w": u_w, "vh": vh, "cx0": cx0, "cw": cw})
+            maxH = max(maxH, vh)
         else:
             size, f, lines = _fit_val(d, val, (36, 32, 28), cw, max_lines=2)
-            cap = int(size * 0.82)
-            h = cap if len(lines) == 1 else cap + size + 6
+            one = len(lines) == 1
+            vh = _ink_h(d, lines[-1], f)             # низ последней (нижней) строки упирается в B
+            h = vh if one else (size + 6) + vh
             cols.append({"kind": "col", "label": label, "lines": lines, "size": size, "font": f,
-                         "cap": cap, "h": h, "cx0": cx0, "cw": cw})
+                         "vh": vh, "h": h, "cx0": cx0, "cw": cw})
             maxH = max(maxH, h)
     lab_row = _snap8(B - maxH - 28)                  # базовая подписей — над самой высокой колонкой
     P = _snap8(lab_row - 44)                         # верх паспорта (hairline-разделитель)
@@ -811,15 +1122,16 @@ def _macro_box(d, canvas, prod, facts, g, b):
         cx = c["cx0"]
         d.text((cx, lab_row - 15), c["label"].upper(), font=f_lbl, fill=b["muted"])
         if c["kind"] == "big":
-            d.text((cx, B - c["cap"]), c["val"], font=c["font"], fill=b["ink"])
+            d.text((cx, B - c["vh"]), c["val"], font=c["font"], fill=b["ink"])
             if c["unit"]:
-                d.text((cx + _text_w(d, c["val"], c["font"]) + 8, B - 16), c["unit"],
+                u_top = B - _ink_h(d, c["unit"], c["unit_font"])   # единица тем же реальным низом = B
+                d.text((cx + _text_w(d, c["val"], c["font"]) + 8, u_top), c["unit"],
                        font=c["unit_font"], fill=b["muted"])
         elif len(c["lines"]) == 1:
-            d.text((cx, B - c["cap"]), c["lines"][0], font=c["font"], fill=b["ink"])
+            d.text((cx, B - c["vh"]), c["lines"][0], font=c["font"], fill=b["ink"])
         else:
-            d.text((cx, B - c["cap"] - (c["size"] + 6)), c["lines"][0], font=c["font"], fill=b["ink"])
-            d.text((cx, B - c["cap"]), c["lines"][1], font=c["font"], fill=b["ink"])
+            d.text((cx, B - c["vh"] - (c["size"] + 6)), c["lines"][0], font=c["font"], fill=b["ink"])
+            d.text((cx, B - c["vh"]), c["lines"][1], font=c["font"], fill=b["ink"])
     # ── фасет 6px цвета варианта под колонкой-осью (только когда чип-ярус есть).
     if chip_w:
         a = cols[0]
@@ -843,21 +1155,20 @@ def _macro_film(d, canvas, prod, facts, g, b):
     hero_bottom = 108
     if hero:
         size, f, lines = _fit_val(d, hero, (54, 48, 42, 36), _HERO_MAXW, max_lines=3)
-        y = 108
-        lh = int(size * 1.16)
-        for ln in lines:
-            d.text((_X0, y), ln, font=f, fill=b["ink"])
-            y += lh
-        hero_bottom = _snap8((y - lh) + int(size * 0.4))
+        hero_bottom = _snap8(_draw_block(d, lines, f, int(size * 1.16), _X0, 108, b["ink"]))
     # ── штамп-ось справа (правый край 948, верх ≈108). Карриер = цветное подчёрк-число.
     stamp = (g.get("axis_label") or "").upper()
     has_num = g.get("num") is not None
+    stamp_bottom = 0                                 # низ штампа — чтобы товар не заехал под него
     if stamp:
-        if g.get("token") == "ПРЕМИУМ" and not has_num:          # слово-штамп премиума без числа
+        # слово-штамп класса БЕЗ числа (ПРЕМИУМ / УСИЛЕННАЯ / АРМИРОВАННАЯ) → факт-слово на кадре
+        if g.get("token") and not has_num:
             fs = _load_font(28, bold=True)
-            d.text((_X1 - _text_w(d, "ПРЕМИУМ", fs), 120), "ПРЕМИУМ", font=fs, fill=b["ink"])
-            pw = _text_w(d, "ПРЕМИУМ", fs)
+            word = str(g.get("token")).upper()
+            d.text((_X1 - _text_w(d, word, fs), 120), word, font=fs, fill=b["ink"])
+            pw = _text_w(d, word, fs)
             d.rectangle([_X1 - pw, 158, _X1, 164], fill=tuple(g["rgb"]))
+            stamp_bottom = 164
         elif has_num:
             cap = _load_font(18, bold=False)
             d.text((_X1 - _text_w(d, stamp, cap), 100), stamp, font=cap, fill=b["muted"])
@@ -872,9 +1183,12 @@ def _macro_film(d, canvas, prod, facts, g, b):
                 d.text((_X1 - u_w, 142 + size - 20), unit, font=un, fill=b["ink"])
             d.rectangle([_X1 - nw - u_w, 142 + size + 12, _X1 - u_w, 142 + size + 18],
                         fill=tuple(g["rgb"]))
-    # ── cyan-бар под героем (120×6, константа).
+            stamp_bottom = 142 + size + 18
+    # ── cyan-бар под героем (120×6, brand.accent — по умолч. фирменный cyan-константа).
     bar_y = _snap8(hero_bottom + 18)
-    d.rectangle([_X0, bar_y, _X0 + 120, bar_y + 6], fill=_BAR)
+    d.rectangle([_X0, bar_y, _X0 + 120, bar_y + 6], fill=b["accent"])
+    # Зона товара: ниже бара И ниже низа штампа — короткий/пустой герой не пускает товар под штамп.
+    zone_top = (bar_y + 30) if not stamp_bottom else _snap8(max(bar_y + 30, stamp_bottom + 16))
     # ── журнал «ПАРАМЕТРЫ РУЛОНА» снизу: строки подпись(слева)/значение(справа по 948).
     rows = _specs(facts, max_n=3)
     ak = g.get("axis_key")
@@ -884,6 +1198,9 @@ def _macro_film(d, canvas, prod, facts, g, b):
             if key == ak and (facts or {}).get(key) not in (None, "", []):
                 ax_spec = (label, str((facts or {}).get(key)))
                 break
+        if ax_spec is None and g.get("num") is not None:     # ось вне _SPEC_KEYS (ширина_см/ширина/мм…):
+            lbl = _AXIS_HUMAN.get(str(g.get("axis_label")), str(g.get("axis_label")))
+            ax_spec = (lbl, ("%s %s" % (_fmt_num(g["num"]), g.get("unit") or "")).strip())
         if ax_spec and not any(r[0] == ax_spec[0] for r in rows):
             rows = rows[:2] + [ax_spec] if len(rows) >= 2 else rows + [ax_spec]
             rows = rows[:3]
@@ -892,7 +1209,6 @@ def _macro_film(d, canvas, prod, facts, g, b):
         # высота журнала: hairline+заголовок + строки (56/88)
         row_hs = []
         for label, val in rows:
-            fv = _load_font(28, bold=True)
             _s, _f, lines = _fit_val(d, str(val), (28, 24, 20), int(_CW * 0.52), max_lines=2)
             row_hs.append(88 if len(lines) > 1 else 56)
         hdr_h = 46
@@ -908,17 +1224,21 @@ def _macro_film(d, canvas, prod, facts, g, b):
             d.text((_X0, base - int(rh * 0.42)), label, font=f_lbl, fill=b["muted"])
             _s, _f, lines = _fit_val(d, str(val), (28, 24, 20), int(_CW * 0.52), max_lines=2)
             if len(lines) <= 1:
-                d.text((_X1 - _text_w(d, str(val), _f), base - int(_s * 0.8)), str(val), font=_f, fill=b["ink"])
+                d.text((_X1 - _text_w(d, str(val), _f), base - int(_s * 0.8)), str(val),
+                       font=_f, fill=b["ink"])
             else:
-                vy = base + 6
-                for ln in reversed(lines):
-                    vy -= _s + 4
-                    d.text((_X1 - _text_w(d, ln, _f), vy), ln, font=_f, fill=b["ink"])
+                # двухстрочное значение: блок сверху-вниз, вертикально по центру строки журнала
+                # (старый reversed-цикл уводил первую строку НАД верхом строки — переполнение вниз/вверх).
+                step = _s + 6
+                block = (len(lines) - 1) * step + int(_s * 1.1)
+                top = y + max(6, (rh - 6 - block) // 2)
+                for j, ln in enumerate(lines):
+                    d.text((_X1 - _text_w(d, ln, _f), top + j * step), ln, font=_f, fill=b["ink"])
             d.line([(_X0, y + rh - 2), (_X1, y + rh - 2)], fill=b["hairline"], width=2)
             y += rh
-        _paste_center(canvas, prod, (_X0, bar_y + 30, _X1, P - 10))
+        _paste_center(canvas, prod, (_X0, zone_top, _X1, P - 10))
     else:
-        _paste_center(canvas, prod, (_X0, bar_y + 30, _X1, CANVAS_H - _M))
+        _paste_center(canvas, prod, (_X0, zone_top, _X1, CANVAS_H - _M))
 
 
 def _macro_lean(d, canvas, prod, facts, b):
@@ -927,15 +1247,12 @@ def _macro_lean(d, canvas, prod, facts, b):
     hero_bottom = 120
     if hero:
         size, f, lines = _fit_val(d, hero, (64, 52, 44), _CW, max_lines=2)
-        y = 120
-        for ln in lines:
-            d.text((_X0, y), ln, font=f, fill=b["ink"])
-            y += size
-        hero_bottom = _snap8((y - size) + int(size * 0.4))
-    d.rectangle([_X0, _snap8(hero_bottom + 18), _X0 + 120, _snap8(hero_bottom + 18) + 6], fill=_BAR)
+        hero_bottom = _snap8(_draw_block(d, lines, f, size, _X0, 120, b["ink"]))
+    bar_y = _snap8(hero_bottom + 18)
+    d.rectangle([_X0, bar_y, _X0 + 120, bar_y + 6], fill=b["accent"])
     specs = _specs(facts)
     band_top = 1124 if specs else CANVAS_H - _M
-    _paste_center(canvas, prod, (_X0, _snap8(hero_bottom + 18) + 30, _X1, band_top - 20))
+    _paste_center(canvas, prod, (_X0, bar_y + 30, _X1, band_top - 20))
     if specs:
         d.line([(_X0, band_top), (_X1, band_top)], fill=b["hairline"], width=2)
         n = len(specs)
@@ -950,6 +1267,77 @@ def _macro_lean(d, canvas, prod, facts, b):
                 vy += _s + 6
 
 
+def _macro_supplement(d, canvas, prod, facts, specs, b):
+    """Семья «БАД/жидкий концентрат» (вне упаковки): герой-название, cyan-бар, ПАСПОРТ-низ
+    (гигант-«Объём» + колонки Вкус/Форма/…), фото товара между баром и паспортом. Монохром:
+    честной цветовой ОСИ (как слои/плотность упаковки) у категории пока нет — цвет не выдумываем."""
+    hero = _hero_line(facts)
+    hero_bottom = 150
+    if hero:
+        size, f, lines = _fit_val(d, hero, (64, 56, 48), _CW, max_lines=2)
+        hero_bottom = _snap8(_draw_block(d, lines, f, size, _X0, 150, b["ink"]))
+    bar_y = _snap8(hero_bottom + 18)
+    d.rectangle([_X0, bar_y, _X0 + 140, bar_y + 6], fill=b["accent"])
+    zone_top = bar_y + 30
+    if not specs:
+        _paste_center(canvas, prod, (_X0, zone_top, _X1, CANVAS_H - _M - 8))
+        return
+    giant = specs[0][0] in ("Объём", "Объем")
+    n = len(specs)
+    if giant:
+        n_rest = n - 1
+        frac0 = 0.62 if n_rest == 1 else (0.52 if n_rest == 2 else 1.0)
+        fracs = [frac0] + (([(1.0 - frac0) / n_rest] * n_rest) if n_rest else [])
+    else:
+        fracs = [1.0 / n] * n
+    xs, x = [], _X0
+    for fr in fracs:                                 # (x0, w) колонок по дробям ширины
+        w = int(round(_CW * fr))
+        xs.append((x, w))
+        x += w
+    B = 1184
+    cols, maxH = [], 0
+    for i, (label, val) in enumerate(specs):
+        cx0, cw = xs[i]
+        if giant and i == 0:
+            number, unit = _split_val_unit(val)
+            un = _load_font(20, bold=False)
+            u_w = _text_w(d, unit, un) if unit else 0
+            size, f, lines = _fit_val(d, number, (56, 48, 40), cw - (u_w + 10), max_lines=1)
+            drawn = lines[0] if lines else number    # режущая строка («…»), если номер не влез и на 40
+            vh = _ink_h(d, drawn, f)
+            cols.append({"kind": "big", "label": label, "val": drawn, "unit": unit, "font": f,
+                         "unit_font": un, "unit_w": u_w, "vh": vh, "cx0": cx0, "cw": cw})
+            maxH = max(maxH, vh)
+        else:
+            size, f, lines = _fit_val(d, val, (36, 32, 28), cw, max_lines=2)
+            one = len(lines) == 1
+            vh = _ink_h(d, lines[-1], f)             # низ последней (нижней) строки упирается в B
+            h = vh if one else (size + 6) + vh
+            cols.append({"kind": "col", "label": label, "lines": lines, "size": size, "font": f,
+                         "vh": vh, "h": h, "cx0": cx0, "cw": cw})
+            maxH = max(maxH, h)
+    lab_row = _snap8(B - maxH - 28)                  # базовая подписей — над самой высокой колонкой
+    P = _snap8(lab_row - 44)                         # верх паспорта (hairline-разделитель)
+    d.line([(_X0, P), (_X1, P)], fill=b["hairline"], width=2)
+    f_lbl = _load_font(15, bold=False)
+    for c in cols:
+        cx = c["cx0"]
+        d.text((cx, lab_row - 15), c["label"].upper(), font=f_lbl, fill=b["muted"])
+        if c["kind"] == "big":
+            d.text((cx, B - c["vh"]), c["val"], font=c["font"], fill=b["ink"])
+            if c["unit"]:
+                u_top = B - _ink_h(d, c["unit"], c["unit_font"])   # единица тем же реальным низом = B
+                d.text((cx + _text_w(d, c["val"], c["font"]) + 8, u_top), c["unit"],
+                       font=c["unit_font"], fill=b["muted"])
+        elif len(c["lines"]) == 1:
+            d.text((cx, B - c["vh"]), c["lines"][0], font=c["font"], fill=b["ink"])
+        else:
+            d.text((cx, B - c["vh"] - (c["size"] + 6)), c["lines"][0], font=c["font"], fill=b["ink"])
+            d.text((cx, B - c["vh"]), c["lines"][1], font=c["font"], fill=b["ink"])
+    _paste_center(canvas, prod, (_X0, zone_top, _X1, P - 22))
+
+
 def render(base, facts=None, brand=None, zoom=True):
     """Собирает PIL-кадр инфографики (без записи на диск). None → нельзя собрать (нет PIL/битая база).
 
@@ -962,7 +1350,7 @@ def render(base, facts=None, brand=None, zoom=True):
     prod = _open_base(base)
     if prod is None:
         return None
-    if zoom:
+    if zoom and getattr(prod, "mode", "") != "RGBA":  # RGBA-вырезка уже без фона — авто-кроп не нужен
         prod = _autocrop_subject(prod)
     b = dict(BRAND)
     if brand:
@@ -977,7 +1365,11 @@ def render(base, facts=None, brand=None, zoom=True):
     elif cat == "film":
         _macro_film(d, canvas, prod, facts, g, b)
     else:
-        _macro_lean(d, canvas, prod, facts, b)
+        specs, fam = family_specs(facts)             # семантическая семья вне упаковки → свой макрос
+        if fam == "supplement":
+            _macro_supplement(d, canvas, prod, facts, specs, b)
+        else:
+            _macro_lean(d, canvas, prod, facts, b)
     # Системная подпись (если явно задана) — внизу-справа. По умолчанию пусто (SOCC — внутренняя марка).
     sysmark = str(b.get("system") or "").strip()
     if sysmark:
@@ -1005,10 +1397,10 @@ def compose_infographic(base, facts=None, brand=None, out_dir=None, deliver_dir=
     Возврат: {ok, path, thumb, dry, cost_usd:0.0,
               content:{hero,specs,wordmark,accent,variant,accent_why}, clean, why}.
     """
-    # ── ЦВЕТ-КАК-СМЫСЛ (арт-канон): cyan-бар — КОНСТАНТА бренда (никогда не меняется); вариант/класс
-    # товара живёт ТОЛЬКО в карриере (чип короба/подчёрк-штамп плёнки), цвет которого render() выводит
-    # САМ через grade_resolve(facts) — единый источник правды. Caller может явно дать brand.accent
-    # (перекроет cyan-бар для особого кадра), но на цвет варианта это не влияет.
+    # ── ЦВЕТ-КАК-СМЫСЛ (арт-канон): cyan-бар = brand.accent (по умолч. фирменный cyan-константа, у макросов
+    # b["accent"] — перекрывается оператором в 1 строку через brand); вариант/класс товара живёт ТОЛЬКО
+    # в карриере (чип короба/подчёрк-штамп плёнки), цвет которого render() выводит САМ через
+    # grade_resolve(facts) — единый источник правды. brand.accent влияет на бар, НЕ на цвет варианта.
     sig = variant_signal(facts)
     eff_brand = dict(brand or {})
     eff_brand.setdefault("accent", BRAND["accent"])   # бар по умолчанию = cyan-константа (закон)
@@ -1017,8 +1409,15 @@ def compose_infographic(base, facts=None, brand=None, out_dir=None, deliver_dir=
                   else "%s → %s (%s)" % (sig.get("kind"), sig.get("label"), sig.get("key")))
     if (brand or {}).get("accent") is not None:
         accent_why = "явный brand.accent оператора (%s)" % (str(eff_brand["accent"]))
+    # Отчёт = ЧТО РЕАЛЬНО НАРИСОВАНО (тем же диспетчером, что render): семья вне упаковки →
+    # family_specs (схема семьи), иначе упаковочный _specs. Ложный отчёт = дефект (кадр ≠ content).
+    if detect_category(facts) is None:
+        _fs, _fam = family_specs(facts)
+    else:
+        _fs, _fam = [], None
+    content_specs = [list(x) for x in _fs] if _fam else _specs(facts)
     rep = {"ok": False, "path": None, "thumb": None, "dry": bool(dry), "cost_usd": 0.0,
-           "content": {"hero": _hero_line(facts), "specs": _specs(facts),
+           "content": {"hero": _hero_line(facts), "specs": content_specs,
                        "wordmark": eff_brand.get("wordmark", BRAND["wordmark"]),
                        "accent": tuple(step),
                        "variant": (sig or {}).get("kind"),

@@ -1,0 +1,36 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/repair_validate_operator_handoff_20260608T192539Z/FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.json",
+    "MIGRATION/rebind_backups/repair_validate_operator_handoff_20260608T192539Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/repair_validate_operator_handoff_20260608T192539Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/repair_validate_operator_handoff_20260608T192539Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_route_flags": [],
+  "bad_truth": [],
+  "changed": [
+    "MIGRATION/audits/SOCC_OLD_HANDOFF_START_PROTOCOL_FORENSIC_V1.json",
+    "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_OPERATOR_HANDOFF_START_PROTOCOL_STARTUP_SEQUENCE_V1_PROOF.json",
+    "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_VALIDATION_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:25:58.124749+00:00",
+  "current_before": "validate_socc_operator_handoff_start_protocol_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_VALIDATE_OPERATOR_HANDOFF_START_PROTOCOL_V1_PROOF",
+  "missing_startup": [],
+  "missing_startup_before": [
+    "execute only the current lawful next step",
+    "update route/pulse/control"
+  ],
+  "network_used": false,
+  "next_after_validation": "review_socc_operator_handoff_start_protocol_v1",
+  "observe_pass": true,
+  "old_project_forensic": "MIGRATION/audits/SOCC_OLD_HANDOFF_START_PROTOCOL_FORENSIC_V1.json",
+  "status": "PASS",
+  "truth_boundary": "SOCC operator handoff validation only. No daemon/background/network."
+}

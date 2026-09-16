@@ -1,0 +1,17 @@
+{
+  "id": "service-leadgen-RU-a227d1943d",
+  "ts": "2026-07-01T08:18:35.447810+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": false
+  },
+  "hard_failures": [
+    "warden_gate"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-a227d1943d_repair_required",
+  "truth_boundary": "WARDEN: RL1: связка принимает/переводит чужие средства (мул/дроп)",
+  "proof_hash": "de9dee3c950fd74c"
+}

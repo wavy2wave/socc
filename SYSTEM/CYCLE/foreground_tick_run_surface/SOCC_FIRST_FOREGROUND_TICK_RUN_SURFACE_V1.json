@@ -1,0 +1,81 @@
+{
+  "allowed_now": [
+    "define run-surface contract",
+    "define future run guard",
+    "define future result schema",
+    "define future proof schema",
+    "advance only to run-surface validation frontier"
+  ],
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_foreground_controlled_tick_run": "after run-surface validate/review/accept and separate run frontier"
+  },
+  "created_at_utc": "2026-06-09T13:34:21.897206+00:00",
+  "current_expected": "build_socc_first_foreground_tick_run_surface_v1",
+  "forbidden_now": [
+    "run foreground tick now",
+    "execute code",
+    "execute language",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch",
+    "mutate route outside run-surface validation/review/accept"
+  ],
+  "future_result_schema": {
+    "action": "single future foreground tick only after later authorization",
+    "before": "authority + active accepted run surface + current system snapshot",
+    "boundary": "no daemon/background/network/MW/AGI claim",
+    "decision": "bounded chosen action from accepted tick plan",
+    "next": "next lawful step or repair frontier",
+    "proof": "proof_chain JSON with PASS/FAIL",
+    "result": "measurable artifact delta",
+    "stop": true
+  },
+  "future_run_frontier_after_validation_review_acceptance": "run_socc_first_foreground_controlled_tick_v1",
+  "future_run_obligations": [
+    "read route/pulse/control before running",
+    "require current_lawful_next == run_socc_first_foreground_controlled_tick_v1",
+    "show current before action",
+    "declare bounded decision",
+    "declare boundary and forbidden branches",
+    "perform only the accepted foreground tick action",
+    "write result artifact",
+    "write proof artifact",
+    "write memory/report artifact",
+    "advance authority only after PASS",
+    "stop"
+  ],
+  "id": "SOCC_FIRST_FOREGROUND_TICK_RUN_SURFACE_V1",
+  "mode": "FOREGROUND_RUN_SURFACE_NON_EXECUTING",
+  "next_required_step": "validate_socc_first_foreground_tick_run_surface_v1",
+  "purpose": "Define the safe operator-visible foreground run surface for the first controlled tick, without running it.",
+  "run_surface_contract": {
+    "execution_mode_when_future_authorized": "single_foreground_operator_invoked_bounded_tick",
+    "max_tick_count_when_future_authorized": 1,
+    "may_run_now": false,
+    "must_stop_after_tick": true,
+    "requires_separate_future_run_step": true,
+    "requires_surface_acceptance": true,
+    "requires_surface_review": true,
+    "requires_surface_validation": true,
+    "run_surface_id": "SOCC_FIRST_FOREGROUND_TICK_RUN_SURFACE_V1",
+    "tick_id": "SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1"
+  },
+  "source_active_accepted_tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/ACTIVE_ACCEPTED_FIRST_FOREGROUND_TICK_PLAN.json",
+  "source_tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/SOCC_FIRST_FOREGROUND_TICK_PLAN_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "surface_type": "FIRST_FOREGROUND_TICK_RUN_SURFACE",
+  "truth_boundary": "This run surface is non-executing. It defines how a future foreground tick may be run after validation/review/acceptance. It does not run the tick.",
+  "validation_requirements": [
+    "surface remains non-executing",
+    "future run requires separate frontier",
+    "no daemon/background/network permission",
+    "no language layer execution",
+    "no MW route",
+    "proof schema includes before/decision/boundary/action/result/proof/next/stop",
+    "authority advances only to validation after build"
+  ]
+}

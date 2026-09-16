@@ -15,9 +15,18 @@ charters/ev/doc) — герметичный тест не читает MEMORY_WA
   CC8  цвета_plain        — в StringIO нет ANSI-кодов (BR14-стиль, out-aware)
   CC9  задания_блок       — read-блок ЗАДАНИЯ: реестр-инъекция → открытые по важности с
                             владельцем; «реестра ещё нет» честно; не пишет (CC7-источник)
+  CC10 план_дня_блок       — read-блок ПЛАН ДНЯ (durable планёрки, утро): plan-doc инъекция →
+                            рендер решений с владельцем; «плана нет»/движок-не-импортировался
+                            честно (различаем); первую строку рендера не дублируем (CC7-источник)
+  CC11 совет_блок          — read-блок СОВЕТ (лицо ПЛАНА ДНЯ): протокол даты из sovet/ →
+                            голоса+пропиздоны+зеркало решений; файла даты нет → честно
+                            «совет не собирался» (VL5); рендер не пишет в стор (VL7-лицо);
+                            движок-не-импортировался честно (стиль CC9/CC10)
 """
 import io
 import inspect
+import json
+import os
 import re
 import sys
 from datetime import date, datetime
@@ -227,6 +236,229 @@ def cc9_zadaniya_blok():
         f"недостаёт: {missing or '—'} · закрытое-скрыто={hide_done} · деградация-честна={deg_ok}")
 
 
+def cc10_plan_dnya_blok():
+    """ПЛАН ДНЯ read-блок: plan-doc инъекция → рендер решений с владельцем; честные деградации."""
+    import tempfile
+    doc = {"schema": "ymarket.plan.v1", "date": "2026-09-04",
+           "store": "atlas-express-film",
+           "context": [{"tag": "ЗАДАНИЯ", "text": "открыто заданий 2 · PRICER=1"}],
+           "decisions": [
+               {"id": "new-x", "kind": "new", "what": "Переценка ARB-87931769 (тест)",
+                "owner": "PRICER", "category": "pricing", "priority": 10,
+                "urgency": "high", "why": "пол КПИ", "evidence": "реестр", "mode": "dry"},
+               {"id": "watch-o", "kind": "watch", "what": "ночных горящих нет",
+                "owner": "DISPATCHER", "category": "day", "priority": 60,
+                "urgency": "normal", "why": "журнал пуст", "evidence": "журнал", "mode": "read"},
+           ]}
+    txt = console.plan_day_text(out=io.StringIO(), plan=doc)
+    need = ["ПЛАН ДНЯ", "РЕШЕНИЯ", "new 1", "watch 1", "Переценка ARB-87931769",
+            "PRICER", "pricing", "P10", "DISPATCHER"]
+    missing = [k for k in need if k not in txt]
+    # первую строку render_plan (свой заголовок со стором) не дублируем — один _b-заголовок консоли
+    hide_title = "ПЛАН ДНЯ · 2026-09-04 · atlas-express-film" not in txt
+    # честная деградация: движок недоступен (подменён на None) → не «0», а честно
+    fake = console
+    real_pl = fake._plannerka
+    fake._plannerka = None
+    try:
+        deg = console.plan_day_text(out=io.StringIO(), plan=None)
+        deg_ok = "не импортировался" in deg
+    finally:
+        fake._plannerka = real_pl
+    # «плана нет»: пустая песочница → load_plan (None,None) → честно (движок реально стоит)
+    no_plan_ok = True
+    if real_pl is not None:
+        with tempfile.TemporaryDirectory() as td:
+            old = os.environ.get("YM_PLAN_DIR")
+            os.environ["YM_PLAN_DIR"] = td
+            try:
+                np_txt = console.plan_day_text(out=io.StringIO(), plan=None,
+                                               date_str="2026-09-04")
+                no_plan_ok = ("плана нет — планёрка" in np_txt and "битый" not in np_txt)
+            finally:
+                if old is None:
+                    os.environ.pop("YM_PLAN_DIR", None)
+                else:
+                    os.environ["YM_PLAN_DIR"] = old
+    return (not missing and hide_title and deg_ok and no_plan_ok), (
+        f"недостаёт: {missing or '—'} · один-заголовок={hide_title} "
+        f"деградация-честна={deg_ok} плана-нет-честно={no_plan_ok}")
+
+
+def cc11_sovet_blok():
+    """СОВЕТ read-блок: протокол даты из sovet/ (голоса+пропиздоны+зеркало решений плана);
+    файла нет → честно «совет не собирался»; рендер не пишет в стор; деградация честна."""
+    import tempfile
+    # протокол, какой реально пишет ymarket_sovet_v1.resolve_daily(commit) — читаем его же схему
+    proto = {"schema": "ymarket.sovet.v1", "date": "2026-09-04", "store": "atlas-express-film",
+             "generated_at": "2026-09-04T08:07:00+00:00", "mode": "svod",
+             "chair": {"mode": "svod", "by": "УПРАВЛЯЮЩИЙ-МОЗГ",
+                       "text": "заслушаны доклады органов; пропиздонов нет — упёрлись в слово оператора",
+                       "validated": True},
+             "voices": [
+                 {"organ": "КАТЕГОРИЙЩИК",
+                  "facts": [{"text": "в очереди 1 категорий · готово к заливу 0",
+                             "source": "досье categories"}], "nuzhno_slovo": []},
+                 {"organ": "ЦИКЛ-1",
+                  "facts": [{"text": "доказанно живых 1 (vozdushno-puzyrkovaya-plenka×1)",
+                             "source": "goods_library · СВЕРКА PASS"}], "nuzhno_slovo": []}],
+             "misses": [{"organ": "CATEGORIST", "what": "Спарсить streich на доноре",
+                         "since": "2026-09-03",
+                         "evidence": "carry вчера→сегодня, закрытых пунктов 0", "task_id": "T-x"}],
+             "waiting_operator": [], "plan": {"date": "2026-09-04", "decisions": 3,
+                                              "carry": 2, "new": 0, "escalation": 0, "watch": 1},
+             "sources": {}}
+    with tempfile.TemporaryDirectory() as td:
+        os.environ["YM_SOVET_DIR"] = td
+        try:
+            Path(td, "ymarket_sovet_2026-09-04.json").write_text(
+                json.dumps(proto, ensure_ascii=False), encoding="utf-8")
+            txt = console.sovet_text(out=io.StringIO(), date_str="2026-09-04")
+            need = ["СОВЕТ ДИРЕКТОРОВ", "УПРАВЛЯЮЩИЙ-МОЗГ", "КАТЕГОРИЙЩИК", "в очереди 1",
+                    "ПРОПИЗДОНЫ", "CATEGORIST", "carry 2", "watch 1"]
+            missing = [k for k in need if k not in txt]
+            # рендер чистый read: в стор (кроме уже лежащего протокола) ничего нового
+            only = sorted(p.name for p in Path(td).iterdir())
+            writes = [n for n in only if n != "ymarket_sovet_2026-09-04.json"]
+            ok_a = not missing and not writes
+        finally:
+            os.environ.pop("YM_SOVET_DIR", None)
+    # файла даты нет → честно «совет не собирался» (VL5), а не пустой лист/выдумка
+    with tempfile.TemporaryDirectory() as td:
+        os.environ["YM_SOVET_DIR"] = td
+        try:
+            absent = console.sovet_text(out=io.StringIO(), date_str="2026-09-04")
+            ok_b = "совет не собирался" in absent and "битый" not in absent
+        finally:
+            os.environ.pop("YM_SOVET_DIR", None)
+    # честная деградация: движок недоступен (подменён на None) → не «0», а честно
+    fake = console
+    real_sv = fake._sovet_mod
+    fake._sovet_mod = None
+    try:
+        deg = console.sovet_text(out=io.StringIO(), date_str="2026-09-04")
+        ok_c = "не импортировался" in deg
+    finally:
+        fake._sovet_mod = real_sv
+    return (ok_a and ok_b and ok_c), (
+        f"недостаёт: {missing or '—'} · новое-в-сторе: {writes or '—'} "
+        f"нет-файла-честно={ok_b} деградация-честна={ok_c}")
+
+
+def cc12_spory_blok():
+    """СПОРЫ read-блок (слой 2 СОВЕТА): снимок даты из spory/ → позиции+прения; снимка нет и мир
+    пуст → честно «прений не было» (детерминированная производная, VL5), а не пустой лист/выдумка;
+    рендер не пишет в стор; деградация честна."""
+    import tempfile
+    # снимок, какой реально пишет ymarket_sovet_spory_v1.resolve_spory_daily(commit)
+    doc = {"schema": "ymarket.sovet.spory.v1", "date": "2026-09-04", "store": "atlas-express-film",
+           "generated_at": "2026-09-04T08:07:00+00:00", "mode": "off",
+           "positions": [{"organ": "КАТЕГОРИЙЩИК",
+                          "stance": "партия «streich-plenka» готова к заливу (10 SKU)",
+                          "facts": [{"text": "«streich-plenka»: 10 SKU, verdict=ready_shortlist",
+                                     "source": "досье категорий · streich-plenka"}],
+                          "proposal": "оператору: слово на живой залив"}],
+           "disputes": [{"id": "W1-2026-09-04-streich-plenka", "kind": "conflict",
+                         "between": ["КАТЕГОРИЙЩИК", "ЦИКЛ-1"],
+                         "summary": "партия готова, а витрина карточек не видит",
+                         "grounding": [{"text": "готово 10 SKU", "source": "досье"}],
+                         "proposal": "оператору: слово на залив"}],
+           "sources": {}}
+    with tempfile.TemporaryDirectory() as td:
+        os.environ["YM_SPORY_DIR"] = td
+        try:
+            Path(td, "ymarket_spory_2026-09-04.json").write_text(
+                json.dumps(doc, ensure_ascii=False), encoding="utf-8")
+            txt = console.spory_text(out=io.StringIO(), date_str="2026-09-04")
+            need = ["СПОРЫ ОРГАНОВ", "КАТЕГОРИЙЩИК", "streich-plenka", "W1-2026-09-04", "ПРЕНИЯ"]
+            missing = [k for k in need if k not in txt]
+            # рендер чистый read: в сторе (кроме уже лежащего снимка) ничего нового
+            only = sorted(p.name for p in Path(td).iterdir())
+            writes = [n for n in only if n != "ymarket_spory_2026-09-04.json"]
+            ok_a = not missing and not writes
+        finally:
+            os.environ.pop("YM_SPORY_DIR", None)
+    # снимка даты нет, сторы честно-пусты (файлы читаются как пустые, не «битые») → «прений не было»
+    with tempfile.TemporaryDirectory() as td:
+        Path(td, "tasks.json").write_text("[]", encoding="utf-8")
+        Path(td, "dossiers.json").write_text("{}", encoding="utf-8")
+        Path(td, "library.json").write_text("{}", encoding="utf-8")
+        Path(td, "journal.jsonl").write_text("", encoding="utf-8")
+        Path(td, "plans").mkdir()
+        Path(td, "spory").mkdir()
+        os.environ["YM_TASKS_PATH"] = str(Path(td, "tasks.json"))
+        os.environ["YM_DOSSIERS_PATH"] = str(Path(td, "dossiers.json"))
+        os.environ["YM_LIBRARY_PATH"] = str(Path(td, "library.json"))
+        os.environ["YM_DAY_JOURNAL"] = str(Path(td, "journal.jsonl"))
+        os.environ["YM_PLAN_DIR"] = str(Path(td, "plans"))
+        os.environ["YM_SPORY_DIR"] = str(Path(td, "spory"))
+        try:
+            before = sorted(p.name for p in Path(td).iterdir())
+            absent = console.spory_text(out=io.StringIO(), date_str="2026-09-04")
+            after = sorted(p.name for p in Path(td).iterdir())
+            new = [n for n in after if n not in before]
+            ok_b = ("прений не было" in absent and "битый" not in absent
+                    and "не импортировался" not in absent and "упал" not in absent)
+            no_write = new == []
+        finally:
+            for k in ("YM_SPORY_DIR", "YM_TASKS_PATH", "YM_DOSSIERS_PATH", "YM_LIBRARY_PATH",
+                      "YM_DAY_JOURNAL", "YM_PLAN_DIR"):
+                os.environ.pop(k, None)
+    # честная деградация: движок недоступен (подменён на None) → не «0», а честно
+    fake = console
+    real_sp = fake._spory_mod
+    fake._spory_mod = None
+    try:
+        deg = console.spory_text(out=io.StringIO(), date_str="2026-09-04")
+        ok_c = "не импортировался" in deg
+    finally:
+        fake._spory_mod = real_sp
+    return (ok_a and ok_b and ok_c), (
+        f"недостаёт: {missing or '—'} · новое-в-сторе: {writes or '—'} "
+        f"пусто-честно={ok_b} чисто-после={no_write} деградация-честна={ok_c}")
+
+
+def cc13_plan_esc_reconcile():
+    """ПЛАН ДНЯ · реконсилят esc-map с досье (display-only): подтверждённое органом снимается со
+    «ждёт слова» с нотой-слогами; всё ещё need_mapping остаётся; план инъекцией БЕЗ досье → как есть
+    (истины нет); ничто не пишется (всё инъекцией)."""
+    doc = {"schema": "ymarket.plan.v1", "date": "2026-09-04", "store": "atlas-express-film",
+           "context": [{"tag": "КАТЕГОРИИ", "text": "очередь 2"}],
+           "decisions": [
+               {"id": "esc-map-meshki", "kind": "escalation",
+                "what": "подтвердить профиль ЯМ-категории для «meshki» (маппинг)",
+                "owner": "OPERATOR", "category": "categories", "priority": 50,
+                "urgency": "normal", "why": "бутылочное горлышко", "evidence": "досье",
+                "mode": "read", "refs": {"dossier_slug": "meshki"}},
+               {"id": "esc-map-setka", "kind": "escalation",
+                "what": "подтвердить профиль ЯМ-категории для «setka» (маппинг)",
+                "owner": "OPERATOR", "category": "categories", "priority": 50,
+                "urgency": "normal", "why": "бутылочное горлышко", "evidence": "досье",
+                "mode": "read", "refs": {"dossier_slug": "setka"}},
+           ]}
+    def _row(slug, need, cid):
+        return {"slug": slug, "state": "scan", "priority": 50, "task_id": "T-x",
+                "ready": 0, "need_mapping": need, "market_category_id": cid,
+                "verdict": None, "when": "2026-09-04T12:00:00+00:00" if not need else None,
+                "ood": ""}
+    # (а) позитив: meshki досье подтвердила (need_mapping=false + id), setka всё ещё ждёт
+    dossiers = [_row("meshki", False, 12345), _row("setka", True, None)]
+    txt = console.plan_day_text(out=io.StringIO(), plan=doc, dossiers=dossiers)
+    ok_a = ("нужно слово 1" in txt and "«meshki»" not in txt and "«setka»" in txt
+            and "сняты со «ждёт слова»: meshki" in txt and "числил esc-map 2" in txt)
+    # (б) негатив: оба всё ещё need_mapping → счёт как был, НЕТ ноты-снятия
+    dossiers2 = [_row("meshki", True, None), _row("setka", True, None)]
+    txt2 = console.plan_day_text(out=io.StringIO(), plan=doc, dossiers=dossiers2)
+    ok_b = ("нужно слово 2" in txt2 and "«meshki»" in txt2 and "«setka»" in txt2
+            and "сняты со «ждёт слова»" not in txt2)
+    # (в) план инъекцией БЕЗ досье → истины нет: рендер как есть, без реконсилята/ноты
+    txt3 = console.plan_day_text(out=io.StringIO(), plan=doc)
+    ok_c = ("нужно слово 2" in txt3 and "«meshki»" in txt3 and "«setka»" in txt3
+            and "сняты со «ждёт слова»" not in txt3)
+    return (ok_a and ok_b and ok_c), (
+        f"позитив={ok_a} негатив={ok_b} без-досье-как-есть={ok_c}")
+
+
 TESTS = [
     ("CC1  роль_карточка", cc1_rol_kartochka),
     ("CC2  пустая_табель", cc2_pustaya_tabel_chestno),
@@ -237,6 +469,10 @@ TESTS = [
     ("CC7  консоль_не_пишет", cc7_console_ne_pishet),
     ("CC8  цвета_plain", cc8_cveta_plain),
     ("CC9  задания_блок", cc9_zadaniya_blok),
+    ("CC10 план_дня_блок", cc10_plan_dnya_blok),
+    ("CC11 совет_блок", cc11_sovet_blok),
+    ("CC12 споры_блок", cc12_spory_blok),
+    ("CC13 план_esc_reconcile", cc13_plan_esc_reconcile),
 ]
 
 
@@ -252,7 +488,7 @@ def main():
         passed += 1 if ok else 0
     print(f"\nИтого: {passed}/{len(TESTS)} PASS")
     if passed == len(TESTS):
-        print("✅ КОНСОЛЬ-ЯМ читает сторы честно: карточки/табель/KPI/артефакты/задания, без выдумки и без записи")
+        print("✅ КОНСОЛЬ-ЯМ читает сторы честно: карточки/табель/KPI/артефакты/задания/план дня, без выдумки и без записи")
     return 0 if passed == len(TESTS) else 1
 
 

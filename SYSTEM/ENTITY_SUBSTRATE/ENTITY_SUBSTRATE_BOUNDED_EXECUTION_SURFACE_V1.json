@@ -1,0 +1,191 @@
+{
+  "allowed_writes": [
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_IDENTITY_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_STATE_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_MEMORY_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_LINEAGE_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_CAPABILITY_BINDING_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_LAWFUL_ACTION_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_DASHBOARD_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PROOF_CHAIN_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_FREEZE_REVIEW_STOP_SURFACE_V1.json",
+    "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PRODUCT_BINDING_SURFACE_FOR_ANNA_MVP_V1.json",
+    "SYSTEM/DASHBOARD/ENTITY_SUBSTRATE_RUNTIME_PANEL_V1.json",
+    "MEMORY_WAVE/reports/entity_substrate/ENTITY_SUBSTRATE_RUNTIME_MEMORY_V1.json",
+    "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SESSION_V1_PROOF.json",
+    "MIGRATION/audits/SOCC_RUN_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SESSION_V1.json"
+  ],
+  "checks": {
+    "accept_next_matches_current": true,
+    "accept_proof_exists": true,
+    "active_accepted_exists": true,
+    "anna_birth_not_authorized": true,
+    "authority_at_current": true,
+    "build_checks_all_true": true,
+    "codex_gate_pass": true,
+    "codex_proof_exists": true,
+    "direction_exists": true,
+    "enforcer_exists": true,
+    "entity_birth_not_authorized": true,
+    "execution_not_authorized": true,
+    "hermes_gate_pass": true,
+    "hermes_proof_exists": true,
+    "no_agi_claim": true,
+    "no_anna_birth": true,
+    "no_background": true,
+    "no_build_execution": true,
+    "no_daemon": true,
+    "no_entity_birth": true,
+    "no_execution": true,
+    "no_l3_claim": true,
+    "no_network": true,
+    "no_old_route_resume": true,
+    "no_patch_execution": true,
+    "no_session_run": true,
+    "plan_and_gates_accept_pass": true,
+    "plan_exists": true,
+    "review_accept_before_execution_mandated": true,
+    "review_surface_is_next_in_direction": true,
+    "run_session_in_direction": true,
+    "scientific_gate_pass": true,
+    "scientific_proof_exists": true,
+    "seal_in_chain": true
+  },
+  "created_at_utc": "2026-06-22T10:37:57.718874+00:00",
+  "current_expected": "build_entity_substrate_bounded_execution_surface_v1",
+  "direction_id": "DIRECTION_ENTITY_SUBSTRATE_V1",
+  "execution_purpose": "Run exactly one bounded foreground session to materialize the ten Entity/Substrate surfaces as declarative substrate artifacts. This prepares the substrate; it does NOT birth an entity or Anna.",
+  "execution_scope": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_allowed": false,
+    "daemon_allowed": false,
+    "entity_birth_allowed": false,
+    "l3_claim_allowed": false,
+    "max_sessions": 1,
+    "max_ticks": 1,
+    "mode": "single_foreground_bounded_execution_session",
+    "must_stop_after_run": true,
+    "mw_route_allowed": false,
+    "network_allowed": false,
+    "old_route_resume_allowed": false,
+    "operator_foreground_only": true
+  },
+  "findings": {
+    "plan_next_chain_gap_detected": true,
+    "plan_next_chain_gap_note": "ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.next_chain omits review_entity_substrate_bounded_execution_surface_v1 and accept_entity_substrate_bounded_execution_surface_v1, jumping build_surface -> run_session. This violates mandatory gate review_accept_before_execution. Lawful ordering is taken from the direction.future_frontiers instead. Repair the plan next_chain in a separate lawful step."
+  },
+  "forbidden_writes": [
+    "core/socc/route_authority/* except lawful next transition fields",
+    "old supramental-agent route files",
+    "network config",
+    "launch agents / daemon plist / cron jobs / background workers",
+    "MW route",
+    "any entity-birth or anna-birth surface"
+  ],
+  "future_frontiers": [
+    "review_entity_substrate_bounded_execution_surface_v1",
+    "accept_entity_substrate_bounded_execution_surface_v1",
+    "run_entity_substrate_bounded_execution_session_v1",
+    "validate_entity_substrate_bounded_execution_session_v1",
+    "review_entity_substrate_bounded_execution_session_v1",
+    "accept_entity_substrate_bounded_execution_session_v1",
+    "seal_entity_substrate_v1",
+    "build_anna_mvp_direction_v1"
+  ],
+  "hard_failures": [],
+  "id": "ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SURFACE_V1",
+  "next_required_step": "review_entity_substrate_bounded_execution_surface_v1",
+  "pass_definition": {
+    "fail_if": [
+      "any daemon/background/network action is attempted",
+      "old route is resumed",
+      "execution exceeds one bounded tick",
+      "any entity/anna birth is attempted",
+      "proof/memory/dashboard missing",
+      "route authority does not match expected run frontier"
+    ],
+    "pass_only_if": [
+      "route authority equals run_entity_substrate_bounded_execution_session_v1",
+      "exactly one bounded foreground session runs",
+      "the ten substrate surface artifacts are written",
+      "runtime dashboard panel is written",
+      "proof is written",
+      "memory is written",
+      "stop is observed",
+      "no daemon/background/network/old route/MW/L3",
+      "no entity birth / no anna birth"
+    ]
+  },
+  "pre_run_checks_required": {
+    "anna_birth_allowed": false,
+    "bounded_surface_accepted": true,
+    "codex_gate_pass": true,
+    "dashboard_visible": true,
+    "entity_birth_allowed": false,
+    "hermes_gate_pass": true,
+    "memory_required": true,
+    "plan_and_gates_accepted": true,
+    "proof_required": true,
+    "route_authority_equals_run_frontier": "run_entity_substrate_bounded_execution_session_v1",
+    "scientific_gate_pass": true,
+    "stop_required": true
+  },
+  "run_outputs_required": {
+    "bounded_stop_observed": true,
+    "lawful_next_after_run": true,
+    "memory_record": true,
+    "proof_chain": true,
+    "runtime_dashboard_panel": true,
+    "substrate_surface_artifacts": true
+  },
+  "runtime_artifacts_to_build": [
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_IDENTITY_SURFACE_V1.json",
+      "surface": "entity_identity_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_STATE_SURFACE_V1.json",
+      "surface": "entity_state_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_MEMORY_SURFACE_V1.json",
+      "surface": "entity_memory_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_LINEAGE_SURFACE_V1.json",
+      "surface": "entity_lineage_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_CAPABILITY_BINDING_SURFACE_V1.json",
+      "surface": "entity_capability_binding_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_LAWFUL_ACTION_SURFACE_V1.json",
+      "surface": "entity_lawful_action_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_DASHBOARD_SURFACE_V1.json",
+      "surface": "entity_dashboard_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PROOF_CHAIN_SURFACE_V1.json",
+      "surface": "entity_proof_chain_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_FREEZE_REVIEW_STOP_SURFACE_V1.json",
+      "surface": "entity_freeze_review_stop_surface"
+    },
+    {
+      "path": "SYSTEM/ENTITY_SUBSTRATE/runtime/ENTITY_PRODUCT_BINDING_SURFACE_FOR_ANNA_MVP_V1.json",
+      "surface": "entity_product_binding_surface_for_anna_mvp"
+    },
+    {
+      "path": "SYSTEM/DASHBOARD/ENTITY_SUBSTRATE_RUNTIME_PANEL_V1.json",
+      "surface": "operator_visible_runtime_panel"
+    }
+  ],
+  "status": "BUILT_CANDIDATE",
+  "surface_type": "BOUNDED_ENTITY_SUBSTRATE_EXECUTION_SURFACE",
+  "truth_boundary": "Entity/Substrate bounded execution surface build only. Builds a declarative sandbox contract; authorizes NO execution until separate review and acceptance. Runs no session, materializes no substrate artifacts, births no Entity/ANNA, and does not enable loop/daemon/scheduler/background, use network, widen queue, approve canon, or claim AGI."
+}

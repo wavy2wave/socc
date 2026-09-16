@@ -1,0 +1,25 @@
+{
+  "active_memory_files": 17,
+  "active_proof_files": 73,
+  "active_self_building_files": 114,
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/observe_exclude_quarantine_20260608T180423Z/scripts/socc/socc_observe_v1.py"
+  ],
+  "changed": [
+    "scripts/socc/socc_observe_v1.py"
+  ],
+  "created_at_utc": "2026-06-08T18:04:25.080391+00:00",
+  "daemon_running": false,
+  "excluded_memory_files": 3524,
+  "excluded_proof_files": 947,
+  "excluded_self_building_files": 4469,
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_OBSERVE_EXCLUDE_MIGRATION_QUARANTINE_V1_PROOF",
+  "network_used": false,
+  "observe_pass": true,
+  "status": "PASS",
+  "tick_executed": false,
+  "truth_boundary": "Observe repair only. Quarantine/backups/audits are excluded from active mounted counts.",
+  "warnings": []
+}

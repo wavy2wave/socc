@@ -1,0 +1,10 @@
+{
+  "active_tick_run": "SYSTEM/CYCLE/foreground_tick_run/SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1.json",
+  "created_at_utc": "2026-06-09T13:40:34.776302+00:00",
+  "id": "ACTIVE_FIRST_FOREGROUND_CONTROLLED_TICK_RUN",
+  "next_required_step": "validate_socc_first_foreground_controlled_tick_v1",
+  "source_run_surface": "SYSTEM/CYCLE/foreground_tick_run_surface/ACTIVE_ACCEPTED_FIRST_FOREGROUND_TICK_RUN_SURFACE.json",
+  "status": "ACTIVE_RUN_CANDIDATE_PENDING_VALIDATION",
+  "tick_count": 1,
+  "truth_boundary": "This is one local foreground controlled tick. It is not daemon autonomy, not background autonomy, not network autonomy, and not AGI."
+}

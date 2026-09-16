@@ -1,0 +1,41 @@
+{
+  "created_at_utc": "2026-06-16T22:15:19.044416+00:00",
+  "id": "INTENT_20260616T221519_построй_anna_dental_mvp_через_entity_substrate",
+  "intent": {
+    "entities": [
+      "Entity Substrate",
+      "ANNA"
+    ],
+    "intent_kind": "build",
+    "request": "построй ANNA dental MVP через Entity Substrate",
+    "topic": "entity_substrate"
+  },
+  "knowledge": {
+    "article_md": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/pages/entity_substrate.md",
+    "context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/context_packs/entity_substrate_context_pack_v1.md",
+    "has_article": true,
+    "has_context_pack": true,
+    "known_topics": [
+      "entity_substrate"
+    ],
+    "level": "KNOWN",
+    "topic": "entity_substrate"
+  },
+  "llm_used": false,
+  "network_used": false,
+  "outcome": "READY",
+  "plan": "/Users/wavysexy/SOCC/SYSTEM/COGNITION/intent/20260616T221519_построй_anna_dental_mvp_через_entity_substrate_PLAN_SKELETON.json",
+  "readiness": {
+    "blockers": [],
+    "criteria": {
+      "discipline_clean": true,
+      "intent_resolved": true,
+      "knowledge_known_for_build": true,
+      "knowledge_present": true,
+      "route_lawful_next_present": true,
+      "route_status_pass": true
+    },
+    "ready": true
+  },
+  "request": "построй ANNA dental MVP через Entity Substrate"
+}

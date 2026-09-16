@@ -1,0 +1,73 @@
+{
+  "artifact": "ANNA_L2_REAL_BOOKING_DIRECTION_V1",
+  "status": "DIRECTION_CANDIDATE",
+  "layer": "L2",
+  "next": "review_anna_l2_real_booking_direction_v1",
+  "created_at_utc": "2026-06-30",
+  "_honesty": "Document-only. No connection to any clinic system without its explicit creds + consent. Written solo (research workflow zombied → killed to not wait in vain); integration feasibility is honestly UNVERIFIED, not fabricated.",
+  "precondition": "L1 resilient (ranks 1/2/5 verified). True unkillable still needs always-on host (operator decision).",
+
+  "current_state_from_code": {
+    "file": "scripts/anna_runtime_v1.py",
+    "have": "_book() → local JSON appointments/*.json (status:requested, idempotent 10min); _notify_admin() → card md + admin_inbox.jsonl + optional ANNA_ADMIN_WEBHOOK; _scrub/_extract_booking anti-hallucination",
+    "data_shape": "{service, preferred_time, name, phone, notes} + client_id + created_at_utc + status",
+    "missing": "real calendar/CRM write, confirmation back to patient, reminder, reschedule/cancel, clinic-side double-booking guard"
+  },
+
+  "readiness_ledger": [
+    {"pillar": "booking_capture", "state": "HAVE", "note": "_book/_extract_booking + anti-hallucination"},
+    {"pillar": "operator_surface", "state": "PARTIAL", "note": "admin_inbox + card exist; no confirmation back to patient"},
+    {"pillar": "real_calendar_write", "state": "ABSENT"},
+    {"pillar": "confirmation_loop", "state": "ABSENT"},
+    {"pillar": "reminder_reschedule_cancel", "state": "ABSENT"},
+    {"pillar": "yclients_api_feasibility", "state": "UNVERIFIED", "note": "likely partnership/approval-gated + clinic token; not checked this session"},
+    {"pillar": "dikidi_api_feasibility", "state": "UNVERIFIED"},
+    {"pillar": "gcal_api_feasibility", "state": "PARTIAL_UNVERIFIED", "note": "documented (OAuth/service-account, create event); not integrated"}
+  ],
+
+  "thin_vertical_slice": {
+    "name": "anna_l2_manual_confirmation_loop",
+    "first_backend": "manual",
+    "why": "Only thing buildable with NO external partnership, works for ANY clinic, stealth-safe. From the clinic's view it IS real booking: ANNA structures → reception confirms in their own system → ANNA confirms to patient + sets reminder.",
+    "first_api_integration_next": "Google Calendar (universal; clinic supplies its calendar)",
+    "gated_behind_partnership_unverified": ["yclients", "dikidi"],
+    "in_scope": ["pluggable booking-spine abstraction", "manual backend: structured lead → reception confirm → patient confirmation", "reminder draft loop", "idempotency / no double-book", "stealth-safe confirmation/reminder copy"],
+    "out_of_scope": ["YClients/Dikidi deep API", "payments", "multi-channel", "revenue claims (that is L3)"]
+  },
+
+  "booking_spine": "_book() routes to a backend by clinic config: manual (default, everywhere) → gcal → yclients/dikidi. Interface: create(appt)->{ok, external_id|None, needs_confirmation}, confirm(), remind(), cancel(). Local JSON stays the journal-of-truth under all backends; fallback to manual is always alive.",
+
+  "lawful_sub_chain": [
+    "review_anna_l2_real_booking_direction_v1",
+    "accept_anna_l2_real_booking_direction_v1",
+    "build_anna_l2_construction_plan_v1",
+    "review_anna_l2_construction_plan_v1",
+    "run_anna_l2_scientific_gate_v1",
+    "run_anna_l2_hermes_gate_v1",
+    "run_anna_l2_codex_gate_v1",
+    "review_anna_l2_plan_and_gates_v1",
+    "accept_anna_l2_plan_and_gates_v1",
+    "build_anna_l2_bounded_execution_surface_v1",
+    "review_anna_l2_bounded_execution_surface_v1",
+    "accept_anna_l2_bounded_execution_surface_v1",
+    "run_anna_l2_bounded_execution_session_v1",
+    "validate_anna_l2_bounded_execution_session_v1",
+    "review_anna_l2_bounded_execution_session_v1",
+    "accept_anna_l2_bounded_execution_session_v1",
+    "seal_anna_l2_manual_loop_v1",
+    "ship_to_first_clinic_enters_L3"
+  ],
+
+  "gates": {
+    "scientific": "booking deterministically idempotent, no double-book, phone/name never fabricated",
+    "hermes": "confirmation/reminder tone is human, stealth intact",
+    "codex": "backend abstraction clean, local journal single source of truth, manual fallback always alive"
+  },
+
+  "boundaries": [
+    "No connection to YClients/Dikidi/Google without explicit clinic creds + consent. No silent auto-write to a clinic system.",
+    "Stealth: confirmation/reminder sound like a live admin; never 'a bot booked you'.",
+    "No revenue claim — that is L3 (a real clinic proves value).",
+    "True unkillable runtime is on an always-on host; currently RESILIENT (open operator decision)."
+  ]
+}

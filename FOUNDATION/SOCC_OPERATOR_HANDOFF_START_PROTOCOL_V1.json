@@ -1,0 +1,49 @@
+{
+  "accepted_truth": {
+    "controlled_autonomy_path": "PROVEN",
+    "first_lawful_controlled_run": "EXECUTED_VALIDATED_REVIEWED",
+    "foundation": "ACCEPTED_VALIDATED_REVIEWED",
+    "socc_working_base": "ACCEPTED",
+    "stable_operating_mode": "BUILT_VALIDATED_REVIEWED"
+  },
+  "built_from": "socc_working_base_accepted_v1",
+  "canonical_root": "/Users/wavysexy/SOCC",
+  "created_at_utc": "2026-06-08T19:23:00.186515+00:00",
+  "final_accept_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_FINAL_ACCEPT_WORKING_BASE_V1_PROOF.json",
+  "id": "SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1",
+  "lawful_next": "validate_socc_operator_handoff_start_protocol_v1",
+  "old_project_forensic": "MIGRATION/audits/SOCC_OLD_HANDOFF_START_PROTOCOL_FORENSIC_V1.json",
+  "operator_warning": [
+    "Do not rebuild old migration layers.",
+    "Do not start daemon background network.",
+    "Do not patch outside current_lawful_next.",
+    "Do not duplicate accepted foundation."
+  ],
+  "purpose": "Minimal start protocol for every new SOCC chat or terminal session.",
+  "repair_note": "Startup sequence normalized to exact validation strings. Old project was forensically checked first; no blind copy.",
+  "safety_flags": {
+    "agi_claim_allowed": false,
+    "anna_birth_allowed": false,
+    "background_loop_enabled": false,
+    "daemon_running": false,
+    "entity_birth_allowed": false,
+    "network_used": false,
+    "scheduler_installed": false
+  },
+  "startup_sequence": [
+    "cd $HOME/SOCC || cd $HOME/socc",
+    "python3 scripts/socc/socc_observe_v1.py",
+    "read CURRENT_LAWFUL_NEXT",
+    "do not restart migration",
+    "do not repeat accepted proofs",
+    "execute only current lawful next",
+    "write proof",
+    "update route pulse control",
+    "stop after bounded step",
+    "execute only the current lawful next step",
+    "update route/pulse/control"
+  ],
+  "status": "PASS",
+  "truth_boundary": "Start handoff protocol only. No daemon background network.",
+  "working_base": "FOUNDATION/SOCC_WORKING_BASE_V1.json"
+}

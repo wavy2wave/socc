@@ -1,0 +1,29 @@
+{
+  "id": "ATELIER_GATES_V1",
+  "schema": "socc.gates.v1",
+  "created_at_utc": "2026-06-30T16:45:48+00:00",
+  "purpose": "Gate definitions for the ATELIER design-system studio. Every frontier must pass its declared gates before ACCEPT. Mirrors Brand Forge gates, adapted to a design system.",
+  "gates": {
+    "SCI": {
+      "name": "Scientific Quality",
+      "asks": "Is the design decision evidence-based and falsifiable? WCAG ratios computed (not guessed), render proven, demo vs real data disclosed.",
+      "fail_if": ["contrast claimed without numbers", "invented metric/₽", "taste-only with no rationale"]
+    },
+    "HER": {
+      "name": "Hermes (it works)",
+      "asks": "Does it actually render? python runs without error, HTML opens, tokens resolve, no stray template braces, interactions fire.",
+      "fail_if": ["generator throws", "broken/empty output", "hardcoded color instead of token"]
+    },
+    "COD": {
+      "name": "Codex (canon law)",
+      "asks": "Conforms to canon? Right renderer per surface (SOCC_SURFACE_LAW), naming, file structure, truth_boundary present, reuses existing renderer instead of duplicating.",
+      "fail_if": ["matrix on a buyer surface", "warm style on operator surface", "duplicate of socc_canon_html / Brand Forge / INTERFACE", "missing truth_boundary"]
+    },
+    "GRD": {
+      "name": "Guardian (adversarial)",
+      "asks": "Do N skeptics (a11y + coherence) fail to refute it? Focus-visible on every interactive, keyboard reachable, hit-targets >=24px, one coherent system across both canons, 'a top studio would ship this'.",
+      "fail_if": ["no visible focus", "inconsistent component across surfaces", "thin/unfinished craft passed as done"]
+    }
+  },
+  "truth_boundary": "Gate definitions only. Declares what each gate checks and the fail conditions. Running gates produces no pixels and makes no external claim."
+}

@@ -1,0 +1,12 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_LANGUAGE_DASHBOARD_BINDING_V1_PROOF.json",
+  "active_binding": "SYSTEM/INTERFACE/bindings/language_dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_V1.json",
+  "binding_view": "SYSTEM/INTERFACE/dashboard/SOCC_LANGUAGE_DASHBOARD_BINDING_VIEW_V1.md",
+  "created_at_utc": "2026-06-09T09:21:46.198258+00:00",
+  "id": "ACTIVE_ACCEPTED_LANGUAGE_DASHBOARD_BINDING",
+  "mode": "CANONICAL_READ_ONLY_CREATOR_DIALOGUE_BINDING",
+  "next_required_step": "build_socc_read_only_creator_dialogue_view_v1",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted binding is read-only and non-executing."
+}

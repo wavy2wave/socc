@@ -1,0 +1,1 @@
+{"claims": [{"text": "Read-only creator dialogue view displays language/dashboard/route/proof state. It does not execute language, mutate route, start daemon/background, use network, or launch autonomy.", "line": 38, "entities": ["Daemon", "Proof"], "intent": "definition", "polarity": "negate"}], "dates": [], "entity_counts": {"SOCC": 4, "Proof": 2, "Daemon": 2}}

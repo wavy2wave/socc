@@ -1,0 +1,52 @@
+{
+  "allowed": [
+    "define visibility requirements",
+    "define cycle output schema",
+    "define proof requirements",
+    "define operator-visible cycle status",
+    "prepare validation frontier"
+  ],
+  "autonomy_distance_after_acceptance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_controlled_cycle_packet": "near",
+    "to_first_foreground_tick": "approximately_4_to_7_lawful_steps"
+  },
+  "capability": "SOCC_CAN_DEFINE_VISIBLE_PROOF_BOUND_CONTROLLED_CYCLE_OUTPUT",
+  "contract_type": "CONTROLLED_CYCLE_VISIBILITY_ONLY",
+  "created_at_utc": "2026-06-09T12:06:41.512496+00:00",
+  "forbidden": [
+    "execute cycle",
+    "execute code",
+    "execute language",
+    "mutate route outside lawful transition",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "id": "SOCC_CONTROLLED_CYCLE_VISIBILITY_CONTRACT_V1",
+  "next_required_step": "validate_socc_controlled_cycle_visibility_contract_v1",
+  "source": {
+    "active_accepted_bounded_plan": "SYSTEM/INTERFACE/proposals/bounded_plan/ACTIVE_ACCEPTED_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET.json",
+    "bounded_plan_accept_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1_PROOF.json",
+    "bounded_plan_acceptance": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_ACCEPTANCE_V1.json",
+    "bounded_plan_packet": "SYSTEM/INTERFACE/proposals/bounded_plan/SOCC_FIRST_BOUNDED_PLAN_PROPOSAL_PACKET_V1.json"
+  },
+  "status": "BUILT_CANDIDATE",
+  "truth_boundary": "This contract only defines visible controlled cycle obligations. It does not execute cycles or authorize daemon/background/network autonomy.",
+  "visibility_obligations": [
+    "show observed current_lawful_next before cycle",
+    "show selected bounded step",
+    "show why selected step is lawful",
+    "show allowed boundary",
+    "show forbidden actions",
+    "show expected artifact delta",
+    "show required proof",
+    "show result summary",
+    "show hard failures if any",
+    "show next_lawful_step after cycle",
+    "stop after bounded cycle"
+  ]
+}

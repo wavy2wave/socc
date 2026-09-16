@@ -1,0 +1,21 @@
+{
+  "id": "service-leadgen-RU-2007cb1e30",
+  "ts": "2026-06-30T17:13:54.072845+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": true,
+    "warden_gate": true,
+    "t1_list_price_from_formula": true,
+    "t2_order_real_source": true,
+    "t3_fulfill_real": true,
+    "t4_verify_money": false
+  },
+  "hard_failures": [
+    "t4_verify_money"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-2007cb1e30_repair_required",
+  "truth_boundary": "t4: bank_statement_ip: нет идентификатора-следа (operation_id/receipt_id/deal_id) → нечем подтвердить (Φ(t4))",
+  "proof_hash": "71bc48e171cb718a"
+}

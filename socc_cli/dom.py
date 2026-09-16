@@ -157,6 +157,24 @@ def _nav_cells(out, title, sub, rows, sel, prompt):
     return _frame(out, title, sub, win, [_col(out, "DIM", t) for t in foot])
 
 
+def _wrap_acts(buttons, w):
+    """ДЕЙСТВИЯ → строки ≤ ширины кадра: кнопок может быть больше, чем влезает
+    в одну строку (7 и больше на 80 колонок), — переносим по-человечески."""
+    toks = [f"[{i}] {lab}" for i, (_t, lab) in enumerate(buttons, 1)]
+    lines, cur = [], "   "
+    for t in toks:
+        cand = f"{cur}   {t}" if cur.strip() else f"{cur}{t}"
+        if len(cand) <= w:
+            cur = cand
+        else:
+            if cur.strip():
+                lines.append(cur)
+            cur = f"   {t}"
+    if cur.strip():
+        lines.append(cur)
+    return lines
+
+
 def _read(out, inp, *, title, sub, body, buttons=None, summary=None, hint=None):
     """READ-экран стабильного кадра: длинное тело листается, низ 3 прижат.
 
@@ -171,8 +189,7 @@ def _read(out, inp, *, title, sub, body, buttons=None, summary=None, hint=None):
     act_lines = []
     if buttons:
         act_lines = ["", _seal(out, "ДЕЙСТВИЯ")]
-        acts = "   " + "   ".join(f"[{i}] {lab}" for i, (_t, lab) in enumerate(buttons, 1))
-        act_lines.append(acts)
+        act_lines += _wrap_acts(buttons, _w)
     avail = body_h - len(act_lines)
     maxoff = max(0, len(body) - avail)
     off = 0
@@ -211,6 +228,28 @@ def _read(out, inp, *, title, sub, body, buttons=None, summary=None, hint=None):
 
 def _st(t):
     return _ANSI.sub("", str(t))
+
+
+def _task_row(out, t, *, with_id=False):
+    """Ряд задачи «АКТИВНЫЕ ЗАДАНИЯ» — влазит в кадр (DH16): what режется по остатку ширины.
+
+    Хвост считаем ТОЧНО (owner·пункты·id), head — фиксирован; под what остаётся ширина минус
+    хвост. Раньше raw what (store_text) или snip 60 (_camp_home_text) давали строки >78 при
+    длинных реальных заданиях (реестр материализован 03.09) — ровно тот же приём, что evidence
+    (snip по _width-остатку). with_id=True — вербозный ряд (пункты N/M · T-id), False — компакт.
+    """
+    st = t.get("state", "open")
+    icon = "◐" if st == "in_progress" else "○"
+    col = "CY" if st == "in_progress" else "W"
+    steps = t.get("steps") or []
+    ndone = sum(1 for s in steps if isinstance(s, dict) and s.get("state") == "done")
+    ntot = len(steps)
+    tail = (f"[{t.get('owner')}] · пункты {ndone}/{ntot} · {t.get('id')}"
+            if with_id else f"[{t.get('owner')}] · {ndone}/{ntot}")
+    head = f"  {_col(out, col, icon)} "
+    what = _snip(t.get("what", ""),
+                 max(8, _width(out) - len(_st(head)) - len(_st(tail)) - 1))
+    return head + _col(out, "B", what) + " " + tail
 
 
 def _state_word(state):
@@ -618,7 +657,7 @@ def store_text(out, store, pl=None, now=None):
     if bits:
         L.append(_col(out, "DIM", "  " + " · ".join(bits)))
     if info.get("note"):
-        L.append(_col(out, "DIM", f"  {_snip(info['note'], 90)}"))
+        L.append(_col(out, "DIM", f"  {_snip(info['note'], max(8, _width(out) - 2))}"))
 
     # ПУЛЬС
     L.append(_seal(out, "ПУЛЬС"))
@@ -630,9 +669,16 @@ def store_text(out, store, pl=None, now=None):
         age = _age_txt(_last_ts(ledger) or pulse.get("date"), now)
         vbits = " · ".join(f"{k} {v}" for k, v in vd.items()) or "—"
         col = "GR" if pdate == today else "YE"
-        L.append(f"  {_col(out, col, '●')} пульс {pdate} · вердикты {vbits}"
-                 f" · артефактов {pulse.get('artifacts', 0)}"
-                 + (f" · активность {age}" if age != "—" else ""))
+        base = (f"  {_col(out, col, '●')} пульс {pdate} · вердикты {vbits}"
+                f" · артефактов {pulse.get('artifacts', 0)}")
+        if age != "—":
+            extra = f" · активность {age}"
+            if len(_st(base)) + len(_st(extra)) <= _width(out):
+                L.append(base + extra)
+            else:
+                L.append(base + _snip(extra, max(0, _width(out) - len(_st(base)))))
+        else:
+            L.append(base)
         if pdate != today:
             L.append(_col(out, "DIM", "     устарел — цикл сегодня ещё не гонялся сухо"))
 
@@ -666,13 +712,7 @@ def store_text(out, store, pl=None, now=None):
     if reg_status == "ok" and reg_tasks:
         for t in sorted(reg_tasks, key=lambda x: (x.get("priority", 50),
                                                   str(x.get("updated_at", "")))):
-            st = t.get("state", "open")
-            col = "CY" if st == "in_progress" else "W"
-            ndone = sum(1 for s in (t.get("steps") or []) if isinstance(s, dict) and s.get("state") == "done")
-            ntot = len(t.get("steps") or [])
-            icon = "◐" if st == "in_progress" else "○"
-            L.append(f"  {_col(out, col, icon)} {_col(out, 'B', t.get('what', ''))} "
-                     f"[{t.get('owner')}] · пункты {ndone}/{ntot} · {t.get('id')}")
+            L.append(_task_row(out, t, with_id=True))
     elif reg_status == "error":
         L.append(_col(out, "RE", "  реестр заданий битый — читаю очередь из живых сторов"))
     # очередь (наблюдения) — если durable пуст/нет
@@ -684,7 +724,11 @@ def store_text(out, store, pl=None, now=None):
         for qq in queue:
             urg = "!!" if qq.get("urgency") == "high" else ("!" if qq.get("urgency") == "critical" else "")
             tag = _col(out, {"ЗАЛИВ": "CY", "ЧИНИТЬ": "RE", "ПУЛЬС": "YE"}.get(qq.get("tag"), "W"), qq.get("tag", "?"))
-            L.append(f"  ○ {tag} {urg} {_col(out, 'B', qq.get('what', ''))} [{qq.get('owner')}]")
+            pfx = f"  ○ {tag} {urg} "
+            sfx = f"[{qq.get('owner')}]"
+            what = _snip(qq.get("what", ""),
+                         max(8, _width(out) - len(_st(pfx)) - len(_st(sfx)) - 1))
+            L.append(f"{pfx}{_col(out, 'B', what)} {sfx}")
             L.append(_col(out, "DIM", f"      · {_snip(qq.get('evidence'), _width(out) - 12)}"))
     if reg_status == "absent" and queue:
         L.append(_col(out, "DIM", "     (реестр durable ещё не создан — это живая очередь наблюдений)"))
@@ -865,13 +909,7 @@ def _camp_home_text(out, store, pl=None, now=None):
     if reg_status == "ok" and reg_tasks:
         for t in sorted(reg_tasks, key=lambda x: (x.get("priority", 50),
                                                   str(x.get("updated_at", ""))))[:4]:
-            st = t.get("state", "open")
-            icon = "◐" if st == "in_progress" else "○"
-            col = "CY" if st == "in_progress" else "W"
-            ndone = sum(1 for s in (t.get("steps") or [])
-                        if isinstance(s, dict) and s.get("state") == "done")
-            L.append(f"  {_col(out, col, icon)} {_col(out, 'B', _snip(t.get('what', ''), 60))}"
-                     f" [{t.get('owner')}] · {ndone}/{len(t.get('steps') or [])}")
+            L.append(_task_row(out, t))
     elif reg_status == "error":
         L.append(_col(out, "RE", "  реестр заданий битый — читаю очередь из живых сторов"))
     if queue:
@@ -1003,9 +1041,26 @@ def home_rows(probes):
     rows.append(_sep("ЖИВОЕ"))
     rows.append(_item("live:home", "▶ ЖИВОЙ ЭКРАН — вся система дышит",
                       sub="автообновление: пульс органов · таймер автопилота · часы"))
+    rows.append(_sep("ТОПЛИВО"))
+    _tnote = probes.get("tasks", ("off", "реестра ещё нет"))[1]
+    rows.append(_item("tasks:home", "📋 ЗАДАНИЯ · весь реестр систем",
+                      sub=_snip(_tnote, 84)))
     rows.append(_sep(""))
     rows.append(_item("quit", "Выйти из ДОМА"))
     return rows
+
+
+def _tasks_probe():
+    """Зонд ЗАДАНИЯ для меню ДОМА → (state, note). Лицо тянем лениво, fail-soft:
+    падение импорта/реестра = честный «off», дом-меню никогда не падает."""
+    try:
+        import socc_cli.tasks as Tk
+        n, note = Tk.tasks_probe()
+    except Exception:
+        return "off", "лицо ЗАДАНИЯ недоступно"
+    if n is None:
+        return "off", note
+    return "on", f"открыто {n} · топливо ДОМА · 0₽ read"
 
 
 def _home_probes():
@@ -1017,6 +1072,7 @@ def _home_probes():
         except Exception:
             state, note = "off", "зонд упал"
         out[o["key"]] = (state, note)
+    out["tasks"] = _tasks_probe()
     return out
 
 
@@ -1059,6 +1115,9 @@ def ym_rows(stores, *, pulse_of=None, now=None):
                        ("view:дело", "ДЕЛО · журнал+KPI+задания"),
                        ("view:задания", "ЗАДАНИЯ · весь реестр"),
                        ("view:планёрка", "ПЛАНЁРКА · пульсы+задания"),
+                       ("view:план", "ПЛАН ДНЯ · утро: что берём и почему"),
+                       ("view:совет", "СОВЕТ · голоса органов · пропиздоны"),
+                       ("view:споры", "СПОРЫ · позиции органов · прения (слой 2 СОВЕТА)"),
                        ("view:авто", "АВТОПИЛОТ · хвост прогонов")):
         rows.append(_item(act, label))
     rows.append(_sep("ЖИВОЕ / ГЛУБЖЕ"))
@@ -1080,7 +1139,10 @@ def _store_action_rows():
     return [_item("live:store", "▶ ЖИВОЙ ЭКРАН магазина",
                   sub="леджер цикла растёт на глазах · таймер автопилота"),
             _item("view:авто", "АВТОПИЛОТ · хвост прогонов"),
+            _item("view:план", "ПЛАН ДНЯ · утро-решения"),
             _item("view:задания", "ЗАДАНИЯ · весь реестр"),
+            _item("eco:store", "ЭКОСИСТЕМА · разделы магазина (read 0₽)",
+                  sub="ЗАДАНИЯ · ЦИКЛЫ · СОТРУДНИКИ · ДОНОР · АРТЕФАКТЫ"),
             _item("quit", "Назад к магазинам")]
 
 
@@ -1435,9 +1497,10 @@ def _run_pult_store(out, inp, store):
 
 def _run_store_tty(out, inp, store):
     """ДОМ кампании на живом tty: ДОМ ЯМ-ЦИКЛ <хеш> — сводный кадр читается,
-    ДЕЙСТВИЯ прижаты книзу (ЖИВОЙ · ПУЛЬТ · ГЕЙТ · АВТО · ЗАДАНИЯ · НАЗАД), тело
-    листается. Движок не запускается: ГЕЙТ — честная read-сводка; ПУЛЬТ —
-    единственный исполнитель (КОМАНДИР ДНЯ, запуск движка по слову оператора)."""
+    ДЕЙСТВИЯ прижаты книзу (ЖИВОЙ · ПУЛЬТ · ГЕЙТ · АВТО · ЗАДАНИЯ · ЭКО · НАЗАД),
+    тело листается. Движок не запускается: ГЕЙТ — честная read-сводка; ПУЛЬТ —
+    единственный исполнитель (КОМАНДИР ДНЯ, запуск движка по слову оператора);
+    ЭКО — read-навигатор разделов магазина (0₽)."""
     info = _store_info(store)
     h = _cycle_hash(store)
     sub = (f"хеш {h} · витрина Экспресс · биз {info.get('business_id') or '?'} · "
@@ -1450,11 +1513,12 @@ def _run_store_tty(out, inp, store):
                    ("gate", "ГЕЙТ"),
                    ("view:авто", "АВТО"),
                    ("view:задания", "ЗАДАНИЯ"),
+                   ("eco:store", "ЭКО"),
                    ("quit", "НАЗАД")]
         act = _read(out, inp, title=f"ДОМ ЯМ-ЦИКЛ · {store}", sub=_snip(sub, 70),
                     body=content.split("\n"), buttons=buttons,
                     summary=_brief_tasks(pl),
-                    hint="ПУЛЬТ = КОМАНДИР ДНЯ: правило хода + d/c · цифра · ↑↓ · q — к кампаниям")
+                    hint="ПУЛЬТ = КОМАНДИР ДНЯ: правило хода + d/c · ЭКО = разделы магазина · цифра · ↑↓ · q — к кампаниям")
         if act is None or act == "quit":
             return -1
         if act == "live:store":
@@ -1462,6 +1526,12 @@ def _run_store_tty(out, inp, store):
             continue
         if act == "pult:store":
             _run_pult_store(out, inp, store)
+            continue
+        if act == "eco:store":
+            # ЭКОСИСТЕМА магазина — read-навигатор (socc_cli.eco). Ленивый
+            # импорт, как pult: дом остаётся DH8-чистым, eco — read 0₽.
+            import socc_cli.eco as Eco
+            Eco.run_eco_store(out, inp, store)
             continue
         if act == "gate":
             _show_pause(out, inp, f"ДОМ ЯМ-ЦИКЛ · {store} · ГЕЙТ",
@@ -1493,6 +1563,10 @@ def run_store(out, inp, store):
             return -1
         if act == "live:store":
             _live(out, inp, "store:" + store)
+        elif act == "eco:store":
+            # Не-tty ЭКО: плоский лист ЭКОСИСТЕМА + назад (движок не стартует).
+            import socc_cli.eco as Eco
+            Eco.run_eco_store(out, inp, store)
         elif act.startswith("view:"):
             _show_pause(out, inp, f"ЯМ · {store}", _ym_subview(out, act[5:]))
 
@@ -1545,6 +1619,11 @@ def run_home(out, inp):
             return 0
         if act == "live:home":
             _live(out, inp, "home")
+            continue
+        if act == "tasks:home":
+            # ЗАДАНИЯ · лицо ДОМА: интерактив/плоский лист живёт в socc_cli.tasks.
+            import socc_cli.tasks as Tk
+            Tk.run_tasks(out, inp)
             continue
         if act.startswith("go:"):
             org = act[3:]

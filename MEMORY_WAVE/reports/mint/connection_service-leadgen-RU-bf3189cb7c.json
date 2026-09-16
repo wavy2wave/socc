@@ -1,0 +1,16 @@
+{
+  "id": "service-leadgen-RU-bf3189cb7c",
+  "ts": "2026-06-30T15:08:15.312793+00:00",
+  "organ": "MINT",
+  "status": "FAIL",
+  "checks": {
+    "t0_discover_falsifiable": false
+  },
+  "hard_failures": [
+    "t0_discover_falsifiable"
+  ],
+  "next_after_pass": null,
+  "next_lawful_step": "manual_service-leadgen-RU-bf3189cb7c_repair_required",
+  "truth_boundary": "t0: нет доказанного лида",
+  "proof_hash": "1561906944cca2e2"
+}

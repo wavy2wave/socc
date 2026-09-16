@@ -1,0 +1,8 @@
+{"event": "enroll", "line_id": "ln-14280226", "pid": 92763, "theme": "anna", "node": "L2", "goal": "ANNA: реальная запись в календарь booking", "ts": "2026-06-30T14:19:08.499086+00:00"}
+{"event": "retire", "line_id": "ln-14280226", "ts": "2026-06-30T14:19:31.041849+00:00"}
+{"event": "merge_handoff", "ts": "2026-06-30T15:57:24.328725+00:00", "from": "this line (socc_lines_v1.py + SYSTEM/REGISTRY/LINE_REGISTRY_V1.json + LINE_DISCIPLINE_DIRECTION)", "to": "SYSTEM/LINE_GOVERNANCE/ (canonical organ)", "decision": "operator handoff: merge into LINE_GOVERNANCE; working tool becomes P1-P5 impl; registries unified; dups tombstoned", "lost": "nothing"}
+{"event": "enroll", "line_id": "ln-db2c05a7", "pid": 93105, "theme": "law_proof", "node": "команда/HARVESTER", "goal": "Команда продаж ANNA: R1 ANNA safe-mode (proof 4ee1b655) + HARVESTER агент-добытчик (база 55 клиник Некрасовки, 47 с телефонами) → SCOUT→HERMES→LEDGER→approve, автономно и законно", "ts": "2026-07-01T13:38:38.653507+00:00"}
+{"event": "auto_closed_dead_pid", "line_id": "ln-db2c05a7", "pid": 93105, "ts": "2026-07-13T16:23:40.736760+00:00"}
+{"event": "enroll", "line_id": "ln-adae796e", "pid": 42826, "theme": "unassigned", "node": "L1", "goal": "ANNA: оживить мозг (ключ) → health green → Telegram safe-mode → 1 внешний пилот", "ts": "2026-07-13T16:24:46.678887+00:00"}
+{"event": "auto_closed_dead_pid", "line_id": "ln-adae796e", "pid": 42826, "ts": "2026-07-13T19:03:17.305632+00:00"}
+{"event": "enroll", "line_id": "ln-cee92000", "pid": 39930, "theme": "unassigned", "node": "M1", "goal": "MINT first ₽: демо-бот + 10-15 откликов/день → сделка 1500 → чек НПД → record --commit. ANNA только health key в фоне.", "ts": "2026-07-13T19:03:17.356839+00:00"}

@@ -1,0 +1,54 @@
+{
+  "allowed": [
+    "define foreground tick plan",
+    "define operator-visible tick output",
+    "define proof requirements",
+    "advance only to validation frontier"
+  ],
+  "created_at_utc": "2026-06-09T13:25:39.261836+00:00",
+  "forbidden": [
+    "run foreground tick now",
+    "execute code",
+    "execute language",
+    "start daemon",
+    "start background loop",
+    "use network",
+    "create MW route",
+    "claim AGI",
+    "claim autonomy launch"
+  ],
+  "id": "SOCC_FIRST_FOREGROUND_TICK_PLAN_V1",
+  "mode": "FOREGROUND_TICK_PLAN_NON_EXECUTING",
+  "next_required_step": "validate_socc_first_foreground_tick_plan_v1",
+  "observed_current_lawful_next": "build_socc_first_foreground_tick_plan_v1",
+  "plan_type": "FIRST_FOREGROUND_TICK_PLAN",
+  "planned_foreground_tick": {
+    "background_allowed": false,
+    "daemon_allowed": false,
+    "may_execute_now": false,
+    "mw_route_allowed": false,
+    "network_allowed": false,
+    "requires_acceptance": true,
+    "requires_operator_foreground_run": true,
+    "requires_review": true,
+    "requires_validation": true,
+    "tick_id": "SOCC_FIRST_FOREGROUND_CONTROLLED_TICK_V1"
+  },
+  "proof_requirements": [
+    "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_FIRST_FOREGROUND_TICK_PLAN_V1_PROOF.json",
+    "validate_socc_first_foreground_tick_plan_v1 must verify no execution",
+    "validate_socc_first_foreground_tick_plan_v1 must verify operator-visible current/decision/boundary/proof/result/next"
+  ],
+  "source_accepted_cycle_packet": "SYSTEM/CYCLE/controlled_packets/ACTIVE_ACCEPTED_FIRST_CONTROLLED_CYCLE_PACKET.json",
+  "source_cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "status": "BUILT_CANDIDATE",
+  "tick_visibility_chain": [
+    "current",
+    "decision",
+    "boundary",
+    "proof",
+    "result",
+    "next"
+  ],
+  "truth_boundary": "This foreground tick plan is non-executing. It defines the first foreground controlled tick plan only and does not run the tick."
+}

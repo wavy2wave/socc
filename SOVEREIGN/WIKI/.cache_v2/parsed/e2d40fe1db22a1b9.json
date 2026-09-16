@@ -1,0 +1,1 @@
+{"claims": [{"text": "- proof is written", "line": 31, "entities": ["Proof"], "intent": "definition", "polarity": "assert"}], "dates": [], "entity_counts": {"Proof": 3, "Memory Wave": 1, "Daemon": 2}}

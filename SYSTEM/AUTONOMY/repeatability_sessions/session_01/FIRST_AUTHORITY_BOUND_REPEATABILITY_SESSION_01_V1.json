@@ -1,0 +1,95 @@
+{
+  "action": {
+    "action_id": "MATERIALIZE_REPEATABILITY_SESSION_01_RESULT_V1",
+    "action_type": "local_state_transition_and_proof_materialization",
+    "background_started": false,
+    "daemon_started": false,
+    "external_effect": "none",
+    "network_used": false,
+    "performed": [
+      "read route authority",
+      "read accepted repeatability session plan",
+      "performed one local bounded repeatability tick",
+      "materialized session result",
+      "materialized session memory",
+      "materialized session proof",
+      "advanced authority to validation frontier",
+      "stopped"
+    ]
+  },
+  "before": {
+    "accepted_plan": "SYSTEM/AUTONOMY/repeatability_session_plan/ACTIVE_ACCEPTED_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN.json",
+    "authority": {
+      "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "run_first_authority_bound_repeatability_session_01_v1",
+      "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "run_first_authority_bound_repeatability_session_01_v1",
+      "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "run_first_authority_bound_repeatability_session_01_v1"
+    },
+    "current_lawful_next": "run_first_authority_bound_repeatability_session_01_v1",
+    "plan_acceptance": "SYSTEM/AUTONOMY/repeatability_session_plan/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN_ACCEPTANCE_V1.json",
+    "plan_acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_PLAN_V1_PROOF.json"
+  },
+  "boundary": {
+    "max_ticks": 1,
+    "must_stop": true,
+    "no_agi_claim": true,
+    "no_background": true,
+    "no_daemon": true,
+    "no_l3_claim": true,
+    "no_mw_route": true,
+    "no_network": true,
+    "no_old_route_resume": true,
+    "session_id": "REPEATABILITY_SESSION_01",
+    "tick_count": 1
+  },
+  "created_at_utc": "2026-06-09T15:12:26.621860+00:00",
+  "current_expected": "run_first_authority_bound_repeatability_session_01_v1",
+  "decision": {
+    "decision": "perform_one_local_authority_bound_repeatability_tick",
+    "decision_id": "REPEATABILITY_SESSION_01_DECISION_V1",
+    "not_selected": [
+      "session 02",
+      "multi-session run",
+      "daemon",
+      "background loop",
+      "network action",
+      "old route resume",
+      "MW route",
+      "AGI/L3 claim"
+    ],
+    "reason": "Accepted session plan authorizes session 01 at this exact route frontier."
+  },
+  "id": "FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1",
+  "memory": "MEMORY_WAVE/reports/repeatability_sessions/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_MEMORY.json",
+  "next": "validate_first_authority_bound_repeatability_session_01_v1",
+  "next_required_step": "validate_first_authority_bound_repeatability_session_01_v1",
+  "proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_PROOF.json",
+  "result": {
+    "measurable_delta": [
+      "SYSTEM/AUTONOMY/repeatability_sessions/session_01/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1.json",
+      "SYSTEM/AUTONOMY/repeatability_sessions/session_01/ACTIVE_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01.json",
+      "MEMORY_WAVE/reports/repeatability_sessions/FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_MEMORY.json",
+      "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_V1_PROOF.json"
+    ],
+    "next_after_run": "validate_first_authority_bound_repeatability_session_01_v1",
+    "result_id": "FIRST_AUTHORITY_BOUND_REPEATABILITY_SESSION_01_RESULT_V1",
+    "session_id": "REPEATABILITY_SESSION_01",
+    "status": "RUN_PASS_PENDING_VALIDATION",
+    "stopped_after_session": true,
+    "tick_count": 1
+  },
+  "route_preflight": {
+    "authority_files_agree": true,
+    "expected_current": "run_first_authority_bound_repeatability_session_01_v1",
+    "fresh_route_only": true,
+    "observed_unique_next": [
+      "run_first_authority_bound_repeatability_session_01_v1"
+    ],
+    "old_route_resume": false,
+    "status": "PASS"
+  },
+  "session_index": 1,
+  "session_type": "FRESH_SOCC_AUTHORITY_BOUND_REPEATABILITY_SESSION",
+  "status": "RUN_PASS_PENDING_VALIDATION",
+  "stop": true,
+  "truth_boundary": "Session 01 ran one local authority-bound repeatability tick and stopped. No daemon/background/network/old route/MW/L3."
+}

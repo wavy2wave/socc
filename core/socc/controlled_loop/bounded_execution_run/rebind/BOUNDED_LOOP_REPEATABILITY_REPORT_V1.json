@@ -1,0 +1,27 @@
+{
+  "context_proofs": [
+    "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SECOND_BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_BUILD_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SECOND_BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_VALIDATION_V1_PROOF.json",
+    "core/socc/approved_autonomy_lane_runner/proof/SECOND_BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_REVIEW_V1_PROOF.json"
+  ],
+  "created_at_utc": "2026-06-08T18:37:04.708871+00:00",
+  "id": "BOUNDED_LOOP_REPEATABILITY_REPORT_V1",
+  "lawful_next": "build_runtime_operator_panel_adoption_v1",
+  "new_step": "build_bounded_loop_repeatability_report_v1",
+  "primary_execution_iterations_pass": 3,
+  "primary_iteration_proofs": [
+    "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_1_V1_PROOF.json",
+    "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_2_V1_PROOF.json",
+    "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_3_V1_PROOF.json"
+  ],
+  "repeatability_claim": "bounded_controlled_loop_execution_repeated_successfully_across_primary_and_secondary_runs",
+  "secondary_execution_iterations_pass": 3,
+  "secondary_iteration_proofs": [
+    "core/socc/controlled_loop/second_bounded_execution_run/execution/SECOND_BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_1_PROOF.json",
+    "core/socc/controlled_loop/second_bounded_execution_run/execution/SECOND_BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_2_PROOF.json",
+    "core/socc/controlled_loop/second_bounded_execution_run/execution/SECOND_BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_3_PROOF.json"
+  ],
+  "status": "PASS",
+  "truth_boundary": "Repeatability report built from old proven bounded loop lineage. No raw loop execution now."
+}

@@ -1,0 +1,10 @@
+{
+  "article_md": "SOVEREIGN/WIKI/pages/entity_substrate.md",
+  "created_at_utc": "2026-06-16T19:01:03.831583+00:00",
+  "id": "WIKI_ARTICLE_ENTITY_SUBSTRATE_V1_MEMORY",
+  "memory_effect": "Built living wiki article 'entity_substrate': 49 current-authority claims, 598 conflicting, 66 timeline events, 84 sources, main_line_authored=True.",
+  "proof": "SOVEREIGN/PROOF/proof_chain/WIKI_ARTICLE_ENTITY_SUBSTRATE_V1_PROOF.json",
+  "real_next": "validate_knowledge_substrate_v1",
+  "status": "PASS",
+  "truth_boundary": "Knowledge Substrate wiki article build only. Deterministic synthesis from ingested records; main-line prose authored separately. Source hyperlinks preserved. No LLM. Global route authority untouched. No daemon/background/network."
+}

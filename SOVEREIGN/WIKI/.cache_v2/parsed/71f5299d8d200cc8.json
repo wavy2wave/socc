@@ -1,0 +1,1 @@
+{"claims": [{"text": "- testability: `Every proposed build artifact must have a deterministic read/check proof.`", "line": 35, "entities": ["Proof"], "intent": "requirement", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 1, "Hermes": 3, "Codex": 3, "Proof": 4, "Daemon": 1}}

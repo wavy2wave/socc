@@ -1,0 +1,21 @@
+{
+  "created_at_utc": "2026-06-10T12:22:57.148801+00:00",
+  "current_stage": "entity_substrate_scientific_gate_pass_hermes_next",
+  "gate": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_SCIENTIFIC_QUALITY_GATE_V1.json",
+  "gates_status": {
+    "Codex_gate": "after_Hermes_if_code_or_patch",
+    "Hermes_gate": "next_to_run",
+    "construction_plan": "REVIEW_PASS",
+    "direction": "ACCEPTED",
+    "execution": "not_authorized_yet",
+    "old_project_ingest": "INGESTED_ONCE",
+    "scientific_gate": "PASS"
+  },
+  "id": "ENTITY_SUBSTRATE_SCIENTIFIC_GATE_PANEL_V1",
+  "lawful_next": "run_entity_substrate_hermes_gate_v1",
+  "operator_visible_summary": "Entity/Substrate construction plan passed scientific gate. Hermes gate is next.",
+  "panel_type": "entity_substrate_dashboard",
+  "plan": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_CONSTRUCTION_PLAN_V1.json",
+  "status": "ACTIVE_GATE_PASS",
+  "truth_boundary": "Scientific gate only. It validates the plan quality; it does not build Entity/Substrate."
+}

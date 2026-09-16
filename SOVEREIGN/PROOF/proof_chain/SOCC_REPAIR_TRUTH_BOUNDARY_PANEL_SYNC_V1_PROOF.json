@@ -1,0 +1,27 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/truth_boundary_panel_sync_repair_20260608T175411Z/scripts/socc/show_self_building_status_panel_v1.py"
+  ],
+  "changed": [
+    "scripts/socc/show_self_building_status_panel_v1.py",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T17:54:11.685674+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_TRUTH_BOUNDARY_PANEL_SYNC_V1_PROOF",
+  "network_used": false,
+  "route_next": "validate_route_authority_truth_boundary_panel_sync_v1",
+  "show_rc": 0,
+  "status": "REVIEW_REQUIRED",
+  "tick_executed": false,
+  "truth_boundary": "Repair show/status panel sync only. No tick executed. No daemon/background/network/entity/ANNA/AGI claim.",
+  "validation_pass": false,
+  "validation_rc": 1,
+  "warnings": []
+}

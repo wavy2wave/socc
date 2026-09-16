@@ -1,0 +1,9 @@
+{
+  "acceptance": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SURFACE_ACCEPTANCE_V1.json",
+  "authorization_scope": "one_bounded_foreground_session_1_tick_stop_no_birth",
+  "authorizes_next": "run_entity_substrate_bounded_execution_session_v1",
+  "created_at_utc": "2026-06-22T10:50:04.269940+00:00",
+  "id": "ACTIVE_ACCEPTED_ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SURFACE",
+  "surface": "SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_BOUNDED_EXECUTION_SURFACE_V1.json",
+  "truth_boundary": "Entity/Substrate bounded execution surface acceptance only. Authorizes exactly one bounded foreground session (1 tick, stop, no birth) as the next lawful step. Does NOT run the session, execute, birth Entity/ANNA, or enable daemon/background/network."
+}

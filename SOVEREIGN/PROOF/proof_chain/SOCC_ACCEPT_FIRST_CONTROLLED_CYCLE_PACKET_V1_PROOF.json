@@ -1,0 +1,95 @@
+{
+  "acceptance_artifact": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPTANCE_V1.json",
+  "acceptance_checks": {
+    "active_packet_candidate": true,
+    "authority_at_accept_frontier": true,
+    "build_proof_pass": true,
+    "forbidden_background": true,
+    "forbidden_complete": true,
+    "forbidden_daemon": true,
+    "forbidden_execute_code": true,
+    "forbidden_execute_cycle": true,
+    "forbidden_execute_language": true,
+    "forbidden_mw_route": true,
+    "forbidden_network": true,
+    "may_execute_false": true,
+    "may_run_foreground_tick_false": true,
+    "may_start_daemon_false": true,
+    "may_use_network_false": true,
+    "operator_visible_status_present": true,
+    "packet_has_required_visible_fields": true,
+    "packet_mode_foreground_non_executing": true,
+    "packet_result_summary_present": true,
+    "packet_status_built_candidate": true,
+    "packet_type_ok": true,
+    "requires_review_true": true,
+    "requires_validation_true": true,
+    "restore_proof_pass": true,
+    "review_artifact_pass": true,
+    "review_checks_all_true": true,
+    "review_next_matches_accept": true,
+    "review_proof_pass": true,
+    "selected_step_non_executing": true,
+    "truth_boundary_non_executing": true,
+    "validate_proof_pass": true,
+    "validation_artifact_pass": true,
+    "validation_checks_all_true": true
+  },
+  "acceptance_md": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPTANCE_V1.md",
+  "active_accepted_packet": "SYSTEM/CYCLE/controlled_packets/ACTIVE_ACCEPTED_FIRST_CONTROLLED_CYCLE_PACKET.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "build_socc_first_foreground_tick_plan_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "build_socc_first_foreground_tick_plan_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "build_socc_first_foreground_tick_plan_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_controlled_cycle_packet_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_controlled_cycle_packet_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_foreground_controlled_tick": "near_after_tick_plan_validation_review_acceptance",
+    "to_first_foreground_tick_plan": "next"
+  },
+  "capability": "SOCC_HAS_ACCEPTED_FIRST_CONTROLLED_CYCLE_PACKET",
+  "created_at_utc": "2026-06-09T13:23:34.483247+00:00",
+  "current_expected": "accept_socc_first_controlled_cycle_packet_v1",
+  "cycle_packet": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_V1.json",
+  "hard_failures": [],
+  "id": "SOCC_ACCEPT_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF",
+  "next_after_pass": "build_socc_first_foreground_tick_plan_v1",
+  "next_lawful_step": "build_socc_first_foreground_tick_plan_v1",
+  "no_background": true,
+  "no_build_rerun": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_review_rerun": true,
+  "no_validate_rerun": true,
+  "proof_hash": "82cb03a57708a731",
+  "repair_finalize_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_FINALIZE_ACCEPT_FIRST_CONTROLLED_CYCLE_PACKET_V1_PROOF.json",
+  "restore_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_REPAIR_RESTORE_FIRST_CONTROLLED_CYCLE_PACKET_ACCEPT_FRONTIER_V1_PROOF.json",
+  "review": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_REVIEW_V1.json",
+  "status": "PASS",
+  "truth_boundary": "Finalizes first controlled cycle packet acceptance by repairing cycle packet fields only. No build, no validation rerun, no review rerun, no execution.",
+  "validation": "SYSTEM/CYCLE/controlled_packets/SOCC_FIRST_CONTROLLED_CYCLE_PACKET_VALIDATION_V1.json",
+  "warnings": []
+}

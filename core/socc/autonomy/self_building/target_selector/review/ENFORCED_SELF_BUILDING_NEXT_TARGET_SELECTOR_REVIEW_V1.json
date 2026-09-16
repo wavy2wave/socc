@@ -1,0 +1,238 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "background_loop_enabled": false,
+  "bounded_target_selection_review_sealed": false,
+  "capability": "ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_REVIEW_BLOCKED",
+  "checks": {
+    "build_proof_exists": true,
+    "build_real_next_ok": true,
+    "build_selected_target_ok": true,
+    "build_status_pass": true,
+    "enforcer_exists": true,
+    "forbidden_probe_blocked": false,
+    "forbidden_probe_exists": false,
+    "forbidden_probe_selected_none": true,
+    "panel_forbidden_false": true,
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_forbidden_false": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_forbidden_false": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true,
+    "replay_exists": false,
+    "replay_hard_failures_empty": false,
+    "replay_selected_target_ok": false,
+    "replay_status_pass": false,
+    "review_does_not_approve_final_canon": true,
+    "review_does_not_birth_anna": true,
+    "review_does_not_birth_entity": true,
+    "review_does_not_claim_agi": true,
+    "review_does_not_enable_background_loop": true,
+    "review_does_not_enable_continuous_loop": true,
+    "review_does_not_execute_tick": true,
+    "review_does_not_install_scheduler": true,
+    "review_does_not_launch_daemon": true,
+    "review_does_not_use_network": true,
+    "review_does_not_widen_queue": true,
+    "route_exists": true,
+    "route_forbidden_false": true,
+    "route_points_to_selector_review": true,
+    "route_ready_for_review": true,
+    "route_selected_target_validated": false,
+    "route_selector_validated": true,
+    "route_self_building_mode_enabled": true,
+    "route_status_pass": true,
+    "route_upstream_validation_proof": true,
+    "route_visible_bounded_mode_ready": true,
+    "selection_exists": true,
+    "selection_scheduler_rejected": true,
+    "selection_selected_target_ok": true,
+    "selection_status_selected": true,
+    "validation_bounded_selection_validated": true,
+    "validation_capability_ok": true,
+    "validation_commit_committed": false,
+    "validation_commit_exists": false,
+    "validation_commit_hard_failures_empty": false,
+    "validation_commit_snapshot_created": false,
+    "validation_commit_status_pass": false,
+    "validation_evidence_gate_validated": true,
+    "validation_forbidden_filter_validated": true,
+    "validation_hard_failures_empty": true,
+    "validation_json_exists": false,
+    "validation_json_status_validated": false,
+    "validation_proof_exists": true,
+    "validation_ready_for_review": true,
+    "validation_real_next_ok": true,
+    "validation_scheduler_rejection_validated": true,
+    "validation_selected_target_ok": true,
+    "validation_selector_validated": true,
+    "validation_status_pass": true
+  },
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-17T10:46:04+03:00",
+  "created_at_utc": "2026-06-17T07:46:04.702177+00:00",
+  "daemon_running": false,
+  "enforced_self_building_next_target_selector_review_sealed": false,
+  "entity_birth_allowed": false,
+  "evidence_ready_gate_review_sealed": false,
+  "final_canon_approval_allowed": false,
+  "forbidden_target_filter_review_sealed": false,
+  "hard_failures": [
+    {
+      "actual": false,
+      "check": "route_selected_target_validated",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_json_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_json_status_validated",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "replay_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "replay_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "replay_selected_target_ok",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "replay_hard_failures_empty",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "forbidden_probe_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "forbidden_probe_blocked",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_commit_exists",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_commit_status_pass",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_commit_committed",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_commit_hard_failures_empty",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "validation_commit_snapshot_created",
+      "code": "CHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "review_commit_status_pass",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "review_commit_committed",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "review_commit_hard_failures_empty",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "review_commit_lawful_next_selected_target",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "review_commit_snapshot_created",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "route_now_points_to_selected_target",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "route_now_upstream_review_proof",
+      "code": "POSTCHECK_FAIL"
+    },
+    {
+      "actual": false,
+      "check": "route_selected_target_review_sealed",
+      "code": "POSTCHECK_FAIL"
+    }
+  ],
+  "id": "ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_REVIEW_V1",
+  "network_used": false,
+  "post_checks": {
+    "panel_now_forbidden_false": true,
+    "panel_now_lawful_next_matches_route": true,
+    "panel_now_truth_boundary_matches_route": true,
+    "panel_now_upstream_matches_route": true,
+    "progress_now_forbidden_false": true,
+    "progress_now_lawful_next_matches_route": true,
+    "progress_now_truth_boundary_matches_route": true,
+    "progress_now_upstream_matches_route": true,
+    "pulse_now_forbidden_false": true,
+    "pulse_now_lawful_next_matches_route": true,
+    "pulse_now_truth_boundary_matches_route": true,
+    "pulse_now_upstream_matches_route": true,
+    "review_commit_committed": false,
+    "review_commit_hard_failures_empty": false,
+    "review_commit_lawful_next_selected_target": false,
+    "review_commit_result_exists": true,
+    "review_commit_snapshot_created": false,
+    "review_commit_status_pass": false,
+    "route_now_forbidden_false": true,
+    "route_now_points_to_selected_target": false,
+    "route_now_upstream_review_proof": false,
+    "route_ready_to_build_selected_next_target": true,
+    "route_review_sealed": true,
+    "route_selected_target_review_sealed": false
+  },
+  "queue_widening_allowed": false,
+  "ready_to_build_selected_next_target": false,
+  "real_next": "repair_enforced_self_building_next_target_selector_review_v1",
+  "review_commit_result": "core/socc/autonomy/self_building/target_selector/review/ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_REVIEW_COMMIT_RESULT_V1.json",
+  "review_hash": "5fb94cc1bb9cf7cd7dc0f49e",
+  "scheduler_installed": false,
+  "scheduler_rejection_review_sealed": false,
+  "selected_next_target_review_sealed": null,
+  "source_validation_proof": "core/socc/approved_autonomy_lane_runner/proof/ENFORCED_SELF_BUILDING_NEXT_TARGET_SELECTOR_VALIDATION_V1_PROOF.json",
+  "status": "BLOCKED",
+  "tick_executed_now": false,
+  "truth_boundary": "Enforced self-building next-target selector review only. This review-seals deterministic bounded selection and accepts build_self_building_effect_auditor_v1 as the next lawful self-building target. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

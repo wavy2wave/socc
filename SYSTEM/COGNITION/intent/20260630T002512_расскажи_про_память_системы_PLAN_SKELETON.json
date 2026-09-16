@@ -1,0 +1,21 @@
+{
+  "capability_target": "memory",
+  "consult_context_pack": "/Users/wavysexy/SOCC/SOVEREIGN/WIKI/spine2/CONTEXT_PACK.md",
+  "created_at_utc": "2026-06-30T00:25:12.936437+00:00",
+  "hand_to": "lawful self-building runner (socc run) — node by node",
+  "id": "PLAN_SKELETON_20260630T002512_расскажи_про_память_системы",
+  "lawful_chain": [
+    "direction",
+    "construction_plan",
+    "scientific_gate",
+    "hermes_gate",
+    "codex_gate_if_code",
+    "bounded_execution",
+    "validation",
+    "review",
+    "seal"
+  ],
+  "plan_hash": "d959d21d960d598372fc93ce",
+  "topic": "memory",
+  "truth_boundary": "Plan skeleton only. No build executed here. No global route change."
+}

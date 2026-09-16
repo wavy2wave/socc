@@ -1,0 +1,28 @@
+{
+  "blocks": [
+    "semantic_null_pass",
+    "no_route_delta",
+    "missing_memory",
+    "missing_required_artifacts",
+    "no_material_claims",
+    "forbidden_escalation"
+  ],
+  "created_at_msk": "2026-06-18T13:20:29+03:00",
+  "created_at_utc": "2026-06-18T10:20:29.457160+00:00",
+  "id": "SELF_BUILDING_EFFECT_AUDITOR_ENFORCED_LANE_POLICY_V1",
+  "policy": "Every future bounded self-building PASS must provide a material effect audit.",
+  "requires": [
+    "before_route_snapshot",
+    "after_route_snapshot",
+    "expected_lawful_next_before",
+    "expected_lawful_next_after",
+    "expected_upstream_proof_after",
+    "expected_memory",
+    "required_artifacts",
+    "changed_artifacts",
+    "material_claims",
+    "forbidden_flags_false"
+  ],
+  "status": "BUILT",
+  "truth_boundary": "Self-building effect auditor enforced-lane build only. This builds the lane-level enforcement wrapper requiring future bounded self-building steps to prove material effect through the review-sealed effect auditor before PASS is accepted. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

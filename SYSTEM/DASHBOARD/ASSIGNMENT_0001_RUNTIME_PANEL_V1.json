@@ -1,0 +1,43 @@
+{
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:41:04.649702+00:00",
+  "current_stage": "bounded_execution_session_run_pending_validation",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "gates_status": {
+    "Codex_gate": "PASS",
+    "Hermes_gate": "PASS",
+    "assignment_object": "ACCEPTED",
+    "bounded_execution_surface": "ACCEPTED",
+    "construction_plan": "ACCEPTED",
+    "direction": "ACCEPTED",
+    "execution_session": "RUN_PASS_PENDING_VALIDATION",
+    "scientific_quality_gate": "PASS",
+    "validation": "next_to_run"
+  },
+  "id": "ASSIGNMENT_0001_RUNTIME_PANEL_V1",
+  "lawful_next": "validate_assignment_bounded_execution_session_v1",
+  "operator_visible_summary": "First bounded assignment execution session ran one foreground tick, wrote runtime state/proof/memory/dashboard, and stopped. Validation is next.",
+  "panel_type": "assignment_runtime_dashboard",
+  "proof_artifacts": {
+    "memory": "MEMORY_WAVE/reports/assignments/ASSIGNMENT_0001_RUNTIME_MEMORY_V1.json",
+    "report": "MIGRATION/audits/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1.json",
+    "run_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ASSIGNMENT_BOUNDED_EXECUTION_SESSION_V1_PROOF.json"
+  },
+  "runtime_state": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/RUNTIME/ASSIGNMENT_RUNTIME_STATE_V1.json",
+  "status": "RUNTIME_ACTIVE_PENDING_VALIDATION",
+  "truth_boundary": "One bounded foreground assignment execution session ran and stopped. This proves a local assignment-loop runtime artifact, not daemon/24-7/L3 autonomy.",
+  "what_changed": [
+    "runtime dashboard written",
+    "runtime state written",
+    "memory record written",
+    "run proof written",
+    "route advanced to validation frontier"
+  ],
+  "what_remains": [
+    "validate assignment bounded execution session",
+    "review session",
+    "accept session",
+    "seal autonomous self-construction step",
+    "open Entity Substrate direction"
+  ]
+}

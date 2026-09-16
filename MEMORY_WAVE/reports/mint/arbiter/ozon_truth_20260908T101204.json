@@ -1,0 +1,12 @@
+{
+  "net_coeff": 0.3224,
+  "commission_pct": 52.59,
+  "delivery_net": -403.54,
+  "per_sale_avg": 847.1,
+  "sales_count": 27,
+  "days": 30,
+  "total_revenue": 70952.0,
+  "total_net": 22871.59,
+  "operations": 183,
+  "honesty": "ТОЛЬКО ЧТЕНИЕ кабинета. Эти числа — факт, не допущение. Они УЖЕ вшиты в модель (NET_COEFF=0.298, DELIVERY_NET=325) — перепрогон здесь их перепроверяет, а не вводит впервые."
+}

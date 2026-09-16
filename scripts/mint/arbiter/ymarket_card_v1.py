@@ -280,7 +280,11 @@ def to_offer(prod, slug=None, cats=None, bridge=None, unique_name=None,
     else:
         meta = (cats or load_cats()).get(slug) if isinstance((cats or load_cats()), dict) else None
     cid = market_category_id(slug, cats) if slug else None
-    leaf = (meta or {}).get("title_ru") if cid is not None else None
+    # Имя листа для журнала/глаз оператора: у подтверждённой категории это имя ЛИСТА Маркета
+    # (leaf_title = последний сегмент market_category_path), НЕ донорский ярлык (title_ru — by design
+    # имя донора). leaf_title добавлен 04.09 на все confirmed; title_ru остаётся фолбэком. Мост и
+    # авто-ветка переопределяют leaf ниже (свой путь/None).
+    leaf = ((meta or {}).get("leaf_title") or (meta or {}).get("title_ru")) if cid is not None else None
     csource = "cats"
     if cid is None:
         if USE_BRIDGE if bridge is None else bridge:
@@ -358,6 +362,7 @@ def to_offer(prod, slug=None, cats=None, bridge=None, unique_name=None,
         "weight_dimensions": wd is not None,
         "name_source": name_source,                        # verbatim | unique | verbatim_fallback
         "original_name": (original_name if name != original_name else None),  # что было до рерайта
+        "platform_residue": prod.get("_platform_residue"),  # чужой МП в имени (04.09; FLAG, имя НЕ тронуто)
     }
     return {"offer": offer, "meta": meta}
 

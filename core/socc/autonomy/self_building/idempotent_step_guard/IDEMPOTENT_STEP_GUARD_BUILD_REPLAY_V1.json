@@ -1,0 +1,49 @@
+{
+  "already_committed_case": {
+    "already_committed": true,
+    "current_next": "review_x",
+    "decision": "ALREADY_COMMITTED_NOOP",
+    "expected_current_next": "validate_x",
+    "hard_failures": [],
+    "proof_path": "validation_x_proof.json",
+    "status": "PASS",
+    "step_name": "validate_x",
+    "success_next": "review_x",
+    "write_allowed": false
+  },
+  "created_at_msk": "2026-06-18T13:29:09+03:00",
+  "created_at_utc": "2026-06-18T10:29:09.608003+00:00",
+  "id": "IDEMPOTENT_STEP_GUARD_BUILD_REPLAY_V1",
+  "normal_case": {
+    "current_next": "validate_x",
+    "decision": "NORMAL_EXECUTION_ALLOWED",
+    "expected_current_next": "validate_x",
+    "hard_failures": [],
+    "proof_path": "validation_x_proof.json",
+    "status": "PASS",
+    "step_name": "validate_x",
+    "success_next": "review_x"
+  },
+  "out_of_phase_block_case": {
+    "current_next": "review_x",
+    "decision": "OUT_OF_PHASE_RERUN_BLOCKED",
+    "expected_current_next": "validate_x",
+    "expected_proof_path": "validation_x_proof.json",
+    "hard_failures": [
+      {
+        "code": "OUT_OF_PHASE_RERUN_BLOCKED",
+        "current_next": "review_x",
+        "expected_current_next": "validate_x",
+        "expected_proof_path": "validation_x_proof.json",
+        "route_upstream_proof": "other_proof.json",
+        "success_next": "review_x"
+      }
+    ],
+    "route_upstream_proof": "other_proof.json",
+    "status": "FAIL",
+    "step_name": "validate_x",
+    "success_next": "review_x",
+    "write_allowed": false
+  },
+  "status": "PASS"
+}

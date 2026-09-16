@@ -1,0 +1,19 @@
+{
+  "bad_execution_flags": [],
+  "bad_route_flags": [],
+  "created_at_utc": "2026-06-08T18:56:02.172642+00:00",
+  "current_step": "validate_first_lawful_controlled_autonomy_execution_v1",
+  "execution": "core/socc/autonomy/controlled_continuous_autonomy/FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_V1.json",
+  "execution_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_EXECUTE_FIRST_LAWFUL_CONTROLLED_AUTONOMY_RUN_V1_PROOF.json",
+  "execution_safety_flags_ok": true,
+  "id": "FIRST_LAWFUL_CONTROLLED_AUTONOMY_EXECUTION_VALIDATION_V1",
+  "lawful_next": "review_first_lawful_controlled_autonomy_execution_v1",
+  "proof_written_ok": true,
+  "route_safety_flags_ok": true,
+  "route_update_ok": true,
+  "status": "PASS",
+  "steps_executed_ok": true,
+  "stopped_after_step_ok": true,
+  "truth_boundary": "Validation of first controlled execution. No daemon/background/network.",
+  "validated_step": "execute_first_lawful_controlled_autonomy_run_v1"
+}

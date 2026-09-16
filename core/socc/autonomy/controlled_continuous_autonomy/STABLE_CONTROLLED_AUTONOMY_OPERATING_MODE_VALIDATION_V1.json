@@ -1,0 +1,21 @@
+{
+  "bad_mode_flags": [],
+  "bad_proven": [],
+  "bad_route_flags": [],
+  "bad_runtime_law": [],
+  "build_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1_PROOF.json",
+  "created_at_utc": "2026-06-08T19:03:04.147954+00:00",
+  "current_step": "validate_stable_controlled_autonomy_operating_mode_v1",
+  "forbidden_ok": true,
+  "id": "STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_VALIDATION_V1",
+  "lawful_next": "review_stable_controlled_autonomy_operating_mode_v1",
+  "missing_forbidden": [],
+  "mode": "core/socc/autonomy/controlled_continuous_autonomy/STABLE_CONTROLLED_AUTONOMY_OPERATING_MODE_V1.json",
+  "mode_safety_flags_ok": true,
+  "proven_ok": true,
+  "route_safety_flags_ok": true,
+  "runtime_law_ok": true,
+  "status": "PASS",
+  "truth_boundary": "Stable mode validation only. No daemon/background/network.",
+  "validated_step": "build_stable_controlled_autonomy_operating_mode_v1"
+}

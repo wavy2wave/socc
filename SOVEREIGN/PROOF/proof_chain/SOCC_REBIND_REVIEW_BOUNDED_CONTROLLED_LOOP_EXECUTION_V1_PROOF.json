@@ -1,0 +1,147 @@
+{
+  "active_memory_files": 3569,
+  "active_proof_files": 1150,
+  "active_self_building_files": 4715,
+  "background_loop_enabled": false,
+  "backups": [
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/rebind_review_bounded_loop_20260608T183516Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/rebind_review_bounded_loop_20260608T183516Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "/Users/wavysexy/SOCC/MIGRATION/rebind_backups/rebind_review_bounded_loop_20260608T183516Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "changed": [
+    "core/socc/controlled_loop/bounded_execution_run/review/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1.json",
+    "core/socc/controlled_loop/bounded_execution_run/repair/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1.json",
+    "core/continuity/MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1_MEMORY.json",
+    "core/continuity/MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1_MEMORY.json",
+    "core/socc/controlled_loop/bounded_execution_run/rebind/SOCC_REVIEW_BOUNDED_CONTROLLED_LOOP_EXECUTION_V1_OLD_LINEAGE_REBIND.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "copy_results": {
+    "core/continuity/MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1_MEMORY.json": "COPIED",
+    "core/continuity/MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1_MEMORY.json": "COPIED",
+    "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_VALIDATION_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_1_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_2_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_3_V1_PROOF.json": "KEEP_IDENTICAL",
+    "core/socc/controlled_loop/bounded_execution_run/repair/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1.json": "COPIED",
+    "core/socc/controlled_loop/bounded_execution_run/review/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1.json": "COPIED",
+    "core/socc/controlled_loop/bounded_execution_run/validation/BOUNDED_CONTROLLED_LOOP_EXECUTION_VALIDATION_V1.json": "KEEP_IDENTICAL",
+    "scripts/socc/review_bounded_controlled_loop_execution_v1.py": "KEEP_IDENTICAL"
+  },
+  "created_at_utc": "2026-06-08T18:35:17.035255+00:00",
+  "current_before": "review_bounded_controlled_loop_execution_v1",
+  "daemon_running": false,
+  "evidence": [
+    {
+      "exists": true,
+      "next": null,
+      "pass": false,
+      "rel": "scripts/socc/review_bounded_controlled_loop_execution_v1.py",
+      "status": null
+    },
+    {
+      "exists": true,
+      "next": "build_bounded_loop_repeatability_report_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_bounded_loop_repeatability_report_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_bounded_loop_repeatability_report_v1",
+      "pass": true,
+      "rel": "core/socc/controlled_loop/bounded_execution_run/review/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1.json",
+      "status": "REVIEW_SEALED"
+    },
+    {
+      "exists": true,
+      "next": "build_bounded_loop_repeatability_report_v1",
+      "pass": true,
+      "rel": "core/socc/controlled_loop/bounded_execution_run/repair/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_bounded_loop_repeatability_report_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_V1_MEMORY.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "build_bounded_loop_repeatability_report_v1",
+      "pass": true,
+      "rel": "core/continuity/MEMORY_WAVE/reports/controlled_loop/BOUNDED_CONTROLLED_LOOP_EXECUTION_REVIEW_ROUTE_TRANSITION_REPAIR_V1_MEMORY.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "validate_bounded_controlled_loop_execution_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_RUN_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "review_bounded_controlled_loop_execution_v1",
+      "pass": true,
+      "rel": "core/socc/approved_autonomy_lane_runner/proof/BOUNDED_CONTROLLED_LOOP_EXECUTION_VALIDATION_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "review_bounded_controlled_loop_execution_v1",
+      "pass": true,
+      "rel": "core/socc/controlled_loop/bounded_execution_run/validation/BOUNDED_CONTROLLED_LOOP_EXECUTION_VALIDATION_V1.json",
+      "status": "VALIDATED"
+    },
+    {
+      "exists": true,
+      "next": "execute_bounded_controlled_loop_v1",
+      "pass": true,
+      "rel": "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_1_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "execute_bounded_controlled_loop_v1",
+      "pass": true,
+      "rel": "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_2_V1_PROOF.json",
+      "status": "PASS"
+    },
+    {
+      "exists": true,
+      "next": "validate_bounded_controlled_loop_execution_v1",
+      "pass": true,
+      "rel": "core/socc/controlled_loop/bounded_execution_run/iterations/BOUNDED_CONTROLLED_LOOP_EXECUTION_ITERATION_3_V1_PROOF.json",
+      "status": "PASS"
+    }
+  ],
+  "hard_failures": [],
+  "id": "SOCC_REBIND_REVIEW_BOUNDED_CONTROLLED_LOOP_EXECUTION_V1_PROOF",
+  "loop_executed_now": false,
+  "memory_pass_count": 2,
+  "mode": "OLD_LINEAGE_REVIEW_REBIND",
+  "network_used": false,
+  "next_after_rebind": "build_bounded_loop_repeatability_report_v1",
+  "observe_pass": true,
+  "repair_proof_pass_count": 1,
+  "review_artifact_pass_count": 1,
+  "review_proof_pass_count": 1,
+  "status": "PASS",
+  "tick_executed": false,
+  "truth_boundary": "Review lineage rebind only. No live loop execution, no tick, no daemon/background/network.",
+  "warnings": []
+}

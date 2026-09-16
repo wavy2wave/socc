@@ -1,0 +1,11 @@
+{
+  "acceptance": "SYSTEM/AUTONOMY/assignment_direction/ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_V1_PROOF.json",
+  "active_surface": "SYSTEM/AUTONOMY/assignment_direction/ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE_V1.json",
+  "created_at_utc": "2026-06-09T15:27:26.287612+00:00",
+  "dashboard_pointer": "SYSTEM/DASHBOARD/ACTIVE_ACCEPTED_ASSIGNMENT_DIRECTION_PANEL_POINTER_V1.json",
+  "id": "ACTIVE_ACCEPTED_ASSIGNMENT_DIRECTION_AUTONOMY_SURFACE",
+  "next_required_step": "build_assignment_intake_object_v1",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Acceptance authorizes building the first assignment intake object only. No assignment build/patch execution is authorized."
+}

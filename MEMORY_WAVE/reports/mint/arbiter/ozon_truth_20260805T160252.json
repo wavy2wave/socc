@@ -1,0 +1,12 @@
+{
+  "net_coeff": 0.2981,
+  "commission_pct": 53.0,
+  "delivery_net": -325.05,
+  "per_sale_avg": 598.09,
+  "sales_count": 6,
+  "days": 90,
+  "total_revenue": 12040.0,
+  "total_net": 3588.53,
+  "operations": 38,
+  "honesty": "ТОЛЬКО ЧТЕНИЕ кабинета. Эти числа — факт, не допущение. Используй их вместо NET_COEFF=0.35 в модели ARBITER."
+}

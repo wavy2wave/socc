@@ -1,0 +1,21 @@
+{
+  "created_at_msk": "2026-06-16T18:04:01+03:00",
+  "created_at_utc": "2026-06-16T15:04:01.388406+00:00",
+  "dimensions": {
+    "continuous_loop_enabled": false,
+    "cycle_2_closed": true,
+    "daemon_running": false,
+    "metrics_built": true,
+    "network_used": false,
+    "progress_file_exists": true,
+    "route_authority_route_first": true,
+    "scheduler_installed": false,
+    "truth_boundary_route_first": true,
+    "visible_pulse_exists": true
+  },
+  "id": "SELF_BUILDING_MATURITY_SCORECARD_V1",
+  "interpretation": "Bounded self-building is creator-visible, route-first, truth-boundary-first, and has two closed cycles. It is not yet continuous, daemonized, scheduled, or 24/7.",
+  "maturity_score": 1.0,
+  "status": "BUILT",
+  "truth_boundary": "Self-building progress metrics build only. This builds measurable progress state for bounded self-building: closed cycles, closed targets, pass rate, drift repair count, maturity score, and next-risk queue. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

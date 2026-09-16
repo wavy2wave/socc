@@ -1,0 +1,31 @@
+{
+  "acceptance_verdict": "ASSIGNMENT_DIRECTION_ACCEPTED_FOR_CONSTRUCTION_PLAN_BUILD",
+  "accepted_as": [
+    "dashboard-visible assignment direction",
+    "source for construction plan",
+    "quality-gated build lane",
+    "proof-bound direction nucleus"
+  ],
+  "accepted_direction": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_DIRECTION_V1.json",
+  "assignment_id": "ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP",
+  "created_at_utc": "2026-06-09T15:32:29.604892+00:00",
+  "dashboard_panel": "SYSTEM/DASHBOARD/ASSIGNMENT_0001_DIRECTION_ACCEPTED_PANEL_POINTER_V1.json",
+  "direction_id": "DIRECTION_0001_DASHBOARD_VISIBLE_ASSIGNMENT_AUTONOMY_LOOP",
+  "id": "ASSIGNMENT_DIRECTION_ACCEPTANCE_V1",
+  "next_plan_frontier": {
+    "id": "build_assignment_construction_plan_v1",
+    "purpose": "Build construction plan with scientific, Hermes, Codex, dashboard, proof, memory and stop gates before any execution."
+  },
+  "next_required_step": "build_assignment_construction_plan_v1",
+  "not_accepted_as": [
+    "assignment execution",
+    "patch execution",
+    "daemon/background/network autonomy",
+    "skip-gates permission",
+    "old route resume",
+    "L3/AGI claim"
+  ],
+  "review": "SYSTEM/AUTONOMY/assignments/ASSIGNMENT_0001_DASHBOARD_VISIBLE_ASSIGNMENT_LOOP/ASSIGNMENT_DIRECTION_REVIEW_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Direction acceptance authorizes construction plan build only. No execution."
+}

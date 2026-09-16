@@ -83,6 +83,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import uniqueizer_v1 as _uq     # чистые контент-законы (stdlib) — флаг чужой платформы в имени
+
 HERE = Path(__file__).resolve().parent
 MINT = HERE.parent
 for p in (str(HERE), str(MINT)):
@@ -144,6 +146,29 @@ def _error_skus(rows):
     return out
 
 
+def _shortlist_prov_rows(sh):
+    """Проекция шорт-листа в readiness (Правки A/B/C): write-EAN + провенанс + флаг чужого МП.
+
+    Именно ЗДЕСЬ durable впервые видит СВОЙ детерм. штрихкод: write-path штампит gen_ean13(sku) в момент
+    shortlist_to_prod (own_card_fields), _stamp_write_meta зеркалит на строки, а эта проекция выносит его
+    в day["zaliv"]/отчёт/ленту. Без неё stamped-строки умирали внутри thunk и дыра персистенции жила
+    (адверсариал-аудит 04.09: readiness() отбрасывала sh['shortlist']). _platform_residue — ФЛАГ имени,
+    едущего на витрину verbatim с чужой площадкой (решение оператора в момент слова, не авто-чистка).
+    """
+    out = []
+    for r in (sh or {}).get("shortlist") or []:
+        if not isinstance(r, dict) or r.get("sku") is None:
+            continue
+        c = {"sku": str(r["sku"])}
+        for k in ("name", "barcode", "barcode_source", "dims_source", "dims_cached",
+                  "weight", "weight_source", "_platform_residue"):
+            v = r.get(k)
+            if v is not None:
+                c[k] = v
+        out.append(c)
+    return out
+
+
 def readiness(pre, shortlist_rep=None, slug=None, photos=None):
     """ЧИСТО: агрегат runner.preflight + отчёт КАТЕГОРИЙЩИКА → сводка готовности партии к заливу (0₽).
 
@@ -157,6 +182,7 @@ def readiness(pre, shortlist_rep=None, slug=None, photos=None):
     rows = (pre or {}).get("rows") or []
     sh = shortlist_rep or {}
     sh_agg = sh.get("agg") or {}
+    prov = _shortlist_prov_rows(sh)   # write-EAN/провенанс/флаг чужого МП (Правки A/B/C) — durable видит
     return {
         "configured": True,
         "slug": slug or sh.get("slug"),
@@ -182,6 +208,9 @@ def readiness(pre, shortlist_rep=None, slug=None, photos=None):
         "source": ("live" if str(sh.get("file") or "").startswith("live:")   # живой скан vs файл
                    else ("xlsx" if sh.get("file") else "memory")),
         "error_skus": _error_skus(rows),             # точечно кого пересобирать (для «что горит»)
+        "shortlist_prov": prov,                      # строка шорт-листа: свой EAN + провенанс + флаг (A/B/C)
+        "residue_skus": [r["sku"] for r in prov if r.get("_platform_residue")],
+                                                     # …чьё имя несёт чужую площадку (видно до слова)
         "agg": agg,                                  # сырой агрегат — на случай если рендер захочет больше
         "rows": rows,                                # per-SKU карта готовности (диагностика)
     }
@@ -249,6 +278,11 @@ def _map_live_row(p, slug, category_id):
               "weight", "weight_source", "barcode", "_spec"):
         if p.get(k) is not None:
             row[k] = p[k]
+    # ФЛАГ чужой платформы в имени (04.09): имя 1-в-1 НЕ чистим, но доносим до шорт-листа/durable
+    # (имя с «Ozon/WB» на ЯМ-витрине — решение оператора в момент слова, не автопилот канала).
+    _pr = _uq.platform_residue(row.get("name"))
+    if _pr:
+        row["_platform_residue"] = _pr
     return row
 
 
@@ -479,6 +513,38 @@ def _with_photos(products, photo_fn, mode=None, photo_deadline=PHOTO_DEADLINE):
     return out, _photos_summary(out, mode=mode)
 
 
+def _stamp_write_meta(sh, products):
+    """Записать на строки шорт-листа ЧТО РЕАЛЬНО уйдёт в карточку (04.09, персист durable).
+
+    products собраны shortlist_to_prod: barcode там уже СВОЙ детерминированный gen_ean13(sku)
+    (единый источник own_card_fields — тот же паттерн, что 4 живые PASS-карточки ARB). Зеркалим их
+    НАЗАД на строки шорт-листа, чтобы проекция readiness() (shortlist_prov) несла честный write-EAN,
+    а не «barcode UNKNOWN» (живой аудит 04.09: streich×9 в durable были без штрихкода — генератор
+    артефакта уронил колонку; канал же ВСЕГДА штампует свой EAN в момент сборки).
+
+    ЧЕСТНОСТЬ ЗЕРКАЛА (аудит 04.09, #2): реально срабатывают barcode/barcode_source (write-EAN) и
+    _platform_residue (prod несёт флаг через shortlist_to_prod). Провенанс габаритов/веса (dims_source/
+    dims_cached/weight/weight_source) живёт НА СТРОКАХ КАТЕГОРИЙЩИКА (Правка B score_item passthrough),
+    а shortlist_to_prod не выставляет их верхнеуровнево на product — ветка зеркала для них сегодня
+    не стреляет и оставлена как страховка на будущее, НЕ как источник правды. Флаги, не политика:
+    имя/цену не трогаем, только провенанс для решения оператора.
+    """
+    rows = (sh or {}).get("shortlist") or []
+    if not rows or not products:
+        return sh
+    for r, p in zip(rows, products):
+        if not isinstance(r, dict) or not isinstance(p, dict):
+            continue
+        bc = p.get("barcode")
+        if bc:
+            r["barcode"] = bc
+            r["barcode_source"] = "own-ean13"
+        for k in ("dims_source", "dims_cached", "_platform_residue", "weight", "weight_source"):
+            if p.get(k) is not None:
+                r[k] = p[k]
+    return sh
+
+
 def _xlsx_thunk(donor_xlsx, slug, *, city, limit, max_cost, markup_lo, markup_hi, cats,
                 shortlist_fn, to_prod_fn, preflight_fn, load_cats_fn, photo_fn=None,
                 photo_deadline=PHOTO_DEADLINE):
@@ -516,6 +582,7 @@ def _xlsx_thunk(donor_xlsx, slug, *, city, limit, max_cost, markup_lo, markup_hi
         return readiness({}, shortlist_rep=sh, slug=slug)
     selected = (sh or {}).get("shortlist") or []
     products = [_to_prod(r) for r in selected]
+    _stamp_write_meta(sh, products)                       # 04.09: write-EAN/провенанс → строки шорт-листа
     # runner.preflight сам cats НЕ грузит (при None шлёт cats=None в publish_card → карточка
     # деградирует). Его собственный поток делает cats=card.load_cats() перед preflight — повторяем,
     # иначе соврём заниженной готовностью. cats можно подать швом (тесты), тогда файл не читаем.
@@ -618,6 +685,7 @@ def _live_thunk(donor, slug, *, city, limit, max_cost, markup_lo, markup_hi, cat
         return readiness({}, shortlist_rep=sh, slug=slug)
     selected = (sh or {}).get("shortlist") or []
     products = [_to_prod(r) for r in selected]
+    _stamp_write_meta(sh, products)                       # 04.09: write-EAN/провенанс → строки шорт-листа
     products, ph = _with_photos(products, photo_fn, photo_deadline=photo_deadline)  # ФОТО-СЛОЙ до preflight
     pre = _preflight(products, slug, cats=_cats)
     return readiness(pre, shortlist_rep=sh, slug=slug, photos=ph)
@@ -710,6 +778,11 @@ def render(z):
         shown = z["error_skus"][:8]
         more = "" if len(z["error_skus"]) <= 8 else f" (+{len(z['error_skus']) - 8})"
         L.append(f"  пересобрать: {', '.join(str(s) for s in shown)}{more}")
+    if z.get("residue_skus"):
+        shown = z["residue_skus"][:8]
+        more = "" if len(z["residue_skus"]) <= 8 else f" (+{len(z['residue_skus']) - 8})"
+        L.append(f"  ⚑ имя несёт чужую площадку (флаг; имя 1-в-1, реши при слове): "
+                 f"{', '.join(str(s) for s in shown)}{more}")
     return "\n".join(L)
 
 

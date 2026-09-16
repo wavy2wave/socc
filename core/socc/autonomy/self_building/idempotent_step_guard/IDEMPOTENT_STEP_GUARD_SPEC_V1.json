@@ -1,0 +1,13 @@
+{
+  "created_at_msk": "2026-06-18T13:29:09+03:00",
+  "created_at_utc": "2026-06-18T10:29:09.605834+00:00",
+  "decisions": [
+    "NORMAL_EXECUTION_ALLOWED",
+    "ALREADY_COMMITTED_NOOP",
+    "OUT_OF_PHASE_RERUN_BLOCKED"
+  ],
+  "id": "IDEMPOTENT_STEP_GUARD_SPEC_V1",
+  "purpose": "Prevent destructive reruns from overwriting valid committed proof artifacts with FAIL after route has advanced.",
+  "status": "BUILT",
+  "truth_boundary": "Idempotent step guard build only. This builds a bounded guard that detects already-committed or out-of-phase reruns and prevents destructive proof overwrite. It returns ALREADY_COMMITTED_NOOP for safe reruns and blocks backward reruns that would corrupt proof state. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI."
+}

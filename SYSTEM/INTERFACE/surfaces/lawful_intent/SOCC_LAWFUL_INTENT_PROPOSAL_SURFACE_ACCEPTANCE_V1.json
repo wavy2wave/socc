@@ -1,0 +1,37 @@
+{
+  "acceptance_verdict": "LAWFUL_INTENT_PROPOSAL_SURFACE_ACCEPTED_AS_CANONICAL_NON_EXECUTING_PROPOSAL_ORGAN",
+  "accepted_as": [
+    "creator intent to lawful proposal surface",
+    "non-executing proposal organ",
+    "proof requirement surface",
+    "current_lawful_next alignment surface",
+    "review-required pre-action surface"
+  ],
+  "accepted_surface": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_V1.json",
+  "active_accepted_surface": "SYSTEM/INTERFACE/surfaces/lawful_intent/ACTIVE_ACCEPTED_LAWFUL_INTENT_PROPOSAL_SURFACE.json",
+  "capability": "SOCC_HAS_CANONICAL_LAWFUL_INTENT_PROPOSAL_SURFACE",
+  "created_at_utc": "2026-06-09T10:33:16.839771+00:00",
+  "id": "SOCC_LAWFUL_INTENT_PROPOSAL_SURFACE_ACCEPTANCE_V1",
+  "next_required_step": "build_socc_first_lawful_intent_proposal_packet_v1",
+  "not_accepted_as": [
+    "executor",
+    "approver",
+    "route mutator",
+    "daemon",
+    "background loop",
+    "network actor",
+    "MW route",
+    "AGI claim",
+    "autonomy launch"
+  ],
+  "proposal_schema": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_SCHEMA_V1.json",
+  "proposal_template": "SYSTEM/INTERFACE/surfaces/lawful_intent/SOCC_LAWFUL_INTENT_PROPOSAL_TEMPLATE_V1.json",
+  "status": "ACCEPTED",
+  "truth_boundary": "Accepted lawful intent proposal surface can form non-executing proposals only. It cannot execute, approve, mutate route, start daemon/background, use network, create MW route, or launch autonomy.",
+  "upstream_proofs": {
+    "build": "SOVEREIGN/PROOF/proof_chain/SOCC_BUILD_LAWFUL_INTENT_PROPOSAL_SURFACE_V1_PROOF.json",
+    "creator_dialogue_view_accept": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_READ_ONLY_CREATOR_DIALOGUE_VIEW_V1_PROOF.json",
+    "review": "SOVEREIGN/PROOF/proof_chain/SOCC_REVIEW_LAWFUL_INTENT_PROPOSAL_SURFACE_V1_PROOF.json",
+    "validate": "SOVEREIGN/PROOF/proof_chain/SOCC_VALIDATE_LAWFUL_INTENT_PROPOSAL_SURFACE_V1_PROOF.json"
+  }
+}

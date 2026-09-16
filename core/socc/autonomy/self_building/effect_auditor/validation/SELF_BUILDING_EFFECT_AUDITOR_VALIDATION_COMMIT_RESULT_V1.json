@@ -1,0 +1,24 @@
+{
+  "coherence": {
+    "panel_lawful_next_matches_route": true,
+    "panel_truth_boundary_matches_route": true,
+    "panel_upstream_matches_route": true,
+    "progress_lawful_next_matches_route": true,
+    "progress_truth_boundary_matches_route": true,
+    "progress_upstream_matches_route": true,
+    "pulse_lawful_next_matches_route": true,
+    "pulse_truth_boundary_matches_route": true,
+    "pulse_upstream_matches_route": true
+  },
+  "committed": true,
+  "hard_failures": [],
+  "lawful_next": "review_self_building_effect_auditor_v1",
+  "panel_hash": "0ad624fa75ffe25ca3e41090",
+  "progress_hash": "4fb61ec6b298be02a7f586ba",
+  "pulse_hash": "8fe69ec1891a980b4b14702b",
+  "route_hash": "68b493618bbe63ff74810cf5",
+  "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260618T094917418072Z",
+  "status": "PASS",
+  "truth_boundary": "Self-building effect auditor validation only. Exercises the auditor against a real positive material-effect control and a semantic-null control, then routes next to review. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.",
+  "upstream_proof": "core/socc/approved_autonomy_lane_runner/proof/SELF_BUILDING_EFFECT_AUDITOR_VALIDATION_V1_PROOF.json"
+}

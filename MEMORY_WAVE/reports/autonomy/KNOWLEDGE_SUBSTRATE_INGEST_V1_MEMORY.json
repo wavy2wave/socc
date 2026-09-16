@@ -1,0 +1,9 @@
+{
+  "created_at_utc": "2026-06-17T11:57:25.549710+00:00",
+  "id": "KNOWLEDGE_SUBSTRATE_INGEST_V1_MEMORY",
+  "memory_effect": "Ingested 144 sources deterministically; 135 relevant to topic 'anna'; 46340 claims, 19551 dates extracted.",
+  "proof": "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_SUBSTRATE_INGEST_V1_PROOF.json",
+  "real_next": "build_wiki_article_entity_substrate_v1",
+  "status": "PASS",
+  "truth_boundary": "Knowledge Substrate deterministic ingest only. No LLM. Read-only over sources. Produces parsed memory with source line anchors. Global route authority untouched. No daemon/background/network."
+}

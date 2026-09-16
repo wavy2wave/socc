@@ -1,0 +1,16 @@
+{
+  "adoption_json": "SYSTEM/INTERFACE/panel/RUNTIME_OPERATOR_PANEL_ADOPTION_V1.json",
+  "created_at_utc": "2026-06-08T18:41:14.480150+00:00",
+  "current_step": "validate_runtime_operator_panel_adoption_v1",
+  "daemon_background_network_guard_ok": true,
+  "id": "RUNTIME_OPERATOR_PANEL_ADOPTION_VALIDATION_V1",
+  "lawful_next": "review_runtime_operator_panel_adoption_v1",
+  "must_not_do_ok": true,
+  "must_show_ok": true,
+  "panel_md": "SYSTEM/INTERFACE/panel/SOCC_RUNTIME_OPERATOR_PANEL_V1.md",
+  "panel_visible_terms_missing": [],
+  "selected_old_panel_lineage_count": 30,
+  "status": "PASS",
+  "truth_boundary": "Panel validation only. No daemon/background/network. Panel is control surface, not executor.",
+  "validated_step": "build_runtime_operator_panel_adoption_v1"
+}

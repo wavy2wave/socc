@@ -1,0 +1,13 @@
+{
+  "acceptance": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_ACCEPTANCE_V1.json",
+  "acceptance_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_ACCEPT_BOUNDED_PLAN_PROPOSAL_SURFACE_V1_PROOF.json",
+  "active_surface": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SURFACE_V1.json",
+  "created_at_utc": "2026-06-09T11:38:21.587575+00:00",
+  "id": "ACTIVE_ACCEPTED_BOUNDED_PLAN_PROPOSAL_SURFACE",
+  "mode": "CANONICAL_NON_EXECUTING_BOUNDED_PLAN_PROPOSAL_ONLY",
+  "next_required_step": "build_socc_first_bounded_plan_proposal_packet_v1",
+  "plan_schema": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_SCHEMA_V1.json",
+  "plan_template": "SYSTEM/INTERFACE/surfaces/bounded_plan/SOCC_BOUNDED_PLAN_PROPOSAL_TEMPLATE_V1.json",
+  "status": "ACTIVE_ACCEPTED",
+  "truth_boundary": "Active accepted bounded plan proposal surface is non-executing and review-required."
+}

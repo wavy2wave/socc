@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ANNA · Brand Sheet — D3 Спокойная забота</title>
+<style>
+  :root{
+    --bg:#F5F3EE; --surface:#FFFFFF; --surface-2:#EDEAE3;
+    --ink:#2E3D34; --muted:#6E7B71;
+    --primary:#54705C; --primary-soft:#8AA897;
+    --accent:#D9A679; --accent-deep:#B5824F;
+    --success:#4F8A5B; --warning:#C8923E; --danger:#C0533B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:48px 24px 90px}
+  .crumb{font-family:ui-monospace,Menlo,monospace;color:var(--muted);font-size:12px;letter-spacing:.04em;margin-bottom:24px}
+  h2{font-size:14px;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);margin:54px 0 18px;font-weight:600}
+  section{background:var(--surface);border-radius:18px;padding:30px;box-shadow:0 1px 0 rgba(46,61,52,.05),0 8px 30px rgba(46,61,52,.04)}
+  .logo-row{display:flex;align-items:center;gap:40px;flex-wrap:wrap}
+  .pal{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+  .sw{border-radius:14px;overflow:hidden;border:1px solid rgba(46,61,52,.08)}
+  .sw .chip{height:70px}
+  .sw .lab{padding:9px 12px;font-size:12px}
+  .sw .lab b{display:block;font-size:13px}
+  .sw .hex{font-family:ui-monospace,Menlo,monospace;color:var(--muted)}
+  .contrast{margin-top:16px;font-size:13px;color:var(--muted)}
+  .contrast span{display:inline-block;background:var(--surface-2);border-radius:999px;padding:4px 11px;margin:3px 5px 0 0;color:var(--ink)}
+  .type div{margin:6px 0;letter-spacing:-.01em}
+  .btn{display:inline-block;border:none;border-radius:12px;padding:13px 22px;font-size:15px;font-weight:600;font-family:inherit;cursor:pointer;margin:0 10px 10px 0}
+  .btn-primary{background:var(--primary);color:#fff}
+  .btn-accent{background:var(--accent);color:var(--ink)}
+  .btn-ghost{background:transparent;color:var(--primary);border:1.5px solid var(--primary-soft)}
+  .card{background:var(--bg);border:1px solid rgba(46,61,52,.08);border-radius:14px;padding:18px 20px;max-width:340px}
+  .badge{display:inline-block;font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px}
+  .input{width:100%;max-width:340px;border:1.5px solid var(--surface-2);background:var(--surface);border-radius:12px;padding:13px 15px;font-size:15px;font-family:inherit;color:var(--ink)}
+  .chat{max-width:380px}
+  .bubble{padding:12px 16px;border-radius:18px;margin:8px 0;font-size:15px;max-width:80%}
+  .b-anna{background:var(--primary-soft);color:#1f2c24;border-bottom-left-radius:5px}
+  .b-pat{background:var(--surface-2);color:var(--ink);margin-left:auto;border-bottom-right-radius:5px}
+  .who{font-size:11px;color:var(--muted);margin:14px 0 -2px}
+  .avatar{width:46px;height:46px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:var(--primary);color:#F1E9DD;font-weight:700;font-size:18px;vertical-align:middle}
+  .note{font-size:13px;color:var(--muted);margin-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="crumb">SOCC ▸ BRAND FORGE ▸ P2 ▸ F2.2–F2.4 ▸ D3 «СПОКОЙНАЯ ЗАБОТА» ▸ REVIEW</div>
+
+  <h2>Логотип и знак</h2>
+  <section>
+    <div class="logo-row">
+      <svg viewBox="0 0 380 120" width="300" aria-label="ANNA logo">
+        <g transform="translate(8,12)">
+          <rect width="96" height="96" rx="22" fill="#5E7A66"/>
+          <path d="M22 64 A26 26 0 0 1 74 64" fill="none" stroke="#F1E9DD" stroke-width="7.5" stroke-linecap="round"/>
+          <path d="M35 64 A13 13 0 0 1 61 64" fill="none" stroke="#D9A679" stroke-width="7.5" stroke-linecap="round"/>
+          <circle cx="48" cy="70.5" r="3.6" fill="#F1E9DD"/>
+        </g>
+        <text x="124" y="74" font-family="Inter,sans-serif" font-size="58" font-weight="700" letter-spacing="-1.5" fill="#2E3D34">анна</text>
+        <path d="M300 40 A14 9 0 0 1 330 40" fill="none" stroke="#D9A679" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+      <svg viewBox="0 0 120 120" width="74" aria-label="ANNA mark">
+        <rect width="120" height="120" rx="28" fill="#5E7A66"/>
+        <path d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/>
+        <path d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/>
+        <circle cx="60" cy="86" r="4.5" fill="#F1E9DD"/>
+      </svg>
+      <svg viewBox="0 0 120 120" width="40" aria-label="favicon">
+        <rect width="120" height="120" rx="28" fill="#5E7A66"/>
+        <path d="M28 78 A32 32 0 0 1 92 78" fill="none" stroke="#F1E9DD" stroke-width="9" stroke-linecap="round"/>
+        <path d="M44 78 A16 16 0 0 1 76 78" fill="none" stroke="#D9A679" stroke-width="9" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <p class="note">Знак — две вложенные дуги: укрытие (светлая) + человеческое тепло (песок) + спокойная точка. Метафора заботы, не клише-улыбка. Работает от 16px.</p>
+  </section>
+
+  <h2>Палитра (токены + WCAG)</h2>
+  <section>
+    <div class="pal">
+      <div class="sw"><div class="chip" style="background:#F5F3EE"></div><div class="lab"><b>bg</b><span class="hex">#F5F3EE</span></div></div>
+      <div class="sw"><div class="chip" style="background:#2E3D34"></div><div class="lab" style="background:#2E3D34;color:#F5F3EE"><b>ink</b><span class="hex" style="color:#b9c4bc">#2E3D34</span></div></div>
+      <div class="sw"><div class="chip" style="background:#54705C"></div><div class="lab"><b>primary</b><span class="hex">#54705C</span></div></div>
+      <div class="sw"><div class="chip" style="background:#8AA897"></div><div class="lab"><b>primary-soft</b><span class="hex">#8AA897</span></div></div>
+      <div class="sw"><div class="chip" style="background:#D9A679"></div><div class="lab"><b>accent</b><span class="hex">#D9A679</span></div></div>
+      <div class="sw"><div class="chip" style="background:#B5824F"></div><div class="lab"><b>accent-deep</b><span class="hex">#B5824F</span></div></div>
+      <div class="sw"><div class="chip" style="background:#6E7B71"></div><div class="lab"><b>muted</b><span class="hex">#6E7B71</span></div></div>
+      <div class="sw"><div class="chip" style="background:#4F8A5B"></div><div class="lab"><b>success</b><span class="hex">#4F8A5B</span></div></div>
+      <div class="sw"><div class="chip" style="background:#C8923E"></div><div class="lab"><b>warning</b><span class="hex">#C8923E</span></div></div>
+      <div class="sw"><div class="chip" style="background:#C0533B"></div><div class="lab"><b>danger</b><span class="hex">#C0533B</span></div></div>
+    </div>
+    <div class="contrast">
+      Контраст (WCAG 2.1): <span>ink/bg — 10.3:1 AAA</span><span>white/primary — 5.47:1 AA</span><span>ink/accent — 5.28:1 AA</span><span>muted/bg — ~4.0:1 (только крупный)</span>
+    </div>
+  </section>
+
+  <h2>Типографика — Inter</h2>
+  <section class="type">
+    <div style="font-size:49px;font-weight:700;letter-spacing:-2px">Каждый пациент — как самый важный</div>
+    <div style="font-size:31px;font-weight:700;letter-spacing:-1px">Тёплый администратор клиники</div>
+    <div style="font-size:20px;font-weight:500">Запишем спокойно и в удобное время</div>
+    <div style="font-size:16px">Основной текст 16px — тёплый, человечный, без канцелярита. Межстрочный 1.5 для спокойного дыхания.</div>
+    <div style="font-size:14px;color:var(--muted)">Вторичный 14px — подписи, мета.</div>
+  </section>
+
+  <h2>Компоненты</h2>
+  <section>
+    <button class="btn btn-primary">Записать на приём</button>
+    <button class="btn btn-accent">Подобрать время</button>
+    <button class="btn btn-ghost">Перенести</button>
+    <div style="margin:18px 0">
+      <span class="badge" style="background:#e4ede6;color:#2c5238">● Записан</span>
+      <span class="badge" style="background:#f3e7d2;color:#7a571f">○ Ждёт подтверждения</span>
+    </div>
+    <input class="input" placeholder="Ваше имя">
+    <div class="card" style="margin-top:18px">
+      <div style="font-weight:700;margin-bottom:4px">Пн, 14:30 · Терапевт</div>
+      <div style="color:var(--muted);font-size:14px">Анна Сергеевна · кабинет 3</div>
+    </div>
+  </section>
+
+  <h2>Бренд + голос (как ANNA говорит в стелс-режиме)</h2>
+  <section>
+    <div class="chat">
+      <div class="who"><span class="avatar">А</span> &nbsp;Анна · администратор</div>
+      <div class="bubble b-anna">Здравствуйте! Подскажу свободное время и запишу — что вас беспокоит?</div>
+      <div class="bubble b-pat">Зуб ноет второй день, очень больно</div>
+      <div class="bubble b-anna">Понимаю, это правда неприятно. Давайте найдём ближайшее окно — сегодня вечером в 18:40 или завтра утром. Как вам удобнее?</div>
+      <div class="bubble b-pat">Давайте сегодня</div>
+      <div class="bubble b-anna">Записала на 18:40, кабинет 3. Если что-то изменится — просто напишите, перенесём спокойно. Как вас зовут?</div>
+    </div>
+    <p class="note">Тон: сначала забота, потом дело. Короткие живые фразы, имя, мягкость к боли. Ни одного робо-маркера — стелс держится на качестве голоса.</p>
+  </section>
+
+</div>
+</body>
+</html>

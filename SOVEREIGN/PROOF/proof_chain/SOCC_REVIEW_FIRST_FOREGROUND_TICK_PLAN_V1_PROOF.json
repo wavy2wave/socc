@@ -1,0 +1,90 @@
+{
+  "active_tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/ACTIVE_FIRST_FOREGROUND_TICK_PLAN.json",
+  "artifact": "SYSTEM/CYCLE/foreground_tick_plan/SOCC_FIRST_FOREGROUND_TICK_PLAN_REVIEW_V1.json",
+  "authority_after": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "accept_socc_first_foreground_tick_plan_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "accept_socc_first_foreground_tick_plan_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "accept_socc_first_foreground_tick_plan_v1"
+  },
+  "authority_before": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": "review_socc_first_foreground_tick_plan_v1",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": "review_socc_first_foreground_tick_plan_v1",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": "review_socc_first_foreground_tick_plan_v1"
+  },
+  "authority_changed": {
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ],
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json": [
+      "current_lawful_next",
+      "lawful_next"
+    ]
+  },
+  "autonomy_distance": {
+    "to_continuous_daemon_autonomy": "not_authorized",
+    "to_first_foreground_controlled_tick": "near_after_review_accept_and_run_surface"
+  },
+  "capability": "SOCC_FIRST_FOREGROUND_TICK_PLAN_REVIEWED_READY_FOR_ACCEPTANCE",
+  "checks": {
+    "accept_proof_pass": true,
+    "accepted_packet_active": true,
+    "active_tick_plan_candidate": true,
+    "active_tick_plan_next_matches_validate": true,
+    "allowed_definition_only": true,
+    "authority_at_expected_frontier": true,
+    "background_forbidden": true,
+    "build_proof_pass": true,
+    "cycle_packet_acceptance_accepted": true,
+    "cycle_packet_non_executing": true,
+    "daemon_forbidden": true,
+    "forbidden_complete": true,
+    "mw_route_forbidden": true,
+    "network_forbidden": true,
+    "next_required_step_matches_validate": true,
+    "no_agi_claim": true,
+    "no_autonomy_launch_claim": true,
+    "no_run_surface_yet": true,
+    "observed_current_matches_build": true,
+    "planned_tick_may_execute_now_false": true,
+    "planned_tick_present": true,
+    "planned_tick_requires_acceptance": true,
+    "planned_tick_requires_operator_foreground_run": true,
+    "planned_tick_requires_review": true,
+    "planned_tick_requires_validation": true,
+    "proof_requirements_present": true,
+    "tick_plan_mode_non_executing": true,
+    "tick_plan_status_built_candidate": true,
+    "tick_plan_type_ok": true,
+    "truth_boundary_non_executing": true,
+    "validation_artifact_pass": true,
+    "validation_checks_all_true": true,
+    "validation_next_matches_review": true,
+    "validation_proof_pass": true,
+    "visible_chain_complete": true
+  },
+  "created_at_utc": "2026-06-09T13:29:02.243150+00:00",
+  "current_expected": "review_socc_first_foreground_tick_plan_v1",
+  "hard_failures": [],
+  "id": "SOCC_REVIEW_FIRST_FOREGROUND_TICK_PLAN_V1_PROOF",
+  "mode": "REVIEW",
+  "next_after_pass": "accept_socc_first_foreground_tick_plan_v1",
+  "next_lawful_step": "accept_socc_first_foreground_tick_plan_v1",
+  "no_background": true,
+  "no_code_execution": true,
+  "no_daemon": true,
+  "no_execution": true,
+  "no_language_execution": true,
+  "no_mw_route": true,
+  "no_network": true,
+  "no_tick_run": true,
+  "proof_hash": "2b9ecccc0b137fde",
+  "status": "PASS",
+  "tick_plan": "SYSTEM/CYCLE/foreground_tick_plan/SOCC_FIRST_FOREGROUND_TICK_PLAN_V1.json",
+  "truth_boundary": "Reviews first foreground tick plan only. No tick execution.",
+  "warnings": []
+}

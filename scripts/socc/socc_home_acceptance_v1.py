@@ -3,7 +3,7 @@
 """SOCC · ДОМ — ПРИЁМКА единого read-хаба (socc_cli/home.py).
 
 Сухо, 0₽, без сети, без записи. Дом читает только лежащие сторы (как консоль).
-Законы HH1–HH8:
+Законы HH1–HH9:
   HH1  дом_рендер    — дашборд: лента + все органы (КЕРНЕЛЬ/ЯМ/OZON/SUBSTRATE/ANNA/MIGRATION)
   HH2  цвета_plain   — на StringIO нет ANSI (CC8) ни в дашборде, ни в ЯМ-лице
   HH3  зонды_честные — каждый зонд даёт (state, note, hint), state∈{live,idle,off},
@@ -15,6 +15,8 @@
   HH6  дом_не_пишет  — исходник home.py без write-вызовов (CC7-паттерн)
   HH7  алиас_цикл    — scripts/mint/arbiter/CYCLE делегирует в socc_cli.home
   HH8  проводка_socc — socc_cli/cli.py знает _HOME_KEYS + cmd_home + help-блок
+  HH9  план_дня_лицо — socc ym план = ПЛАН ДНЯ (утро): читает durable план/честно
+                       деградирует, не падает, plain
 """
 import io
 import inspect
@@ -122,6 +124,18 @@ def hh8_provodka_socc():
     return ok, "cli.py: _HOME_KEYS+cmd_home+ДОМ-help"
 
 
+def hh9_plan_dnya_lico():
+    # ПЛАН ДНЯ (утро) — read-лицо ДОМА: socc ym план. Честно рисует durable план, а если
+    # консоль/движок ещё не вшили или плана на день нет — честная строка, не падение.
+    buf = io.StringIO()
+    rc = home.dispatch(["ym", "план"], out=buf)
+    t = buf.getvalue()
+    ok1 = rc == 0 and "Traceback" not in t
+    ok2 = "ПЛАН ДНЯ" in t
+    ok3 = not ANSI.search(t)
+    return (ok1 and ok2 and ok3), f"rc={rc} · ПЛАН_ДНЯ={ok2} · plain={ok3} · t={t.strip()[:120]!r}"
+
+
 TESTS = [
     ("HH1  дом_рендер", hh1_dom_render),
     ("HH2  цвета_plain", hh2_cveta_plain),
@@ -131,6 +145,7 @@ TESTS = [
     ("HH6  дом_не_пишет", hh6_dom_ne_pishet),
     ("HH7  алиас_цикл", hh7_alias_cycle),
     ("HH8  проводка_socc", hh8_provodka_socc),
+    ("HH9  план_дня_лицо", hh9_plan_dnya_lico),
 ]
 
 
@@ -146,7 +161,7 @@ def main():
         passed += 1 if ok else 0
     print(f"\nИтого: {passed}/{len(TESTS)} PASS")
     if passed == len(TESTS):
-        print("✅ ДОМ открывает все органы честно: 6 карточек · 8 входов · 0₽ · не пишет")
+        print("✅ ДОМ открывает все органы честно: 6 карточек · 8 входов · ПЛАН ДНЯ · 0₽ · не пишет")
     return 0 if passed == len(TESTS) else 1
 
 

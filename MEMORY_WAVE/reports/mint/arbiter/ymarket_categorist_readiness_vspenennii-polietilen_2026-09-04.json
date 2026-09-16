@@ -1,0 +1,25 @@
+{
+ "schema": "ymarket.categorist.readiness.vspenennii-polietilen.v1",
+ "purpose": "Живой сухой скан (0₽ GET) ПОСЛЕ снятия T3-маппинг-гейта органом: need_mapping 0 (маппинг 76377452 СНЯТ — узкое место НЕ маппинг), но ready 0. Категория мала и узка (grid 11+11): ВП-рулоны донора NPE + строительный кросс-селл. Вердикт needs_data: НЕ негатив, НЕ фейк-пасс.",
+ "run": {
+  "configured": true,
+  "slug": "vspenennii-polietilen",
+  "source": "live",
+  "grid_main": 11,
+  "grid_related": 11,
+  "selected": 0,
+  "needs_data": 6,
+  "parcel_dims": 5,
+  "rejected": 16,
+  "ready": 0,
+  "errors": 0,
+  "topfill": 0,
+  "need_mapping": 0,
+  "no_pictures": 0,
+  "with_specs": 0,
+  "avg_emitted": 0.0
+ },
+ "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+ "rubicon": "не пересечён: 0₽ GET донора; запись локального канона.",
+ "generated": "2026-09-04"
+}

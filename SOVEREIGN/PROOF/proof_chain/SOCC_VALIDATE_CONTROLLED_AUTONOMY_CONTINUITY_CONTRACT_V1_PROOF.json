@@ -1,0 +1,31 @@
+{
+  "background_loop_enabled": false,
+  "backups": [
+    "MIGRATION/rebind_backups/validate_controlled_autonomy_continuity_contract_20260608T190023Z/core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "MIGRATION/rebind_backups/validate_controlled_autonomy_continuity_contract_20260608T190023Z/core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "MIGRATION/rebind_backups/validate_controlled_autonomy_continuity_contract_20260608T190023Z/core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "bad_contract_flags": [],
+  "bad_proven_state": [],
+  "bad_route_flags": [],
+  "changed": [
+    "core/socc/autonomy/controlled_continuous_autonomy/CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_VALIDATION_V1.json",
+    "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json",
+    "core/socc/route_authority/self_construction_autonomy/AUTONOMY_PULSE_V1.json",
+    "core/socc/route_authority/self_construction_autonomy/CONTROL_PANEL_STATE_V1.json"
+  ],
+  "created_at_utc": "2026-06-08T19:00:23.479983+00:00",
+  "current_before": "validate_controlled_autonomy_continuity_contract_v1",
+  "daemon_running": false,
+  "hard_failures": [],
+  "id": "SOCC_VALIDATE_CONTROLLED_AUTONOMY_CONTINUITY_CONTRACT_V1_PROOF",
+  "missing_if_fail": [],
+  "missing_must_do": [],
+  "missing_must_not_do": [],
+  "network_used": false,
+  "next_after_validation": "review_controlled_autonomy_continuity_contract_v1",
+  "observe_pass": true,
+  "status": "PASS",
+  "truth_boundary": "Controlled autonomy continuity contract validation only. No daemon/background/network.",
+  "warnings": []
+}

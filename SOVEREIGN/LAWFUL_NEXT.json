@@ -1,0 +1,24 @@
+{
+  "current": "mint_first_verified_ruble",
+  "next": "demo_bot_then_marketplace_close",
+  "decision": "Mint D2 before ANNA ship — speed to real ₽",
+  "steps": [
+    "run botfactory demo: scripts/mint/botfactory/config.demo_prodazha.json",
+    "10-15 replies/day YouDo Avito Kwork TG",
+    "deliver bot → escrow/SBP → NPD receipt",
+    "python3 scripts/mint/socc_mint_record_v1.py ... --commit",
+    "background only: fix ANNA LLM key → --health green"
+  ],
+  "after_m1": [
+    "ANNA safe-mode telegram",
+    "one warm clinic pilot"
+  ],
+  "parked": [
+    "cold 55 clinics",
+    "MIGRATION",
+    "self_building",
+    "multi_clinic"
+  ],
+  "updated": "2026-07-13",
+  "line": "ln-cee92000"
+}

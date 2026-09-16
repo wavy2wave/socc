@@ -1,0 +1,1 @@
+{"claims": [{"text": "SOCC is accepted as the current working base.", "line": 11, "entities": ["SOCC"], "intent": "status_pass", "polarity": "assert"}], "dates": [], "entity_counts": {"SOCC": 3, "Supramental": 1, "Hermes": 2, "Codex": 2, "Proof": 1, "Daemon": 1}}

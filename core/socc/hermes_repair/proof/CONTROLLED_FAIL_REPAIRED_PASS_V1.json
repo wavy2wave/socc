@@ -1,0 +1,11 @@
+{
+  "ts": "2026-04-29T23:47:21.375068+00:00",
+  "status": "PASS",
+  "validator": "CONTROLLED_FAIL_REPAIRED_VALIDATOR_V1",
+  "target": "core/socc/hermes_repair/sandbox/CONTROLLED_FAIL_TARGET_V1.json",
+  "source_fail_proof": "core/socc/hermes_repair/proof/CONTROLLED_FAIL_VALIDATOR_FAIL_V1.json",
+  "hermes_packet": "core/socc/hermes_repair/packets/HERMES_REPAIR_PACKET_CONTROLLED_FAIL_V1.json",
+  "repair_state": "core/socc/hermes_repair/state/HERMES_REPAIR_APPLIED_V1.json",
+  "failures_after_repair": [],
+  "truth_boundary": "PASS means controlled failure was repaired by Hermes packet and revalidated."
+}

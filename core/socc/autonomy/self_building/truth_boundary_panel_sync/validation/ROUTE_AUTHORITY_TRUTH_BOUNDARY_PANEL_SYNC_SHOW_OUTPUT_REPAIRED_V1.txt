@@ -1,0 +1,20 @@
+SOCC SELF-BUILDING STATUS PANEL — ROUTE AUTHORITY FIRST
+SOCC_SELF_BUILDING_PULSE::ALIVE_BOUNDED_SELF_BUILDING_VISIBLE
+CURRENT_LEVEL::L7_FIRST_BOUNDED_SELF_BUILDING_CYCLE_CLOSED_STATUS_PANEL_BUILT
+SELF_BUILDING_CYCLE_COUNT::1
+LAWFUL_NEXT::validate_route_authority_truth_boundary_panel_sync_v1
+TRUTH_BOUNDARY_SOURCE::CURRENT_ROUTE_AUTHORITY
+CURRENT_ROUTE_AUTHORITY_PATH::core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json
+CURRENT_ROUTE_AUTHORITY_HASH::48e8b75b4a2443b551244d69
+ROUTE_UPSTREAM_SYNC_PROOF::core/socc/approved_autonomy_lane_runner/proof/ROUTE_AUTHORITY_TRUTH_BOUNDARY_PANEL_SYNC_V1_PROOF.json
+SELF_BUILDING_MODE_ENABLED::True
+DAEMON_RUNNING::False
+SCHEDULER_INSTALLED::False
+BACKGROUND_LOOP_ENABLED::False
+NETWORK_USED::False
+QUEUE_WIDENING_ALLOWED::False
+ENTITY_BIRTH_ALLOWED::False
+ANNA_BIRTH_ALLOWED::False
+AGI_CLAIM_ALLOWED::False
+HARD_FAILURES::[]
+TRUTH_BOUNDARY::Route-authority truth-boundary/status-panel sync build only. This makes pulse, panel, and show command prefer CURRENT_ROUTE_AUTHORITY.truth_boundary as the visible truth boundary. It does not execute a tick, enable continuous loop, launch daemon, install scheduler, enable background loop, use network, widen queue, birth Entity/ANNA, approve final canon, or claim AGI.

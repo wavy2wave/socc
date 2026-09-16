@@ -1,0 +1,73 @@
+{
+  "agi_claim_allowed": false,
+  "anna_birth_allowed": false,
+  "atomic_commit_result": {
+    "coherence": {
+      "panel_lawful_next_matches_route": true,
+      "panel_truth_boundary_matches_route": true,
+      "panel_upstream_matches_route": true,
+      "progress_lawful_next_matches_route": true,
+      "progress_truth_boundary_matches_route": true,
+      "progress_upstream_matches_route": true,
+      "pulse_lawful_next_matches_route": true,
+      "pulse_truth_boundary_matches_route": true,
+      "pulse_upstream_matches_route": true
+    },
+    "committed": true,
+    "hard_failures": [],
+    "lawful_next": "run_entity_substrate_codex_gate_v1",
+    "panel_hash": "0cca8611771a9f1110a7393b",
+    "progress_hash": "5a450328d885c3a45ba5cfb5",
+    "pulse_hash": "6cfc81b1c3ebaa451ac2b792",
+    "route_hash": "ad60f7032bd6d4e11a51a922",
+    "snapshot": "core/socc/autonomy/self_building/atomic_commit/rollback_snapshots/20260619T224845057108Z",
+    "status": "PASS",
+    "truth_boundary": "Observe next-reconcile repair only. Aligns route.lawful_next, AUTONOMY_PULSE.current_lawful_next and CONTROL_PANEL.current_lawful_next to the true frontier run_entity_substrate_codex_gate_v1, justified by upstream Entity Substrate Hermes gate PASS. Does not run the Codex gate, execute a tick, enable loop/daemon/scheduler/background, use network, widen queue, birth Entity/ANNA, approve canon, or claim AGI.",
+    "upstream_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ENTITY_SUBSTRATE_HERMES_GATE_V1_PROOF.json"
+  },
+  "background_loop_enabled": false,
+  "backup_dir": "core/socc/route_authority/self_construction_autonomy/observe_reconcile_backups/20260619T224845053918Z",
+  "capability": "OBSERVE_NEXT_RECONCILED_ROUTE_PULSE_CONTROL_ALIGNED_TO_CODEX_GATE_FRONTIER",
+  "checks": {
+    "autonomy_pulse_exists": true,
+    "codex_gate_proof_absent": true,
+    "control_operator_view_already_target": true,
+    "control_panel_exists": true,
+    "hermes_declares_codex_next": true,
+    "hermes_gate_proof_exists": true,
+    "hermes_gate_proof_pass": true,
+    "repair_does_not_birth_entity": true,
+    "repair_does_not_enable_daemon": true,
+    "repair_does_not_enable_loop": true,
+    "repair_does_not_use_network": true,
+    "route_exists": true,
+    "target_next_nonempty": true
+  },
+  "continuous_loop_enabled": false,
+  "created_at_msk": "2026-06-20T01:48:45+03:00",
+  "created_at_utc": "2026-06-19T22:48:45.063275+00:00",
+  "daemon_running": false,
+  "entity_birth_allowed": false,
+  "final_canon_approval_allowed": false,
+  "hard_failures": [],
+  "id": "SOCC_REPAIR_OBSERVE_NEXT_RECONCILE_V1_PROOF",
+  "network_used": false,
+  "next_after": {
+    "control": "run_entity_substrate_codex_gate_v1",
+    "pulse": "run_entity_substrate_codex_gate_v1",
+    "route": "run_entity_substrate_codex_gate_v1"
+  },
+  "next_before": {
+    "control": "run_entity_substrate_codex_gate_v1",
+    "pulse": "review_self_building_cycle_2_candidate_v1",
+    "route": "validate_idempotent_step_guard_v1"
+  },
+  "proof_hash": "59172dcd040e077d128c3815",
+  "queue_widening_allowed": false,
+  "real_next": "run_entity_substrate_codex_gate_v1",
+  "scheduler_installed": false,
+  "status": "PASS",
+  "target_next": "run_entity_substrate_codex_gate_v1",
+  "truth_boundary": "Observe next-reconcile repair only. Aligns route.lawful_next, AUTONOMY_PULSE.current_lawful_next and CONTROL_PANEL.current_lawful_next to the true frontier run_entity_substrate_codex_gate_v1, justified by upstream Entity Substrate Hermes gate PASS. Does not run the Codex gate, execute a tick, enable loop/daemon/scheduler/background, use network, widen queue, birth Entity/ANNA, approve canon, or claim AGI.",
+  "upstream_proof": "SOVEREIGN/PROOF/proof_chain/SOCC_RUN_ENTITY_SUBSTRATE_HERMES_GATE_V1_PROOF.json"
+}
