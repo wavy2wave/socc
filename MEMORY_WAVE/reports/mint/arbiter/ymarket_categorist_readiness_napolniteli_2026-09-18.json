@@ -1,0 +1,29 @@
+{
+ "schema": "ymarket.categorist.readiness.napolniteli.v1",
+ "purpose": "grid 20+8, ready 0, need_mapping 0 (маппинг подтверждён 76300038), needs_data 15 — данные-слой (ОВХ посылки/вес) не конвертит; НЕ негатив, НЕ фейк-пасс.",
+ "run": {
+  "configured": true,
+  "slug": "napolniteli",
+  "source": "live",
+  "grid_main": 20,
+  "grid_related": 8,
+  "selected": 0,
+  "needs_data": 15,
+  "parcel_dims": 3,
+  "rejected": 13,
+  "ready": 0,
+  "errors": 0,
+  "need_mapping": 0,
+  "topfill": 0,
+  "no_pictures": 0,
+  "with_specs": 0,
+  "avg_emitted": 0.0,
+  "photos": "off"
+ },
+ "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+ "market_category_id": 76300038,
+ "rubicon": "не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.",
+ "generated": "2026-09-18",
+ "engine": "ymarket_zaliv_source_v1.py <slug> --slug <slug> --photos off --scan-deadline 180 --json",
+ "verdict": "needs_data"
+}

@@ -1,0 +1,29 @@
+{
+ "schema": "ymarket.categorist.readiness.meshki.v1",
+ "purpose": "Скан жив (grid 20+9, needs_data 24), но market_category_id НЕ подтверждён в каноне маппинга — маппинг решает ОРГАН (D1: id не выдумываем); в скане need_mapping=0 (строки не дошли до маппинг-гейта, уперлись в данные-слой).",
+ "run": {
+  "configured": true,
+  "slug": "meshki",
+  "source": "live",
+  "grid_main": 20,
+  "grid_related": 9,
+  "selected": 0,
+  "needs_data": 24,
+  "parcel_dims": 20,
+  "rejected": 5,
+  "ready": 0,
+  "errors": 0,
+  "need_mapping": 0,
+  "topfill": 0,
+  "no_pictures": 0,
+  "with_specs": 0,
+  "avg_emitted": 0.0,
+  "photos": "off"
+ },
+ "mapping_canon": "need_mapping: id не подтверждён (None ≠ 0) — решает ОРГАН/оператор",
+ "market_category_id": null,
+ "rubicon": "не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.",
+ "generated": "2026-09-18",
+ "engine": "ymarket_zaliv_source_v1.py <slug> --slug <slug> --photos off --scan-deadline 180 --json",
+ "verdict": "blocked"
+}

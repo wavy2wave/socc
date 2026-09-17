@@ -1,6 +1,6 @@
 {
-  "at": "2026-09-16T19:46:30.122680+00:00",
-  "tick_id": "OZTICK_20260916T194630",
+  "at": "2026-09-17T22:55:36.118191+00:00",
+  "tick_id": "OZTICK_20260917T225536",
   "action": "FIX_ERRORS",
   "kpis": {
     "tracked": 1,
@@ -30,7 +30,7 @@
   },
   "proof": {
     "capability": "OZON_MANAGER_BOUNDED_TICK",
-    "tick_id": "OZTICK_20260916T194630",
+    "tick_id": "OZTICK_20260917T225536",
     "action": "FIX_ERRORS",
     "checks": {
       "state_loaded": true,
@@ -46,7 +46,7 @@
     "moved_money": false,
     "network_used": false,
     "self_status": {
-      "ts": "2026-09-16T19:46:30.122061+00:00",
+      "ts": "2026-09-17T22:55:36.117430+00:00",
       "organ": "OZON_MANAGER",
       "charter": {
         "id": "OZON_MANAGER",

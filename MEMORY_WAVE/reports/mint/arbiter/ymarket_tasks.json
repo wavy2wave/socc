@@ -1,6 +1,6 @@
 {
  "schema": "ymarket.tasks.v1",
- "updated_at": "2026-09-15T08:35:38+0300",
+ "updated_at": "2026-09-18T01:51:57+0300",
  "tasks": {
   "T-84d7aa1a": {
    "id": "T-84d7aa1a",
@@ -259,17 +259,23 @@
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 14 rejected, 6 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 5; ready 0. Вердикт needs_data. Первоисточник: артефакт readiness vspenennii-polietilen 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ readiness vspenennii-polietilen 2026-09-18 (.json/.md) + запись в досье (record_scan/save); вердикт маппинга: need_mapping=false (cid подтверждён 04.09); шорт-лист пуст честно: ready 0 — needs_data 6 (ОВХ/вес), НЕ негатив, НЕ фейк-пасс.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "in_progress",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-04T16:59:47+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "vspenennii-polietilen",
     "donor_site": "shop.cargo-avto.ru",
@@ -304,17 +310,23 @@
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 6 rejected, 10 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 21; ready 12. Вердикт ready_shortlist. Первоисточник: артефакт readiness kartonnye-tubusy 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ — шорт-лист 12 SKU (тубусы с жестяной крышкой 90–1250₽ закупка, ОВХ physics, barcode own-ean13, cid 64642256) записан в досье (scan.shortlist) + readiness-артефакт; маппинг need_mapping=false (cid подтверждён 04.09). Залив — по слову оператора, после Фото-узла.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "in_progress",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-04T17:01:03+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "kartonnye-tubusy",
     "donor_site": "shop.cargo-avto.ru",
@@ -446,22 +458,31 @@
     {
      "id": "s1",
      "title": "Живой скан донор-категории meshki (0₽ GET)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: живой сухой скан 0₽ GET (ymarket_zaliv_source_v1 --photos off --scan-deadline 180): grid 20+9, ready 0, need_mapping 0, needs_data 24, parcel_dims 20, rejected 5. Артефакт ymarket_categorist_readiness_meshki_2026-09-18.json/.md",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 5 rejected, 24 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 20; ready 0. Вердикт needs_mapping. Первоисточник: артефакт readiness meshki 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ readiness meshki 2026-09-18 (.json/.md) + запись в досье (record_scan/save); вердикт маппинга: need_mapping=TRUE — market_category_id НЕ подтверждён, id не выдумываем (D1); шорт-лист пуст (ready 0): строки уперлись в данные-слой. След. шаг — подтверждение категории ОРГАНОМ.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "open",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "meshki",
     "donor_site": "shop.cargo-avto.ru",
@@ -496,17 +517,23 @@
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 5 rejected, 24 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 17; ready 0. Вердикт needs_data. Первоисточник: артефакт readiness paketi 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ readiness paketi 2026-09-18 (.json/.md) + запись в досье (record_scan/save); вердикт маппинга: need_mapping=false (cid подтверждён 04.09); шорт-лист пуст честно: ready 0 — needs_data 24 (ОВХ/вес), НЕ негатив, НЕ фейк-пасс.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "in_progress",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-04T16:02:53+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "paketi",
     "donor_site": "shop.cargo-avto.ru",
@@ -595,17 +622,23 @@
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 13 rejected, 15 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 3; ready 0. Вердикт needs_data. Первоисточник: артефакт readiness napolniteli 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ readiness napolniteli 2026-09-18 (.json/.md) + запись в досье (record_scan/save); вердикт маппинга: need_mapping=false (cid подтверждён 04.09); шорт-лист пуст честно: ready 0 — needs_data 15 (ОВХ/вес), НЕ негатив, НЕ фейк-пасс.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "in_progress",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-04T16:02:53+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "napolniteli",
     "donor_site": "shop.cargo-avto.ru",
@@ -635,22 +668,31 @@
     {
      "id": "s1",
      "title": "Живой скан донор-категории upakovochnaya-setka (0₽ GET)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: живой сухой скан 0₽ GET (ymarket_zaliv_source_v1 --photos off --scan-deadline 180): grid 9+5, ready 0, need_mapping 0, needs_data 6, parcel_dims 6, rejected 8. Артефакт ymarket_categorist_readiness_upakovochnaya-setka_2026-09-18.json/.md",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 8 rejected, 6 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 6; ready 0. Вердикт needs_mapping. Первоисточник: артефакт readiness upakovochnaya-setka 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ readiness upakovochnaya-setka 2026-09-18 (.json/.md) + запись в досье (record_scan/save); вердикт маппинга: need_mapping=TRUE — market_category_id НЕ подтверждён, id не выдумываем (D1); шорт-лист пуст (ready 0): строки уперлись в данные-слой. След. шаг — подтверждение категории ОРГАНОМ.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "open",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "upakovochnaya-setka",
     "donor_site": "shop.cargo-avto.ru",
@@ -677,22 +719,31 @@
     {
      "id": "s1",
      "title": "Живой скан донор-категории upakovochnie-lentj (0₽ GET)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: живой сухой скан 0₽ GET (ymarket_zaliv_source_v1 --photos off --scan-deadline 180): grid 20+9, ready 0, need_mapping 0, needs_data 6, parcel_dims 2, rejected 23. Артефакт ymarket_categorist_readiness_upakovochnie-lentj_2026-09-18.json/.md",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s2",
      "title": "Фильтр под Экспресс: закупка×markup ≤ потолок, габариты/ОВХ",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: фильтр отработал внутри dry-preflight: cost≤потолок → отсев 23 rejected, 6 ушли в needs_data (ОВХ-посылки/вес нет — T5 честно, не выдумываем), ОВХ-слой дал dims 2; ready 0. Вердикт needs_mapping. Первоисточник: артефакт readiness upakovochnie-lentj 2026-09-18.",
+     "done_at": "2026-09-18T01:51:57+0300"
     },
     {
      "id": "s3",
      "title": "Артефакт: шорт-лист кандидатов + вердикт маппинга ЯМ (need_mapping)",
-     "state": "open"
+     "state": "done",
+     "done_by": "CATEGORIST",
+     "evidence": "CATEGORIST 18.09: АРТЕФАКТ readiness upakovochnie-lentj 2026-09-18 (.json/.md) + запись в досье (record_scan/save); вердикт маппинга: need_mapping=TRUE — market_category_id НЕ подтверждён, id не выдумываем (D1); шорт-лист пуст (ready 0): строки уперлись в данные-слой. След. шаг — подтверждение категории ОРГАНОМ.",
+     "done_at": "2026-09-18T01:51:57+0300"
     }
    ],
-   "state": "open",
+   "state": "done",
    "created_at": "2026-09-03T20:04:30+0300",
-   "updated_at": "2026-09-03T20:04:30+0300",
+   "updated_at": "2026-09-18T01:51:57+0300",
    "refs": {
     "donor_category": "upakovochnie-lentj",
     "donor_site": "shop.cargo-avto.ru",
@@ -1040,6 +1091,63 @@
    "updated_at": "2026-09-15T08:35:38+0300",
    "refs": {
     "evidence": "КОНТРОЛЬ: renewalEnabled на Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона, Бестселлеры: Новая единая акция (participating=0), потенциальных кандидатов 15"
+   }
+  },
+  "T-9fee8d86": {
+   "id": "T-9fee8d86",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-film",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-film устарел (2026-09-16) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-film устарел (2026-09-16) — прогнать сухо сегодня",
+     "state": "open"
+    }
+   ],
+   "state": "open",
+   "created_at": "2026-09-17T08:08:20+0300",
+   "updated_at": "2026-09-17T08:08:20+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-film: дата 2026-09-16 ≠ сегодня 2026-09-17"
+   }
+  },
+  "T-d523ddf2": {
+   "id": "T-d523ddf2",
+   "market": "ym",
+   "cycle": "cycle1",
+   "category": "health",
+   "store": "atlas-express-tape",
+   "owner": "DISPATCHER",
+   "urgency": "normal",
+   "priority": 40,
+   "what": "Пульс atlas-express-tape устарел (2026-09-16) — прогнать сухо сегодня",
+   "body": "Дневной цикл не гонялся сегодня — сухой прогон обновит вердикты.",
+   "source": "cycle_day",
+   "depends_on": [],
+   "steps": [
+    {
+     "id": "s1",
+     "title": "Выполнить: Пульс atlas-express-tape устарел (2026-09-16) — прогнать сухо сегодня",
+     "state": "done",
+     "done_by": "ЦИКЛ-1 пульс (автопилот)",
+     "evidence": "пульс atlas-express-tape продвинут до 2026-09-17 (сухой прогон автопилота)",
+     "done_at": "2026-09-17T16:29:06+0300"
+    }
+   ],
+   "state": "done",
+   "created_at": "2026-09-17T08:08:20+0300",
+   "updated_at": "2026-09-17T16:29:06+0300",
+   "refs": {
+    "evidence": "пульс atlas-express-tape: дата 2026-09-16 ≠ сегодня 2026-09-17"
    }
   }
  }

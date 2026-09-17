@@ -1,0 +1,29 @@
+{
+ "schema": "ymarket.categorist.readiness.kartonnye-tubusy.v1",
+ "purpose": "ШОРТ-ЛИСТ 12 SKU (ОВХ physics, barcode own-ean13, маппинг 64642256); errors 0; фото off — живой залив по слову оператора, после Фото-узла.",
+ "run": {
+  "configured": true,
+  "slug": "kartonnye-tubusy",
+  "source": "live",
+  "grid_main": 19,
+  "grid_related": 9,
+  "selected": 12,
+  "needs_data": 10,
+  "parcel_dims": 21,
+  "rejected": 6,
+  "ready": 12,
+  "errors": 0,
+  "need_mapping": 0,
+  "topfill": 12,
+  "no_pictures": 12,
+  "with_specs": 12,
+  "avg_emitted": 0.0,
+  "photos": "off"
+ },
+ "mapping_canon": "ymarket_mapping_confirmed_2026-09-04",
+ "market_category_id": 64642256,
+ "rubicon": "не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.",
+ "generated": "2026-09-18",
+ "engine": "ymarket_zaliv_source_v1.py <slug> --slug <slug> --photos off --scan-deadline 180 --json",
+ "verdict": "ready_shortlist"
+}
