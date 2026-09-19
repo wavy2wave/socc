@@ -40,6 +40,7 @@ SELFEVOLVE = SPINE2 / "SELF_EVOLVE.md"
 PROOF = SPINE2 / "_spine2_proof.json"
 SPINE = ROOT / "scripts" / "socc" / "socc_memory_spine_v2.py"
 DASHGEN = ROOT / "scripts" / "socc" / "socc_memory_dashboard_v2.py"
+GRAPH_NODES = ROOT / "SOVEREIGN" / "WIKI" / "graph" / "nodes.json"
 
 HOST, PORT = "127.0.0.1", 8788
 ALLOWED = {".txt", ".md", ".eml", ".json"}
@@ -73,6 +74,29 @@ def read_proof():
     return json.loads(PROOF.read_text(encoding="utf-8")) if PROOF.exists() else {}
 
 
+def recall(query: str, limit: int = 20):
+    """Graph-aware memory recall: topics + facts + connected graph nodes. Read-only."""
+    q = query.lower().strip()
+    if not q:
+        return {"matches": [], "graph_related": [], "total": 0}
+    pr = read_proof()
+    terms = [t for t in re.split(r"\s+", q) if len(t) > 1]
+    matches = []
+    for key, topic in (pr.get("topics", {}) or {}).items():
+        title = str(topic.get("title", key))
+        hay = (title + " " + key).lower()
+        score = sum(1 for t in terms if t in hay)
+        if score:
+            matches.append({"topic": key, "title": title, "score": score,
+                            "facts": topic.get("current", 0),
+                            "timeline": topic.get("timeline", 0),
+                            "sources": topic.get("sources", 0)})
+    matches.sort(key=lambda m: (-m["score"], -m["facts"], m["topic"]))
+    nodes = json.loads(GRAPH_NODES.read_text(encoding="utf-8")) if GRAPH_NODES.exists() else []
+    graph_related = sorted({n.get("id", "") for n in nodes if any(t in str(n.get("id", "")).lower() for t in terms)})[:40]
+    return {"matches": matches[:limit], "graph_related": graph_related, "total": len(matches)}
+
+
 def next_lawful_step():
     """Best-effort: the system's own proposed next step (top ⭐ from SELF_EVOLVE), honest if absent."""
     try:
@@ -103,6 +127,11 @@ class Handler(BaseHTTPRequestHandler):
             self._send(200, DASH.read_bytes(), "text/html; charset=utf-8")
         elif self.path == "/dashboard.html" and DASH.exists():
             self._send(200, DASH.read_bytes(), "text/html; charset=utf-8")
+        elif self.path.startswith("/recall"):
+            qs = urllib.parse.parse_qs(urllib.parse.urlparse(self.path).query)
+            query = (qs.get("q", [""])[0])
+            limit = int(qs.get("limit", ["20"])[0])
+            self._send(200, json.dumps({"ok": True, "query": query, **recall(query, limit)}, ensure_ascii=False))
         elif self.path == "/state":
             self._send(200, json.dumps({"ok": True, "state": proof_totals(read_proof()),
                                         "next_step": next_lawful_step()}, ensure_ascii=False))
