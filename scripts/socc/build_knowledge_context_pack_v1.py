@@ -30,6 +30,9 @@ MAIN_LINE = ROOT / "SOVEREIGN/WIKI/pages/_entity_substrate_main_line.md"
 CANON_ACTIVE = ROOT / "SYSTEM/ENTITY_SUBSTRATE/ACTIVE_ACCEPTED_ENTITY_SUBSTRATE_DIRECTION.json"
 PACK_JSON = ROOT / "SOVEREIGN/WIKI/context_packs/entity_substrate_context_pack_v1.json"
 PACK_MD = ROOT / "SOVEREIGN/WIKI/context_packs/entity_substrate_context_pack_v1.md"
+GRAPH_NODES = ROOT / "SOVEREIGN/WIKI/graph/nodes.json"
+GRAPH_EDGES = ROOT / "SOVEREIGN/WIKI/graph/edges.json"
+GRAPH_METRICS = ROOT / "SOVEREIGN/WIKI/graph/metrics.json"
 PROOF = ROOT / "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_CONTEXT_PACK_ENTITY_SUBSTRATE_V1_PROOF.json"
 MEMORY = ROOT / "MEMORY_WAVE/reports/autonomy/KNOWLEDGE_CONTEXT_PACK_ENTITY_SUBSTRATE_V1_MEMORY.json"
 
@@ -68,6 +71,26 @@ main_line = read_text(MAIN_LINE).strip()
 canon = read_json(CANON_ACTIVE)
 next_step = canon.get("next_required_step") or "review_self_building_cycle_2_candidate_v1"
 
+graph_nodes = read_json(GRAPH_NODES) if GRAPH_NODES.exists() else []
+graph_edges = read_json(GRAPH_EDGES) if GRAPH_EDGES.exists() else []
+graph_metrics = read_json(GRAPH_METRICS) if GRAPH_METRICS.exists() else {}
+topic_terms = [TOPIC, "entity", "substrate", "anna", "identity", "memory", "proof"]
+graph_related = sorted({
+    n.get("id") for n in graph_nodes
+    if any(t in str(n.get("id", "")).lower() for t in topic_terms)
+})[:40]
+graph_context = {
+    "source": "SOVEREIGN/WIKI/graph",
+    "metrics": graph_metrics,
+    "related_nodes": graph_related,
+    "note": "graph layer of system memory; use to see connected concepts and avoid duplicate builds",
+} if graph_nodes else {
+    "source": "SOVEREIGN/WIKI/graph",
+    "metrics": {},
+    "related_nodes": [],
+    "note": "graph layer absent; rebuild from graphify-out before relying on graph context",
+}
+
 current = _dense(article.get("current_authority", []), max_items)
 deprecated = _dense(article.get("deprecated", []), max_items)
 conflicting = _dense(article.get("conflicting", []), max_items)
@@ -92,6 +115,7 @@ pack = {
         "pack_caps_per_section": max_items,
         "principle": "read KB of pack, not MB of raw files",
     },
+    "graph_context": graph_context,
 }
 pack["pack_hash"] = h(pack)
 
@@ -101,6 +125,7 @@ checks = {
     "main_line_present": bool(main_line),
     "current_authority_present": len(current) > 0,
     "next_step_present": bool(next_step),
+    "graph_layer_present": bool(graph_nodes),
     "global_route_untouched": True,
 }
 hard = [{"code": "CHECK_FAIL", "check": k} for k, v in checks.items() if v is not True]
@@ -133,6 +158,11 @@ for c in conflicting:
     md.append(f"- ❓ {c['text']}  \n  ↳ `{c['ref']}`")
 if not conflicting:
     md.append("- _(пусто)_")
+md.append("")
+md.append("## Graph Context — системная память")
+md.append(f"- граф: `{graph_context['source']}` · узлов: {graph_metrics.get('nodes', 0)} · сообществ: {graph_metrics.get('communities', 0)}")
+md.append(f"- связанные узлы ({len(graph_related)}): " + (", ".join(graph_related[:20]) or "—"))
+md.append(f"- {graph_context['note']}")
 md.append("")
 md.append("## Следующий законный шаг для Entity Substrate")
 md.append(f"`{next_step}`")

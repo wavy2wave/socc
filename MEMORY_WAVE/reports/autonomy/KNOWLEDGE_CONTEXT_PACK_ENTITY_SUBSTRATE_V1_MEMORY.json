@@ -1,5 +1,5 @@
 {
-  "created_at_utc": "2026-06-16T19:47:58.342063+00:00",
+  "created_at_utc": "2026-09-19T20:42:59.715764+00:00",
   "id": "KNOWLEDGE_CONTEXT_PACK_ENTITY_SUBSTRATE_V1_MEMORY",
   "memory_effect": "Built the Wiki->Builder bridge: a compact context pack the self-construction organ reads before building Entity Substrate, so it builds the accepted line, skips deprecated, resolves open questions.",
   "pack_md": "SOVEREIGN/WIKI/context_packs/entity_substrate_context_pack_v1.md",

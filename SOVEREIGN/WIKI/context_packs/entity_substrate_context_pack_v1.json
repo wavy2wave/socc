@@ -1,6 +1,6 @@
 {
-  "created_at_msk": "2026-06-16T22:47:58+03:00",
-  "created_at_utc": "2026-06-16T19:47:58.341748+00:00",
+  "created_at_msk": "2026-09-19T23:42:59+03:00",
+  "created_at_utc": "2026-09-19T20:42:59.715336+00:00",
   "current_authority": [
     {
       "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.json:7",
@@ -69,6 +69,58 @@
     "deprecated": 2,
     "historical": 929
   },
+  "graph_context": {
+    "metrics": {
+      "communities": 236,
+      "edges": 1927,
+      "members": 1927,
+      "nodes": 2163
+    },
+    "note": "graph layer of system memory; use to see connected concepts and avoid duplicate builds",
+    "related_nodes": [
+      "cycle_3_cycle_3_observer_self_model_runner_v1_entity_artifacts",
+      "cycle_3_cycle_3_observer_self_model_runner_v1_memory_science_artifacts",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_advance",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_authority_unique",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_get_next",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_h16",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_now",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_panel",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_rj",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_set_next",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_sha16",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_wj",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_wt",
+      "knowledge_substrate_anchors",
+      "knowledge_substrate_anchors_anchor",
+      "knowledge_substrate_anchors_file_line_ref",
+      "knowledge_substrate_anchors_md_link",
+      "knowledge_substrate_anchors_rationale_1",
+      "knowledge_substrate_anchors_source_link_record",
+      "knowledge_substrate_governance",
+      "knowledge_substrate_governance_classify",
+      "knowledge_substrate_governance_rank",
+      "knowledge_substrate_governance_rationale_1",
+      "knowledge_substrate_governance_rationale_29",
+      "knowledge_substrate_governance_signature",
+      "knowledge_substrate_init",
+      "knowledge_substrate_init_rationale_1",
+      "knowledge_substrate_io",
+      "knowledge_substrate_io_discipline_flags",
+      "knowledge_substrate_io_h",
+      "knowledge_substrate_io_now_msk",
+      "knowledge_substrate_io_now_utc",
+      "knowledge_substrate_io_rationale_1",
+      "knowledge_substrate_io_read_json",
+      "knowledge_substrate_io_read_text",
+      "knowledge_substrate_io_sha16_text",
+      "knowledge_substrate_io_write_json",
+      "knowledge_substrate_io_write_text",
+      "knowledge_substrate_parser"
+    ],
+    "source": "SOVEREIGN/WIKI/graph"
+  },
   "id": "KNOWLEDGE_CONTEXT_PACK_ENTITY_SUBSTRATE_V1",
   "main_line": "**Что это (одной фразой).** Entity Substrate — это «матрица рождения сущностей»: законный слой SOCC,\nкоторый даёт будущим цифровым сущностям (первая — ANNA, ассистент-администратор для стоматологий)\nпостоянную идентичность, состояние, память, происхождение (lineage), привязку способностей,\nграницы законного действия, видимость в дашборде, proof-цепочку и механизм freeze/review/stop.\nЭто **мост** от доказанной авто-самосборки SOCC к конкретному продукту.\n\n**Чем НЕ является.** Не AGI-заявление, не чат-бот, не демон, не бесконечный цикл. Это инфраструктура,\nкоторую SOCC строит сам по дисциплине самосборки — без ручного «handwave», без заявлений о живости\nдо появления runtime-доказательств.\n\n**Программная цепочка (порядок строительства).**\n`SOCC autonomous self-construction (✅ запечатан)` → `Entity Substrate (в процессе)` →\n`ANNA MVP (только ПОСЛЕ печати Substrate)`. Ключевое различие, закреплённое каноном:\n**ANNA = entity/product, а НЕ орган SOCC.** SOCC — суверенное ядро, которое *рождает* сущностей;\nANNA — первая такая сущность.\n\n**Десять обязательных поверхностей (что Substrate обязан дать каждой сущности).**\nidentity · state · memory · lineage · capability_binding · lawful_action · dashboard ·\nproof_chain · freeze/review/stop · anna_mvp_product_binding.\n\n**Где мы сейчас (фактический статус цепочки на 2026-06-10).**\ndirection ✅ ACCEPTED → construction plan ✅ reviewed → scientific gate ✅ PASS →\nHermes gate ✅ PASS → **Codex gate ⏳ следующий шаг** → bounded execution surface ❌ →\nbounded execution session ❌ → seal ❌. То есть направление и план доказаны и приняты,\nдва из трёх гейтов пройдены; впереди Codex-гейт, затем ограниченное исполнение и печать.\n\n**Связь с памятью (почему это первый пилот Knowledge Substrate).** Entity Substrate был выбран\nэталонной темой именно потому, что по нему есть и строгий in-repo канон (direction/plan/gates —\nтекущая авторитетная линия), и длинная история обсуждений во внешних чатах (эволюция идеи).\nЭто идеальный тест органа памяти: канон даёт CURRENT_AUTHORITY, чаты дают timeline и ветки идей,\nа свежесть разводит «что актуально сейчас» и «что осталось историей».\n\n**Дисциплина (инварианты, которые нельзя нарушать при постройке Substrate).**\nиспользовать локальный ingest старого проекта (не дёргать его на каждом шаге), не возобновлять\nстарый маршрут, не запускать старый демон, идти строго по текущему lawful_next, всё видимо в\nдашборде, proof на каждый шаг, обязательная память, ограниченная остановка, scientific + Hermes +\nCodex гейты, без демона/фона/сети, без заявлений AGI/L3.\n\n**Следующий законный шаг для самого Substrate (отдельно от этого органа памяти):**\n`run_entity_substrate_codex_gate_v1` → построить bounded execution surface → прогнать сессию →\nвалидировать → review → `seal_entity_substrate_v1` → и только затем `build_anna_mvp_direction_v1`.",
   "next_lawful_step_for_substrate": "build_continuous_foreground_self_construction_runner_for_entity_substrate_v1",
@@ -122,7 +174,7 @@
       "text": "Значит следующий lawful patch строит Entity Substrate direction, но не как “живую магию из воздуха”, а как следующее направление, рождённое sealed autonomous self-construction discipline. 🧬⚙️"
     }
   ],
-  "pack_hash": "d642ac2027f117451c688d93",
+  "pack_hash": "30794fb05e9ce3f3531e1aac",
   "purpose": "build brief for the self-construction organ; read this instead of raw sources",
   "token_economy": {
     "pack_caps_per_section": 12,

@@ -107,5 +107,10 @@ Codex гейты, без демона/фона/сети, без заявлени
 - ❓ Значит следующий lawful patch строит Entity Substrate direction, но не как “живую магию из воздуха”, а как следующее направление, рождённое sealed autonomous self-construction discipline. 🧬⚙️  
   ↳ `/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24714`
 
+## Graph Context — системная память
+- граф: `SOVEREIGN/WIKI/graph` · узлов: 2163 · сообществ: 236
+- связанные узлы (40): cycle_3_cycle_3_observer_self_model_runner_v1_entity_artifacts, cycle_3_cycle_3_observer_self_model_runner_v1_memory_science_artifacts, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_advance, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_authority_unique, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_get_next, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_h16, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_now, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_panel, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_rj, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_set_next, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_sha16, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_wj, entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_wt, knowledge_substrate_anchors, knowledge_substrate_anchors_anchor, knowledge_substrate_anchors_file_line_ref, knowledge_substrate_anchors_md_link, knowledge_substrate_anchors_rationale_1, knowledge_substrate_anchors_source_link_record
+- graph layer of system memory; use to see connected concepts and avoid duplicate builds
+
 ## Следующий законный шаг для Entity Substrate
 `build_continuous_foreground_self_construction_runner_for_entity_substrate_v1`
