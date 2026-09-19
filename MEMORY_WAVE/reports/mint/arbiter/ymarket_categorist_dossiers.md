@@ -2,7 +2,7 @@
 
 Канон-досье донор-категорий КАТЕГОРИЙЩИКА — свёрнутый переиспользуемый слой 'сделанной работы' поверх immutable-артефактов прогонов. Каждая категория очереди: статус маппинга ЯМ (см. ymarket_cats_v1.json), вердикт живой скане (если прогонялась), шорт-лист/остров, вопросы оператору. Любой орган/лицо/будущий прогон читает сюда вместо повторного парсинга или пере-открытия разбросанных файлов.
 
-Очередь: atlas-express-film · категорий 13 · done 6 · open 7 · просканировано 10 · need_mapping 4 · подтверждено id 9
+Очередь: atlas-express-film · категорий 13 · done 7 · open 6 · просканировано 13 · need_mapping 4 · подтверждено id 9
 
 ## polyetilenovaya-plenka — Полиэтиленовая плёнка
 - задача T-818e04e9 · состояние done · prio 30
@@ -40,6 +40,28 @@
   readiness: grid_main=20 · grid_related=10 · selected=1 · needs_data=13 · parcel_dims=21 · rejected=16 · ready=1 · errors=0 · topfill=0 · need_mapping=0 · no_pictures=1 · with_specs=1 · avg_emitted=2.0
 - вопрос оператору: маппинг подтвердил ОРГАН (CATEGORIST, 76280526) → ready 1; НЕ автономно далее: фото #9 + полнота карточки #11 (см. ymarket_categorist_readiness_karton-i-gofrokarton_2026-09-04).
 
+## kartonnye-tubusy — Картонные тубусы
+- задача T-0f1fac3c · состояние done · prio 40
+- маппинг ЯМ: need_mapping=False · id=64642256 · confirmed CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09). · hint_rules: профиль 64642256 «Тубусы для чертежей» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон kartonnye-tubusy, need_mapping false); путь: Детские товары / Товары для школы / Пеналы и письменные принадлежности / Чертежные инструменты / Тубусы для чертежей. Константы карточки: Материал=картон (p17352854 v17352864). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (64642256, category_parameters 04.09): Материал — фильтр-ENUM (group 17352854), картон присутствует. Материал = тело тубуса; крышка жестяная/картонная/без — не влияет на константу. enum_map: required=0; Материал проставляется как фильтр (поднимает contentRating), НЕ обязателен.
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_kartonnye-tubusy_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_kartonnye-tubusy_2026-09-18.md
+- вердикт: ready_shortlist — ШОРТ-ЛИСТ 12 SKU (ОВХ physics, barcode own-ean13, маппинг 64642256); errors 0; фото off — живой залив по слову оператора, после Фото-узла.
+  readiness: grid_main=19 · grid_related=9 · selected=12 · needs_data=10 · parcel_dims=21 · rejected=6 · ready=12 · errors=0 · need_mapping=0 · topfill=12 · no_pictures=12 · with_specs=12 · avg_emitted=0 · source=live
+  - ready 6250: Картонный тубус с жестяной крышкой, 120*1000 мм · продать None₽ · ОВХ None · 0.37 кг · barcode 2341718764241
+  - ready 6251: Картонный тубус с жестяной крышкой, 92*1000 мм · продать None₽ · ОВХ None · 0.285 кг · barcode 2729485497560
+  - ready 6252: Картонный тубус с жестяной крышкой, 73*1000 мм · продать None₽ · ОВХ None · 0.225 кг · barcode 2723475375869
+  - ready 17384: Картонный тубус с жестяной крышкой, 100*450 мм · продать None₽ · ОВХ None · 0.164 кг · barcode 2777849908535
+  - ready 18241: Картонный тубус с жестяной крышкой, 92*350 мм · продать None₽ · ОВХ None · 0.123 кг · barcode 2757536496361
+  - ready 6249: Картонный тубус с жестяной крышкой, 80*640 мм · продать None₽ · ОВХ None · 0.169 кг · barcode 2975801631587
+  - ready 6245: Картонный тубус с жестяной крышкой, 80*450 мм · продать None₽ · ОВХ None · 0.217 кг · barcode 2913527905469
+  - ready 17720: Картонный тубус с жестяной крышкой, 120*220 мм · продать None₽ · ОВХ None · 0.105 кг · barcode 2672219258442
+  - ready 6246: Картонный тубус с жестяной крышкой, 92*160 мм · продать None₽ · ОВХ None · 0.115 кг · barcode 2896436444604
+  - ready 35712: Картонный тубус с жестяной крышкой, 73*240 мм · продать None₽ · ОВХ None · 0.055 кг · barcode 2307130962115
+  - ready 12766: Картонный тубус с жестяной крышкой, 73*450 мм · продать None₽ · ОВХ None · 0.107 кг · barcode 2619063219823
+  - ready 35711: Картонный тубус с жестяной крышкой, 120*90 мм · продать None₽ · ОВХ None · 0.055 кг · barcode 2539403247012
+- вопрос оператору: нет по маппингу (cid 64642256 подтверждён 04.09); залив шорт-листа 12 SKU — по слову оператора (RUBICON), ФОТО off: карточки без изображений — ждёт Фото-узла.
+
 ## streich-plenka — Стрейч-плёнка
 - задача T-cf6839cf · состояние done · prio 40
 - маппинг ЯМ: need_mapping=False · id=76346336 · confirmed CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает). · hint_rules: профиль 76346336 «Упаковочные плёнки» подтверждён живым категорийщиком; тип рулона — константа cats-профиля «Тип пленки: стрейч-пленка» (valueId 40487523), НЕ копировать пузырьковую «воздушно-пузырьковая»; диспенсер-ручка → лист 75355556, НЕ сюда; пищевая Extra → 62775507 если попадёт в шорт-лист.
@@ -73,62 +95,65 @@
   readiness: grid_main=20 · grid_related=11 · selected=4 · needs_data=11 · parcel_dims=11 · rejected=16 · ready=4 · errors=0 · topfill=0 · need_mapping=0 · no_pictures=4 · with_specs=4 · avg_emitted=2.0
 - вопрос оператору: маппинг подтвердил ОРГАН (CATEGORIST, 76346336) → ready 4; НЕ автономно далее: фото #9 + полнота карточки #11 (см. ymarket_categorist_readiness_upakovochnaya-bumaga_2026-09-04).
 
-## kartonnye-tubusy — Картонные тубусы
-- задача T-0f1fac3c · состояние open · prio 40
-- маппинг ЯМ: need_mapping=False · id=64642256 · confirmed CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09). · hint_rules: профиль 64642256 «Тубусы для чертежей» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон kartonnye-tubusy, need_mapping false); путь: Детские товары / Товары для школы / Пеналы и письменные принадлежности / Чертежные инструменты / Тубусы для чертежей. Константы карточки: Материал=картон (p17352854 v17352864). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (64642256, category_parameters 04.09): Материал — фильтр-ENUM (group 17352854), картон присутствует. Материал = тело тубуса; крышка жестяная/картонная/без — не влияет на константу. enum_map: required=0; Материал проставляется как фильтр (поднимает contentRating), НЕ обязателен.
-- скан 2026-09-04 (сухой скан Wave-2) · dry=True · RUBICON: не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)
-  - первоисточник: ymarket_categorist_readiness_kartonnye-tubusy_2026-09-04.json
-  - первоисточник: ymarket_categorist_readiness_kartonnye-tubusy_2026-09-04.md
-  - первоисточник: ymarket_mapping_confirmed_2026-09-04.json
-- вердикт: needs_data — ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: счётчики первоисточника kartonnye-tubusy → ready 0; 22 кандидатов ждут склад-источника/полных габаритов (разрыв #10/СКЛАДОВЩИК, не скоуп КАТЕГОРИЙЩИКА). Маппинг 64642256 уже снят органом.
-  readiness: grid_main=19 · grid_related=11 · selected=0 · needs_data=22 · parcel_dims=21 · rejected=8 · ready=0 · errors=0 · topfill=0 · need_mapping=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
-- вопрос оператору: НЕ автономно далее: данные-слой (ОВХ dims/склад-источник, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг уже снят органом. Категория ждёт данных (needs_data, НЕ негатив).
-
 ## vspenennii-polietilen — Вспененный полиэтилен
 - задача T-05294283 · состояние open · prio 40
 - маппинг ЯМ: need_mapping=False · id=76377452 · confirmed CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация свежими живыми чтениями (workflow wf_0986cace-2ad, 5 агентов: leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09). · hint_rules: профиль 76377452 «Листовой вспененный полиэтилен» подтверждён КАТЕГОРИЙЩИКОМ 04.09 (cats-канон vspenennii-polietilen, need_mapping false); путь: Строительство и ремонт / Материалы / Строительные материалы / Изоляционные материалы / Теплоизоляционные материалы / Вспененный полиэтилен / Листовой вспененный полиэтилен. Константы карточки: Форма=рулон (p27141511 v28706548); Вид полиэтилена=несшитый (НПЭ) (p32828190 v44409696). NOTA: ПОДТВЕРЖДЁН ЖИВЬЁМ (76377452, category_parameters 04.09): ENUM Форма=рулон/плита, Вид полиэтилена=НПЭ/ППЭ. НЕ ставить «Назначение»: в ЭТОМ листе он ENUM строительный (кровля/перекрытия/стены/пол/фасады/фундамент) — введёт в заблуждение про упаковочный рулон; он опционален (required=0). enum_map: Если скан выявит сшитые ППЭ SKU → Вид=44409654 (сшитый ППЭ), лист тот же. СЕСТРА 76377756 (Теплоизоляционные из ВП) — близнец, 76377452 точнее по «листовой НПЭ рулон».
-- скан 2026-09-04 16:36 · dry=True · RUBICON: не пересечён (0₽ GET донора; payload preflight «точный, НЕ отправлен»)
-  - первоисточник: ymarket_categorist_readiness_vspenennii-polietilen_2026-09-04.json
-  - первоисточник: ymarket_categorist_readiness_vspenennii-polietilen_2026-09-04.md
-  - первоисточник: ymarket_mapping_confirmed_2026-09-04.json
-- вердикт: needs_data — ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: 6 кандидатов ≤700₽ существуют (ОВХ дал dims 5), но данные-слой (склад-источник наличия/полнота габаритов) не конвертит в готовые. Категория мала (grid 11+11): NPE-рулоны донора узкие; rejected 16 — строительный кросс-селл/закупка>700₽. Задача open/in_progress до данных (разрыв #10/СКЛАДОВЩИК).
-  readiness: grid_main=11 · grid_related=11 · selected=0 · needs_data=6 · parcel_dims=5 · rejected=16 · ready=0 · errors=0 · topfill=0 · need_mapping=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_vspenennii-polietilen_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_vspenennii-polietilen_2026-09-18.md
+- вердикт: needs_data — grid 11+9, ready 0, need_mapping 0 (маппинг подтверждён 76377452), needs_data 6 — данные-слой (ОВХ посылки/вес) не конвертит; НЕ негатив, НЕ фейк-пасс.
+  readiness: grid_main=11 · grid_related=9 · selected=0 · needs_data=6 · parcel_dims=5 · rejected=14 · ready=0 · errors=0 · need_mapping=0 · topfill=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
 - вопрос оператору: НЕ автономно далее: данные-слой (ОВХ dims/склад-источник, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг 76377452 уже снят органом. Категория мала (grid 11+11).
 
 ## meshki — Мешки
-- задача T-08851483 · состояние open · prio 50
+- задача T-08851483 · состояние in_progress · prio 50
 - маппинг ЯМ: need_mapping=True · id=null (None ≠ 0) · hint_rules: мешки для мусора → 6943877 (RULES category_map, any: «мешк для мусора»), НЕ подтверждено руками; мешки ПП/строительные — другой лист, решать по факту скана
-- скан: ещё НЕ прогонялась (scan:null — честно)
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_meshki_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_meshki_2026-09-18.md
+- вердикт: blocked — БЛОК-МАППИНГ (needs_mapping): скан 18.09 жив (grid 20+9, needs_data 24), но market_category_id НЕ подтверждён в каноне маппинга — id не выдумываем (D1); в скане need_mapping=0 (строки уперлись в данные-слой раньше маппинг-гейта). Разблок: подтверждение категории ОРГАНОМ/оператором.
+  readiness: grid_main=20 · grid_related=9 · selected=0 · needs_data=24 · parcel_dims=20 · rejected=5 · ready=0 · errors=0 · need_mapping=0 · topfill=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
+- вопрос оператору: подтвердить market_category_id (need_mapping=true, id не выдуман — D1); скан 18.09 жив, строки уперлись в данные-слой (needs_data).
 
 ## napolniteli — Наполнители
 - задача T-6b8743bb · состояние open · prio 50
 - маппинг ЯМ: need_mapping=False · id=76300038 · confirmed CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает). · hint_rules: 76300038 «Упаковочные наполнители» подтверждён живьём; Тип=наполнитель (34060776); силикагель = тот же лист, Тип 43545650 (не отдельная категория); Материал/Форма выпуска по товару (крафт-стружка/бумага/пенопласт/полиэтилен).
-- скан 2026-09-04 15:51:10 · dry=True · RUBICON: не пересечён (0₽ GET донора)
-  - первоисточник: ymarket_categorist_readiness_napolniteli_2026-09-04.md
-  - первоисточник: ymarket_mapping_confirmed_2026-09-04.json
-- вердикт: needs_data — ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: 21 кандидат ≤700₽ существует, но ОВХ/склад не дали готовых (dims 3/21 — разрыв данных #10/склад, насыпной товар без габаритов на карте). Задача остаётся open/in_progress до данных; шорт-лист пуст по ПРАВИЛУ отсутствия dims/стока, не по пустоте категории.
-  readiness: grid_main=32 · grid_related=9 · selected=0 · needs_data=21 · parcel_dims=3 · rejected=20 · ready=0 · errors=0 · topfill=0 · need_mapping=0 · no_pictures=0 · avg_emitted=0.0 · source=live
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_napolniteli_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_napolniteli_2026-09-18.md
+- вердикт: needs_data — grid 20+8, ready 0, need_mapping 0 (маппинг подтверждён 76300038), needs_data 15 — данные-слой (ОВХ посылки/вес) не конвертит; НЕ негатив, НЕ фейк-пасс.
+  readiness: grid_main=20 · grid_related=8 · selected=0 · needs_data=15 · parcel_dims=3 · rejected=13 · ready=0 · errors=0 · need_mapping=0 · topfill=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
 - вопрос оператору: НЕ автономно далее: данные-слой (ОВХ dims/склад-источник T4/T5, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг уже снят органом.
 
 ## paketi — Пакеты
 - задача T-1236914c · состояние open · prio 50
 - маппинг ЯМ: need_mapping=False · id=76323239 · confirmed CATEGORIST 2026-09-04: живое подтверждение (categories_tree + category_parameters, 0₽ GET) + адверсариал-верификация 4/4 CONFIRMED свежими живыми чтениями (workflow wf_93f908ad-5d1, leaf-точность/0 обязательных/valueId-константы). Решает ОРГАН, чья компетенция = CATEGORIST (директива оператора 04.09: не оператор подтверждает). · hint_rules: 76323239 «Упаковочные пакеты» подтверждён живьём (базовая ПВД-фасовка; 0 обязательных); константа cats-профиля Назначение=упаковочные работы (40461331). Под-листья per-card, если скан выведет: майки → 78647969, курьерские → 64151014, мусорные → 6943877.
-- скан 2026-09-04 15:54:40 · dry=True · RUBICON: не пересечён (0₽ GET донора)
-  - первоисточник: ymarket_categorist_readiness_paketi_2026-09-04.md
-  - первоисточник: ymarket_mapping_confirmed_2026-09-04.json
-- вердикт: needs_data — ЧЕСТНЫЙ needs_data, НЕ негатив, НЕ фейк-пасс: 53 кандидата (16 уже с dims) ждут склад-источника/полных габаритов (T4/T5, разрыв данных #10/СКЛАДОВЩИК). Задача open/in_progress; шорт-лист пуст по данным, не по пустоте категории.
-  readiness: grid_main=60 · grid_related=11 · selected=0 · needs_data=53 · parcel_dims=16 · rejected=18 · ready=0 · errors=0 · topfill=0 · need_mapping=0 · no_pictures=0 · avg_emitted=0.0 · source=live
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_paketi_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_paketi_2026-09-18.md
+- вердикт: needs_data — grid 20+9, ready 0, need_mapping 0 (маппинг подтверждён 76323239), needs_data 24 — данные-слой (ОВХ посылки/вес) не конвертит; НЕ негатив, НЕ фейк-пасс.
+  readiness: grid_main=20 · grid_related=9 · selected=0 · needs_data=24 · parcel_dims=17 · rejected=5 · ready=0 · errors=0 · need_mapping=0 · topfill=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
 - вопрос оператору: НЕ автономно далее: данные-слой (ОВХ dims/склад-источник T4/T5, разрыв #10/СКЛАДОВЩИК) — не скоуп КАТЕГОРИЙЩИКА; маппинг уже снят органом.
 
 ## upakovochnaya-setka — Упаковочная сетка
-- задача T-53183869 · состояние open · prio 60
+- задача T-53183869 · состояние in_progress · prio 60
 - маппинг ЯМ: need_mapping=True · id=null (None ≠ 0) · hint_rules: подтверждённого id нет; решать по факту скана
-- скан: ещё НЕ прогонялась (scan:null — честно)
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_upakovochnaya-setka_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_upakovochnaya-setka_2026-09-18.md
+- вердикт: blocked — БЛОК-МАППИНГ (needs_mapping): скан 18.09 жив (grid 9+5, needs_data 6), но market_category_id НЕ подтверждён в каноне маппинга — id не выдумываем (D1); в скане need_mapping=0 (строки уперлись в данные-слой раньше маппинг-гейта). Разблок: подтверждение категории ОРГАНОМ/оператором.
+  readiness: grid_main=9 · grid_related=5 · selected=0 · needs_data=6 · parcel_dims=6 · rejected=8 · ready=0 · errors=0 · need_mapping=0 · topfill=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
+- вопрос оператору: подтвердить market_category_id (need_mapping=true, id не выдуман — D1); скан 18.09 жив, строки уперлись в данные-слой (needs_data).
 
 ## upakovochnie-lentj — Упаковочные ленты
-- задача T-e2a8bce0 · состояние open · prio 60
+- задача T-e2a8bce0 · состояние in_progress · prio 60
 - маппинг ЯМ: need_mapping=True · id=null (None ≠ 0) · hint_rules: обвязочная/ПЭТ-лента — подтверждённого id нет; НЕ путать с клейкой лентой (90741), решать по факту скана
-- скан: ещё НЕ прогонялась (scan:null — честно)
+- скан 2026-09-18 01:10 · dry=True · RUBICON: не пересечён: 0₽ GET донора (shop.cargo-avto.ru); dry preflight payload НЕ отправлен; запись локального канона.
+  - первоисточник: ymarket_categorist_readiness_upakovochnie-lentj_2026-09-18.json
+  - первоисточник: ymarket_categorist_readiness_upakovochnie-lentj_2026-09-18.md
+- вердикт: blocked — БЛОК-МАППИНГ (needs_mapping): скан 18.09 жив (grid 20+9, needs_data 6), но market_category_id НЕ подтверждён в каноне маппинга — id не выдумываем (D1); в скане need_mapping=0 (строки уперлись в данные-слой раньше маппинг-гейта). Разблок: подтверждение категории ОРГАНОМ/оператором.
+  readiness: grid_main=20 · grid_related=9 · selected=0 · needs_data=6 · parcel_dims=2 · rejected=23 · ready=0 · errors=0 · need_mapping=0 · topfill=0 · no_pictures=0 · with_specs=0 · avg_emitted=0 · source=live
+- вопрос оператору: подтвердить market_category_id (need_mapping=true, id не выдуман — D1); скан 18.09 жив, строки уперлись в данные-слой (needs_data).
 
 ## Уроки (переиспользуемые)
 - **cross-sell**: cargo-avto подмешивает в выдачу секции кросс-селл чужих категорий (хвост дешёвой сетки). (polyetilenovaya-plenka 04.09: 8 из 14 позиций ≤700₽ в хвосте = НЕ плёнка (песок, поддон деревянный б/у, курьер-пакеты, гофролист, наполнители).) → хвосту сетки не доверять: кандидат в шорт-лист — только если ИМЯ предметно принадлежит категории; сетка донора = источник скан-пространства, не истина принадлежности.

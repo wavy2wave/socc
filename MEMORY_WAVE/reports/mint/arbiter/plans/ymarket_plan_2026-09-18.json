@@ -1,0 +1,408 @@
+{
+ "schema": "ymarket.plan.v1",
+ "date": "2026-09-18",
+ "store": "",
+ "generated_at": "2026-09-18T01:57:10+0300",
+ "context": [
+  {
+   "tag": "ВИТРИНА",
+   "text": "доказанно живых 41 (klejkaya-lenta×13, vozdushno-puzyrkovaya-plenka×28) — источник леджер ЦИКЛ-1, СВЕРКА PASS"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "категорий в очереди 13 · готово к заливу 6 (36 SKU) · ждут данных/ОВХ 4 · не сканированы 0"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ГОТОВО: vozdushno-puzyrkovaya-plenka — 4 SKU (досье ready_shortlist)"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ГОТОВО: streich-plenka — 10 SKU (досье ready_shortlist)"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ГОТОВО: kartonnye-tubusy — 12 SKU (досье ready_shortlist)"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ГОТОВО: karton-i-gofrokarton — 1 SKU (досье ready_shortlist)"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ГОТОВО: klejkaya-lenta — 5 SKU (досье ready_shortlist)"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ГОТОВО: upakovochnaya-bumaga — 4 SKU (досье ready_shortlist)"
+  },
+  {
+   "tag": "ОЧЕРЕДЬ",
+   "text": "  ждёт СЛОВА оператора (профиль ЯМ-категории не подтверждён): 4 — маппинг-бутылочное горлышко (lessons.mapping-is-bottleneck)"
+  },
+  {
+   "tag": "ЗАДАНИЯ",
+   "text": "открыто заданий 10 · владельцы: PRICER=4, CONTROLLER=4, OZON_ZALIV=1, DISPATCHER=1"
+  },
+  {
+   "tag": "ЗАКАЗЫ",
+   "text": "журнал 2026-09-17: горящих заказов 0 · burning 2 · движение ASSORTMENT_WIDEN — живой срез читается ДИСПЕТЧЕРОМ в исполнении, не выдумываем"
+  },
+  {
+   "tag": "КОНТЕКСТ",
+   "text": "погода/новости/тренды/сезон: НЕ подключены (источник не задан) — осмысленные сезонные охоты АНАЛИТИК даст, когда будет источник"
+  }
+ ],
+ "decisions": [
+  {
+   "id": "carry-T-84d7aa1a",
+   "kind": "carry",
+   "what": "Переценка ARB-87931769: RAISE — витрина 520₽ → рекомендую 900₽",
+   "where": "atlas-express-film",
+   "owner": "PRICER",
+   "category": "pricing",
+   "urgency": "high",
+   "priority": 10,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — живой акт цены наружу, по слову оператора",
+   "evidence": "реестр ymarket_tasks.json · T-84d7aa1a",
+   "mode": "live",
+   "refs": {
+    "task_id": "T-84d7aa1a"
+   }
+  },
+  {
+   "id": "carry-T-0ca6fa22",
+   "kind": "carry",
+   "what": "Чинить узел «СВЕРКА» магазина atlas-express-film (последний ЖИВОЙ ход FAIL)",
+   "where": "atlas-express-film",
+   "owner": "CONTROLLER",
+   "category": "health",
+   "urgency": "high",
+   "priority": 15,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — сухо/0₽ автономно",
+   "evidence": "реестр ymarket_tasks.json · T-0ca6fa22",
+   "mode": "dry",
+   "refs": {
+    "task_id": "T-0ca6fa22"
+   }
+  },
+  {
+   "id": "carry-T-2edf9be8",
+   "kind": "carry",
+   "what": "Снять зелёный ценник 9601515-1: витрина 3390₽, зачёркнуто 4900₽",
+   "where": "atlas-express-film",
+   "owner": "PRICER",
+   "category": "pricing",
+   "urgency": "high",
+   "priority": 15,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — живой акт цены наружу, по слову оператора",
+   "evidence": "реестр ymarket_tasks.json · T-2edf9be8",
+   "mode": "live",
+   "refs": {
+    "task_id": "T-2edf9be8"
+   }
+  },
+  {
+   "id": "carry-T-110a33e0",
+   "kind": "carry",
+   "what": "Чинить узел «СВЕРКА» магазина atlas-express-tape (последний ЖИВОЙ ход FAIL)",
+   "where": "atlas-express-tape",
+   "owner": "CONTROLLER",
+   "category": "health",
+   "urgency": "high",
+   "priority": 15,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — сухо/0₽ автономно",
+   "evidence": "реестр ymarket_tasks.json · T-110a33e0",
+   "mode": "dry",
+   "refs": {
+    "task_id": "T-110a33e0"
+   }
+  },
+  {
+   "id": "carry-T-c9f8b45b",
+   "kind": "carry",
+   "what": "Снять зелёный ценник ARB2-76781511: витрина 6600₽, зачёркнуто 7800₽",
+   "where": "atlas-express-film",
+   "owner": "PRICER",
+   "category": "pricing",
+   "urgency": "high",
+   "priority": 15,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — живой акт цены наружу, по слову оператора",
+   "evidence": "реестр ymarket_tasks.json · T-c9f8b45b",
+   "mode": "live",
+   "refs": {
+    "task_id": "T-c9f8b45b"
+   }
+  },
+  {
+   "id": "carry-T-9fca5843",
+   "kind": "carry",
+   "what": "Переценка ARB-53416854: SWEET — витрина 1360₽ → рекомендую 1600₽",
+   "where": "atlas-express-film",
+   "owner": "PRICER",
+   "category": "pricing",
+   "urgency": "normal",
+   "priority": 20,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — живой акт цены наружу, по слову оператора",
+   "evidence": "реестр ymarket_tasks.json · T-9fca5843",
+   "mode": "live",
+   "refs": {
+    "task_id": "T-9fca5843"
+   }
+  },
+  {
+   "id": "carry-T-7ab6c3d1",
+   "kind": "carry",
+   "what": "Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона",
+   "where": "atlas-express-film",
+   "owner": "CONTROLLER",
+   "category": "health",
+   "urgency": "normal",
+   "priority": 20,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — сухо/0₽ автономно",
+   "evidence": "реестр ymarket_tasks.json · T-7ab6c3d1",
+   "mode": "dry",
+   "refs": {
+    "task_id": "T-7ab6c3d1"
+   }
+  },
+  {
+   "id": "carry-T-81cbbdaf",
+   "kind": "carry",
+   "what": "Выключить автоперенос волн (товары не должны уходить в акции сами): Бестселлеры: Начало сезона, Супербестселлеры: Начало сезона, Бестселлеры: Новая единая акция",
+   "where": "atlas-express-film",
+   "owner": "CONTROLLER",
+   "category": "health",
+   "urgency": "normal",
+   "priority": 20,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — сухо/0₽ автономно",
+   "evidence": "реестр ymarket_tasks.json · T-81cbbdaf",
+   "mode": "dry",
+   "refs": {
+    "task_id": "T-81cbbdaf"
+   }
+  },
+  {
+   "id": "carry-T-abe0682c",
+   "kind": "carry",
+   "what": "Следующий залив ВПП-рулонов из остатка файла (знание артефакта P-f7ea1dc1 подтверждено)",
+   "where": "—",
+   "owner": "OZON_ZALIV",
+   "category": "products",
+   "urgency": "high",
+   "priority": 25,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — сухо/0₽ автономно",
+   "evidence": "реестр ymarket_tasks.json · T-abe0682c",
+   "mode": "dry",
+   "refs": {
+    "task_id": "T-abe0682c"
+   }
+  },
+  {
+   "id": "carry-T-9fee8d86",
+   "kind": "carry",
+   "what": "Пульс atlas-express-film устарел (2026-09-16) — прогнать сухо сегодня",
+   "where": "atlas-express-film",
+   "owner": "DISPATCHER",
+   "category": "health",
+   "urgency": "normal",
+   "priority": 40,
+   "why": "уже в реестре, владелец-орган есть; исполнение за органом — сухо/0₽ автономно",
+   "evidence": "реестр ymarket_tasks.json · T-9fee8d86",
+   "mode": "dry",
+   "refs": {
+    "task_id": "T-9fee8d86"
+   }
+  },
+  {
+   "id": "watch-ready-vozdushno-puzyrkovaya-plenka",
+   "kind": "watch",
+   "what": "партия «vozdushno-puzyrkovaya-plenka» готова (4 SKU) — залив на витрину",
+   "where": "—",
+   "owner": "CATEGORIST",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 30,
+   "why": "шорт-лист собран, но живой залив = акт наружу; в план ставим как цель дня, запуск — за словом оператора (и после Фото-узла, см. досье)",
+   "evidence": "досье · verdict=ready_shortlist ready=4",
+   "mode": "live",
+   "refs": {
+    "dossier_slug": "vozdushno-puzyrkovaya-plenka",
+    "task_id": "T-0b6e8545"
+   }
+  },
+  {
+   "id": "esc-map-polyetilenovaya-plenka",
+   "kind": "escalation",
+   "what": "подтвердить профиль ЯМ-категории для «polyetilenovaya-plenka» (маппинг)",
+   "where": "—",
+   "owner": "OPERATOR",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 30,
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "evidence": "досье категорий · mapping.need_mapping=true",
+   "mode": "read",
+   "refs": {
+    "dossier_slug": "polyetilenovaya-plenka",
+    "task_id": "T-818e04e9"
+   }
+  },
+  {
+   "id": "watch-ready-streich-plenka",
+   "kind": "watch",
+   "what": "партия «streich-plenka» готова (10 SKU) — залив на витрину",
+   "where": "—",
+   "owner": "CATEGORIST",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 40,
+   "why": "шорт-лист собран, но живой залив = акт наружу; в план ставим как цель дня, запуск — за словом оператора (и после Фото-узла, см. досье)",
+   "evidence": "досье · verdict=ready_shortlist ready=10",
+   "mode": "live",
+   "refs": {
+    "dossier_slug": "streich-plenka",
+    "task_id": "T-cf6839cf"
+   }
+  },
+  {
+   "id": "watch-ready-kartonnye-tubusy",
+   "kind": "watch",
+   "what": "партия «kartonnye-tubusy» готова (12 SKU) — залив на витрину",
+   "where": "—",
+   "owner": "CATEGORIST",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 40,
+   "why": "шорт-лист собран, но живой залив = акт наружу; в план ставим как цель дня, запуск — за словом оператора (и после Фото-узла, см. досье)",
+   "evidence": "досье · verdict=ready_shortlist ready=12",
+   "mode": "live",
+   "refs": {
+    "dossier_slug": "kartonnye-tubusy",
+    "task_id": "T-0f1fac3c"
+   }
+  },
+  {
+   "id": "watch-ready-karton-i-gofrokarton",
+   "kind": "watch",
+   "what": "партия «karton-i-gofrokarton» готова (1 SKU) — залив на витрину",
+   "where": "—",
+   "owner": "CATEGORIST",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 40,
+   "why": "шорт-лист собран, но живой залив = акт наружу; в план ставим как цель дня, запуск — за словом оператора (и после Фото-узла, см. досье)",
+   "evidence": "досье · verdict=ready_shortlist ready=1",
+   "mode": "live",
+   "refs": {
+    "dossier_slug": "karton-i-gofrokarton",
+    "task_id": "T-8ba5d3e9"
+   }
+  },
+  {
+   "id": "watch-ready-klejkaya-lenta",
+   "kind": "watch",
+   "what": "партия «klejkaya-lenta» готова (5 SKU) — залив на витрину",
+   "where": "—",
+   "owner": "CATEGORIST",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 50,
+   "why": "шорт-лист собран, но живой залив = акт наружу; в план ставим как цель дня, запуск — за словом оператора (и после Фото-узла, см. досье)",
+   "evidence": "досье · verdict=ready_shortlist ready=5",
+   "mode": "live",
+   "refs": {
+    "dossier_slug": "klejkaya-lenta",
+    "task_id": "T-d558ebe1"
+   }
+  },
+  {
+   "id": "esc-map-meshki",
+   "kind": "escalation",
+   "what": "подтвердить профиль ЯМ-категории для «meshki» (маппинг)",
+   "where": "—",
+   "owner": "OPERATOR",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 50,
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "evidence": "досье категорий · mapping.need_mapping=true",
+   "mode": "read",
+   "refs": {
+    "dossier_slug": "meshki",
+    "task_id": "T-08851483"
+   }
+  },
+  {
+   "id": "watch-ready-upakovochnaya-bumaga",
+   "kind": "watch",
+   "what": "партия «upakovochnaya-bumaga» готова (4 SKU) — залив на витрину",
+   "where": "—",
+   "owner": "CATEGORIST",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 50,
+   "why": "шорт-лист собран, но живой залив = акт наружу; в план ставим как цель дня, запуск — за словом оператора (и после Фото-узла, см. досье)",
+   "evidence": "досье · verdict=ready_shortlist ready=4",
+   "mode": "live",
+   "refs": {
+    "dossier_slug": "upakovochnaya-bumaga",
+    "task_id": "T-17536f4e"
+   }
+  },
+  {
+   "id": "esc-map-upakovochnaya-setka",
+   "kind": "escalation",
+   "what": "подтвердить профиль ЯМ-категории для «upakovochnaya-setka» (маппинг)",
+   "where": "—",
+   "owner": "OPERATOR",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 60,
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "evidence": "досье категорий · mapping.need_mapping=true",
+   "mode": "read",
+   "refs": {
+    "dossier_slug": "upakovochnaya-setka",
+    "task_id": "T-53183869"
+   }
+  },
+  {
+   "id": "esc-map-upakovochnie-lentj",
+   "kind": "escalation",
+   "what": "подтвердить профиль ЯМ-категории для «upakovochnie-lentj» (маппинг)",
+   "where": "—",
+   "owner": "OPERATOR",
+   "category": "categories",
+   "urgency": "normal",
+   "priority": 60,
+   "why": "без market_category_id категорию в карточку не поставить — бутылочное горлышко всей очереди (маппинг решает человек, не орган)",
+   "evidence": "досье категорий · mapping.need_mapping=true",
+   "mode": "read",
+   "refs": {
+    "dossier_slug": "upakovochnie-lentj",
+    "task_id": "T-e2a8bce0"
+   }
+  },
+  {
+   "id": "watch-orders",
+   "kind": "watch",
+   "what": "ночных горящих заказов на диске нет",
+   "where": "—",
+   "owner": "DISPATCHER",
+   "category": "day",
+   "urgency": "normal",
+   "priority": 60,
+   "why": "журнал суточного не рисует горящих; живой срез ДИСПЕТЧЕР прочитает при исполнении дня (0₽ read) — здесь не выдумываем",
+   "evidence": "журнал суточного · urgent_orders=0",
+   "mode": "read",
+   "refs": {}
+  }
+ ],
+ "sources": {
+  "registry_open": 10,
+  "vitrine_live": 41,
+  "dossiers": 13,
+  "journal": "2026-09-17"
+ }
+}
