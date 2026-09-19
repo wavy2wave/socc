@@ -218,6 +218,9 @@ def main():
         cmd_scaffold(args[1] if len(args) > 1 else "")
     elif args[0] == "status":
         cmd_status()
+    elif args[0] == "whoami":
+        from socc_cli.whoami import main as whoami_main
+        sys.exit(whoami_main())
     elif args[0] == "step":
         dry = "--dry" in args or "--dry-run" in args
         cmd_step(dry=dry)
