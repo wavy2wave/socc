@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 TESTS = ROOT / "scripts" / "mint" / "arbiter" / "tests"
 ENTITY_TESTS = ROOT / "scripts" / "entity" / "tests"
+SOCC_TESTS = ROOT / "scripts" / "socc" / "tests"
 
 SKIP_PREFIXES = ("probe_", "_verify")  # пробы сети и внутренние верификаторы — не приёмки
 
@@ -25,6 +26,9 @@ def main() -> int:
         if not p.name.startswith(SKIP_PREFIXES)
     ) + sorted(
         p for p in ENTITY_TESTS.glob("run_*.py")
+        if not p.name.startswith(SKIP_PREFIXES)
+    ) + sorted(
+        p for p in SOCC_TESTS.glob("run_*.py")
         if not p.name.startswith(SKIP_PREFIXES)
     )
     if not tests:
