@@ -1,0 +1,9 @@
+{
+  "created_at_utc": "2026-09-19T20:45:43.054063+00:00",
+  "id": "KNOWLEDGE_CONTEXT_PACK_ANNA_V1_MEMORY",
+  "memory_effect": "Built the Wiki->Builder bridge: a compact context pack the self-construction organ reads before building Entity Substrate, so it builds the accepted line, skips deprecated, resolves open questions.",
+  "pack_md": "SOVEREIGN/WIKI/context_packs/anna_context_pack_v1.md",
+  "proof": "SOVEREIGN/PROOF/proof_chain/KNOWLEDGE_CONTEXT_PACK_ANNA_V1_PROOF.json",
+  "status": "PASS",
+  "truth_boundary": "Knowledge context pack build only. Compresses the living wiki article into a token-economical build brief (definition, main line, current authority, do-not, open questions, next lawful step) for the self-construction organ to consult before building. Read-only. No global route change. No daemon/network/LLM."
+}

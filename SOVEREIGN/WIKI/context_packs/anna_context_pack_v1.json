@@ -1,0 +1,186 @@
+{
+  "created_at_msk": "2026-09-19T23:45:43+03:00",
+  "created_at_utc": "2026-09-19T20:45:43.053436+00:00",
+  "current_authority": [
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:24956",
+      "text": "\"plain\": \"Entity Substrate is the next lawful substrate layer constructed by SOCC self-construction. It prepares persistent entity identity, state, memory, lineage, capability binding, dashboard visibility, lawful action boundaries, freeze/"
+    },
+    {
+      "ref": "/Users/wavysexy/SOCC/SYSTEM/ENTITY_SUBSTRATE/ENTITY_SUBSTRATE_DIRECTION_V1.md:12",
+      "text": "Entity Substrate is the next lawful substrate layer constructed by SOCC self-construction. It prepares persistent entity identity, state, memory, lineage, capability binding, dashboard visibility, lawful action boundaries, freeze/review/sto"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:618",
+      "text": "Файл handoff фиксирует ту же identity: SOCC - это proof-driven autonomous construction organism, не бот и не “AGI claim”; метод - lawful route progression через proof chain. ChatGPT-Controlled Tick Validation (1).txt"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Слушаю внимательно.txt:809",
+      "text": "По фактам: у Карпати это называется LLM Wiki - идея-файл для агента, который строит персональную базу знаний из сырья, wiki-слоя и правил. Сам gist описывает это как паттерн для personal knowledge bases на LLM и прямо говорит, что файл расс"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ кода и review.txt:33704",
+      "text": "Дай терминалу вот этот аудит без изменений файлов. Он ничего не строит, только показывает, что уже есть по Memory Wave / wiki / raw / entity substrate / ANNA:"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:51",
+      "text": "Анна - не ядро и не орган SOCC. Анна - рождаемая entity/product через Entity Substrate. Это уже было чётко отделено в файлах: SOCC - организм/sovereign control system, Hermes/Memory/Autonomy/PI/Entity Substrate - органы, а ANNA - внешний pr"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:77",
+      "text": "Она ещё не равна AGI и не равна 24/7 daemon. Файлы уже фиксируют честную границу: foreground/self-construction loop может быть доказан, но это “not daemon, not 24/7, not AGI, not ANNA”. Автономия и живость системы (1).txt"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:167",
+      "text": "Это не новая фантазия. Такая карта уже есть в файлах: органы SOCC - Law, Truth Authority, Route Authority, Branch Registry, Memory Wave, Autonomy, Hermes, Codex, Validator, PI, Entity Substrate, Observability, Safety; продукты - ANNA Dental"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:351",
+      "text": "4. ANNA is a vertical assistant for dental clinics."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Автономия и ANNA (2).txt:37032",
+      "text": "\"anna_position\": \"ANNA is later product/entity workload candidate for стоматологии; ANNA requires lawful substrate + birth protocol later.\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:2761",
+      "text": "Это совпадает с ранее найденным выводом: текущий репозиторий нельзя просто тащить как продукт, потому что там одновременно живут SOCC, Autopilot, Cursor Runtime, Megawaves, Memory Wave, ANNA, Entity Substrate и несколько поколений автономии"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:18846",
+      "text": "\"operator_visible_summary\": \"Hermes gate PASS using existing capability evidence. Codex gate is next. Nearest goal remains autonomous self-construction, then Entity Substrate, then Anna MVP.\","
+    }
+  ],
+  "definition": "\"truth_boundary\": \"Validation of first bounded self-building runtime-write cycle closure report. This validates the proof-chain, closure report, and truth boundary for one reviewed, wrapper-mediated, one-shot bounded runtime write cycle. It does not enable daemon, scheduler, background loop, 24/7 autonomy, network use, queue widening, Entity/ANNA birth, final canon approval, or AGI claim.\",",
+  "do_not_rebuild_deprecated": [
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/SOCC состояние и шаги.txt:18244",
+      "text": "\"truth_boundary\":\"PASS means Memory Wave can separate discussion/proposal/decision/execution/proofed/current/deprecated records and emit a current truth slice. It does not claim full temporal state derivation, contradiction arbitration, dae"
+    }
+  ],
+  "drill_down_note": "Open source anchors (article current_authority refs) only when a claim must be verified in raw context.",
+  "governance_counts": {
+    "conflicting": 802,
+    "current": 100,
+    "deprecated": 1,
+    "historical": 2030
+  },
+  "graph_context": {
+    "metrics": {
+      "communities": 236,
+      "edges": 1927,
+      "members": 1927,
+      "nodes": 2163
+    },
+    "note": "graph layer of system memory; use to see connected concepts and avoid duplicate builds",
+    "related_nodes": [
+      "cycle_3_cycle_3_observer_self_model_runner_v1_entity_artifacts",
+      "cycle_3_cycle_3_observer_self_model_runner_v1_memory_science_artifacts",
+      "energy_store_read_ledger",
+      "energy_store_write_ledger",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_advance",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_authority_unique",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_get_next",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_h16",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_now",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_panel",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_rj",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_set_next",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_sha16",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_wj",
+      "entity_substrate_runner_socc_entity_substrate_foreground_runner_v1_wt",
+      "hermes_run_w_hermes_6_codex_report_reconciler_closure_v1",
+      "hermes_validate_w_hermes_6_codex_report_reconciler_closure_v1",
+      "memory_wave_build_latest_new_files_delta_report_v1",
+      "memory_wave_build_latest_new_files_delta_report_v1_h",
+      "memory_wave_build_latest_new_files_delta_report_v1_now_msk",
+      "memory_wave_build_latest_new_files_delta_report_v1_now_utc",
+      "memory_wave_build_latest_new_files_delta_report_v1_rj",
+      "memory_wave_build_latest_new_files_delta_report_v1_sha_file",
+      "memory_wave_build_latest_new_files_delta_report_v1_wj",
+      "memory_wave_build_latest_new_files_delta_report_v1_wt",
+      "migration_quarantine_overbroad_reuse_current_lawful_next_v1_20260608t180338z_core_continuity_memory_wave_raw_registered_src_f9f1ff755563fc79_hermes_w6_codex_report_reconciler_closure_v1_py_any",
+      "migration_quarantine_overbroad_reuse_current_lawful_next_v1_20260608t180338z_core_continuity_memory_wave_raw_registered_src_f9f1ff755563fc79_hermes_w6_codex_report_reconciler_closure_v1_py_path",
+      "migration_quarantine_overbroad_reuse_current_lawful_next_v1_20260608t180338z_core_hermes_runtime_hermes_w6_codex_report_reconciler_closure_v1_py_any",
+      "migration_quarantine_overbroad_reuse_current_lawful_next_v1_20260608t180338z_core_hermes_runtime_hermes_w6_codex_report_reconciler_closure_v1_py_path",
+      "migration_quarantine_overbroad_reuse_current_lawful_next_v1_20260608t180338z_scripts_socc_build_self_building_progress_metrics_v1_py_socc_build_self_building_progress_metrics_v1_proof_pass",
+      "registered_src_0d00e042bd1d495b_cycle_3_observer_self_model_runner_v1_entity_artifacts",
+      "registered_src_0d00e042bd1d495b_cycle_3_observer_self_model_runner_v1_memory_science_artifacts",
+      "registered_src_0dddea3a2e26a3cc_run_cycle_3_mw207_306_observer_self_model_memory_science_long_run_v1",
+      "registered_src_f0fdb5ffd1cf32b0_build_memory_guided_self_construction_selector_v1",
+      "registered_src_f0fdb5ffd1cf32b0_build_memory_guided_self_construction_selector_v1_h16",
+      "registered_src_f0fdb5ffd1cf32b0_build_memory_guided_self_construction_selector_v1_now",
+      "registered_src_f0fdb5ffd1cf32b0_build_memory_guided_self_construction_selector_v1_rj",
+      "registered_src_f0fdb5ffd1cf32b0_build_memory_guided_self_construction_selector_v1_wj",
+      "registered_src_f9f1ff755563fc79_hermes_w6_codex_report_reconciler_closure_v1"
+    ],
+    "source": "SOVEREIGN/WIKI/graph"
+  },
+  "id": "KNOWLEDGE_CONTEXT_PACK_ANNA_V1",
+  "main_line": "**Что такое ANNA (одной фразой).** ANNA — это первая живая цифровая *сущность*, рождённая\nчерез способность SOCC «Entity Substrate»: ассистент-администратор, который заменяет живого\nресепшн-администратора клиники 24/7, неотличимо от человека. Не бот — личность с памятью,\nхарактером и историей по каждому клиенту.\n\n**Чем НЕ является.** Не чат-бот, не набор скриптов, не один Telegram-скрипт. ANNA = личность\nповерх ядра SOCC; чат-канал (Telegram/MAX/SMS/звонки) — лишь поверхность, ядро одно.\n\n**Архитектура (как продукт, не как игрушка).**\n- *Личность ANNA* — одна на все вертикали (вежливая, чёткая, мягкая, умная, без лишних слов).\n- *Вертикальный агент* — ANNA в стоматологии имеет по умолчанию скилы вертикали: триаж боли,\n  ответ на запрос, ведение к записи, занесение в CRM, работа с возражениями.\n- *Скилы как товар* — стоматология это первый скилл; дальше барбершоп, пластика, клиники.\n  Базовый функционал + докупаемые возможности (звонки, кофе под ключ, само-маркетинг).\n- *Ядро = SOCC* — отсюда неубиваемость: дисциплина proof/gate, fallback-лестница исполнителей\n  (Claude Code → Codex → Hermes → socc_self), память и история по каждому клиенту.\n\n**Продуктовая рамка (цель — деньги).** ANNA — продукт по подписке для 1000+ клиник:\nбыстрый онбординг (одна команда → пакеты/правила), оплата/подписка, кабинет владельца,\nCRM-хук, регистрация активации в SOCC. Каждая активация регистрируется ядром.\n\n**Линия рождения (порядок строг).** ANNA НЕ начинает строиться, пока не запечатан\nEntity Substrate (математически доказанный, аги-инженерно выверенный субстрат рождения\nсущностей). Сначала субстрат → потом ANNA как первая сущность на нём.\n\n**Эволюция обсуждений (W0→W5).** Survival → Truth → Law → Surface/Live (Telegram live-ответ) →\nStabilization (gateway/RPC) → Memory attach. Источники: `ANNA последний этап*.md/.txt`,\n`Развитие бота Анна.md`, persona-протоколы wavecore-bot, dental-triage (Obsidian).",
+  "next_lawful_step_for_substrate": "review_anna_real_product_roadmap_v1",
+  "open_questions_conflicting": [
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:252",
+      "text": "Ниже патч. Он строит контракт выбора работы, но не выбирает задачу сам, не запускает ANNA/Entity/self-building, не делает fake autonomy."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:4189",
+      "text": "\"expected\": \"Entity/ANNA/AGI not proven\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:4698",
+      "text": "\"anna_rejected\": build_proof.get(\"anna_rejected\") is True and has_text(rejected, \"anna\"),"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Статус проекта SOCC (3).txt:8736",
+      "text": "\"anna_rejection_validated\": validation_proof.get(\"anna_rejection_validated\") is True and has_text(rejected, \"anna\"),"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Слушаю внимательно.txt:143",
+      "text": "ANNA — это потом первый серьёзный продукт/сущность."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Анализ кода и review.txt:33685",
+      "text": "3. Это не ANNA и не marketplace."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:381",
+      "text": "- Is ANNA primary now, queued, or blocked?"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Что такое SOCC (1).txt:2686",
+      "text": "Это не ANNA."
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-SOCC patch plan (1).txt:28110",
+      "text": "old_entity_hits = [h for h in old_hits if \"entity\" in json.dumps(h, ensure_ascii=False).lower() or \"anna\" in json.dumps(h, ensure_ascii=False).lower() or \"анна\" in json.dumps(h, ensure_ascii=False).lower()]"
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (3).txt:194",
+      "text": "\"Entity and ANNA were not born\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Controlled Tick Validation (2).txt:3829",
+      "text": "\"ANNA not born\","
+    },
+    {
+      "ref": "/Users/wavysexy/Downloads/MEMORY SOCC/1/ChatGPT-Код ломался решение (3).txt:1675",
+      "text": "\"approval must keep Entity/ANNA/AGI/final canon false\""
+    }
+  ],
+  "pack_hash": "295b05fddd93d87fe9399b85",
+  "purpose": "build brief for the self-construction organ; read this instead of raw sources",
+  "token_economy": {
+    "pack_caps_per_section": 12,
+    "principle": "read KB of pack, not MB of raw files",
+    "raw_sources_bypassed": {
+      "conflicting": 802,
+      "current": 100,
+      "deprecated": 1,
+      "historical": 2030
+    }
+  },
+  "topic": "anna"
+}
