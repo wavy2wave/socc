@@ -218,6 +218,13 @@ def main():
         cmd_scaffold(args[1] if len(args) > 1 else "")
     elif args[0] == "status":
         cmd_status()
+    elif args[0] == "recall":
+        query = " ".join(args[1:]).strip()
+        if not query:
+            print("Usage: socc recall \"<запрос>\"", file=sys.stderr)
+            sys.exit(1)
+        from socc_cli.recall import run
+        sys.exit(run(query))
     elif args[0] == "step":
         dry = "--dry" in args or "--dry-run" in args
         cmd_step(dry=dry)
