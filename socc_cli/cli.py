@@ -225,6 +225,9 @@ def main():
             sys.exit(1)
         from socc_cli.recall import run
         sys.exit(run(query))
+    elif args[0] == "handoff":
+        from socc_cli.handoff import main as handoff_main
+        sys.exit(handoff_main(args[1:]))
     elif args[0] == "step":
         dry = "--dry" in args or "--dry-run" in args
         cmd_step(dry=dry)

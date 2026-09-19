@@ -2,53 +2,68 @@
 
 status: PASS
 canonical_root: /Users/wavysexy/SOCC
-working_base: FOUNDATION/SOCC_WORKING_BASE_V1.json
-current_step: socc_working_base_accepted_v1
-lawful_next: validate_socc_operator_handoff_start_protocol_v1
+git_head: 5385d7c
+generated_at_msk: 2026-09-20T00:14:26+03:00
+current_lawful_next: ship_anna_mvp_to_first_clinic_v1
 
-ACCEPTED TRUTH:
-SOCC working base is accepted.
+START:
+  cd /Users/wavysexy/SOCC
+  socc home
+  socc observe
 
+MEMORY:
+  topics: anna, entity_substrate, socc, self_construction, memory, law_proof, vision
+  graph nodes: 2163
+  context packs: anna_context_pack_v1.json, entity_substrate_context_pack_v1.json
+  recall: socc recall "<запрос>"
+
+GOAL:
+  MINT first verified ₽ (Telegram bot 1500) then ANNA pilot
 DO NOT:
-- restart migration
-- rebuild accepted proof-chain
-- start daemon/background/network
-- patch outside current_lawful_next
+  - cold_clinic_outreach_before_demo_and_m1
+  - new_top_level_folders
+  - mint_universe_expansion
+  - self_building_ceremony
+  - restart_migration
 
-START SEQUENCE:
-cd "$HOME/SOCC" 2>/dev/null || cd "$HOME/socc" || exit 2
-python3 scripts/socc/socc_observe_v1.py
+```text
+╔══════════════════════════════════════════════════════════════╗
+║  SOCC · HANDOFF — континуити для нового агента/сессии        ║
+╚══════════════════════════════════════════════════════════════╝
 
-READ:
-- CURRENT_LAWFUL_NEXT
-- ROUTE_STATUS
-- PULSE_NEXT
-- CONTROL_NEXT
-- HARD_FAILURES
+generated: 2026-09-20T00:14:26+03:00
+root:      /Users/wavysexy/SOCC
+git HEAD:  5385d7c
 
-OPERATING RULE:
-1. Read CURRENT_LAWFUL_NEXT.
-2. Verify route/pulse/control alignment.
-3. Execute only that lawful next.
-4. Write proof.
-5. Update route/pulse/control.
-6. Stop after bounded step.
+ROUTE
+  status:     PASS
+  route:      self_building_autonomy
+  lawful_next:ship_anna_mvp_to_first_clinic_v1
+  source:     anna_mvp_sealed
 
-CURRENT ACCEPTED BASE:
-- migration from supramental-agent preserved by proof-chain
-- bounded loop PASS
-- repeatability PASS
-- runtime operator panel PASS
-- Codex/Hermes governance PASS
-- controlled continuous autonomy seal PASS
-- first lawful controlled run executed validated reviewed
-- continuity contract built validated reviewed
-- stable operating mode built validated reviewed
-- working base ACCEPTED
+MEMORY
+  topics:     anna, entity_substrate, socc, self_construction, memory, law_proof, vision
+  sources:    576
+  graph:      2163 nodes · 236 communities
+  packs:      anna_context_pack_v1.json, entity_substrate_context_pack_v1.json
+  recall:     socc recall "<запрос>"
 
-SAFETY:
-- daemon_running False
-- scheduler_installed False
-- background_loop_enabled False
-- network_used False
-- AGI/entity claims False
+GOAL
+  goal:       MINT first verified ₽ (Telegram bot 1500) then ANNA pilot
+  decision:   2026-07-13 operator: agent chose Mint-first cash path
+  do_not:
+    - cold_clinic_outreach_before_demo_and_m1
+    - new_top_level_folders
+    - mint_universe_expansion
+    - self_building_ceremony
+    - restart_migration
+
+ВХОДЫ
+  - socc home
+  - socc observe
+  - socc recall "<запрос>"
+  - socc think "<запрос>"
+  - make gate
+
+TRUTH BOUNDARY: Handoff read-only. No route change, no network, no daemon, no entity birth.
+```
