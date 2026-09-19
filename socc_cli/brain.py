@@ -18,6 +18,8 @@ import hashlib
 from pathlib import Path
 from datetime import datetime, timezone, timedelta
 
+from socc_cli.recall import recall as memory_recall
+
 SOCC_ROOT = Path(__file__).parent.parent
 MSK = timezone(timedelta(hours=3), name="MSK")
 
@@ -343,6 +345,7 @@ def think(request):
     intent = understand(request)
     knowledge = resolve_knowledge(intent)
     gate = readiness_gate(intent, knowledge)
+    memory_context = memory_recall(request, limit=8)
 
     ts = now_utc().replace(":", "").replace("-", "")[:15]
     slug = _slug(request)
@@ -353,11 +356,12 @@ def think(request):
         "intent": intent,
         "knowledge": knowledge,
         "readiness": gate,
+        "memory_context": memory_context,
         "llm_used": False,
         "network_used": False,
     }
 
-    result = {"intent": intent, "knowledge": knowledge, "readiness": gate}
+    result = {"intent": intent, "knowledge": knowledge, "readiness": gate, "memory_context": memory_context}
 
     if knowledge["level"] == "UNKNOWN":
         gap = {
@@ -428,6 +432,7 @@ def build_ticket(request, sources=None, speed="normal"):
     intent = understand(request)
     knowledge = resolve_knowledge(intent)
     gate = readiness_gate(intent, knowledge)
+    memory_context = memory_recall(request, limit=8)
 
     topic = intent.get("topic")
     article = read_json(WIKI_PAGES / f"{topic}.json") if topic else {}
@@ -466,6 +471,7 @@ def build_ticket(request, sources=None, speed="normal"):
             "coverage_target": 0.8,
             "coverage_met": coverage >= 0.8 or knowledge["level"] == "KNOWN",
             "raw_source_anchors": source_anchors,
+            "memory_context": memory_context,
         },
         "readiness_gate": gate,
         "lawful_plan": [{"node": i + 1, "stage": s, "proof_required": True}
@@ -511,6 +517,12 @@ def render_ticket(ticket):
     kc = GR if k["coverage_met"] else YE
     out.append(f"  knowledge {c(kc, k['level'])}  coverage≈{c(kc, str(k['coverage_estimate']))} (target {k['coverage_target']})")
     out.append(f"  anchors   {c(DIM, str(len(k['raw_source_anchors']))+' raw source links')}")
+    mc = k.get("memory_context", {})
+    matches = mc.get("matches", [])
+    graph = mc.get("graph_related", [])
+    out.append(f"  memory    {c(CY, str(len(matches)))+' topics'}  graph={c(CY, str(len(graph)))+' nodes'}")
+    for m in matches[:3]:
+        out.append(c(DIM, f"    · {m['title']} (facts {m['facts']}, sources {m['sources']})"))
     tb = ticket["token_budget"]
     budget_str = f"{tb['estimate_low']:,}–{tb['estimate_high']:,} tok"
     out.append(f"  budget    {c(W, budget_str)}  speed={c(CY, tb['speed'])}")
@@ -534,6 +546,12 @@ def render_think(request, result):
     klvl = knowledge["level"]
     kcol = GR if klvl == "KNOWN" else (YE if klvl == "PARTIAL" else RE)
     out.append(f"  knowledge {c(kcol, klvl)}  article={knowledge['has_article']}  pack={knowledge['has_context_pack']}")
+    mc = result.get("memory_context", {})
+    matches = mc.get("matches", [])
+    graph = mc.get("graph_related", [])
+    out.append(f"  memory    {c(CY, str(len(matches)))+' topics'}  graph={c(CY, str(len(graph)))+' nodes'}")
+    for m in matches[:5]:
+        out.append(c(DIM, f"    · {m['title']} (facts {m['facts']}, timeline {m['timeline']}, sources {m['sources']})"))
     out.append("")
     out.append(c(DIM, "  readiness gate (mandatory criteria):"))
     for k, v in gate["criteria"].items():
