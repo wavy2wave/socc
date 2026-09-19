@@ -268,6 +268,27 @@ def _probe_migration():
     return ("live", "репо socc на GitHub · URL чист · .env закрыт", "socc migrate")
 
 
+def _probe_memory():
+    """MEMORY: живая вики spine2 + граф-слой + recall."""
+    proof = _j(SOCC_ROOT / "SOVEREIGN/WIKI/spine2/_spine2_proof.json")
+    graph_metrics = _j(SOCC_ROOT / "SOVEREIGN/WIKI/graph/metrics.json")
+    recall_cli = (SOCC_ROOT / "socc_cli/recall.py").exists()
+    topics = len((proof or {}).get("topics", {})) if isinstance(proof, dict) else 0
+    sources = (proof or {}).get("sources_scanned") if isinstance(proof, dict) else None
+    nodes = (graph_metrics or {}).get("nodes") if isinstance(graph_metrics, dict) else None
+    communities = (graph_metrics or {}).get("communities") if isinstance(graph_metrics, dict) else None
+    if not topics or not recall_cli:
+        return ("off", "spine2/recall не смонтированы", "socc recall \"<запрос>\"")
+    bits = [f"тем {topics}"]
+    if sources:
+        bits.append(f"источников {sources}")
+    if nodes:
+        bits.append(f"граф узлов {nodes}")
+    if communities:
+        bits.append(f"сообществ {communities}")
+    return ("live", " · ".join(bits), "socc recall \"<запрос>\"")
+
+
 # ── карточки органов ──────────────────────────────────────────────────────────
 _ORGANS = [
     dict(key="kernel", icon="🧭", title="SOCC · КЕРНЕЛЬ", tag="само-постройка · route",
@@ -285,6 +306,9 @@ _ORGANS = [
     dict(key="anna", icon="🩺", title="ANNA", tag="CORE · личный операционный мозг",
          desc="направление MVP · L2 реальная запись · дашборд · вход",
          probe=_probe_anna, open="socc anna"),
+    dict(key="memory", icon="🧠", title="MEMORY", tag="WIKI · GRAPH · RECALL",
+         desc="живая вики · граф-слой · поиск по памяти · context packs",
+         probe=_probe_memory, open="socc recall \"<запрос>\""),
     dict(key="migration", icon="🛰️", title="MIGRATION", tag="LINE_MIGRATOR · переноска → GitHub/VPS",
          desc="безопасная полная миграция кода · секреты · доступ · сеть · шаги с вердиктами",
          probe=_probe_migration, open="socc migrate"),
@@ -347,6 +371,7 @@ def home_text(out=None):
         ("socc ym [дело|планёрка|задания|штаб|день|kpi|артефакты|авто|мозг]", "ЯМ-ЦИКЛ глубоко"),
         ("socc ozon", "OZON-менеджер (read-сводка)"),
         ("socc библиотека", "ХРАНИТЕЛЬ+МОЗГ: полки · магазины · ходы · ЗДОРОВЬЕ · ЦЕЛОСТНОСТЬ · ЭВОЛЮЦИЯ · вопрос"),
+        ("socc recall \"<запрос>\"", "MEMORY: поиск по системной памяти (темы+факты+граф)"),
         ("socc substrate", "ENTITY SUBSTRATE"),
         ("socc anna", "ANNA · дашборд · вход"),
         ("socc задания", "ЗАДАНИЯ — весь реестр систем (топливо ДОМА)"),
