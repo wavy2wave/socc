@@ -19,6 +19,7 @@ state → memory → plan → action → proof → continuity
 | observe | `scripts/socc/socc_observe_v1.py` | системный аудит |
 | continuity | `socc_cli/handoff.py`, `FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.md` | передача состояния |
 | surface | `socc_cli/cli.py`, `socc_cli/home.py` | единый интерфейс |
+| effect gate | `scripts/socc/socc_self_building_effect_auditor_v1.py` | закон шага: материальный эффект обязателен |
 | proof | `SOVEREIGN/PROOF/proof_chain`, гейты | верификация |
 | safety | route flags, M2/M3/ПДн гейты | RUBICON |
 
@@ -34,6 +35,7 @@ socc.state()          # маршрут + флаги
 socc.memory()         # wiki/graph/packs
 socc.recall("anna")   # поиск
 socc.think("задача")  # план с памятью
+socc.effect_gate(before, after)  # BEFORE → ACTION → AFTER → proof → memory
 socc.observe()        # системный аудит
 socc.handoff()        # континуити
 socc.gate()           # полный гейт

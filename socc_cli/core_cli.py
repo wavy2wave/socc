@@ -16,6 +16,7 @@ USAGE = """socc core — единый вход в живое ядро SOCC
   socc core memory      — wiki/graph/packs
   socc core recall "q"  — поиск по памяти
   socc core think "q"   — план с памятью
+  socc core effect JSON — гейт шага (BEFORE/AFTER через stdin)
   socc core handoff     — континуити (JSON)
   socc core observe     — системный аудит
   socc core all         — state+memory+handoff одним вызовом
@@ -40,6 +41,21 @@ def main(argv=None) -> int:
         _pp(s.state())
     elif cmd == "memory":
         _pp(s.memory())
+    elif cmd == "effect":
+        if not rest or rest[0] != "-":
+            print("Usage: socc core effect - < effect_step.json", file=sys.stderr)
+            return 1
+        try:
+            import json as _json
+            data = _json.loads(sys.stdin.read())
+            before = data.get("before", {})
+            after = data.get("after", {})
+        except Exception as e:
+            print(f"ERROR: invalid JSON: {e}", file=sys.stderr)
+            return 1
+        result = s.effect_gate(before, after)
+        _pp(result)
+        return 0 if result.get("status") == "PASS" else 1
     elif cmd == "recall":
         if not rest:
             print("Usage: socc core recall \"<запрос>\"", file=sys.stderr)

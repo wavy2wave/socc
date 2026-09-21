@@ -129,6 +129,23 @@ class SOCC:
             "findings": findings,
         }
 
+    # effect gate
+    def effect_gate(self, before: dict, after: dict) -> dict:
+        """Закон шага: BEFORE → ACTION → AFTER → proof → memory.
+
+        Обёртка над существующим socc_self_building_effect_auditor_v1.py.
+        Не создаёт новый орган, не двигает маршрут, не пишет в proof-chain.
+        """
+        import importlib.util
+        auditor_path = ROOT / "scripts/socc/socc_self_building_effect_auditor_v1.py"
+        spec = importlib.util.spec_from_file_location("socc_self_building_effect_auditor_v1", auditor_path)
+        mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(mod)
+        result = mod.audit_effect(before, after)
+        result["effect_gate"] = "BEFORE -> ACTION -> AFTER -> proof -> memory"
+        result["truth_boundary"] = "Read-only wrapper. No route change, no network, no daemon, no entity birth."
+        return result
+
     # state
     def state(self) -> dict:
         route = self._route

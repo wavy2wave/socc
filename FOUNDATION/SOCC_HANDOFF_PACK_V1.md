@@ -1,9 +1,9 @@
 # SOCC HANDOFF PACK V1
 
 READ-ONLY · 0₽ · no network · no daemon · no route change · no entity birth
-exported_at_msk: 2026-09-21T12:57:28+03:00
+exported_at_msk: 2026-09-21T13:25:12+03:00
 root: /Users/wavysexy/SOCC
-git_head: 264825e
+git_head: 4b1bee9
 
 ## START
 ```text
@@ -19,9 +19,9 @@ socc core all
 ║  SOCC · HANDOFF — континуити для нового агента/сессии        ║
 ╚══════════════════════════════════════════════════════════════╝
 
-generated: 2026-09-21T12:57:28+03:00
+generated: 2026-09-21T13:25:12+03:00
 root:      /Users/wavysexy/SOCC
-git HEAD:  264825e
+git HEAD:  4b1bee9
 
 ROUTE
   status:     PASS
@@ -861,6 +861,7 @@ state → memory → plan → action → proof → continuity
 | observe | `scripts/socc/socc_observe_v1.py` | системный аудит |
 | continuity | `socc_cli/handoff.py`, `FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.md` | передача состояния |
 | surface | `socc_cli/cli.py`, `socc_cli/home.py` | единый интерфейс |
+| effect gate | `scripts/socc/socc_self_building_effect_auditor_v1.py` | закон шага: материальный эффект обязателен |
 | proof | `SOVEREIGN/PROOF/proof_chain`, гейты | верификация |
 | safety | route flags, M2/M3/ПДн гейты | RUBICON |
 
@@ -876,6 +877,7 @@ socc.state()          # маршрут + флаги
 socc.memory()         # wiki/graph/packs
 socc.recall("anna")   # поиск
 socc.think("задача")  # план с памятью
+socc.effect_gate(before, after)  # BEFORE → ACTION → AFTER → proof → memory
 socc.observe()        # системный аудит
 socc.handoff()        # континуити
 socc.gate()           # полный гейт
