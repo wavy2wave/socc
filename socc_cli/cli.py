@@ -17,6 +17,7 @@ USAGE:
   socc boot              — load core/brain + live core panel
   socc think "<request>" — understand a free-form request → know-or-ask → plan
   socc ticket "<request>" — build a lawful build TICKET (budget, plan, validators)
+  socc product ...       — МАТКА ПРОДУКТОВ: start/list/show/context/plan/ready/launch
   socc scaffold [step]   — faithfully fill a missing validate_/review_ node (default: lawful_next)
   socc observe           — full system observe report
   socc status            — quick: lawful_next + script readiness
@@ -225,6 +226,9 @@ def main():
             sys.exit(1)
         from socc_cli.recall import run
         sys.exit(run(query))
+    elif args[0] == "product":
+        from socc_cli.product import main as product_main
+        sys.exit(product_main(args[1:]))
     elif args[0] == "handoff":
         from socc_cli.handoff import main as handoff_main
         sys.exit(handoff_main(args[1:]))

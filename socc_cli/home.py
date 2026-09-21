@@ -289,6 +289,33 @@ def _probe_memory():
     return ("live", " · ".join(bits), "socc recall \"<запрос>\"")
 
 
+def _probe_products():
+    """PRODUCTS: матка продуктов SOCC."""
+    registry = SOCC_ROOT / "SYSTEM/REGISTRY/SOCC_PRODUCT_FOUNDATION_REGISTRY_V1.jsonl"
+    canon = SOCC_ROOT / "SYSTEM/KERNEL/SOCC_PRODUCT_FOUNDATION_CANON_V1.md"
+    cli = (SOCC_ROOT / "socc_cli/product.py").exists()
+    if not canon.exists() or not cli:
+        return ("off", "матка продуктов не смонтирована", "socc product help")
+    rows = []
+    if registry.exists():
+        for line in registry.read_text(encoding="utf-8").splitlines():
+            line = line.strip()
+            if line:
+                try:
+                    rows.append(json.loads(line))
+                except Exception:
+                    pass
+    stages = [r.get("stage", "idea") for r in rows]
+    revenue = sum(1 for x in stages if x == "revenue")
+    live = sum(1 for x in stages if x == "launch")
+    bits = [f"продуктов {len(rows)}"]
+    if live:
+        bits.append(f"launch {live}")
+    if revenue:
+        bits.append(f"revenue {revenue}")
+    return ("live", " · ".join(bits) or "реестр пуст", "socc product list")
+
+
 # ── карточки органов ──────────────────────────────────────────────────────────
 _ORGANS = [
     dict(key="kernel", icon="🧭", title="SOCC · КЕРНЕЛЬ", tag="само-постройка · route",
@@ -306,6 +333,9 @@ _ORGANS = [
     dict(key="anna", icon="🩺", title="ANNA", tag="CORE · личный операционный мозг",
          desc="направление MVP · L2 реальная запись · дашборд · вход",
          probe=_probe_anna, open="socc anna"),
+    dict(key="products", icon="🚀", title="PRODUCTS", tag="МАТКА · idea → revenue",
+         desc="матка продуктов: start · context · plan · ready · launch",
+         probe=_probe_products, open="socc product list"),
     dict(key="memory", icon="🧠", title="MEMORY", tag="WIKI · GRAPH · RECALL",
          desc="живая вики · граф-слой · поиск по памяти · context packs",
          probe=_probe_memory, open="socc recall \"<запрос>\""),
@@ -371,6 +401,7 @@ def home_text(out=None):
         ("socc ym [дело|планёрка|задания|штаб|день|kpi|артефакты|авто|мозг]", "ЯМ-ЦИКЛ глубоко"),
         ("socc ozon", "OZON-менеджер (read-сводка)"),
         ("socc библиотека", "ХРАНИТЕЛЬ+МОЗГ: полки · магазины · ходы · ЗДОРОВЬЕ · ЦЕЛОСТНОСТЬ · ЭВОЛЮЦИЯ · вопрос"),
+        ("socc product [start|list|context|plan|ready|launch]", "МАТКА ПРОДУКТОВ — новая идея подключает SOCC"),
         ("socc recall \"<запрос>\"", "MEMORY: поиск по системной памяти (темы+факты+граф)"),
         ("socc substrate", "ENTITY SUBSTRATE"),
         ("socc anna", "ANNA · дашборд · вход"),

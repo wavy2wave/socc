@@ -1,6 +1,6 @@
 # SOCC · Живое суверенное ядро
 
-> **SOCC — операционная система для твоих продуктов.**
+> **SOCC — матка продуктов.**
 > Она сама себя строит, ведёт дело и превращает лут-артефакты в активы.
 > Законно. Автономно. С proof, без fake-pass.
 
@@ -18,6 +18,8 @@ YM CYCLE, OZON CYCLE, ANNA, будущие платформы и сервисы.
 | человек/оператор | [START_HERE.md](START_HERE.md) |
 | агент/ИИ | [START_HERE_SOCC.md](START_HERE_SOCC.md) |
 | хочешь понять устройство | [ARCHITECTURE.md](ARCHITECTURE.md) |
+| хочешь создать продукт | `socc product start <slug> "<идея>"` |
+| матка продуктов | [SYSTEM/KERNEL/SOCC_PRODUCT_FOUNDATION_CANON_V1.md](SYSTEM/KERNEL/SOCC_PRODUCT_FOUNDATION_CANON_V1.md) |
 | собрать с нуля | [BOOTSTRAP.md](BOOTSTRAP.md) |
 | развернуть на VPS | [DEPLOY.md](DEPLOY.md) |
 | цель сейчас | [SOCC_GOAL.json](SOCC_GOAL.json) |
@@ -53,6 +55,28 @@ YM CYCLE, OZON CYCLE, ANNA, будущие платформы и сервисы.
 - **L12:** узел N+1 стартует только после `PASS` узла N.
 - **RUBICON:** write-узлы идут в сеть только с `--commit`; иначе dry, 0₽.
 - **СВЕРКА:** правда в `campaign_offers`/`stocks`, не в `200 OK`.
+
+## Матка продуктов
+
+Новый продукт не начинается с нуля — он подключает SOCC:
+
+```bash
+socc product start my-saas "Идея продукта"
+socc product context my-saas   # память SOCC по теме
+socc product plan my-saas      # план через brain
+socc product ready my-saas     # readiness-чек
+socc product launch my-saas    # RUBICON live-checklist
+```
+
+Стадии: `idea → intent → plan → build → accept → launch → revenue`.
+
+Правила матки:
+
+- продукт **не создаёт новый top-level**;
+- продукт **не копирует ядро** — подключает его;
+- продукт обязан использовать `recall → think → effect_gate`;
+- продукт обязан иметь README и CLI/UI-вход до живого запуска;
+- живой шаг — RUBICON оператора.
 
 ## Быстрая проверка машины
 
