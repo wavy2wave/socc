@@ -17,6 +17,7 @@ USAGE = """socc core — единый вход в живое ядро SOCC
   socc core recall "q"  — поиск по памяти
   socc core think "q"   — план с памятью
   socc core effect JSON — гейт шага (BEFORE/AFTER через stdin)
+  socc core selector "q" — memory-guided выбор следующего шага
   socc core handoff     — континуити (JSON)
   socc core observe     — системный аудит
   socc core all         — state+memory+handoff одним вызовом
@@ -41,6 +42,12 @@ def main(argv=None) -> int:
         _pp(s.state())
     elif cmd == "memory":
         _pp(s.memory())
+    elif cmd == "selector":
+        if not rest:
+            print("Usage: socc core selector \"<запрос>\"", file=sys.stderr)
+            return 1
+        from socc_cli.memory_selector import memory_guided_select
+        _pp(memory_guided_select(" ".join(rest)))
     elif cmd == "effect":
         if not rest or rest[0] != "-":
             print("Usage: socc core effect - < effect_step.json", file=sys.stderr)

@@ -146,6 +146,12 @@ class SOCC:
         result["truth_boundary"] = "Read-only wrapper. No route change, no network, no daemon, no entity birth."
         return result
 
+    # memory-guided selector
+    def selector(self, query: str, limit: int = 12) -> dict:
+        """recall → lessons → bounded selector → selected_target."""
+        from socc_cli.memory_selector import memory_guided_select
+        return memory_guided_select(query, limit=limit)
+
     # state
     def state(self) -> dict:
         route = self._route

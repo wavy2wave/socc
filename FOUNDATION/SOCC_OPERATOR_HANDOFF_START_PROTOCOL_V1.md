@@ -2,8 +2,8 @@
 
 status: PASS
 canonical_root: /Users/wavysexy/SOCC
-git_head: e216b57
-generated_at_msk: 2026-09-21T14:44:17+03:00
+git_head: 215a5d9
+generated_at_msk: 2026-09-21T18:46:13+03:00
 current_lawful_next: ship_anna_mvp_to_first_clinic_v1
 
 START:
@@ -31,9 +31,9 @@ DO NOT:
 ║  SOCC · HANDOFF — континуити для нового агента/сессии        ║
 ╚══════════════════════════════════════════════════════════════╝
 
-generated: 2026-09-21T14:44:17+03:00
+generated: 2026-09-21T18:46:13+03:00
 root:      /Users/wavysexy/SOCC
-git HEAD:  e216b57
+git HEAD:  215a5d9
 
 ROUTE
   status:     PASS
