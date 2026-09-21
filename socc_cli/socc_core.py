@@ -38,6 +38,58 @@ class SOCC:
         self._proof = _rj(PROOF)
         self._graph = _rj(GRAPH)
 
+    # truth
+    def truth(self) -> dict:
+        """Честная панель ядра: не заменяет гейт, а делает конфликты видимыми."""
+        goal = _rj(ROOT / "SOCC_GOAL.json")
+        route = self._route
+        canon = _rj(ROOT / "SYSTEM/CANON/ALLOWED_TOP_LEVEL_V1.json")
+        revenue = _rj(ROOT / "SOVEREIGN/LEDGER/revenue_ledger.jsonl")
+        ledger = Path(ROOT / "SOVEREIGN/LEDGER/revenue_ledger.jsonl")
+        allowed = set(canon.get("allowed", []))
+        actual = {p.name for p in ROOT.iterdir() if p.is_dir() and p.name != ".git"}
+        route_next = route.get("lawful_next") or route.get("real_next") or route.get("current_lawful_next")
+        goal_next = goal.get("honest_cash_next")
+        findings = []
+        if goal_next and route_next and goal_next != route_next:
+            findings.append({
+                "id": "lawful_next_conflict",
+                "severity": "high",
+                "fact": f"SOCC_GOAL.honest_cash_next={goal_next!r} != route.current_lawful_next={route_next!r}",
+                "fix": "Operator must choose one lawful_next; update SOCC_GOAL or route authority atomically."
+            })
+        if not ledger.exists():
+            findings.append({
+                "id": "revenue_ledger_absent",
+                "severity": "high",
+                "fact": "SOVEREIGN/LEDGER/revenue_ledger.jsonl does not exist",
+                "fix": "No money claimed yet. First verified sale must create it via scripts/mint/socc_revenue_ledger_v1.py."
+            })
+        extra = actual - allowed
+        if extra:
+            findings.append({
+                "id": "top_level_boundary_violation",
+                "severity": "high",
+                "fact": f"New top-level dirs: {sorted(extra)}",
+                "fix": "Remove them, or get explicit operator permission and update SYSTEM/CANON/ALLOWED_TOP_LEVEL_V1.json."
+            })
+        # violations present but not fatal for truth() itself
+        return {
+            "status": "PASS" if not findings else "ATTENTION",
+            "route_status": route.get("status"),
+            "route_lawful_next": route_next,
+            "goal_honest_cash_next": goal_next,
+            "goal_formal_lawful_next": goal.get("formal_lawful_next_anna"),
+            "revenue_ledger_exists": ledger.exists(),
+            "revenue_records": len(revenue) if isinstance(revenue, list) else 0,
+            "top_level": {
+                "allowed_count": len(allowed),
+                "actual_count": len(actual),
+                "extra": sorted(extra),
+            },
+            "findings": findings,
+        }
+
     # state
     def state(self) -> dict:
         route = self._route

@@ -11,6 +11,7 @@ from socc_cli.socc_core import SOCC
 
 USAGE = """socc core — единый вход в живое ядро SOCC
 
+  socc core truth       — конфликты цели/маршрута/дохода/канона
   socc core state       — маршрут, lawful_next, флаги
   socc core memory      — wiki/graph/packs
   socc core recall "q"  — поиск по памяти
@@ -33,7 +34,9 @@ def main(argv=None) -> int:
     cmd = argv[0]
     rest = argv[1:]
     s = SOCC()
-    if cmd == "state":
+    if cmd == "truth":
+        _pp(s.truth())
+    elif cmd == "state":
         _pp(s.state())
     elif cmd == "memory":
         _pp(s.memory())
