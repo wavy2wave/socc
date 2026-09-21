@@ -8,6 +8,7 @@ Read-only по умолчанию. Никакой сети, демонов, из
 """
 from __future__ import annotations
 
+import importlib.util
 import json
 import subprocess
 import sys
@@ -73,6 +74,43 @@ class SOCC:
                 "fact": f"New top-level dirs: {sorted(extra)}",
                 "fix": "Remove them, or get explicit operator permission and update SYSTEM/CANON/ALLOWED_TOP_LEVEL_V1.json."
             })
+        # P0 readiness for the cash path (no secrets, no live calls)
+        bot_cfg = _rj(ROOT / "scripts/mint/botfactory/config.demo_prodazha.json")
+        botfactory_python = ROOT / "scripts/mint/botfactory/.venv/bin/python"
+        aiogram_in_venv = botfactory_python.exists() and any(
+            (botfactory_python.parent.parent / "lib").glob("*/site-packages/aiogram")
+        )
+        owner_chat_id = bot_cfg.get("owner_chat_id") if isinstance(bot_cfg, dict) else None
+        p0 = {
+            "aiogram_in_botfactory_venv": aiogram_in_venv,
+            "aiogram_in_system_python": importlib.util.find_spec("aiogram") is not None,
+            "owner_chat_id": owner_chat_id,
+            "owner_chat_id_configured": bool(owner_chat_id),
+            "npd_status_known": (ROOT / "scripts/mint/botfactory/.npd_ready").exists(),
+            "runtime_note": "Bot must be started via scripts/mint/botfactory/.venv/bin/python until aiogram is installed system-wide or in main venv."
+        }
+        if not owner_chat_id:
+            findings.append({
+                "id": "owner_chat_id_not_configured",
+                "severity": "high",
+                "fact": "scripts/mint/botfactory/config.demo_prodazha.json has owner_chat_id=0",
+                "fix": "Set owner_chat_id to the operator Telegram chat id before the first live run."
+            })
+        if not aiogram_in_venv:
+            findings.append({
+                "id": "aiogram_missing",
+                "severity": "high",
+                "fact": "aiogram is not available in scripts/mint/botfactory/.venv",
+                "fix": "Install dependencies into the botfactory virtual environment."
+            })
+        if not p0["npd_status_known"]:
+            findings.append({
+                "id": "npd_status_unknown",
+                "severity": "medium",
+                "fact": "scripts/mint/botfactory/.npd_ready is absent",
+                "fix": "After confirming NPD status, create this local marker (not committed) to turn the monitor green."
+            })
+
         # violations present but not fatal for truth() itself
         return {
             "status": "PASS" if not findings else "ATTENTION",
@@ -87,6 +125,7 @@ class SOCC:
                 "actual_count": len(actual),
                 "extra": sorted(extra),
             },
+            "p0_cash_path": p0,
             "findings": findings,
         }
 

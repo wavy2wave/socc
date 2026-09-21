@@ -1,9 +1,9 @@
 # SOCC HANDOFF PACK V1
 
 READ-ONLY · 0₽ · no network · no daemon · no route change · no entity birth
-exported_at_msk: 2026-09-21T12:03:48+03:00
+exported_at_msk: 2026-09-21T12:44:38+03:00
 root: /Users/wavysexy/SOCC
-git_head: 4d1fb21
+git_head: d38c162
 
 ## START
 ```text
@@ -19,9 +19,9 @@ socc core all
 ║  SOCC · HANDOFF — континуити для нового агента/сессии        ║
 ╚══════════════════════════════════════════════════════════════╝
 
-generated: 2026-09-21T12:03:48+03:00
+generated: 2026-09-21T12:44:38+03:00
 root:      /Users/wavysexy/SOCC
-git HEAD:  4d1fb21
+git HEAD:  d38c162
 
 ROUTE
   status:     PASS

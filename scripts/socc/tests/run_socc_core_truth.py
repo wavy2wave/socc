@@ -18,6 +18,10 @@ checks = {
     "truth_conflict_detected": any(f.get("id") == "lawful_next_conflict" for f in truth["findings"]),
     "truth_revenue_honest": any(f.get("id") == "revenue_ledger_absent" for f in truth["findings"]),
     "truth_attention": truth.get("status") == "ATTENTION",
+    "truth_p0_aiogram_venv": truth["p0_cash_path"]["aiogram_in_botfactory_venv"] is True,
+    "truth_p0_owner_matches_config": truth["p0_cash_path"]["owner_chat_id_configured"] == bool(truth["p0_cash_path"]["owner_chat_id"]),
+    "truth_p0_owner_finding": any(f.get("id") == "owner_chat_id_not_configured" for f in truth["findings"]),
+    "truth_p0_npd_monitor": isinstance(truth["p0_cash_path"]["npd_status_known"], bool),
 }
 for k, v in checks.items():
     print(("✅ " if v else "❌ ") + k)
