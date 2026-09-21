@@ -12,7 +12,7 @@
 
 Ничего не пишет в сеть, не двигает маршрут, не создаёт органы.
 --generate обновляет canonical HANDOFF файл (per operator request).
---export-pack создаёт EXPORT/SOCC_HANDOFF_PACK_V1.md (read-only континуити-пак).
+--export-pack создаёт FOUNDATION/SOCC_HANDOFF_PACK_V1.md (read-only континуити-пак).
 """
 from __future__ import annotations
 
@@ -31,7 +31,7 @@ PROOF = ROOT / "SOVEREIGN/WIKI/spine2/_spine2_proof.json"
 GRAPH = ROOT / "SOVEREIGN/WIKI/graph/metrics.json"
 PACKS = ROOT / "SOVEREIGN/WIKI/context_packs"
 CANON = ROOT / "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.md"
-HANDOFF_PACK = ROOT / "EXPORT/SOCC_HANDOFF_PACK_V1.md"
+HANDOFF_PACK = ROOT / "FOUNDATION/SOCC_HANDOFF_PACK_V1.md"
 
 
 def _rj(p):
