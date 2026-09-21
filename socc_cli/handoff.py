@@ -7,10 +7,12 @@
 - memory wiki/graph/recall;
 - context packs;
 - DO NOT из SOCC_GOAL;
-- readiness гейта.
+- readiness гейта;
+- один самодостаточный handoff-пак для внешнего агента (Codex/Claude).
 
 Ничего не пишет в сеть, не двигает маршрут, не создаёт органы.
 --generate обновляет canonical HANDOFF файл (per operator request).
+--export-pack создаёт EXPORT/SOCC_HANDOFF_PACK_V1.md (read-only континуити-пак).
 """
 from __future__ import annotations
 
@@ -21,6 +23,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.modules[__name__].__dict__.setdefault('__builtins__', __builtins__)
 MSK = timezone(timedelta(hours=3))
 ROUTE = ROOT / "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json"
 GOAL = ROOT / "SOCC_GOAL.json"
@@ -28,6 +31,7 @@ PROOF = ROOT / "SOVEREIGN/WIKI/spine2/_spine2_proof.json"
 GRAPH = ROOT / "SOVEREIGN/WIKI/graph/metrics.json"
 PACKS = ROOT / "SOVEREIGN/WIKI/context_packs"
 CANON = ROOT / "FOUNDATION/SOCC_OPERATOR_HANDOFF_START_PROTOCOL_V1.md"
+HANDOFF_PACK = ROOT / "EXPORT/SOCC_HANDOFF_PACK_V1.md"
 
 
 def _rj(p):
@@ -126,6 +130,86 @@ def render(d: dict) -> str:
     return "\n".join(lines)
 
 
+def export_pack() -> tuple[int, Path | None]:
+    """Экспорт одного самодостаточного handoff-пака для внешнего агента."""
+    d = collect()
+    HANDOFF_PACK.parent.mkdir(parents=True, exist_ok=True)
+    core_map = ROOT / "SYSTEM/KERNEL/LIVING_CORE_MAP_V1.md"
+    goal = _rj(ROOT / "SOCC_GOAL.json")
+    route = _rj(ROOT / "core/socc/route_authority/CURRENT_ROUTE_AUTHORITY.json")
+    proof = ROOT / "SOVEREIGN/WIKI/spine2/_spine2_proof.json"
+    graph = ROOT / "SOVEREIGN/WIKI/graph/metrics.json"
+    parts = [
+        "# SOCC HANDOFF PACK V1",
+        "",
+        "READ-ONLY · 0₽ · no network · no daemon · no route change · no entity birth",
+        f"exported_at_msk: {d['generated_at_msk']}",
+        f"root: {d['root']}",
+        f"git_head: {d['git_head']}",
+        "",
+        "## START",
+        "```text",
+        "cd /Users/wavysexy/SOCC",
+        "socc home",
+        "socc observe",
+        "socc core all",
+        "```",
+        "",
+        "## CANONICAL HANDOFF",
+        "```text",
+        render(d),
+        "```",
+        "",
+        "## ROUTE AUTHORITY",
+        "```json",
+        json.dumps(route, ensure_ascii=False, indent=2),
+        "```",
+        "",
+        "## GOAL / DO NOT",
+        "```json",
+        json.dumps(goal, ensure_ascii=False, indent=2),
+        "```",
+    ]
+    if core_map.exists():
+        parts += ["", "## LIVING CORE MAP", "```text", core_map.read_text(encoding="utf-8").strip(), "```"]
+    for pack_file in sorted(PACKS.glob("*_context_pack_v1.json")):
+        parts += ["", f"## CONTEXT PACK · {pack_file.name}", "```json", pack_file.read_text(encoding="utf-8").strip(), "```"]
+    parts += [
+        "",
+        "## MEMORY PROOF",
+        "```json",
+        proof.read_text(encoding="utf-8").strip(),
+        "```",
+        "",
+        "## GRAPH METRICS",
+        "```json",
+        graph.read_text(encoding="utf-8").strip(),
+        "```",
+        "",
+        "## CORE CLI",
+        "```text",
+        "socc core state       — маршрут, lawful_next, флаги",
+        "socc core memory      — wiki/graph/packs",
+        'socc core recall "q"  — поиск по памяти',
+        'socc core think "q"   — план с памятью',
+        "socc core handoff     — континуити (JSON)",
+        "socc core observe     — системный аудит",
+        "socc core all         — state+memory+handoff одним вызовом",
+        "```",
+    ]
+    HANDOFF_PACK.write_text("\n".join(parts) + "\n", encoding="utf-8")
+    return 0, HANDOFF_PACK
+
+
+def generate_if_pass() -> bool:
+    """Авто-handoff: обновить канон только если route PASS. Возвращает True если обновлено."""
+    route = _rj(ROUTE)
+    if route.get("status") != "PASS":
+        return False
+    generate()
+    return True
+
+
 def generate() -> int:
     d = collect()
     body = render(d)
@@ -166,6 +250,15 @@ def generate() -> int:
 
 def main(argv=None) -> int:
     argv = argv or sys.argv[1:]
+    if "--generate-if-pass" in argv:
+        updated = generate_if_pass()
+        print("AUTO-HANDOFF::" + ("UPDATED" if updated else "SKIPPED (route not PASS)"))
+        return 0 if updated else 1
+    if "--export-pack" in argv:
+        rc, path = export_pack()
+        if path:
+            print(f"HANDOFF PACK EXPORTED: {path}")
+        return rc
     if "--generate" in argv:
         return generate()
     print(render(collect()))
